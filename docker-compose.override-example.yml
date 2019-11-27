@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+  # Drupal development server
+  dev:
+    hostname: dev
+    ports:
+      - "8080:80"
+
+  # Drupal test server
+  test:
+    hostname: test
+    ports:
+      - "8888:8888"
+
+  # Database
+  db:
+    ports:
+      - "3306:3306"

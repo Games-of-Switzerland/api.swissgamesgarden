@@ -31,7 +31,7 @@ services:
   dev:
     hostname: dev
     ports:
-      - "8081:80"
+      - "8082:80"
 ```
 
 Another example when you already have a local MySQL server using port 3306:

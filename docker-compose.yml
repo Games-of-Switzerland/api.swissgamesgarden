@@ -1,0 +1,85 @@
+version: '3.6'
+
+services:
+  # Drupal development server
+  dev:
+    build: .
+    command: docker-as-wait --mysql -- docker-as-drupal apache-server
+    depends_on:
+      - db
+      - mail
+    environment:
+      DATABASE_URL: mysql://drupal:drupal@db/drupal_development
+      SMTP_HOST: mail:1025
+      PRIVATE_FILES: /var/www/web/sites/default/files/private
+    restart: "no"
+    volumes:
+      - backups:/var/backups
+      # Drupal
+      - ./composer.json:/var/www/composer.json:cached
+      - ./composer.lock:/var/www/composer.lock:cached
+      - ./config:/var/www/config:cached
+      - ./web/modules/custom:/var/www/web/modules/custom:cached
+      # Files
+      - ./web/sites/default/files:/var/www/web/sites/default/files:delegated
+
+  # Drupal test server
+  test:
+    build: .
+    command: docker-as-wait --mysql -- docker-as-drupal apache-server
+    depends_on:
+      - browser
+      - db
+      - mail
+    environment:
+      DATABASE_URL: mysql://drupal:drupal@db/drupal_test
+      SMTP_HOST: mail:1025
+      PRIVATE_FILES: /var/www/web/sites/default/files/private
+      REQUIRED_DIRECTORIES: >-
+        /var/www/log/behat
+        /var/www/dump/behat
+      BEHAT_PROFILE: default
+      TEST_DISABLE_MODULES: big_pipe
+    restart: "no"
+    volumes:
+      - backups:/var/backups
+      # Drupal
+      - ./composer.json:/var/www/composer.json:cached
+      - ./composer.lock:/var/www/composer.lock:cached
+      - ./config:/var/www/config:cached
+      - ./web/modules/custom:/var/www/web/modules/custom:cached
+      # Behat
+      - ./behat:/var/www/behat:cached
+      - ./behat.yml:/var/www/behat.yml:cached
+    networks:
+      default:
+        aliases:
+          # Hosts used in default content for testing
+          - api.gos.test
+
+  # Test browser
+  browser:
+    image: selenium/standalone-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+
+  # Database
+  db:
+    image: mariadb:10.1
+    environment:
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_DATABASE: drupal\_%
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    volumes:
+      - database:/var/lib/mysql
+
+  # Mail
+  mail:
+    image: schickling/mailcatcher
+    restart: always
+
+volumes:
+  database:
+  backups:
