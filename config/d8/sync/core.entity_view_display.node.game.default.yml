@@ -1,0 +1,28 @@
+uuid: 026daf9a-2ef6-4b7f-aabf-9d220257c2aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.game.body
+    - node.type.game
+  module:
+    - text
+    - user
+id: node.game.default
+targetEntityType: node
+bundle: game
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
