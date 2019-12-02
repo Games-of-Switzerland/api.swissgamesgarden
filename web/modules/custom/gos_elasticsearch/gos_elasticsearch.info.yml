@@ -1,0 +1,8 @@
+name: Elasticsearch Helper Example
+type: module
+description: Plugin implementation for the Games of Switzerland Elasticsearch.
+package: Search
+core: 8.x
+hidden: true
+dependencies:
+  - elasticsearch_helper:elasticsearch_helper

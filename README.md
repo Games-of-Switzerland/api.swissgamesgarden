@@ -255,6 +255,13 @@ You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/
           - "19200:9200"
     ```
 
+### Index
+
+```bash
+docker-compose exec [dev|test] drush elasticsearch-helper-reindex games_of_switzerland
+docker-compose exec [dev|test] drush queue-run elasticsearch_helper_indexing
+```
+
 ### List of Indexes
 
 ```bash
@@ -270,6 +277,7 @@ docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
 ### Recreate Index from scratch
 
 ```bash
+    docker-compose exec dev drush elasticsearch-helper-setup
     docker-compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/games_of_switzerland
     docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/games_of_switzerland
 ```
