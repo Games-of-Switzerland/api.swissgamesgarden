@@ -47,6 +47,7 @@ db:
 
     docker-compose build --pull
     docker-compose up --build -d
+    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/games_of_switzerland
     docker-compose exec dev docker-as-drupal bootstrap
     (get a coffee, this will take some time...)
 
@@ -232,6 +233,58 @@ We use Capistrano to deploy:
 bundle exec cap -T
 bundle exec cap staging deploy
 ```
+
+## 🔍 Elasticsearch
+
+All given port may be changed by your own `docker-compose.override.yml`.
+
+The Docker installation ship with a working **Elasticsearch in version 6.8.5**.
+
+You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/dejaVu).
+
+1. Open **DejaVu** in your local browser `http://localhost:1358/`
+
+2. Connect to your Elasticsearch instance using `http://localhost:9200` on index `games_of_switzerland`.
+
+    The local machine port is the one defined in your `docker-compose` or `docker-compose.override.yml`.
+    In the following example the local port is `19200`. and the port inside the Docker is `9200`.
+    
+    ```yaml
+      elasticsearch:
+        ports:
+          - "19200:9200"
+    ```
+
+### List of Indexes
+
+```bash
+docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
+```
+
+This should print
+
+```bash
+docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
+```
+
+### Recreate Index from scratch
+
+```bash
+    docker-compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/games_of_switzerland
+    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/games_of_switzerland
+```
+
+### Health Check
+
+```bash
+docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/health
+```
+
+Check that Elasticsearch is up and running.
+
+Open localhost:9200 in web browser -- should return status code 200
+
+Every tests should be run into the Docker environment.
 
 ## 📋 Documentations
 

@@ -8,6 +8,7 @@ services:
     depends_on:
       - db
       - mail
+      - elasticsearch
     environment:
       DATABASE_URL: mysql://drupal:drupal@db/drupal_development
       SMTP_HOST: mail:1025
@@ -31,6 +32,7 @@ services:
       - browser
       - db
       - mail
+      - elasticsearch
     environment:
       DATABASE_URL: mysql://drupal:drupal@db/drupal_test
       SMTP_HOST: mail:1025
@@ -87,6 +89,10 @@ services:
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=http://localhost:1358,http://127.0.0.1:1358
+      - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
+      - http.cors.allow-credentials=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
@@ -94,6 +100,16 @@ services:
         hard: -1
     volumes:
       - esdata:/usr/share/elasticsearch/data
+
+  # Elasticsearch browser
+  dejavu:
+    image: appbaseio/dejavu:3.2.3
+    depends_on:
+      - elasticsearch
+    ports:
+      - '1358:1358'
+    links:
+      - elasticsearch
 
 volumes:
   database:
