@@ -17,3 +17,8 @@ services:
   db:
     ports:
       - "3306:3306"
+
+  # Elasticsearch
+  elasticsearch:
+    ports:
+      - "9200:9200"
