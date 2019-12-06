@@ -13,6 +13,7 @@ services:
       DATABASE_URL: mysql://drupal:drupal@db/drupal_development
       SMTP_HOST: mail:1025
       PRIVATE_FILES: /var/www/web/sites/default/files/private
+      DEFAULT_CONTENT: gos_default_content
       DRUPAL_CONFIG_SET: >-
         elasticsearch_helper.settings elasticsearch_helper.host elasticsearch
     restart: "no"
@@ -39,6 +40,7 @@ services:
       DATABASE_URL: mysql://drupal:drupal@db/drupal_test
       SMTP_HOST: mail:1025
       PRIVATE_FILES: /var/www/web/sites/default/files/private
+      DEFAULT_CONTENT: gos_default_content
       REQUIRED_DIRECTORIES: >-
         /var/www/log/behat
         /var/www/dump/behat
