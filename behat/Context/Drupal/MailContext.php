@@ -13,7 +13,6 @@ use DOMXPath;
 use Exception;
 use InvalidArgumentException;
 use RuntimeException;
-use InvalidArgumentException;
 
 /**
  * Defines mails application features from the specific context.
