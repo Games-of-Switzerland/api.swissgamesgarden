@@ -5,12 +5,18 @@ namespace Drupal\Behat\Context\Drupal;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Drupal\Component\Utility\Random;
+use Exception;
 
 /**
  * Defines Database features from the specific context.
  */
 class DatabaseContext extends RawDrupalContext implements SnippetAcceptingContext {
 
+  /**
+   * The last dump created.
+   *
+   * @var string
+   */
   protected static $dump = NULL;
 
   /**
@@ -63,10 +69,12 @@ class DatabaseContext extends RawDrupalContext implements SnippetAcceptingContex
    *
    * @return string
    *   The dump file path.
+   *
+   * @throws \Exception
    */
   private function dumpTo($filename) {
     if (!is_dir($this->dumpPath)) {
-      throw new \Exception(sprintf('The dump directory "%s" does not exists.', $this->dumpPath));
+      throw new Exception(sprintf('The dump directory "%s" does not exists.', $this->dumpPath));
     }
 
     $file_and_path = $this->dumpPath . DIRECTORY_SEPARATOR . $filename . '.sql';
@@ -82,10 +90,12 @@ class DatabaseContext extends RawDrupalContext implements SnippetAcceptingContex
    *
    * @param string $file_and_path
    *   The filename & path.
+   *
+   * @throws \Exception
    */
   private function loadFrom($file_and_path) {
     if (!is_file($file_and_path)) {
-      throw new \Exception(sprintf('The dump file "%s" does not exists.', $file_and_path));
+      throw new Exception(sprintf('The dump file "%s" does not exists.', $file_and_path));
     }
 
     exec("../vendor/bin/drush sql-cli < $file_and_path");

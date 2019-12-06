@@ -3,6 +3,7 @@
 namespace Drupal\Behat\Context\Drupal;
 
 use Drupal\DrupalExtension\Context\RawDrupalContext;
+use Exception;
 
 /**
  * Defines Watchdog features from the specific context.
@@ -46,7 +47,7 @@ class WatchdogContext extends RawDrupalContext {
       print_r($log);
     }
 
-    throw new \Exception('PHP errors logged to watchdog in this step.');
+    throw new Exception('PHP errors logged to watchdog in this step.');
   }
 
 }

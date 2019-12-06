@@ -7,6 +7,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Drupal\Component\Utility\Random;
 use Behat\Mink\Driver\Selenium2Driver;
 use Behat\Behat\Hook\Scope\AfterStepScope;
+use Exception;
 
 /**
  * Defines Debug features from the specific context.
@@ -121,10 +122,12 @@ class DebugContext extends RawDrupalContext implements SnippetAcceptingContext {
    *
    * @return string
    *   The file path of logged file.
+   *
+   * @throws \Exception
    */
   private function logTo($content, $prefix, $extension) {
     if (!is_dir($this->logPath)) {
-      throw new \Exception(sprintf('The log directory "%s" does not exists.', $this->logPath));
+      throw new Exception(sprintf('The log directory "%s" does not exists.', $this->logPath));
     }
 
     $random = new Random();
