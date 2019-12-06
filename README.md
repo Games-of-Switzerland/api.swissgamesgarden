@@ -47,15 +47,21 @@ db:
 
     docker-compose build --pull
     docker-compose up --build -d
-    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/games_of_switzerland
     docker-compose exec dev docker-as-drupal bootstrap
     (get a coffee, this will take some time...)
+    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_game
+    docker-compose exec dev drush elasticsearch-helper-setup
+    docker-compose exec dev drush elasticsearch-helper-reindex
+    docker-compose exec dev drush queue-run elasticsearch_helper_indexing
 
 ### When it's not the first time
 
     docker-compose build --pull
     docker-compose up --build -d
     docker-compose exec dev drush cr (or any other drush command you need)
+    docker-compose exec dev docker-as-drupal db-reset --with-default-content
+    docker-compose exec dev drush elasticsearch-helper-reindex
+    docker-compose exec dev drush queue-run elasticsearch_helper_indexing
 
 ### (optional) Get the productions images
 
@@ -258,7 +264,7 @@ You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/
 ### Index
 
 ```bash
-docker-compose exec [dev|test] drush elasticsearch-helper-reindex games_of_switzerland
+docker-compose exec [dev|test] drush elasticsearch-helper-reindex
 docker-compose exec [dev|test] drush queue-run elasticsearch_helper_indexing
 ```
 
@@ -277,9 +283,9 @@ docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
 ### Recreate Index from scratch
 
 ```bash
+    docker-compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/_all
+    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_game
     docker-compose exec dev drush elasticsearch-helper-setup
-    docker-compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/games_of_switzerland
-    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/games_of_switzerland
 ```
 
 ### Health Check
