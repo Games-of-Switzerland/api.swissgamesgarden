@@ -1,0 +1,6 @@
+services:
+  gos_elasticsearch.normalizer.game_normalizer:
+    class: Drupal\gos_elasticsearch\Plugin\Normalizer\GameNormalizer
+    tags:
+      - { name: normalizer, priority: 50 }
+    arguments: ['@entity_type.manager']
