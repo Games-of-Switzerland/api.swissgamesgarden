@@ -7,6 +7,7 @@ set :repo_url, 'git@github.com:Games-of-Switzerland/gos-server.git'
 # server 'ssh.domain.ltd', user: 'gos', roles: %w{app db web}
 
 set :app_path, "web"
+set :config_path, "config/d8/sync"
 
 # Link file settings.php
 set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/settings.php")
