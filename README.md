@@ -1,6 +1,6 @@
 # Games of Switzerland 🎮👾
 
-Drupal 8 powered.
+Drupal 8 powered & up and running via Docker.
 
 ## 🔧 Prerequisites
 
@@ -125,91 +125,6 @@ Maintaining code quality by adding the custom post-commit hook to yours.
 cat ./scripts/hooks/post-commit >> ./.git/hooks/post-commit
 ```
 
-## 🚛 *(optional)* Local Install
-
-You may use Docker only to run your project, otherwise follow those steps to install the project localy
-
-1. Setup your virtualhost (like `http://api.gos.test`) to serve `/web`.
-
-1. Install Drupal and dependencies using composer
-
-    ```bash
-    composer install
-    ```
-
-1. Install and configure PHPCS for coding standards, see the previous section.
-
-1. Update your `web/sites/default/settings.php`:
-
-    ```bash
-    vim web/sites/default/settings.php
-    ```
-
-    Set the custom configuration directory location:
-
-    ```php
-    $config_directories['sync'] = '../config/d8/sync';
-    ```
-
-1. Go to http://api.gos.test and follow install instruction
-   Or run the following command:
-   
-    ```bash
-    ./scripts/bootstrap/drupal.sh --skip-dependencies=1 --skip-interaction=1 --private-files="/privates/gos" --save-clean-database="./database-clean.dump.sql"
-    ```
-   
-   _Note: be sure to have a proper `/privates/gos` writable directory or change it in the command upper._
-
-   Or run the following command:
-
-    ```bash
-    drush si standard --db-url=mysql://root:root@127.0.0.1/gos --site-name="Games of Switzerland" --account-name=admin --account-pass=admin --account-mail=dev@antistatique.net
-    ```
-
-1. Use the same site UUID than your colleagues:
-
-    ```bash
-    drush config-set system.site uuid "e85e1685-b207-4ca4-987d-43b3619f58ab" -y
-    ```
-
-    (This is certainly a bad idea, [follow this drupal issue](https://www.drupal.org/node/1613424)).
-
-1. *(optional)* Update your `drush/drush.yml`:
-
-  ```bash
-  cp drush/default.drush.yml drush/drush.yml
-  vim drush/drush.yml
-  ```
-
-  ```yaml
-  options:
-    uri: 'http://api.gos.test'
-  ```
-
-1. Import the configuration
-
-    ```bash
-    drush cim
-    ```
-
-    or
-
-    ```bash
-    docker-compose exec dev drush cim -y
-    ```
-
-7. Rebuild the cache
-
-    ```bash
-    drush cr
-    ```
-
-    or
-
-    ```bash
-    docker-compose exec dev drush cr
-    ```
-
 ## After a git pull/merge
 
 ```bash
@@ -277,7 +192,7 @@ docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
 This should print
 
 ```bash
-docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
+$ yellow open games_of_switzerland lsSuUuMjTyizjL_WLECfyQ 5 1 0 0 1.2kb 1.2kb
 ```
 
 ### Recreate Index from scratch
@@ -290,15 +205,12 @@ docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
 
 ### Health Check
 
+Check that Elasticsearch is up and running.
+
 ```bash
 docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/health
 ```
 
-Check that Elasticsearch is up and running.
-
-Open localhost:9200 in web browser -- should return status code 200
-
-Every tests should be run into the Docker environment.
 
 ## 📋 Documentations
 
