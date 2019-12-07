@@ -1,0 +1,28 @@
+uuid: 14df5f27-baee-4ba8-b7a5-935e6f444cbc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_studios
+    - node.type.game
+    - node.type.studio
+id: node.game.field_studios
+field_name: field_studios
+entity_type: node
+bundle: game
+label: Studio(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      studio: studio
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

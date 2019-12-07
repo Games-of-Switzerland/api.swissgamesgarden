@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.node.game.body
+    - field.field.node.game.field_genres
+    - field.field.node.game.field_studios
     - node.type.game
   module:
     - path
@@ -28,6 +30,24 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_genres:
+    weight: 123
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_studios:
+    weight: 122
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   path:
     type: path
     weight: 30
