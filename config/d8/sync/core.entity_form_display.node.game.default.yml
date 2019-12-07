@@ -5,10 +5,13 @@ dependencies:
   config:
     - field.field.node.game.body
     - field.field.node.game.field_genres
+    - field.field.node.game.field_members
+    - field.field.node.game.field_releases
     - field.field.node.game.field_studios
     - node.type.game
   module:
     - field_group
+    - gos_site
     - path
     - text
 third_party_settings:
@@ -42,7 +45,8 @@ third_party_settings:
         required_fields: true
       label: General
     group_releases:
-      children: {  }
+      children:
+        - field_releases
       parent_name: group_tabs
       weight: 21
       format_type: tab
@@ -55,6 +59,7 @@ third_party_settings:
       label: Releases
     group_authors:
       children:
+        - field_members
         - field_studios
       parent_name: group_tabs
       weight: 22
@@ -102,8 +107,26 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_members:
+    weight: 124
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: team_member_default
+    region: content
+  field_releases:
+    weight: 123
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: release_default
+    region: content
   field_studios:
-    weight: 122
+    weight: 125
     settings:
       match_operator: CONTAINS
       size: 60
