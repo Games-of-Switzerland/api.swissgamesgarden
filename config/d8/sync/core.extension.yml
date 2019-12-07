@@ -19,6 +19,7 @@ module:
   file: 0
   filter: 0
   gos_elasticsearch: 0
+  gos_site: 0
   help: 0
   history: 0
   image: 0
