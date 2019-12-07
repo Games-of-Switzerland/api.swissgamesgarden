@@ -1,0 +1,28 @@
+uuid: 312eb535-02f3-4e9c-b2a0-b4fba754ff05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.people.body
+    - node.type.people
+  module:
+    - text
+    - user
+id: node.people.default
+targetEntityType: node
+bundle: people
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
