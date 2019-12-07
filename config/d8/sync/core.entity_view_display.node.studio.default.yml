@@ -1,0 +1,28 @@
+uuid: a4d84489-718b-4e2a-89d3-c44285f5a40a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.studio.body
+    - node.type.studio
+  module:
+    - text
+    - user
+id: node.studio.default
+targetEntityType: node
+bundle: studio
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }
