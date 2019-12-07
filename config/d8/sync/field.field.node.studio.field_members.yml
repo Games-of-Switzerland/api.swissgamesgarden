@@ -1,0 +1,30 @@
+uuid: 4dfd0350-f762-466c-b957-cf0a569ddbdc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_members
+    - node.type.people
+    - node.type.studio
+  module:
+    - gos_site
+id: node.studio.field_members
+field_name: field_members
+entity_type: node
+bundle: studio
+label: Members
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      people: people
+    sort:
+      field: _none
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: team_member

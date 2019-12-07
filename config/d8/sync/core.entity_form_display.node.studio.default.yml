@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.studio.body
+    - field.field.node.studio.field_members
     - node.type.studio
   module:
+    - gos_site
     - path
     - text
 id: node.studio.default
@@ -28,6 +30,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_members:
+    weight: 122
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: team_member_default
+    region: content
   path:
     type: path
     weight: 30
