@@ -1,0 +1,5 @@
+services:
+  gos_default_content.menu:
+    class: Drupal\gos_default_content\EventSubscriber\DefaultMenuSkeletonSubscriber
+    tags:
+      - {name: event_subscriber}

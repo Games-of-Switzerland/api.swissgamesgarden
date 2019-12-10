@@ -27,4 +27,8 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-hidden: {  }
+hidden:
+  field_genres: true
+  field_members: true
+  field_releases: true
+  field_studios: true

@@ -16,6 +16,25 @@
                 "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_releases": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/2?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/4?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/3?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_studios": [
+            {
+                "href": "http:\/\/default\/node\/15?_format=hal_json"
+            }
         ]
     },
     "nid": [
@@ -30,7 +49,7 @@
     ],
     "vid": [
         {
-            "value": 22
+            "value": 32
         }
     ],
     "langcode": [
@@ -46,7 +65,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "2019-12-06T14:55:36+00:00",
+            "value": "2019-12-09T16:33:27+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -63,7 +82,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ab949e10-05a2-420c-ab62-9525c3cae3e1"
+                        "value": "98ab44cf-82b5-448e-a59f-0436cb26362d"
                     }
                 ]
             }
@@ -80,10 +99,93 @@
                 },
                 "uuid": [
                     {
-                        "value": "ab949e10-05a2-420c-ab62-9525c3cae3e1"
+                        "value": "98ab44cf-82b5-448e-a59f-0436cb26362d"
                     }
                 ],
                 "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_releases": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/platform"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "304a43fe-3c4d-4587-93e6-a84959d39bf7"
+                    }
+                ],
+                "date_value": "2018-11-20"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/2?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/platform"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "9e1f8365-4bf3-4189-bf33-c9ac6862dca7"
+                    }
+                ],
+                "date_value": "2018-11-20"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/4?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/platform"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e5b2685e-39a7-4726-ad90-d7e3b44c2850"
+                    }
+                ],
+                "date_value": "2018-11-20"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/3?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/platform"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "03db2f32-1f7c-4d35-a2c9-42f951ae0bd8"
+                    }
+                ],
+                "date_value": "2018-11-20"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_studios": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/node\/15?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/studio"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b7e315a4-65a1-4a34-b989-e2a5a96e1f22"
+                    }
+                ]
             }
         ]
     },
@@ -108,7 +210,7 @@
     ],
     "changed": [
         {
-            "value": "2019-12-06T14:55:36+00:00",
+            "value": "2019-12-09T16:33:27+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }

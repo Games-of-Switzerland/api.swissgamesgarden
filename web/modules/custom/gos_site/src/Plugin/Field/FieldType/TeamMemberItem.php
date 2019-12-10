@@ -19,7 +19,7 @@ use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
  *   description = @Translation("A field to define a team member."),
  *   category = @Translation("Games of Switzerland"),
  *   default_formatter = "team_member_default",
- *   default_widget = "team_member_default",
+ *   default_widget = "entity_reference_label",
  *   list_class = "\Drupal\Core\Field\EntityReferenceFieldItemList",
  * )
  */
@@ -53,7 +53,7 @@ class TeamMemberItem extends EntityReferenceItem {
 
     $role_definition = DataDefinition::create('string')
       ->setLabel(new TranslatableMarkup('Role'))
-      ->setRequired(TRUE);
+      ->setRequired(FALSE);
     $properties['role'] = $role_definition;
 
     return $properties;

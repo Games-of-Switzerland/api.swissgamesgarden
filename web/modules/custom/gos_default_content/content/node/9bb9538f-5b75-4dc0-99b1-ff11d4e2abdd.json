@@ -16,6 +16,14 @@
                 "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
             }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_members": [
+            {
+                "href": "http:\/\/default\/node\/13?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/node\/16?_format=hal_json"
+            }
         ]
     },
     "nid": [
@@ -30,7 +38,7 @@
     ],
     "vid": [
         {
-            "value": 19
+            "value": 36
         }
     ],
     "langcode": [
@@ -46,7 +54,7 @@
     ],
     "revision_timestamp": [
         {
-            "value": "2019-12-06T14:53:07+00:00",
+            "value": "2019-12-10T17:37:44+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -63,7 +71,7 @@
                 },
                 "uuid": [
                     {
-                        "value": "ab949e10-05a2-420c-ab62-9525c3cae3e1"
+                        "value": "de25fc3e-8a97-4ba3-8823-f2812480f397"
                     }
                 ]
             }
@@ -80,10 +88,44 @@
                 },
                 "uuid": [
                     {
-                        "value": "ab949e10-05a2-420c-ab62-9525c3cae3e1"
+                        "value": "de25fc3e-8a97-4ba3-8823-f2812480f397"
                     }
                 ],
                 "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_members": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/node\/13?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/people"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c2c1d560-d9f4-4878-8105-7f63ec09e7ef"
+                    }
+                ],
+                "role": "Game Designer"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/node\/16?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/node\/people"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "26409ead-3bf9-43b3-b245-8b0aa3a2ba9c"
+                    }
+                ],
+                "role": "Technical Magician"
             }
         ]
     },
@@ -108,7 +150,7 @@
     ],
     "changed": [
         {
-            "value": "2019-12-06T14:53:07+00:00",
+            "value": "2019-12-10T17:37:44+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }

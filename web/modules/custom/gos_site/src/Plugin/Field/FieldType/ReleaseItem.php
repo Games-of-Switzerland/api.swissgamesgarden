@@ -19,7 +19,7 @@ use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
  *   description = @Translation("A field to define a release."),
  *   category = @Translation("Games of Switzerland"),
  *   default_formatter = "release_default",
- *   default_widget = "release_default",
+ *   default_widget = "entity_reference_label",
  *   list_class = "\Drupal\Core\Field\EntityReferenceFieldItemList",
  * )
  */

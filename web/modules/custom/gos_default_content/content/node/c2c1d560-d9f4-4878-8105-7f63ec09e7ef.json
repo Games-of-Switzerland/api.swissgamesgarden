@@ -1,41 +1,36 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/10?_format=hal_json"
+            "href": "http:\/\/default\/node\/13?_format=hal_json"
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/node\/game"
+            "href": "http:\/\/drupal.org\/rest\/type\/node\/people"
         },
-        "http:\/\/drupal.org\/rest\/relation\/node\/game\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/people\/revision_uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json"
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/game\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/people\/uid": [
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
-            }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_members": [
-            {
-                "href": "http:\/\/default\/node\/13?_format=hal_json"
             }
         ]
     },
     "nid": [
         {
-            "value": 10
+            "value": 13
         }
     ],
     "uuid": [
         {
-            "value": "12b7a617-4c66-4fb1-adf0-0ad70b775b9c"
+            "value": "c2c1d560-d9f4-4878-8105-7f63ec09e7ef"
         }
     ],
     "vid": [
         {
-            "value": 37
+            "value": 23
         }
     ],
     "langcode": [
@@ -46,17 +41,17 @@
     ],
     "type": [
         {
-            "target_id": "game"
+            "target_id": "people"
         }
     ],
     "revision_timestamp": [
         {
-            "value": "2019-12-10T17:38:07+00:00",
+            "value": "2019-12-09T16:23:13+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/node\/game\/revision_uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/people\/revision_uid": [
             {
                 "_links": {
                     "self": {
@@ -73,7 +68,7 @@
                 ]
             }
         ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/game\/uid": [
+        "http:\/\/drupal.org\/rest\/relation\/node\/people\/uid": [
             {
                 "_links": {
                     "self": {
@@ -90,48 +85,30 @@
                 ],
                 "lang": "en"
             }
-        ],
-        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_members": [
-            {
-                "_links": {
-                    "self": {
-                        "href": "http:\/\/default\/node\/13?_format=hal_json"
-                    },
-                    "type": {
-                        "href": "http:\/\/drupal.org\/rest\/type\/node\/people"
-                    }
-                },
-                "uuid": [
-                    {
-                        "value": "c2c1d560-d9f4-4878-8105-7f63ec09e7ef"
-                    }
-                ],
-                "role": "Game Designer"
-            }
         ]
     },
     "status": [
         {
-            "value": false,
+            "value": true,
             "lang": "en"
         }
     ],
     "title": [
         {
-            "value": "Ninza",
+            "value": "J\u00e9r\u00e9my \"Wuthrer\" Cuany",
             "lang": "en"
         }
     ],
     "created": [
         {
-            "value": "2019-12-06T14:53:28+00:00",
+            "value": "2019-12-09T16:22:40+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "changed": [
         {
-            "value": "2019-12-10T17:38:07+00:00",
+            "value": "2019-12-09T16:23:13+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
