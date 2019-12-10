@@ -40,6 +40,30 @@ class GameNodeIndex extends ElasticsearchIndexBase {
    * {@inheritdoc}
    */
   public function setup() {
+
+    $settings = [
+      'index' => $this->indexNamePattern(),
+      'body' => [
+        'analysis' => [
+          'filter' => [
+            'synonym_platform_filter' => [
+              'type' => 'synonym',
+              // @TODO use 'synonyms_path' => 'analysis/synonym_platform.txt',
+              // instead of hardcoded platform synonyms.
+              'synonyms' => ['PS4 => PlayStation 4'],
+            ],
+          ],
+          'analyzer' => [
+            'synonym_platform_analyzer' => [
+              'tokenizer' => 'standard',
+              'filter' => ['standard', 'lowercase', 'synonym_platform_filter'],
+            ],
+          ],
+        ],
+      ],
+    ];
+    $this->client->indices()->putSettings($settings);
+
     $mapping = [
       'index' => $this->indexNamePattern(),
       // Type name should match the Annotation @typeName.
@@ -48,14 +72,28 @@ class GameNodeIndex extends ElasticsearchIndexBase {
         'properties' => [
           'nid' => [
             'type' => 'integer',
+            'index' => FALSE,
           ],
           'title' => [
             'type' => 'text',
           ],
+          'releases' => [
+            'type' => 'nested',
+            'dynamic' => FALSE,
+            'properties' => [
+              'date' => [
+                'type' => 'date',
+                'format' => 'yyyy-MM-dd',
+              ],
+              'platform' => [
+                'type' => 'text',
+                'analyzer' => 'synonym_platform_analyzer',
+              ],
+            ],
+          ],
         ],
       ],
     ];
-
     $this->client->indices()->putMapping($mapping);
   }
 

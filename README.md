@@ -211,6 +211,11 @@ Check that Elasticsearch is up and running.
 docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/health
 ```
 
+### List all games
+
+```bash
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty"
+```
 
 ## 📋 Documentations
 

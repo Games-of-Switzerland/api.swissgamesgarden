@@ -29,10 +29,24 @@ class GameNormalizer extends ContentEntityNormalizer {
   public function normalize($object, $format = NULL, array $context = []) {
     /** @var \Drupal\node\Entity\Node $object */
 
-    return [
+    $data = [
       'nid' => $object->id(),
       'title' => $object->getTitle(),
     ];
+
+    if (!$object->get('field_releases')->isEmpty()) {
+      $releases = [];
+      foreach ($object->field_releases as $release) {
+        $releases[] = [
+          'date' => isset($release->date_value) ? $release->date_value : NULL,
+          'platform' => isset($release->entity) ? $release->entity->getName() : NULL,
+        ];
+      }
+
+      $data['releases'] = $releases;
+    }
+
+    return $data;
   }
 
 }
