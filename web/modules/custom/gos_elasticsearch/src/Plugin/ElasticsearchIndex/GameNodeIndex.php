@@ -40,6 +40,8 @@ class GameNodeIndex extends ElasticsearchIndexBase {
    * {@inheritdoc}
    */
   public function setup() {
+    // Close the indice before setting configuration.
+    $this->client->indices()->close(['index' => $this->indexNamePattern()]);
 
     $settings = [
       'index' => $this->indexNamePattern(),
@@ -48,7 +50,7 @@ class GameNodeIndex extends ElasticsearchIndexBase {
           'filter' => [
             'synonym_platform_filter' => [
               'type' => 'synonym_graph',
-                'synonyms_path' => 'analysis/synonym_platform.txt'
+              'synonyms_path' => 'analysis/synonym_platform.txt',
             ],
           ],
           'analyzer' => [
@@ -64,7 +66,6 @@ class GameNodeIndex extends ElasticsearchIndexBase {
 
     $mapping = [
       'index' => $this->indexNamePattern(),
-      // Type name should match the Annotation @typeName.
       'type' => $this->typeNamePattern(),
       'body' => [
         'properties' => [
@@ -93,6 +94,9 @@ class GameNodeIndex extends ElasticsearchIndexBase {
       ],
     ];
     $this->client->indices()->putMapping($mapping);
+
+    // Re-open the indice to make to expose it.
+    $this->client->indices()->open(['index' => $this->indexNamePattern()]);
   }
 
 }
