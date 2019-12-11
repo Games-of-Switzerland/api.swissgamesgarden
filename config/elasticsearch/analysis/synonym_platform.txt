@@ -10,7 +10,7 @@ prospero => playstation 5
 
 xbox-one, xbox 1 => xbox one
 
-Super NES, SNES, Super Nintendo, Super Nintendo Entertainment System
+Super NES, SNES, Super Nintendo Entertainment System => Super Nintendo
 3ds, 3ds xl, Nintendo 3DS, Nintendo 3DS XL
 
 windows, vista, xp => pc
