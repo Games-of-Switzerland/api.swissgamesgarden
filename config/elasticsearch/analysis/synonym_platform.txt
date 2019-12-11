@@ -1,0 +1,20 @@
+# Blank lines and lines starting with pound are comments.
+
+play-station => playstation
+ps1 => playstation 1
+ps2 => playstation 2
+ps3 => playstation 3
+ps4 => playstation 4
+ps5 => playstation 5
+prospero => playstation 5
+
+xbox-one, xbox 1 => xbox one
+
+Super NES, SNES, Super Nintendo, Super Nintendo Entertainment System
+3ds, 3ds xl, Nintendo 3DS, Nintendo 3DS XL
+
+windows, vista, xp => pc
+apple, macos, macintosh => mac
+apple, iphone => ios
+
+playstore => android

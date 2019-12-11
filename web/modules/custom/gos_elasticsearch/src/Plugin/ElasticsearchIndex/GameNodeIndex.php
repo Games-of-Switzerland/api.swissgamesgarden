@@ -47,10 +47,8 @@ class GameNodeIndex extends ElasticsearchIndexBase {
         'analysis' => [
           'filter' => [
             'synonym_platform_filter' => [
-              'type' => 'synonym',
-              // @TODO use 'synonyms_path' => 'analysis/synonym_platform.txt',
-              // instead of hardcoded platform synonyms.
-              'synonyms' => ['PS4 => PlayStation 4'],
+              'type' => 'synonym_graph',
+                'synonyms_path' => 'analysis/synonym_platform.txt'
             ],
           ],
           'analyzer' => [

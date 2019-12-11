@@ -106,6 +106,8 @@ services:
         hard: -1
     volumes:
       - esdata:/usr/share/elasticsearch/data
+      - ./config/elasticsearch/analysis:/usr/share/elasticsearch/config/analysis
+#     - ./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   # Elasticsearch browser
   dejavu:
