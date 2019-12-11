@@ -18,9 +18,4 @@ RUN set -eux; \
   mv ./vendor/composer/installed.json.new ./vendor/composer/installed.json; \
   \
   composer install --prefer-dist --no-progress --no-suggest --no-interaction; \
-  composer clear-cache; \
-  \
-  mkdir -p /var/www/vendor/mpdf/mpdf/tmp; \
-  chmod 777 /var/www/vendor/mpdf/mpdf/tmp; \
-  find "/var/www/vendor/mpdf/mpdf/tmp" -type f -executable -exec chmod -x {} \;; \
-  find "/var/www/vendor/mpdf/mpdf/tmp" -type d -exec chmod +xs {} \;
+  composer clear-cache;
