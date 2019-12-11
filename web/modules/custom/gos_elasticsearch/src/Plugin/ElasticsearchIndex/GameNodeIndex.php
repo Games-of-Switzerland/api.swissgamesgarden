@@ -48,15 +48,54 @@ class GameNodeIndex extends ElasticsearchIndexBase {
       'body' => [
         'analysis' => [
           'filter' => [
+            'english_stop' => [
+              'type' => 'stop',
+              'stopwords' => '_english_',
+            ],
+            'english_stemmer' => [
+              'type' => 'stemmer',
+              'language' => 'english',
+            ],
+            'english_possessive_stemmer' => [
+              'type' => 'stemmer',
+              'language' => 'possessive_english',
+            ],
             'synonym_platform_filter' => [
               'type' => 'synonym_graph',
               'synonyms_path' => 'analysis/synonym_platform.txt',
             ],
           ],
           'analyzer' => [
+            'ngram_gametitle_analyzer' => [
+              'tokenizer' => 'ngram_gametitle_tokenizer',
+              'filter' => ['lowercase'],
+            ],
+            'ngram_gametitle_analyzer_search' => [
+              'tokenizer' => 'lowercase',
+            ],
+            'english_language_analyzer' => [
+              'tokenizer' => 'standard',
+              'filter' => [
+                'english_possessive_stemmer',
+                'lowercase',
+                'english_stop',
+                'english_stemmer',
+              ],
+            ],
             'synonym_platform_analyzer' => [
               'tokenizer' => 'standard',
               'filter' => ['standard', 'lowercase', 'synonym_platform_filter'],
+            ],
+          ],
+          'tokenizer' => [
+            'ngram_gametitle_tokenizer' => [
+              'type' => 'edge_ngram',
+              'min_gram' => 2,
+              'max_gram' => 10,
+              'token_chars' => [
+                'letter',
+                'digit',
+              ],
             ],
           ],
         ],
@@ -75,6 +114,12 @@ class GameNodeIndex extends ElasticsearchIndexBase {
           ],
           'title' => [
             'type' => 'text',
+            'analyzer' => 'ngram_gametitle_analyzer',
+            'search_analyzer' => 'ngram_gametitle_analyzer_search',
+          ],
+          'desc' => [
+            'type' => 'text',
+            'analyzer' => 'english_language_analyzer',
           ],
           'releases' => [
             'type' => 'nested',
