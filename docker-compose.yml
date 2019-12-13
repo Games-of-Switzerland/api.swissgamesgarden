@@ -90,7 +90,9 @@ services:
 
   # Elasticsearch
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.5
+    build:
+      dockerfile: Dockerfile.elasticsearch
+      context: .
     restart: always
     environment:
       - cluster.name=docker-cluster
@@ -107,7 +109,6 @@ services:
     volumes:
       - esdata:/usr/share/elasticsearch/data
       - ./config/elasticsearch/analysis:/usr/share/elasticsearch/config/analysis
-#     - ./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   # Elasticsearch browser
   dejavu:
