@@ -2,6 +2,7 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\Normalizer;
 
+use Drupal\node\NodeInterface;
 use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 
 /**
@@ -22,6 +23,21 @@ class GameNormalizer extends ContentEntityNormalizer {
    * @var array
    */
   protected $format = ['elasticsearch_helper'];
+
+  /**
+   * {@inheritdoc}
+   */
+  public function supportsNormalization($data, $format = NULL) {
+    if (!parent::supportsNormalization($data, $format)) {
+      return FALSE;
+    }
+
+    if ($data instanceof NodeInterface && $data->getType() === 'game') {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
 
   /**
    * {@inheritdoc}
