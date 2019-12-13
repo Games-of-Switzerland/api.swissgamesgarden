@@ -51,6 +51,7 @@ db:
     (get a coffee, this will take some time...)
     docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_game
     docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_studio
+    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_people
     docker-compose exec dev drush elasticsearch-helper-setup
     docker-compose exec dev drush elasticsearch-helper-reindex
     docker-compose exec dev drush queue-run elasticsearch_helper_indexing
@@ -202,6 +203,7 @@ $ yellow open games_of_switzerland lsSuUuMjTyizjL_WLECfyQ 5 1 0 0 1.2kb 1.2kb
     docker-compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/_all
     docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_game
     docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_studio
+    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_people
     docker-compose exec dev drush elasticsearch-helper-setup
 ```
 
