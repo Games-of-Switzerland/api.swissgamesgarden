@@ -7,3 +7,6 @@ parameters:
 services:
   cache.backend.null:
     class: Drupal\Core\Cache\NullBackendFactory
+cors.config:
+  enabled: enabled
+  allowedOrigins: ['*']
