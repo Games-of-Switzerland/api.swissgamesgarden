@@ -63,6 +63,19 @@ class GameNormalizer extends ContentEntityNormalizer {
       $data['releases'] = $releases;
     }
 
+    // Handle studios names.
+    if (!$object->get('field_studios')->isEmpty()) {
+      $studios = [];
+      foreach ($object->field_studios as $studio) {
+        $studios[] = [
+          'name' => $studio->entity->title->value,
+          'id' => $studio->target_id,
+        ];
+      }
+
+      $data['studios'] = $studios;
+    }
+
     return $data;
   }
 
