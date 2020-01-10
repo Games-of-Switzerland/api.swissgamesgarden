@@ -136,29 +136,36 @@ class GameNodeIndex extends ElasticsearchIndexBase {
             ],
           ],
           'studios' => [
-            'type' => 'nested',
             'dynamic' => FALSE,
+            'type' => 'nested',
             'properties' => [
               'name' => [
                 'type' => 'text',
-                'analyzer' => 'english_language_analyzer',
+                'fields' => [
+                  'raw' => [
+                    'type' => 'keyword',
+                  ],
+                ],
               ],
               'id' => [
-                'type' => 'integer',
+                'type' => 'text',
                 'index' => FALSE,
               ],
             ],
           ],
           'genres' => [
-            'type' => 'nested',
             'dynamic' => FALSE,
             'properties' => [
               'name' => [
                 'type' => 'text',
-                'analyzer' => 'english_language_analyzer',
+                'fields' => [
+                  'raw' => [
+                    'type' => 'keyword',
+                  ],
+                ],
               ],
               'id' => [
-                'type' => 'integer',
+                'type' => 'text',
                 'index' => FALSE,
               ],
             ],
