@@ -123,6 +123,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  menu_link:
+    fieldName: menu_link
+    publicName: menu_link
+    enhancer:
+      id: ''
+    disabled: false
   body:
     fieldName: body
     publicName: body
@@ -135,9 +141,28 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_images:
+    fieldName: field_images
+    publicName: images
+    enhancer:
+      id: image_styles
+      settings:
+        styles:
+          refine: true
+          custom_selection:
+            - large
+            - medium
+            - thumbnail
+    disabled: false
   field_members:
     fieldName: field_members
     publicName: members
+    enhancer:
+      id: ''
+    disabled: false
+  field_path:
+    fieldName: field_path
+    publicName: field_path
     enhancer:
       id: ''
     disabled: false
