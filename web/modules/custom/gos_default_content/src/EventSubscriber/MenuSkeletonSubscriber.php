@@ -10,7 +10,7 @@ use Drupal\menu_link_content\Entity\MenuLinkContent;
 /**
  * Generate the default menu(s) for Games of Switzerland to works properly.
  */
-class DefaultMenuSkeletonSubscriber implements EventSubscriberInterface {
+class MenuSkeletonSubscriber implements EventSubscriberInterface {
 
   /**
    * {@inheritdoc}
