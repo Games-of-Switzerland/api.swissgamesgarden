@@ -5,7 +5,7 @@ dependencies:
   module:
     - file
 id: file--file
-disabled: true
+disabled: false
 path: file/file
 resourceType: file--file
 resourceFields:
@@ -22,17 +22,17 @@ resourceFields:
       id: ''
     disabled: false
   langcode:
+    disabled: true
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   uid:
+    disabled: true
     fieldName: uid
     publicName: uid
     enhancer:
       id: ''
-    disabled: false
   filename:
     fieldName: filename
     publicName: filename
@@ -64,14 +64,14 @@ resourceFields:
       id: ''
     disabled: false
   created:
+    disabled: true
     fieldName: created
     publicName: created
     enhancer:
       id: ''
-    disabled: false
   changed:
+    disabled: true
     fieldName: changed
     publicName: changed
     enhancer:
       id: ''
-    disabled: false
