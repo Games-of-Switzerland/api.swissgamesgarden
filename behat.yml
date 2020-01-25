@@ -14,6 +14,8 @@ default:
         - Drupal\Behat\Context\Drupal\DebugContext:
             log_path: %paths.base%/log/behat
 
+        - Behatch\Context\JsonContext
+
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
@@ -27,6 +29,9 @@ default:
       files_path: "%paths.base%/behat/Fixtures/"
     Alex\MailCatcher\Behat\MailCatcherExtension\Extension:
       url: http://mail:1080
+    Imbo\BehatApiExtension:
+      apiClient:
+        base_uri: http://api.gos.test:8888
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
@@ -43,5 +48,6 @@ default:
     Alex\MailCatcher\Behat\MailCatcherExtension\Extension:
       url: http://127.0.0.1:1080
       purge_before_scenario: true
+    Behatch\Extension: ~
   gherkin:
     cache: ~

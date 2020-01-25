@@ -1,0 +1,23 @@
+uuid: e82ec04a-cb57-4ae3-85e4-35a516bf80d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_path
+    - node.type.game
+  module:
+    - fieldable_path
+id: node.game.field_path
+field_name: field_path
+entity_type: node
+bundle: game
+label: Path
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: fieldable_path

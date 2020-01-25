@@ -5,12 +5,16 @@ dependencies:
   config:
     - field.field.node.game.body
     - field.field.node.game.field_genres
+    - field.field.node.game.field_images
     - field.field.node.game.field_members
+    - field.field.node.game.field_path
     - field.field.node.game.field_releases
     - field.field.node.game.field_studios
+    - image.style.thumbnail
     - node.type.game
   module:
     - field_group
+    - focal_point
     - gos_site
     - path
     - text
@@ -34,6 +38,7 @@ third_party_settings:
       children:
         - title
         - body
+        - field_images
       parent_name: group_tabs
       weight: 20
       format_type: tab
@@ -107,6 +112,16 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_images:
+    weight: 2
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+    type: image_focal_point
+    region: content
   field_members:
     weight: 124
     settings:
@@ -144,14 +159,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 2
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 3
     region: content
     third_party_settings: {  }
   title:
@@ -164,5 +179,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_path: true
   sticky: true
   uid: true

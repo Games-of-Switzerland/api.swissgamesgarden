@@ -1,0 +1,22 @@
+uuid: ac9aa520-20d3-4741-87fc-465b7dbe35a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: studio
+label: Studio
+type: 'canonical_entities:node'
+pattern: '/studio/[node:title]'
+selection_criteria:
+  a4cea0a4-d034-4c6d-a7cc-e44bdbbad36f:
+    id: node_type
+    bundles:
+      studio: studio
+    negate: false
+    context_mapping:
+      node: node
+    uuid: a4cea0a4-d034-4c6d-a7cc-e44bdbbad36f
+selection_logic: and
+weight: -5
+relationships: {  }

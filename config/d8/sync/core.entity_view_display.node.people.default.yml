@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.people.body
+    - field.field.node.people.field_path
     - node.type.people
   module:
+    - fieldable_path
     - text
     - user
 id: node.people.default
@@ -19,6 +21,13 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_path:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fieldable_path_formatter
     region: content
   links:
     weight: 100

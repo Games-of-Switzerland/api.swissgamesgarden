@@ -5,12 +5,16 @@ dependencies:
   config:
     - field.field.node.game.body
     - field.field.node.game.field_genres
+    - field.field.node.game.field_images
     - field.field.node.game.field_members
+    - field.field.node.game.field_path
     - field.field.node.game.field_releases
     - field.field.node.game.field_studios
     - node.type.game
   module:
+    - fieldable_path
     - gos_site
+    - image
     - text
     - user
 id: node.game.default
@@ -33,6 +37,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_images:
+    weight: 107
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
   field_members:
     weight: 105
     label: above
@@ -40,6 +53,13 @@ content:
       link: true
     third_party_settings: {  }
     type: team_member_default
+    region: content
+  field_path:
+    weight: 106
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fieldable_path_formatter
     region: content
   field_releases:
     weight: 104

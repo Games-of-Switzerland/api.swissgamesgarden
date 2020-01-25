@@ -1,0 +1,155 @@
+uuid: 0e6c9976-9d3b-4e10-b4c3-05562cb83826
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.game
+id: node--game
+disabled: false
+path: node/game
+resourceType: node--game
+resourceFields:
+  nid:
+    fieldName: nid
+    publicName: nid
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  vid:
+    disabled: true
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  type:
+    disabled: true
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  revision_timestamp:
+    disabled: true
+    fieldName: revision_timestamp
+    publicName: revision_timestamp
+    enhancer:
+      id: ''
+  revision_uid:
+    disabled: true
+    fieldName: revision_uid
+    publicName: revision_uid
+    enhancer:
+      id: ''
+  revision_log:
+    disabled: true
+    fieldName: revision_log
+    publicName: revision_log
+    enhancer:
+      id: ''
+  status:
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+    disabled: false
+  uid:
+    disabled: true
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  title:
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+    disabled: false
+  created:
+    disabled: true
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: true
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  promote:
+    fieldName: promote
+    publicName: promote
+    enhancer:
+      id: ''
+    disabled: false
+  sticky:
+    fieldName: sticky
+    publicName: sticky
+    enhancer:
+      id: ''
+    disabled: false
+  default_langcode:
+    disabled: true
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: true
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: true
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  path:
+    fieldName: path
+    publicName: path
+    enhancer:
+      id: ''
+    disabled: false
+  body:
+    fieldName: body
+    publicName: body
+    enhancer:
+      id: ''
+    disabled: false
+  field_genres:
+    fieldName: field_genres
+    publicName: genres
+    enhancer:
+      id: ''
+    disabled: false
+  field_members:
+    fieldName: field_members
+    publicName: members
+    enhancer:
+      id: ''
+    disabled: false
+  field_releases:
+    fieldName: field_releases
+    publicName: releases
+    enhancer:
+      id: ''
+    disabled: false
+  field_studios:
+    fieldName: field_studios
+    publicName: studios
+    enhancer:
+      id: ''
+    disabled: false

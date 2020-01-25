@@ -221,6 +221,68 @@ docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/health
 docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty"
 ```
 
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+        "match_phrase" : {
+            "releases.platform": {
+                "query": "ps4",
+                "analyzer": "search_synonyms"
+            }
+        }
+    }
+}
+'
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+        "nested": {
+            "path" : "releases",
+            "query": {
+              "query_string": {
+                "default_field": "releases.platform",
+                "query": "ps4"
+              }
+            }
+        }
+    }
+}
+'
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+      "query_string": {
+        "default_field": "title",
+        "query": "kill"
+      }
+    }
+}
+'
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+      "query_string": {
+        "default_field": "desc",
+        "query": "memories"
+      }
+    }
+}
+'
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_studio/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+      "query_string": {
+        "default_field": "name",
+        "query": "softvar"
+      }
+    }
+}
+'
+
 ## 📋 Documentations
 
 ## 🚑 Troubleshootings
