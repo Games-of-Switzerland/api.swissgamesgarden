@@ -1,5 +1,19 @@
 services:
   gos_default_content.menu:
-    class: Drupal\gos_default_content\EventSubscriber\DefaultMenuSkeletonSubscriber
+    class: Drupal\gos_default_content\EventSubscriber\MenuSkeletonSubscriber
+    tags:
+      - {name: event_subscriber}
+
+  gos_default_content.games:
+    class: Drupal\gos_default_content\EventSubscriber\GamesSubscriber
+    arguments:
+      - '@entity_type.manager'
+    tags:
+      - {name: event_subscriber}
+
+  gos_default_content.consumers:
+    class: Drupal\gos_default_content\EventSubscriber\ConsumersSubscriber
+    arguments:
+      - '@entity_type.manager'
     tags:
       - {name: event_subscriber}
