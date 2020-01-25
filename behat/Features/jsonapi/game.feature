@@ -13,6 +13,10 @@ Feature: Game
     Then the response status code should be 404
     And the response should be in JSON
 
+  Scenario: Fetching an unpublished game should not be allowed.
+    Given I am on "/G70VW4Y9sP/jsonapi/node/game/12b7a617-4c66-4fb1-adf0-0ad70b775b9c"
+    Then the response status code should be 403
+
   Scenario: The default language when fetching a game is English.
     Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63"
     And the JSON node "data.attributes.langcode" should be equal to "en"
@@ -25,40 +29,56 @@ Feature: Game
     And the response should be in JSON
     And the JSON node "data.attributes.title" should be equal to "Farming Simulator 18"
 
-  Scenario: Fetching games using the path filter may return one or more results.
+  Scenario: Fetching a game using the path filter may return one or more results.
     Given I am on "/G70VW4Y9sP/jsonapi/node/game?filter[field_path]=/games/farming-simulator-18"
     Then the response status code should be 200
     And the response should be in JSON
     And the JSON node "data[0].attributes.title" should be equal to "Farming Simulator 18"
 
-#  Scenario: Fetching a game should return his image styles on image field(s).
-#    Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=avatar"
-#    Then the response status code should be 200
-#    And the response should be in JSON
-#    And the JSON node "included[0].type" should exist
-#    And the JSON node "included[0].links.large.href" should exist
-#    And the JSON node "included[0].links.medium.href" should exist
-#    And the JSON node "included[0].links.thumbnail.href" should exist
+  Scenario: Fetching a game with studio should be possible.
+    Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=studios"
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the JSON node "included" should have 1 element
+    And the JSON node "included[0].type" should be equal to "node--studio"
+    And the JSON node "included[0].attributes.title" should be equal to "Giants Software"
 
-#  Scenario: Getting the cover images return the urls and image styles
-#    Given the "X-Consumer-ID" request header is "5eacaa54-e45f-4bd2-b3e6-e720b217034b	"
-#    And the "Accept" request header is "application/vnd.api+json"
-#    When I request "/jDYJitaKOq/jsonapi/node/property/6fecc24e-ad37-400b-bfc0-51247c7449b6?include=cover_images,cover_images.image"
-#    # TODO Change image styles names when created
-#    Then the response body contains JSON:
-#      """
-#      {
-#        "included[0]":
-#        {
-#          "type": "media--image"
-#        },
-#        "included[3]":
-#        {
-#          "type": "file--file",
-#          "links":
-#          {
-#            "large": "@variableType(object)"
-#          }
-#        }
-#      }
-#      """
+  Scenario: Fetching a game with members should be possible.
+    Given I am on "/G70VW4Y9sP/jsonapi/node/game/9bb9538f-5b75-4dc0-99b1-ff11d4e2abdd?include=members"
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the JSON node "included" should have 2 elements
+    And the JSON node "included[0].type" should be equal to "node--people"
+    And the JSON node "included[0].attributes.title" should be equal to 'Jérémy "Wuthrer" Cuany'
+    And the JSON node "included[1].type" should be equal to "node--people"
+    And the JSON node "included[1].attributes.title" should be equal to 'Nicolas "Kaihnn" Jadaud'
+
+  Scenario: Fetching a game with images return his image styles.
+    Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=images"
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the JSON node "included" should have 1 element
+    And the JSON node "included[0].type" should be equal to "file--file"
+    And the JSON node "included[0].links.large.href" should exist
+    And the JSON node "included[0].links.medium.href" should exist
+    And the JSON node "included[0].links.thumbnail.href" should exist
+
+  Scenario: Fetching a game using a specific Consumer ID should return only Image Styled allowd for this consumer.
+    Given the "X-Consumer-ID" request header is "1df6bf5b-f58f-4870-b0b1-b0f6561efdcd"
+    And the "Accept" request header is "application/vnd.api+json"
+    When I request "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=images"
+    Then the response body contains JSON:
+      """
+      {
+        "included[0]":
+        {
+          "type": "file--file",
+          "links":
+          {
+            "medium": "@variableType(object)",
+            "large": "@variableType(object)",
+            "thumbnail": "@variableType(object)"
+          }
+        }
+      }
+      """
