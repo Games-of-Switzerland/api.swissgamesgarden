@@ -29,6 +29,8 @@ content:
     region: content
 hidden:
   field_genres: true
+  field_images: true
   field_members: true
+  field_path: true
   field_releases: true
   field_studios: true
