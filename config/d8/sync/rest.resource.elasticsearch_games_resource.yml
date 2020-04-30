@@ -1,0 +1,18 @@
+uuid: a7523ab8-f07d-454a-b25b-fad7aa51a65b
+langcode: en
+status: true
+dependencies:
+  module:
+    - gos_elasticsearch
+    - serialization
+    - user
+id: elasticsearch_games_resource
+plugin_id: elasticsearch_games_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie
