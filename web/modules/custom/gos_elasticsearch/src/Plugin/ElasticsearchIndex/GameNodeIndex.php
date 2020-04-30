@@ -2,20 +2,18 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex;
 
-use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexBase;
-
 /**
  * A Node-Game content index class.
  *
  * @ElasticsearchIndex(
  *   id = "gos_index_node_game",
  *   label = @Translation("Game Node Index"),
- *   indexName = "gos_node_game",
+ *   indexName="{index_prefix}_gos_node_game_{langcode}",
  *   typeName = "node",
  *   entityType = "node"
  * )
  */
-class GameNodeIndex extends ElasticsearchIndexBase {
+class GameNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
@@ -39,149 +37,172 @@ class GameNodeIndex extends ElasticsearchIndexBase {
   /**
    * {@inheritdoc}
    */
-  public function setup() {
-    // Close the indice before setting configuration.
-    $this->client->indices()->close(['index' => $this->indexNamePattern()]);
+  public function setup(): void {
+    // Create one index per language, so that we can have different analyzers.
+    foreach ($this->languageManager->getLanguages() as $langcode => $language) {
+      $index_name = $this->getIndexName(['langcode' => $langcode]);
 
-    $settings = [
-      'index' => $this->indexNamePattern(),
-      'body' => [
-        'analysis' => [
-          'filter' => [
-            'english_stop' => [
-              'type' => 'stop',
-              'stopwords' => '_english_',
-            ],
-            'english_stemmer' => [
-              'type' => 'stemmer',
-              'language' => 'english',
-            ],
-            'english_possessive_stemmer' => [
-              'type' => 'stemmer',
-              'language' => 'possessive_english',
-            ],
-            'synonym_platform_filter' => [
-              'type' => 'synonym_graph',
-              'synonyms_path' => 'analysis/synonym_platform.txt',
-            ],
+      if (!$this->client->indices()->exists(['index' => $index_name])) {
+        $this->client->indices()->create([
+          'index' => $index_name,
+          'body'  => [
+            'number_of_shards'   => 1,
+            'number_of_replicas' => 0,
           ],
-          'analyzer' => [
-            'ngram_gametitle_analyzer' => [
-              'tokenizer' => 'ngram_gametitle_tokenizer',
-              'filter' => ['lowercase'],
-            ],
-            'ngram_gametitle_analyzer_search' => [
-              'tokenizer' => 'lowercase',
-            ],
-            'english_language_analyzer' => [
-              'tokenizer' => 'standard',
-              'filter' => [
-                'english_possessive_stemmer',
-                'lowercase',
-                'english_stop',
-                'english_stemmer',
+        ]);
+
+        $this->logger->notice('Message: Index @index has been created.', [
+          '@index' => $index_name,
+        ]);
+      }
+
+      // Close the index before setting configuration.
+      $this->client->indices()->close(['index' => $index_name]);
+
+      $settings = [
+        'index' => $this->indexNamePattern(),
+        'body'  => [
+          'analysis' => [
+            'filter'    => [
+              'english_stop'               => [
+                'type'      => 'stop',
+                'stopwords' => '_english_',
+              ],
+              'english_stemmer'            => [
+                'type'     => 'stemmer',
+                'language' => 'english',
+              ],
+              'english_possessive_stemmer' => [
+                'type'     => 'stemmer',
+                'language' => 'possessive_english',
+              ],
+              'synonym_platform_filter'    => [
+                'type'          => 'synonym_graph',
+                'synonyms_path' => 'analysis/synonym_platform.txt',
               ],
             ],
-            'synonym_platform_analyzer' => [
-              'tokenizer' => 'standard',
-              'filter' => ['standard', 'lowercase', 'synonym_platform_filter'],
+            'analyzer'  => [
+              'ngram_gametitle_analyzer'        => [
+                'tokenizer' => 'ngram_gametitle_tokenizer',
+                'filter'    => ['lowercase'],
+              ],
+              'ngram_gametitle_analyzer_search' => [
+                'tokenizer' => 'lowercase',
+              ],
+              'english_language_analyzer'       => [
+                'tokenizer' => 'standard',
+                'filter'    => [
+                  'english_possessive_stemmer',
+                  'lowercase',
+                  'english_stop',
+                  'english_stemmer',
+                ],
+              ],
+              'synonym_platform_analyzer'       => [
+                'tokenizer' => 'standard',
+                'filter'    => [
+                  'standard',
+                  'lowercase',
+                  'synonym_platform_filter',
+                ],
+              ],
             ],
-          ],
-          'tokenizer' => [
-            'ngram_gametitle_tokenizer' => [
-              'type' => 'edge_ngram',
-              'min_gram' => 2,
-              'max_gram' => 10,
-              'token_chars' => [
-                'letter',
-                'digit',
+            'tokenizer' => [
+              'ngram_gametitle_tokenizer' => [
+                'type'        => 'edge_ngram',
+                'min_gram'    => 2,
+                'max_gram'    => 10,
+                'token_chars' => [
+                  'letter',
+                  'digit',
+                ],
               ],
             ],
           ],
         ],
-      ],
-    ];
-    $this->client->indices()->putSettings($settings);
+      ];
+      $this->client->indices()->putSettings($settings);
 
-    $mapping = [
-      'index' => $this->indexNamePattern(),
-      'type' => $this->typeNamePattern(),
-      'body' => [
-        'properties' => [
-          'nid' => [
-            'type' => 'integer',
-            'index' => FALSE,
-          ],
-          'title' => [
-            'type' => 'text',
-            'analyzer' => 'ngram_gametitle_analyzer',
-            'search_analyzer' => 'ngram_gametitle_analyzer_search',
-            'fields' => [
-              'raw' => [
-                'type' => 'keyword',
-              ],
+      $mapping = [
+        'index' => $this->indexNamePattern(),
+        'type'  => $this->typeNamePattern(),
+        'body'  => [
+          'properties' => [
+            'nid'      => [
+              'type'  => 'integer',
+              'index' => FALSE,
             ],
-          ],
-          'desc' => [
-            'type' => 'text',
-            'analyzer' => 'english_language_analyzer',
-          ],
-          'releases' => [
-            'type' => 'nested',
-            'dynamic' => FALSE,
-            'properties' => [
-              'date' => [
-                'type' => 'date',
-                'format' => 'yyyy-MM-dd',
-              ],
-              'platform' => [
-                'type' => 'text',
-                'analyzer' => 'synonym_platform_analyzer',
-              ],
-            ],
-          ],
-          'studios' => [
-            'dynamic' => FALSE,
-            'type' => 'nested',
-            'properties' => [
-              'name' => [
-                'type' => 'text',
-                'fields' => [
-                  'raw' => [
-                    'type' => 'keyword',
-                  ],
+            'title'    => [
+              'type'            => 'text',
+              'analyzer'        => 'ngram_gametitle_analyzer',
+              'search_analyzer' => 'ngram_gametitle_analyzer_search',
+              'fields'          => [
+                'raw' => [
+                  'type' => 'keyword',
                 ],
               ],
-              'id' => [
-                'type' => 'text',
-                'index' => FALSE,
-              ],
             ],
-          ],
-          'genres' => [
-            'dynamic' => FALSE,
-            'properties' => [
-              'name' => [
-                'type' => 'text',
-                'fields' => [
-                  'raw' => [
-                    'type' => 'keyword',
-                  ],
+            'desc'     => [
+              'type'     => 'text',
+              'analyzer' => 'english_language_analyzer',
+            ],
+            'releases' => [
+              'type'       => 'nested',
+              'dynamic'    => FALSE,
+              'properties' => [
+                'date'     => [
+                  'type'   => 'date',
+                  'format' => 'yyyy-MM-dd',
+                ],
+                'platform' => [
+                  'type'     => 'text',
+                  'analyzer' => 'synonym_platform_analyzer',
                 ],
               ],
-              'id' => [
-                'type' => 'text',
-                'index' => FALSE,
+            ],
+            'studios'  => [
+              'dynamic'    => FALSE,
+              'type'       => 'nested',
+              'properties' => [
+                'name' => [
+                  'type'   => 'text',
+                  'fields' => [
+                    'raw' => [
+                      'type' => 'keyword',
+                    ],
+                  ],
+                ],
+                'id'   => [
+                  'type'  => 'text',
+                  'index' => FALSE,
+                ],
+              ],
+            ],
+            'genres'   => [
+              'dynamic'    => FALSE,
+              'properties' => [
+                'name' => [
+                  'type'   => 'text',
+                  'fields' => [
+                    'raw' => [
+                      'type' => 'keyword',
+                    ],
+                  ],
+                ],
+                'id'   => [
+                  'type'  => 'text',
+                  'index' => FALSE,
+                ],
               ],
             ],
           ],
         ],
-      ],
-    ];
-    $this->client->indices()->putMapping($mapping);
+      ];
+      $this->client->indices()->putMapping($mapping);
 
-    // Re-open the indice to make to expose it.
-    $this->client->indices()->open(['index' => $this->indexNamePattern()]);
+      // Re-open the index to make to expose it.
+      $this->client->indices()->open(['index' => $index_name]);
+    }
   }
 
 }

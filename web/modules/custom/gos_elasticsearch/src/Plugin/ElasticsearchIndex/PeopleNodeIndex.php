@@ -2,7 +2,7 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex;
 
-use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexBase;
+use Drupal\elasticsearch_helper\ElasticsearchLanguageAnalyzer;
 
 /**
  * A Node-People content index class.
@@ -10,12 +10,12 @@ use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexBase;
  * @ElasticsearchIndex(
  *   id = "gos_index_node_people",
  *   label = @Translation("People Node Index"),
- *   indexName = "gos_node_people",
+ *   indexName="{index_prefix}_gos_node_people_{langcode}",
  *   typeName = "node",
  *   entityType = "node"
  * )
  */
-class PeopleNodeIndex extends ElasticsearchIndexBase {
+class PeopleNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
@@ -39,73 +39,93 @@ class PeopleNodeIndex extends ElasticsearchIndexBase {
   /**
    * {@inheritdoc}
    */
-  public function setup() {
-    // Close the indice before setting configuration.
-    $this->client->indices()->close(['index' => $this->indexNamePattern()]);
+  public function setup(): void {
+    // Create one index per language, so that we can have different analyzers.
+    foreach ($this->languageManager->getLanguages() as $langcode => $language) {
+      $index_name = $this->getIndexName(['langcode' => $langcode]);
 
-    $settings = [
-      'index' => $this->indexNamePattern(),
-      'body' => [
-        'analysis' => [
-          'filter' => [
-            'metaphone_filter' => [
-              'type' => 'phonetic',
-              'encoder' => 'beider_morse',
-              'replace' => FALSE,
-              'languageset' => [
-                'english',
+      if (!$this->client->indices()->exists(['index' => $index_name])) {
+        $this->client->indices()->create([
+          'index' => $index_name,
+          'body'  => [
+            'number_of_shards'   => 1,
+            'number_of_replicas' => 0,
+          ],
+        ]);
+
+        $this->logger->notice('Message: Index @index has been created.', [
+          '@index' => $index_name,
+        ]);
+      }
+
+      // Close the index before setting configuration.
+      $this->client->indices()->close(['index' => $index_name]);
+
+      $settings = [
+        'index' => $this->indexNamePattern(),
+        'body'  => [
+          'analysis' => [
+            'filter'    => [
+              'metaphone_filter' => [
+                'type'        => 'phonetic',
+                'encoder'     => 'beider_morse',
+                'replace'     => FALSE,
+                'languageset' => [
+                  'english',
+                ],
               ],
             ],
-          ],
-          'analyzer' => [
-            'ngram_analyzer_search' => [
-              'tokenizer' => 'lowercase',
-            ],
-            'phonetic_name_analyzer' => [
-              'tokenizer' => 'standard',
-              'filter' => [
-                'lowercase',
-                'metaphone_filter',
+            'analyzer'  => [
+              'ngram_analyzer_search'  => [
+                'tokenizer' => 'lowercase',
+              ],
+              'phonetic_name_analyzer' => [
+                'tokenizer' => 'standard',
+                'filter'    => [
+                  'lowercase',
+                  'metaphone_filter',
+                ],
               ],
             ],
-          ],
-          'tokenizer' => [
-            'ngram_analyzer_tokenizer' => [
-              'type' => 'edge_ngram',
-              'min_gram' => 2,
-              'max_gram' => 10,
-              'token_chars' => [
-                'letter',
-                'digit',
+            'tokenizer' => [
+              'ngram_analyzer_tokenizer' => [
+                'type'        => 'edge_ngram',
+                'min_gram'    => 2,
+                'max_gram'    => 10,
+                'token_chars' => [
+                  'letter',
+                  'digit',
+                ],
               ],
             ],
           ],
         ],
-      ],
-    ];
-    $this->client->indices()->putSettings($settings);
+      ];
+      $this->client->indices()->putSettings($settings);
 
-    $mapping = [
-      'index' => $this->indexNamePattern(),
-      'type' => $this->typeNamePattern(),
-      'body' => [
-        'properties' => [
-          'nid' => [
-            'type' => 'integer',
-            'index' => FALSE,
-          ],
-          'fullname' => [
-            'type' => 'text',
-            'analyzer' => 'phonetic_name_analyzer',
-            'search_analyzer' => 'ngram_analyzer_search',
+      $analyzer = ElasticsearchLanguageAnalyzer::get($langcode);
+      $mapping  = [
+        'index' => $this->indexNamePattern(),
+        'type'  => $this->typeNamePattern(),
+        'body'  => [
+          'properties' => [
+            'nid'      => [
+              'type'  => 'integer',
+              'index' => FALSE,
+            ],
+            'fullname' => [
+              'type'            => 'text',
+              'analyzer'        => 'phonetic_name_analyzer',
+              'search_analyzer' => 'ngram_analyzer_search',
+            ],
           ],
         ],
-      ],
-    ];
-    $this->client->indices()->putMapping($mapping);
+      ];
+      $this->client->indices()->putMapping($mapping);
 
-    // Re-open the indice to make to expose it.
-    $this->client->indices()->open(['index' => $this->indexNamePattern()]);
+      // Re-open the index to make to expose it.
+      $this->client->indices()->open(['index' => $index_name]);
+    }
   }
 
 }
