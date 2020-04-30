@@ -15,6 +15,7 @@ default:
             log_path: %paths.base%/log/behat
 
         - Behatch\Context\JsonContext
+        - Behatch\Context\RestContext
 
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
