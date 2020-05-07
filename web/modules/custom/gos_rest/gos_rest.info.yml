@@ -1,0 +1,9 @@
+name: Games of Switzerland Elasticsearch REST
+type: module
+description: Plugin implementation for Games of Switzerland Elasticsearch.
+package: Search
+core: 8.x
+hidden: true
+
+dependencies:
+  - rest:rest

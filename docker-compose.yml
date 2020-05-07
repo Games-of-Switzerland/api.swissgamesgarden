@@ -10,12 +10,12 @@ services:
       - mail
       - elasticsearch
     environment:
+      APP_ENV: development
+      BASE_URL: http://localhost:80
       DATABASE_URL: mysql://drupal:drupal@db/drupal_development
-      SMTP_HOST: mail:1025
-      PRIVATE_FILES: /var/www/web/sites/default/files/private
       DEFAULT_CONTENT: gos_default_content
-      DRUPAL_CONFIG_SET: >-
-        elasticsearch_helper.settings elasticsearch_helper.host elasticsearch
+      REQUIRED_DIRECTORIES: >-
+        /var/www/web/sites/default/files/private
     restart: "no"
     volumes:
       - backups:/var/backups
@@ -24,8 +24,11 @@ services:
       - ./composer.lock:/var/www/composer.lock:cached
       - ./config:/var/www/config:cached
       - ./web/modules/custom:/var/www/web/modules/custom:cached
+      - ./config/d8/docker.services.yml:/var/www/web/sites/default/services.yml:cached
       # Files
       - ./web/sites/default/files:/var/www/web/sites/default/files:delegated
+      # Drush
+      - ./config/d8/docker.drush.yml:/var/www/drush/drush.yml:cached
 
   # Drupal test server
   test:
@@ -37,15 +40,14 @@ services:
       - mail
       - elasticsearch
     environment:
+      APP_ENV: test
+      BASE_URL: http://localhost:8888
       DATABASE_URL: mysql://drupal:drupal@db/drupal_test
-      SMTP_HOST: mail:1025
-      PRIVATE_FILES: /var/www/web/sites/default/files/private
       DEFAULT_CONTENT: gos_default_content
       REQUIRED_DIRECTORIES: >-
+        /var/www/web/sites/default/files/private
         /var/www/log/behat
         /var/www/dump/behat
-      DRUPAL_CONFIG_SET: >-
-        elasticsearch_helper.settings elasticsearch_helper.host elasticsearch
       BEHAT_PROFILE: default
       TEST_DISABLE_MODULES: big_pipe
     restart: "no"
@@ -56,9 +58,12 @@ services:
       - ./composer.lock:/var/www/composer.lock:cached
       - ./config:/var/www/config:cached
       - ./web/modules/custom:/var/www/web/modules/custom:cached
+      - ./config/d8/docker.services.yml:/var/www/web/sites/default/services.yml:cached
       # Behat
       - ./behat:/var/www/behat:cached
       - ./behat.yml:/var/www/behat.yml:cached
+      # Drush
+      - ./config/d8/docker.drush.yml:/var/www/drush/drush.yml:cached
     networks:
       default:
         aliases:

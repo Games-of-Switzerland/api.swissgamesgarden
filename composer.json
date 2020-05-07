@@ -43,6 +43,7 @@
         "drupal/jsonapi_extras": "^3.13",
         "drupal/pathauto": "^1.6",
         "drupal/rabbit_hole": "^1.0@beta",
+        "drupal/restui": "^1.18",
         "drush/drush": "^9.0.0",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",

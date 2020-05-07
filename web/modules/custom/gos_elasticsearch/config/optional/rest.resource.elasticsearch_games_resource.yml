@@ -1,0 +1,9 @@
+id: elasticsearch_games_resource
+plugin_id: elasticsearch_games_resource
+granularity: resource
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

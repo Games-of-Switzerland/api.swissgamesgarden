@@ -29,3 +29,4 @@ content:
     region: content
 hidden:
   field_members: true
+  field_path: true

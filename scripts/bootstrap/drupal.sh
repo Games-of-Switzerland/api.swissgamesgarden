@@ -8,7 +8,7 @@
 
 scriptDir=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 
-DEFAULT_CONTENT=""
+DEFAULT_CONTENT="gos_default_content"
 UUID="e85e1685-b207-4ca4-987d-43b3619f58ab"
 
 SKIP_DEPEDENCIES=0
@@ -147,7 +147,3 @@ then
     ../vendor/bin/drush pmu hal serialization default_content $DEFAULT_CONTENT -y
   fi
 fi
-
-# Build the styleguide using Toolbox.
-cd ".."
-yarn build --production

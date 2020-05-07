@@ -1,0 +1,118 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Games of Switzerland",
+    "contact": {
+      "email": "wenger.kev@gmail.com"
+    }
+  },
+  "host": "api.gos.test",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "search",
+      "description": "Bridge endpoint to Elasticsearch"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/search/games": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Proxy to access to Elasticsearch Games Documents",
+        "description": "Search thought games.",
+        "operationId": "searchGames",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/session/token": {
+      "get": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Drupal 8 CSRF attacks protection.",
+        "description": "Drupal 8 protects its REST resources from CSRF attacks by requiring a <code>X-CSRF-Token</code> request header to be sent when using a non-safe method. So, when performing non-read-only requests, that token is required.",
+        "operationId": "sessionToken",
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "500": {
+            "description": "Server error",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          }
+        }
+      }
+    },
+  },
+  "securityDefinitions": {
+    "csrf_token": {
+      "type": "apiKey",
+      "name": "X-CSRF-Token",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "ApiForbiddenResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiError"
+          }
+        }
+      }
+    },
+    "ApiError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

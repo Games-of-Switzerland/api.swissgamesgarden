@@ -1,3 +1,21 @@
+GIT
+  remote: https://github.com/antistatique/capdrupal
+  revision: e53f097c87dc0e95e09d2099063f1658879a6d59
+  branch: d8-dev
+  specs:
+    capdrupal (8.0.0)
+      capistrano (~> 3.5.0)
+      capistrano-composer (~> 0.0.6)
+
+GIT
+  remote: https://github.com/antistatique/capistrano-antistatique
+  revision: 069faabbe7c942c46e2ff38dc2307ed025f2f53e
+  specs:
+    capistrano-antistatique (0.1.0)
+      capistrano (~> 3.5.0)
+      capistrano-composer (~> 0.0.6)
+      slackistrano (~> 3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,6 +60,8 @@ GEM
     skinny (0.2.4)
       eventmachine (~> 1.0.0)
       thin (>= 1.5, < 1.7)
+    slackistrano (3.1.1)
+      capistrano (>= 3.5.0)
     sqlite3 (1.4.1)
     sshkit (1.20.0)
       net-scp (>= 1.1.2)
@@ -56,9 +76,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capdrupal (~> 8.0.0)!
   capistrano (~> 3.5.0)
+  capistrano-antistatique (~> 0.1.0)!
   capistrano-composer (~> 0.0.6)
   mailcatcher (~> 0.7.1)
+  slackistrano (~> 3.1)
 
 BUNDLED WITH
-   2.0.1
+   2.1.4

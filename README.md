@@ -47,14 +47,27 @@ db:
 
     docker-compose build --pull
     docker-compose up --build -d
-    docker-compose exec dev docker-as-drupal bootstrap
+    docker-compose exec dev docker-as-drupal bootstrap --with-default-content --with-elasticsearch
     (get a coffee, this will take some time...)
-    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_game
-    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_studio
-    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_people
-    docker-compose exec dev drush elasticsearch-helper-setup
-    docker-compose exec dev drush elasticsearch-helper-reindex
+    docker-compose exec dev drush eshs
+    docker-compose exec dev drush eshr
     docker-compose exec dev drush queue-run elasticsearch_helper_indexing
+
+### Project setup
+
+Once the project up and running via Docker, you may need to setup some configurations in the `web/sites/default/setting.php`
+
+#### Elasticsearch prefix
+
+We use only 1 Elasticsearch server for both Production & Staging environments. Doing so, we need to separate our indexes
+by name. We decide to use prefixes to achieve this goal.
+
+```php
+/**
+ * Setting used to add a prefix for ES index based on the environment.
+ */
+$settings['gos_elasticsearch.index_prefix'] = 'local';
+```
 
 ### When it's not the first time
 
@@ -62,7 +75,7 @@ db:
     docker-compose up --build -d
     docker-compose exec dev drush cr (or any other drush command you need)
     docker-compose exec dev docker-as-drupal db-reset --with-default-content
-    docker-compose exec dev drush elasticsearch-helper-reindex
+    docker-compose exec dev drush eshr
     docker-compose exec dev drush queue-run elasticsearch_helper_indexing
 
 ### (optional) Get the productions images
@@ -167,11 +180,14 @@ You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/
 
 1. Open **DejaVu** in your local browser `http://localhost:1358/`
 
-2. Connect to your Elasticsearch instance using `http://localhost:9200` on index `games_of_switzerland`.
+2. Connect to your Elasticsearch instance using `http://localhost:19200` on index `real_estate`.
+
+    Example working link:
+    [http://localhost:1358/?appname=development_gos_node_game_fr&url=http://localhost:19200](http://localhost:1358/?appname=development_gos_node_game_fr&url=http://localhost:19200)
 
     The local machine port is the one defined in your `docker-compose` or `docker-compose.override.yml`.
     In the following example the local port is `19200`. and the port inside the Docker is `9200`.
-    
+
     ```yaml
       elasticsearch:
         ports:
@@ -181,7 +197,7 @@ You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/
 ### Index
 
 ```bash
-docker-compose exec [dev|test] drush elasticsearch-helper-reindex
+docker-compose exec [dev|test] drush eshr
 docker-compose exec [dev|test] drush queue-run elasticsearch_helper_indexing
 ```
 
@@ -194,17 +210,16 @@ docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
 This should print
 
 ```bash
-$ yellow open games_of_switzerland lsSuUuMjTyizjL_WLECfyQ 5 1 0 0 1.2kb 1.2kb
+$ yellow open gos lsSuUuMjTyizjL_WLECfyQ 5 1 0 0 1.2kb 1.2kb
 ```
 
 ### Recreate Index from scratch
 
+This operation is necessary when the Elasticsearch schema has been updated.
+
 ```bash
-    docker-compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/_all
-    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_game
-    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_studio
-    docker-compose exec elasticsearch curl -X PUT http://127.0.0.1:9200/gos_node_people
-    docker-compose exec dev drush elasticsearch-helper-setup
+    docker-compose exec dev drush eshd -y
+    docker-compose exec dev drush eshs
 ```
 
 ### Health Check
@@ -285,7 +300,55 @@ docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_st
 
 ## 📋 Documentations
 
+We use *Swagger* to document our custom REST endpoints.
+
+Expects the `swagger.json` file it to be stored ìn `./swagger/swagger.json`.
+You may access to the *staging* or *production* REST specification with those links:
+
+- Production: [api.gos.ch/swagger](https://api.gos.ch/swagger)
+- Staging: [staging-api.gos.ch/swagger](https://staging-api.gos.ch/swagger)
+
 ## 🚑 Troubleshootings
+
+### Error while running Elasticsearch Setup ?
+
+```
+  No alive nodes found in your cluster
+```
+
+It seems your Elasticsearch cluster is not reachable by the Docker container.
+
+The common mistake is a misconfiguration on `docker-compose.yml` with missing `host`:
+
+```
+DRUPAL_CONFIG_SET: >-
+    elasticsearch_helper.settings elasticsearch_helper.host elasticsearch
+```
+
+Run the diagnostic command to show the value of `elasticsearch_helper.host` on your container:
+
+```
+docker-compose exec dev drush cget elasticsearch_helper.settings --include-overridden
+```
+
+It should print:
+
+```
+elasticsearch_helper:
+  scheme: http
+  host: elasticsearch
+  port: 9200
+  authentication: 0
+  user: ''
+  password: ''
+  defer_indexing: 0
+```
+
+If you get something else in `host` (such as `localhost`), then your initial bootstrap was made without the `host` config key and need to be rerun:
+
+```
+docker-compose exec dev docker-as-drupal db-reset --update-dump --with-default-content
+```
 
 ### Error while importing config ?
 
@@ -380,7 +443,7 @@ Every tests should be run into the Docker environment.
 docker-compose exec test bash
 ```
 
-1. Once connected via ssh on you Docker test, you may run any `docker-as-drupal` commands
+1. Once connected via ssh on your Docker test, you may run any `docker-as-drupal` commands
 
 ```bash
 docker-as-drupal [behat|phpunit|nightwatch]
@@ -390,40 +453,6 @@ You also may use the direct access - without opening a bash on the Docket test e
 
 ```bash
 docker-compose exec test docker-as-drupal [behat|phpunit|nightwatch]
-```
-
-### Kernel tests
-
-```bash
-./vendor/bin/phpunit -x gos_functional
-```
-
-### Browser tests
-
-1. *(optional)* Bootstrap your Drupal if you don't already have a working env.
-
-```bash
-./scripts/bootstrap/drupal.sh --private-files="PATH/TO/PRIVATES" [--skip-dependencies=1] [--skip-default=1] [--database=DATABASE_URL] [--skip-interaction=1]
-```
-
-1. Then you can run functional tests
-
-```bash
-./vendor/bin/phpunit -g gos_functional
-```
-
-### Behat
-
-1. *(optional)* Bootstrap your Drupal if you don't already have a working env.
-
-```bash
-./scripts/bootstrap/drupal.sh [--skip-dependencies=1] [--skip-default=1] [--database=DATABASE_URL] [--skip-interaction=1]
-```
-
-1. Then you can run functional tests
-
-```bash
-./vendor/bin/behat
 ```
 
 ## 💻 Drush Commands
