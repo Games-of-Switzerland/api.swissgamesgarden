@@ -17,23 +17,21 @@ Feature: Game
     Given I am on "/G70VW4Y9sP/jsonapi/node/game/12b7a617-4c66-4fb1-adf0-0ad70b775b9c"
     Then the response status code should be 403
 
-  Scenario: The default language when fetching a game is English.
-    Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63"
-    And the JSON node "data.attributes.langcode" should be equal to "en"
-    Given I am on "/G70VW4Y9sP/jsonapi/node/game?filter[field_path]=/games/farming-simulator-18"
-    And the JSON node "data[0].attributes.langcode" should be equal to "en"
-
-  Scenario: The first game has the correct title.
+  Scenario: Fetch a game using UUID should return it in the default language
     Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63"
     Then the response status code should be 200
     And the response should be in JSON
+    And the JSON node "data.attributes.langcode" should be equal to "en"
     And the JSON node "data.attributes.title" should be equal to "Farming Simulator 18"
+    And the JSON node "data.attributes.field_path" should be equal to "/games/farming-simulator-18"
 
   Scenario: Fetching a game using the path filter may return one or more results.
     Given I am on "/G70VW4Y9sP/jsonapi/node/game?filter[field_path]=/games/farming-simulator-18"
     Then the response status code should be 200
     And the response should be in JSON
+    And the JSON node "data[0].attributes.langcode" should be equal to "en"
     And the JSON node "data[0].attributes.title" should be equal to "Farming Simulator 18"
+    And the JSON node "data[0].attributes.field_path" should be equal to "/games/farming-simulator-18"
 
   Scenario: Fetching a game with studio should be possible.
     Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=studios"
