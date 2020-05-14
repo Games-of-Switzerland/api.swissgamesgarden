@@ -46,9 +46,10 @@ class GameNormalizer extends ContentEntityNormalizer {
     /** @var \Drupal\node\Entity\Node $object */
 
     $data = [
-      'nid' => $object->id(),
+      'uuid' => $object->get('uuid')->value,
       'title' => $object->getTitle(),
       'desc' => !$object->get('body')->isEmpty() ? strip_tags($object->body->value) : NULL,
+      'is_published' => $object->isPublished(),
     ];
 
     if (!$object->get('field_releases')->isEmpty()) {
@@ -57,6 +58,8 @@ class GameNormalizer extends ContentEntityNormalizer {
         $releases[] = [
           'date' => isset($release->date_value) ? $release->date_value : NULL,
           'platform' => isset($release->entity) ? $release->entity->getName() : NULL,
+          'platform_keyword' => isset($release->entity) ? $release->entity->getName() : NULL,
+          'platform_uuid' => isset($release->entity) ? $release->entity->get('uuid')->value : NULL,
         ];
       }
 
@@ -69,7 +72,7 @@ class GameNormalizer extends ContentEntityNormalizer {
       foreach ($object->field_studios as $studio) {
         $studios[] = [
           'name' => $studio->entity->title->value,
-          'id' => $studio->target_id,
+          'uuid' => $studio->entity->get('uuid')->value,
         ];
       }
 
@@ -82,7 +85,8 @@ class GameNormalizer extends ContentEntityNormalizer {
       foreach ($object->field_genres as $genre) {
         $genres[] = [
           'name' => $genre->entity->name->value,
-          'id' => $genre->target_id,
+          'name_keyword' => $genre->entity->name->value,
+          'uuid' => $genre->entity->get('uuid')->value,
         ];
       }
 

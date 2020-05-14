@@ -128,11 +128,13 @@ class GameNodeIndex extends NodeIndexBase {
         'type'  => $this->typeNamePattern(),
         'body'  => [
           'properties' => [
-            'nid'      => [
-              'type'  => 'integer',
-              'index' => FALSE,
+            'uuid' => [
+              'type'  => 'keyword',
             ],
-            'title'    => [
+            'is_published' => [
+              'type' => 'boolean',
+            ],
+            'title' => [
               'type'            => 'text',
               'analyzer'        => 'ngram_gametitle_analyzer',
               'search_analyzer' => 'ngram_gametitle_analyzer_search',
@@ -158,6 +160,12 @@ class GameNodeIndex extends NodeIndexBase {
                   'type'     => 'text',
                   'analyzer' => 'synonym_platform_analyzer',
                 ],
+                'platform_keyword' => [
+                  'type' => 'keyword',
+                ],
+                'platform_uuid' => [
+                  'type' => 'keyword',
+                ],
               ],
             ],
             'studios'  => [
@@ -172,14 +180,14 @@ class GameNodeIndex extends NodeIndexBase {
                     ],
                   ],
                 ],
-                'id'   => [
-                  'type'  => 'text',
-                  'index' => FALSE,
+                'uuid' => [
+                  'type' => 'keyword',
                 ],
               ],
             ],
             'genres'   => [
               'dynamic'    => FALSE,
+              'type'       => 'nested',
               'properties' => [
                 'name' => [
                   'type'   => 'text',
@@ -189,9 +197,11 @@ class GameNodeIndex extends NodeIndexBase {
                     ],
                   ],
                 ],
-                'id'   => [
-                  'type'  => 'text',
-                  'index' => FALSE,
+                'name_keyword' => [
+                  'type' => 'keyword',
+                ],
+                'uuid' => [
+                  'type' => 'keyword',
                 ],
               ],
             ],
