@@ -98,7 +98,7 @@ class GameNodeIndex extends NodeIndexBase {
                   'english_stemmer',
                 ],
               ],
-              'synonym_platform_analyzer'       => [
+              'synonym_platform_analyzer' => [
                 'tokenizer' => 'standard',
                 'filter'    => [
                   'standard',
