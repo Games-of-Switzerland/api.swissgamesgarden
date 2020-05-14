@@ -17,6 +17,14 @@
                 "lang": "en"
             }
         ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_genres": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/20?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/18?_format=hal_json"
+            }
+        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_members": [
             {
                 "href": "http:\/\/default\/node\/13?_format=hal_json"
@@ -92,6 +100,38 @@
                     }
                 ],
                 "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_genres": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/20?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/genre"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e56e5642-6a2b-4dc1-96c2-924bd7b6de37"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/18?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/genre"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c80a976b-749c-496d-906c-e6833e46e086"
+                    }
+                ]
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_members": [
@@ -194,6 +234,11 @@
             "processed": "<h3 id=\"what_intro\">An oddly cute indie game featuring a seemingly dead woman, and you, playing her murderer.<\/h3>\n\n<p>Whether it be woods carved in the memories of olden days or great steppes shaped by the darkness above, the areas you are about to explore are the fruit of Her very own creation. A world conceived especially for you,\u00a0<strong>it\u2019s sole purpose being for you to find the answers to the questions it raises.<\/strong><br \/>\n<br \/>\nDon't judge a game by its cover.\u00a0<em>Don\u2019t Kill Her<\/em>\u00a0is not your average kind of game. Its deviant aesthetics, storytelling, gameplay and music, all of these peculiar elements fit into a great design\u2026 The true challenge lies in unraveling the mystery surrounding the game itself.<br \/>\n<br \/>\nI wish I could tell you more, but She won\u2019t let me.<\/p>",
             "summary": "",
             "lang": "en"
+        }
+    ],
+    "field_path": [
+        {
+            "value": "\/games\/dont-kill-her"
         }
     ]
 }

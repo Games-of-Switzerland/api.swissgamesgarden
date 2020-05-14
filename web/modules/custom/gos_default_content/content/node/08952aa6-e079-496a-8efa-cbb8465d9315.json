@@ -17,6 +17,11 @@
                 "lang": "en"
             }
         ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_genres": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/15?_format=hal_json"
+            }
+        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_releases": [
             {
                 "href": "http:\/\/default\/taxonomy\/term\/1?_format=hal_json"
@@ -99,10 +104,27 @@
                 },
                 "uuid": [
                     {
-                        "value": "98ab44cf-82b5-448e-a59f-0436cb26362d"
+                        "value": "53039089-6942-4ec7-9d40-5ab1dc0b93eb"
                     }
                 ],
                 "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_genres": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/15?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/genre"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "1bf8672b-f341-4287-8aa5-9b16c9131441"
+                    }
+                ]
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_releases": [
@@ -254,6 +276,11 @@
             "processed": "<p>Farming Simulator is a series of farming simulation games set in an open world environment and played from a third-person perspective and also a first-person perspective.<\/p>",
             "summary": "",
             "lang": "en"
+        }
+    ],
+    "field_path": [
+        {
+            "value": "\/games\/farming-simulator-19"
         }
     ]
 }

@@ -144,5 +144,11 @@
             "langcode": "en",
             "lang": "en"
         }
+    ],
+    "field_path": [
+        {
+            "value": "\/people\/christian-ammann",
+            "lang": "en"
+        }
     ]
 }

@@ -169,5 +169,11 @@
             "langcode": "en",
             "lang": "en"
         }
+    ],
+    "field_path": [
+        {
+            "value": "\/studio\/giants-software",
+            "lang": "en"
+        }
     ]
 }
