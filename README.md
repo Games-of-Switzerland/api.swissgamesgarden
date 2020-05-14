@@ -183,7 +183,7 @@ You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/
 2. Connect to your Elasticsearch instance using `http://localhost:19200` on index `real_estate`.
 
     Example working link:
-    [http://localhost:1358/?appname=development_gos_node_game_fr&url=http://localhost:19200](http://localhost:1358/?appname=development_gos_node_game_fr&url=http://localhost:19200)
+    [http://localhost:1358/?appname=development_gos_node_game_en&url=http://localhost:19200](http://localhost:1358/?appname=development_gos_node_game_en&url=http://localhost:19200)
 
     The local machine port is the one defined in your `docker-compose` or `docker-compose.override.yml`.
     In the following example the local port is `19200`. and the port inside the Docker is `9200`.
