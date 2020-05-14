@@ -3,7 +3,13 @@
 namespace Drupal\gos_elasticsearch\Plugin\rest\resource;
 
 use Drupal\Core\Cache\CacheableJsonResponse;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexManager;
+use Drupal\gos_rest\Plugin\rest\ValidatorFactory;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator\ElasticGamesResourceValidator;
 
 /**
  * Provides a Proxy to access to Elasticsearch Games Documents.
@@ -37,6 +43,51 @@ class ElasticGamesResource extends ElasticResourceBase {
   public const PAGER_SIZE = 25;
 
   /**
+   * The taxonomy term Storage.
+   *
+   * @var \Drupal\taxonomy\TermStorageInterface
+   */
+  protected $termStorage;
+
+  /**
+   * {@inheritdoc}
+   *
+   * @psalm-suppress MissingParamType
+   */
+  public function __construct(
+    array $configuration,
+  $plugin_id,
+  $plugin_definition,
+  array $serializer_formats,
+  LoggerChannelInterface $logger,
+  ValidatorFactory $validator_factory,
+  ElasticsearchIndexManager $elasticsearch_plugin_manager,
+  EntityTypeManagerInterface $entity_type_manager) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger, $validator_factory, $elasticsearch_plugin_manager);
+    $this->termStorage = $entity_type_manager->getStorage('taxonomy_term');
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @psalm-suppress PossiblyNullArgument
+   * @psalm-suppress ArgumentTypeCoercion
+   * @psalm-suppress PossiblyNullReference
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->getParameter('serializer.formats'),
+      $container->get('logger.factory')->get('rest'),
+      $container->get('gos_rest.validator_factory'),
+      $container->get('plugin.manager.elasticsearch_index.processor'),
+      $container->get('entity_type.manager')
+    );
+  }
+
+  /**
    * Proxy to fetch content on Elasticsearch.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
@@ -51,18 +102,88 @@ class ElasticGamesResource extends ElasticResourceBase {
     // Setup the base response & cacheable-metadata.
     parent::get($request);
 
+    $resource_validator = $this->buildResourceValidator($request);
+
+    // None valid resource parameters will answer immediately with errors msg.
+    if (!$this->isValid($resource_validator)) {
+      return $this->buildValidatorErrorResponse($resource_validator);
+    }
+
     /** @var \Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex $index */
     $index = $this->elasticsearchPluginManager->createInstance(self::ELASTICSEARCH_PLUGIN_ID);
 
     $current_page = $request->get('page') ?? 0;
-    $query = [
+    $es_query = [
       'index' => $index->getIndexName([]),
       'from' => $current_page * self::PAGER_SIZE,
       'size' => self::PAGER_SIZE,
+      'body' => [
+
+        'query' => [
+          'bool' => [
+            'filter' => [
+              'bool' => [
+                'must' => [],
+              ],
+            ],
+          ],
+        ],
+
+        'aggregations' => [
+          'all_genres' => [
+            'nested' => [
+              'path' => 'genres',
+            ],
+            'aggregations' => [
+              'agg_genres' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the conditions w/o a Score impact should be.
+                    'must' => [],
+                  ],
+                ],
+                'aggregations' => [
+                  'genres.name_keyword' => [
+                    'terms' => ['field' => 'genres.name_keyword', 'min_doc_count' => 0],
+                  ],
+                ],
+              ],
+            ],
+          ],
+          'all_platforms' => [
+            'nested' => [
+              'path' => 'releases',
+            ],
+            'aggregations' => [
+              'agg_platforms' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the conditions w/o a Score impact should be.
+                    'must' => [],
+                  ],
+                ],
+                'aggregations' => [
+                  'releases.platform_keyword' => [
+                    'terms' => ['field' => 'releases.platform_keyword', 'min_doc_count' => 0],
+                  ],
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
     ];
 
+    if ($resource_validator->getPlatformsUuid()) {
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
+    }
+
+    if ($resource_validator->getGenresUuid()) {
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
+    }
+
     try {
-      $results = $index->search($query);
+      $results = $index->search($es_query);
       $this->response->setData($results);
     }
     catch (\Exception $exception) {
@@ -77,6 +198,127 @@ class ElasticGamesResource extends ElasticResourceBase {
     $this->response->addCacheableDependency($this->responseCache);
 
     return $this->response;
+  }
+
+  /**
+   * Add a condition to filter games by platforms UUID.
+   *
+   * When an element does not provide any Publish infos, they will not be
+   * filter out.
+   *
+   * @param array $platforms_uuid
+   *   The collection of platforms UUID to use for filtering.
+   *
+   * @return array
+   *   The Nested OR-Condition query to filter-out games by release platform .
+   */
+  private function addPlatformsFilter(array $platforms_uuid): array {
+    $structure = [
+      'nested' => [
+        'path' => 'releases',
+        'query' => [
+          'bool' => [
+            'should' => [],
+          ],
+        ],
+      ],
+    ];
+
+    foreach ($platforms_uuid as $platform_uuid) {
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['releases.platform_uuid' => $platform_uuid]];
+    }
+
+    return $structure;
+  }
+
+  /**
+   * Add a condition to filter games by genres UUID.
+   *
+   * When an element does not provide any Publish infos, they will not be
+   * filter out.
+   *
+   * @param array $genres_uuid
+   *   The collection of genres UUID to use for filtering.
+   *
+   * @return array
+   *   The Nested OR-Condition query to filter-out games by genre.
+   */
+  private function addGenresFilter(array $genres_uuid): array {
+    $structure = [
+      'nested' => [
+        'path' => 'genres',
+        'query' => [
+          'bool' => [
+            'should' => [],
+          ],
+        ],
+      ],
+    ];
+
+    foreach ($genres_uuid as $genre_uuid) {
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['genres.uuid' => $genre_uuid]];
+    }
+
+    return $structure;
+  }
+
+  /**
+   * Build resource validator from request to validate request parameters.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   Request object.
+   *
+   * @return \Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator\ElasticGamesResourceValidator
+   *   Resource validator.
+   */
+  protected function buildResourceValidator(Request $request): ElasticGamesResourceValidator {
+    $resource_validator = new ElasticGamesResourceValidator($request->query->all());
+
+    // The platform(s) optional parameter.
+    if ($request->query->has('platformsUuid')) {
+      $resource_validator->setPlatformsUuid($request->query->get('platformsUuid'));
+
+      /** @var Drupal\taxonomy\TermInterface[]|[] $platforms */
+      $platforms = [];
+      foreach ($resource_validator->getPlatformsUuid() as $platform_uuid) {
+        $platform = $this->termStorage->loadByProperties([
+          'vid' => 'platform',
+          'uuid' => $platform_uuid,
+        ]);
+
+        if ($platform) {
+          $platform = reset($platform);
+          $platforms[] = $platform;
+        }
+      }
+      if (count($resource_validator->getPlatformsUuid()) === count($platforms)) {
+        $resource_validator->setPlatform($platforms);
+      }
+    }
+
+    // The genre(s) optional parameter.
+    if ($request->query->has('genresUuid')) {
+      $resource_validator->setGenresUuid($request->query->get('genresUuid'));
+
+      /** @var Drupal\taxonomy\TermInterface[]|[] $genres */
+      $genres = [];
+      foreach ($resource_validator->getGenresUuid() as $genre_uuid) {
+        $genre = $this->termStorage->loadByProperties([
+          'vid' => 'genre',
+          'uuid' => $genre_uuid,
+        ]);
+
+        if ($genre) {
+          $genre = reset($genre);
+          $genres[] = $genre;
+        }
+      }
+      if (count($resource_validator->getGenresUuid()) === count($genres)) {
+        $resource_validator->setGenres($genres);
+      }
+    }
+
+    return $resource_validator;
   }
 
 }
