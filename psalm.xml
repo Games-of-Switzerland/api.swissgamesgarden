@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<psalm
+  autoloader="web/autoload-psalm.php"
+  totallyTyped="false"
+  requireVoidReturnType="false"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="https://getpsalm.org/schema/config"
+  xsi:schemaLocation="https://getpsalm.org/schema/config file:///app/vendor/vimeo/psalm/config.xsd">
+
+  <projectFiles>
+    <directory name="web/modules/custom" />
+    <directory name="web/themes" />
+
+    <ignoreFiles>
+      <directory name="vendor" />
+      <directory name="web/core" />
+    </ignoreFiles>
+  </projectFiles>
+
+  <fileExtensions>
+    <extension name="php" />
+    <extension name="module" />
+    <extension name="inc" />
+  </fileExtensions>
+
+  <issueHandlers>
+    <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
+    <DeprecatedInterface errorLevel="info" />
+    <PropertyNotSetInConstructor errorLevel="info" />
+    <NoInterfaceProperties errorLevel="info" />
+    <MoreSpecificReturnType errorLevel="info" />
+    <LessSpecificReturnStatement errorLevel="info" />
+    <MissingConstructor errorLevel="info" />
+
+    <!-- Suppress some errors -->
+    <!-- @see https://github.com/vimeo/psalm/blob/master/docs/dealing_with_code_issues.md -->
+
+    <!-- Do not take into account errors with Drupal\Tests\UnitTestCase -->
+    <UndefinedClass>
+      <errorLevel type="suppress">
+        <!-- <directory name="web/modules/custom/*/tests" />-->
+      </errorLevel>
+    </UndefinedClass>
+
+    <!-- Do not take into account undefined methods in tests (results from the above) -->
+    <UndefinedMethod>
+      <errorLevel type="suppress">
+        <!-- <directory name="web/modules/custom/*/tests" />-->
+      </errorLevel>
+    </UndefinedMethod>
+  </issueHandlers>
+
+</psalm>

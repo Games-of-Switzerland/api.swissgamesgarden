@@ -54,9 +54,11 @@ class GamesSubscriber implements EventSubscriberInterface {
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    $events[DefaultContentEvents::IMPORT][] = ['generateImages', 1000];
-
-    return $events;
+    return [
+      DefaultContentEvents::IMPORT => [
+        ['generateImages', 1000],
+      ],
+    ];
   }
 
 }

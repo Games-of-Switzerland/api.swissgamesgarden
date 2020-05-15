@@ -18,5 +18,8 @@ echo "\n🍫  \033[0;32mRunning PhpCodeFixer ...\033[0m"
 echo "\n🕵🏻  \033[0;32mRunning PHP-CS-Fixer ...\033[0m"
 ./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle
 
+echo "\n🙏  \033[0;32mRunning Psalm ...\033[0m"
+./vendor/bin/psalm
+
 echo "\n👻  \033[0;32mRunning PHPStan ...\033[0m"
 ./vendor/bin/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle

@@ -117,7 +117,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @param \Drupal\taxonomy\TermInterface[] $platforms
    *   Platforms to filter by.
    */
-  public function setPlatform(array $platforms): void {
+  public function setPlatforms(array $platforms): void {
     $this->platforms = $platforms;
   }
 
@@ -144,6 +144,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @Assert\Callback
    */
   public function validateGenres(ExecutionContextInterface $context, $payload): void {
+    // @TODO Improve error detection by checking both array dimensions and give
+    // proper UUID feedback error.
     if ($this->genresUuid && !$this->genres) {
       $context->buildViolation(sprintf('At least one given Genre(s) UUID has not been found.'))
         ->atPath('genres')
@@ -164,6 +166,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @Assert\Callback
    */
   public function validatePlatforms(ExecutionContextInterface $context, $payload): void {
+    // @TODO Improve error detection by checking both array dimensions and give
+    // proper UUID feedback error.
     if ($this->platformsUuid && !$this->platforms) {
       $context->buildViolation(sprintf('At least one given Platform(s) UUID has not been found.'))
         ->atPath('platforms')
