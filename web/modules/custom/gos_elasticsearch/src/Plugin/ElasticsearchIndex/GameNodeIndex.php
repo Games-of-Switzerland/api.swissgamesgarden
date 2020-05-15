@@ -187,21 +187,19 @@ class GameNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @psalm-suppress InvalidArgument
    */
-  public function index($source) {
-    /** @var \Drupal\node\Entity\NodeInterface $source */
+  public function index($source): void {
+    /** @var \Drupal\node\NodeInterface $entity */
+    $entity = $source;
 
     // Only Index Game.
-    if ($source->bundle() !== 'game') {
-      return NULL;
+    if ($entity->bundle() !== 'game') {
+      return;
     }
 
-    // Skip unpublished game.
-    if (!$source->isPublished()) {
-      return NULL;
-    }
-
-    parent::index($source);
+    parent::index($entity);
   }
 
 }

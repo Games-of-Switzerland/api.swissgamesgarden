@@ -61,7 +61,7 @@ class TeamMemberItem extends EntityReferenceItem {
     $properties = parent::propertyDefinitions($field_definition);
 
     $role_definition = DataDefinition::create('string')
-      ->setLabel(new TranslatableMarkup('Role'))
+      ->setLabel(t('Role')->__toString())
       ->setRequired(FALSE);
     $properties['role'] = $role_definition;
 

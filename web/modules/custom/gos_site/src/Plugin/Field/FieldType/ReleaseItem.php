@@ -61,12 +61,11 @@ class ReleaseItem extends EntityReferenceItem {
     $properties = parent::propertyDefinitions($field_definition);
 
     $date_value_definition = DataDefinition::create('datetime_iso8601')
-      ->setLabel(new TranslatableMarkup('Date value'));
+      ->setLabel(t('Date value')->__toString());
     $properties['date_value'] = $date_value_definition;
 
     $date_definition = DataDefinition::create('any')
-      ->setLabel(new TranslatableMarkup('Computed date'))
-      ->setLabel(new TranslatableMarkup('The computed DateTime object.'))
+      ->setLabel(t('The computed DateTime object')->__toString())
       ->setComputed(TRUE)
       ->setClass('\Drupal\datetime\DateTimeComputed')
       ->setSetting('date source', 'date_value');

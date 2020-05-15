@@ -54,6 +54,8 @@ class ElasticGamesResource extends ElasticResourceBase {
    * {@inheritdoc}
    *
    * @psalm-suppress MissingParamType
+   * @psalm-suppress ArgumentTypeCoercion
+   * @psalm-suppress PropertyTypeCoercion
    */
   public function __construct(
     array $configuration,
@@ -226,9 +228,10 @@ class ElasticGamesResource extends ElasticResourceBase {
     if ($request->query->has('platformsUuid')) {
       $resource_validator->setPlatformsUuid($request->query->get('platformsUuid'));
 
-      /** @var Drupal\taxonomy\TermInterface[]|[] $platforms */
+      /** @var \Drupal\taxonomy\TermInterface[] $platforms */
       $platforms = [];
 
+      /** @psalm-suppress PossiblyNullIterator */
       foreach ($resource_validator->getPlatformsUuid() as $platform_uuid) {
         $platform = $this->termStorage->loadByProperties([
           'vid' => 'platform',
@@ -241,8 +244,10 @@ class ElasticGamesResource extends ElasticResourceBase {
         }
       }
 
+      /** @psalm-suppress PossiblyNullArgument */
       if (\count($resource_validator->getPlatformsUuid()) === \count($platforms)) {
-        $resource_validator->setPlatform($platforms);
+        /** @psalm-suppress ArgumentTypeCoercion */
+        $resource_validator->setPlatforms($platforms);
       }
     }
 
@@ -250,9 +255,10 @@ class ElasticGamesResource extends ElasticResourceBase {
     if ($request->query->has('genresUuid')) {
       $resource_validator->setGenresUuid($request->query->get('genresUuid'));
 
-      /** @var Drupal\taxonomy\TermInterface[]|[] $genres */
+      /** @var \Drupal\taxonomy\TermInterface[] $genres */
       $genres = [];
 
+      /** @psalm-suppress PossiblyNullIterator */
       foreach ($resource_validator->getGenresUuid() as $genre_uuid) {
         $genre = $this->termStorage->loadByProperties([
           'vid' => 'genre',
@@ -265,7 +271,9 @@ class ElasticGamesResource extends ElasticResourceBase {
         }
       }
 
+      /** @psalm-suppress PossiblyNullArgument */
       if (\count($resource_validator->getGenresUuid()) === \count($genres)) {
+        /** @psalm-suppress ArgumentTypeCoercion */
         $resource_validator->setGenres($genres);
       }
     }

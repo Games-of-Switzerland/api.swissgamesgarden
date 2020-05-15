@@ -117,7 +117,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @param \Drupal\taxonomy\TermInterface[] $platforms
    *   Platforms to filter by.
    */
-  public function setPlatform(array $platforms): void {
+  public function setPlatforms(array $platforms): void {
     $this->platforms = $platforms;
   }
 

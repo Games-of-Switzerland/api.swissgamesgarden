@@ -32,9 +32,11 @@ class ConsumersSubscriber implements EventSubscriberInterface {
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    $events[DefaultContentEvents::IMPORT][] = ['updateDefault', 1000];
-
-    return $events;
+    return [
+      DefaultContentEvents::IMPORT => [
+        ['updateDefault', 1000],
+      ],
+    ];
   }
 
   /**
@@ -49,12 +51,20 @@ class ConsumersSubscriber implements EventSubscriberInterface {
    */
   public function updateDefault(ImportEvent $event) {
     $styles = $this->entityTypeManager->getStorage('image_style')->loadMultiple();
+    /** @var \Drupal\consumers\Entity\Consumer|null $consumer */
     $consumer = $this->entityTypeManager->getStorage('consumer')->load(1);
 
-    // Add every image style to the consumer.
-    foreach ($styles as $style) {
-      $consumer->image_styles[] = ['target_id' => $style->id()];
+    if (!$consumer) {
+      return;
     }
+
+    // Add every image style to the consumer.
+    $image_styles = [];
+
+    foreach ($styles as $style) {
+      $image_styles[] = ['target_id' => $style->id()];
+    }
+    $consumer->set('image_styles', $image_styles);
     $consumer->save();
   }
 

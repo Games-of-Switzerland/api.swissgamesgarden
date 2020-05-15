@@ -122,16 +122,19 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @psalm-suppress InvalidArgument
    */
-  public function index($source) {
-    /** @var \Drupal\node\Entity\NodeInterface $source */
+  public function index($source): void {
+    /** @var \Drupal\node\NodeInterface $entity */
+    $entity = $source;
 
     // Skip unpublished people.
-    if (!$source->isPublished()) {
-      return NULL;
+    if (!$entity->isPublished()) {
+      return;
     }
 
-    parent::index($source);
+    parent::index($entity);
   }
 
   /**
