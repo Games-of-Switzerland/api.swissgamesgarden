@@ -34,6 +34,7 @@ third_party_settings:
         classes: ''
         direction: vertical
       label: Tabs
+      region: content
     group_general:
       children:
         - title
@@ -49,6 +50,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: General
+      region: content
     group_releases:
       children:
         - field_releases
@@ -62,6 +64,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Releases
+      region: content
     group_authors:
       children:
         - field_members
@@ -76,6 +79,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Authors
+      region: content
     group_meta:
       children:
         - field_genres
@@ -89,6 +93,7 @@ third_party_settings:
         description: ''
         required_fields: true
       label: Meta
+      region: content
 id: node.game.default
 targetEntityType: node
 bundle: game

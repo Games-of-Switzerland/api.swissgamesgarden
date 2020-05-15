@@ -35,7 +35,7 @@
         "drupal/consumer_image_styles": "^3.0",
         "drupal/core-recommended": "^8.8",
         "drupal/elasticsearch_helper": "6.x-dev",
-        "drupal/field_group": "^1.0",
+        "drupal/field_group": "^3.0",
         "drupal/fieldable_path": "^1.0@RC",
         "drupal/focal_point": "^1.2",
         "drupal/jsonapi_extras": "^3.13",
