@@ -10,6 +10,7 @@ use Drupal\gos_rest\Plugin\rest\ValidatorFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator\ElasticGamesResourceValidator;
+use stdClass;
 
 /**
  * Provides a Proxy to access to Elasticsearch Games Documents.
@@ -131,7 +132,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
         'aggregations' => [
           'aggs_all' => [
-            'global' => new \stdClass(),
+            'global' => new stdClass(),
             'aggs' => [
               'all_genres' => [
                 'nested' => [
