@@ -8,7 +8,6 @@ parameters:
   ignoreErrors:
     - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
     - '#Unsafe usage of new static#'
-    - '#Call to deprecated method registerLoader()#'
 
 includes:
   # Add the phpstan-drupal extension & rules.
