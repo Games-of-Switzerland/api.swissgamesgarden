@@ -2,8 +2,6 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex;
 
-use Drupal\elasticsearch_helper\ElasticsearchLanguageAnalyzer;
-
 /**
  * A Node-Studio content index class.
  *
@@ -106,8 +104,7 @@ class StudioNodeIndex extends NodeIndexBase {
       ];
       $this->client->indices()->putSettings($settings);
 
-      $analyzer = ElasticsearchLanguageAnalyzer::get($langcode);
-      $mapping  = [
+      $mapping = [
         'index' => $this->indexNamePattern(),
         'type'  => $this->typeNamePattern(),
         'body'  => [

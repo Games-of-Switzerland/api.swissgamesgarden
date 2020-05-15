@@ -2,8 +2,6 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex;
 
-use Drupal\elasticsearch_helper\ElasticsearchLanguageAnalyzer;
-
 /**
  * A Node-People content index class.
  *
@@ -103,8 +101,7 @@ class PeopleNodeIndex extends NodeIndexBase {
       ];
       $this->client->indices()->putSettings($settings);
 
-      $analyzer = ElasticsearchLanguageAnalyzer::get($langcode);
-      $mapping  = [
+      $mapping = [
         'index' => $this->indexNamePattern(),
         'type'  => $this->typeNamePattern(),
         'body'  => [
