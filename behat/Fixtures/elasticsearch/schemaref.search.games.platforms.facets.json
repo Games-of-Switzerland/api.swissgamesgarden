@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "required": [
+    "aggregations"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "aggregations": {
+      "$id": "#/properties/aggregations",
+      "type": "object",
+      "title": "The aggregations schema",
+      "required": [
+        "aggs_all"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "aggs_all": {
+          "$id": "#/properties/aggregations/properties/aggs_all",
+          "type": "object",
+          "title": "The aggs_all schema",
+          "required": [
+            "all_platforms"
+          ],
+          "additionalProperties": true,
+          "properties": {
+            "all_platforms": {
+              "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms",
+              "type": "object",
+              "title": "The all_platforms schema",
+              "required": [
+                "agg_platforms"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "agg_platforms": {
+                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms",
+                  "type": "object",
+                  "title": "The agg_platforms schema",
+                  "required": [
+                    "releases_platform_keyword"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "releases_platform_keyword": {
+                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword",
+                      "type": "object",
+                      "title": "The releases_platform_keyword schema",
+                      "required": [
+                        "buckets"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "buckets": {
+                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets",
+                          "type": "array",
+                          "title": "The buckets schema",
+                          "examples": [
+                            [
+                              {
+                                "key": "Mac",
+                                "doc_count": 2
+                              },
+                              {
+                                "key": "PC",
+                                "doc_count": 2
+                              }
+                            ]
+                          ],
+                          "additionalItems": true,
+                          "items": {
+                            "anyOf": [
+                              {
+                                "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets/items/anyOf/0",
+                                "type": "object",
+                                "title": "The first anyOf schema",
+                                "examples": [
+                                  {
+                                    "key": "Mac",
+                                    "doc_count": 2
+                                  }
+                                ],
+                                "required": [
+                                  "key",
+                                  "doc_count"
+                                ],
+                                "additionalProperties": true,
+                                "properties": {
+                                  "key": {
+                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets/items/anyOf/0/properties/key",
+                                    "type": "string",
+                                    "title": "The key schema",
+                                    "examples": [
+                                      "Mac"
+                                    ]
+                                  },
+                                  "doc_count": {
+                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets/items/anyOf/0/properties/doc_count",
+                                    "type": "integer",
+                                    "title": "The doc_count schema",
+                                    "examples": [
+                                      2
+                                    ]
+                                  }
+                                }
+                              }
+                            ],
+                            "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets/items"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

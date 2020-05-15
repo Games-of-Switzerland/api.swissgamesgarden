@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "required": [
+    "aggregations"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "aggregations": {
+      "$id": "#/properties/aggregations",
+      "type": "object",
+      "title": "The aggregations schema",
+      "required": [
+        "aggs_all"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "aggs_all": {
+          "$id": "#/properties/aggregations/properties/aggs_all",
+          "type": "object",
+          "title": "The aggs_all schema",
+          "required": [
+            "all_genres"
+          ],
+          "additionalProperties": true,
+          "properties": {
+            "all_genres": {
+              "$id": "#/properties/aggregations/properties/aggs_all/properties/all_genres",
+              "type": "object",
+              "title": "The all_genres schema",
+              "required": [
+                "agg_genres"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "agg_genres": {
+                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_genres/properties/agg_genres",
+                  "type": "object",
+                  "title": "The agg_genres schema",
+                  "required": [
+                    "genres_name_keyword"
+                  ],
+                  "additionalProperties": true,
+                  "properties": {
+                    "genres_name_keyword": {
+                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_genres/properties/agg_genres/properties/genres_name_keyword",
+                      "type": "object",
+                      "title": "The genres_name_keyword schema",
+                      "required": [
+                        "buckets"
+                      ],
+                      "additionalProperties": true,
+                      "properties": {
+                        "buckets": {
+                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_genres/properties/agg_genres/properties/genres_name_keyword/properties/buckets",
+                          "type": "array",
+                          "title": "The buckets schema",
+                          "examples": [
+                            [
+                              {
+                                "key": "Adventure",
+                                "doc_count": 1
+                              },
+                              {
+                                "key": "Platformer",
+                                "doc_count": 1
+                              }
+                            ]
+                          ],
+                          "additionalItems": true,
+                          "items": {
+                            "anyOf": [
+                              {
+                                "$id": "#/properties/aggregations/properties/aggs_all/properties/all_genres/properties/agg_genres/properties/genres_name_keyword/properties/buckets/items/anyOf/0",
+                                "type": "object",
+                                "title": "The first anyOf schema",
+                                "examples": [
+                                  {
+                                    "key": "Adventure",
+                                    "doc_count": 1
+                                  }
+                                ],
+                                "required": [
+                                  "key",
+                                  "doc_count"
+                                ],
+                                "additionalProperties": true,
+                                "properties": {
+                                  "key": {
+                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_genres/properties/agg_genres/properties/genres_name_keyword/properties/buckets/items/anyOf/0/properties/key",
+                                    "type": "string",
+                                    "title": "The key schema",
+                                    "examples": [
+                                      "Adventure"
+                                    ]
+                                  },
+                                  "doc_count": {
+                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_genres/properties/agg_genres/properties/genres_name_keyword/properties/buckets/items/anyOf/0/properties/doc_count",
+                                    "type": "integer",
+                                    "title": "The doc_count schema",
+                                    "examples": [
+                                      1
+                                    ]
+                                  }
+                                }
+                              }
+                            ],
+                            "$id": "#/properties/aggregations/properties/aggs_all/properties/all_genres/properties/agg_genres/properties/genres_name_keyword/properties/buckets/items"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

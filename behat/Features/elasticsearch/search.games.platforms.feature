@@ -9,22 +9,24 @@
     Then the response status code should be 200
     And the response should be in JSON
     And the JSON node "hits.hits" should have 2 element
-    And the JSON node "hits.hits[0]._source.uuid" should be equal to "a0b7c853-c891-487f-84f9-74dfbce9fa63"
-    And the JSON node "hits.hits[0]._source.id" should be equal to "11"
-    And the JSON node "hits.hits[1]._source.uuid" should be equal to "08952aa6-e079-496a-8efa-cbb8465d9315"
-    And the JSON node "hits.hits[1]._source.id" should be equal to "12"
+    And the JSON nodes should be equal to:
+      | hits.hits[0]._source.uuid | a0b7c853-c891-487f-84f9-74dfbce9fa63 |
+      | hits.hits[0]._source.id | 11 |
+      | hits.hits[1]._source.uuid | 08952aa6-e079-496a-8efa-cbb8465d9315 |
+      | hits.hits[1]._source.id | 12 |
 
   Scenario: Games Resource should respond with filtered games when multiple valid platforms UUID are given.
     Given I send a "GET" request to "http://api.gos.test/search/games?platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7&platformsUuid[]=6ea716ae-e50f-4a59-ace5-603c353ae20a"
     Then the response status code should be 200
     And the response should be in JSON
     And the JSON node "hits.hits" should have 3 elements
-    And the JSON node "hits.hits[0]._source.uuid" should be equal to "a0b7c853-c891-487f-84f9-74dfbce9fa63"
-    And the JSON node "hits.hits[0]._source.id" should be equal to "11"
-    And the JSON node "hits.hits[1]._source.uuid" should be equal to "08952aa6-e079-496a-8efa-cbb8465d9315"
-    And the JSON node "hits.hits[1]._source.id" should be equal to "12"
-    And the JSON node "hits.hits[2]._source.uuid" should be equal to "f990d6af-d50d-4b35-a79a-72a1e12a7422"
-    And the JSON node "hits.hits[2]._source.id" should be equal to "17"
+    And the JSON nodes should be equal to:
+      | hits.hits[0]._source.uuid | a0b7c853-c891-487f-84f9-74dfbce9fa63 |
+      | hits.hits[0]._source.id | 11 |
+      | hits.hits[1]._source.uuid | 08952aa6-e079-496a-8efa-cbb8465d9315 |
+      | hits.hits[1]._source.id | 12 |
+      | hits.hits[2]._source.uuid | f990d6af-d50d-4b35-a79a-72a1e12a7422 |
+      | hits.hits[2]._source.id | 17 |
 
   Scenario: Games Resource should respond with an error when a non-valid platform UUID is given.
     Given I send a "GET" request to "http://api.gos.test/search/games?platformsUuid[]=test"

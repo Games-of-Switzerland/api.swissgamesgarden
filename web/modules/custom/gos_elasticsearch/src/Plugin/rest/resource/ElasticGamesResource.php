@@ -130,56 +130,66 @@ class ElasticGamesResource extends ElasticResourceBase {
         ],
 
         'aggregations' => [
-          'all_genres' => [
-            'nested' => [
-              'path' => 'genres',
-            ],
-            'aggregations' => [
-              'agg_genres' => [
-                'filter' => [
-                  'bool' => [
-                    // Where all the conditions w/o a Score impact should be.
-                    'must' => [],
-                  ],
+          'aggs_all' => [
+            'global' => new \stdClass(),
+            'aggs' => [
+              'all_genres' => [
+                'nested' => [
+                  'path' => 'genres',
                 ],
                 'aggregations' => [
-                  'genres.name_keyword' => [
-                    'terms' => ['field' => 'genres.name_keyword', 'min_doc_count' => 0],
+                  'agg_genres' => [
+                    'filter' => [
+                      'bool' => [
+                        // Where all the filter w/o a Score impact should be.
+                        'must' => [],
+                      ],
+                    ],
+                    'aggregations' => [
+                      'genres_name_keyword' => [
+                        'terms' => ['field' => 'genres.name_keyword', 'min_doc_count' => 0],
+                      ],
+                    ],
                   ],
                 ],
               ],
-            ],
-          ],
-          'all_platforms' => [
-            'nested' => [
-              'path' => 'releases',
-            ],
-            'aggregations' => [
-              'agg_platforms' => [
-                'filter' => [
-                  'bool' => [
-                    // Where all the conditions w/o a Score impact should be.
-                    'must' => [],
-                  ],
+              'all_platforms' => [
+                'nested' => [
+                  'path' => 'releases',
                 ],
                 'aggregations' => [
-                  'releases.platform_keyword' => [
-                    'terms' => ['field' => 'releases.platform_keyword', 'min_doc_count' => 0],
+                  'agg_platforms' => [
+                    'filter' => [
+                      'bool' => [
+                        // Where all the filter w/o a Score impact should be.
+                        'must' => [],
+                      ],
+                    ],
+                    'aggregations' => [
+                      'releases_platform_keyword' => [
+                        'terms' => ['field' => 'releases.platform_keyword', 'min_doc_count' => 0],
+                      ],
+                    ],
                   ],
                 ],
               ],
             ],
           ],
         ],
+
       ],
     ];
 
     if ($resource_validator->getPlatformsUuid()) {
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
+
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_genres']['aggregations']['agg_genres']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
     }
 
     if ($resource_validator->getGenresUuid()) {
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
+
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_platforms']['aggregations']['agg_platforms']['filter']['bool']['must'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
     }
 
     try {
