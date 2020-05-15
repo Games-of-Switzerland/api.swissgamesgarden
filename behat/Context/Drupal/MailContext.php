@@ -6,10 +6,10 @@ use Alex\MailCatcher\Behat\MailCatcherAwareInterface;
 use Alex\MailCatcher\Behat\MailCatcherTrait;
 use Alex\MailCatcher\Message;
 use Behat\Behat\Context\Context;
-use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Behat\Mink\Exception\ElementNotFoundException;
 use DOMDocument;
 use DOMXPath;
+use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Exception;
 use InvalidArgumentException;
 use RuntimeException;
@@ -21,18 +21,18 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
   use MailCatcherTrait;
 
   /**
-   * MailCatcher current message.
-   *
-   * @var \Alex\MailCatcher\Message|null
-   */
-  protected $currentMessage;
-
-  /**
    * The base URL.
    *
    * @var string
    */
   protected $baseUrl;
+
+  /**
+   * MailCatcher current message.
+   *
+   * @var \Alex\MailCatcher\Message|null
+   */
+  protected $currentMessage;
 
   /**
    * Initializes context.
@@ -76,32 +76,7 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
    * @Then A mail as been sent with the subject :subject
    */
   public function aMailAsBeenSentWithSubject($subject) {
-    $search_email = $this->findMail(Message::SUBJECT_CRITERIA, $subject);
-
-    if (!isset($search_email)) {
-      throw new Exception(sprintf("No mail with subject '%s' was found on the inbox", $subject));
-    }
-  }
-
-  /**
-   * Purge mails.
-   *
-   * @BeforeScenario @mail
-   * @AfterScenario @mail
-   */
-  public function purge() {
-    $this->getMailCatcherClient()->purge();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  private function getCurrentMessage() {
-    if (NULL === $this->currentMessage) {
-      throw new RuntimeException('No message selected');
-    }
-
-    return $this->currentMessage;
+    $this->findMail(Message::SUBJECT_CRITERIA, $subject);
   }
 
   /**
@@ -156,6 +131,16 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
   }
 
   /**
+   * Purge mails.
+   *
+   * @BeforeScenario @mail
+   * @AfterScenario @mail
+   */
+  public function purge() {
+    $this->getMailCatcherClient()->purge();
+  }
+
+  /**
    * Verify a given link it visible with a given href attr in the mail.
    *
    * @Then I should see link with href :href in mail
@@ -167,11 +152,12 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
     $message = $this->getCurrentMessage();
 
     $dom = new DOMDocument();
-    @$dom->loadHTML($message->getContent());
+    $dom->loadHTML($message->getContent());
     $xpath = new DOMXPath($dom);
 
-    $entries = $xpath->query("//a[contains(@href, '$href')]");
-    if ($entries->length == 0) {
+    $entries = $xpath->query("//a[contains(@href, '{$href}')]");
+
+    if ($entries->length === 0) {
       throw new ElementNotFoundException($this->getSession(), 'link', 'href', $href);
     }
   }
@@ -183,6 +169,7 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
    */
   public function shouldNotSeeMailFrom($value) {
     $message = $this->getMailCatcherClient()->searchOne([Message::FROM_CRITERIA => $value]);
+
     if (!empty($message)) {
       throw new Exception(sprintf("A mail from '%s' was found on the inbox", $value));
     }
@@ -203,6 +190,17 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
     if ($count !== $actual) {
       throw new InvalidArgumentException(sprintf('Expected %d mails to be sent, got %d.', $count, $actual));
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  private function getCurrentMessage() {
+    if ($this->currentMessage === NULL) {
+      throw new RuntimeException('No message selected');
+    }
+
+    return $this->currentMessage;
   }
 
 }

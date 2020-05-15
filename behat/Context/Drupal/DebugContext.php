@@ -2,17 +2,16 @@
 
 namespace Drupal\Behat\Context\Drupal;
 
-use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Behat\Behat\Context\SnippetAcceptingContext;
-use Drupal\Component\Utility\Random;
-use Behat\Mink\Driver\Selenium2Driver;
 use Behat\Behat\Hook\Scope\AfterStepScope;
+use Behat\Mink\Driver\Selenium2Driver;
+use Drupal\Component\Utility\Random;
+use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Exception;
 
 /**
  * Defines Debug features from the specific context.
  */
-class DebugContext extends RawDrupalContext implements SnippetAcceptingContext {
+class DebugContext extends RawDrupalContext {
 
   /**
    * The log path directory from the root.
@@ -45,7 +44,7 @@ class DebugContext extends RawDrupalContext implements SnippetAcceptingContext {
   public function saveHtml() {
     $file_and_path = $this->logTo($this->getSession()->getDriver()->getContent(), 'html', 'html');
 
-    if (PHP_OS === "Darwin" && PHP_SAPI === "cli") {
+    if (\PHP_OS === 'Darwin' && \PHP_SAPI === 'cli') {
       exec('open -a "Google Chrome.app" ' . $file_and_path);
     }
   }
@@ -56,36 +55,13 @@ class DebugContext extends RawDrupalContext implements SnippetAcceptingContext {
    * @AfterStep
    */
   public function saveHtmlAfterFailedStep(afterStepScope $scope) {
-    if (99 !== $scope->getTestResult()->getResultCode()) {
+    if ($scope->getTestResult()->getResultCode() !== 99) {
       return;
     }
 
     $file_and_path = $this->logTo($this->getSession()->getDriver()->getContent(), 'fail', 'html');
 
-    if (PHP_OS === "Darwin" && PHP_SAPI === "cli") {
-      // exec('open -a "Safari.app" ' . $file_and_path);.
-      exec('open -a "Google Chrome.app" ' . $file_and_path);
-    }
-  }
-
-  /**
-   * Take a Screenshot - Selenium only - when a Step fail.
-   *
-   * @AfterStep
-   */
-  public function takeScreenShotAfterFailedStep(afterStepScope $scope) {
-    if (99 !== $scope->getTestResult()->getResultCode()) {
-      return;
-    }
-
-    $driver = $this->getSession()->getDriver();
-    if (!$driver instanceof Selenium2Driver) {
-      return;
-    }
-
-    $file_and_path = $this->logTo($this->getSession()->getDriver()->getScreenshot(), 'fail', 'png');
-
-    if (PHP_OS === "Darwin" && PHP_SAPI === "cli") {
+    if (\PHP_OS === 'Darwin' && \PHP_SAPI === 'cli') {
       // exec('open -a "Safari.app" ' . $file_and_path);.
       exec('open -a "Google Chrome.app" ' . $file_and_path);
     }
@@ -98,13 +74,38 @@ class DebugContext extends RawDrupalContext implements SnippetAcceptingContext {
    */
   public function takeScreenshot() {
     $driver = $this->getSession()->getDriver();
+
     if (!$driver instanceof Selenium2Driver) {
       return;
     }
 
     $file_and_path = $this->logTo($this->getSession()->getDriver()->getScreenshot(), 'screenshot', 'png');
 
-    if (PHP_OS === "Darwin" && PHP_SAPI === "cli") {
+    if (\PHP_OS === 'Darwin' && \PHP_SAPI === 'cli') {
+      // exec('open -a "Safari.app" ' . $file_and_path);.
+      exec('open -a "Google Chrome.app" ' . $file_and_path);
+    }
+  }
+
+  /**
+   * Take a Screenshot - Selenium only - when a Step fail.
+   *
+   * @AfterStep
+   */
+  public function takeScreenShotAfterFailedStep(afterStepScope $scope) {
+    if ($scope->getTestResult()->getResultCode() !== 99) {
+      return;
+    }
+
+    $driver = $this->getSession()->getDriver();
+
+    if (!$driver instanceof Selenium2Driver) {
+      return;
+    }
+
+    $file_and_path = $this->logTo($this->getSession()->getDriver()->getScreenshot(), 'fail', 'png');
+
+    if (\PHP_OS === 'Darwin' && \PHP_SAPI === 'cli') {
       // exec('open -a "Safari.app" ' . $file_and_path);.
       exec('open -a "Google Chrome.app" ' . $file_and_path);
     }
@@ -120,10 +121,10 @@ class DebugContext extends RawDrupalContext implements SnippetAcceptingContext {
    * @param string $extension
    *   The extension to use.
    *
+   * @throws \Exception
+   *
    * @return string
    *   The file path of logged file.
-   *
-   * @throws \Exception
    */
   private function logTo($content, $prefix, $extension) {
     if (!is_dir($this->logPath)) {
@@ -131,10 +132,10 @@ class DebugContext extends RawDrupalContext implements SnippetAcceptingContext {
     }
 
     $random = new Random();
-    $file_and_path = $this->logPath . DIRECTORY_SEPARATOR . $prefix . '_' . $random->name(10, TRUE) . '.' . $extension;
+    $file_and_path = $this->logPath . \DIRECTORY_SEPARATOR . $prefix . '_' . $random->name(10, TRUE) . '.' . $extension;
     file_put_contents($file_and_path, $content);
 
-    echo sprintf("\e[0;34mLog file: %s\e[0m\n", $file_and_path);
+    print sprintf("\e[0;34mLog file: %s\e[0m\n", $file_and_path);
 
     return $file_and_path;
   }

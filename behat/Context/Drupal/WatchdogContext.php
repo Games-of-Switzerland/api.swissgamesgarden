@@ -2,6 +2,7 @@
 
 namespace Drupal\Behat\Context\Drupal;
 
+use Drupal;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
 use Exception;
 
@@ -19,7 +20,7 @@ class WatchdogContext extends RawDrupalContext {
    * @BeforeScenario
    */
   public static function cleanupWatchdog() {
-    $connection = \Drupal::service('database');
+    $connection = Drupal::service('database');
     $connection->truncate('watchdog')->execute();
   }
 
@@ -29,7 +30,7 @@ class WatchdogContext extends RawDrupalContext {
    * @AfterStep
    */
   public function detectWatchdog() {
-    $connection = \Drupal::service('database');
+    $connection = Drupal::service('database');
 
     $logs = $connection->select('watchdog')
       ->fields('watchdog', ['wid', 'message', 'variables'])
