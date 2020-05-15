@@ -231,22 +231,24 @@ class ElasticGamesResource extends ElasticResourceBase {
       /** @var \Drupal\taxonomy\TermInterface[] $platforms */
       $platforms = [];
 
-      /** @psalm-suppress PossiblyNullIterator */
-      foreach ($resource_validator->getPlatformsUuid() as $platform_uuid) {
-        $platform = $this->termStorage->loadByProperties([
-          'vid' => 'platform',
-          'uuid' => $platform_uuid,
-        ]);
+      $platforms_uuid = $resource_validator->getPlatformsUuid();
 
-        if ($platform) {
+      if ($platforms_uuid) {
+        foreach ($platforms_uuid as $platform_uuid) {
+          $platform = $this->termStorage->loadByProperties([
+            'vid' => 'platform',
+            'uuid' => $platform_uuid,
+          ]);
+
+          if (!$platform) {
+            continue;
+          }
+
+          /** @var \Drupal\taxonomy\TermInterface $platform */
           $platform = reset($platform);
           $platforms[] = $platform;
         }
-      }
 
-      /** @psalm-suppress PossiblyNullArgument */
-      if (\count($resource_validator->getPlatformsUuid()) === \count($platforms)) {
-        /** @psalm-suppress ArgumentTypeCoercion */
         $resource_validator->setPlatforms($platforms);
       }
     }
@@ -258,24 +260,26 @@ class ElasticGamesResource extends ElasticResourceBase {
       /** @var \Drupal\taxonomy\TermInterface[] $genres */
       $genres = [];
 
-      /** @psalm-suppress PossiblyNullIterator */
-      foreach ($resource_validator->getGenresUuid() as $genre_uuid) {
-        $genre = $this->termStorage->loadByProperties([
-          'vid' => 'genre',
-          'uuid' => $genre_uuid,
-        ]);
+      $genres_uuid = $resource_validator->getGenresUuid();
 
-        if ($genre) {
+      if ($genres_uuid) {
+        foreach ($genres_uuid as $genre_uuid) {
+          $genre = $this->termStorage->loadByProperties([
+            'vid' => 'genre',
+            'uuid' => $genre_uuid,
+          ]);
+
+          if (!$genre) {
+            continue;
+          }
+
+          /** @var \Drupal\taxonomy\TermInterface $genre */
           $genre = reset($genre);
           $genres[] = $genre;
         }
       }
 
-      /** @psalm-suppress PossiblyNullArgument */
-      if (\count($resource_validator->getGenresUuid()) === \count($genres)) {
-        /** @psalm-suppress ArgumentTypeCoercion */
-        $resource_validator->setGenres($genres);
-      }
+      $resource_validator->setGenres($genres);
     }
 
     return $resource_validator;
