@@ -1,0 +1,22 @@
+uuid: b4ced983-65aa-41b1-930d-2f5e0931857e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - gos
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: gos_content
+theme: gos
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

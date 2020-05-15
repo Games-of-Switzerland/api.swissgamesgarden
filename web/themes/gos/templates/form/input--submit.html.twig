@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{% spaceless %}
+  {% set theme = attributes.theme ?: 'primary' %}
+  {% set classes = [
+    'btn btn-' ~ theme,
+  ] %}
+
+  {# Remove Boostrap classes from remove/close button #}
+  {% if 'media-library-item__remove' in attributes.class %}
+    {% set classes = [] %}
+  {% endif %}
+{% endspaceless %}
+<button {{ attributes.removeClass('button').addClass(classes)|without('value', 'icon') }}>
+  {{ attributes.value }}
+  {{ children }}
+</button>
