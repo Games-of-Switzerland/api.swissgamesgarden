@@ -5,7 +5,7 @@ WORKDIR /var/www
 ADD ./composer.json ./composer.lock ./
 RUN set -eux; \
   \
-  composer install --prefer-dist --no-autoloader --no-scripts --no-progress --no-suggest --no-interaction; \
+  composer install --prefer-dist --no-scripts --no-progress --no-suggest --no-interaction; \
   composer clear-cache
 
 COPY . ./
