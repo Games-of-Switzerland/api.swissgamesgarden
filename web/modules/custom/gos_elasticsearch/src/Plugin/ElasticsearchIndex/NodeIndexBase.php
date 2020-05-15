@@ -96,4 +96,106 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
     return parent::getIndexName($data);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function index($source) {
+    /** @var \Drupal\node\Entity\NodeInterface $source */
+
+    // Skip unpublished people.
+    if (!$source->isPublished()) {
+      return NULL;
+    }
+
+    parent::index($source);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setup(): void {
+    // Create one index per language, so that we can have different analyzers.
+    foreach ($this->languageManager->getLanguages() as $langcode => $language) {
+      $index_name = $this->getIndexName(['langcode' => $langcode]);
+
+      if (!$this->client->indices()->exists(['index' => $index_name])) {
+        $this->client->indices()->create([
+          'index' => $index_name,
+          'body'  => [
+            'number_of_shards'   => 1,
+            'number_of_replicas' => 0,
+          ],
+        ]);
+
+        $this->logger->notice('Message: Index @index has been created.', [
+          '@index' => $index_name,
+        ]);
+      }
+    }
+  }
+
+  /**
+   * Get the standardized Noun & Title analyzer.
+   *
+   * @return array
+   *   the Elasticsearch array structure to build title and noun analyzers.
+   */
+  protected function getAnalyzersTitleAndNoun(): array {
+    return [
+      'ngram_analyzer' => [
+        'tokenizer' => 'ngram_analyzer_tokenizer',
+        'filter'    => ['lowercase'],
+      ],
+      'ngram_analyzer_search'  => [
+        'tokenizer' => 'lowercase',
+      ],
+      'phonetic_name_analyzer' => [
+        'tokenizer' => 'standard',
+        'filter'    => [
+          'lowercase',
+          'metaphone_filter',
+        ],
+      ],
+    ];
+  }
+
+  /**
+   * Get the standardized Noun & Title filter.
+   *
+   * @return array
+   *   the Elasticsearch array structure to build title and noun filters.
+   */
+  protected function getFiltersTitleAndNoun(): array {
+    return [
+      'metaphone_filter' => [
+        'type'        => 'phonetic',
+        'encoder'     => 'beider_morse',
+        'replace'     => FALSE,
+        'languageset' => [
+          'english',
+        ],
+      ],
+    ];
+  }
+
+  /**
+   * Get the standardized Noun & Title tokenizers.
+   *
+   * @return array
+   *   the Elasticsearch array structure to build title and noun tokenizers.
+   */
+  protected function getTokenizersTitleAndNoun(): array {
+    return [
+      'ngram_analyzer_tokenizer' => [
+        'type'        => 'edge_ngram',
+        'min_gram'    => 2,
+        'max_gram'    => 10,
+        'token_chars' => [
+          'letter',
+          'digit',
+        ],
+      ],
+    ];
+  }
+
 }
