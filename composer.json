@@ -28,7 +28,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0.8",
+        "php": ">=7.3.0",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/admin_toolbar": "^2.0",
         "drupal/console": "^1.0.2",
@@ -64,6 +64,7 @@
         "phpmd/phpmd": "^2.6",
         "phpstan/phpstan-deprecation-rules": "^0.12.2",
         "sebastian/phpcpd": "^2.0",
+        "vimeo/psalm": "^3.11",
         "wapmorgan/php-code-fixer": "^2.0"
     },
     "conflict": {
