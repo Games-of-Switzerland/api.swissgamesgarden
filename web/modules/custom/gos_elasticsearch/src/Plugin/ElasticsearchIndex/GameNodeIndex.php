@@ -39,22 +39,11 @@ class GameNodeIndex extends NodeIndexBase {
    */
   public function setup(): void {
     // Create one index per language, so that we can have different analyzers.
+    parent::setup();
+
+    // Create one index per language, so that we can have different analyzers.
     foreach ($this->languageManager->getLanguages() as $langcode => $language) {
       $index_name = $this->getIndexName(['langcode' => $langcode]);
-
-      if (!$this->client->indices()->exists(['index' => $index_name])) {
-        $this->client->indices()->create([
-          'index' => $index_name,
-          'body'  => [
-            'number_of_shards'   => 1,
-            'number_of_replicas' => 0,
-          ],
-        ]);
-
-        $this->logger->notice('Message: Index @index has been created.', [
-          '@index' => $index_name,
-        ]);
-      }
 
       // Close the index before setting configuration.
       $this->client->indices()->close(['index' => $index_name]);

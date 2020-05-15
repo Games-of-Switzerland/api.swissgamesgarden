@@ -6,3 +6,11 @@ echo "\n🚔  \033[0;32mRunning Code Sniffer Drupal & DrupalPractice for /web/mo
 echo "\n💩  \033[0;32mRunning PHP Mess Detector ...\033[0m"
 ./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml --suffixes php,module,inc,install,test,profile,theme,css,info,txt
 ./vendor/bin/phpmd ./behat text ./phpmd.xml --suffixes php
+
+echo "\n🛂  \033[0;32mRunning PHP Copy/Paste Detector ...\033[0m"
+./vendor/bin/phpcpd ./web/modules/custom --names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml --ansi --exclude=tests
+./vendor/bin/phpcpd ./behat --names=*.php --ansi
+
+echo "\n🍫  \033[0;32mRunning PhpCodeFixer ...\033[0m"
+./vendor/bin/phpcf --target 7.2 --file-extensions php,module,inc,install,test,profile,theme,info ./web/modules/custom
+./vendor/bin/phpcf --target 7.2 --file-extensions php ./behat
