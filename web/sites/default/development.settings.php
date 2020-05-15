@@ -41,3 +41,9 @@ if (PHP_SAPI === 'cli') {
   ini_set('memory_limit', '2G');
 }
 
+/**
+ * Disable psalm annotation as we can't update to doctrine/annotations:^1.6.1.
+ *
+ * @see https://github.com/doctrine/collections/issues/198
+ */
+\Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName('psalm');

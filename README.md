@@ -134,6 +134,12 @@ It can modernize your code (like converting the pow function to the ** operator 
 ./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle
 ```
 
+### Attempts to dig into your program and find as many type-related bugs as possiblevia Psalm
+
+```bash
+./vendor/bin/psalm
+```
+
 ### Catches whole classes of bugs even before you write tests using PHPStan
 
 ```bash

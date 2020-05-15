@@ -80,16 +80,19 @@ class StudioNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @psalm-suppress InvalidArgument
    */
-  public function index($source) {
-    /** @var \Drupal\node\Entity\NodeInterface $source */
+  public function index($source): void {
+    /** @var \Drupal\node\NodeInterface $entity */
+    $entity = $source;
 
     // Only Index Studio.
-    if ($source->bundle() !== 'studio') {
-      return NULL;
+    if ($entity->bundle() !== 'studio') {
+      return;
     }
 
-    parent::index($source);
+    parent::index($entity);
   }
 
 }

@@ -16,9 +16,11 @@ class MenuSkeletonSubscriber implements EventSubscriberInterface {
    * {@inheritdoc}
    */
   public static function getSubscribedEvents() {
-    $events[DefaultContentEvents::IMPORT][] = ['setupMainMenu', 1000];
-
-    return $events;
+    return [
+      DefaultContentEvents::IMPORT => [
+        ['setupMainMenu', 1000],
+      ],
+    ];
   }
 
   /**
