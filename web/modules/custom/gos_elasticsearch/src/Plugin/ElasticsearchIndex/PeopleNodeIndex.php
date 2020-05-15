@@ -6,28 +6,14 @@ namespace Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex;
  * A Node-People content index class.
  *
  * @ElasticsearchIndex(
- *   id = "gos_index_node_people",
- *   label = @Translation("People Node Index"),
- *   indexName="{index_prefix}_gos_node_people_{langcode}",
- *   typeName = "node",
- *   entityType = "node"
+ *     id="gos_index_node_people",
+ *     label=@Translation("People Node Index"),
+ *     indexName="{index_prefix}_gos_node_people_{langcode}",
+ *     typeName="node",
+ *     entityType="node"
  * )
  */
 class PeopleNodeIndex extends NodeIndexBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function index($source) {
-    /** @var \Drupal\node\Entity\NodeInterface $source */
-
-    // Only Index People.
-    if ($source->bundle() !== 'people') {
-      return NULL;
-    }
-
-    parent::index($source);
-  }
 
   /**
    * {@inheritdoc}
@@ -45,7 +31,7 @@ class PeopleNodeIndex extends NodeIndexBase {
 
       $settings = [
         'index' => $this->indexNamePattern(),
-        'body'  => [
+        'body' => [
           'analysis' => ['filter' => [], 'analyzer' => [], 'tokenizer' => []],
         ],
       ];
@@ -56,16 +42,16 @@ class PeopleNodeIndex extends NodeIndexBase {
 
       $mapping = [
         'index' => $this->indexNamePattern(),
-        'type'  => $this->typeNamePattern(),
-        'body'  => [
+        'type' => $this->typeNamePattern(),
+        'body' => [
           'properties' => [
-            'nid'      => [
-              'type'  => 'integer',
+            'nid' => [
+              'type' => 'integer',
               'index' => FALSE,
             ],
             'fullname' => [
-              'type'            => 'text',
-              'analyzer'        => 'phonetic_name_analyzer',
+              'type' => 'text',
+              'analyzer' => 'phonetic_name_analyzer',
               'search_analyzer' => 'ngram_analyzer_search',
             ],
           ],
@@ -76,6 +62,20 @@ class PeopleNodeIndex extends NodeIndexBase {
       // Re-open the index to make to expose it.
       $this->client->indices()->open(['index' => $index_name]);
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function index($source) {
+    /** @var \Drupal\node\Entity\NodeInterface $source */
+
+    // Only Index People.
+    if ($source->bundle() !== 'people') {
+      return NULL;
+    }
+
+    parent::index($source);
   }
 
 }

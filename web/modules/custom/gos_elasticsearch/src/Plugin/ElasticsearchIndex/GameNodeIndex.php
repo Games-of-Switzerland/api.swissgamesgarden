@@ -6,33 +6,14 @@ namespace Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex;
  * A Node-Game content index class.
  *
  * @ElasticsearchIndex(
- *   id = "gos_index_node_game",
- *   label = @Translation("Game Node Index"),
- *   indexName="{index_prefix}_gos_node_game_{langcode}",
- *   typeName = "node",
- *   entityType = "node"
+ *     id="gos_index_node_game",
+ *     label=@Translation("Game Node Index"),
+ *     indexName="{index_prefix}_gos_node_game_{langcode}",
+ *     typeName="node",
+ *     entityType="node"
  * )
  */
 class GameNodeIndex extends NodeIndexBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function index($source) {
-    /** @var \Drupal\node\Entity\NodeInterface $source */
-
-    // Only Index Game.
-    if ($source->bundle() !== 'game') {
-      return NULL;
-    }
-
-    // Skip unpublished game.
-    if (!$source->isPublished()) {
-      return NULL;
-    }
-
-    parent::index($source);
-  }
 
   /**
    * {@inheritdoc}
@@ -50,37 +31,37 @@ class GameNodeIndex extends NodeIndexBase {
 
       $settings = [
         'index' => $this->indexNamePattern(),
-        'body'  => [
+        'body' => [
           'analysis' => [
-            'filter'    => [
-              'english_stop'               => [
-                'type'      => 'stop',
+            'filter' => [
+              'english_stop' => [
+                'type' => 'stop',
                 'stopwords' => '_english_',
               ],
-              'english_stemmer'            => [
-                'type'     => 'stemmer',
+              'english_stemmer' => [
+                'type' => 'stemmer',
                 'language' => 'english',
               ],
               'english_possessive_stemmer' => [
-                'type'     => 'stemmer',
+                'type' => 'stemmer',
                 'language' => 'possessive_english',
               ],
-              'synonym_platform_filter'    => [
-                'type'          => 'synonym_graph',
+              'synonym_platform_filter' => [
+                'type' => 'synonym_graph',
                 'synonyms_path' => 'analysis/synonym_platform.txt',
               ],
             ],
-            'analyzer'  => [
-              'ngram_gametitle_analyzer'        => [
+            'analyzer' => [
+              'ngram_gametitle_analyzer' => [
                 'tokenizer' => 'ngram_gametitle_tokenizer',
-                'filter'    => ['lowercase'],
+                'filter' => ['lowercase'],
               ],
               'ngram_gametitle_analyzer_search' => [
                 'tokenizer' => 'lowercase',
               ],
-              'english_language_analyzer'       => [
+              'english_language_analyzer' => [
                 'tokenizer' => 'standard',
-                'filter'    => [
+                'filter' => [
                   'english_possessive_stemmer',
                   'lowercase',
                   'english_stop',
@@ -89,7 +70,7 @@ class GameNodeIndex extends NodeIndexBase {
               ],
               'synonym_platform_analyzer' => [
                 'tokenizer' => 'standard',
-                'filter'    => [
+                'filter' => [
                   'standard',
                   'lowercase',
                   'synonym_platform_filter',
@@ -98,9 +79,9 @@ class GameNodeIndex extends NodeIndexBase {
             ],
             'tokenizer' => [
               'ngram_gametitle_tokenizer' => [
-                'type'        => 'edge_ngram',
-                'min_gram'    => 2,
-                'max_gram'    => 10,
+                'type' => 'edge_ngram',
+                'min_gram' => 2,
+                'max_gram' => 10,
                 'token_chars' => [
                   'letter',
                   'digit',
@@ -114,39 +95,39 @@ class GameNodeIndex extends NodeIndexBase {
 
       $mapping = [
         'index' => $this->indexNamePattern(),
-        'type'  => $this->typeNamePattern(),
-        'body'  => [
+        'type' => $this->typeNamePattern(),
+        'body' => [
           'properties' => [
             'uuid' => [
-              'type'  => 'keyword',
+              'type' => 'keyword',
             ],
             'is_published' => [
               'type' => 'boolean',
             ],
             'title' => [
-              'type'            => 'text',
-              'analyzer'        => 'ngram_gametitle_analyzer',
+              'type' => 'text',
+              'analyzer' => 'ngram_gametitle_analyzer',
               'search_analyzer' => 'ngram_gametitle_analyzer_search',
-              'fields'          => [
+              'fields' => [
                 'raw' => [
                   'type' => 'keyword',
                 ],
               ],
             ],
-            'desc'     => [
-              'type'     => 'text',
+            'desc' => [
+              'type' => 'text',
               'analyzer' => 'english_language_analyzer',
             ],
             'releases' => [
-              'type'       => 'nested',
-              'dynamic'    => FALSE,
+              'type' => 'nested',
+              'dynamic' => FALSE,
               'properties' => [
-                'date'     => [
-                  'type'   => 'date',
+                'date' => [
+                  'type' => 'date',
                   'format' => 'yyyy-MM-dd',
                 ],
                 'platform' => [
-                  'type'     => 'text',
+                  'type' => 'text',
                   'analyzer' => 'synonym_platform_analyzer',
                 ],
                 'platform_keyword' => [
@@ -157,12 +138,12 @@ class GameNodeIndex extends NodeIndexBase {
                 ],
               ],
             ],
-            'studios'  => [
-              'dynamic'    => FALSE,
-              'type'       => 'nested',
+            'studios' => [
+              'dynamic' => FALSE,
+              'type' => 'nested',
               'properties' => [
                 'name' => [
-                  'type'   => 'text',
+                  'type' => 'text',
                   'fields' => [
                     'raw' => [
                       'type' => 'keyword',
@@ -174,12 +155,12 @@ class GameNodeIndex extends NodeIndexBase {
                 ],
               ],
             ],
-            'genres'   => [
-              'dynamic'    => FALSE,
-              'type'       => 'nested',
+            'genres' => [
+              'dynamic' => FALSE,
+              'type' => 'nested',
               'properties' => [
                 'name' => [
-                  'type'   => 'text',
+                  'type' => 'text',
                   'fields' => [
                     'raw' => [
                       'type' => 'keyword',
@@ -202,6 +183,25 @@ class GameNodeIndex extends NodeIndexBase {
       // Re-open the index to make to expose it.
       $this->client->indices()->open(['index' => $index_name]);
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function index($source) {
+    /** @var \Drupal\node\Entity\NodeInterface $source */
+
+    // Only Index Game.
+    if ($source->bundle() !== 'game') {
+      return NULL;
+    }
+
+    // Skip unpublished game.
+    if (!$source->isPublished()) {
+      return NULL;
+    }
+
+    parent::index($source);
   }
 
 }

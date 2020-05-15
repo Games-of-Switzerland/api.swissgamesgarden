@@ -2,10 +2,10 @@
 
 namespace Drupal\gos_site\Plugin\Field\FieldType;
 
-use Drupal\Core\TypedData\DataDefinition;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\TypedData\DataDefinition;
 
 /**
  * Defines the 'Team member' entity field type.
@@ -14,16 +14,26 @@ use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
  * - target_type: The entity type to reference. Required.
  *
  * @FieldType(
- *   id = "team_member",
- *   label = @Translation("Team Member"),
- *   description = @Translation("A field to define a team member."),
- *   category = @Translation("Games of Switzerland"),
- *   default_formatter = "team_member_default",
- *   default_widget = "entity_reference_label",
- *   list_class = "\Drupal\Core\Field\EntityReferenceFieldItemList",
+ *     id="team_member",
+ *     label=@Translation("Team Member"),
+ *     description=@Translation("A field to define a team member."),
+ *     category=@Translation("Games of Switzerland"),
+ *     default_formatter="team_member_default",
+ *     default_widget="entity_reference_label",
+ *     list_class="\Drupal\Core\Field\EntityReferenceFieldItemList",
  * )
  */
 class TeamMemberItem extends EntityReferenceItem {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function defaultFieldSettings() {
+    return [
+      'handler' => 'default',
+      'handler_settings' => [],
+    ] + parent::defaultFieldSettings();
+  }
 
   /**
    * {@inheritdoc}
@@ -38,11 +48,10 @@ class TeamMemberItem extends EntityReferenceItem {
   /**
    * {@inheritdoc}
    */
-  public static function defaultFieldSettings() {
-    return [
-      'handler' => 'default',
-      'handler_settings' => [],
-    ] + parent::defaultFieldSettings();
+  public static function getPreconfiguredOptions() {
+    // By returning an empty array we prevent duplicate field list
+    // for Content, User and Taxonomy duplicated under Reference.
+    return [];
   }
 
   /**
@@ -71,15 +80,6 @@ class TeamMemberItem extends EntityReferenceItem {
     ];
 
     return $schema;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function getPreconfiguredOptions() {
-    // By returning an empty array we prevent duplicate field list
-    // for Content, User and Taxonomy duplicated under Reference.
-    return [];
   }
 
 }

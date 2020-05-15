@@ -2,10 +2,10 @@
 
 namespace Drupal\gos_default_content\EventSubscriber;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\default_content\Event\DefaultContentEvents;
 use Drupal\default_content\Event\ImportEvent;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Generate, update & alter the default consumers for Games of Switzerland.
@@ -33,6 +33,7 @@ class ConsumersSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     $events[DefaultContentEvents::IMPORT][] = ['updateDefault', 1000];
+
     return $events;
   }
 

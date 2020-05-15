@@ -2,8 +2,8 @@
 
 namespace Drupal\gos_rest\Plugin\rest\resource;
 
-use Drupal\gos_rest\Plugin\rest\ResourceValidator\BaseValidator;
 use Drupal\Core\Cache\CacheableJsonResponse;
+use Drupal\gos_rest\Plugin\rest\ResourceValidator\BaseValidator;
 
 /**
  * Provides methods to validate Resource.

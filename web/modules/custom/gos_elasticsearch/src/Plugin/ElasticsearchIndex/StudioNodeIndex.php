@@ -6,28 +6,14 @@ namespace Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex;
  * A Node-Studio content index class.
  *
  * @ElasticsearchIndex(
- *   id = "gos_index_node_studio",
- *   label = @Translation("Studio Node Index"),
- *   indexName="{index_prefix}_gos_node_studio_{langcode}",
- *   typeName = "node",
- *   entityType = "node"
+ *     id="gos_index_node_studio",
+ *     label=@Translation("Studio Node Index"),
+ *     indexName="{index_prefix}_gos_node_studio_{langcode}",
+ *     typeName="node",
+ *     entityType="node"
  * )
  */
 class StudioNodeIndex extends NodeIndexBase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public function index($source) {
-    /** @var \Drupal\node\Entity\NodeInterface $source */
-
-    // Only Index Studio.
-    if ($source->bundle() !== 'studio') {
-      return NULL;
-    }
-
-    parent::index($source);
-  }
 
   /**
    * {@inheritdoc}
@@ -42,9 +28,10 @@ class StudioNodeIndex extends NodeIndexBase {
 
       // Close the index before setting configuration.
       $this->client->indices()->close(['index' => $index_name]);
+
       $settings = [
         'index' => $this->indexNamePattern(),
-        'body'  => [
+        'body' => [
           'analysis' => ['filter' => [], 'analyzer' => [], 'tokenizer' => []],
         ],
       ];
@@ -55,28 +42,28 @@ class StudioNodeIndex extends NodeIndexBase {
 
       $mapping = [
         'index' => $this->indexNamePattern(),
-        'type'  => $this->typeNamePattern(),
-        'body'  => [
+        'type' => $this->typeNamePattern(),
+        'body' => [
           'properties' => [
-            'nid'     => [
-              'type'  => 'integer',
+            'nid' => [
+              'type' => 'integer',
               'index' => FALSE,
             ],
-            'name'    => [
-              'type'            => 'text',
-              'analyzer'        => 'phonetic_name_analyzer',
+            'name' => [
+              'type' => 'text',
+              'analyzer' => 'phonetic_name_analyzer',
               'search_analyzer' => 'ngram_analyzer_search',
             ],
             'members' => [
-              'type'       => 'nested',
-              'dynamic'    => FALSE,
+              'type' => 'nested',
+              'dynamic' => FALSE,
               'properties' => [
                 'fullname' => [
-                  'type'     => 'text',
+                  'type' => 'text',
                   'analyzer' => 'phonetic_name_analyzer',
                 ],
-                'role'     => [
-                  'type'     => 'text',
+                'role' => [
+                  'type' => 'text',
                   'analyzer' => 'ngram_analyzer',
                 ],
               ],
@@ -89,6 +76,20 @@ class StudioNodeIndex extends NodeIndexBase {
       // Re-open the index to make to expose it.
       $this->client->indices()->open(['index' => $index_name]);
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function index($source) {
+    /** @var \Drupal\node\Entity\NodeInterface $source */
+
+    // Only Index Studio.
+    if ($source->bundle() !== 'studio') {
+      return NULL;
+    }
+
+    parent::index($source);
   }
 
 }

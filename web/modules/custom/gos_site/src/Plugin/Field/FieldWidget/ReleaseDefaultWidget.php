@@ -10,11 +10,11 @@ use Drupal\Core\Form\FormStateInterface;
  * Plugin implementation of the 'release_default' widget.
  *
  * @FieldWidget(
- *   id = "release_default",
- *   label = @Translation("Release widget"),
- *   field_types = {
- *     "release"
- *   }
+ *     id="release_default",
+ *     label=@Translation("Release widget"),
+ *     field_types={
+ *         "release"
+ *     }
  * )
  */
 class ReleaseDefaultWidget extends EntityReferenceAutocompleteWidget {

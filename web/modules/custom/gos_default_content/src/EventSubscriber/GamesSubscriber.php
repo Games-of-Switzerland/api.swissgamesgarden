@@ -2,10 +2,10 @@
 
 namespace Drupal\gos_default_content\EventSubscriber;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\default_content\Event\DefaultContentEvents;
 use Drupal\default_content\Event\ImportEvent;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Generate, update & alter the default games for Games of Switzerland.
@@ -29,14 +29,6 @@ class GamesSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public static function getSubscribedEvents() {
-    $events[DefaultContentEvents::IMPORT][] = ['generateImages', 1000];
-    return $events;
-  }
-
-  /**
    * Alter agents with Avatar generated images.
    *
    * @param \Drupal\default_content\Event\ImportEvent $event
@@ -51,10 +43,20 @@ class GamesSubscriber implements EventSubscriberInterface {
     $node_storage = $this->entityTypeManager->getStorage('node');
 
     $games = $node_storage->loadByProperties(['type' => 'game']);
+
     foreach ($games as $game) {
       $game->field_images->generateSampleItems();
       $game->save();
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getSubscribedEvents() {
+    $events[DefaultContentEvents::IMPORT][] = ['generateImages', 1000];
+
+    return $events;
   }
 
 }

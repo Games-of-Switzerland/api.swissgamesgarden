@@ -2,12 +2,12 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\rest\resource;
 
-use Drupal\gos_rest\Plugin\rest\resource\ResourceCacheableResponseTrait;
-use Drupal\gos_rest\Plugin\rest\resource\ResourceValidationTrait;
-use Drupal\gos_rest\Plugin\rest\ValidatorFactory;
 use Drupal\Core\Cache\CacheableJsonResponse;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexManager;
+use Drupal\gos_rest\Plugin\rest\resource\ResourceCacheableResponseTrait;
+use Drupal\gos_rest\Plugin\rest\resource\ResourceValidationTrait;
+use Drupal\gos_rest\Plugin\rest\ValidatorFactory;
 use Drupal\rest\Plugin\ResourceBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;

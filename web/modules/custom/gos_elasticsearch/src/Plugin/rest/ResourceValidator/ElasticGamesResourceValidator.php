@@ -7,9 +7,8 @@ namespace Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator;
 // leads to not working Annotation below.
 
 use Drupal\gos_rest\Plugin\rest\ResourceValidator\BaseValidator;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Drupal\taxonomy\TermInterface;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 // phpcs:enable
 
@@ -19,22 +18,6 @@ use Drupal\taxonomy\TermInterface;
  * @see \Drupal\gos_elasticsearch\Plugin\rest\resource\ElasticRealEstateListResource
  */
 class ElasticGamesResourceValidator extends BaseValidator {
-
-  /**
-   * The game Platforms to filter by.
-   *
-   * This field uses the custom validation ::validatePlatforms.
-   *
-   * @var \Drupal\taxonomy\TermInterface[]|null
-   */
-  private $platforms;
-
-  /**
-   * The Platforms Uuid.
-   *
-   * @var string[]
-   */
-  private $platformsUuid;
 
   /**
    * The game Genres to filter by.
@@ -53,24 +36,20 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private $genresUuid;
 
   /**
-   * Get the game Platforms to filter by.
+   * The game Platforms to filter by.
    *
-   * @return \Drupal\taxonomy\TermInterface[]|null
-   *   Platforms to filter by.
+   * This field uses the custom validation ::validatePlatforms.
+   *
+   * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  public function getPlatforms(): ?array {
-    return $this->platforms;
-  }
+  private $platforms;
 
   /**
-   * Get the game Platforms UUID to filter by.
+   * The Platforms Uuid.
    *
-   * @return string[]|null
-   *   Platforms uuid.
+   * @var string[]
    */
-  public function getPlatformsUuid(): ?array {
-    return $this->platformsUuid;
-  }
+  private $platformsUuid;
 
   /**
    * Get the game Genres to filter by.
@@ -93,23 +72,23 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
-   * Set the Platforms to filter by.
+   * Get the game Platforms to filter by.
    *
-   * @param \Drupal\taxonomy\TermInterface[] $platforms
+   * @return \Drupal\taxonomy\TermInterface[]|null
    *   Platforms to filter by.
    */
-  public function setPlatform(array $platforms): void {
-    $this->platforms = $platforms;
+  public function getPlatforms(): ?array {
+    return $this->platforms;
   }
 
   /**
-   * Set the Platforms Uuid.
+   * Get the game Platforms UUID to filter by.
    *
-   * @param string[] $platforms_uuid
-   *   Platforms Uuid.
+   * @return string[]|null
+   *   Platforms uuid.
    */
-  public function setPlatformsUuid(array $platforms_uuid): void {
-    $this->platformsUuid = $platforms_uuid;
+  public function getPlatformsUuid(): ?array {
+    return $this->platformsUuid;
   }
 
   /**
@@ -133,23 +112,23 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
-   * Validates the Platforms parameter.
+   * Set the Platforms to filter by.
    *
-   * Ensure the given taxonomy is a proper Platforms entity.
-   *
-   * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
-   *   The validation execution context.
-   * @param string $payload
-   *   The Payload.
-   *
-   * @Assert\Callback
+   * @param \Drupal\taxonomy\TermInterface[] $platforms
+   *   Platforms to filter by.
    */
-  public function validatePlatforms(ExecutionContextInterface $context, $payload): void {
-    if ($this->platformsUuid && !$this->platforms) {
-      $context->buildViolation(sprintf('At least one given Platform(s) UUID has not been found.'))
-        ->atPath('platforms')
-        ->addViolation();
-    }
+  public function setPlatform(array $platforms): void {
+    $this->platforms = $platforms;
+  }
+
+  /**
+   * Set the Platforms Uuid.
+   *
+   * @param string[] $platforms_uuid
+   *   Platforms Uuid.
+   */
+  public function setPlatformsUuid(array $platforms_uuid): void {
+    $this->platformsUuid = $platforms_uuid;
   }
 
   /**
@@ -168,6 +147,26 @@ class ElasticGamesResourceValidator extends BaseValidator {
     if ($this->genresUuid && !$this->genres) {
       $context->buildViolation(sprintf('At least one given Genre(s) UUID has not been found.'))
         ->atPath('genres')
+        ->addViolation();
+    }
+  }
+
+  /**
+   * Validates the Platforms parameter.
+   *
+   * Ensure the given taxonomy is a proper Platforms entity.
+   *
+   * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
+   *   The validation execution context.
+   * @param string $payload
+   *   The Payload.
+   *
+   * @Assert\Callback
+   */
+  public function validatePlatforms(ExecutionContextInterface $context, $payload): void {
+    if ($this->platformsUuid && !$this->platforms) {
+      $context->buildViolation(sprintf('At least one given Platform(s) UUID has not been found.'))
+        ->atPath('platforms')
         ->addViolation();
     }
   }
