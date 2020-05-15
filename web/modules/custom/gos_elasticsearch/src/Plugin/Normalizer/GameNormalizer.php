@@ -11,13 +11,6 @@ use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 class GameNormalizer extends ContentEntityNormalizer {
 
   /**
-   * The interface or class that this Normalizer supports.
-   *
-   * @var array
-   */
-  protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
-
-  /**
    * Supported formats.
    *
    * @var array
@@ -25,19 +18,11 @@ class GameNormalizer extends ContentEntityNormalizer {
   protected $format = ['elasticsearch_helper'];
 
   /**
-   * {@inheritdoc}
+   * The interface or class that this Normalizer supports.
+   *
+   * @var array
    */
-  public function supportsNormalization($data, $format = NULL) {
-    if (!parent::supportsNormalization($data, $format)) {
-      return FALSE;
-    }
-
-    if ($data instanceof NodeInterface && $data->getType() === 'game') {
-      return TRUE;
-    }
-
-    return FALSE;
-  }
+  protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
 
   /**
    * {@inheritdoc}
@@ -54,6 +39,7 @@ class GameNormalizer extends ContentEntityNormalizer {
 
     if (!$object->get('field_releases')->isEmpty()) {
       $releases = [];
+
       foreach ($object->field_releases as $release) {
         $releases[] = [
           'date' => isset($release->date_value) ? $release->date_value : NULL,
@@ -69,6 +55,7 @@ class GameNormalizer extends ContentEntityNormalizer {
     // Handle studios names.
     if (!$object->get('field_studios')->isEmpty()) {
       $studios = [];
+
       foreach ($object->field_studios as $studio) {
         $studios[] = [
           'name' => $studio->entity->title->value,
@@ -82,6 +69,7 @@ class GameNormalizer extends ContentEntityNormalizer {
     // Handle genres.
     if (!$object->get('field_genres')->isEmpty()) {
       $genres = [];
+
       foreach ($object->field_genres as $genre) {
         $genres[] = [
           'name' => $genre->entity->name->value,
@@ -94,6 +82,21 @@ class GameNormalizer extends ContentEntityNormalizer {
     }
 
     return $data;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function supportsNormalization($data, $format = NULL) {
+    if (!parent::supportsNormalization($data, $format)) {
+      return FALSE;
+    }
+
+    if ($data instanceof NodeInterface && $data->getType() === 'game') {
+      return TRUE;
+    }
+
+    return FALSE;
   }
 
 }

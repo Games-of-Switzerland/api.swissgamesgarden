@@ -9,11 +9,11 @@ use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceLabelFormatter;
  * Plugin implementation of the 'team_member_default' formatter.
  *
  * @FieldFormatter(
- *   id = "team_member_default",
- *   label = @Translation("Default"),
- *   field_types = {
- *     "team_member"
- *   }
+ *     id="team_member_default",
+ *     label=@Translation("Default"),
+ *     field_types={
+ *         "team_member"
+ *     }
  * )
  */
 class TeamMemberFieldFormatter extends EntityReferenceLabelFormatter {

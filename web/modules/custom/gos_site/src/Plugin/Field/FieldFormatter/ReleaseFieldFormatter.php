@@ -9,11 +9,11 @@ use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceLabelFormatter;
  * Plugin implementation of the 'release_default' formatter.
  *
  * @FieldFormatter(
- *   id = "release_default",
- *   label = @Translation("Default"),
- *   field_types = {
- *     "release"
- *   }
+ *     id="release_default",
+ *     label=@Translation("Default"),
+ *     field_types={
+ *         "release"
+ *     }
  * )
  */
 class ReleaseFieldFormatter extends EntityReferenceLabelFormatter {

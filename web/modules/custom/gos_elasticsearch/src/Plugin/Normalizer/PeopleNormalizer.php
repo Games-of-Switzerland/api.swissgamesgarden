@@ -2,13 +2,20 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\Normalizer;
 
-use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 use Drupal\node\NodeInterface;
+use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 
 /**
  * Normalizes / denormalizes Drupal People nodes into an array structure for ES.
  */
 class PeopleNormalizer extends ContentEntityNormalizer {
+
+  /**
+   * Supported formats.
+   *
+   * @var array
+   */
+  protected $format = ['elasticsearch_helper'];
 
   /**
    * The interface or class that this Normalizer supports.
@@ -18,11 +25,16 @@ class PeopleNormalizer extends ContentEntityNormalizer {
   protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
 
   /**
-   * Supported formats.
-   *
-   * @var array
+   * {@inheritdoc}
    */
-  protected $format = ['elasticsearch_helper'];
+  public function normalize($object, $format = NULL, array $context = []) {
+    /** @var \Drupal\node\Entity\Node $object */
+
+    return [
+      'nid' => $object->id(),
+      'fullname' => $object->getTitle(),
+    ];
+  }
 
   /**
    * {@inheritdoc}
@@ -37,20 +49,6 @@ class PeopleNormalizer extends ContentEntityNormalizer {
     }
 
     return FALSE;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function normalize($object, $format = NULL, array $context = []) {
-    /** @var \Drupal\node\Entity\Node $object */
-
-    $data = [
-      'nid' => $object->id(),
-      'fullname' => $object->getTitle(),
-    ];
-
-    return $data;
   }
 
 }

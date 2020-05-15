@@ -2,10 +2,10 @@
 
 namespace Drupal\gos_default_content\EventSubscriber;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\default_content\Event\DefaultContentEvents;
 use Drupal\default_content\Event\ImportEvent;
 use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Generate the default menu(s) for Games of Switzerland to works properly.
@@ -17,6 +17,7 @@ class MenuSkeletonSubscriber implements EventSubscriberInterface {
    */
   public static function getSubscribedEvents() {
     $events[DefaultContentEvents::IMPORT][] = ['setupMainMenu', 1000];
+
     return $events;
   }
 

@@ -2,20 +2,13 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\Normalizer;
 
-use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 use Drupal\node\NodeInterface;
+use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 
 /**
  * Normalizes / denormalizes Drupal Studio nodes into an array structure for ES.
  */
 class StudioNormalizer extends ContentEntityNormalizer {
-
-  /**
-   * The interface or class that this Normalizer supports.
-   *
-   * @var array
-   */
-  protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
 
   /**
    * Supported formats.
@@ -25,19 +18,11 @@ class StudioNormalizer extends ContentEntityNormalizer {
   protected $format = ['elasticsearch_helper'];
 
   /**
-   * {@inheritdoc}
+   * The interface or class that this Normalizer supports.
+   *
+   * @var array
    */
-  public function supportsNormalization($data, $format = NULL) {
-    if (!parent::supportsNormalization($data, $format)) {
-      return FALSE;
-    }
-
-    if ($data instanceof NodeInterface && $data->getType() === 'studio') {
-      return TRUE;
-    }
-
-    return FALSE;
-  }
+  protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
 
   /**
    * {@inheritdoc}
@@ -52,6 +37,7 @@ class StudioNormalizer extends ContentEntityNormalizer {
 
     if (!$object->get('field_members')->isEmpty()) {
       $members = [];
+
       foreach ($object->field_members as $member) {
         $members[] = [
           'role' => $member->role ?? NULL,
@@ -63,6 +49,21 @@ class StudioNormalizer extends ContentEntityNormalizer {
     }
 
     return $data;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function supportsNormalization($data, $format = NULL) {
+    if (!parent::supportsNormalization($data, $format)) {
+      return FALSE;
+    }
+
+    if ($data instanceof NodeInterface && $data->getType() === 'studio') {
+      return TRUE;
+    }
+
+    return FALSE;
   }
 
 }
