@@ -88,20 +88,14 @@ $settings['gos_elasticsearch.index_prefix'] = 'local';
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 
-You need to run composer before using PHPCS. Then register the Drupal and DrupalPractice Standard with PHPCS: `./vendor/bin/phpcs --config-set installed_paths "`pwd`/vendor/drupal/coder/coder_sniffer"`
+You need to run composer before using PHPCS. The Drupal and DrupalPractice Standard will automatically be applied following the rules on phpcs.xml.dist` file
 
 ### Command Line Usage
 
-Check Drupal coding standards:
+Check Drupal coding standards & Drupal best practices:
 
 ```bash
-./vendor/bin/phpcs --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./web/modules/custom
-```
-
-Check Drupal best practices:
-
-```bash
-./vendor/bin/phpcs --standard=DrupalPractice --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./web/modules/custom
+./vendor/bin/phpcs
 ```
 
 Automatically fix coding standards
@@ -113,7 +107,7 @@ Automatically fix coding standards
 Checks compatibility with PHP interpreter versions
 
 ```bash
-./vendor/bin/phpcf --target 7.2 \
+./vendor/bin/phpcf --target 7.3 \
 --file-extensions php,module,inc,install,test,profile,theme,info \
 ./web/modules/custom
 ```
@@ -130,6 +124,20 @@ Copy/Paste Detector
 
 ```bash
 ./vendor/bin/phpcpd ./web/modules/custom
+```
+
+### Ensure PHP Community Best Practicies using PHP Coding Standards Fixer
+
+It can modernize your code (like converting the pow function to the ** operator on PHP 5.6) and (micro) optimize it.
+
+```bash
+./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle
+```
+
+### Catches whole classes of bugs even before you write tests using PHPStan
+
+```bash
+./vendor/bin/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle
 ```
 
 ### Enforce code standards with git hooks
