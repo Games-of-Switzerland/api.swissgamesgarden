@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7222a1f2b86c6f2b39a4602e0b853b8d",
+    "content-hash": "b1ef3cd1fd354caca0fabbaa0bdaf239",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -10936,6 +10936,64 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2019-06-13T22:48:21+00:00"
+        },
+        {
+            "name": "wapmorgan/php-code-fixer",
+            "version": "2.0.23",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wapmorgan/PhpCodeFixer.git",
+                "reference": "1bc9733768f2b4dccc22037f563c912ade1288da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wapmorgan/PhpCodeFixer/zipball/1bc9733768f2b4dccc22037f563c912ade1288da",
+                "reference": "1bc9733768f2b4dccc22037f563c912ade1288da",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-tokenizer": "*",
+                "php": ">=5.4",
+                "symfony/console": "^3.4|^4.0"
+            },
+            "suggest": {
+                "ext-json": "Adds ability to store report in JSON format"
+            },
+            "bin": [
+                "bin/phpcf"
+            ],
+            "type": "package",
+            "extra": {
+                "phar-builder": {
+                    "compression": "BZip2",
+                    "name": "phpcf-dev.phar",
+                    "output-dir": "./",
+                    "entry-point": "bin/phpcf",
+                    "include": [
+                        "bin",
+                        "data"
+                    ],
+                    "events": {
+                        "command.package.start": "git describe --tags > bin/version.txt",
+                        "command.package.end": "cp phpcf-dev.phar phpcf-`cat bin/version.txt`.phar && chmod +x phpcf.phar && rm bin/version.txt"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "wapmorgan\\PhpCodeFixer\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Analyzer of PHP code to search issues with deprecated functionality in newer interpreter versions.",
+            "time": "2019-12-16T19:22:45+00:00"
         },
         {
             "name": "webflo/drupal-core-require-dev",
