@@ -58,9 +58,12 @@
         "drupal/drupal-extension": "^4.0",
         "drupal/jsonapi_explorer": "^1.0",
         "drupol/phpcsfixer-configs-drupal": "^1.0",
+        "fenetikm/autoload-drupal": "^0.2.0",
         "friendsofphp/php-cs-fixer": "^2.16",
         "imbo/behat-api-extension": "^2.2",
+        "mglaman/phpstan-drupal": "^0.12.3",
         "phpmd/phpmd": "^2.6",
+        "phpstan/phpstan-deprecation-rules": "^0.12.2",
         "sebastian/phpcpd": "^2.0",
         "wapmorgan/php-code-fixer": "^2.0",
         "webflo/drupal-core-require-dev": "^8.7.0"
@@ -116,6 +119,13 @@
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
             }
+        },
+        "autoload-drupal": {
+            "modules": [
+                "web/modules/contrib",
+                "web/core/modules",
+                "web/modules/custom"
+            ]
         }
     }
 }

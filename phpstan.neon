@@ -1,0 +1,17 @@
+parameters:
+  # Ignore tests
+  excludes_analyse:
+    - *Test.php
+    - *TestBase.php
+  # PHPStan Level 1
+  level: 1
+  ignoreErrors:
+    - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
+    - '#Unsafe usage of new static#'
+    - '#Call to deprecated method registerLoader()#'
+
+includes:
+  # Add the phpstan-drupal extension & rules.
+  - vendor/mglaman/phpstan-drupal/extension.neon
+  # Add the phpstan deprecation rules.
+  - vendor/phpstan/phpstan-deprecation-rules/rules.neon
