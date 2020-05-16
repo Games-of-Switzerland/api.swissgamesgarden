@@ -17,7 +17,7 @@ Feature: Retrieve Games items from Elasticsearch
     Then the response status code should be 200
     And the response should be in JSON
 
-  Scenario: The Genres facets/aggregations should follow a strict given structure.
+  Scenario: The Games Resource facets/aggregations should follow a strict given structure.
     Given I send a "GET" request to "http://api.gos.test/search/games"
     Then the response status code should be 200
     And the response should be in JSON
