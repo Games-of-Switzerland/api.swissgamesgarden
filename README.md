@@ -2,6 +2,10 @@
 
 Drupal 8 powered & up and running via Docker.
 
+| Build Status | Swagger | Issues | Activity |
+|:-------------------:|:----------------:|:----------------:|:----------------:|
+| ![Build Status](https://img.shields.io/travis/Games-of-Switzerland/gos-server/dev?style=flat-square) | [![Swagger](https://img.shields.io/badge/documentation-swagger-blue)](https://api-gos.museebolo.ch/swagger) | ![GitHub issues](https://img.shields.io/github/issues/Games-of-Switzerland/gos-server?style=flat-square) | ![GitHub last commit](https://img.shields.io/github/last-commit/Games-of-Switzerland/gos-server?style=flat-square) |
+
 ## 🔧 Prerequisites
 
 First of all, you need to have the following tools installed globally on your environment:
