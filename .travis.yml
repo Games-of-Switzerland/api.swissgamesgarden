@@ -17,6 +17,7 @@ before_script:
   - docker --version
   - docker-compose build --pull
   - docker-compose up --build -d
+  - sleep 30
   - docker ps -a
   - docker-compose exec dev docker-as-drupal bootstrap --with-default-content --with-elasticsearch
 
