@@ -1,0 +1,810 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "required": [
+    "hits",
+    "aggregations"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "hits": {
+      "$id": "#/properties/hits",
+      "type": "object",
+      "title": "The hits schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "total": 8,
+          "max_score": 0,
+          "hits": []
+        }
+      ],
+      "required": [
+        "total",
+        "max_score",
+        "hits"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "total": {
+          "$id": "#/properties/hits/properties/total",
+          "type": "integer",
+          "title": "The total schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            8
+          ]
+        },
+        "max_score": {
+          "$id": "#/properties/hits/properties/max_score",
+          "type": "integer",
+          "title": "The max_score schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            0
+          ]
+        },
+        "hits": {
+          "$id": "#/properties/hits/properties/hits",
+          "type": "array",
+          "title": "The hits schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": [],
+          "examples": [
+            []
+          ],
+          "additionalItems": true,
+          "items": {
+            "anyOf": [],
+            "$id": "#/properties/hits/properties/hits/items"
+          }
+        }
+      }
+    },
+    "aggregations": {
+      "$id": "#/properties/aggregations",
+      "type": "object",
+      "title": "The aggregations schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": {},
+      "examples": [
+        {
+          "bundles": {
+            "doc_count": 8,
+            "bundle": {
+              "doc_count_error_upper_bound": 0,
+              "sum_other_doc_count": 0,
+              "buckets": [
+                {
+                  "key": "game",
+                  "doc_count": 4,
+                  "top": {
+                    "hits": {
+                      "total": 4,
+                      "max_score": 1.4e-45,
+                      "hits": [
+                        {
+                          "_index": "development_gos_node_game_en",
+                          "_type": "node",
+                          "_id": "11",
+                          "_score": 0,
+                          "_source": {
+                            "uuid": "a0b7c853-c891-487f-84f9-74dfbce9fa63",
+                            "title": "Farming Simulator 18",
+                            "desc": "Farming Simulator is a series of farming simulation games set in an open world environment and played from a third-person perspective and also a first-person perspective.\r\n",
+                            "is_published": true,
+                            "bundle": "game",
+                            "path": "/games/farming-simulator-18",
+                            "releases": [
+                              {
+                                "date": "2017-06-06",
+                                "platform": "PC",
+                                "platform_keyword": "PC",
+                                "platform_uuid": "304a43fe-3c4d-4587-93e6-a84959d39bf7"
+                              },
+                              {
+                                "date": "2017-06-06",
+                                "platform": "Mac",
+                                "platform_keyword": "Mac",
+                                "platform_uuid": "9e1f8365-4bf3-4189-bf33-c9ac6862dca7"
+                              },
+                              {
+                                "date": "2018-02-15",
+                                "platform": "iOS",
+                                "platform_keyword": "iOS",
+                                "platform_uuid": "6ea716ae-e50f-4a59-ace5-603c353ae20a"
+                              },
+                              {
+                                "date": "2018-02-15",
+                                "platform": "Android",
+                                "platform_keyword": "Android",
+                                "platform_uuid": "8728c551-6d66-4ebd-a264-6af0ceeb96f1"
+                              },
+                              {
+                                "date": "2017-06-06",
+                                "platform": "PlayStation Vita",
+                                "platform_keyword": "PlayStation Vita",
+                                "platform_uuid": "81a726a3-72c0-478c-af74-601c72e88cdc"
+                              },
+                              {
+                                "date": "2017-06-06",
+                                "platform": "Nintendo 3DS",
+                                "platform_keyword": "Nintendo 3DS",
+                                "platform_uuid": "7705472b-c32e-4939-82e6-7f73ec1ab339"
+                              }
+                            ],
+                            "studios": [
+                              {
+                                "name": "Giants Software",
+                                "uuid": "b7e315a4-65a1-4a34-b989-e2a5a96e1f22"
+                              }
+                            ],
+                            "id": "11"
+                          }
+                        },
+                        {
+                          "_index": "development_gos_node_game_en",
+                          "_type": "node",
+                          "_id": "12",
+                          "_score": 0,
+                          "_source": {
+                            "uuid": "08952aa6-e079-496a-8efa-cbb8465d9315",
+                            "title": "Farming Simulator 19",
+                            "desc": "Farming Simulator is a series of farming simulation games set in an open world environment and played from a third-person perspective and also a first-person perspective.\r\n",
+                            "is_published": true,
+                            "bundle": "game",
+                            "path": "/games/farming-simulator-19",
+                            "releases": [
+                              {
+                                "date": "2018-11-20",
+                                "platform": "PC",
+                                "platform_keyword": "PC",
+                                "platform_uuid": "304a43fe-3c4d-4587-93e6-a84959d39bf7"
+                              },
+                              {
+                                "date": "2018-11-20",
+                                "platform": "Mac",
+                                "platform_keyword": "Mac",
+                                "platform_uuid": "9e1f8365-4bf3-4189-bf33-c9ac6862dca7"
+                              },
+                              {
+                                "date": "2018-11-20",
+                                "platform": "PlayStation 4",
+                                "platform_keyword": "PlayStation 4",
+                                "platform_uuid": "e5b2685e-39a7-4726-ad90-d7e3b44c2850"
+                              },
+                              {
+                                "date": "2018-11-20",
+                                "platform": "Xbox One",
+                                "platform_keyword": "Xbox One",
+                                "platform_uuid": "03db2f32-1f7c-4d35-a2c9-42f951ae0bd8"
+                              }
+                            ],
+                            "studios": [
+                              {
+                                "name": "Giants Software",
+                                "uuid": "b7e315a4-65a1-4a34-b989-e2a5a96e1f22"
+                              }
+                            ],
+                            "genres": [
+                              {
+                                "name": "Simulation",
+                                "name_keyword": "Simulation",
+                                "uuid": "1bf8672b-f341-4287-8aa5-9b16c9131441"
+                              }
+                            ],
+                            "id": "12"
+                          }
+                        },
+                        {
+                          "_index": "development_gos_node_game_en",
+                          "_type": "node",
+                          "_id": "9",
+                          "_score": 0,
+                          "_source": {
+                            "uuid": "9bb9538f-5b75-4dc0-99b1-ff11d4e2abdd",
+                            "title": "Don't kill Her",
+                            "desc": "An oddly cute indie game featuring a seemingly dead woman, and you, playing her murderer.\r\n\r\nWhether it be woods carved in the memories of olden days or great steppes shaped by the darkness above, the areas you are about to explore are the fruit of Her very own creation. A world conceived especially for you,&nbsp;it’s sole purpose being for you to find the answers to the questions it raises.\r\n\r\nDon't judge a game by its cover.&nbsp;Don’t Kill Her&nbsp;is not your average kind of game. Its deviant aesthetics, storytelling, gameplay and music, all of these peculiar elements fit into a great design… The true challenge lies in unraveling the mystery surrounding the game itself.\r\n\r\nI wish I could tell you more, but She won’t let me.\r\n",
+                            "is_published": true,
+                            "bundle": "game",
+                            "path": "/games/dont-kill-her",
+                            "genres": [
+                              {
+                                "name": "Platformer",
+                                "name_keyword": "Platformer",
+                                "uuid": "e56e5642-6a2b-4dc1-96c2-924bd7b6de37"
+                              },
+                              {
+                                "name": "Adventure",
+                                "name_keyword": "Adventure",
+                                "uuid": "c80a976b-749c-496d-906c-e6833e46e086"
+                              }
+                            ],
+                            "id": "9"
+                          }
+                        },
+                        {
+                          "_index": "development_gos_node_game_en",
+                          "_type": "node",
+                          "_id": "17",
+                          "_score": 0,
+                          "_source": {
+                            "uuid": "f990d6af-d50d-4b35-a79a-72a1e12a7422",
+                            "title": "Persephone",
+                            "desc": "Following Persephone, the underworld goddess from Greek mythology, players of the 2D isometric game «Persephone» have to get to the bottom of hell, reaching her husband Hades. Each of the levels presents a puzzle with a different environment and unique mechanics. The journey through the underworld is enriched by colorful illustrations and atmospheric sounds.\r\n\r\nIn contradiction to most games, death is not the end, but a vital component in solving the puzzles. Persephone’s dead body is used by her incarnation to overcome various obstacles. The death of the protagonist is an ingenious way of stirring up the puzzle game genre. Where, how and when will you choose to die in order to progress?\r\n",
+                            "is_published": true,
+                            "bundle": "game",
+                            "path": "/games/persephone",
+                            "releases": [
+                              {
+                                "date": null,
+                                "platform": "iOS",
+                                "platform_keyword": "iOS",
+                                "platform_uuid": "6ea716ae-e50f-4a59-ace5-603c353ae20a"
+                              }
+                            ],
+                            "genres": [
+                              {
+                                "name": "Puzzle",
+                                "name_keyword": "Puzzle",
+                                "uuid": "55d245b5-c9cc-43e5-8400-c44ef4f2d8ad"
+                              }
+                            ],
+                            "id": "17"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "people",
+                  "doc_count": 3,
+                  "top": {
+                    "hits": {
+                      "total": 3,
+                      "max_score": 1.4e-45,
+                      "hits": [
+                        {
+                          "_index": "development_gos_node_people_en",
+                          "_type": "node",
+                          "_id": "13",
+                          "_score": 0,
+                          "_source": {
+                            "nid": "13",
+                            "fullname": "Jérémy \"Wuthrer\" Cuany",
+                            "bundle": "people",
+                            "path": "/people/jeremy-wuthrer-cuany",
+                            "id": "13"
+                          }
+                        },
+                        {
+                          "_index": "development_gos_node_people_en",
+                          "_type": "node",
+                          "_id": "14",
+                          "_score": 0,
+                          "_source": {
+                            "nid": "14",
+                            "fullname": "Christian Ammann",
+                            "bundle": "people",
+                            "path": "/people/christian-ammann",
+                            "id": "14"
+                          }
+                        },
+                        {
+                          "_index": "development_gos_node_people_en",
+                          "_type": "node",
+                          "_id": "16",
+                          "_score": 0,
+                          "_source": {
+                            "nid": "16",
+                            "fullname": "Nicolas \"Kaihnn\" Jadaud",
+                            "bundle": "people",
+                            "path": "/people/nicolas-kaihnn-jadaud",
+                            "id": "16"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "key": "studio",
+                  "doc_count": 1,
+                  "top": {
+                    "hits": {
+                      "total": 1,
+                      "max_score": 1.4e-45,
+                      "hits": [
+                        {
+                          "_index": "development_gos_node_studio_en",
+                          "_type": "node",
+                          "_id": "15",
+                          "_score": 0,
+                          "_source": {
+                            "nid": "15",
+                            "name": "Giants Software",
+                            "bundle": "studio",
+                            "path": "/studio/giants-software",
+                            "members": [
+                              {
+                                "role": "CEO",
+                                "fullname": "Christian Ammann"
+                              }
+                            ],
+                            "id": "15"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "required": [
+        "bundles"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "bundles": {
+          "$id": "#/properties/aggregations/properties/bundles",
+          "type": "object",
+          "title": "The bundles schema",
+          "description": "An explanation about the purpose of this instance.",
+          "default": {},
+          "required": [
+            "doc_count",
+            "bundle"
+          ],
+          "additionalProperties": true,
+          "properties": {
+            "doc_count": {
+              "$id": "#/properties/aggregations/properties/bundles/properties/doc_count",
+              "type": "integer",
+              "title": "The doc_count schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": 0,
+              "examples": [
+                8
+              ]
+            },
+            "bundle": {
+              "$id": "#/properties/aggregations/properties/bundles/properties/bundle",
+              "type": "object",
+              "title": "The bundle schema",
+              "description": "An explanation about the purpose of this instance.",
+              "default": {},
+              "required": [
+                "buckets"
+              ],
+              "additionalProperties": true,
+              "properties": {
+                "buckets": {
+                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets",
+                  "type": "array",
+                  "title": "The buckets schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "required": [
+                          "key",
+                          "doc_count",
+                          "top"
+                        ],
+                        "additionalProperties": true,
+                        "properties": {
+                          "key": {
+                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/key",
+                            "type": "string",
+                            "title": "The key schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": "",
+                            "examples": [
+                              "game"
+                            ]
+                          },
+                          "doc_count": {
+                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/doc_count",
+                            "type": "integer",
+                            "title": "The doc_count schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": 0,
+                            "examples": [
+                              4
+                            ]
+                          },
+                          "top": {
+                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top",
+                            "type": "object",
+                            "title": "The top schema",
+                            "description": "An explanation about the purpose of this instance.",
+                            "default": {},
+                            "required": [
+                              "hits"
+                            ],
+                            "additionalProperties": true,
+                            "properties": {
+                              "hits": {
+                                "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits",
+                                "type": "object",
+                                "title": "The hits schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": {},
+                                "required": [
+                                  "total",
+                                  "max_score",
+                                  "hits"
+                                ],
+                                "additionalProperties": true,
+                                "properties": {
+                                  "total": {
+                                    "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/total",
+                                    "type": "integer",
+                                    "title": "The total schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": 0,
+                                    "examples": [
+                                      4
+                                    ]
+                                  },
+                                  "max_score": {
+                                    "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/max_score",
+                                    "type": "number",
+                                    "title": "The max_score schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": 0.0,
+                                    "examples": [
+                                      1.4e-45
+                                    ]
+                                  },
+                                  "hits": {
+                                    "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits",
+                                    "type": "array",
+                                    "title": "The hits schema",
+                                    "description": "An explanation about the purpose of this instance.",
+                                    "default": [],
+                                    "additionalItems": true,
+                                    "items": {
+                                      "anyOf": [
+                                        {
+                                          "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0",
+                                          "type": "object",
+                                          "title": "The first anyOf schema",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "default": {},
+                                          "required": [
+                                            "_index",
+                                            "_type",
+                                            "_id",
+                                            "_score",
+                                            "_source"
+                                          ],
+                                          "additionalProperties": true,
+                                          "properties": {
+                                            "_index": {
+                                              "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_index",
+                                              "type": "string",
+                                              "title": "The _index schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "development_gos_node_game_en"
+                                              ]
+                                            },
+                                            "_type": {
+                                              "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_type",
+                                              "type": "string",
+                                              "title": "The _type schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "node"
+                                              ]
+                                            },
+                                            "_id": {
+                                              "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_id",
+                                              "type": "string",
+                                              "title": "The _id schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": "",
+                                              "examples": [
+                                                "11"
+                                              ]
+                                            },
+                                            "_score": {
+                                              "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_score",
+                                              "type": "integer",
+                                              "title": "The _score schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": 0,
+                                              "examples": [
+                                                0
+                                              ]
+                                            },
+                                            "_source": {
+                                              "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source",
+                                              "type": "object",
+                                              "title": "The _source schema",
+                                              "description": "An explanation about the purpose of this instance.",
+                                              "default": {},
+                                              "required": [
+                                                "uuid",
+                                                "title",
+                                                "desc",
+                                                "is_published",
+                                                "bundle",
+                                                "path",
+                                                "releases",
+                                                "studios",
+                                                "id"
+                                              ],
+                                              "additionalProperties": true,
+                                              "properties": {
+                                                "uuid": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/uuid",
+                                                  "type": "string",
+                                                  "title": "The uuid schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "a0b7c853-c891-487f-84f9-74dfbce9fa63"
+                                                  ]
+                                                },
+                                                "title": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/title",
+                                                  "type": "string",
+                                                  "title": "The title schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "Farming Simulator 18"
+                                                  ]
+                                                },
+                                                "desc": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/desc",
+                                                  "type": "string",
+                                                  "title": "The desc schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "Farming Simulator is a series of farming simulation games set in an open world environment and played from a third-person perspective and also a first-person perspective.\r\n"
+                                                  ]
+                                                },
+                                                "is_published": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/is_published",
+                                                  "type": "boolean",
+                                                  "title": "The is_published schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": false,
+                                                  "examples": [
+                                                    true
+                                                  ]
+                                                },
+                                                "bundle": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/bundle",
+                                                  "type": "string",
+                                                  "title": "The bundle schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "game"
+                                                  ]
+                                                },
+                                                "path": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/path",
+                                                  "type": "string",
+                                                  "title": "The path schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "/games/farming-simulator-18"
+                                                  ]
+                                                },
+                                                "releases": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/releases",
+                                                  "type": "array",
+                                                  "title": "The releases schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": [],
+                                                  "examples": [
+                                                    [
+                                                      {
+                                                        "date": "2017-06-06",
+                                                        "platform": "PC",
+                                                        "platform_keyword": "PC",
+                                                        "platform_uuid": "304a43fe-3c4d-4587-93e6-a84959d39bf7"
+                                                      },
+                                                      {
+                                                        "date": "2017-06-06",
+                                                        "platform": "Mac",
+                                                        "platform_keyword": "Mac",
+                                                        "platform_uuid": "9e1f8365-4bf3-4189-bf33-c9ac6862dca7"
+                                                      }
+                                                    ]
+                                                  ],
+                                                  "additionalItems": true,
+                                                  "items": {
+                                                    "anyOf": [
+                                                      {
+                                                        "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/releases/items/anyOf/0",
+                                                        "type": "object",
+                                                        "title": "The first anyOf schema",
+                                                        "description": "An explanation about the purpose of this instance.",
+                                                        "default": {},
+                                                        "examples": [
+                                                          {
+                                                            "date": "2017-06-06",
+                                                            "platform": "PC",
+                                                            "platform_keyword": "PC",
+                                                            "platform_uuid": "304a43fe-3c4d-4587-93e6-a84959d39bf7"
+                                                          }
+                                                        ],
+                                                        "required": [
+                                                          "date",
+                                                          "platform",
+                                                          "platform_keyword",
+                                                          "platform_uuid"
+                                                        ],
+                                                        "additionalProperties": true,
+                                                        "properties": {
+                                                          "date": {
+                                                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/releases/items/anyOf/0/properties/date",
+                                                            "type": "string",
+                                                            "title": "The date schema",
+                                                            "description": "An explanation about the purpose of this instance.",
+                                                            "default": "",
+                                                            "examples": [
+                                                              "2017-06-06"
+                                                            ]
+                                                          },
+                                                          "platform": {
+                                                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/releases/items/anyOf/0/properties/platform",
+                                                            "type": "string",
+                                                            "title": "The platform schema",
+                                                            "description": "An explanation about the purpose of this instance.",
+                                                            "default": "",
+                                                            "examples": [
+                                                              "PC"
+                                                            ]
+                                                          },
+                                                          "platform_keyword": {
+                                                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/releases/items/anyOf/0/properties/platform_keyword",
+                                                            "type": "string",
+                                                            "title": "The platform_keyword schema",
+                                                            "description": "An explanation about the purpose of this instance.",
+                                                            "default": "",
+                                                            "examples": [
+                                                              "PC"
+                                                            ]
+                                                          },
+                                                          "platform_uuid": {
+                                                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/releases/items/anyOf/0/properties/platform_uuid",
+                                                            "type": "string",
+                                                            "title": "The platform_uuid schema",
+                                                            "description": "An explanation about the purpose of this instance.",
+                                                            "default": "",
+                                                            "examples": [
+                                                              "304a43fe-3c4d-4587-93e6-a84959d39bf7"
+                                                            ]
+                                                          }
+                                                        }
+                                                      }
+                                                    ],
+                                                    "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/releases/items"
+                                                  }
+                                                },
+                                                "studios": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/studios",
+                                                  "type": "array",
+                                                  "title": "The studios schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": [],
+                                                  "examples": [
+                                                    [
+                                                      {
+                                                        "name": "Giants Software",
+                                                        "uuid": "b7e315a4-65a1-4a34-b989-e2a5a96e1f22"
+                                                      }
+                                                    ]
+                                                  ],
+                                                  "additionalItems": true,
+                                                  "items": {
+                                                    "anyOf": [
+                                                      {
+                                                        "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/studios/items/anyOf/0",
+                                                        "type": "object",
+                                                        "title": "The first anyOf schema",
+                                                        "description": "An explanation about the purpose of this instance.",
+                                                        "default": {},
+                                                        "examples": [
+                                                          {
+                                                            "name": "Giants Software",
+                                                            "uuid": "b7e315a4-65a1-4a34-b989-e2a5a96e1f22"
+                                                          }
+                                                        ],
+                                                        "required": [
+                                                          "name",
+                                                          "uuid"
+                                                        ],
+                                                        "additionalProperties": true,
+                                                        "properties": {
+                                                          "name": {
+                                                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/studios/items/anyOf/0/properties/name",
+                                                            "type": "string",
+                                                            "title": "The name schema",
+                                                            "description": "An explanation about the purpose of this instance.",
+                                                            "default": "",
+                                                            "examples": [
+                                                              "Giants Software"
+                                                            ]
+                                                          },
+                                                          "uuid": {
+                                                            "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/studios/items/anyOf/0/properties/uuid",
+                                                            "type": "string",
+                                                            "title": "The uuid schema",
+                                                            "description": "An explanation about the purpose of this instance.",
+                                                            "default": "",
+                                                            "examples": [
+                                                              "b7e315a4-65a1-4a34-b989-e2a5a96e1f22"
+                                                            ]
+                                                          }
+                                                        }
+                                                      }
+                                                    ],
+                                                    "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/studios/items"
+                                                  }
+                                                },
+                                                "id": {
+                                                  "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/id",
+                                                  "type": "string",
+                                                  "title": "The id schema",
+                                                  "description": "An explanation about the purpose of this instance.",
+                                                  "default": "",
+                                                  "examples": [
+                                                    "11"
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items/anyOf/0/properties/top/properties/hits/properties/hits/items"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "$id": "#/properties/aggregations/properties/bundles/properties/bundle/properties/buckets/items"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
