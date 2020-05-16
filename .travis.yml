@@ -13,12 +13,10 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
-  - docker-compose --version
-  - docker --version
   - docker-compose build --pull
   - docker-compose up --build -d
+  # wait on Docker to be ready, especially MariaDB that takes many seconds to be up.
   - sleep 30
-  - docker ps -a
   - docker-compose exec dev docker-as-drupal bootstrap --with-default-content --with-elasticsearch
 
 script:
