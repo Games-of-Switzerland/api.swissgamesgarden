@@ -12,6 +12,7 @@ permissions:
   - 'access comments'
   - 'access content'
   - 'access site-wide contact form'
+  - 'restful get elasticsearch_autocomplete_resource'
   - 'restful get elasticsearch_games_resource'
   - 'search content'
   - 'use text format restricted_html'
