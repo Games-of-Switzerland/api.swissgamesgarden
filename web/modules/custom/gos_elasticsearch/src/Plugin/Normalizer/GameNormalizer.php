@@ -35,6 +35,8 @@ class GameNormalizer extends ContentEntityNormalizer {
       'title' => $object->getTitle(),
       'desc' => !$object->get('body')->isEmpty() ? strip_tags($object->body->value) : NULL,
       'is_published' => $object->isPublished(),
+      'bundle' => $object->bundle(),
+      'path' => $object->toUrl('canonical')->toString(),
     ];
 
     if (!$object->get('field_releases')->isEmpty()) {

@@ -118,6 +118,13 @@ class GameNodeIndex extends NodeIndexBase {
               'type' => 'text',
               'analyzer' => 'english_language_analyzer',
             ],
+            'path' => [
+              'type' => 'text',
+              'index' => FALSE,
+            ],
+            'bundle' => [
+              'type' => 'keyword',
+            ],
             'releases' => [
               'type' => 'nested',
               'dynamic' => FALSE,

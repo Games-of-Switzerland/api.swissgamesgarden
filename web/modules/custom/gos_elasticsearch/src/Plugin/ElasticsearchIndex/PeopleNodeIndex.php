@@ -51,8 +51,14 @@ class PeopleNodeIndex extends NodeIndexBase {
             ],
             'fullname' => [
               'type' => 'text',
-              'analyzer' => 'phonetic_name_analyzer',
-              'search_analyzer' => 'ngram_analyzer_search',
+              'analyzer' => 'people_fullname_analyzer',
+            ],
+            'path' => [
+              'type' => 'text',
+              'index' => FALSE,
+            ],
+            'bundle' => [
+              'type' => 'keyword',
             ],
           ],
         ],

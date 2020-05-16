@@ -33,6 +33,8 @@ class StudioNormalizer extends ContentEntityNormalizer {
     $data = [
       'nid' => $object->id(),
       'name' => $object->getTitle(),
+      'bundle' => $object->bundle(),
+      'path' => $object->toUrl('canonical')->toString(),
     ];
 
     if (!$object->get('field_members')->isEmpty()) {
