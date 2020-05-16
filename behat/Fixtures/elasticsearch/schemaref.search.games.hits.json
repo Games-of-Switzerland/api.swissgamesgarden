@@ -81,7 +81,9 @@
                       "is_published",
                       "releases",
                       "studios",
-                      "id"
+                      "id",
+                      "bundle",
+                      "path"
                     ],
                     "additionalProperties": true,
                     "properties": {
@@ -115,6 +117,22 @@
                         "title": "The is_published schema",
                         "examples": [
                           true
+                        ]
+                      },
+                      "path": {
+                        "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/path",
+                        "type": "string",
+                        "title": "The uuid schema",
+                        "examples": [
+                          "/games/farming-simulator-18"
+                        ]
+                      },
+                      "bundle": {
+                        "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/bundle",
+                        "type": "string",
+                        "title": "The bundle schema",
+                        "examples": [
+                          "game"
                         ]
                       },
                       "releases": {

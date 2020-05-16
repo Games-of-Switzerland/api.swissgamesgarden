@@ -33,6 +33,8 @@ class PeopleNormalizer extends ContentEntityNormalizer {
     return [
       'nid' => $object->id(),
       'fullname' => $object->getTitle(),
+      'bundle' => $object->bundle(),
+      'path' => $object->toUrl('canonical')->toString(),
     ];
   }
 

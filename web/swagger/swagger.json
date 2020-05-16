@@ -19,6 +19,45 @@
     "http"
   ],
   "paths": {
+    "/autocomplete": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Proxy to access to Elasticsearch Games/People/Studio Documents as Autocomplete",
+        "description": "Search thought multiple content (games, people, studio, ...). The response will always return a maximum of 5 items per type.",
+        "operationId": "autocompleteWide",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Keywords to use for the search",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/search/games": {
       "get": {
         "tags": [

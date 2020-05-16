@@ -35,9 +35,26 @@ class PeopleNodeIndex extends NodeIndexBase {
           'analysis' => ['filter' => [], 'analyzer' => [], 'tokenizer' => []],
         ],
       ];
-      $settings['body']['analysis']['tokenizer'] = array_merge($settings['body']['analysis']['tokenizer'], $this->getTokenizersTitleAndNoun());
-      $settings['body']['analysis']['filter'] = array_merge($settings['body']['analysis']['filter'], $this->getFiltersTitleAndNoun());
-      $settings['body']['analysis']['analyzer'] = array_merge($settings['body']['analysis']['analyzer'], $this->getAnalyzersTitleAndNoun());
+      $settings['body']['analysis']['filter'] = [
+        'people_fullname_filter' => [
+          'type' => 'edge_ngram',
+          'min_gram' => 2,
+          'max_gram' => 10,
+          'token_chars' => [
+            'letter',
+          ],
+        ],
+      ];
+      $settings['body']['analysis']['analyzer'] = [
+        'people_fullname_analyzer' => [
+          'tokenizer' => 'standard',
+          'filter' => [
+            'lowercase',
+            'people_fullname_filter',
+            'asciifolding',
+          ],
+        ],
+      ];
       $this->client->indices()->putSettings($settings);
 
       $mapping = [
@@ -51,8 +68,14 @@ class PeopleNodeIndex extends NodeIndexBase {
             ],
             'fullname' => [
               'type' => 'text',
-              'analyzer' => 'phonetic_name_analyzer',
-              'search_analyzer' => 'ngram_analyzer_search',
+              'analyzer' => 'people_fullname_analyzer',
+            ],
+            'path' => [
+              'type' => 'text',
+              'index' => FALSE,
+            ],
+            'bundle' => [
+              'type' => 'keyword',
             ],
           ],
         ],
