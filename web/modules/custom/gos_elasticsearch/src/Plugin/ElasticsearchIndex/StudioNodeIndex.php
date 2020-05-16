@@ -35,9 +35,32 @@ class StudioNodeIndex extends NodeIndexBase {
           'analysis' => ['filter' => [], 'analyzer' => [], 'tokenizer' => []],
         ],
       ];
-      $settings['body']['analysis']['filter'] = array_merge($settings['body']['analysis']['filter'], $this->getFiltersTitleAndNoun());
-      $settings['body']['analysis']['tokenizer'] = array_merge($settings['body']['analysis']['tokenizer'], $this->getTokenizersTitleAndNoun());
-      $settings['body']['analysis']['analyzer'] = array_merge($settings['body']['analysis']['analyzer'], $this->getAnalyzersTitleAndNoun());
+      $settings['body']['analysis']['filter'] = [
+        'english_stemmer' => [
+          'type' => 'stemmer',
+          'language' => 'english',
+        ],
+        'studio_name_filter' => [
+          'type' => 'edge_ngram',
+          'min_gram' => 2,
+          'max_gram' => 10,
+          'token_chars' => [
+            'letter',
+            'digit',
+          ],
+        ],
+      ];
+      $settings['body']['analysis']['analyzer'] = [
+        'studio_name_analyzer' => [
+          'tokenizer' => 'standard',
+          'filter' => [
+            'lowercase',
+            'asciifolding',
+            'studio_name_filter',
+            'english_stemmer',
+          ],
+        ],
+      ];
       $this->client->indices()->putSettings($settings);
 
       $mapping = [
@@ -51,22 +74,14 @@ class StudioNodeIndex extends NodeIndexBase {
             ],
             'name' => [
               'type' => 'text',
-              'analyzer' => 'phonetic_name_analyzer',
-              'search_analyzer' => 'ngram_analyzer_search',
+              'analyzer' => 'studio_name_analyzer',
             ],
-            'members' => [
-              'type' => 'nested',
-              'dynamic' => FALSE,
-              'properties' => [
-                'fullname' => [
-                  'type' => 'text',
-                  'analyzer' => 'phonetic_name_analyzer',
-                ],
-                'role' => [
-                  'type' => 'text',
-                  'analyzer' => 'ngram_analyzer',
-                ],
-              ],
+            'path' => [
+              'type' => 'text',
+              'index' => FALSE,
+            ],
+            'bundle' => [
+              'type' => 'keyword',
             ],
           ],
         ],
