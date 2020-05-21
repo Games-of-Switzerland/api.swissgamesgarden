@@ -326,6 +326,10 @@ You may access to the *staging* or *production* REST specification with those li
 - Production: [api.gos.ch/swagger](https://api.gos.ch/swagger)
 - Staging: [staging-api.gos.ch/swagger](https://staging-api.gos.ch/swagger)
 
+Customs modules:
+
+ - [Migration](./web/modules/custom/gos_migrate/README.md)
+
 ## 🚑 Troubleshootings
 
 ### Error while running Elasticsearch Setup ?
