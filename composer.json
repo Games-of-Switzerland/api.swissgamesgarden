@@ -39,6 +39,8 @@
         "drupal/fieldable_path": "^1.0@RC",
         "drupal/focal_point": "^1.2",
         "drupal/jsonapi_extras": "^3.13",
+        "drupal/migrate_source_csv": "^3.4",
+        "drupal/migrate_tools": "^5.0",
         "drupal/pathauto": "^1.6",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/restui": "^1.18",
