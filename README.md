@@ -161,10 +161,10 @@ cat ./scripts/hooks/post-commit >> ./.git/hooks/post-commit
 ## After a git pull/merge
 
 ```bash
-drush cr
-drush cim
-drush updatedb
-drush cr
+docker-compose down
+docker-compose build --pull
+docker-compose up --build -d
+docker-compose exec dev docker-as-drupal db-reset --with-default-content --with-elasticsearch
 ```
 
 Prepend every command with `docker-compose exec dev` to run them on the Docker
