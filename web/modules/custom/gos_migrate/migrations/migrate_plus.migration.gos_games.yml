@@ -80,7 +80,6 @@ process:
       plugin: array_build_add
       key: 'date'
       source_value: '@processed_release_date'
-#      source_value: release_date
     -
       plugin: sub_process
       process:
