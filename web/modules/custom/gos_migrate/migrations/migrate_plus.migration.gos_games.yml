@@ -53,6 +53,21 @@ process:
       method: row
       source: game_title
 
+  processed_release_date:
+    -
+      plugin: format_date_multiple
+      from_formats:
+        - 'Y'
+        - 'Y-m'
+        - 'Y-n'
+        - 'Y-m-d'
+      to_formats:
+        - 'Y-01-01'
+        - 'Y-m-01'
+        - 'Y-m-01'
+        - 'Y-m-d'
+      on_error: nullable
+
   field_releases:
     -
       plugin: explode
@@ -64,7 +79,8 @@ process:
     -
       plugin: array_build_add
       key: 'date'
-      source_value: release_date
+      source_value: '@processed_release_date'
+#      source_value: release_date
     -
       plugin: sub_process
       process:
