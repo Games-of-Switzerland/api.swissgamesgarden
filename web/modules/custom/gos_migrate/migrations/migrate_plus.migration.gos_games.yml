@@ -43,15 +43,39 @@ source:
     7:
       name: sponsor
     8:
-      name: early_access
+      name: early_access_date
     9:
-      name: release
+      name: release_date
 process:
   title:
     -
       plugin: skip_on_empty
       method: row
       source: game_title
+
+  field_releases:
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+      source: platforms
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_generate
+            value_key: name
+            bundle_key: vid
+            bundle: platform
+            entity_type: taxonomy_term
+            ignore_case: true
 
 destination:
   plugin: entity:node
