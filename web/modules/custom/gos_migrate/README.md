@@ -22,10 +22,10 @@ Before starting a migration,
 
 ## Migrate
 
-1. Migrate all the platforms (PS4, Xbox, ...)
+1. Migrate all games with appropriates platforms
 
   ```bash
-  $ drush mim gos_platforms
+  $ drush mim gos_games
   ```
 
 1. Run a full Elasticsearch indexation process
