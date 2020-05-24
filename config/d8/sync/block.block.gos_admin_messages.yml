@@ -1,17 +1,17 @@
-uuid: c48722d6-59b4-4bc8-91cf-0df98d5e15fe
+uuid: c56adee1-3f5e-4d95-b148-3ff5038d3379
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - stark
+    - gos_admin
 _core:
   default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
-id: stark_messages
-theme: stark
+id: gos_admin_messages
+theme: gos_admin
 region: highlighted
-weight: 0
+weight: -3
 provider: null
 plugin: system_messages_block
 settings:

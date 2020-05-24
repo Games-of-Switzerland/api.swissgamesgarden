@@ -1,17 +1,17 @@
-uuid: 0716df03-1b90-4ecf-9242-f59c5025cec3
+uuid: df9a5f24-1885-45d7-895d-0ca349239058
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - stark
+    - gos_admin
 _core:
   default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
-id: stark_breadcrumbs
-theme: stark
+id: gos_admin_breadcrumbs
+theme: gos_admin
 region: breadcrumb
-weight: 0
+weight: -4
 provider: null
 plugin: system_breadcrumb_block
 settings:

@@ -1,15 +1,15 @@
-uuid: 53dd89a4-f0bd-453c-a817-082fe0e33198
+uuid: cf7c032b-86f5-43d1-9397-a643047148d0
 langcode: en
 status: true
 dependencies:
   theme:
-    - stark
+    - gos_admin
 _core:
   default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
-id: stark_page_title
-theme: stark
-region: content
-weight: -50
+id: gos_admin_page_title
+theme: gos_admin
+region: header
+weight: -3
 provider: null
 plugin: page_title_block
 settings:
