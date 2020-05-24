@@ -44,12 +44,21 @@ process:
       delimiter: ","
       limit: 10
     -
-      plugin: entity_generate
-      value_key: name
-      bundle_key: vid
-      bundle: platform
-      entity_type: taxonomy_term
-      ignore_case: true
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        title:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_generate
+            value_key: name
+            bundle_key: vid
+            bundle: platform
+            entity_type: taxonomy_term
+            ignore_case: true
 
 destination:
   plugin: noop
