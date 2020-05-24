@@ -9,6 +9,27 @@
  * Implements hook_migration_plugins_alter().
  */
 function gos_migrate_migration_plugins_alter(array &$definitions) {
-  $definitions['gos_platforms']['source']['path'] = drupal_get_path('module', 'gos_migrate') . $definitions['gos_platforms']['source']['path'];
-  $definitions['gos_games']['source']['path'] = drupal_get_path('module', 'gos_migrate') . $definitions['gos_games']['source']['path'];
+  $module_path = drupal_get_path('module', 'gos_migrate');
+
+  foreach (array_keys($definitions) as $migration_plugin_id) {
+    if (mb_strpos($migration_plugin_id, 'gos_') !== 0) {
+      continue;
+    }
+
+    if (!isset($definitions[$migration_plugin_id]['source'], $definitions[$migration_plugin_id]['source']['plugin'], $definitions[$migration_plugin_id]['source']['path'])) {
+      continue;
+    }
+
+    if (is_file($definitions[$migration_plugin_id]['source']['path'])) {
+      continue;
+    }
+
+    $path = $module_path . $definitions[$migration_plugin_id]['source']['path'];
+
+    if (!is_file($path)) {
+      continue;
+    }
+
+    $definitions[$migration_plugin_id]['source']['path'] = $path;
+  }
 }
