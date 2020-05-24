@@ -28,6 +28,12 @@ Before starting a migration,
   $ drush mim gos_platforms
   ```
 
+1. Migrate all genres (Adventure, Sport, ...)
+
+  ```bash
+  $ drush mim gos_genres
+  ```
+
 1. Migrate all studios with appropriates team-member(s)
 
   ```bash
