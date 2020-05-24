@@ -55,6 +55,7 @@ module:
   toolbar: 0
   update: 0
   user: 0
+  views_ef_fieldset: 0
   views_ui: 0
   menu_link_content: 1
   pathauto: 1

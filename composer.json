@@ -45,6 +45,7 @@
         "drupal/pathauto": "^1.6",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/restui": "^1.18",
+        "drupal/views_ef_fieldset": "^1.4",
         "drush/drush": "^9.0.0",
         "sebastian/phpcpd": "^4.0",
         "vlucas/phpdotenv": "^2.4",

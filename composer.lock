@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e82170621195156735defc47bfda6a49",
+    "content-hash": "85c542632bb192de217f8c3fec6df33d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2475,6 +2475,9 @@
                         "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                         "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                     }
+                },
+                "patches_applied": {
+                    "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2020-05-23/drupal-generalize-taxonomyindextid-filter-2429699-325.patch"
                 }
             },
             "autoload": {
@@ -3465,6 +3468,82 @@
             "homepage": "https://www.drupal.org/project/token",
             "support": {
                 "source": "https://git.drupalcode.org/project/token"
+            }
+        },
+        {
+            "name": "drupal/views_ef_fieldset",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/views_ef_fieldset.git",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_ef_fieldset-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "0165aae3ad6f067b0fd3138c0456f95300292458"
+            },
+            "require": {
+                "drupal/core": "*",
+                "php": ">=7"
+            },
+            "require-dev": {
+                "drupol/drupal-conventions": "^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1561312086",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "grumphp": {
+                    "config-default-path": "vendor/drupol/drupal-conventions/config/drupal8/grumphp.yml"
+                },
+                "composer-exit-on-patch-failure": true,
+                "enable-patching": true,
+                "patches": {
+                    "drupal/core": {
+                        "https://www.drupal.org/project/drupal/issues/2943172": "https://www.drupal.org/files/issues/2018-07-05/2943172-kernel-test-base-3.patch"
+                    }
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Drupal\\Tests\\views_ef_fieldset\\": "./tests/"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "scripts": {
+                "grumphp": [
+                    "./vendor/bin/grumphp run"
+                ]
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Pol Dellaiera",
+                    "homepage": "https://www.drupal.org/user/47194",
+                    "email": "pol.dellaiera@protonmail.com"
+                },
+                {
+                    "name": "ciss",
+                    "homepage": "https://www.drupal.org/user/1632364"
+                }
+            ],
+            "description": "Provide an option to render the 'exposed form widgets' in a fieldset.",
+            "homepage": "https://drupal.org/project/views_field_formatter",
+            "support": {
+                "source": "https://git.drupalcode.org/project/views_ef_fieldset"
             }
         },
         {
