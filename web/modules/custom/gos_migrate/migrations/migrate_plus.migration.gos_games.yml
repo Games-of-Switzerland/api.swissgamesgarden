@@ -35,7 +35,7 @@ source:
     3:
       name: website
     4:
-      name: studio
+      name: studios
     5:
       name: location
     6:
@@ -97,8 +97,42 @@ process:
             entity_type: taxonomy_term
             ignore_case: true
 
+  field_studios:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: studios
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+
+          -
+            plugin: trim
+            mask: "«"
+            source: 'value'
+          -
+            plugin: trim
+            mask: "»"
+          -
+            plugin: entity_lookup
+            value_key: title
+            bundle_key: type
+            bundle: studio
+            entity_type: node
+            ignore_case: true
+            access_check: false
+
 destination:
   plugin: entity:node
   default_bundle: game
 
-
+migration_dependencies:
+  required:
+    - default:gos_studios
