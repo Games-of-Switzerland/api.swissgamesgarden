@@ -90,12 +90,13 @@ process:
             plugin: trim
             source: 'value'
           -
-            plugin: entity_generate
+            plugin: entity_lookup
             value_key: name
             bundle_key: vid
             bundle: platform
             entity_type: taxonomy_term
             ignore_case: true
+            access_check: false
 
   field_studios:
     -
@@ -136,3 +137,4 @@ destination:
 migration_dependencies:
   required:
     - default:gos_studios
+    - default:gos_platforms

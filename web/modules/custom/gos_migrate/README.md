@@ -22,6 +22,12 @@ Before starting a migration,
 
 ## Migrate
 
+1. Migrate all platforms (Playstation 4, macOS, Xbox, ...)
+
+  ```bash
+  $ drush mim gos_platforms
+  ```
+
 1. Migrate all studios with appropriates team-member(s)
 
   ```bash
