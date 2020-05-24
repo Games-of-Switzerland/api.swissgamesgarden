@@ -113,11 +113,12 @@ process:
       plugin: sub_process
       process:
         target_id:
-
+          -
+            plugin: trim
+            source: 'value'
           -
             plugin: trim
             mask: "«"
-            source: 'value'
           -
             plugin: trim
             mask: "»"
