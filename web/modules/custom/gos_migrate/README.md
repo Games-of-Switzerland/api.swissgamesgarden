@@ -22,7 +22,13 @@ Before starting a migration,
 
 ## Migrate
 
-1. Migrate all games with appropriates platforms
+1. Migrate all studios with appropriates team-member(s)
+
+  ```bash
+  $ drush mim gos_studios
+  ```
+
+1. Migrate all games that include: platforms (on the-fly-creation) & studios (lookup).
 
   ```bash
   $ drush mim gos_games
