@@ -22,8 +22,13 @@ class ReleaseFieldFormatter extends EntityReferenceLabelFormatter {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    // Does not actually output anything.
-    return [];
+    $elements = [];
+
+    foreach ($items as $delta => $item) {
+      $elements[$delta] = ['#markup' => $item->target_id . ' ' . $item->date_value];
+    }
+
+    return $elements;
   }
 
 }
