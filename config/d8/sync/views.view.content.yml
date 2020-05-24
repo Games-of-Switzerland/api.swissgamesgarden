@@ -610,7 +610,118 @@ display:
         description: 'Find and manage content'
         menu_name: admin
         weight: -10
-      display_extenders: {  }
+      display_extenders:
+        views_ef_fieldset:
+          views_ef_fieldset:
+            enabled: 1
+            options:
+              sort:
+                root:
+                  container_type: details
+                  title: Filters
+                  description: ''
+                  open: '1'
+                  weight: '0'
+                  id: root
+                  pid: ''
+                  depth: '0'
+                  type: container
+                container-0:
+                  container_type: container
+                  title: 'Container 0'
+                  description: ''
+                  weight: '-13'
+                  open: 0
+                  id: container-0
+                  pid: root
+                  depth: '1'
+                  type: container
+                status:
+                  weight: '-13'
+                  id: status
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                type:
+                  weight: '-12'
+                  id: type
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                title:
+                  weight: '-11'
+                  id: title
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                langcode:
+                  weight: '-10'
+                  id: langcode
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                container-1:
+                  container_type: details
+                  title: 'Container 1'
+                  description: ''
+                  weight: '-11'
+                  open: 0
+                  id: container-1
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-2:
+                  container_type: details
+                  title: 'Container 2'
+                  description: ''
+                  weight: '-10'
+                  open: 0
+                  id: container-2
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-3:
+                  container_type: details
+                  title: 'Container 3'
+                  description: ''
+                  weight: '-9'
+                  open: 0
+                  id: container-3
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-4:
+                  container_type: details
+                  title: 'Container 4'
+                  description: ''
+                  weight: '-8'
+                  open: 0
+                  id: container-4
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-5:
+                  container_type: container
+                  title: 'Container 5'
+                  description: ''
+                  weight: '-7'
+                  open: 0
+                  id: container-5
+                  pid: root
+                  depth: '1'
+                  type: container
+                submit:
+                  weight: '-13'
+                  id: submit
+                  pid: container-5
+                  depth: '2'
+                  type: buttons
+                reset:
+                  weight: '-12'
+                  id: reset
+                  pid: container-5
+                  depth: '2'
+                  type: buttons
       fields:
         node_bulk_form:
           id: node_bulk_form
@@ -1048,7 +1159,150 @@ display:
     display_title: Games
     position: 2
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        views_ef_fieldset:
+          views_ef_fieldset:
+            enabled: 1
+            options:
+              sort:
+                root:
+                  container_type: details
+                  title: Filters
+                  description: ''
+                  open: '1'
+                  weight: '0'
+                  id: root
+                  pid: ''
+                  depth: '0'
+                  type: container
+                container-0:
+                  container_type: container
+                  title: 'Container 0'
+                  description: ''
+                  weight: '-17'
+                  open: 0
+                  id: container-0
+                  pid: root
+                  depth: '1'
+                  type: container
+                status:
+                  weight: '-17'
+                  id: status
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                title:
+                  weight: '-16'
+                  id: title
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                langcode:
+                  weight: '-15'
+                  id: langcode
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                container-1:
+                  container_type: container
+                  title: 'Container 1'
+                  description: ''
+                  weight: '-16'
+                  open: 0
+                  id: container-1
+                  pid: root
+                  depth: '1'
+                  type: container
+                field_genres_target_id:
+                  weight: '-17'
+                  id: field_genres_target_id
+                  pid: container-1
+                  depth: '2'
+                  type: filter
+                field_releases_date_value:
+                  weight: '-16'
+                  id: field_releases_date_value
+                  pid: container-1
+                  depth: '2'
+                  type: filter
+                field_studios_target_id:
+                  weight: '-15'
+                  id: field_studios_target_id
+                  pid: container-1
+                  depth: '2'
+                  type: filter
+                container-7:
+                  container_type: details
+                  title: 'Container 7'
+                  description: ''
+                  weight: '-14'
+                  open: 0
+                  id: container-7
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-2:
+                  container_type: details
+                  title: 'Container 2'
+                  description: ''
+                  weight: '-13'
+                  open: 0
+                  id: container-2
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-3:
+                  container_type: details
+                  title: 'Container 3'
+                  description: ''
+                  weight: '-12'
+                  open: 0
+                  id: container-3
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-4:
+                  container_type: details
+                  title: 'Container 4'
+                  description: ''
+                  weight: '-11'
+                  open: 0
+                  id: container-4
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-5:
+                  container_type: details
+                  title: 'Container 5'
+                  description: ''
+                  weight: '-10'
+                  open: 0
+                  id: container-5
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-6:
+                  container_type: container
+                  title: 'Container 6'
+                  description: ''
+                  weight: '-9'
+                  open: 0
+                  id: container-6
+                  pid: root
+                  depth: '1'
+                  type: container
+                submit:
+                  weight: '-17'
+                  id: submit
+                  pid: container-6
+                  depth: '2'
+                  type: buttons
+                reset:
+                  weight: '-16'
+                  id: reset
+                  pid: container-6
+                  depth: '2'
+                  type: buttons
       display_description: ''
       title: Games
       defaults:
@@ -1060,6 +1314,7 @@ display:
         style: false
         row: false
         relationships: false
+        exposed_form: false
       fields:
         node_bulk_form:
           id: node_bulk_form
@@ -1981,6 +2236,16 @@ display:
         type: fields
         options: {  }
       relationships: {  }
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
     cache_metadata:
       max-age: 0
       contexts:
@@ -2001,7 +2266,102 @@ display:
     display_title: Studios
     position: 2
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        views_ef_fieldset:
+          views_ef_fieldset:
+            enabled: 1
+            options:
+              sort:
+                root:
+                  container_type: details
+                  title: Filters
+                  description: ''
+                  open: '1'
+                  weight: '0'
+                  id: root
+                  pid: ''
+                  depth: '0'
+                  type: container
+                container-0:
+                  container_type: container
+                  title: 'Container 0'
+                  description: ''
+                  weight: '-11'
+                  open: 0
+                  id: container-0
+                  pid: root
+                  depth: '1'
+                  type: container
+                status:
+                  weight: '-9'
+                  id: status
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                title:
+                  weight: '-8'
+                  id: title
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                langcode:
+                  weight: '-7'
+                  id: langcode
+                  pid: container-0
+                  depth: '2'
+                  type: filter
+                container-1:
+                  container_type: details
+                  title: 'Container 1'
+                  description: ''
+                  weight: '-10'
+                  open: 0
+                  id: container-1
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-2:
+                  container_type: details
+                  title: 'Container 2'
+                  description: ''
+                  weight: '-9'
+                  open: 0
+                  id: container-2
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-3:
+                  container_type: container
+                  title: 'Container 3'
+                  description: ''
+                  weight: '-8'
+                  open: 0
+                  id: container-3
+                  pid: root
+                  depth: '1'
+                  type: container
+                submit:
+                  weight: '-11'
+                  id: submit
+                  pid: container-3
+                  depth: '2'
+                  type: buttons
+                reset:
+                  weight: '-10'
+                  id: reset
+                  pid: container-3
+                  depth: '2'
+                  type: buttons
+                container-4:
+                  container_type: details
+                  title: 'Container 4'
+                  description: ''
+                  weight: '-6'
+                  open: 0
+                  id: container-4
+                  pid: root
+                  depth: '1'
+                  type: container
       display_description: ''
       title: Studios
       defaults:
