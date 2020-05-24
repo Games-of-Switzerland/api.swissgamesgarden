@@ -46,6 +46,13 @@ source:
       name: early_access_date
     9:
       name: release_date
+    10:
+      name: languages
+    11:
+      name: media
+    12:
+      name: genres
+
 process:
   title:
     -
@@ -131,6 +138,33 @@ process:
             ignore_case: true
             access_check: false
 
+  field_genres:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: genres
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_lookup
+            value_key: name
+            bundle_key: vid
+            bundle: genre
+            entity_type: taxonomy_term
+            ignore_case: true
+            access_check: false
+
 destination:
   plugin: entity:node
   default_bundle: game
@@ -139,3 +173,4 @@ migration_dependencies:
   required:
     - default:gos_studios
     - default:gos_platforms
+    - default:gos_genres
