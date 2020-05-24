@@ -110,6 +110,9 @@
         "patches": {
             "drupal/admin_toolbar": {
                 "[3121816] - Version 8.x-2.1 need Drupal 8.8.0 or greater": "https://www.drupal.org/files/issues/2020-03-30/3121816-07.patch"
+            },
+            "drupal/core": {
+                "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2020-05-23/drupal-generalize-taxonomyindextid-filter-2429699-325.patch"
             }
         },
         "autoload-drupal": {
