@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/12?_format=hal_json"
+            "href": "http:\/\/default\/games\/farming-simulator-19?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/game"
@@ -46,7 +46,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_studios": [
             {
-                "href": "http:\/\/default\/node\/15?_format=hal_json"
+                "href": "http:\/\/default\/studio\/giants-software?_format=hal_json"
             }
         ]
     },
@@ -246,15 +246,14 @@
                     {
                         "value": "03db2f32-1f7c-4d35-a2c9-42f951ae0bd8"
                     }
-                ],
-                "date_value": "2018-11-20"
+                ]
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_studios": [
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/node\/15?_format=hal_json"
+                        "href": "http:\/\/default\/studio\/giants-software?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/node\/studio"
@@ -320,8 +319,8 @@
     ],
     "path": [
         {
-            "alias": null,
-            "pid": null,
+            "alias": "\/games\/farming-simulator-19",
+            "pid": 8,
             "langcode": "en",
             "lang": "en"
         }

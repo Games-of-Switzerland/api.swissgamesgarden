@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/14?_format=hal_json"
+            "href": "http:\/\/default\/people\/christian-ammann?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/people"
@@ -139,8 +139,8 @@
     ],
     "path": [
         {
-            "alias": null,
-            "pid": null,
+            "alias": "\/people\/christian-ammann",
+            "pid": 5,
             "langcode": "en",
             "lang": "en"
         }
