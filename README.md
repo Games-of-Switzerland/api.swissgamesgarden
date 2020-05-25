@@ -161,10 +161,10 @@ cat ./scripts/hooks/post-commit >> ./.git/hooks/post-commit
 ## After a git pull/merge
 
 ```bash
-drush cr
-drush cim
-drush updatedb
-drush cr
+docker-compose down
+docker-compose build --pull
+docker-compose up --build -d
+docker-compose exec dev docker-as-drupal db-reset --with-default-content --with-elasticsearch
 ```
 
 Prepend every command with `docker-compose exec dev` to run them on the Docker
@@ -325,6 +325,10 @@ You may access to the *staging* or *production* REST specification with those li
 
 - Production: [api.gos.ch/swagger](https://api.gos.ch/swagger)
 - Staging: [staging-api.gos.ch/swagger](https://staging-api.gos.ch/swagger)
+
+Customs modules:
+
+ - [Migration](./web/modules/custom/gos_migrate/README.md)
 
 ## 🚑 Troubleshootings
 

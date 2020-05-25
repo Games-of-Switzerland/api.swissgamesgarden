@@ -1,0 +1,20 @@
+uuid: dc18ecef-1e6c-4497-8c9c-464d3e9ebf12
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - gos_admin
+id: help
+theme: gos_admin
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: visible
+visibility: {  }

@@ -1,22 +1,22 @@
-uuid: 551e252b-cfe3-4cc9-b7e0-069107419c35
+uuid: 6684ba0e-2612-4188-aad4-7b6eee37efdc
 langcode: en
 status: true
 dependencies:
   theme:
-    - stark
+    - gos_admin
 _core:
   default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
-id: stark_local_tasks
-theme: stark
-region: content
-weight: -40
+id: gos_admin_local_tasks
+theme: gos_admin
+region: header
+weight: -2
 provider: null
 plugin: local_tasks_block
 settings:
   id: local_tasks_block
-  label: Tabs
+  label: 'Primary tabs'
   provider: core
   label_display: '0'
   primary: true
-  secondary: true
+  secondary: false
 visibility: {  }

@@ -1,0 +1,13 @@
+name: MSF Migration
+type: module
+description: Module used to handle migrations from an exported CSV of Google Spreadsheet
+package: Games of Switzerland
+core: 8.x
+dependencies:
+  - drupal:gos_site
+  - drupal:migrate
+  - drupal:migrate_tools
+  - drupal:migrate_plus
+  - drupal:migrate_source_csv
+  - drupal:node
+  - drupal:taxonomy

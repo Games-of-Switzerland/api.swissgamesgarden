@@ -31,6 +31,7 @@
         "php": ">=7.3.0",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/admin_toolbar": "^2.0",
+        "drupal/bamboo_twig": "^4.1",
         "drupal/console": "^1.0.2",
         "drupal/consumer_image_styles": "^3.0",
         "drupal/core-recommended": "^8.8",
@@ -39,9 +40,12 @@
         "drupal/fieldable_path": "^1.0@RC",
         "drupal/focal_point": "^1.2",
         "drupal/jsonapi_extras": "^3.13",
+        "drupal/migrate_source_csv": "^3.4",
+        "drupal/migrate_tools": "^5.0",
         "drupal/pathauto": "^1.6",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/restui": "^1.18",
+        "drupal/views_ef_fieldset": "^1.4",
         "drush/drush": "^9.0.0",
         "sebastian/phpcpd": "^4.0",
         "vlucas/phpdotenv": "^2.4",
@@ -107,6 +111,9 @@
         "patches": {
             "drupal/admin_toolbar": {
                 "[3121816] - Version 8.x-2.1 need Drupal 8.8.0 or greater": "https://www.drupal.org/files/issues/2020-03-30/3121816-07.patch"
+            },
+            "drupal/core": {
+                "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2020-05-23/drupal-generalize-taxonomyindextid-filter-2429699-325.patch"
             }
         },
         "autoload-drupal": {

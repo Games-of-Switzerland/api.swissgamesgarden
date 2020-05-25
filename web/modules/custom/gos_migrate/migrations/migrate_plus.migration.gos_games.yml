@@ -1,0 +1,176 @@
+id: gos_games
+label: Games of Switzerland - Games
+description: GOS - Migration of Game from CSV to Drupal 8
+migration_group: default
+
+source:
+  plugin: 'csv'
+  # Full path to the file.
+  path: '/source/2020-17-05--all-games.csv'
+  # Column delimiter. Comma (,) by default.
+  delimiter: ','
+  # Field enclosure. Double quotation marks (") by default.
+  enclosure: '"'
+  # The row to be used as the CSV header (indexed from 0),
+  # or null if there is no header row.
+  header_offset: 0
+  #  # The column(s) to use as a key. Each column specified will
+  #  # create an index in the migration table and too many columns
+  #  # may throw an index size error.
+  ids:
+    - id
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The label value is a user-friendly string for display by the
+  # migration UI.
+  fields:
+    0:
+      name: game_title
+    1:
+      name: id
+    2:
+      name: platforms
+    3:
+      name: website
+    4:
+      name: studios
+    5:
+      name: location
+    6:
+      name: publisher
+    7:
+      name: sponsor
+    8:
+      name: early_access_date
+    9:
+      name: release_date
+    10:
+      name: languages
+    11:
+      name: media
+    12:
+      name: genres
+
+process:
+  title:
+    -
+      plugin: skip_on_empty
+      method: row
+      source: game_title
+
+  processed_release_date:
+    -
+      plugin: format_date_multiple
+      source: release_date
+      from_formats:
+        - 'Y'
+        - 'Y-m'
+        - 'Y-n'
+        - 'Y-m-d'
+      to_formats:
+        - 'Y-01-01'
+        - 'Y-m-01'
+        - 'Y-m-01'
+        - 'Y-m-d'
+      on_error: nullable
+
+  field_releases:
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+      source: platforms
+    -
+      plugin: deepen
+    -
+      plugin: array_build_add
+      key: 'date'
+      source_value: '@processed_release_date'
+    -
+      plugin: sub_process
+      process:
+        date_value: 'date'
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_lookup
+            value_key: name
+            bundle_key: vid
+            bundle: platform
+            entity_type: taxonomy_term
+            ignore_case: true
+            access_check: false
+
+  field_studios:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: studios
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: trim
+            mask: "«"
+          -
+            plugin: trim
+            mask: "»"
+          -
+            plugin: entity_lookup
+            value_key: title
+            bundle_key: type
+            bundle: studio
+            entity_type: node
+            ignore_case: true
+            access_check: false
+
+  field_genres:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: genres
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_lookup
+            value_key: name
+            bundle_key: vid
+            bundle: genre
+            entity_type: taxonomy_term
+            ignore_case: true
+            access_check: false
+
+destination:
+  plugin: entity:node
+  default_bundle: game
+
+migration_dependencies:
+  required:
+    - default:gos_studios
+    - default:gos_platforms
+    - default:gos_genres

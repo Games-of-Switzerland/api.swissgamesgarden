@@ -1,0 +1,64 @@
+id: gos_platforms
+label: Games of Switzerland - Platforms
+description: GOS - Migration of Platforms from CSV to Drupal 8
+migration_group: default
+
+source:
+  plugin: 'csv'
+  # Full path to the file.
+  path: '/source/2020-17-05--all-games.csv'
+  # Column delimiter. Comma (,) by default.
+  delimiter: ','
+  # Field enclosure. Double quotation marks (") by default.
+  enclosure: '"'
+  # The row to be used as the CSV header (indexed from 0),
+  # or null if there is no header row.
+  header_offset: 0
+#  # The column(s) to use as a key. Each column specified will
+#  # create an index in the migration table and too many columns
+#  # may throw an index size error.
+  ids:
+    - id
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The label value is a user-friendly string for display by the
+  # migration UI.
+  fields:
+    0:
+      name: game_title
+    1:
+      name: id
+    2:
+      name: platforms
+
+process:
+  name:
+    -
+      plugin: skip_on_empty
+      method: row
+      source: platforms
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        title:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_generate
+            value_key: name
+            bundle_key: vid
+            bundle: platform
+            entity_type: taxonomy_term
+            ignore_case: true
+
+destination:
+  plugin: noop

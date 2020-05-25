@@ -1,15 +1,15 @@
-uuid: e5e75e33-ccfc-4ad5-aa1e-42e2f9c86b06
+uuid: c8db3d46-df1d-4e00-9772-dc597b192a9f
 langcode: en
 status: true
 dependencies:
   theme:
-    - stark
+    - gos_admin
 _core:
   default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
-id: stark_local_actions
-theme: stark
+id: gos_admin_local_actions
+theme: gos_admin
 region: content
-weight: -20
+weight: -4
 provider: null
 plugin: local_actions_block
 settings:
