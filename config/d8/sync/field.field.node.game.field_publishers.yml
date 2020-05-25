@@ -1,0 +1,29 @@
+uuid: 051ccd87-7597-4814-b1e4-e6a867be1f5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publishers
+    - node.type.game
+    - taxonomy.vocabulary.publisher
+id: node.game.field_publishers
+field_name: field_publishers
+entity_type: node
+bundle: game
+label: Publishers
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      publisher: publisher
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

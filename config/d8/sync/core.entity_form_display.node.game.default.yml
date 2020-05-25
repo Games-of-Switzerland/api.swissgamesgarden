@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.game.field_images
     - field.field.node.game.field_members
     - field.field.node.game.field_path
+    - field.field.node.game.field_publishers
     - field.field.node.game.field_releases
     - field.field.node.game.field_studios
     - image.style.thumbnail
@@ -53,6 +54,7 @@ third_party_settings:
       region: content
     group_releases:
       children:
+        - field_publishers
         - field_releases
       parent_name: group_tabs
       weight: 21
@@ -139,8 +141,18 @@ content:
     third_party_settings: {  }
     type: team_member_default
     region: content
+  field_publishers:
+    weight: 124
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
   field_releases:
-    weight: 123
+    weight: 125
     settings:
       match_operator: CONTAINS
       size: 60
