@@ -39,9 +39,9 @@ source:
     5:
       name: location
     6:
-      name: publisher
+      name: publishers
     7:
-      name: sponsor
+      name: sponsors
     8:
       name: early_access_date
     9:
@@ -164,6 +164,32 @@ process:
             entity_type: taxonomy_term
             ignore_case: true
             access_check: false
+
+  field_publishers:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: publishers
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_generate
+            value_key: name
+            bundle_key: vid
+            bundle: publisher
+            entity_type: taxonomy_term
+            ignore_case: true
 
 destination:
   plugin: entity:node

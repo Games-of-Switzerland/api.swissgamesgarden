@@ -1,0 +1,99 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/default\/publishers\/astragon?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/publisher"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/taxonomy_term\/publisher\/parent": [
+            null
+        ]
+    },
+    "tid": [
+        {
+            "value": 24
+        }
+    ],
+    "uuid": [
+        {
+            "value": "19b2fb28-468a-44ad-a03f-da4372e43539"
+        }
+    ],
+    "revision_id": [
+        {
+            "value": 24
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "vid": [
+        {
+            "target_id": "publisher"
+        }
+    ],
+    "revision_created": [
+        {
+            "value": "2020-05-25T16:56:01+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "status": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "name": [
+        {
+            "value": "Astragon",
+            "lang": "en"
+        }
+    ],
+    "weight": [
+        {
+            "value": 0
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/taxonomy_term\/publisher\/parent": [
+            null
+        ]
+    },
+    "changed": [
+        {
+            "value": "2020-05-25T17:07:32+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "path": [
+        {
+            "alias": "\/publishers\/astragon",
+            "pid": 10,
+            "langcode": "en",
+            "lang": "en"
+        }
+    ],
+    "field_path": [
+        {
+            "value": "\/publishers\/astragon"
+        }
+    ]
+}

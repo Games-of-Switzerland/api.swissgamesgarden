@@ -5,6 +5,13 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.game.body
+    - field.field.node.game.field_genres
+    - field.field.node.game.field_images
+    - field.field.node.game.field_members
+    - field.field.node.game.field_path
+    - field.field.node.game.field_publishers
+    - field.field.node.game.field_releases
+    - field.field.node.game.field_studios
     - node.type.game
   module:
     - text
@@ -32,5 +39,6 @@ hidden:
   field_images: true
   field_members: true
   field_path: true
+  field_publishers: true
   field_releases: true
   field_studios: true
