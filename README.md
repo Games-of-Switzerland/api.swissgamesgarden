@@ -105,7 +105,7 @@ Check Drupal coding standards & Drupal best practices:
 Automatically fix coding standards
 
 ```bash
-./vendor/bin/phpcbf --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./web/modules/custom
+./vendor/bin/phpcbf
 ```
 
 Checks compatibility with PHP interpreter versions
@@ -114,6 +114,8 @@ Checks compatibility with PHP interpreter versions
 ./vendor/bin/phpcf --target 7.3 \
 --file-extensions php,module,inc,install,test,profile,theme,info \
 ./web/modules/custom
+
+./vendor/bin/phpcf --target 7.3 --file-extensions php ./behat
 ```
 
 ### Improve global code quality using PHPCPD (Code duplication) &  PHPMD (PHP Mess Detector).
@@ -121,13 +123,20 @@ Checks compatibility with PHP interpreter versions
 Detect overcomplicated expressions & Unused parameters, methods, properties
 
 ```bash
-./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml
+./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml \
+--suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php
+
+./vendor/bin/phpmd ./behat text ./phpmd.xml --suffixes php
 ```
 
 Copy/Paste Detector
 
 ```bash
-./vendor/bin/phpcpd ./web/modules/custom
+./vendor/bin/phpcpd ./web/modules/custom \
+--names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml \
+--ansi --exclude=tests
+
+./vendor/bin/phpcpd ./behat --names=*.php --ansi
 ```
 
 ### Ensure PHP Community Best Practicies using PHP Coding Standards Fixer
