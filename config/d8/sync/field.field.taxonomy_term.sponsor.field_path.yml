@@ -1,0 +1,23 @@
+uuid: 3c13a772-2d58-40b2-b1ce-1849e4aa93e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_path
+    - taxonomy.vocabulary.sponsor
+  module:
+    - fieldable_path
+id: taxonomy_term.sponsor.field_path
+field_name: field_path
+entity_type: taxonomy_term
+bundle: sponsor
+label: Path
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: fieldable_path

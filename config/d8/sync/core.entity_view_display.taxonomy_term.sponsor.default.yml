@@ -1,0 +1,30 @@
+uuid: 68bb41e6-69ca-49db-9039-860956f26a6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.sponsor.field_path
+    - taxonomy.vocabulary.sponsor
+  module:
+    - fieldable_path
+    - text
+id: taxonomy_term.sponsor.default
+targetEntityType: taxonomy_term
+bundle: sponsor
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_path:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fieldable_path_formatter
+    region: content
+hidden: {  }
