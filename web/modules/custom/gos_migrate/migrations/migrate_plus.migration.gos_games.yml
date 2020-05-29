@@ -261,6 +261,32 @@ process:
             entity_type: taxonomy_term
             ignore_case: true
 
+  field_languages:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: languages
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 50
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_generate
+            value_key: name
+            bundle_key: vid
+            bundle: language
+            entity_type: taxonomy_term
+            ignore_case: true
+
 destination:
   plugin: entity:node
   default_bundle: game
