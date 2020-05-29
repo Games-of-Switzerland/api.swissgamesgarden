@@ -15,7 +15,7 @@ before_install:
 before_script:
   - docker-compose build --pull
   - docker-compose up --build -d
-  - docker-compose exec dev docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --with-default-content --with-elasticsearch
+  - docker-compose exec dev docker-as-wait db:3306 elasticsearch:9200 -- docker-as-drupal bootstrap --with-default-content --with-elasticsearch
 
 script:
   - docker-compose exec test docker-as-wait --mysql test:8888 browser:4444 -- docker-as-drupal behat --with-elasticsearch
