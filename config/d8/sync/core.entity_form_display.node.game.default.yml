@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.game.body
+    - field.field.node.game.field_article_links
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
     - field.field.node.game.field_languages
@@ -19,6 +20,7 @@ dependencies:
     - field_group
     - focal_point
     - gos_site
+    - link
     - path
     - text
 third_party_settings:
@@ -29,6 +31,7 @@ third_party_settings:
         - group_releases
         - group_authors
         - group_meta
+        - group_reference
       parent_name: ''
       weight: 0
       format_type: tabs
@@ -100,6 +103,20 @@ third_party_settings:
         required_fields: true
       label: Meta
       region: content
+    group_reference:
+      children:
+        - field_article_links
+      parent_name: group_tabs
+      weight: 24
+      format_type: tab
+      region: hidden
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: References
 id: node.game.default
 targetEntityType: node
 bundle: game
@@ -114,6 +131,14 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
+    region: content
+  field_article_links:
+    weight: 126
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_genres:
     weight: 5
