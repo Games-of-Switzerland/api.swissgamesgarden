@@ -10,7 +10,7 @@ id: node.game.field_sponsors
 field_name: field_sponsors
 entity_type: node
 bundle: game
-label: Sponsors
+label: Sponsor(s)
 description: ''
 required: false
 translatable: false

@@ -12,7 +12,7 @@ id: node.game.field_releases
 field_name: field_releases
 entity_type: node
 bundle: game
-label: Releases
+label: Release(s)
 description: ''
 required: false
 translatable: false

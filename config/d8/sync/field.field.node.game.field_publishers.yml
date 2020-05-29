@@ -10,7 +10,7 @@ id: node.game.field_publishers
 field_name: field_publishers
 entity_type: node
 bundle: game
-label: Publishers
+label: Publisher(s)
 description: ''
 required: false
 translatable: false
