@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/13?_format=hal_json"
+            "href": "http:\/\/default\/people\/jeremy-wuthrer-cuany?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/people"
@@ -139,8 +139,7 @@
     ],
     "path": [
         {
-            "alias": null,
-            "pid": null,
+            "alias": "\/people\/jeremy-wuthrer-cuany",
             "langcode": "en",
             "lang": "en"
         }

@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/11?_format=hal_json"
+            "href": "http:\/\/default\/games\/farming-simulator-18?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/game"
@@ -15,6 +15,17 @@
             {
                 "href": "http:\/\/default\/user\/1?_format=hal_json",
                 "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_languages": [
+            {
+                "href": "http:\/\/default\/languages\/french?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/languages\/english?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/languages\/german?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_releases": [
@@ -39,7 +50,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_studios": [
             {
-                "href": "http:\/\/default\/node\/15?_format=hal_json"
+                "href": "http:\/\/default\/studio\/giants-software?_format=hal_json"
             }
         ]
     },
@@ -109,6 +120,53 @@
                     }
                 ],
                 "lang": "en"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_languages": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/languages\/french?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/language"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c8b12404-37e1-43d3-b1c4-5a3eace4834d"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/languages\/english?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/language"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "c748e76c-4a40-4b04-9e69-17ea602cb0b0"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/languages\/german?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/language"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "92e91c65-01c3-4d50-80a6-f1fb386ba740"
+                    }
+                ]
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_releases": [
@@ -213,7 +271,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/node\/15?_format=hal_json"
+                        "href": "http:\/\/default\/studio\/giants-software?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/node\/studio"
@@ -279,8 +337,7 @@
     ],
     "path": [
         {
-            "alias": null,
-            "pid": null,
+            "alias": "\/games\/farming-simulator-18",
             "langcode": "en",
             "lang": "en"
         }
@@ -292,6 +349,11 @@
             "processed": "<p>Farming Simulator is a series of farming simulation games set in an open world environment and played from a third-person perspective and also a first-person perspective.<\/p>",
             "summary": "",
             "lang": "en"
+        }
+    ],
+    "field_path": [
+        {
+            "value": "\/games\/farming-simulator-18"
         }
     ]
 }
