@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
     - field.field.node.game.field_releases
+    - field.field.node.game.field_sources
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_studios
     - field.field.node.game.field_website
@@ -106,8 +107,9 @@ third_party_settings:
       region: content
     group_reference:
       children:
-        - field_article_links
         - field_website
+        - field_article_links
+        - field_sources
       parent_name: group_tabs
       weight: 24
       format_type: tab
@@ -135,7 +137,7 @@ content:
     third_party_settings: {  }
     region: content
   field_article_links:
-    weight: 126
+    weight: 128
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -201,6 +203,14 @@ content:
       match_limit: 10
     third_party_settings: {  }
     type: release_default
+    region: content
+  field_sources:
+    weight: 129
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   field_sponsors:
     weight: 6
