@@ -302,6 +302,25 @@ process:
 
   field_sources/uri: source
 
+  field_article_links:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: articles
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        uri:
+          -
+            plugin: trim
+            source: 'value'
+
 destination:
   plugin: entity:node
   default_bundle: game
