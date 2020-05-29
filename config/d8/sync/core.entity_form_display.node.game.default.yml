@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.game.body
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
+    - field.field.node.game.field_languages
     - field.field.node.game.field_members
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
@@ -85,6 +86,7 @@ third_party_settings:
       region: content
     group_meta:
       children:
+        - field_languages
         - field_genres
         - field_sponsors
       parent_name: group_tabs
@@ -114,7 +116,7 @@ content:
     third_party_settings: {  }
     region: content
   field_genres:
-    weight: 2
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -132,6 +134,16 @@ content:
       offsets: '50,50'
     third_party_settings: {  }
     type: image_focal_point
+    region: content
+  field_languages:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_members:
     weight: 124
@@ -164,7 +176,7 @@ content:
     type: release_default
     region: content
   field_sponsors:
-    weight: 3
+    weight: 6
     settings:
       match_operator: CONTAINS
       match_limit: 10

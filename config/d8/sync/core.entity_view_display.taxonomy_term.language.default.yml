@@ -1,0 +1,30 @@
+uuid: b7b5166a-c1e2-4530-9511-16732e68d44f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.language.field_path
+    - taxonomy.vocabulary.language
+  module:
+    - fieldable_path
+    - text
+id: taxonomy_term.language.default
+targetEntityType: taxonomy_term
+bundle: language
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_path:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fieldable_path_formatter
+    region: content
+hidden: {  }
