@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.game.body
     - field.field.node.game.field_article_links
+    - field.field.node.game.field_awards
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
     - field.field.node.game.field_languages
@@ -38,6 +39,18 @@ content:
     region: content
   field_article_links:
     weight: 111
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_awards:
+    weight: 114
     label: above
     settings:
       trim_length: 80

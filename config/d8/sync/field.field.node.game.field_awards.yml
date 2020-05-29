@@ -1,0 +1,23 @@
+uuid: f5049133-784b-49a5-accb-4093ba82daf4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_awards
+    - node.type.game
+  module:
+    - link
+id: node.game.field_awards
+field_name: field_awards
+entity_type: node
+bundle: game
+label: Award(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

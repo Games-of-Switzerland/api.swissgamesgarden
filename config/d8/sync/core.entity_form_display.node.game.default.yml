@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.game.body
     - field.field.node.game.field_article_links
+    - field.field.node.game.field_awards
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
     - field.field.node.game.field_languages
@@ -110,6 +111,7 @@ third_party_settings:
         - field_website
         - field_article_links
         - field_sources
+        - field_awards
       parent_name: group_tabs
       weight: 24
       format_type: tab
@@ -138,6 +140,14 @@ content:
     region: content
   field_article_links:
     weight: 128
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_awards:
+    weight: 130
     settings:
       placeholder_url: ''
       placeholder_title: ''
