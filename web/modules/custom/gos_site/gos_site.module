@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Games of Switzerland Site module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gos_site_form_user_login_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  $form['#submit'][] = '_gos_site_user_login_form_submit';
+}
+
+/**
+ * Custom submit handler for login form.
+ */
+function _gos_site_user_login_form_submit(array $form, FormStateInterface $form_state) {
+  $form_state->setRedirect('system.admin_content', [], []);
+}
