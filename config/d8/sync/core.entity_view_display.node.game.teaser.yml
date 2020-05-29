@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.game.field_releases
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_studios
+    - field.field.node.game.field_website
     - node.type.game
   module:
     - text
@@ -48,3 +49,4 @@ hidden:
   field_releases: true
   field_sponsors: true
   field_studios: true
+  field_website: true

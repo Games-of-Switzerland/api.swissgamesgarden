@@ -1,0 +1,23 @@
+uuid: 9643bc2b-6f29-4194-b8e9-ff17623318fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_website
+    - node.type.game
+  module:
+    - link
+id: node.game.field_website
+field_name: field_website
+entity_type: node
+bundle: game
+label: Website
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

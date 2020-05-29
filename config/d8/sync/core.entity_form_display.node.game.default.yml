@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.game.field_releases
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_studios
+    - field.field.node.game.field_website
     - image.style.thumbnail
     - node.type.game
   module:
@@ -106,10 +107,11 @@ third_party_settings:
     group_reference:
       children:
         - field_article_links
+        - field_website
       parent_name: group_tabs
       weight: 24
       format_type: tab
-      region: hidden
+      region: content
       format_settings:
         id: ''
         classes: ''
@@ -219,6 +221,14 @@ content:
       match_limit: 10
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_website:
+    weight: 127
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
     region: content
   path:
     type: path
