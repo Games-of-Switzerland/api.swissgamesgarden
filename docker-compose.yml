@@ -33,7 +33,7 @@ services:
   # Drupal test server
   test:
     build: .
-    command: docker-as-wait --mysql -- docker-as-drupal apache-server
+    command: docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal apache-server
     depends_on:
       - browser
       - db

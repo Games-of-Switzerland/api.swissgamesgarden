@@ -15,9 +15,7 @@ before_install:
 before_script:
   - docker-compose build --pull
   - docker-compose up --build -d
-  # wait on Docker to be ready, especially MariaDB that takes many seconds to be up.
-  - sleep 30
-  - docker-compose exec dev docker-as-drupal bootstrap --with-default-content --with-elasticsearch
+  - docker-compose exec dev docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --with-default-content --with-elasticsearch
 
 script:
-  - docker-compose exec test docker-as-drupal behat --with-elasticsearch
+  - docker-compose exec test docker-as-wait --mysql test:8888 browser:4444 -- docker-as-drupal behat --with-elasticsearch
