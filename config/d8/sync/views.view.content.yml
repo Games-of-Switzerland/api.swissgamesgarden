@@ -4,15 +4,18 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_genres
+    - field.storage.node.field_images
     - field.storage.node.field_members
     - field.storage.node.field_releases
     - field.storage.node.field_studios
+    - image.style.thumbnail
     - node.type.game
     - node.type.studio
     - taxonomy.vocabulary.genre
   module:
     - gos_site
     - history
+    - image
     - node
     - taxonomy
     - user
@@ -1450,6 +1453,70 @@ display:
           plugin_id: field
           entity_type: node
           entity_field: status
+        field_images:
+          id: field_images
+          table: node__field_images
+          field: field_images
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Images
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_style: thumbnail
+            image_link: ''
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 1
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         title:
           id: title
           table: node_field_data
@@ -2258,6 +2325,7 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_genres'
+        - 'config:field.storage.node.field_images'
         - 'config:field.storage.node.field_releases'
         - 'config:field.storage.node.field_studios'
   page_3:
