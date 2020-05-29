@@ -302,6 +302,8 @@ process:
       plugin: callback
       callable: 'current'
 
+  field_sources/uri: source
+
 destination:
   plugin: entity:node
   default_bundle: game
