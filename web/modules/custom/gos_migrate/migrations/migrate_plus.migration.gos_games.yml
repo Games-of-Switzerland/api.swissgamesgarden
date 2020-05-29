@@ -287,6 +287,21 @@ process:
             entity_type: taxonomy_term
             ignore_case: true
 
+  field_website/uri:
+    -
+      plugin: get
+      source:
+        - online_link
+        - page_link
+    -
+      # Filter out empty sources
+      plugin: callback
+      callable: array_filter
+    -
+      # Use the first none empty source
+      plugin: callback
+      callable: 'current'
+
 destination:
   plugin: entity:node
   default_bundle: game
