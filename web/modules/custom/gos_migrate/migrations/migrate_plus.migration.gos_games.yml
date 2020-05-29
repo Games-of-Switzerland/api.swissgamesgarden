@@ -340,6 +340,10 @@ process:
             plugin: trim
             source: 'value'
 
+  field_images:
+    plugin: image_import
+    source: screenshot_link
+
 destination:
   plugin: entity:node
   default_bundle: game

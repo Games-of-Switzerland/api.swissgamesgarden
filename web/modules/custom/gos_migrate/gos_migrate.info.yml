@@ -9,5 +9,6 @@ dependencies:
   - drupal:migrate_tools
   - drupal:migrate_plus
   - drupal:migrate_source_csv
+  - drupal:migrate_file
   - drupal:node
   - drupal:taxonomy
