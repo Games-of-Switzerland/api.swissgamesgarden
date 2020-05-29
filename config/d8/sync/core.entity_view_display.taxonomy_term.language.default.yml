@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.languages.field_path
-    - taxonomy.vocabulary.languages
+    - field.field.taxonomy_term.language.field_path
+    - taxonomy.vocabulary.language
   module:
     - fieldable_path
     - text
-id: taxonomy_term.languages.default
+id: taxonomy_term.language.default
 targetEntityType: taxonomy_term
-bundle: languages
+bundle: language
 mode: default
 content:
   description:

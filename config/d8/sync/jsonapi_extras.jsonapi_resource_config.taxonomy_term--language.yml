@@ -3,11 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.languages
-id: taxonomy_term--languages
+    - taxonomy.vocabulary.language
+id: taxonomy_term--language
 disabled: false
-path: taxonomy_term/languages
-resourceType: taxonomy_term--languages
+path: taxonomy_term/language
+resourceType: taxonomy_term--language
 resourceFields:
   tid:
     fieldName: tid

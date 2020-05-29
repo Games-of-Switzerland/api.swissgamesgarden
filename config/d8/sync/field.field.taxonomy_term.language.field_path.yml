@@ -4,13 +4,13 @@ status: true
 dependencies:
   config:
     - field.storage.taxonomy_term.field_path
-    - taxonomy.vocabulary.languages
+    - taxonomy.vocabulary.language
   module:
     - fieldable_path
-id: taxonomy_term.languages.field_path
+id: taxonomy_term.language.field_path
 field_name: field_path
 entity_type: taxonomy_term
-bundle: languages
+bundle: language
 label: Path
 description: ''
 required: false
