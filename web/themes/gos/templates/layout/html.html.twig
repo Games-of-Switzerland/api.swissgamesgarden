@@ -38,7 +38,11 @@
     <js-placeholder token="{{ placeholder_token|raw }}">
   </head>
 
-  <body{{ attributes }}>
+  {% set body_classes = [
+    not root_path ? 'body-front' : 'path-' ~ root_path|clean_class,
+    root_path == 'user' ? 'body-front',
+  ] %}
+  <body{{ attributes.addClass(body_classes) }}>
     {{ page_top }}
     {{ page }}
     {{ page_bottom }}
