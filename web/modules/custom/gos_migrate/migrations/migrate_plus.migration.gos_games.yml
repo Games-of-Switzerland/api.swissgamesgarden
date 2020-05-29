@@ -52,13 +52,57 @@ source:
       name: media
     12:
       name: genres
-
+    13:
+      name: awards
+    14:
+      name: stores
+    15:
+      name: presskit
+    16:
+      name: articles
+    17:
+      name: twitter
+    18:
+      name: devlog
+    19:
+      name: devlog
+    20:
+      name: source
+    21:
+      name: online_link
+    22:
+      name: page_link
+    23:
+      name: download_link
+    24:
+      name: video_link
+    25:
+      name: logo_link
+    26:
+      name: screenshot_link
+    27:
+      name: boxart_link
+    28:
+      name: description
+    29:
+      name: credits
+    30:
+      name: remarks
+    31:
+      name: state
+    32:
+      name: dataquality
 process:
   title:
     -
       plugin: skip_on_empty
       method: row
       source: game_title
+
+  body/value: description
+  body/format:
+    plugin: default_value
+    default_value: "basic_html"
 
   processed_release_date:
     -
