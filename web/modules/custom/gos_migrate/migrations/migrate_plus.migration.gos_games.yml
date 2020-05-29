@@ -65,32 +65,30 @@ source:
     18:
       name: devlog
     19:
-      name: devlog
-    20:
       name: source
-    21:
+    20:
       name: online_link
-    22:
+    21:
       name: page_link
-    23:
+    22:
       name: download_link
-    24:
+    23:
       name: video_link
-    25:
+    24:
       name: logo_link
-    26:
+    25:
       name: screenshot_link
-    27:
+    26:
       name: boxart_link
-    28:
+    27:
       name: description
-    29:
+    28:
       name: credits
-    30:
+    29:
       name: remarks
-    31:
+    30:
       name: state
-    32:
+    31:
       name: dataquality
 process:
   title:
