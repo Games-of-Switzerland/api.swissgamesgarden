@@ -149,10 +149,10 @@ content:
   field_awards:
     weight: 130
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: link_default
+    type: string_textfield
     region: content
   field_genres:
     weight: 5

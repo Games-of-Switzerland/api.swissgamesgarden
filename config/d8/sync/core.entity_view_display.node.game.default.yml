@@ -53,13 +53,9 @@ content:
     weight: 114
     label: above
     settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      link_to_entity: false
     third_party_settings: {  }
-    type: link
+    type: string
     region: content
   field_genres:
     weight: 103

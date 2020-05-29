@@ -1,12 +1,10 @@
-uuid: f5049133-784b-49a5-accb-4093ba82daf4
+uuid: 48ed4f2e-bf3a-4934-8ae9-3f72a5fc77d3
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_awards
     - node.type.game
-  module:
-    - link
 id: node.game.field_awards
 field_name: field_awards
 entity_type: node
@@ -17,7 +15,5 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings:
-  link_type: 16
-  title: 1
-field_type: link
+settings: {  }
+field_type: string
