@@ -321,6 +321,25 @@ process:
             plugin: trim
             source: 'value'
 
+  field_awards:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: awards
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 50
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        value:
+          -
+            plugin: trim
+            source: 'value'
+
 destination:
   plugin: entity:node
   default_bundle: game
