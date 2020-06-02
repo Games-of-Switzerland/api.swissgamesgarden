@@ -19,6 +19,5 @@ $config = Drupal8::create()
 ;
 
 $rules = $config->getRules();
-$rules['global_namespace_import'] = FALSE;
 $config->setRules($rules);
 return $config;
