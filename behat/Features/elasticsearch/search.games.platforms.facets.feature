@@ -5,13 +5,13 @@
   I need to be able to fetch faceted Platforms in a JSON encoded resources from Elasticsearch via a Proxy
 
   Scenario: The Platforms facets/aggregations should follow a strict given structure.
-    Given I send a "GET" request to "http://api.gos.test/search/games"
+    Given I send a "GET" request to "http://api.gos.test/search/games?page=0"
     Then the response status code should be 200
     And the response should be in JSON
     Then the JSON should be valid according to the schema "/var/www/behat/Fixtures/elasticsearch/schemaref.search.games.platforms.facets.json"
 
   Scenario: The Platforms facets/aggregations should use the same filter as the global query - without itself as filter.
-    Given I send a "GET" request to "http://api.gos.test/search/games?platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7"
+    Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7"
     Then the response status code should be 200
     And the response should be in JSON
 
@@ -46,5 +46,5 @@
 
     Examples:
       | url |
-      | "http://api.gos.test/search/games" |
-      | "http://api.gos.test/search/games?platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7" |
+      | "http://api.gos.test/search/games?page=0" |
+      | "http://api.gos.test/search/games?page=0&platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7" |

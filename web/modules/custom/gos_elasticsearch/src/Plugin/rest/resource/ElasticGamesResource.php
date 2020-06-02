@@ -116,10 +116,9 @@ class ElasticGamesResource extends ElasticResourceBase {
     /** @var \Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex $index */
     $index = $this->elasticsearchPluginManager->createInstance(self::ELASTICSEARCH_PLUGIN_ID);
 
-    $current_page = $request->get('page') ?? 0;
     $es_query = [
       'index' => $index->getIndexName([]),
-      'from' => $current_page * self::PAGER_SIZE,
+      'from' => $resource_validator->getPage() * self::PAGER_SIZE,
       'size' => self::PAGER_SIZE,
       'body' => [
         'query' => [
@@ -179,8 +178,18 @@ class ElasticGamesResource extends ElasticResourceBase {
             ],
           ],
         ],
+
+        'sort' => [
+          '_score' => [
+            'order' => 'desc',
+          ],
+        ],
       ],
     ];
+
+    if (!empty($resource_validator->getSort())) {
+      $es_query['body']['sort'] = $this->addSort($resource_validator->getSort());
+    }
 
     if ($resource_validator->getPlatformsUuid()) {
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
@@ -210,6 +219,26 @@ class ElasticGamesResource extends ElasticResourceBase {
     $this->response->addCacheableDependency($this->responseCache);
 
     return $this->response;
+  }
+
+  /**
+   * Build a sort parameters for query.
+   *
+   * @param array $sort
+   *   The sort property with direction as key.
+   *
+   * @return array
+   *   The sort elasticsearch structure.
+   */
+  protected function addSort(array $sort): array {
+    $direction = key($sort);
+    $property = $sort[$direction];
+
+    return [
+      $property => [
+        ['order' => key($sort)],
+      ],
+    ];
   }
 
   /**

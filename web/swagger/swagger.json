@@ -71,6 +71,34 @@
         ],
         "parameters": [
           {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "description": "The page to fetch.",
+            "default": 0
+          },
+          {
+            "name": "sort[asc]",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "_score"
+            ],
+            "description": "The property you want the results to be sorted by and ordered ASC."
+          },
+          {
+            "name": "sort[desc]",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "_score"
+            ],
+            "description": "The property you want the results to be sorted by and ordered DESC."
+          },
+          {
             "name": "genresUuid[]",
             "in": "query",
             "required": false,
