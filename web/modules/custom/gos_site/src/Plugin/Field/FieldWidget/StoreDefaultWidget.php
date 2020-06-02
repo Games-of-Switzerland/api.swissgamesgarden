@@ -36,6 +36,7 @@ class StoreDefaultWidget extends WidgetBase {
         'microsoft_store' => $this->t('Microsoft Store'),
         'oculus' => $this->t('Oculus'),
         'google_play_store' => $this->t('Google Play Store'),
+        'custom' => $this->t('Custom'),
       ],
       '#default_value' => $items[$delta]->store ?? NULL,
     ];
