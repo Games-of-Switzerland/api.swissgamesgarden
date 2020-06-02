@@ -1216,20 +1216,26 @@ display:
                   pid: root
                   depth: '1'
                   type: container
-                field_genres_target_id:
+                uuid:
                   weight: '-17'
+                  id: uuid
+                  pid: container-1
+                  depth: '2'
+                  type: filter
+                field_genres_target_id:
+                  weight: '-16'
                   id: field_genres_target_id
                   pid: container-1
                   depth: '2'
                   type: filter
                 field_releases_date_value:
-                  weight: '-16'
+                  weight: '-15'
                   id: field_releases_date_value
                   pid: container-1
                   depth: '2'
                   type: filter
                 field_studios_target_id:
-                  weight: '-15'
+                  weight: '-14'
                   id: field_studios_target_id
                   pid: container-1
                   depth: '2'
@@ -1297,12 +1303,6 @@ display:
                 submit:
                   weight: '-17'
                   id: submit
-                  pid: container-6
-                  depth: '2'
-                  type: buttons
-                reset:
-                  weight: '-16'
-                  id: reset
                   pid: container-6
                   depth: '2'
                   type: buttons
@@ -1599,6 +1599,71 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+          plugin_id: field
+        uuid:
+          id: uuid
+          table: node
+          field: uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<br><small><a href="/G70VW4Y9sP/jsonapi/node/game/{{ uuid__value }}" target="_blank"> {{ uuid__value }} </small>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: uuid
           plugin_id: field
         nothing:
           id: nothing
@@ -2210,6 +2275,49 @@ display:
           list_max: 100
           plugin_id: entity_reference
           handler_submit: 'Change handler'
+        uuid:
+          id: uuid
+          table: node
+          field: uuid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: uuid_op
+            label: UUID
+            description: ''
+            use_operator: false
+            operator: uuid_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: uuid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: uuid
+          plugin_id: string
       filter_groups:
         operator: AND
         groups:
@@ -2229,7 +2337,9 @@ display:
             node_bulk_form: node_bulk_form
             timestamp: status
             status: status
+            field_images: field_images
             title: title
+            uuid: title
             field_studios: field_studios
             nothing: title
             field_genres: field_genres
@@ -2256,9 +2366,19 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            field_images:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             title:
               sortable: true
               default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            uuid:
               align: ''
               separator: ''
               empty_column: false
