@@ -9414,16 +9414,16 @@
         },
         {
             "name": "drupol/phpcsfixer-configs-drupal",
-            "version": "1.0.6",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupol/phpcsfixer-configs-drupal.git",
-                "reference": "e4d617d704d15a550e0c82aad115c16d179e1373"
+                "reference": "abe6384976e5291ff0ad88f9bd063598f4fcdf83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupol/phpcsfixer-configs-drupal/zipball/e4d617d704d15a550e0c82aad115c16d179e1373",
-                "reference": "e4d617d704d15a550e0c82aad115c16d179e1373",
+                "url": "https://api.github.com/repos/drupol/phpcsfixer-configs-drupal/zipball/abe6384976e5291ff0ad88f9bd063598f4fcdf83",
+                "reference": "abe6384976e5291ff0ad88f9bd063598f4fcdf83",
                 "shasum": ""
             },
             "require": {
@@ -9457,7 +9457,7 @@
                 }
             ],
             "description": "Base PHP CS Fixer configurations for Drupal 6, 7 and 8.",
-            "time": "2020-03-05T16:11:12+00:00"
+            "time": "2020-05-20T20:40:02+00:00"
         },
         {
             "name": "drupol/phpcsfixer-configs-php",
