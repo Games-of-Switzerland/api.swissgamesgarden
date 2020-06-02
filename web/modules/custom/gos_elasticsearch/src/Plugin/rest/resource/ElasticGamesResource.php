@@ -149,7 +149,11 @@ class ElasticGamesResource extends ElasticResourceBase {
                     ],
                     'aggregations' => [
                       'genres_name_keyword' => [
-                        'terms' => ['field' => 'genres.name_keyword', 'min_doc_count' => 0, 'size' => 100],
+                        'terms' => [
+                          'field' => 'genres.name_keyword',
+                          'min_doc_count' => 0,
+                          'size' => 100,
+                        ],
                       ],
                     ],
                   ],
@@ -169,7 +173,11 @@ class ElasticGamesResource extends ElasticResourceBase {
                     ],
                     'aggregations' => [
                       'releases_platform_keyword' => [
-                        'terms' => ['field' => 'releases.platform_keyword', 'min_doc_count' => 0, 'size' => 100],
+                        'terms' => [
+                          'field' => 'releases.platform_keyword',
+                          'min_doc_count' => 0,
+                          'size' => 100,
+                        ],
                       ],
                     ],
                   ],
