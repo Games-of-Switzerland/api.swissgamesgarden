@@ -3,7 +3,7 @@ Feature: Login
   @api
   Scenario: Login works
     Given I am logged in as a user with the "administrator" role
-    And the url should match "/user/\d+"
+    And the url should match "/admin/content"
     And the response status code should be 200
 
   @api
