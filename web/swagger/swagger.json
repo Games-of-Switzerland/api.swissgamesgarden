@@ -83,14 +83,20 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "The property you want the results to be sorted by and ordered ASC. Available : _score."
+            "enum": [
+              "_score"
+            ],
+            "description": "The property you want the results to be sorted by and ordered ASC."
           },
           {
             "name": "sort[desc]",
             "in": "query",
             "required": false,
             "type": "string",
-            "description": "The property you want the results to be sorted by and ordered DESC. Available : _score."
+            "enum": [
+              "_score"
+            ],
+            "description": "The property you want the results to be sorted by and ordered DESC."
           },
           {
             "name": "genresUuid[]",
