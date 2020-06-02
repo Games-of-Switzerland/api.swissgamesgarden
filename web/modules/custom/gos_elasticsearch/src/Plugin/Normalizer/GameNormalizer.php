@@ -84,6 +84,20 @@ class GameNormalizer extends ContentEntityNormalizer {
       $data['genres'] = $genres;
     }
 
+    // Handle stores.
+    if (!$object->get('field_stores')->isEmpty()) {
+      $genres = [];
+
+      foreach ($object->field_stores as $store) {
+        $genres[] = [
+          'store' => $store->store,
+          'link' => $store->link,
+        ];
+      }
+
+      $data['stores'] = $genres;
+    }
+
     return $data;
   }
 
