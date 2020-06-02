@@ -84,7 +84,10 @@
             "required": false,
             "type": "string",
             "enum": [
-              "_score"
+              "_score",
+              "title.keyword",
+              "releases.date",
+              "changed"
             ],
             "description": "The property you want the results to be sorted by and ordered ASC."
           },
@@ -94,7 +97,10 @@
             "required": false,
             "type": "string",
             "enum": [
-              "_score"
+              "_score",
+              "title.keyword",
+              "releases.date",
+              "changed"
             ],
             "description": "The property you want the results to be sorted by and ordered DESC."
           },

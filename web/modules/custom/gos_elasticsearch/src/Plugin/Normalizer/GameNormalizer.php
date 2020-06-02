@@ -37,6 +37,7 @@ class GameNormalizer extends ContentEntityNormalizer {
       'is_published' => $object->isPublished(),
       'bundle' => $object->bundle(),
       'path' => $object->toUrl('canonical')->toString(),
+      'changed' => $object->getChangedTime(),
     ];
 
     if (!$object->get('field_releases')->isEmpty()) {

@@ -109,7 +109,7 @@ class GameNodeIndex extends NodeIndexBase {
               'analyzer' => 'ngram_gametitle_analyzer',
               'search_analyzer' => 'ngram_gametitle_analyzer_search',
               'fields' => [
-                'raw' => [
+                'keyword' => [
                   'type' => 'keyword',
                 ],
               ],
@@ -181,6 +181,9 @@ class GameNodeIndex extends NodeIndexBase {
                   'type' => 'keyword',
                 ],
               ],
+            ],
+            'changed' => [
+              'type' => 'date',
             ],
           ],
         ],

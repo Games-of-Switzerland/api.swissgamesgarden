@@ -234,11 +234,33 @@ class ElasticGamesResource extends ElasticResourceBase {
     $direction = key($sort);
     $property = $sort[$direction];
 
-    return [
-      $property => [
-        ['order' => key($sort)],
-      ],
-    ];
+    $order = [];
+
+    switch ($property) {
+      case 'releases.date':
+        $order = [
+          $property => [
+            [
+              'order' => key($sort),
+              'nested_path' => 'releases',
+              'missing' => '_last',
+            ],
+          ],
+        ];
+
+        break;
+
+      default:
+        $order = [
+          $property => [
+            ['order' => key($sort)],
+          ],
+        ];
+
+        break;
+    }
+
+    return $order;
   }
 
   /**
