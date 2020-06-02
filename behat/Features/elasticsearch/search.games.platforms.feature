@@ -5,7 +5,7 @@
   I need to be able to filter by platforms a JSON encoded resources from Elasticsearch via a Proxy
 
   Scenario: Games Resource should respond with filtered games when a valid platform UUID is given.
-    Given I send a "GET" request to "http://api.gos.test/search/games?platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7"
+    Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7"
     Then the response status code should be 200
     And the response should be in JSON
     And the JSON node "hits.hits" should have 2 element
@@ -16,7 +16,7 @@
       | hits.hits[1]._source.id | 12 |
 
   Scenario: Games Resource should respond with filtered games when multiple valid platforms UUID are given.
-    Given I send a "GET" request to "http://api.gos.test/search/games?platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7&platformsUuid[]=6ea716ae-e50f-4a59-ace5-603c353ae20a"
+    Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7&platformsUuid[]=6ea716ae-e50f-4a59-ace5-603c353ae20a"
     Then the response status code should be 200
     And the response should be in JSON
     And the JSON node "hits.hits" should have 3 elements
@@ -29,7 +29,7 @@
       | hits.hits[2]._source.id | 17 |
 
   Scenario: Games Resource should respond with an error when a non-valid platform UUID is given.
-    Given I send a "GET" request to "http://api.gos.test/search/games?platformsUuid[]=test"
+    Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platformsUuid[]=test"
     Then the response status code should be 400
     And the response should be in JSON
     And the JSON node "errors.platforms" should exist

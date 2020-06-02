@@ -5,7 +5,7 @@
   I need to be able to fetch faceted Genres in a JSON encoded resources from Elasticsearch via a Proxy
 
   Scenario: The Genres facets/aggregations should follow a strict given structure.
-    Given I send a "GET" request to "http://api.gos.test/search/games"
+    Given I send a "GET" request to "http://api.gos.test/search/games?page=0"
     Then the response status code should be 200
     And the response should be in JSON
     Then the JSON should be valid according to the schema "/var/www/behat/Fixtures/elasticsearch/schemaref.search.games.genres.facets.json"
@@ -27,5 +27,5 @@
 
     Examples:
       | url |
-      | "http://api.gos.test/search/games" |
-      | "http://api.gos.test/search/games?genresUuid[]=1bf8672b-f341-4287-8aa5-9b16c9131441" |
+      | "http://api.gos.test/search/games?page=0" |
+      | "http://api.gos.test/search/games?page=0&genresUuid[]=1bf8672b-f341-4287-8aa5-9b16c9131441" |
