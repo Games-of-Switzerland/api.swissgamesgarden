@@ -85,7 +85,8 @@
             "type": "string",
             "enum": [
               "_score",
-              "title.keyword"
+              "title.keyword",
+              "releases.date"
             ],
             "description": "The property you want the results to be sorted by and ordered ASC."
           },
@@ -96,7 +97,8 @@
             "type": "string",
             "enum": [
               "_score",
-              "title.keyword"
+              "title.keyword",
+              "releases.date"
             ],
             "description": "The property you want the results to be sorted by and ordered DESC."
           },
