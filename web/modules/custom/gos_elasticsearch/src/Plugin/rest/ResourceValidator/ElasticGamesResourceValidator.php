@@ -28,6 +28,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
     '_score',
     'title.keyword',
     'releases.date',
+    'changed',
   ];
 
   /**

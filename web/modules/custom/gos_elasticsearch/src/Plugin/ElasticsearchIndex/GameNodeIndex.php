@@ -182,6 +182,9 @@ class GameNodeIndex extends NodeIndexBase {
                 ],
               ],
             ],
+            'changed' => [
+              'type' => 'date',
+            ],
           ],
         ],
       ];
