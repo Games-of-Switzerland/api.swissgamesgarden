@@ -27,6 +27,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private const SORTABLE = [
     '_score',
     'title.keyword',
+    'releases.date',
   ];
 
   /**
