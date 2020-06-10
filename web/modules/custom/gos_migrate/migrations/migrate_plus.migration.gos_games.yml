@@ -340,6 +340,35 @@ process:
             plugin: trim
             source: 'value'
 
+  field_stores:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: stores
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        store:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: gos_stores_mapper
+            get: 'store'
+        link:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: gos_stores_mapper
+            get: 'link'
+
   field_images:
     plugin: image_import
     source: screenshot_link
