@@ -90,7 +90,8 @@ class GameNormalizer extends ContentEntityNormalizer {
 
       foreach ($object->field_stores as $store) {
         $genres[] = [
-          'store' => $store->store,
+          'name' => $store->store,
+          'name_keyword' => $store->store,
           'link' => $store->link,
         ];
       }
