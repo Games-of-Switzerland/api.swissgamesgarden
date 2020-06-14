@@ -84,6 +84,15 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private $sort = [];
 
   /**
+   * The game Stores key to filter by.
+   *
+   * @var string[]|null
+   *
+   * @Assert\Choice(choices={"", "apple_store", "steam", "amazon", "itchio", "facebook", "epic", "playstation", "xbox", "nintendo", "microsoft_store", "oculus", "google_play_store", "gog", "other"}, multiple=true)
+   */
+  private $stores;
+
+  /**
    * Get the game Genres to filter by.
    *
    * @return \Drupal\taxonomy\TermInterface[]|null
@@ -144,6 +153,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
+   * Get the game Stores to filter by.
+   *
+   * @return string[]|null
+   *   Stores to filter by.
+   */
+  public function getStores(): ?array {
+    return $this->stores;
+  }
+
+  /**
    * Set the Genres to filter by.
    *
    * @param \Drupal\taxonomy\TermInterface[] $genres
@@ -201,6 +220,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function setSort(array $sort): void {
     $this->sort = $sort;
+  }
+
+  /**
+   * Set the Stores to filter by.
+   *
+   * @param string[] $stores
+   *   Stores to filter by.
+   */
+  public function setStores(array $stores): void {
+    $this->stores = $stores;
   }
 
   /**
