@@ -135,19 +135,20 @@ class ElasticGamesResource extends ElasticResourceBase {
           'aggs_all' => [
             'global' => new stdClass(),
             'aggs' => [
-              'all_genres' => [
-                'nested' => [
-                  'path' => 'genres',
+              // Genres aggregations.
+              'all_filtered_genres' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the filter w/o a Score impact should be.
+                    'must' => [],
+                  ],
                 ],
                 'aggregations' => [
-                  'agg_genres' => [
-                    'filter' => [
-                      'bool' => [
-                        // Where all the filter w/o a Score impact should be.
-                        'must' => [],
-                      ],
+                  'all_nested_genres' => [
+                    'nested' => [
+                      'path' => 'genres',
                     ],
-                    'aggregations' => [
+                    'aggs' => [
                       'genres_name_keyword' => [
                         'terms' => [
                           'field' => 'genres.name_keyword',
@@ -159,22 +160,48 @@ class ElasticGamesResource extends ElasticResourceBase {
                   ],
                 ],
               ],
-              'all_platforms' => [
-                'nested' => [
-                  'path' => 'releases',
+              // Platforms aggregations.
+              'all_filtered_platforms' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the filter w/o a Score impact should be.
+                    'must' => [],
+                  ],
                 ],
                 'aggregations' => [
-                  'agg_platforms' => [
-                    'filter' => [
-                      'bool' => [
-                        // Where all the filter w/o a Score impact should be.
-                        'must' => [],
-                      ],
+                  'all_nested_platforms' => [
+                    'nested' => [
+                      'path' => 'releases',
                     ],
-                    'aggregations' => [
-                      'releases_platform_keyword' => [
+                    'aggs' => [
+                      'platforms_name_keyword' => [
                         'terms' => [
                           'field' => 'releases.platform_keyword',
+                          'min_doc_count' => 0,
+                          'size' => 100,
+                        ],
+                      ],
+                    ],
+                  ],
+                ],
+              ],
+              // Stores aggregations.
+              'all_filtered_stores' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the filter w/o a Score impact should be.
+                    'must' => [],
+                  ],
+                ],
+                'aggregations' => [
+                  'all_nested_stores' => [
+                    'nested' => [
+                      'path' => 'stores',
+                    ],
+                    'aggs' => [
+                      'stores_name_keyword' => [
+                        'terms' => [
+                          'field' => 'stores.name_keyword',
                           'min_doc_count' => 0,
                           'size' => 100,
                         ],
@@ -195,20 +222,36 @@ class ElasticGamesResource extends ElasticResourceBase {
       ],
     ];
 
+    // Add the sort property.
     if (!empty($resource_validator->getSort())) {
       $es_query['body']['sort'] = $this->addSort($resource_validator->getSort());
     }
 
     if ($resource_validator->getPlatformsUuid()) {
+      // Filter the "hits" by given platform(s).
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
 
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_genres']['aggregations']['agg_genres']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
+      // Filter the "aggregations" by given platform(s).
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
     }
 
     if ($resource_validator->getGenresUuid()) {
+      // Filter the "hits" by given genre(s).
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
 
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_platforms']['aggregations']['agg_platforms']['filter']['bool']['must'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
+      // Filter the "aggregations" by given genre(s).
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
+    }
+
+    if ($resource_validator->getStores()) {
+      // Filter the "hits" by given store(s).
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addStoresFilter($resource_validator->getStores());
+
+      // Filter the "aggregations" by given store(s).
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addStoresFilter($resource_validator->getStores());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addStoresFilter($resource_validator->getStores());
     }
 
     try {
@@ -347,9 +390,6 @@ class ElasticGamesResource extends ElasticResourceBase {
   /**
    * Add a condition to filter games by genres UUID.
    *
-   * When an element does not provide any Publish infos, they will not be
-   * filter out.
-   *
    * @param array $genres_uuid
    *   The collection of genres UUID to use for filtering.
    *
@@ -378,14 +418,11 @@ class ElasticGamesResource extends ElasticResourceBase {
   /**
    * Add a condition to filter games by platforms UUID.
    *
-   * When an element does not provide any Publish infos, they will not be
-   * filter out.
-   *
    * @param array $platforms_uuid
    *   The collection of platforms UUID to use for filtering.
    *
    * @return array
-   *   The Nested OR-Condition query to filter-out games by release platform .
+   *   The Nested OR-Condition query to filter-out games by release platform.
    */
   private function addPlatformsFilter(array $platforms_uuid): array {
     $structure = [
@@ -401,6 +438,34 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     foreach ($platforms_uuid as $platform_uuid) {
       $structure['nested']['query']['bool']['should'][] = ['term' => ['releases.platform_uuid' => $platform_uuid]];
+    }
+
+    return $structure;
+  }
+
+  /**
+   * Add a condition to filter games by stores key.
+   *
+   * @param array $stores
+   *   The collection of stores keys to use for filtering.
+   *
+   * @return array
+   *   The Nested OR-Condition query to filter-out games by stores name.
+   */
+  private function addStoresFilter(array $stores): array {
+    $structure = [
+      'nested' => [
+        'path' => 'stores',
+        'query' => [
+          'bool' => [
+            'should' => [],
+          ],
+        ],
+      ],
+    ];
+
+    foreach ($stores as $store) {
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['stores.name_keyword' => $store]];
     }
 
     return $structure;
