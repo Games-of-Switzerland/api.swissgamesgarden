@@ -14,16 +14,16 @@
     Given I send a "GET" request to <url>
     Then the response status code should be 200
     And the response should be in JSON
-    And the JSON node "aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets" should have 4 elements
+    And the JSON node "aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets" should have 4 elements
     And the JSON nodes should be equal to:
-      | aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets[0].key | Adventure |
-      | aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets[0].doc_count | 1 |
-      | aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets[1].key | Platformer |
-      | aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets[1].doc_count | 1 |
-      | aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets[2].key | Puzzle |
-      | aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets[2].doc_count | 1 |
-      | aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets[3].key | Simulation |
-      | aggregations.aggs_all.all_genres.agg_genres.genres_name_keyword.buckets[3].doc_count | 1 |
+      | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[0].key | Adventure |
+      | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[0].doc_count | 1 |
+      | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[1].key | Platformer |
+      | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[1].doc_count | 1 |
+      | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[2].key | Puzzle |
+      | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[2].doc_count | 1 |
+      | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[3].key | Simulation |
+      | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[3].doc_count | 1 |
 
     Examples:
       | url |

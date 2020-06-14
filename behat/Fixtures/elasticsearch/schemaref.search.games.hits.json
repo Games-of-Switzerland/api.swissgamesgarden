@@ -349,7 +349,7 @@
                         "examples": [
                           [
                             {
-                              "store": "steam",
+                              "name": "steam",
                               "link": "https://store.steampowered.com/app/787860/Farming_Simulator_19/"
                             }
                           ]
@@ -363,20 +363,20 @@
                               "title": "The first anyOf schema",
                               "examples": [
                                 {
-                                  "store": "steam",
+                                  "name": "steam",
                                   "link": "https://store.steampowered.com/app/787860/Farming_Simulator_19"
                                 }
                               ],
                               "required": [
-                                "store",
+                                "name",
                                 "link"
                               ],
                               "additionalProperties": true,
                               "properties": {
-                                "store": {
-                                  "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/stores/items/anyOf/0/properties/store",
+                                "name": {
+                                  "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/stores/items/anyOf/0/properties/name",
                                   "type": "string",
-                                  "title": "The store schema",
+                                  "title": "The name schema",
                                   "examples": [
                                     "steam"
                                   ]
