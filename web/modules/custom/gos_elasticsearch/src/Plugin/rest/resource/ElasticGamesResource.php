@@ -155,6 +155,15 @@ class ElasticGamesResource extends ElasticResourceBase {
                           'min_doc_count' => 0,
                           'size' => 100,
                         ],
+                        'aggs' => [
+                          'genres_uuid' => [
+                            'terms' => [
+                              'field' => 'genres.uuid',
+                              'min_doc_count' => 0,
+                              'size' => 1,
+                            ],
+                          ],
+                        ],
                       ],
                     ],
                   ],
@@ -179,6 +188,15 @@ class ElasticGamesResource extends ElasticResourceBase {
                           'field' => 'releases.platform_keyword',
                           'min_doc_count' => 0,
                           'size' => 100,
+                        ],
+                        'aggs' => [
+                          'platforms_uuid' => [
+                            'terms' => [
+                              'field' => 'releases.platform_uuid',
+                              'min_doc_count' => 0,
+                              'size' => 1,
+                            ],
+                          ],
                         ],
                       ],
                     ],
