@@ -24,8 +24,32 @@
       | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[2].doc_count | 1 |
       | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[3].key | Simulation |
       | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[3].doc_count | 1 |
-
     Examples:
       | url |
       | "http://api.gos.test/search/games?page=0" |
       | "http://api.gos.test/search/games?page=0&genresUuid[]=1bf8672b-f341-4287-8aa5-9b16c9131441" |
+
+
+    Scenario: The Genres facets/aggregations should be affected by filtered Stores and/or Platforms.
+      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platformsUuid[]=6ea716ae-e50f-4a59-ace5-603c353ae20a"
+    And the JSON node "aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets" should have 4 elements
+      And the JSON nodes should be equal to:
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[0].key | Puzzle |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[0].doc_count | 1 |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[1].key | Adventure |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[1].doc_count | 0 |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[2].key | Platformer |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[2].doc_count | 0 |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[3].key | Simulation |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[3].doc_count | 0 |
+      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&stores[]=steam"
+    And the JSON node "aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets" should have 4 elements
+      And the JSON nodes should be equal to:
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[0].key | Simulation |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[0].doc_count | 1 |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[1].key | Adventure |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[1].doc_count | 0 |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[2].key | Platformer |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[2].doc_count | 0 |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[3].key | Puzzle |
+        | aggregations.aggs_all.all_filtered_genres.all_nested_genres.genres_name_keyword.buckets[3].doc_count | 0 |
