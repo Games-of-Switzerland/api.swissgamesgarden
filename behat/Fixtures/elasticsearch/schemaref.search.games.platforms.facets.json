@@ -3,7 +3,6 @@
   "$id": "http://example.com/example.json",
   "type": "object",
   "title": "The root schema",
-  "description": "The root schema comprises the entire JSON document.",
   "required": [
     "aggregations"
   ],
@@ -23,47 +22,226 @@
           "type": "object",
           "title": "The aggs_all schema",
           "required": [
-            "all_platforms"
+            "all_filtered_platforms"
           ],
           "additionalProperties": true,
           "properties": {
-            "all_platforms": {
-              "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms",
+            "all_filtered_platforms": {
+              "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms",
               "type": "object",
-              "title": "The all_platforms schema",
+              "title": "The all_filtered_platforms schema",
+              "default": {},
+              "examples": [{
+                "meta": [],
+                "doc_count": 4,
+                "all_nested_platforms": {
+                  "doc_count": 11,
+                  "platforms_name_keyword": {
+                    "doc_count_error_upper_bound": 0,
+                    "sum_other_doc_count": 0,
+                    "buckets": [{
+                      "key": "Mac",
+                      "doc_count": 2
+                    },
+                      {
+                        "key": "PC",
+                        "doc_count": 2
+                      },
+                      {
+                        "key": "iOS",
+                        "doc_count": 2
+                      },
+                      {
+                        "key": "Android",
+                        "doc_count": 1
+                      },
+                      {
+                        "key": "Nintendo 3DS",
+                        "doc_count": 1
+                      },
+                      {
+                        "key": "PlayStation 4",
+                        "doc_count": 1
+                      },
+                      {
+                        "key": "PlayStation Vita",
+                        "doc_count": 1
+                      },
+                      {
+                        "key": "Xbox One",
+                        "doc_count": 1
+                      }
+                    ]
+                  }
+                }
+              }],
               "required": [
-                "agg_platforms"
+                "meta",
+                "doc_count",
+                "all_nested_platforms"
               ],
               "additionalProperties": true,
               "properties": {
-                "agg_platforms": {
-                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms",
+                "meta": {
+                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/meta",
+                  "type": "array",
+                  "title": "The meta schema",
+                  "default": [],
+                  "examples": [
+                    []
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "anyOf": [],
+                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/meta/items"
+                  }
+                },
+                "doc_count": {
+                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/doc_count",
+                  "type": "integer",
+                  "title": "The doc_count schema",
+                  "default": 0,
+                  "examples": [
+                    4
+                  ]
+                },
+                "all_nested_platforms": {
+                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms",
                   "type": "object",
-                  "title": "The agg_platforms schema",
+                  "title": "The all_nested_platforms schema",
+                  "default": {},
+                  "examples": [{
+                    "doc_count": 11,
+                    "platforms_name_keyword": {
+                      "doc_count_error_upper_bound": 0,
+                      "sum_other_doc_count": 0,
+                      "buckets": [{
+                        "key": "Mac",
+                        "doc_count": 2
+                      },
+                        {
+                          "key": "PC",
+                          "doc_count": 2
+                        },
+                        {
+                          "key": "iOS",
+                          "doc_count": 2
+                        },
+                        {
+                          "key": "Android",
+                          "doc_count": 1
+                        },
+                        {
+                          "key": "Nintendo 3DS",
+                          "doc_count": 1
+                        },
+                        {
+                          "key": "PlayStation 4",
+                          "doc_count": 1
+                        },
+                        {
+                          "key": "PlayStation Vita",
+                          "doc_count": 1
+                        },
+                        {
+                          "key": "Xbox One",
+                          "doc_count": 1
+                        }
+                      ]
+                    }
+                  }],
                   "required": [
-                    "releases_platform_keyword"
+                    "doc_count",
+                    "platforms_name_keyword"
                   ],
                   "additionalProperties": true,
                   "properties": {
-                    "releases_platform_keyword": {
-                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword",
+                    "doc_count": {
+                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/doc_count",
+                      "type": "integer",
+                      "title": "The doc_count schema",
+                      "default": 0,
+                      "examples": [
+                        11
+                      ]
+                    },
+                    "platforms_name_keyword": {
+                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/platforms_name_keyword",
                       "type": "object",
-                      "title": "The releases_platform_keyword schema",
+                      "title": "The platforms_name_keyword schema",
+                      "default": {},
+                      "examples": [{
+                        "doc_count_error_upper_bound": 0,
+                        "sum_other_doc_count": 0,
+                        "buckets": [{
+                          "key": "Mac",
+                          "doc_count": 2
+                        },
+                          {
+                            "key": "PC",
+                            "doc_count": 2
+                          },
+                          {
+                            "key": "iOS",
+                            "doc_count": 2
+                          },
+                          {
+                            "key": "Android",
+                            "doc_count": 1
+                          },
+                          {
+                            "key": "Nintendo 3DS",
+                            "doc_count": 1
+                          },
+                          {
+                            "key": "PlayStation 4",
+                            "doc_count": 1
+                          },
+                          {
+                            "key": "PlayStation Vita",
+                            "doc_count": 1
+                          },
+                          {
+                            "key": "Xbox One",
+                            "doc_count": 1
+                          }
+                        ]
+                      }],
                       "required": [
+                        "doc_count_error_upper_bound",
+                        "sum_other_doc_count",
                         "buckets"
                       ],
                       "additionalProperties": true,
                       "properties": {
+                        "doc_count_error_upper_bound": {
+                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/platforms_name_keyword/properties/doc_count_error_upper_bound",
+                          "type": "integer",
+                          "title": "The doc_count_error_upper_bound schema",
+                          "default": 0,
+                          "examples": [
+                            0
+                          ]
+                        },
+                        "sum_other_doc_count": {
+                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/platforms_name_keyword/properties/sum_other_doc_count",
+                          "type": "integer",
+                          "title": "The sum_other_doc_count schema",
+                          "default": 0,
+                          "examples": [
+                            0
+                          ]
+                        },
                         "buckets": {
-                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets",
+                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/platforms_name_keyword/properties/buckets",
                           "type": "array",
                           "title": "The buckets schema",
+                          "default": [],
                           "examples": [
-                            [
-                              {
-                                "key": "Mac",
-                                "doc_count": 2
-                              },
+                            [{
+                              "key": "Mac",
+                              "doc_count": 2
+                            },
                               {
                                 "key": "PC",
                                 "doc_count": 2
@@ -72,43 +250,42 @@
                           ],
                           "additionalItems": true,
                           "items": {
-                            "anyOf": [
-                              {
-                                "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets/items/anyOf/0",
-                                "type": "object",
-                                "title": "The first anyOf schema",
-                                "examples": [
-                                  {
-                                    "key": "Mac",
-                                    "doc_count": 2
-                                  }
-                                ],
-                                "required": [
-                                  "key",
-                                  "doc_count"
-                                ],
-                                "additionalProperties": true,
-                                "properties": {
-                                  "key": {
-                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets/items/anyOf/0/properties/key",
-                                    "type": "string",
-                                    "title": "The key schema",
-                                    "examples": [
-                                      "Mac"
-                                    ]
-                                  },
-                                  "doc_count": {
-                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets/items/anyOf/0/properties/doc_count",
-                                    "type": "integer",
-                                    "title": "The doc_count schema",
-                                    "examples": [
-                                      2
-                                    ]
-                                  }
+                            "anyOf": [{
+                              "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/platforms_name_keyword/properties/buckets/items/anyOf/0",
+                              "type": "object",
+                              "title": "The first anyOf schema",
+                              "default": {},
+                              "examples": [{
+                                "key": "Mac",
+                                "doc_count": 2
+                              }],
+                              "required": [
+                                "key",
+                                "doc_count"
+                              ],
+                              "additionalProperties": true,
+                              "properties": {
+                                "key": {
+                                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/platforms_name_keyword/properties/buckets/items/anyOf/0/properties/key",
+                                  "type": "string",
+                                  "title": "The key schema",
+                                  "default": "",
+                                  "examples": [
+                                    "Mac"
+                                  ]
+                                },
+                                "doc_count": {
+                                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/platforms_name_keyword/properties/buckets/items/anyOf/0/properties/doc_count",
+                                  "type": "integer",
+                                  "title": "The doc_count schema",
+                                  "default": 0,
+                                  "examples": [
+                                    2
+                                  ]
                                 }
                               }
-                            ],
-                            "$id": "#/properties/aggregations/properties/aggs_all/properties/all_platforms/properties/agg_platforms/properties/releases_platform_keyword/properties/buckets/items"
+                            }],
+                            "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/all_nested_platforms/properties/platforms_name_keyword/properties/buckets/items"
                           }
                         }
                       }

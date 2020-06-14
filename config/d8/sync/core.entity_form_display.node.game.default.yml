@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.game.field_releases
     - field.field.node.game.field_sources
     - field.field.node.game.field_sponsors
+    - field.field.node.game.field_stores
     - field.field.node.game.field_studios
     - field.field.node.game.field_website
     - image.style.thumbnail
@@ -95,6 +96,7 @@ third_party_settings:
         - field_languages
         - field_genres
         - field_sponsors
+        - field_stores
       parent_name: group_tabs
       weight: 23
       format_type: tab
@@ -139,7 +141,7 @@ content:
     third_party_settings: {  }
     region: content
   field_article_links:
-    weight: 128
+    weight: 129
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -147,7 +149,7 @@ content:
     type: link_default
     region: content
   field_awards:
-    weight: 130
+    weight: 131
     settings:
       size: 60
       placeholder: ''
@@ -215,7 +217,7 @@ content:
     type: release_default
     region: content
   field_sources:
-    weight: 129
+    weight: 130
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -231,6 +233,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_stores:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: store_default
     region: content
   field_studios:
     weight: 125

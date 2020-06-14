@@ -224,5 +224,15 @@
         {
             "value": "\/games\/persephone"
         }
+    ],
+    "field_stores": [
+        {
+            "store": "apple_store",
+            "link": "https:\/\/itunes.apple.com\/us\/app\/persephone\/id1425915725"
+        },
+        {
+            "store": "google_play_store",
+            "link": "https:\/\/play.google.com\/store\/apps\/details?id=com.momopi.persephone.premium"
+        }
     ]
 }

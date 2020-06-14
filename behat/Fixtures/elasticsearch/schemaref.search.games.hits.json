@@ -83,7 +83,8 @@
                       "studios",
                       "id",
                       "bundle",
-                      "path"
+                      "path",
+                      "changed"
                     ],
                     "additionalProperties": true,
                     "properties": {
@@ -125,6 +126,14 @@
                         "title": "The uuid schema",
                         "examples": [
                           "/games/farming-simulator-18"
+                        ]
+                      },
+                      "changed": {
+                        "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/changed",
+                        "type": "integer",
+                        "title": "The changed schema",
+                        "examples": [
+                          1591110891
                         ]
                       },
                       "bundle": {
@@ -330,6 +339,60 @@
                             }
                           ],
                           "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/genres/items"
+                        }
+                      },
+                      "stores": {
+                        "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/stores",
+                        "type": "array",
+                        "title": "The stores schema",
+                        "optional": true,
+                        "examples": [
+                          [
+                            {
+                              "name": "steam",
+                              "link": "https://store.steampowered.com/app/787860/Farming_Simulator_19/"
+                            }
+                          ]
+                        ],
+                        "additionalItems": true,
+                        "items": {
+                          "anyOf": [
+                            {
+                              "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/stores/items/anyOf/0",
+                              "type": "object",
+                              "title": "The first anyOf schema",
+                              "examples": [
+                                {
+                                  "name": "steam",
+                                  "link": "https://store.steampowered.com/app/787860/Farming_Simulator_19"
+                                }
+                              ],
+                              "required": [
+                                "name",
+                                "link"
+                              ],
+                              "additionalProperties": true,
+                              "properties": {
+                                "name": {
+                                  "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/stores/items/anyOf/0/properties/name",
+                                  "type": "string",
+                                  "title": "The name schema",
+                                  "examples": [
+                                    "steam"
+                                  ]
+                                },
+                                "link": {
+                                  "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/stores/items/anyOf/0/properties/link",
+                                  "type": "string",
+                                  "title": "The link schema",
+                                  "examples": [
+                                    "https://store.steampowered.com/app/787860/Farming_Simulator_19"
+                                  ]
+                                }
+                              }
+                            }
+                          ],
+                          "$id": "#/properties/hits/properties/hits/items/anyOf/0/properties/_source/properties/stores/items"
                         }
                       },
                       "id": {

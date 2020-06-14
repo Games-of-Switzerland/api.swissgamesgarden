@@ -1,7 +1,7 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/node\/10?_format=hal_json"
+            "href": "http:\/\/default\/games\/ninza?_format=hal_json"
         },
         "type": {
             "href": "http:\/\/drupal.org\/rest\/type\/node\/game"
@@ -24,7 +24,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_members": [
             {
-                "href": "http:\/\/default\/node\/13?_format=hal_json"
+                "href": "http:\/\/default\/people\/jeremy-wuthrer-cuany?_format=hal_json"
             }
         ]
     },
@@ -117,7 +117,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/node\/13?_format=hal_json"
+                        "href": "http:\/\/default\/people\/jeremy-wuthrer-cuany?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/node\/people"
@@ -184,7 +184,7 @@
     ],
     "path": [
         {
-            "alias": null,
+            "alias": "\/games\/ninza",
             "pid": null,
             "langcode": "en",
             "lang": "en"

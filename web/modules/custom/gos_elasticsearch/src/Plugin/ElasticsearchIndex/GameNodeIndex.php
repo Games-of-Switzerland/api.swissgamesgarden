@@ -182,6 +182,27 @@ class GameNodeIndex extends NodeIndexBase {
                 ],
               ],
             ],
+            'stores' => [
+              'dynamic' => FALSE,
+              'type' => 'nested',
+              'properties' => [
+                'name' => [
+                  'type' => 'text',
+                  'fields' => [
+                    'raw' => [
+                      'type' => 'keyword',
+                    ],
+                  ],
+                ],
+                'name_keyword' => [
+                  'type' => 'keyword',
+                ],
+                'link' => [
+                  'type' => 'text',
+                  'index' => FALSE,
+                ],
+              ],
+            ],
             'changed' => [
               'type' => 'date',
             ],

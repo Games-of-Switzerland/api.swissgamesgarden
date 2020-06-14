@@ -22,37 +22,37 @@
           "type": "object",
           "title": "The aggs_all schema",
           "required": [
-            "all_filtered_genres"
+            "all_filtered_stores"
           ],
           "additionalProperties": true,
           "properties": {
-            "all_filtered_genres": {
-              "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres",
+            "all_filtered_stores": {
+              "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores",
               "type": "object",
-              "title": "The all_filtered_genres schema",
+              "title": "The all_filtered_stores schema",
               "examples": [
                 {
                   "doc_count": 2,
-                  "all_nested_genres": {
-                    "doc_count": 1,
-                    "genres_name_keyword": {
+                  "all_nested_stores": {
+                    "doc_count": 2,
+                    "stores_name_keyword": {
                       "doc_count_error_upper_bound": 0,
                       "sum_other_doc_count": 0,
                       "buckets": [
                         {
-                          "key": "Simulation",
+                          "key": "custom",
                           "doc_count": 1
                         },
                         {
-                          "key": "Adventure",
+                          "key": "steam",
+                          "doc_count": 1
+                        },
+                        {
+                          "key": "apple_store",
                           "doc_count": 0
                         },
                         {
-                          "key": "Platformer",
-                          "doc_count": 0
-                        },
-                        {
-                          "key": "Puzzle",
+                          "key": "google_play_store",
                           "doc_count": 0
                         }
                       ]
@@ -62,12 +62,12 @@
               ],
               "required": [
                 "doc_count",
-                "all_nested_genres"
+                "all_nested_stores"
               ],
               "additionalProperties": true,
               "properties": {
                 "doc_count": {
-                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/doc_count",
+                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/doc_count",
                   "type": "integer",
                   "title": "The doc_count schema",
                   "default": 0,
@@ -75,31 +75,31 @@
                     2
                   ]
                 },
-                "all_nested_genres": {
-                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres",
+                "all_nested_stores": {
+                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores",
                   "type": "object",
-                  "title": "The all_nested_genres schema",
+                  "title": "The all_nested_stores schema",
                   "examples": [
                     {
-                      "doc_count": 1,
-                      "genres_name_keyword": {
+                      "doc_count": 2,
+                      "stores_name_keyword": {
                         "doc_count_error_upper_bound": 0,
                         "sum_other_doc_count": 0,
                         "buckets": [
                           {
-                            "key": "Simulation",
+                            "key": "custom",
                             "doc_count": 1
                           },
                           {
-                            "key": "Adventure",
+                            "key": "steam",
+                            "doc_count": 1
+                          },
+                          {
+                            "key": "apple_store",
                             "doc_count": 0
                           },
                           {
-                            "key": "Platformer",
-                            "doc_count": 0
-                          },
-                          {
-                            "key": "Puzzle",
+                            "key": "google_play_store",
                             "doc_count": 0
                           }
                         ]
@@ -108,42 +108,42 @@
                   ],
                   "required": [
                     "doc_count",
-                    "genres_name_keyword"
+                    "stores_name_keyword"
                   ],
                   "additionalProperties": true,
                   "properties": {
                     "doc_count": {
-                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/doc_count",
+                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/doc_count",
                       "type": "integer",
                       "title": "The doc_count schema",
                       "default": 0,
                       "examples": [
-                        1
+                        2
                       ]
                     },
-                    "genres_name_keyword": {
-                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/genres_name_keyword",
+                    "stores_name_keyword": {
+                      "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/stores_name_keyword",
                       "type": "object",
-                      "title": "The genres_name_keyword schema",
+                      "title": "The stores_name_keyword schema",
                       "examples": [
                         {
                           "doc_count_error_upper_bound": 0,
                           "sum_other_doc_count": 0,
                           "buckets": [
                             {
-                              "key": "Simulation",
+                              "key": "custom",
                               "doc_count": 1
                             },
                             {
-                              "key": "Adventure",
+                              "key": "steam",
+                              "doc_count": 1
+                            },
+                            {
+                              "key": "apple_store",
                               "doc_count": 0
                             },
                             {
-                              "key": "Platformer",
-                              "doc_count": 0
-                            },
-                            {
-                              "key": "Puzzle",
+                              "key": "google_play_store",
                               "doc_count": 0
                             }
                           ]
@@ -157,7 +157,7 @@
                       "additionalProperties": true,
                       "properties": {
                         "doc_count_error_upper_bound": {
-                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/genres_name_keyword/properties/doc_count_error_upper_bound",
+                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/stores_name_keyword/properties/doc_count_error_upper_bound",
                           "type": "integer",
                           "title": "The doc_count_error_upper_bound schema",
                           "default": 0,
@@ -166,7 +166,7 @@
                           ]
                         },
                         "sum_other_doc_count": {
-                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/genres_name_keyword/properties/sum_other_doc_count",
+                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/stores_name_keyword/properties/sum_other_doc_count",
                           "type": "integer",
                           "title": "The sum_other_doc_count schema",
                           "default": 0,
@@ -175,19 +175,19 @@
                           ]
                         },
                         "buckets": {
-                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/genres_name_keyword/properties/buckets",
+                          "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/stores_name_keyword/properties/buckets",
                           "type": "array",
                           "title": "The buckets schema",
                           "default": [],
                           "examples": [
                             [
                               {
-                                "key": "Simulation",
+                                "key": "custom",
                                 "doc_count": 1
                               },
                               {
-                                "key": "Adventure",
-                                "doc_count": 0
+                                "key": "steam",
+                                "doc_count": 1
                               }
                             ]
                           ],
@@ -195,12 +195,12 @@
                           "items": {
                             "anyOf": [
                               {
-                                "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/genres_name_keyword/properties/buckets/items/anyOf/0",
+                                "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/stores_name_keyword/properties/buckets/items/anyOf/0",
                                 "type": "object",
                                 "title": "The first anyOf schema",
                                 "examples": [
                                   {
-                                    "key": "Simulation",
+                                    "key": "custom",
                                     "doc_count": 1
                                   }
                                 ],
@@ -211,16 +211,16 @@
                                 "additionalProperties": true,
                                 "properties": {
                                   "key": {
-                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/genres_name_keyword/properties/buckets/items/anyOf/0/properties/key",
+                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/stores_name_keyword/properties/buckets/items/anyOf/0/properties/key",
                                     "type": "string",
                                     "title": "The key schema",
                                     "default": "",
                                     "examples": [
-                                      "Simulation"
+                                      "custom"
                                     ]
                                   },
                                   "doc_count": {
-                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/genres_name_keyword/properties/buckets/items/anyOf/0/properties/doc_count",
+                                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/stores_name_keyword/properties/buckets/items/anyOf/0/properties/doc_count",
                                     "type": "integer",
                                     "title": "The doc_count schema",
                                     "default": 0,
@@ -231,7 +231,7 @@
                                 }
                               }
                             ],
-                            "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_genres/properties/all_nested_genres/properties/genres_name_keyword/properties/buckets/items"
+                            "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_stores/properties/all_nested_stores/properties/stores_name_keyword/properties/buckets/items"
                           }
                         }
                       }

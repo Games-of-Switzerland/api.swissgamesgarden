@@ -1,0 +1,19 @@
+uuid: bba2ccd4-dd99-429b-b958-6c12f0b949dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - gos_site
+    - node
+id: node.field_stores
+field_name: field_stores
+entity_type: node
+type: store
+settings: {  }
+module: gos_site
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: f11b5d8f-67b4-4ee2-9048-1c32d77c9b5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stores
+    - node.type.game
+  module:
+    - gos_site
+id: node.game.field_stores
+field_name: field_stores
+entity_type: node
+bundle: game
+label: Store(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: store
