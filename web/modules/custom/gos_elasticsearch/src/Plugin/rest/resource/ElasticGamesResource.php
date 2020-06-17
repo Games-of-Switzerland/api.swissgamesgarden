@@ -151,18 +151,9 @@ class ElasticGamesResource extends ElasticResourceBase {
                     'aggs' => [
                       'genres_name_keyword' => [
                         'terms' => [
-                          'field' => 'genres.name_keyword',
+                          'field' => 'genres.slug',
                           'min_doc_count' => 0,
                           'size' => 100,
-                        ],
-                        'aggs' => [
-                          'genres_uuid' => [
-                            'terms' => [
-                              'field' => 'genres.uuid',
-                              'min_doc_count' => 0,
-                              'size' => 1,
-                            ],
-                          ],
                         ],
                       ],
                     ],
@@ -185,18 +176,9 @@ class ElasticGamesResource extends ElasticResourceBase {
                     'aggs' => [
                       'platforms_name_keyword' => [
                         'terms' => [
-                          'field' => 'releases.platform_keyword',
+                          'field' => 'releases.platform_slug',
                           'min_doc_count' => 0,
                           'size' => 100,
-                        ],
-                        'aggs' => [
-                          'platforms_uuid' => [
-                            'terms' => [
-                              'field' => 'releases.platform_uuid',
-                              'min_doc_count' => 0,
-                              'size' => 1,
-                            ],
-                          ],
                         ],
                       ],
                     ],
@@ -219,7 +201,7 @@ class ElasticGamesResource extends ElasticResourceBase {
                     'aggs' => [
                       'stores_name_keyword' => [
                         'terms' => [
-                          'field' => 'stores.name_keyword',
+                          'field' => 'stores.slug',
                           'min_doc_count' => 0,
                           'size' => 100,
                         ],
@@ -245,22 +227,22 @@ class ElasticGamesResource extends ElasticResourceBase {
       $es_query['body']['sort'] = $this->addSort($resource_validator->getSort());
     }
 
-    if ($resource_validator->getPlatformsUuid()) {
+    if ($resource_validator->getPlatforms()) {
       // Filter the "hits" by given platform(s).
-      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
 
       // Filter the "aggregations" by given platform(s).
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatformsUuid());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
     }
 
-    if ($resource_validator->getGenresUuid()) {
+    if ($resource_validator->getGenres()) {
       // Filter the "hits" by given genre(s).
-      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addGenresFilter($resource_validator->getGenres());
 
       // Filter the "aggregations" by given genre(s).
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenresUuid());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenres());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenres());
     }
 
     if ($resource_validator->getStores()) {
@@ -343,60 +325,52 @@ class ElasticGamesResource extends ElasticResourceBase {
    */
   protected function buildResourceValidator(Request $request): ElasticGamesResourceValidator {
     $resource_validator = new ElasticGamesResourceValidator($request->query->all());
+    $resource_validator->setRaw($request->query->all());
 
     // The platform(s) optional parameter.
-    if ($request->query->has('platformsUuid')) {
-      $resource_validator->setPlatformsUuid($request->query->get('platformsUuid'));
+    if ($request->query->has('platforms')) {
 
       /** @var \Drupal\taxonomy\TermInterface[] $platforms */
       $platforms = [];
 
-      $platforms_uuid = $resource_validator->getPlatformsUuid();
+      foreach ($request->query->get('platforms') as $slug) {
+        $platform = $this->termStorage->loadByProperties([
+          'vid' => 'platform',
+          'field_slug' => $slug,
+        ]);
 
-      if ($platforms_uuid) {
-        foreach ($platforms_uuid as $platform_uuid) {
-          $platform = $this->termStorage->loadByProperties([
-            'vid' => 'platform',
-            'uuid' => $platform_uuid,
-          ]);
-
-          if (!$platform) {
-            continue;
-          }
-
-          /** @var \Drupal\taxonomy\TermInterface $platform */
-          $platform = reset($platform);
-          $platforms[] = $platform;
+        if (!$platform) {
+          continue;
         }
 
-        $resource_validator->setPlatforms($platforms);
+        /** @var \Drupal\taxonomy\TermInterface $platform */
+        $platform = reset($platform);
+        $platforms[] = $platform;
       }
+
+      $resource_validator->setPlatforms($platforms);
     }
 
     // The genre(s) optional parameter.
-    if ($request->query->has('genresUuid')) {
-      $resource_validator->setGenresUuid($request->query->get('genresUuid'));
+    if ($request->query->has('genres')) {
+      $resource_validator->setGenres($request->query->get('genres'));
 
       /** @var \Drupal\taxonomy\TermInterface[] $genres */
       $genres = [];
 
-      $genres_uuid = $resource_validator->getGenresUuid();
+      foreach ($request->query->get('genres') as $slug) {
+        $genre = $this->termStorage->loadByProperties([
+          'vid' => 'genre',
+          'field_slug' => $slug,
+        ]);
 
-      if ($genres_uuid) {
-        foreach ($genres_uuid as $genre_uuid) {
-          $genre = $this->termStorage->loadByProperties([
-            'vid' => 'genre',
-            'uuid' => $genre_uuid,
-          ]);
-
-          if (!$genre) {
-            continue;
-          }
-
-          /** @var \Drupal\taxonomy\TermInterface $genre */
-          $genre = reset($genre);
-          $genres[] = $genre;
+        if (!$genre) {
+          continue;
         }
+
+        /** @var \Drupal\taxonomy\TermInterface $genre */
+        $genre = reset($genre);
+        $genres[] = $genre;
       }
 
       $resource_validator->setGenres($genres);
@@ -406,15 +380,15 @@ class ElasticGamesResource extends ElasticResourceBase {
   }
 
   /**
-   * Add a condition to filter games by genres UUID.
+   * Add a condition to filter games by genres slug.
    *
-   * @param array $genres_uuid
-   *   The collection of genres UUID to use for filtering.
+   * @param \Drupal\taxonomy\TermInterface[] $genres
+   *   The collection of genres to use for filtering.
    *
    * @return array
    *   The Nested OR-Condition query to filter-out games by genre.
    */
-  private function addGenresFilter(array $genres_uuid): array {
+  private function addGenresFilter(array $genres): array {
     $structure = [
       'nested' => [
         'path' => 'genres',
@@ -426,23 +400,23 @@ class ElasticGamesResource extends ElasticResourceBase {
       ],
     ];
 
-    foreach ($genres_uuid as $genre_uuid) {
-      $structure['nested']['query']['bool']['should'][] = ['term' => ['genres.uuid' => $genre_uuid]];
+    foreach ($genres as $genre) {
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['genres.slug' => $genre->field_slug->value]];
     }
 
     return $structure;
   }
 
   /**
-   * Add a condition to filter games by platforms UUID.
+   * Add a condition to filter games by platforms slug.
    *
-   * @param array $platforms_uuid
-   *   The collection of platforms UUID to use for filtering.
+   * @param \Drupal\taxonomy\TermInterface[] $platforms
+   *   The collection of platforms to use for filtering.
    *
    * @return array
    *   The Nested OR-Condition query to filter-out games by release platform.
    */
-  private function addPlatformsFilter(array $platforms_uuid): array {
+  private function addPlatformsFilter(array $platforms): array {
     $structure = [
       'nested' => [
         'path' => 'releases',
@@ -454,18 +428,18 @@ class ElasticGamesResource extends ElasticResourceBase {
       ],
     ];
 
-    foreach ($platforms_uuid as $platform_uuid) {
-      $structure['nested']['query']['bool']['should'][] = ['term' => ['releases.platform_uuid' => $platform_uuid]];
+    foreach ($platforms as $platform) {
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['releases.platform_slug' => $platform->field_slug->value]];
     }
 
     return $structure;
   }
 
   /**
-   * Add a condition to filter games by stores key.
+   * Add a condition to filter games by stores slug.
    *
    * @param array $stores
-   *   The collection of stores keys to use for filtering.
+   *   The collection of stores slug to use for filtering.
    *
    * @return array
    *   The Nested OR-Condition query to filter-out games by stores name.
@@ -483,7 +457,7 @@ class ElasticGamesResource extends ElasticResourceBase {
     ];
 
     foreach ($stores as $store) {
-      $structure['nested']['query']['bool']['should'][] = ['term' => ['stores.name_keyword' => $store]];
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['stores.slug' => $store]];
     }
 
     return $structure;

@@ -32,6 +32,15 @@ class ElasticGamesResourceValidator extends BaseValidator {
   ];
 
   /**
+   * All raw element.
+   *
+   * This field may used in custom validators.
+   *
+   * @var array
+   */
+  protected $raw;
+
+  /**
    * The game Genres to filter by.
    *
    * This field uses the custom validation ::validateGenres.
@@ -39,13 +48,6 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
   private $genres;
-
-  /**
-   * The Genres Uuid.
-   *
-   * @var string[]
-   */
-  private $genresUuid;
 
   /**
    * The page to fetch.
@@ -72,7 +74,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var string[]
    */
-  private $platformsUuid;
+  private $platformsSlugs;
 
   /**
    * Sort property with direction as key.
@@ -103,16 +105,6 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
-   * Get the game Genres UUID to filter by.
-   *
-   * @return string[]|null
-   *   Genres uuid.
-   */
-  public function getGenresUuid(): ?array {
-    return $this->genresUuid;
-  }
-
-  /**
    * Get page.
    *
    * @return int|null
@@ -133,13 +125,13 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
-   * Get the game Platforms UUID to filter by.
+   * Get the raw values.
    *
-   * @return string[]|null
-   *   Platforms uuid.
+   * @return array
+   *   The raw values.
    */
-  public function getPlatformsUuid(): ?array {
-    return $this->platformsUuid;
+  public function getRaw(): array {
+    return $this->raw;
   }
 
   /**
@@ -173,16 +165,6 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
-   * Set the Genres Uuid.
-   *
-   * @param string[] $genres_uuid
-   *   Genres Uuid.
-   */
-  public function setGenresUuid(array $genres_uuid): void {
-    $this->genresUuid = $genres_uuid;
-  }
-
-  /**
    * Set page name.
    *
    * @param int $page
@@ -203,13 +185,13 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
-   * Set the Platforms Uuid.
+   * Set raw values.
    *
-   * @param string[] $platforms_uuid
-   *   Platforms Uuid.
+   * @param array $raw
+   *   The raw values .
    */
-  public function setPlatformsUuid(array $platforms_uuid): void {
-    $this->platformsUuid = $platforms_uuid;
+  public function setRaw(array $raw): void {
+    $this->raw = $raw;
   }
 
   /**
@@ -245,10 +227,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @Assert\Callback
    */
   public function validateGenres(ExecutionContextInterface $context, $payload): void {
-    // @TODO Improve error detection by checking both array dimensions and give
-    // proper UUID feedback error.
-    if ($this->genresUuid && !$this->genres) {
-      $context->buildViolation(sprintf('At least one given Genre(s) UUID has not been found.'))
+    if (isset($this->raw['genres']) && !$this->genres) {
+      $context->buildViolation(sprintf('At least one given Genre(s) has not been found.'))
         ->atPath('genres')
         ->addViolation();
     }
@@ -267,10 +247,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @Assert\Callback
    */
   public function validatePlatforms(ExecutionContextInterface $context, $payload): void {
-    // @TODO Improve error detection by checking both array dimensions and give
-    // proper UUID feedback error.
-    if ($this->platformsUuid && !$this->platforms) {
-      $context->buildViolation(sprintf('At least one given Platform(s) UUID has not been found.'))
+    if (isset($this->raw['platforms']) && !$this->platforms) {
+      $context->buildViolation(sprintf('At least one given Platform(s) has not been found.'))
         ->atPath('platforms')
         ->addViolation();
     }
