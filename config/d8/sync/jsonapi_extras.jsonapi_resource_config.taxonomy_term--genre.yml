@@ -117,3 +117,9 @@ resourceFields:
     publicName: path
     enhancer:
       id: ''
+  field_slug:
+    fieldName: field_slug
+    publicName: slug
+    enhancer:
+      id: ''
+    disabled: false
