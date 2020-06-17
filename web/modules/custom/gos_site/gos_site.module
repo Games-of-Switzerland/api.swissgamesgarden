@@ -33,7 +33,7 @@ function gos_site_taxonomy_term_insert(TermInterface $entity) {
     return;
   }
 
-  // Replace w/ underscore anything that isn't A-Z, numbers, dashes, or underscores.
+  // Replace w/ underscore anything that isn't A-Z, numbers, or dashes.
   $slug = mb_strtolower(trim(preg_replace('/[^a-zA-Z0-9-]+/', '_', $entity->getName()), '_'));
 
   $entity->get('field_slug')->setValue($slug);
