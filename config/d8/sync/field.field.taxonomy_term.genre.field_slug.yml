@@ -1,0 +1,19 @@
+uuid: 3c3e6dc2-a93e-4c4e-9fc6-e516ce70999b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_slug
+    - taxonomy.vocabulary.genre
+id: taxonomy_term.genre.field_slug
+field_name: field_slug
+entity_type: taxonomy_term
+bundle: genre
+label: Slug
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
