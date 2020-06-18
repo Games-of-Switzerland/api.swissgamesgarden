@@ -70,13 +70,6 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private $platforms;
 
   /**
-   * The Platforms Uuid.
-   *
-   * @var string[]
-   */
-  private $platformsSlugs;
-
-  /**
    * Sort property with direction as key.
    *
    * This property uses the custom validation ::validateSort.
