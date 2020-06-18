@@ -46,9 +46,7 @@ class GameNormalizer extends ContentEntityNormalizer {
       foreach ($object->field_releases as $release) {
         $releases[] = [
           'date' => isset($release->date_value) ? $release->date_value : NULL,
-          'platform' => isset($release->entity) ? $release->entity->getName() : NULL,
-          'platform_keyword' => isset($release->entity) ? $release->entity->getName() : NULL,
-          'platform_uuid' => isset($release->entity) ? $release->entity->get('uuid')->value : NULL,
+          'platform_slug' => isset($release->entity) ? $release->entity->get('field_slug')->value : NULL,
         ];
       }
 
@@ -75,9 +73,7 @@ class GameNormalizer extends ContentEntityNormalizer {
 
       foreach ($object->field_genres as $genre) {
         $genres[] = [
-          'name' => $genre->entity->name->value,
-          'name_keyword' => $genre->entity->name->value,
-          'uuid' => $genre->entity->get('uuid')->value,
+          'slug' => $genre->entity->get('field_slug')->value,
         ];
       }
 
@@ -90,8 +86,7 @@ class GameNormalizer extends ContentEntityNormalizer {
 
       foreach ($object->field_stores as $store) {
         $genres[] = [
-          'name' => $store->store,
-          'name_keyword' => $store->store,
+          'slug' => $store->store,
           'link' => $store->link,
         ];
       }

@@ -1,4 +1,4 @@
-name: MSF Migration
+name: Games of Switzerland Elasticsearch Migration
 type: module
 description: Module used to handle migrations from an exported CSV of Google Spreadsheet
 package: Games of Switzerland

@@ -105,27 +105,39 @@
             "description": "The property you want the results to be sorted by and ordered DESC."
           },
           {
-            "name": "genresUuid[]",
+            "name": "genres[]",
             "in": "query",
             "required": false,
             "type": "array",
-            "description": "Collection of genres UUID. Items are matched using an Inner OR condition.",
+            "description": "Collection of genres slug. Items are matched using an Inner OR condition.",
             "items": {
               "type": "string"
             },
-            "example": "1bf8672b-f341-4287-8aa5-9b16c9131441",
+            "example": "simulation",
             "uniqueItems": true
           },
           {
-            "name": "platformsUuid[]",
+            "name": "stores[]",
             "in": "query",
             "required": false,
             "type": "array",
-            "description": "Collection of platforms UUID. Items are matched using an Inner OR condition.",
+            "description": "Collection of stores slug. Items are matched using an Inner OR condition.",
             "items": {
               "type": "string"
             },
-            "example": "304a43fe-3c4d-4587-93e6-a84959d39bf7",
+            "example": "steam",
+            "uniqueItems": true
+          },
+          {
+            "name": "platforms[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of platforms slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "ps4",
             "uniqueItems": true
           }
         ],

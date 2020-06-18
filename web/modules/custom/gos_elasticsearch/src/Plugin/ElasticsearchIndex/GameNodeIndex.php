@@ -133,14 +133,7 @@ class GameNodeIndex extends NodeIndexBase {
                   'type' => 'date',
                   'format' => 'yyyy-MM-dd',
                 ],
-                'platform' => [
-                  'type' => 'text',
-                  'analyzer' => 'synonym_platform_analyzer',
-                ],
-                'platform_keyword' => [
-                  'type' => 'keyword',
-                ],
-                'platform_uuid' => [
+                'platform_slug' => [
                   'type' => 'keyword',
                 ],
               ],
@@ -166,18 +159,7 @@ class GameNodeIndex extends NodeIndexBase {
               'dynamic' => FALSE,
               'type' => 'nested',
               'properties' => [
-                'name' => [
-                  'type' => 'text',
-                  'fields' => [
-                    'raw' => [
-                      'type' => 'keyword',
-                    ],
-                  ],
-                ],
-                'name_keyword' => [
-                  'type' => 'keyword',
-                ],
-                'uuid' => [
+                'slug' => [
                   'type' => 'keyword',
                 ],
               ],
@@ -186,15 +168,7 @@ class GameNodeIndex extends NodeIndexBase {
               'dynamic' => FALSE,
               'type' => 'nested',
               'properties' => [
-                'name' => [
-                  'type' => 'text',
-                  'fields' => [
-                    'raw' => [
-                      'type' => 'keyword',
-                    ],
-                  ],
-                ],
-                'name_keyword' => [
+                'slug' => [
                   'type' => 'keyword',
                 ],
                 'link' => [

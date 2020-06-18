@@ -37,7 +37,7 @@
       | "http://api.gos.test/search/games?page=0&stores[]=apple_store" |
 
     Scenario: The Stores facets/aggregations should be affected by filtered Platforms and/or Genres.
-      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platformsUuid[]=304a43fe-3c4d-4587-93e6-a84959d39bf7"
+      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platforms[]=pc"
       And the JSON node "aggregations.aggs_all.all_filtered_stores.all_nested_stores.stores_name_keyword.buckets" should have 4 elements
       And the JSON nodes should be equal to:
         | aggregations.aggs_all.all_filtered_stores.all_nested_stores.stores_name_keyword.buckets[0].key | custom |
@@ -48,7 +48,7 @@
         | aggregations.aggs_all.all_filtered_stores.all_nested_stores.stores_name_keyword.buckets[2].doc_count | 0 |
         | aggregations.aggs_all.all_filtered_stores.all_nested_stores.stores_name_keyword.buckets[3].key | google_play_store |
         | aggregations.aggs_all.all_filtered_stores.all_nested_stores.stores_name_keyword.buckets[3].doc_count | 0 |
-      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&genresUuid[]=55d245b5-c9cc-43e5-8400-c44ef4f2d8ad"
+      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&genres[]=puzzle"
       And the JSON node "aggregations.aggs_all.all_filtered_stores.all_nested_stores.stores_name_keyword.buckets" should have 4 elements
       And the JSON nodes should be equal to:
         | aggregations.aggs_all.all_filtered_stores.all_nested_stores.stores_name_keyword.buckets[0].key | apple_store |
