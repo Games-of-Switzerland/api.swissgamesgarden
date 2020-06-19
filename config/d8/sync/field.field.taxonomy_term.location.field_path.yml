@@ -1,0 +1,23 @@
+uuid: 7563f564-fa8c-4427-a581-e774cc2e87b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_path
+    - taxonomy.vocabulary.location
+  module:
+    - fieldable_path
+id: taxonomy_term.location.field_path
+field_name: field_path
+entity_type: taxonomy_term
+bundle: location
+label: Path
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: fieldable_path

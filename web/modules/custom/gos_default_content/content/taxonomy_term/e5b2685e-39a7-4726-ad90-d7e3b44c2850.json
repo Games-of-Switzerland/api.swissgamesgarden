@@ -90,5 +90,11 @@
             "langcode": "en",
             "lang": "en"
         }
+    ],
+    "field_slug": [
+        {
+            "value": "playstation_4",
+            "lang": "en"
+        }
     ]
 }

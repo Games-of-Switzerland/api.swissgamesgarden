@@ -6,6 +6,7 @@ use Drupal\Core\Cache\CacheableJsonResponse;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexManager;
+use Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex;
 use Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator\ElasticGamesResourceValidator;
 use Drupal\gos_rest\Plugin\rest\ValidatorFactory;
 use stdClass;
@@ -115,112 +116,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     /** @var \Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex $index */
     $index = $this->elasticsearchPluginManager->createInstance(self::ELASTICSEARCH_PLUGIN_ID);
-
-    $es_query = [
-      'index' => $index->getIndexName([]),
-      'from' => $resource_validator->getPage() * self::PAGER_SIZE,
-      'size' => self::PAGER_SIZE,
-      'body' => [
-        'query' => [
-          'bool' => [
-            'filter' => [
-              'bool' => [
-                'must' => [],
-              ],
-            ],
-          ],
-        ],
-
-        'aggregations' => [
-          'aggs_all' => [
-            'global' => new stdClass(),
-            'aggs' => [
-              // Genres aggregations.
-              'all_filtered_genres' => [
-                'filter' => [
-                  'bool' => [
-                    // Where all the filter w/o a Score impact should be.
-                    'must' => [],
-                  ],
-                ],
-                'aggregations' => [
-                  'all_nested_genres' => [
-                    'nested' => [
-                      'path' => 'genres',
-                    ],
-                    'aggs' => [
-                      'genres_name_keyword' => [
-                        'terms' => [
-                          'field' => 'genres.slug',
-                          'min_doc_count' => 0,
-                          'size' => 100,
-                        ],
-                      ],
-                    ],
-                  ],
-                ],
-              ],
-              // Platforms aggregations.
-              'all_filtered_platforms' => [
-                'filter' => [
-                  'bool' => [
-                    // Where all the filter w/o a Score impact should be.
-                    'must' => [],
-                  ],
-                ],
-                'aggregations' => [
-                  'all_nested_platforms' => [
-                    'nested' => [
-                      'path' => 'releases',
-                    ],
-                    'aggs' => [
-                      'platforms_name_keyword' => [
-                        'terms' => [
-                          'field' => 'releases.platform_slug',
-                          'min_doc_count' => 0,
-                          'size' => 100,
-                        ],
-                      ],
-                    ],
-                  ],
-                ],
-              ],
-              // Stores aggregations.
-              'all_filtered_stores' => [
-                'filter' => [
-                  'bool' => [
-                    // Where all the filter w/o a Score impact should be.
-                    'must' => [],
-                  ],
-                ],
-                'aggregations' => [
-                  'all_nested_stores' => [
-                    'nested' => [
-                      'path' => 'stores',
-                    ],
-                    'aggs' => [
-                      'stores_name_keyword' => [
-                        'terms' => [
-                          'field' => 'stores.slug',
-                          'min_doc_count' => 0,
-                          'size' => 100,
-                        ],
-                      ],
-                    ],
-                  ],
-                ],
-              ],
-            ],
-          ],
-        ],
-
-        'sort' => [
-          '_score' => [
-            'order' => 'desc',
-          ],
-        ],
-      ],
-    ];
+    $es_query = $this->buildBaseGamesElasticsearchQuery($index, $resource_validator);
 
     // Add the sort property.
     if (!empty($resource_validator->getSort())) {
@@ -234,6 +130,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       // Filter the "aggregations" by given platform(s).
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
     }
 
     if ($resource_validator->getGenres()) {
@@ -243,6 +140,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       // Filter the "aggregations" by given genre(s).
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenres());
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenres());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenres());
     }
 
     if ($resource_validator->getStores()) {
@@ -252,6 +150,17 @@ class ElasticGamesResource extends ElasticResourceBase {
       // Filter the "aggregations" by given store(s).
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addStoresFilter($resource_validator->getStores());
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addStoresFilter($resource_validator->getStores());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addStoresFilter($resource_validator->getStores());
+    }
+
+    if ($resource_validator->getLocations()) {
+      // Filter the "hits" by given location(s).
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addLocationsFilter($resource_validator->getLocations());
+
+      // Filter the "aggregations" by given location(s).
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addLocationsFilter($resource_validator->getLocations());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addLocationsFilter($resource_validator->getLocations());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addLocationsFilter($resource_validator->getLocations());
     }
 
     try {
@@ -329,7 +238,6 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     // The platform(s) optional parameter.
     if ($request->query->has('platforms')) {
-
       /** @var \Drupal\taxonomy\TermInterface[] $platforms */
       $platforms = [];
 
@@ -353,8 +261,6 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     // The genre(s) optional parameter.
     if ($request->query->has('genres')) {
-      $resource_validator->setGenres($request->query->get('genres'));
-
       /** @var \Drupal\taxonomy\TermInterface[] $genres */
       $genres = [];
 
@@ -374,6 +280,29 @@ class ElasticGamesResource extends ElasticResourceBase {
       }
 
       $resource_validator->setGenres($genres);
+    }
+
+    // The location(s) optional parameter.
+    if ($request->query->has('locations')) {
+      /** @var \Drupal\taxonomy\TermInterface[] $locations */
+      $locations = [];
+
+      foreach ($request->query->get('locations') as $slug) {
+        $location = $this->termStorage->loadByProperties([
+          'vid' => 'location',
+          'field_slug' => $slug,
+        ]);
+
+        if (!$location) {
+          continue;
+        }
+
+        /** @var \Drupal\taxonomy\TermInterface $location */
+        $location = reset($location);
+        $locations[] = $location;
+      }
+
+      $resource_validator->setLocations($locations);
     }
 
     return $resource_validator;
@@ -402,6 +331,34 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     foreach ($genres as $genre) {
       $structure['nested']['query']['bool']['should'][] = ['term' => ['genres.slug' => $genre->field_slug->value]];
+    }
+
+    return $structure;
+  }
+
+  /**
+   * Add a condition to filter games by location(s) slug.
+   *
+   * @param \Drupal\taxonomy\TermInterface[] $locations
+   *   The collection of locations to use for filtering.
+   *
+   * @return array
+   *   The Nested OR-Condition query to filter-out games by location.
+   */
+  private function addLocationsFilter(array $locations): array {
+    $structure = [
+      'nested' => [
+        'path' => 'locations',
+        'query' => [
+          'bool' => [
+            'should' => [],
+          ],
+        ],
+      ],
+    ];
+
+    foreach ($locations as $location) {
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['locations.slug' => $location->field_slug->value]];
     }
 
     return $structure;
@@ -461,6 +418,150 @@ class ElasticGamesResource extends ElasticResourceBase {
     }
 
     return $structure;
+  }
+
+  /**
+   * Build the basic (without filtering or aggs-filtered) Games ES query.
+   *
+   * @param \Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex $index
+   *   The games index to build the query for.
+   * @param \Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator\ElasticGamesResourceValidator $resource_validator
+   *   The games Resource validator.
+   *
+   * @return array
+   *   The Elasticsearch skeleton query.
+   */
+  private function buildBaseGamesElasticsearchQuery(GameNodeIndex $index, ElasticGamesResourceValidator $resource_validator): array {
+    return [
+      'index' => $index->getIndexName([]),
+      'from' => $resource_validator->getPage() * self::PAGER_SIZE,
+      'size' => self::PAGER_SIZE,
+      'body' => [
+        'query' => [
+          'bool' => [
+            'filter' => [
+              'bool' => [
+                'must' => [],
+              ],
+            ],
+          ],
+        ],
+
+        'aggregations' => [
+          'aggs_all' => [
+            'global' => new stdClass(),
+            'aggs' => [
+              // Genres aggregations.
+              'all_filtered_genres' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the filter w/o a Score impact should be.
+                    'must' => [],
+                  ],
+                ],
+                'aggregations' => [
+                  'all_nested_genres' => [
+                    'nested' => [
+                      'path' => 'genres',
+                    ],
+                    'aggs' => [
+                      'genres_name_keyword' => [
+                        'terms' => [
+                          'field' => 'genres.slug',
+                          'min_doc_count' => 0,
+                          'size' => 100,
+                        ],
+                      ],
+                    ],
+                  ],
+                ],
+              ],
+              // Locations aggregations.
+              'all_filtered_locations' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the filter w/o a Score impact should be.
+                    'must' => [],
+                  ],
+                ],
+                'aggregations' => [
+                  'all_nested_locations' => [
+                    'nested' => [
+                      'path' => 'locations',
+                    ],
+                    'aggs' => [
+                      'locations_name_keyword' => [
+                        'terms' => [
+                          'field' => 'locations.slug',
+                          'min_doc_count' => 0,
+                          'size' => 50,
+                        ],
+                      ],
+                    ],
+                  ],
+                ],
+              ],
+              // Platforms aggregations.
+              'all_filtered_platforms' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the filter w/o a Score impact should be.
+                    'must' => [],
+                  ],
+                ],
+                'aggregations' => [
+                  'all_nested_platforms' => [
+                    'nested' => [
+                      'path' => 'releases',
+                    ],
+                    'aggs' => [
+                      'platforms_name_keyword' => [
+                        'terms' => [
+                          'field' => 'releases.platform_slug',
+                          'min_doc_count' => 0,
+                          'size' => 100,
+                        ],
+                      ],
+                    ],
+                  ],
+                ],
+              ],
+              // Stores aggregations.
+              'all_filtered_stores' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the filter w/o a Score impact should be.
+                    'must' => [],
+                  ],
+                ],
+                'aggregations' => [
+                  'all_nested_stores' => [
+                    'nested' => [
+                      'path' => 'stores',
+                    ],
+                    'aggs' => [
+                      'stores_name_keyword' => [
+                        'terms' => [
+                          'field' => 'stores.slug',
+                          'min_doc_count' => 0,
+                          'size' => 100,
+                        ],
+                      ],
+                    ],
+                  ],
+                ],
+              ],
+            ],
+          ],
+        ],
+
+        'sort' => [
+          '_score' => [
+            'order' => 'desc',
+          ],
+        ],
+      ],
+    ];
   }
 
 }

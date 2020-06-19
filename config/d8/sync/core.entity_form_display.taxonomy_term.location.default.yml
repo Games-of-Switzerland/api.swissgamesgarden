@@ -1,0 +1,53 @@
+uuid: 5f0ad681-736f-4bc2-b165-833a40782019
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.location.field_path
+    - field.field.taxonomy_term.location.field_slug
+    - taxonomy.vocabulary.location
+  module:
+    - fieldable_path
+    - path
+id: taxonomy_term.location.default
+targetEntityType: taxonomy_term
+bundle: location
+mode: default
+content:
+  field_path:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: fieldable_path_widget
+    region: content
+  field_slug:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 4
+    region: content
+    third_party_settings: {  }
+hidden:
+  description: true

@@ -117,6 +117,18 @@
             "uniqueItems": true
           },
           {
+            "name": "locations[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of locations slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "zurich",
+            "uniqueItems": true
+          },
+          {
             "name": "stores[]",
             "in": "query",
             "required": false,

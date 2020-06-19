@@ -1,28 +1,28 @@
 {
     "_links": {
         "self": {
-            "href": "http:\/\/default\/taxonomy\/term\/18?_format=hal_json"
+            "href": "http:\/\/default\/locations\/zurich?_format=hal_json"
         },
         "type": {
-            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/genre"
+            "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/location"
         },
-        "http:\/\/drupal.org\/rest\/relation\/taxonomy_term\/genre\/parent": [
+        "http:\/\/drupal.org\/rest\/relation\/taxonomy_term\/location\/parent": [
             null
         ]
     },
     "tid": [
         {
-            "value": 18
+            "value": 34
         }
     ],
     "uuid": [
         {
-            "value": "c80a976b-749c-496d-906c-e6833e46e086"
+            "value": "e181208c-fd4d-47bc-9767-4965d670bc2f"
         }
     ],
     "revision_id": [
         {
-            "value": 18
+            "value": 34
         }
     ],
     "langcode": [
@@ -33,12 +33,12 @@
     ],
     "vid": [
         {
-            "target_id": "genre"
+            "target_id": "location"
         }
     ],
     "revision_created": [
         {
-            "value": "2020-05-14T13:16:22+00:00",
+            "value": "2020-06-19T14:54:34+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -50,7 +50,7 @@
     ],
     "name": [
         {
-            "value": "Adventure",
+            "value": "Z\u00fcrich",
             "lang": "en"
         }
     ],
@@ -60,13 +60,13 @@
         }
     ],
     "_embedded": {
-        "http:\/\/drupal.org\/rest\/relation\/taxonomy_term\/genre\/parent": [
+        "http:\/\/drupal.org\/rest\/relation\/taxonomy_term\/location\/parent": [
             null
         ]
     },
     "changed": [
         {
-            "value": "2020-05-14T13:16:22+00:00",
+            "value": "2020-06-19T14:54:45+00:00",
             "lang": "en",
             "format": "Y-m-d\\TH:i:sP"
         }
@@ -85,15 +85,22 @@
     ],
     "path": [
         {
-            "alias": null,
-            "pid": null,
+            "alias": "\/locations\/zurich",
+            "pid": 23,
             "langcode": "en",
+            "lang": "en"
+        }
+    ],
+    "field_path": [
+        {
+            "value": "\/locations\/zurich",
             "lang": "en"
         }
     ],
     "field_slug": [
         {
-            "value": "adventure"
+            "value": "zurich",
+            "lang": "en"
         }
     ]
 }

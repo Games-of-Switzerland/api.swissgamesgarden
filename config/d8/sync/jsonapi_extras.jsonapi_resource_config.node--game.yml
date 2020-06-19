@@ -135,6 +135,18 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_article_links:
+    fieldName: field_article_links
+    publicName: field_article_links
+    enhancer:
+      id: ''
+    disabled: false
+  field_awards:
+    fieldName: field_awards
+    publicName: field_awards
+    enhancer:
+      id: ''
+    disabled: false
   field_genres:
     fieldName: field_genres
     publicName: genres
@@ -154,6 +166,18 @@ resourceFields:
             - medium
             - thumbnail
     disabled: false
+  field_languages:
+    fieldName: field_languages
+    publicName: field_languages
+    enhancer:
+      id: ''
+    disabled: false
+  field_locations:
+    fieldName: field_locations
+    publicName: field_locations
+    enhancer:
+      id: ''
+    disabled: false
   field_members:
     fieldName: field_members
     publicName: members
@@ -166,15 +190,45 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_publishers:
+    fieldName: field_publishers
+    publicName: field_publishers
+    enhancer:
+      id: ''
+    disabled: false
   field_releases:
     fieldName: field_releases
     publicName: releases
     enhancer:
       id: ''
     disabled: false
+  field_sources:
+    fieldName: field_sources
+    publicName: field_sources
+    enhancer:
+      id: ''
+    disabled: false
+  field_sponsors:
+    fieldName: field_sponsors
+    publicName: field_sponsors
+    enhancer:
+      id: ''
+    disabled: false
+  field_stores:
+    fieldName: field_stores
+    publicName: field_stores
+    enhancer:
+      id: ''
+    disabled: false
   field_studios:
     fieldName: field_studios
     publicName: studios
+    enhancer:
+      id: ''
+    disabled: false
+  field_website:
+    fieldName: field_website
+    publicName: field_website
     enhancer:
       id: ''
     disabled: false

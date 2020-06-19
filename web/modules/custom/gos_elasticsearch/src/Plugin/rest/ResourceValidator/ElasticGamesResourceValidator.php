@@ -50,6 +50,15 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private $genres;
 
   /**
+   * The game Locations to filter by.
+   *
+   * This field uses the custom validation ::validateLocations.
+   *
+   * @var \Drupal\taxonomy\TermInterface[]|null
+   */
+  private $locations;
+
+  /**
    * The page to fetch.
    *
    * The page parameter is mandatory to avoid search overload.
@@ -95,6 +104,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function getGenres(): ?array {
     return $this->genres;
+  }
+
+  /**
+   * Get the game Locations to filter by.
+   *
+   * @return \Drupal\taxonomy\TermInterface[]|null
+   *   Locations to filter by.
+   */
+  public function getLocations(): ?array {
+    return $this->locations;
   }
 
   /**
@@ -155,6 +174,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function setGenres(array $genres): void {
     $this->genres = $genres;
+  }
+
+  /**
+   * Set the Locations to filter by.
+   *
+   * @param \Drupal\taxonomy\TermInterface[] $locations
+   *   Locations to filter by.
+   */
+  public function setLocations(array $locations): void {
+    $this->locations = $locations;
   }
 
   /**
@@ -223,6 +252,26 @@ class ElasticGamesResourceValidator extends BaseValidator {
     if (isset($this->raw['genres']) && !$this->genres) {
       $context->buildViolation(sprintf('At least one given Genre(s) has not been found.'))
         ->atPath('genres')
+        ->addViolation();
+    }
+  }
+
+  /**
+   * Validates the Locations parameter.
+   *
+   * Ensure the given taxonomy is a proper Genres entity.
+   *
+   * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
+   *   The validation execution context.
+   * @param string $payload
+   *   The Payload.
+   *
+   * @Assert\Callback
+   */
+  public function validateLocations(ExecutionContextInterface $context, $payload): void {
+    if (isset($this->raw['locations']) && !$this->locations) {
+      $context->buildViolation(sprintf('At least one given Location(s) has not been found.'))
+        ->atPath('locations')
         ->addViolation();
     }
   }
