@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
     - field.field.node.game.field_languages
+    - field.field.node.game.field_locations
     - field.field.node.game.field_members
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
@@ -47,6 +48,7 @@ hidden:
   field_genres: true
   field_images: true
   field_languages: true
+  field_locations: true
   field_members: true
   field_path: true
   field_publishers: true
