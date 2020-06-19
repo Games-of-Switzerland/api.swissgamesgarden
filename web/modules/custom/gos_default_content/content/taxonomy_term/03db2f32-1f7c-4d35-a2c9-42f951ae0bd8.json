@@ -90,5 +90,11 @@
             "langcode": "en",
             "lang": "en"
         }
+    ],
+    "field_slug": [
+        {
+            "value": "xbox_one",
+            "lang": "en"
+        }
     ]
 }

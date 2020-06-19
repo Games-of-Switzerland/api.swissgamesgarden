@@ -90,5 +90,10 @@
             "langcode": "en",
             "lang": "en"
         }
+    ],
+    "field_slug": [
+        {
+            "value": "adventure"
+        }
     ]
 }

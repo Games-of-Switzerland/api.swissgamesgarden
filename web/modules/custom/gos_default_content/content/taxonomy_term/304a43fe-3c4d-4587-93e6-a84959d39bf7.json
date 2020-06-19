@@ -90,5 +90,11 @@
             "langcode": "en",
             "lang": "en"
         }
+    ],
+    "field_slug": [
+        {
+            "value": "pc",
+            "lang": "en"
+        }
     ]
 }
