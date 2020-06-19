@@ -36,6 +36,11 @@
                 "href": "http:\/\/default\/languages\/spanish?_format=hal_json"
             }
         ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_locations": [
+            {
+                "href": "http:\/\/default\/locations\/zurich?_format=hal_json"
+            }
+        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_publishers": [
             {
                 "href": "http:\/\/default\/publishers\/astragon?_format=hal_json"
@@ -207,6 +212,23 @@
                 "uuid": [
                     {
                         "value": "83ce6271-20fa-4f84-949f-d43a9e40bc8c"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_locations": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/locations\/zurich?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/location"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e181208c-fd4d-47bc-9767-4965d670bc2f"
                     }
                 ]
             }

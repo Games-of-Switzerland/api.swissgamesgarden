@@ -30,6 +30,11 @@
                 "href": "http:\/\/default\/languages\/english?_format=hal_json"
             }
         ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_locations": [
+            {
+                "href": "http:\/\/default\/locations\/fribourg?_format=hal_json"
+            }
+        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_members": [
             {
                 "href": "http:\/\/default\/people\/jeremy-wuthrer-cuany?_format=hal_json"
@@ -152,6 +157,23 @@
                 "uuid": [
                     {
                         "value": "c748e76c-4a40-4b04-9e69-17ea602cb0b0"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_locations": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/locations\/fribourg?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/location"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "e022f6e4-85e7-485e-a7dd-b92d0ab0e637"
                     }
                 ]
             }
