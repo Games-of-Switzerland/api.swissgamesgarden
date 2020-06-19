@@ -400,6 +400,10 @@ process:
     plugin: image_import
     source: screenshot_link
 
+  uid:
+    plugin: default_value
+    default_value: 1
+
 destination:
   plugin: entity:node
   default_bundle: game
