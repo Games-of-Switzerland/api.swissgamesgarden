@@ -37,7 +37,7 @@ source:
     4:
       name: studios
     5:
-      name: location
+      name: locations
     6:
       name: publishers
     7:
@@ -203,6 +203,33 @@ process:
             value_key: name
             bundle_key: vid
             bundle: genre
+            entity_type: taxonomy_term
+            ignore_case: true
+            access_check: false
+
+  field_locations:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: locations
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: entity_lookup
+            value_key: name
+            bundle_key: vid
+            bundle: location
             entity_type: taxonomy_term
             ignore_case: true
             access_check: false
@@ -382,3 +409,4 @@ migration_dependencies:
     - default:gos_studios
     - default:gos_platforms
     - default:gos_genres
+    - default:gos_locations

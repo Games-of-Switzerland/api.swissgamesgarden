@@ -34,6 +34,12 @@ Before starting a migration,
   $ drush mim gos_genres
   ```
 
+1. Migrate all locations (Zürich, Fribourg, ...)
+
+  ```bash
+  $ drush mim gos_locations
+  ```
+
 1. Migrate all studios with appropriates team-member(s)
 
   ```bash
