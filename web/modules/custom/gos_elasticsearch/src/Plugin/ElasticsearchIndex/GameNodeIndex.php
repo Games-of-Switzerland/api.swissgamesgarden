@@ -188,6 +188,7 @@ class GameNodeIndex extends NodeIndexBase {
             ],
             'changed' => [
               'type' => 'date',
+              'format' => 'epoch_second',
             ],
           ],
         ],
