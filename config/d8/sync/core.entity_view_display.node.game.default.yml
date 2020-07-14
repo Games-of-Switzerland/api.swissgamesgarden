@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
     - field.field.node.game.field_releases
+    - field.field.node.game.field_social_networks
     - field.field.node.game.field_sources
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_stores
@@ -132,6 +133,13 @@ content:
       link: true
     third_party_settings: {  }
     type: release_default
+    region: content
+  field_social_networks:
+    weight: 118
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: social_default
     region: content
   field_sources:
     weight: 113

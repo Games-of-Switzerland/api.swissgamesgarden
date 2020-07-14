@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
     - field.field.node.game.field_releases
+    - field.field.node.game.field_social_networks
     - field.field.node.game.field_sources
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_stores
@@ -118,6 +119,7 @@ third_party_settings:
         - field_article_links
         - field_sources
         - field_awards
+        - field_social_networks
       parent_name: group_tabs
       weight: 24
       format_type: tab
@@ -229,6 +231,12 @@ content:
       match_limit: 10
     third_party_settings: {  }
     type: release_default
+    region: content
+  field_social_networks:
+    weight: 131
+    settings: {  }
+    third_party_settings: {  }
+    type: social_default
     region: content
   field_sources:
     weight: 129
