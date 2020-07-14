@@ -208,6 +208,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_social_networks:
+    fieldName: field_social_networks
+    publicName: social_networks
+    enhancer:
+      id: ''
+    disabled: false
   field_sources:
     fieldName: field_sources
     publicName: field_sources
