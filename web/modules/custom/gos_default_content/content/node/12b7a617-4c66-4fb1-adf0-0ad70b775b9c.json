@@ -234,5 +234,11 @@
         {
             "value": "\/games\/ninza"
         }
+    ],
+    "field_social_networks": [
+        {
+            "social_network": "twitter",
+            "link": "https:\/\/twiter.com\/ninzaGame"
+        }
     ]
 }
