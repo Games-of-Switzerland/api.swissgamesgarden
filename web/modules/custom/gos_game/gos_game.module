@@ -13,10 +13,13 @@ use Drupal\gos_game\CompletenessCalculator;
  */
 function gos_game_node_presave(EntityInterface $entity) {
   if ($entity->bundle() === 'game') {
+    /** @var \Drupal\node\NodeInterface $game */
+    $game = $entity;
+
     // Calculate the completeness score field value.
-    $score = CompletenessCalculator::calculation($entity);
+    $score = CompletenessCalculator::calculation($game);
 
     // Other field calculations.
-    $entity->set('field_completeness', $score);
+    $game->set('field_completeness', $score);
   }
 }

@@ -9,6 +9,7 @@ require_once __DIR__ . '/core/includes/database.inc';
 require_once __DIR__ . '/core/includes/entity.inc';
 require_once __DIR__ . '/core/includes/errors.inc';
 require_once __DIR__ . '/core/includes/file.inc';
+require_once __DIR__ . '/core/modules/file/file.module';
 require_once __DIR__ . '/core/includes/form.inc';
 require_once __DIR__ . '/core/includes/install.core.inc';
 require_once __DIR__ . '/core/includes/install.inc';

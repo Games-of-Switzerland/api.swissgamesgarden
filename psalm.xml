@@ -14,6 +14,7 @@
     <ignoreFiles>
       <directory name="vendor" />
       <directory name="web/core" />
+      <directory name="web/modules/contrib" />
     </ignoreFiles>
   </projectFiles>
 
@@ -38,14 +39,14 @@
     <!-- Do not take into account errors with Drupal\Tests\UnitTestCase -->
     <UndefinedClass>
       <errorLevel type="suppress">
-        <!-- <directory name="web/modules/custom/*/tests" />-->
+        <directory name="web/modules/custom/*/tests" />
       </errorLevel>
     </UndefinedClass>
 
     <!-- Do not take into account undefined methods in tests (results from the above) -->
     <UndefinedMethod>
       <errorLevel type="suppress">
-        <!-- <directory name="web/modules/custom/*/tests" />-->
+        <directory name="web/modules/custom/*/tests" />
       </errorLevel>
     </UndefinedMethod>
   </issueHandlers>

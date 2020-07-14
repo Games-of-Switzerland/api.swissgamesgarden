@@ -37,24 +37,10 @@ class CompletenessItem extends IntegerItem {
   /**
    * {@inheritdoc}
    */
-  public function preSave() {
-    // Preprocess value only for Game entity.
-    $entity = $this->getEntity();
-
-    if ($entity->bundle() !== 'game') {
-      return;
-    }
-
-    $this->value = random_int(0, 1000);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition): array {
     return [
       'value' => DataDefinition::create('integer')
-        ->setLabel(t('Score'))
+        ->setLabel(t('Score')->__toString())
         ->setRequired(TRUE),
     ];
   }
