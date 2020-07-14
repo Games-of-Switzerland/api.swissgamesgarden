@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_completeness
     - field.storage.node.field_genres
     - field.storage.node.field_images
     - field.storage.node.field_members
@@ -1182,26 +1183,32 @@ display:
                   container_type: container
                   title: 'Container 0'
                   description: ''
-                  weight: '-17'
+                  weight: '-19'
                   open: 0
                   id: container-0
                   pid: root
                   depth: '1'
                   type: container
                 status:
-                  weight: '-17'
+                  weight: '-19'
                   id: status
                   pid: container-0
                   depth: '2'
                   type: filter
+                field_completeness_value:
+                  weight: '-18'
+                  id: field_completeness_value
+                  pid: container-0
+                  depth: '2'
+                  type: filter
                 title:
-                  weight: '-16'
+                  weight: '-17'
                   id: title
                   pid: container-0
                   depth: '2'
                   type: filter
                 langcode:
-                  weight: '-15'
+                  weight: '-16'
                   id: langcode
                   pid: container-0
                   depth: '2'
@@ -1210,7 +1217,7 @@ display:
                   container_type: container
                   title: 'Container 1'
                   description: ''
-                  weight: '-16'
+                  weight: '-17'
                   open: 0
                   id: container-1
                   pid: root
@@ -1244,7 +1251,7 @@ display:
                   container_type: details
                   title: 'Container 7'
                   description: ''
-                  weight: '-14'
+                  weight: '-16'
                   open: 0
                   id: container-7
                   pid: root
@@ -1254,7 +1261,7 @@ display:
                   container_type: details
                   title: 'Container 2'
                   description: ''
-                  weight: '-13'
+                  weight: '-15'
                   open: 0
                   id: container-2
                   pid: root
@@ -1264,7 +1271,7 @@ display:
                   container_type: details
                   title: 'Container 3'
                   description: ''
-                  weight: '-12'
+                  weight: '-14'
                   open: 0
                   id: container-3
                   pid: root
@@ -1274,7 +1281,7 @@ display:
                   container_type: details
                   title: 'Container 4'
                   description: ''
-                  weight: '-11'
+                  weight: '-13'
                   open: 0
                   id: container-4
                   pid: root
@@ -1284,9 +1291,19 @@ display:
                   container_type: details
                   title: 'Container 5'
                   description: ''
-                  weight: '-10'
+                  weight: '-12'
                   open: 0
                   id: container-5
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-8:
+                  container_type: details
+                  title: 'Container 8'
+                  description: ''
+                  weight: '-11'
+                  open: 0
+                  id: container-8
                   pid: root
                   depth: '1'
                   type: container
@@ -1294,7 +1311,7 @@ display:
                   container_type: container
                   title: 'Container 6'
                   description: ''
-                  weight: '-9'
+                  weight: '-10'
                   open: 0
                   id: container-6
                   pid: root
@@ -1453,6 +1470,70 @@ display:
           plugin_id: field
           entity_type: node
           entity_field: status
+        field_completeness:
+          id: field_completeness
+          table: node__field_completeness
+          field: field_completeness
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Completeness
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<div class=\"icon-centered\">\r\n{% set classes = [\r\n   field_completeness <= 3000 ? 'danger',\r\n   field_completeness <= 5000 ? 'warning',\r\n   field_completeness <= 8000 ? 'good',\r\n   field_completeness > 8000 ? 'excellent',\r\n] %}\r\n<span class=\"icon-circle {{ classes|join(' ') }}\"></span>{{ field_completeness }}</div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''''
+            prefix_suffix: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         field_images:
           id: field_images
           table: node__field_images
@@ -2318,6 +2399,78 @@ display:
           entity_type: node
           entity_field: uuid
           plugin_id: string
+        field_completeness_value:
+          id: field_completeness_value
+          table: node__field_completeness
+          field: field_completeness_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_completeness_value_op
+            label: 'Completeness (field_completeness)'
+            description: null
+            use_operator: false
+            operator: field_completeness_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_completeness_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+            min_placeholder: null
+            max_placeholder: null
+          is_grouped: true
+          group_info:
+            label: Completeness
+            description: ''
+            identifier: field_completeness_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Catastrophic
+                operator: '<='
+                value:
+                  value: '3000'
+                  min: ''
+                  max: ''
+              2:
+                title: Bad
+                operator: '<='
+                value:
+                  value: '5000'
+                  min: ''
+                  max: ''
+              3:
+                title: Good
+                operator: '<='
+                value:
+                  value: '8000'
+                  min: ''
+                  max: ''
+              4:
+                title: Excellent
+                operator: '>'
+                value:
+                  value: '8000'
+                  min: ''
+                  max: ''
+          plugin_id: numeric
       filter_groups:
         operator: AND
         groups:
@@ -2337,10 +2490,11 @@ display:
             node_bulk_form: node_bulk_form
             timestamp: status
             status: status
+            field_completeness: field_completeness
             field_images: field_images
             title: title
-            uuid: title
             field_studios: field_studios
+            uuid: title
             nothing: title
             field_genres: field_genres
             field_releases: field_releases
@@ -2366,6 +2520,13 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            field_completeness:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             field_images:
               align: ''
               separator: ''
@@ -2378,12 +2539,12 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            uuid:
+            field_studios:
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_studios:
+            uuid:
               align: ''
               separator: ''
               empty_column: false
@@ -2444,6 +2605,7 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
+        - 'config:field.storage.node.field_completeness'
         - 'config:field.storage.node.field_genres'
         - 'config:field.storage.node.field_images'
         - 'config:field.storage.node.field_releases'

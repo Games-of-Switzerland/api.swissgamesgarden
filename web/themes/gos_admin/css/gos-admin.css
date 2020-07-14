@@ -43,3 +43,19 @@
 .icon-circle.unpublished {
   background-color: orangered;
 }
+
+.icon-circle.danger {
+  background-color: darkred;
+}
+
+.icon-circle.warning {
+  background-color: goldenrod;
+}
+
+.icon-circle.good {
+  background-color: darkseagreen;
+}
+
+.icon-circle.excellent {
+  background-color: limegreen;
+}
