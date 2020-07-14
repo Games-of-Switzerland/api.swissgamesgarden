@@ -1,0 +1,21 @@
+uuid: ff8e087c-7f0e-4fc0-95b4-2b303f5ee1f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - gos_game
+    - node
+id: node.field_completeness
+field_name: field_completeness
+entity_type: node
+type: gos_game_completeness
+settings:
+  unsigned: false
+  size: normal
+module: gos_game
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
