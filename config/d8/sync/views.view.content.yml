@@ -1481,7 +1481,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"icon-centered\">\r\n{% set classes = [\r\n   field_completeness <= 3000 ? 'danger',\r\n   field_completeness <= 5000 ? 'warning',\r\n   field_completeness <= 8000 ? 'good',\r\n   field_completeness > 8000 ? 'excellent',\r\n] %}\r\n<span class=\"icon-circle {{ classes|join(' ') }}\"></span>{{ field_completeness }}</div>"
+            text: "<div class=\"icon-centered\">\r\n{% set classes = [\r\n   field_completeness__value <= 3000 ? 'danger',\r\n   field_completeness__value >= 3000 and field_completeness__value <= 5000 ? 'warning',\r\n   field_completeness__value >= 5000 and field_completeness__value <= 8000 ? 'good',\r\n   field_completeness__value > 8000 ? 'excellent',\r\n] %}\r\n<span class=\"icon-circle {{ classes|join(' ') }}\"></span>{{ field_completeness }}</div>"
             make_link: false
             path: ''
             absolute: false
@@ -2443,28 +2443,28 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: Catastrophic
+                title: 'Catastrophic (<3000)'
                 operator: '<='
                 value:
                   value: '3000'
                   min: ''
                   max: ''
               2:
-                title: Bad
+                title: 'Bad (<5000)'
                 operator: '<='
                 value:
                   value: '5000'
                   min: ''
                   max: ''
               3:
-                title: Good
+                title: 'Good (<8000)'
                 operator: '<='
                 value:
                   value: '8000'
                   min: ''
                   max: ''
               4:
-                title: Excellent
+                title: 'Excellent( >8000)'
                 operator: '>'
                 value:
                   value: '8000'
