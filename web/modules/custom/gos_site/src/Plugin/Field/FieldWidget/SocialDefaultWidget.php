@@ -23,7 +23,7 @@ class SocialDefaultWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    $element['social'] = [
+    $element['social_network'] = [
       '#title' => $this->t('Social Network'),
       '#type' => 'select',
       '#options' => [
