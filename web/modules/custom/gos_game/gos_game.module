@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Game module for Games of Switzerland.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\gos_game\CompletenessCalculator;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function gos_game_node_presave(EntityInterface $entity) {
+  if ($entity->bundle() === 'game') {
+    /** @var \Drupal\node\NodeInterface $game */
+    $game = $entity;
+
+    // Calculate the completeness score field value.
+    $score = CompletenessCalculator::calculation($game);
+
+    // Other field calculations.
+    $game->set('field_completeness', $score);
+  }
+}

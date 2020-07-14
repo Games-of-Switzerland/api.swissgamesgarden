@@ -1,0 +1,5 @@
+name: Games of Switzerland - Game
+type: module
+description: Game module for Games of Switzerland
+package: Games of Switzerland
+core: 8.x

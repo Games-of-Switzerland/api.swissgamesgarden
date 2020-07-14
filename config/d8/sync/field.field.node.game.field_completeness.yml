@@ -1,0 +1,25 @@
+uuid: 098bc6f0-1b45-4c4d-9c2a-7b2635b85640
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_completeness
+    - node.type.game
+  module:
+    - gos_game
+id: node.game.field_completeness
+field_name: field_completeness
+entity_type: node
+bundle: game
+label: Completeness
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: '0'
+  max: ''
+  prefix: ''
+  suffix: ''
+field_type: gos_game_completeness

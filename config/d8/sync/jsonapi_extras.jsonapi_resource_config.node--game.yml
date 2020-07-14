@@ -147,6 +147,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_completeness:
+    fieldName: field_completeness
+    publicName: completeness
+    enhancer:
+      id: ''
+    disabled: false
   field_genres:
     fieldName: field_genres
     publicName: genres

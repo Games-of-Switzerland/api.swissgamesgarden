@@ -29,6 +29,7 @@ module:
   filter: 0
   focal_point: 0
   gos_elasticsearch: 0
+  gos_game: 0
   gos_rest: 0
   gos_site: 0
   help: 0

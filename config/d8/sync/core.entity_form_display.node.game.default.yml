@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.game.body
     - field.field.node.game.field_article_links
     - field.field.node.game.field_awards
+    - field.field.node.game.field_completeness
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
     - field.field.node.game.field_languages
@@ -99,6 +100,7 @@ third_party_settings:
         - field_languages
         - field_genres
         - field_sponsors
+        - field_completeness
       parent_name: group_tabs
       weight: 23
       format_type: tab
@@ -143,7 +145,7 @@ content:
     third_party_settings: {  }
     region: content
   field_article_links:
-    weight: 129
+    weight: 128
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -151,7 +153,7 @@ content:
     type: link_default
     region: content
   field_awards:
-    weight: 131
+    weight: 130
     settings:
       size: 60
       placeholder: ''
@@ -229,7 +231,7 @@ content:
     type: release_default
     region: content
   field_sources:
-    weight: 130
+    weight: 129
     settings:
       placeholder_url: ''
       placeholder_title: ''
@@ -272,7 +274,7 @@ content:
     region: content
   path:
     type: path
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -280,14 +282,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 2
+    weight: 3
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 4
     region: content
     third_party_settings: {  }
   title:
@@ -300,6 +302,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_completeness: true
   field_path: true
   sticky: true
   uid: true
