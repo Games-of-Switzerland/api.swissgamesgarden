@@ -1,0 +1,3 @@
+services:
+  gos_game.completeness.calculator:
+    class: Drupal\gos_game\CompletenessCalculator
