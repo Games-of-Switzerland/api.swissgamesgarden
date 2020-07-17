@@ -137,4 +137,19 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
     parent::index($entity);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  protected function indexNamePattern() {
+    if (!$this->settings::get(self::SETTINGS_INDEX_PREFIX)) {
+      throw new InvalidArgumentException('No index prefix was specified in settings.php.');
+    }
+
+    // Always specify the placeholder `index_prefix`.
+    $index_prefix = $this->settings::get(self::SETTINGS_INDEX_PREFIX);
+    $index_name = str_replace('{index_prefix}', $index_prefix, $this->pluginDefinition['indexName']);
+
+    return preg_replace($this->placeholder_regex, '*', $index_name);
+  }
+
 }
