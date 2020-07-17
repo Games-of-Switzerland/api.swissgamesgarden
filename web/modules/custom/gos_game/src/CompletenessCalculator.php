@@ -29,6 +29,7 @@ class CompletenessCalculator {
     'field_sources' => 1000,
     'field_images' => 2000,
     'body' => 1000,
+    'field_social_networks' => 1,
   ];
 
   /**
@@ -64,6 +65,8 @@ class CompletenessCalculator {
       $score -= 250;
     }
 
+    // @TODO: Improve socialnetworks calculation for each different values
+    // instead of fixed non empty - 1 point.
     return $score;
   }
 
