@@ -31,7 +31,8 @@ class StudioNormalizer extends ContentEntityNormalizer {
     /** @var \Drupal\node\Entity\Node $object */
 
     $data = [
-      'nid' => $object->id(),
+      'uuid' => $object->get('uuid')->value,
+      'is_published' => $object->isPublished(),
       'name' => $object->getTitle(),
       'bundle' => $object->bundle(),
       'path' => $object->toUrl('canonical')->toString(),

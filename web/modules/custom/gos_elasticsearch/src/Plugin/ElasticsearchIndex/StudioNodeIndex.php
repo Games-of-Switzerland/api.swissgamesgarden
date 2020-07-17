@@ -68,9 +68,11 @@ class StudioNodeIndex extends NodeIndexBase {
         'type' => $this->typeNamePattern(),
         'body' => [
           'properties' => [
-            'nid' => [
-              'type' => 'integer',
-              'index' => FALSE,
+            'uuid' => [
+              'type' => 'keyword',
+            ],
+            'is_published' => [
+              'type' => 'boolean',
             ],
             'name' => [
               'type' => 'text',

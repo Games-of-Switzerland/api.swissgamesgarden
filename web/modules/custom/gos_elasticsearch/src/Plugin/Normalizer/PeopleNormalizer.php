@@ -31,7 +31,8 @@ class PeopleNormalizer extends ContentEntityNormalizer {
     /** @var \Drupal\node\Entity\Node $object */
 
     return [
-      'nid' => $object->id(),
+      'uuid' => $object->get('uuid')->value,
+      'is_published' => $object->isPublished(),
       'fullname' => $object->getTitle(),
       'bundle' => $object->bundle(),
       'path' => $object->toUrl('canonical')->toString(),

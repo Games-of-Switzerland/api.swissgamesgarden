@@ -32,9 +32,9 @@ class GameNormalizer extends ContentEntityNormalizer {
 
     $data = [
       'uuid' => $object->get('uuid')->value,
+      'is_published' => $object->isPublished(),
       'title' => $object->getTitle(),
       'desc' => !$object->get('body')->isEmpty() ? strip_tags($object->body->value) : NULL,
-      'is_published' => $object->isPublished(),
       'bundle' => $object->bundle(),
       'path' => $object->toUrl('canonical')->toString(),
       'changed' => $object->getChangedTime(),
