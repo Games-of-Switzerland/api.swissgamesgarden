@@ -137,13 +137,13 @@ resourceFields:
     disabled: false
   field_article_links:
     fieldName: field_article_links
-    publicName: field_article_links
+    publicName: article_links
     enhancer:
       id: ''
     disabled: false
   field_awards:
     fieldName: field_awards
-    publicName: field_awards
+    publicName: awards
     enhancer:
       id: ''
     disabled: false
@@ -174,13 +174,13 @@ resourceFields:
     disabled: false
   field_languages:
     fieldName: field_languages
-    publicName: field_languages
+    publicName: languages
     enhancer:
       id: ''
     disabled: false
   field_locations:
     fieldName: field_locations
-    publicName: field_locations
+    publicName: locations
     enhancer:
       id: ''
     disabled: false
@@ -198,7 +198,7 @@ resourceFields:
     disabled: false
   field_publishers:
     fieldName: field_publishers
-    publicName: field_publishers
+    publicName: publishers
     enhancer:
       id: ''
     disabled: false
@@ -216,19 +216,19 @@ resourceFields:
     disabled: false
   field_sources:
     fieldName: field_sources
-    publicName: field_sources
+    publicName: sources
     enhancer:
       id: ''
     disabled: false
   field_sponsors:
     fieldName: field_sponsors
-    publicName: field_sponsors
+    publicName: sponsors
     enhancer:
       id: ''
     disabled: false
   field_stores:
     fieldName: field_stores
-    publicName: field_stores
+    publicName: stores
     enhancer:
       id: ''
     disabled: false
@@ -240,7 +240,7 @@ resourceFields:
     disabled: false
   field_website:
     fieldName: field_website
-    publicName: field_website
+    publicName: website
     enhancer:
       id: ''
     disabled: false

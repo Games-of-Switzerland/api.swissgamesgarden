@@ -123,9 +123,21 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  menu_link:
+    disabled: true
+    fieldName: menu_link
+    publicName: menu_link
+    enhancer:
+      id: ''
   body:
     fieldName: body
     publicName: body
+    enhancer:
+      id: ''
+    disabled: false
+  field_path:
+    fieldName: field_path
+    publicName: field_path
     enhancer:
       id: ''
     disabled: false
