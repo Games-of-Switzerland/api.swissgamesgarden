@@ -41,8 +41,6 @@ class TwitterHandle extends ProcessPluginBase {
 
     if (filter_var($value, \FILTER_VALIDATE_URL)) {
       return $value;
-
-      throw new MigrateSkipProcessException(sprintf('The store link %s is not a valid URL.', $value));
     }
 
     if (mb_substr($value, 0, 1) === '@') {
