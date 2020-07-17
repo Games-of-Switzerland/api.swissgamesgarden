@@ -393,6 +393,20 @@ class ElasticGamesResource extends ElasticResourceBase {
   }
 
   /**
+   * Add a condition to filter unpublished elements.
+   *
+   * @return array
+   *   The Condition query to filter-out unpublished element.
+   */
+  private function addPublishedConditions(): array {
+    return [
+      'term' => [
+        'is_published' => TRUE,
+      ],
+    ];
+  }
+
+  /**
    * Add a condition to filter games by stores slug.
    *
    * @param array $stores
@@ -439,9 +453,18 @@ class ElasticGamesResource extends ElasticResourceBase {
       'body' => [
         'query' => [
           'bool' => [
+            'should' => [
+              // Where all the conditions modifying the Score should be added.
+            ],
+            'must' => [
+              // Where all the conditions modifying the Score should be added.
+            ],
             'filter' => [
               'bool' => [
-                'must' => [],
+                // Where all the conditions without a Score impact should be.
+                'must' => [
+                  $this->addPublishedConditions(),
+                ],
               ],
             ],
           ],
@@ -456,7 +479,9 @@ class ElasticGamesResource extends ElasticResourceBase {
                 'filter' => [
                   'bool' => [
                     // Where all the filter w/o a Score impact should be.
-                    'must' => [],
+                    'must' => [
+                      $this->addPublishedConditions(),
+                    ],
                   ],
                 ],
                 'aggregations' => [
@@ -481,7 +506,9 @@ class ElasticGamesResource extends ElasticResourceBase {
                 'filter' => [
                   'bool' => [
                     // Where all the filter w/o a Score impact should be.
-                    'must' => [],
+                    'must' => [
+                      $this->addPublishedConditions(),
+                    ],
                   ],
                 ],
                 'aggregations' => [
@@ -506,7 +533,9 @@ class ElasticGamesResource extends ElasticResourceBase {
                 'filter' => [
                   'bool' => [
                     // Where all the filter w/o a Score impact should be.
-                    'must' => [],
+                    'must' => [
+                      $this->addPublishedConditions(),
+                    ],
                   ],
                 ],
                 'aggregations' => [
@@ -531,7 +560,9 @@ class ElasticGamesResource extends ElasticResourceBase {
                 'filter' => [
                   'bool' => [
                     // Where all the filter w/o a Score impact should be.
-                    'must' => [],
+                    'must' => [
+                      $this->addPublishedConditions(),
+                    ],
                   ],
                 ],
                 'aggregations' => [

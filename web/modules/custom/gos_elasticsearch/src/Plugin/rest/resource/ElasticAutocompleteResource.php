@@ -120,8 +120,14 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
             ],
             'filter' => [
               'bool' => [
+                // Where all the conditions without a Score impact should be.
                 'must' => [
-                  // Where all the conditions without a Score impact should be.
+                  // Get only published entities.
+                  [
+                    'term' => [
+                      'is_published' => TRUE,
+                    ],
+                  ],
                 ],
               ],
             ],
