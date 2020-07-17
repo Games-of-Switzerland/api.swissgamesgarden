@@ -396,6 +396,31 @@ process:
             plugin: gos_stores_mapper
             get: 'link'
 
+  field_social_networks:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: twitter
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 2
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        social_network:
+          -
+            plugin: default_value
+            default_value: 'twitter'
+        link:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: gos_twitter_handle
+
   field_images:
     plugin: image_import
     source: screenshot_link

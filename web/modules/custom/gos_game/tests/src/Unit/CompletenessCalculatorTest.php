@@ -63,6 +63,8 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     $this->testGame->hasField('field_sources')->willReturn(TRUE)->shouldBeCalled();
     $this->testGame->get('field_images')->willReturn($field_item->reveal())->shouldBeCalled();
     $this->testGame->hasField('field_images')->willReturn(TRUE)->shouldBeCalled();
+    $this->testGame->get('field_social_networks')->willReturn($field_item->reveal())->shouldBeCalled();
+    $this->testGame->hasField('field_social_networks')->willReturn(TRUE)->shouldBeCalled();
   }
 
   /**
@@ -70,7 +72,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
    */
   public function testCalculation() {
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
-    self::assertEquals(8642, $score);
+    self::assertEquals(8643, $score);
   }
 
   /**
@@ -82,7 +84,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     $this->testGame->get('field_studios')->willReturn($field_item->reveal());
 
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
-    self::assertEquals(7642, $score);
+    self::assertEquals(7643, $score);
   }
 
   /**
@@ -94,7 +96,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     $this->testGame->get('field_images')->willReturn($field_item->reveal());
 
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
-    self::assertEquals(5642, $score);
+    self::assertEquals(5643, $score);
   }
 
   /**
@@ -107,7 +109,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     $this->testGame->get('field_members')->willReturn($field_item->reveal());
 
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
-    self::assertEquals(5142, $score);
+    self::assertEquals(5143, $score);
   }
 
   /**
@@ -119,7 +121,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     $this->testGame->get('field_releases')->willReturn($field_item->reveal());
 
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
-    self::assertEquals(6892, $score);
+    self::assertEquals(6893, $score);
   }
 
   /**
@@ -131,7 +133,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     $this->testGame->get('field_members')->willReturn($field_item->reveal());
 
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
-    self::assertEquals(7642, $score);
+    self::assertEquals(7643, $score);
   }
 
 }

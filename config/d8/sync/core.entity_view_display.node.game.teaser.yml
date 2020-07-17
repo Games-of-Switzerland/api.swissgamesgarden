@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
     - field.field.node.game.field_releases
+    - field.field.node.game.field_social_networks
     - field.field.node.game.field_sources
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_stores
@@ -55,6 +56,7 @@ hidden:
   field_path: true
   field_publishers: true
   field_releases: true
+  field_social_networks: true
   field_sources: true
   field_sponsors: true
   field_stores: true
