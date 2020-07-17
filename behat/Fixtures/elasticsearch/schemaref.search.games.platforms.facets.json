@@ -32,7 +32,6 @@
               "title": "The all_filtered_platforms schema",
               "default": {},
               "examples": [{
-                "meta": [],
                 "doc_count": 4,
                 "all_nested_platforms": {
                   "doc_count": 11,
@@ -76,26 +75,11 @@
                 }
               }],
               "required": [
-                "meta",
                 "doc_count",
                 "all_nested_platforms"
               ],
               "additionalProperties": true,
               "properties": {
-                "meta": {
-                  "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/meta",
-                  "type": "array",
-                  "title": "The meta schema",
-                  "default": [],
-                  "examples": [
-                    []
-                  ],
-                  "additionalItems": true,
-                  "items": {
-                    "anyOf": [],
-                    "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/meta/items"
-                  }
-                },
                 "doc_count": {
                   "$id": "#/properties/aggregations/properties/aggs_all/properties/all_filtered_platforms/properties/doc_count",
                   "type": "integer",
