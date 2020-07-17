@@ -21,7 +21,8 @@ use Drupal\migrate\Row;
  * @endcode
  *
  * If the source value was
- * '@playkids_ch', the transformed value would be 'https://www.twitter.com/playkids_ch'
+ * '@playkids_ch', the transformed value would be
+ * 'https://www.twitter.com/playkids_ch'.
  * Therefore, https://twitter.com/asylamba will stay the same.
  *
  * @MigrateProcessPlugin(
