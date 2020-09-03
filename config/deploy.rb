@@ -7,13 +7,13 @@ set :repo_url, 'git@github.com:Games-of-Switzerland/gos-server.git'
 set :docker_app_name, -> {
   [fetch(:application), fetch(:stage)].join('_')
 }
-set :docker_app_service, 'prod'
-set :docker_containers, 'prod db mail elasticsearch'
+set :docker_app_service, 'app'
+set :docker_containers, 'app db mailcatcher elasticsearch'
 
 server 'gos.museebolo.ch', port: '44144', user: 'deploy', roles: %w{app db web}
 
 # Link environments files
-set :linked_files, fetch(:linked_files, []).push("web/sites/default/prod.settings.php", "docker-compose.prod.yml", "docker-compose.override.yml")
+set :linked_files, fetch(:linked_files, []).push("web/sites/default/prod.settings.php", "docker-compose.override.yml")
 
 # Default value for :scm is :git
 set :scm, :git
@@ -66,6 +66,7 @@ namespace :deploy do
     on roles(:app) do
       within current_path do
         execute :docker_compose, 'exec', '-T', fetch(:docker_app_service), './scripts/drupal/update.sh'
+        execute :docker_compose, 'exec', '-T', fetch(:docker_app_service), './scripts/drupal/elasticsearch.sh'
       end
     end
   end
