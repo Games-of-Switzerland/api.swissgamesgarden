@@ -2,7 +2,7 @@
 set :deploy_to, '/srv/staging-api.gos.ch'
 
 # set a branch for this release
-set :branch, 'feature/deploy-docker-rename-dev-as-app'
+set :branch, 'feature/deploy-docker'
 
 # Map docker and docker-compose commands
 # NOTE: If stage have different deploy_to
