@@ -69,7 +69,7 @@
         "mglaman/phpstan-drupal": "^0.12.3",
         "phpmd/phpmd": "^2.6",
         "phpstan/phpstan-deprecation-rules": "^0.12.2",
-        "vimeo/psalm": "^3.11",
+        "vimeo/psalm": "^3.13.1",
         "wapmorgan/php-code-fixer": "^2.0"
     },
     "conflict": {
