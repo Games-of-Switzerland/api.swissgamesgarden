@@ -2,8 +2,8 @@ version: '3.6'
 
 services:
   # Drupal development server
-  dev:
-    hostname: dev
+  app:
+    hostname: app
     ports:
       - "8080:80"
 

@@ -51,11 +51,11 @@ db:
 
     docker-compose build --pull
     docker-compose up --build -d
-    docker-compose exec dev docker-as-drupal bootstrap --with-default-content --with-elasticsearch
+    docker-compose exec app docker-as-drupal bootstrap --with-default-content --with-elasticsearch
     (get a coffee, this will take some time...)
-    docker-compose exec dev drush eshs
-    docker-compose exec dev drush eshr
-    docker-compose exec dev drush queue-run elasticsearch_helper_indexing
+    docker-compose exec app drush eshs
+    docker-compose exec app drush eshr
+    docker-compose exec app drush queue-run elasticsearch_helper_indexing
 
 ### Project setup
 
@@ -77,10 +77,10 @@ $settings['gos_elasticsearch.index_prefix'] = 'local';
 
     docker-compose build --pull
     docker-compose up --build -d
-    docker-compose exec dev drush cr (or any other drush command you need)
-    docker-compose exec dev docker-as-drupal db-reset --with-default-content
-    docker-compose exec dev drush eshr
-    docker-compose exec dev drush queue-run elasticsearch_helper_indexing
+    docker-compose exec app drush cr (or any other drush command you need)
+    docker-compose exec app docker-as-drupal db-reset --with-default-content
+    docker-compose exec app drush eshr
+    docker-compose exec app drush queue-run elasticsearch_helper_indexing
 
 ### (optional) Get the productions images
 
@@ -88,7 +88,7 @@ $settings['gos_elasticsearch.index_prefix'] = 'local';
 
 ### Docker help
 
-    docker-compose exec dev docker-as-drupal --help
+    docker-compose exec app docker-as-drupal --help
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 
@@ -173,10 +173,10 @@ cat ./scripts/hooks/post-commit >> ./.git/hooks/post-commit
 docker-compose down
 docker-compose build --pull
 docker-compose up --build -d
-docker-compose exec dev docker-as-drupal db-reset --with-default-content --with-elasticsearch
+docker-compose exec app docker-as-drupal db-reset --with-default-content --with-elasticsearch
 ```
 
-Prepend every command with `docker-compose exec dev` to run them on the Docker
+Prepend every command with `docker-compose exec app` to run them on the Docker
 environment.
 
 ## 🚀 Deploy
@@ -224,8 +224,8 @@ You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/
 ### Index
 
 ```bash
-docker-compose exec [dev|test] drush eshr
-docker-compose exec [dev|test] drush queue-run elasticsearch_helper_indexing
+docker-compose exec [app|test] drush eshr
+docker-compose exec [app|test] drush queue-run elasticsearch_helper_indexing
 ```
 
 ### List of Indexes
@@ -245,8 +245,8 @@ $ yellow open gos lsSuUuMjTyizjL_WLECfyQ 5 1 0 0 1.2kb 1.2kb
 This operation is necessary when the Elasticsearch schema has been updated.
 
 ```bash
-    docker-compose exec dev drush eshd -y
-    docker-compose exec dev drush eshs
+    docker-compose exec app drush eshd -y
+    docker-compose exec app drush eshs
 ```
 
 ### Health Check
@@ -359,7 +359,7 @@ DRUPAL_CONFIG_SET: >-
 Run the diagnostic command to show the value of `elasticsearch_helper.host` on your container:
 
 ```
-docker-compose exec dev drush cget elasticsearch_helper.settings --include-overridden
+docker-compose exec app drush cget elasticsearch_helper.settings --include-overridden
 ```
 
 It should print:
@@ -378,7 +378,7 @@ elasticsearch_helper:
 If you get something else in `host` (such as `localhost`), then your initial bootstrap was made without the `host` config key and need to be rerun:
 
 ```
-docker-compose exec dev docker-as-drupal db-reset --update-dump --with-default-content
+docker-compose exec app docker-as-drupal db-reset --update-dump --with-default-content
 ```
 
 ### Error while importing config ?
