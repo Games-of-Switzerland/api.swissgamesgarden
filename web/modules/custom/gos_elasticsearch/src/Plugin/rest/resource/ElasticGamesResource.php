@@ -123,44 +123,52 @@ class ElasticGamesResource extends ElasticResourceBase {
       $es_query['body']['sort'] = $this->addSort($resource_validator->getSort());
     }
 
-    if ($resource_validator->getPlatforms()) {
+    $platforms = $resource_validator->getPlatforms();
+
+    if ($platforms) {
       // Filter the "hits" by given platform(s).
-      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($platforms);
 
       // Filter the "aggregations" by given platform(s).
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addPlatformsFilter($resource_validator->getPlatforms());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addPlatformsFilter($platforms);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addPlatformsFilter($platforms);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addPlatformsFilter($platforms);
     }
 
-    if ($resource_validator->getGenres()) {
+    $genres = $resource_validator->getGenres();
+
+    if ($genres) {
       // Filter the "hits" by given genre(s).
-      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addGenresFilter($resource_validator->getGenres());
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addGenresFilter($genres);
 
       // Filter the "aggregations" by given genre(s).
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenres());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenres());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addGenresFilter($resource_validator->getGenres());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addGenresFilter($genres);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addGenresFilter($genres);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addGenresFilter($genres);
     }
 
-    if ($resource_validator->getStores()) {
+    $stores = $resource_validator->getStores();
+
+    if ($stores) {
       // Filter the "hits" by given store(s).
-      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addStoresFilter($resource_validator->getStores());
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addStoresFilter($stores);
 
       // Filter the "aggregations" by given store(s).
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addStoresFilter($resource_validator->getStores());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addStoresFilter($resource_validator->getStores());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addStoresFilter($resource_validator->getStores());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addStoresFilter($stores);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addStoresFilter($stores);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addStoresFilter($stores);
     }
 
-    if ($resource_validator->getLocations()) {
+    $locations = $resource_validator->getLocations();
+
+    if ($locations) {
       // Filter the "hits" by given location(s).
-      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addLocationsFilter($resource_validator->getLocations());
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addLocationsFilter($locations);
 
       // Filter the "aggregations" by given location(s).
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addLocationsFilter($resource_validator->getLocations());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addLocationsFilter($resource_validator->getLocations());
-      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addLocationsFilter($resource_validator->getLocations());
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
     }
 
     try {
