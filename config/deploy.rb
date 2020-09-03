@@ -37,6 +37,8 @@ set :ssh_options, {
   forward_agent: true
 }
 
+set :ssh_options, keys: ["config/deploy_id_rsa_enc_travis"] if File.exist?("config/deploy_id_rsa_enc_travis")
+
 namespace :deploy do
   desc '(re)Start docker containers'
   task :restart do
