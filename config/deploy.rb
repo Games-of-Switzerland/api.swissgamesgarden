@@ -47,7 +47,7 @@ namespace :deploy do
   task :stop do
     on roles(:app) do
       within current_path do
-        execute :docker_compose, 'down', fetch(:docker_containers)
+        execute :docker_compose, 'down'
       end
     end
   end
