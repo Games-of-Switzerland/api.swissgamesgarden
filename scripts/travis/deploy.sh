@@ -9,5 +9,6 @@
 
 scriptDir=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
 
+gem install bundler
 bundle install
 bundle exec cap "$1" deploy
