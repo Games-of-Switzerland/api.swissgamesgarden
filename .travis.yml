@@ -33,7 +33,7 @@ script:
 deploy:
   # deploy feature/deploy-docker-travis to the staging environment
   - provider: script
-    script: bash bundle exec cap staging deploy
+    script: bash scripts/travis/deploy.sh staging
     on:
       branch: feature/deploy-docker-travis
   # deploy develop to the staging environment
