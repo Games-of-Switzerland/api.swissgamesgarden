@@ -50,3 +50,7 @@ database-clean.dump.sql
 
 # Ignore local docker compose config
 docker-compose.override.yml
+
+# Ignore Travis decrypted id_rsa
+deploy_rsa
+deploy_rsa.pub

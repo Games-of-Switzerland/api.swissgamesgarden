@@ -1,4 +1,4 @@
-language: php
+language: ruby
 
 services:
   - docker
@@ -7,6 +7,7 @@ env:
   - DOCKER_COMPOSE_VERSION=1.25.5
 
 before_install:
+  # Upgrade docker-compose to 1.25.5
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
@@ -21,3 +22,15 @@ before_script:
 
 script:
   - docker-compose exec test docker-as-drupal behat --with-elasticsearch
+
+deploy:
+  # deploy develop to the staging environment
+  - provider: script
+    script: bash scripts/travis/deploy.sh staging
+    on:
+      branch: develop
+  # deploy master to production
+  - provider: script
+    script: bash scripts/travis/deploy.sh production
+    on:
+      branch: master
