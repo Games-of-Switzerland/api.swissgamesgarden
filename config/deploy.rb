@@ -66,6 +66,7 @@ namespace :deploy do
     on roles(:app) do
       within current_path do
         execute :docker_compose, 'exec', '-T', fetch(:docker_app_service), './scripts/drupal/update.sh'
+        execute :docker_compose, 'exec', '-T', fetch(:docker_app_service), './scripts/drupal/elasticsearch.sh'
       end
     end
   end
