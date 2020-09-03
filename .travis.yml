@@ -1,4 +1,4 @@
-language: php
+language: ruby
 
 services:
   - docker
@@ -10,25 +10,30 @@ global:
   secure: FzL29tiTAv9n/JKU9dox01RQmPyx187DNBON4qMmkxAo7xWm6wVOZGFiblCtP/HVz1F5wsViQFkqxSN48pF2fus4p/UIvyxuSsJ/U6S9JbMdkaLuc0eHrAYeIvO6E6yMxa2DtZ48OuoICt6ifzdzal1dSluKCH0IogpZCbvimba3rmjCXhr+TXcYlxJjeDuhKZkjI7C112Sry+daaTsGnMl0iLwqyX+GmQ+ulb3tzP+gLnNMiicoy71iX03Cq6juoUsW1JA4OWMxuFnI5h1in1ryWnZYQr4oJLVD45JMyjDmxwJSBHCsa+RVh5oeGXzUCQZR6rLamAKYGjUj9zArpYLhLo778BVlpvFusnUajm1qlG0coUbEs2y9Bv8a1iCRTeqfy23on6ovfNgzFs/RSXSrIrxJ+U2GeCbdkPiSjJKc3h57EcADX+n5cwuhyRjZ97BE87iNnZdf1rfF/5wrczk9B+Xnp2c/Eao/VY95j2AZXeX4ZAsPIMp2SdpOgMNIWy/+aKqJhO4DxJgfRZeBCkG3iBMGi4ypAksIWlRYkEL3SRzlp2AWhNsaxj4E1Yx/ffPGmcOXQfo6EEncmyFBXAbaWO9gy2HBYFrrIeXZzh0BuU10RbdYGUZhlBtxSEC+8yX1lRgGvWWg4d+sjFv+P0owePlNAmzxo5KZzkyqzfo=
 
 before_install:
+  # Upgrade to Bundler 2.0
+  - gem install bundler
+  # Upgrade docker-compose to 1.25.5
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
 before_script:
-  - docker-compose build --pull
-  - docker-compose up --build -d
+  - sleep 1
+  #- docker-compose build --pull
+  #- docker-compose up --build -d
   # wait on Docker to be ready, especially MariaDB that takes many seconds to be up.
-  - sleep 30
-  - docker-compose exec app docker-as-drupal bootstrap --with-default-content --with-elasticsearch
+  #- sleep 30
+  #- docker-compose exec app docker-as-drupal bootstrap --with-default-content --with-elasticsearch
 
 script:
-  - docker-compose exec test docker-as-drupal behat --with-elasticsearch
+  - sleep 1
+  #- docker-compose exec test docker-as-drupal behat --with-elasticsearch
 
 deploy:
   # deploy feature/deploy-docker-travis to the staging environment
   - provider: script
-    script: bash scripts/travis/deploy.sh staging
+    script: bash bundle exec cap staging deploy
     on:
       branch: feature/deploy-docker-travis
   # deploy develop to the staging environment
