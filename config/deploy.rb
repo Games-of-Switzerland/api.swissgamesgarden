@@ -12,10 +12,8 @@ set :docker_containers, 'prod db mail elasticsearch'
 
 server 'gos.museebolo.ch', port: '44144', user: 'deploy', roles: %w{app db web}
 
-set :app_path, "web"
-
-# Link file docker-compose.override.yml
-set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/prod.settings.php", "docker-compose.prod.yml", "docker-compose.override.yml")
+# Link environments files
+set :linked_files, fetch(:linked_files, []).push("web/sites/default/prod.settings.php", "docker-compose.prod.yml", "docker-compose.override.yml")
 
 # Default value for :scm is :git
 set :scm, :git
@@ -67,7 +65,6 @@ namespace :deploy do
   task :update do
     on roles(:app) do
       within current_path do
-        sleep 15
         execute :docker_compose, 'exec', '-T', fetch(:docker_app_service), './scripts/drupal/update.sh'
       end
     end
