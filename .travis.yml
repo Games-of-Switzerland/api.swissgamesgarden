@@ -26,6 +26,11 @@ script:
   - docker-compose exec test docker-as-drupal behat --with-elasticsearch
 
 deploy:
+  # deploy feature/deploy-docker-travis to the staging environment
+  - provider: script
+    script: bash scripts/travis/deploy.sh staging
+    on:
+      branch: feature/deploy-docker-travis
   # deploy develop to the staging environment
   - provider: script
     script: bash scripts/travis/deploy.sh staging
