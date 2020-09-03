@@ -2,12 +2,12 @@ version: '3.6'
 
 services:
   # Drupal development server
-  dev:
+  app:
     build: .
     command: docker-as-wait --mysql -- docker-as-drupal apache-server
     depends_on:
       - db
-      - mail
+      - mailcatcher
       - elasticsearch
     environment:
       APP_ENV: development
@@ -37,7 +37,7 @@ services:
     depends_on:
       - browser
       - db
-      - mail
+      - mailcatcher
       - elasticsearch
     environment:
       APP_ENV: test
@@ -88,8 +88,8 @@ services:
     volumes:
       - database:/var/lib/mysql
 
-  # Mail
-  mail:
+  # Mailcatcher
+  mailcatcher:
     image: schickling/mailcatcher
     restart: always
 

@@ -29,7 +29,7 @@ default:
       base_url: http://api.gos.test:8888
       files_path: "%paths.base%/behat/Fixtures/"
     Alex\MailCatcher\Behat\MailCatcherExtension\Extension:
-      url: http://mail:1080
+      url: http://mailcatcher:1080
     Imbo\BehatApiExtension:
       apiClient:
         base_uri: http://api.gos.test:8888
