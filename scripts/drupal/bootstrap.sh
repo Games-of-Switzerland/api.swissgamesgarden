@@ -3,7 +3,7 @@
 # Bootstrap Drupal
 # Author: Kevin Wenger
 #
-# Run as `./drupal.sh`
+# Run as `./bootstrap.sh`
 #
 
 scriptDir=$( cd "$(dirname "${BASH_SOURCE}")" ; pwd -P )
