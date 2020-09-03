@@ -52,4 +52,5 @@ database-clean.dump.sql
 docker-compose.override.yml
 
 # Ignore Travis decrypted id_rsa
-deploy_id_rsa
+deploy_rsa
+deploy_rsa.pub
