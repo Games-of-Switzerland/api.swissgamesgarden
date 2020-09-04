@@ -490,7 +490,12 @@ docker-compose exec test docker-as-drupal [behat|phpunit|nightwatch]
 
 ## 🕙 Crons
 
-Setup Drush to run cron every hour.
+```
+# Drupal - Production
+# ----------------
+## Every 5 minutes
+*/5 * * * * root /var/www/docker/cron.sh 2>&1
+```
 
 ### Crontab
 

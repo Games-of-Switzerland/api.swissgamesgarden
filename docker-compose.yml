@@ -1,10 +1,11 @@
 version: '3.6'
 
 services:
-  # Drupal development server
+
+  # Drupal app server
   app:
     build: .
-    command: docker-as-wait --mysql -- docker-as-drupal apache-server
+    command: ./docker/app-start.sh
     depends_on:
       - db
       - mailcatcher
@@ -96,7 +97,7 @@ services:
   # Elasticsearch
   elasticsearch:
     build:
-      dockerfile: Dockerfile.elasticsearch
+      dockerfile: docker/Dockerfile.elasticsearch
       context: .
     restart: always
     environment:
