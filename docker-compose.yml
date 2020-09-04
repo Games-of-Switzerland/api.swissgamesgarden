@@ -34,7 +34,7 @@ services:
   # Drupal test server
   test:
     build: .
-    command: docker-as-wait --mysql -- docker-as-drupal apache-server
+    command: ./docker/app-start.sh
     depends_on:
       - browser
       - db
