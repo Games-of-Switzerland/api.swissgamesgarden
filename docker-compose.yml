@@ -5,7 +5,7 @@ services:
   # Drupal app server
   app:
     build: .
-    command: ./docker/app-start.sh
+    command: ./docker/startup.sh
     depends_on:
       - db
       - mailcatcher
@@ -34,7 +34,7 @@ services:
   # Drupal test server
   test:
     build: .
-    command: ./docker/app-start.sh
+    command: ./docker/startup.sh
     depends_on:
       - browser
       - db
