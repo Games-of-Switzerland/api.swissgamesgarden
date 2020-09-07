@@ -61,7 +61,7 @@ Feature: Game
     And the JSON node "included[0].links.medium.href" should exist
     And the JSON node "included[0].links.thumbnail.href" should exist
 
-  Scenario: Fetching a game using a specific Consumer ID should return only Image Styled allowd for this consumer.
+  Scenario: Fetching a game using a specific Consumer ID should return only Image Styled allowed for this consumer.
     Given the "X-Consumer-ID" request header is "1df6bf5b-f58f-4870-b0b1-b0f6561efdcd"
     And the "Accept" request header is "application/vnd.api+json"
     When I request "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=images"
@@ -80,3 +80,12 @@ Feature: Game
         }
       }
       """
+
+  Scenario: Fetching a game with video return his remote video.
+    Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=video"
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the JSON node "included" should have 1 element
+    And the JSON node "included[0].type" should be equal to "media--remote_video"
+    And the JSON node "included[0].attributes.field_media_oembed_video" should exist
+    And the JSON node "included[0].attributes.field_media_oembed_video" should be equal to 'https://www.youtube.com/watch?v=y-Vgumda_mY'
