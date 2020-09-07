@@ -129,11 +129,6 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
     /** @var \Drupal\node\NodeInterface $entity */
     $entity = $source;
 
-    // Skip unpublished people.
-    if (!$entity->isPublished()) {
-      return;
-    }
-
     parent::index($entity);
   }
 
