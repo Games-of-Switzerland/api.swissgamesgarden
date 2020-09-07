@@ -118,6 +118,9 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
             'must' => [
               // Where all the conditions modifying the Score should be added.
             ],
+            'should' => [
+              // Where all the conditions modifying the Score should be added.
+            ],
             'filter' => [
               'bool' => [
                 // Where all the conditions without a Score impact should be.
@@ -179,7 +182,10 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     $search = Xss::filter($search);
 
     if ($search) {
-      $es_query['body']['query']['bool']['must'][]['multi_match'] = $this->addFullTextCondition($search);
+      $es_query['body']['query']['bool']['minimum_should_match'] = 1;
+      $es_query['body']['query']['bool']['should'][] = $this->addFullTextCondition($search);
+      $es_query['body']['query']['bool']['should'][] = $this->addFullTextGamesPeopleCondition($search);
+      $es_query['body']['query']['bool']['should'][] = $this->addFullTextGamesStudiosCondition($search);
     }
 
     try {
@@ -211,10 +217,72 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
    */
   private function addFullTextCondition(string $search): array {
     return [
-      'query' => $search,
-      'fields' => ['title', 'fullname', 'name'],
-      'operator' => 'or',
-      'fuzziness' => 1,
+      'multi_match' => [
+        'query' => $search,
+        'fields' => ['title', 'fullname', 'name'],
+        'operator' => 'or',
+        'fuzziness' => 0,
+      ],
+    ];
+  }
+
+  /**
+   * Add a full-text condition to games by people fullname query.
+   *
+   * @param string $search
+   *   The keywords to filter by.
+   *
+   * @return array
+   *   The condition query to filter-out by keyword on content.
+   */
+  private function addFullTextGamesPeopleCondition(string $search): array {
+    return [
+      'nested' => [
+        'path' => 'people',
+        'ignore_unmapped' => TRUE,
+        'query' => [
+          'bool' => [
+            'must' => [
+              'multi_match' => [
+                'query' => $search,
+                'fields' => ['people.fullname'],
+                'operator' => 'and',
+                'fuzziness' => 1,
+              ],
+            ],
+          ],
+        ],
+      ],
+    ];
+  }
+
+  /**
+   * Add a full-text condition to games by studio name query.
+   *
+   * @param string $search
+   *   The keywords to filter by.
+   *
+   * @return array
+   *   The condition query to filter-out by keyword on content.
+   */
+  private function addFullTextGamesStudiosCondition(string $search): array {
+    return [
+      'nested' => [
+        'path' => 'studios',
+        'ignore_unmapped' => TRUE,
+        'query' => [
+          'bool' => [
+            'should' => [
+              'multi_match' => [
+                'query' => $search,
+                'fields' => ['studios.name'],
+                'operator' => 'and',
+                'fuzziness' => 1,
+              ],
+            ],
+          ],
+        ],
+      ],
     ];
   }
 

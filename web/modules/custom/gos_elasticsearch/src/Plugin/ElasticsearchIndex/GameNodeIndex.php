@@ -17,6 +17,8 @@ class GameNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
    */
   public function setup(): void {
     // Create one index per language, so that we can have different analyzers.
@@ -50,6 +52,23 @@ class GameNodeIndex extends NodeIndexBase {
                 'type' => 'synonym_graph',
                 'synonyms_path' => 'analysis/synonym_platform.txt',
               ],
+              'people_fullname_filter' => [
+                'type' => 'edge_ngram',
+                'min_gram' => 2,
+                'max_gram' => 10,
+                'token_chars' => [
+                  'letter',
+                ],
+              ],
+              'studio_name_filter' => [
+                'type' => 'edge_ngram',
+                'min_gram' => 3,
+                'max_gram' => 10,
+                'token_chars' => [
+                  'letter',
+                  'digit',
+                ],
+              ],
             ],
             'analyzer' => [
               'ngram_gametitle_analyzer' => [
@@ -74,6 +93,23 @@ class GameNodeIndex extends NodeIndexBase {
                   'standard',
                   'lowercase',
                   'synonym_platform_filter',
+                ],
+              ],
+              'people_fullname_analyzer' => [
+                'tokenizer' => 'standard',
+                'filter' => [
+                  'lowercase',
+                  'people_fullname_filter',
+                  'asciifolding',
+                ],
+              ],
+              'studio_name_analyzer' => [
+                'tokenizer' => 'standard',
+                'filter' => [
+                  'lowercase',
+                  'asciifolding',
+                  'studio_name_filter',
+                  'english_stemmer',
                 ],
               ],
             ],
@@ -142,16 +178,17 @@ class GameNodeIndex extends NodeIndexBase {
               'dynamic' => FALSE,
               'type' => 'nested',
               'properties' => [
-                'name' => [
-                  'type' => 'text',
-                  'fields' => [
-                    'raw' => [
-                      'type' => 'keyword',
-                    ],
-                  ],
-                ],
                 'uuid' => [
                   'type' => 'keyword',
+                  'index' => FALSE,
+                ],
+                'name' => [
+                  'type' => 'text',
+                  'analyzer' => 'studio_name_analyzer',
+                ],
+                'path' => [
+                  'type' => 'text',
+                  'index' => FALSE,
                 ],
               ],
             ],
@@ -181,6 +218,24 @@ class GameNodeIndex extends NodeIndexBase {
                   'type' => 'keyword',
                 ],
                 'link' => [
+                  'type' => 'text',
+                  'index' => FALSE,
+                ],
+              ],
+            ],
+            'people' => [
+              'dynamic' => FALSE,
+              'type' => 'nested',
+              'properties' => [
+                'uuid' => [
+                  'type' => 'keyword',
+                  'index' => FALSE,
+                ],
+                'fullname' => [
+                  'type' => 'text',
+                  'analyzer' => 'people_fullname_analyzer',
+                ],
+                'path' => [
                   'type' => 'text',
                   'index' => FALSE,
                 ],

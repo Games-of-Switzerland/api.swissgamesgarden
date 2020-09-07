@@ -53,19 +53,48 @@ class GameNormalizer extends ContentEntityNormalizer {
       $data['releases'] = $releases;
     }
 
+    $people = [];
+
+    // Handle people fullnames in games (freelancers).
+    if (!$object->get('field_members')->isEmpty()) {
+      foreach ($object->field_members as $member) {
+        $people[] = [
+          'path' => $member->entity->toUrl('canonical')->toString(),
+          'fullname' => $member->entity->title->value,
+          'uuid' => $member->entity->get('uuid')->value,
+        ];
+      }
+    }
+
     // Handle studios names.
     if (!$object->get('field_studios')->isEmpty()) {
       $studios = [];
 
       foreach ($object->field_studios as $studio) {
         $studios[] = [
+          'path' => $studio->entity->toUrl('canonical')->toString(),
           'name' => $studio->entity->title->value,
           'uuid' => $studio->entity->get('uuid')->value,
         ];
+
+        // Handle people on studio fullnames.
+        if (!$studio->entity->get('field_members')
+          ->isEmpty()) {
+          foreach ($object->field_members as $member) {
+            $people[] = [
+              'path' => $member->entity->toUrl('canonical')->toString(),
+              'fullname' => $member->entity->title->value,
+              'uuid' => $member->entity->get('uuid')->value,
+            ];
+          }
+        }
       }
 
       $data['studios'] = $studios;
     }
+
+    // People from Studio and Games.
+    $data['people'] = $people;
 
     // Handle genres.
     if (!$object->get('field_genres')->isEmpty()) {
