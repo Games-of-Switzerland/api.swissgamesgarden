@@ -118,7 +118,7 @@ services:
 
   # Elasticsearch browser
   dejavu:
-    image: appbaseio/dejavu:3.2.3
+    image: appbaseio/dejavu:latest
     depends_on:
       - elasticsearch
     ports:
