@@ -238,6 +238,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_video:
+    fieldName: field_video
+    publicName: video
+    enhancer:
+      id: ''
+    disabled: false
   field_website:
     fieldName: field_website
     publicName: website
