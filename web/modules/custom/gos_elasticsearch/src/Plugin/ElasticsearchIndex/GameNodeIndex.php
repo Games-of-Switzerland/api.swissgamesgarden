@@ -17,6 +17,8 @@ class GameNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
    */
   public function setup(): void {
     // Create one index per language, so that we can have different analyzers.
