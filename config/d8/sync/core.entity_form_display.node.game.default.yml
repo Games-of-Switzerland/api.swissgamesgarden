@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_stores
     - field.field.node.game.field_studios
+    - field.field.node.game.field_video
     - field.field.node.game.field_website
     - image.style.thumbnail
     - node.type.game
@@ -28,6 +29,7 @@ dependencies:
     - focal_point
     - gos_site
     - link
+    - media_library
     - path
     - text
 third_party_settings:
@@ -53,6 +55,7 @@ third_party_settings:
         - title
         - body
         - field_images
+        - field_video
       parent_name: group_tabs
       weight: 20
       format_type: tab
@@ -163,7 +166,7 @@ content:
     type: string_textfield
     region: content
   field_genres:
-    weight: 10
+    weight: 20
     settings:
       match_operator: CONTAINS
       size: 60
@@ -183,7 +186,7 @@ content:
     type: image_focal_point
     region: content
   field_languages:
-    weight: 9
+    weight: 19
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -193,7 +196,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_locations:
-    weight: 8
+    weight: 18
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -247,7 +250,7 @@ content:
     type: link_default
     region: content
   field_sponsors:
-    weight: 11
+    weight: 21
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -257,7 +260,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_stores:
-    weight: 7
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: store_default
@@ -272,6 +275,13 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_video:
+    weight: 3
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
   field_website:
     weight: 127
     settings:
@@ -282,7 +292,7 @@ content:
     region: content
   path:
     type: path
-    weight: 2
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -290,14 +300,14 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 3
+    weight: 2
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 4
+    weight: 3
     region: content
     third_party_settings: {  }
   title:

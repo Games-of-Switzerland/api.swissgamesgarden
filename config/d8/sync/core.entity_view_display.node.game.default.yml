@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_stores
     - field.field.node.game.field_studios
+    - field.field.node.game.field_video
     - field.field.node.game.field_website
     - node.type.game
   module:
@@ -175,6 +176,15 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_video:
+    type: entity_reference_entity_view
+    weight: 119
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
     region: content
   field_website:
     weight: 112
