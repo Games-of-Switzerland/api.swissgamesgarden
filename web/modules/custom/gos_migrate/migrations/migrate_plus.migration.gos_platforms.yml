@@ -4,7 +4,7 @@ description: GOS - Migration of Platforms from CSV to Drupal 8
 migration_group: default
 
 source:
-  plugin: 'csv'
+  plugin: 'csv_platforms'
   # Full path to the file.
   path: '/source/2020-17-05--all-games.csv'
   # Column delimiter. Comma (,) by default.
@@ -18,7 +18,7 @@ source:
 #  # create an index in the migration table and too many columns
 #  # may throw an index size error.
   ids:
-    - id
+    - platform
   # Here we identify the columns of interest in the source file.
   # Each numeric key is the 0-based index of the column.
   # For each column, the key below is the field name assigned to
@@ -38,27 +38,14 @@ process:
     -
       plugin: skip_on_empty
       method: row
-      source: platforms
+      source: platform
     -
-      plugin: explode
-      delimiter: ","
-      limit: 10
-    -
-      plugin: deepen
-    -
-      plugin: sub_process
-      process:
-        title:
-          -
-            plugin: trim
-            source: 'value'
-          -
-            plugin: entity_generate
-            value_key: name
-            bundle_key: vid
-            bundle: platform
-            entity_type: taxonomy_term
-            ignore_case: true
+      plugin: trim
+
+  uid:
+    plugin: default_value
+    default_value: 1
 
 destination:
-  plugin: noop
+  plugin: entity:taxonomy_term
+  default_bundle: platform

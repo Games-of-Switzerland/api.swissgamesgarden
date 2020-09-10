@@ -1,10 +1,10 @@
-id: gos_locations
-label: Games of Switzerland - Locations
-description: GOS - Migration of Locations from CSV to Drupal 8
+id: gos_sponsors
+label: Games of Switzerland - Sponsors
+description: GOS - Migration of Sponsors from CSV to Drupal 8
 migration_group: default
 
 source:
-  plugin: 'csv_locations'
+  plugin: 'csv_sponsors'
   # Full path to the file.
   path: '/source/2020-17-05--all-games.csv'
   # Column delimiter. Comma (,) by default.
@@ -18,7 +18,7 @@ source:
 #  # create an index in the migration table and too many columns
 #  # may throw an index size error.
   ids:
-    - location
+    - sponsor
   # Here we identify the columns of interest in the source file.
   # Each numeric key is the 0-based index of the column.
   # For each column, the key below is the field name assigned to
@@ -42,13 +42,17 @@ source:
       name: cantons
     7:
       name: locations
+    8:
+      name: publishers
+    9:
+      name: sponsors
 
 process:
   name:
     -
       plugin: skip_on_empty
       method: row
-      source: location
+      source: sponsor
     -
       plugin: trim
 
@@ -58,4 +62,4 @@ process:
 
 destination:
   plugin: entity:taxonomy_term
-  default_bundle: location
+  default_bundle: sponsor

@@ -4,7 +4,7 @@ description: GOS - Migration of Genres from CSV to Drupal 8
 migration_group: default
 
 source:
-  plugin: 'csv'
+  plugin: 'csv_genres'
   # Full path to the file.
   path: '/source/2020-17-05--all-games.csv'
   # Column delimiter. Comma (,) by default.
@@ -18,7 +18,7 @@ source:
 #  # create an index in the migration table and too many columns
 #  # may throw an index size error.
   ids:
-    - id
+    - genre
   # Here we identify the columns of interest in the source file.
   # Each numeric key is the 0-based index of the column.
   # For each column, the key below is the field name assigned to
@@ -37,20 +37,24 @@ source:
     4:
       name: studios
     5:
-      name: location
+      name: people
     6:
-      name: publisher
+      name: cantons
     7:
-      name: sponsor
+      name: locations
     8:
-      name: early_access_date
+      name: publishers
     9:
-      name: release_date
+      name: sponsors
     10:
-      name: languages
+      name: early_access_date
     11:
-      name: media
+      name: release_date
     12:
+      name: languages
+    13:
+      name: media
+    14:
       name: genres
 
 process:
@@ -58,28 +62,14 @@ process:
     -
       plugin: skip_on_empty
       method: row
-      source: genres
+      source: genre
     -
-      plugin: explode
-      delimiter: ","
-      limit: 10
-    -
-      plugin: deepen
-    -
-      plugin: sub_process
-      process:
-        title:
-          -
-            plugin: trim
-            source: 'value'
-          -
-            plugin: entity_generate
-            value_key: name
-            bundle_key: vid
-            bundle: genre
-            entity_type: taxonomy_term
-            ignore_case: true
+      plugin: trim
 
+  uid:
+    plugin: default_value
+    default_value: 1
 
 destination:
-  plugin: noop
+  plugin: entity:taxonomy_term
+  default_bundle: genre
