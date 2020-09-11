@@ -396,6 +396,15 @@ process:
 #    -
 #      plugin: image_import
 
+  field_video/target_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: video_link
+    -
+      plugin: migration_lookup
+      migration: gos_trailers
+
   uid:
     plugin: default_value
     default_value: 1
@@ -414,3 +423,4 @@ migration_dependencies:
     - default:gos_languages
     - default:gos_publishers
     - default:gos_sponsors
+    - default:gos_trailers
