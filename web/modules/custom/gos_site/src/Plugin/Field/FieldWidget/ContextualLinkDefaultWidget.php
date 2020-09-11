@@ -28,7 +28,7 @@ class ContextualLinkDefaultWidget extends WidgetBase {
       '#type' => 'select',
       '#options' => [
         '' => $this->t('- None -'),
-        'preskit' => $this->t('Preskit'),
+        'presskit' => $this->t('Presskit'),
         'online_play' => $this->t('Online Play'),
         'download_page' => $this->t('Download page'),
         'direct_download' => $this->t('Direct Download'),
