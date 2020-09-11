@@ -1,0 +1,21 @@
+uuid: 59704f8e-7f00-4170-9f2d-5607452c55ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contextual_links
+    - node.type.game
+  module:
+    - gos_site
+id: node.game.field_contextual_links
+field_name: field_contextual_links
+entity_type: node
+bundle: game
+label: Link(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: contextual_link

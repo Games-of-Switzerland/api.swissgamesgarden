@@ -1,0 +1,19 @@
+uuid: 46dba7d8-ae60-4ff1-8248-c159d5d87c59
+langcode: en
+status: true
+dependencies:
+  module:
+    - gos_site
+    - node
+id: node.field_contextual_links
+field_name: field_contextual_links
+entity_type: node
+type: contextual_link
+settings: {  }
+module: gos_site
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
