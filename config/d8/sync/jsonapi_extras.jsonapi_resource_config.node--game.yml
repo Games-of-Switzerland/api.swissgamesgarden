@@ -159,6 +159,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_credits:
+    fieldName: field_credits
+    publicName: credits
+    enhancer:
+      id: ''
+    disabled: false
   field_genres:
     fieldName: field_genres
     publicName: genres
