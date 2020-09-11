@@ -230,6 +230,13 @@
             "url": "http:\/\/press.momo-pi.com\/sheet.php?p=persephone#images"
         }
     ],
+    "field_credits": [
+        {
+            "value": "<p>C\u00e9dric Reinhardt, Software Developer \/ Guillaume Schneuwly, Software Developer \/ Rinaldo Wirz, Creative Director \/ Renato De Aguiar, Composer \/ Thomas Olsson, Sound FX<\/p>\r\n",
+            "format": "basic_html",
+            "processed": "<p>C\u00e9dric Reinhardt, Software Developer \/ Guillaume Schneuwly, Software Developer \/ Rinaldo Wirz, Creative Director \/ Renato De Aguiar, Composer \/ Thomas Olsson, Sound FX<\/p>"
+        }
+    ],
     "field_path": [
         {
             "value": "\/games\/persephone"
