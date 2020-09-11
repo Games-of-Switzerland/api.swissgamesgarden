@@ -153,6 +153,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_contextual_links:
+    fieldName: field_contextual_links
+    publicName: contextual_links
+    enhancer:
+      id: ''
+    disabled: false
   field_genres:
     fieldName: field_genres
     publicName: genres

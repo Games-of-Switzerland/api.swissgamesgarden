@@ -230,6 +230,12 @@
             "lang": "en"
         }
     ],
+    "field_contextual_links": [
+        {
+            "type": "download_page",
+            "url": "https:\/\/www.ninza-game.com\/#CTN_BETA_backgroundWrap"
+        }
+    ],
     "field_path": [
         {
             "value": "\/games\/ninza"

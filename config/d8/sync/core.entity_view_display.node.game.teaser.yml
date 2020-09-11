@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.game.field_article_links
     - field.field.node.game.field_awards
     - field.field.node.game.field_completeness
+    - field.field.node.game.field_contextual_links
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
     - field.field.node.game.field_languages
@@ -49,6 +50,7 @@ hidden:
   field_article_links: true
   field_awards: true
   field_completeness: true
+  field_contextual_links: true
   field_genres: true
   field_images: true
   field_languages: true

@@ -66,8 +66,35 @@ class CompletenessCalculator {
       $score -= 250;
     }
 
-    // @TODO: Improve socialnetworks calculation for each different values
-    // instead of fixed non empty - 1 point.
+    // Add Points according contextual links.
+    if (!$game->get('field_contextual_links')->isEmpty()) {
+      foreach ($game->get('field_contextual_links') as $link) {
+        switch ($link->getValue()['type']) {
+          case 'presskit':
+            $score += 10;
+
+            break;
+
+          case 'devlog':
+            ++$score;
+
+            break;
+
+          case 'online_play':
+          case 'download_page':
+          case 'direct_download':
+            $score += 1000;
+
+            break;
+
+          case 'box_art':
+            $score += 100;
+
+            break;
+        }
+      }
+    }
+
     return $score;
   }
 
