@@ -31,6 +31,7 @@ class CompletenessCalculator {
     'field_video' => 1000,
     'body' => 1000,
     'field_social_networks' => 1,
+    'field_credits' => 10,
   ];
 
   /**
