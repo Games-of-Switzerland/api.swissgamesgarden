@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.game.field_sponsors
     - field.field.node.game.field_stores
     - field.field.node.game.field_studios
+    - field.field.node.game.field_video
     - field.field.node.game.field_website
     - node.type.game
   module:
@@ -61,4 +62,5 @@ hidden:
   field_sponsors: true
   field_stores: true
   field_studios: true
+  field_video: true
   field_website: true

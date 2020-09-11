@@ -4,7 +4,7 @@ description: GOS - Migration of Studios from CSV to Drupal 8
 migration_group: default
 
 source:
-  plugin: 'csv'
+  plugin: 'csv_studios'
   # Full path to the file.
   path: '/source/2020-17-05--all-games.csv'
   # Column delimiter. Comma (,) by default.
@@ -14,11 +14,11 @@ source:
   # The row to be used as the CSV header (indexed from 0),
   # or null if there is no header row.
   header_offset: 0
-#  # The column(s) to use as a key. Each column specified will
-#  # create an index in the migration table and too many columns
-#  # may throw an index size error.
+  #  # The column(s) to use as a key. Each column specified will
+  #  # create an index in the migration table and too many columns
+  #  # may throw an index size error.
   ids:
-    - id
+    - studio
   # Here we identify the columns of interest in the source file.
   # Each numeric key is the 0-based index of the column.
   # For each column, the key below is the field name assigned to
@@ -36,39 +36,53 @@ source:
       name: website
     4:
       name: studios
+    5:
+      name: people
 
 process:
   title:
     -
       plugin: skip_on_empty
       method: row
-      source: studios
+      source: studio
     -
-      plugin: explode
-      delimiter: ","
-      limit: 10
-    -
-      plugin: deepen
-    -
-      plugin: sub_process
-      process:
-        title:
-          -
-            plugin: trim
-            source: 'value'
-          -
-            plugin: trim
-            mask: "«"
-          -
-            plugin: trim
-            mask: "»"
-          -
-            plugin: entity_generate
-            value_key: title
-            bundle_key: type
-            bundle: studio
-            entity_type: node
-            ignore_case: true
+      plugin: trim
+
+# @TODO: Ensure we have to add all people as Member.
+#  field_members:
+#    -
+#      plugin: skip_on_empty
+#      method: process
+#      source: people
+#    -
+#      plugin: explode
+#      delimiter: ","
+#      limit: 20
+#    -
+#      plugin: deepen
+#    -
+#      plugin: sub_process
+#      process:
+#        target_id:
+#          -
+#            plugin: trim
+#            source: 'value'
+#          -
+#            plugin: entity_lookup
+#            value_key: title
+#            bundle: people
+#            entity_type: node
+#            ignore_case: true
+#            access_check: false
+
+  uid:
+    plugin: default_value
+    default_value: 1
 
 destination:
-  plugin: noop
+  plugin: entity:node
+  default_bundle: studio
+
+migration_dependencies:
+  required:
+    - default:gos_people

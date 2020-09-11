@@ -28,6 +28,7 @@ class CompletenessCalculator {
     'field_article_links' => 1,
     'field_sources' => 1000,
     'field_images' => 2000,
+    'field_video' => 1000,
     'body' => 1000,
     'field_social_networks' => 1,
   ];
