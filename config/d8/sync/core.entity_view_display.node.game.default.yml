@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.game.field_awards
     - field.field.node.game.field_completeness
     - field.field.node.game.field_contextual_links
+    - field.field.node.game.field_credits
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
     - field.field.node.game.field_languages
@@ -78,6 +79,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: contextual_link_default
+    region: content
+  field_credits:
+    weight: 121
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
     region: content
   field_genres:
     weight: 103

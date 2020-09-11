@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.game.field_awards
     - field.field.node.game.field_completeness
     - field.field.node.game.field_contextual_links
+    - field.field.node.game.field_credits
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
     - field.field.node.game.field_languages
@@ -125,6 +126,7 @@ third_party_settings:
         - field_awards
         - field_social_networks
         - field_contextual_links
+        - field_credits
       parent_name: group_tabs
       weight: 24
       format_type: tab
@@ -172,6 +174,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: contextual_link_default
+    region: content
+  field_credits:
+    weight: 133
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
     region: content
   field_genres:
     weight: 20
