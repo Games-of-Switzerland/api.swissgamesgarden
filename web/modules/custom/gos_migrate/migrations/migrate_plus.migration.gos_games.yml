@@ -405,6 +405,17 @@ process:
       plugin: migration_lookup
       migration: gos_trailers
 
+  field_contextual_links:
+    -
+      plugin: gos_contextual_links_mapper
+      sources:
+          presskit: presskit
+          online_play: online_link
+          download_page: page_link
+          direct_download: download_link
+          devlog: devlog
+          box_art: boxart_link
+
   uid:
     plugin: default_value
     default_value: 1
