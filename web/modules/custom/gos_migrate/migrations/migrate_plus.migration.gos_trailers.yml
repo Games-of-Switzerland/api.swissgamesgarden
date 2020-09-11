@@ -79,17 +79,13 @@ source:
     25:
       name: video_link
 process:
-  name:
-    -
-      plugin: skip_on_empty
-      method: row
-      source: game_title
-
   field_media_oembed_video:
     -
+      plugin: trim
+      source: video_link
+    -
       plugin: skip_on_empty
       method: row
-      source: video_link
 
   uid:
     plugin: default_value
