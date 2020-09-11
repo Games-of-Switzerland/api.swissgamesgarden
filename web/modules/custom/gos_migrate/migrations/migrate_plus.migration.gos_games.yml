@@ -416,6 +416,11 @@ process:
           devlog: devlog
           box_art: boxart_link
 
+  field_credits/value: credits
+  field_credits/format:
+    plugin: default_value
+    default_value: "basic_html"
+
   uid:
     plugin: default_value
     default_value: 1
