@@ -14,9 +14,9 @@ source:
   # The row to be used as the CSV header (indexed from 0),
   # or null if there is no header row.
   header_offset: 0
-  #  # The column(s) to use as a key. Each column specified will
-  #  # create an index in the migration table and too many columns
-  #  # may throw an index size error.
+  # The column(s) to use as a key. Each column specified will
+  # create an index in the migration table and too many columns
+  # may throw an index size error.
   ids:
     - studio
   # Here we identify the columns of interest in the source file.
