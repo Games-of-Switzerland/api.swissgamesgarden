@@ -220,6 +220,16 @@
             "lang": "en"
         }
     ],
+    "field_contextual_links": [
+        {
+            "type": "preskit",
+            "url": "http:\/\/press.momo-pi.com\/sheet.php?p=persephone"
+        },
+        {
+            "type": "box_art",
+            "url": "http:\/\/press.momo-pi.com\/sheet.php?p=persephone#images"
+        }
+    ],
     "field_path": [
         {
             "value": "\/games\/persephone"
