@@ -48,7 +48,7 @@ process:
     -
       plugin: trim
 
-# @TODO: Ensure we have to add all people as Member.
+# @TODO: Should we link members of games as members of studios ?
 #  field_members:
 #    -
 #      plugin: skip_on_empty
@@ -57,7 +57,7 @@ process:
 #    -
 #      plugin: explode
 #      delimiter: ","
-#      limit: 20
+#      limit: 30
 #    -
 #      plugin: deepen
 #    -
@@ -68,12 +68,8 @@ process:
 #            plugin: trim
 #            source: 'value'
 #          -
-#            plugin: entity_lookup
-#            value_key: title
-#            bundle: people
-#            entity_type: node
-#            ignore_case: true
-#            access_check: false
+#            plugin: migration_lookup
+#            migration: gos_people
 
   uid:
     plugin: default_value
