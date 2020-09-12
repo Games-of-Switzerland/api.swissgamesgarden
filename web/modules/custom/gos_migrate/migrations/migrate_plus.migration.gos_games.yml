@@ -146,6 +146,28 @@ process:
             plugin: migration_lookup
             migration: gos_platforms
 
+  field_members:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: people
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 30
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_people
+
   field_studios:
     -
       plugin: skip_on_empty
