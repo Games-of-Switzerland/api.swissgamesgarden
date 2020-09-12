@@ -387,14 +387,20 @@ process:
           -
             plugin: gos_twitter_handle
 
-# @TODO fix image download to prevent random crash.
-#  field_images:
-#    -
-#      plugin: skip_on_empty
-#      method: process
-#      source: screenshot_link
-#    -
-#      plugin: image_import
+  field_images:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: screenshot_link
+    -
+      plugin: skip_on_file_not_exists
+      method: process
+    -
+      plugin: skip_on_file_not_image
+      method: process
+    -
+      plugin: image_import
+      skip_on_missing_source: true
 
   field_video/target_id:
     -
