@@ -79,6 +79,20 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private $platforms;
 
   /**
+   * The game Release Year to filter by.
+   *
+   * @var int|null
+   *
+   * @Assert\Type(
+   *     type="integer",
+   * )
+   * @Assert\GreaterThanOrEqual(
+   *     value=1970
+   * )
+   */
+  private $releaseYear;
+
+  /**
    * Sort property with direction as key.
    *
    * This property uses the custom validation ::validateSort.
@@ -144,6 +158,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function getRaw(): array {
     return $this->raw;
+  }
+
+  /**
+   * Get the game Release year to filter by.
+   *
+   * @return int|null
+   *   Release year to filter by.
+   */
+  public function getReleaseYear(): ?int {
+    return $this->releaseYear;
   }
 
   /**
@@ -214,6 +238,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function setRaw(array $raw): void {
     $this->raw = $raw;
+  }
+
+  /**
+   * Set the Release year to filter by.
+   *
+   * @param int $year
+   *   Release year to filter by.
+   */
+  public function setReleaseYear(int $year): void {
+    $this->releaseYear = $year;
   }
 
   /**
