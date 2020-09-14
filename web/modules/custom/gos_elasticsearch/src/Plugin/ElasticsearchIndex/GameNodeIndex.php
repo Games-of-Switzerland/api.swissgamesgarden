@@ -174,6 +174,16 @@ class GameNodeIndex extends NodeIndexBase {
                 ],
               ],
             ],
+            'releases_years' => [
+              'type' => 'nested',
+              'dynamic' => FALSE,
+              'properties' => [
+                'year' => [
+                  'type' => 'date',
+                  'format' => 'yyyy',
+                ],
+              ],
+            ],
             'studios' => [
               'dynamic' => FALSE,
               'type' => 'nested',

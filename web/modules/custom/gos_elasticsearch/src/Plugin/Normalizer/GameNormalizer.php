@@ -2,6 +2,7 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\Normalizer;
 
+use DateTimeImmutable;
 use Drupal\node\NodeInterface;
 use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 
@@ -41,14 +42,32 @@ class GameNormalizer extends ContentEntityNormalizer {
     ];
 
     if (!$object->get('field_releases')->isEmpty()) {
+      // Will contain every release by platform (sometimes more than once
+      // the same year).
       $releases = [];
+
+      // Will contain only the same year once for Histogram aggregations.
+      $years = [];
 
       foreach ($object->field_releases as $release) {
         $releases[] = [
           'date' => isset($release->date_value) ? $release->date_value : NULL,
           'platform_slug' => isset($release->entity) ? $release->entity->get('field_slug')->value : NULL,
         ];
+
+        if (!isset($release->date_value)) {
+          continue;
+        }
+
+        // Use the year as key to prevent having twice the same value.
+        $year = (new DateTimeImmutable($release->date_value))->format('Y');
+        $years[$year] = $year;
       }
+
+      // Transform the single years array into a structure for ES storage.
+      $data['releases_years'] = array_map(static function ($year) {
+        return ['year' => $year];
+      }, array_keys($years));
 
       $data['releases'] = $releases;
     }
