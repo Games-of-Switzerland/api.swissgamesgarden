@@ -48,6 +48,8 @@ abstract class BaseValidator implements ArrayAccess {
    *   The value to get from given offset.
    */
   public function offsetGet($offset) {
+    $offset = $this->camelize($offset);
+
     if (!$this->offsetExists($offset)) {
       throw new InvalidArgumentException(sprintf('Unsupported offset %s.', $offset));
     }
@@ -66,6 +68,8 @@ abstract class BaseValidator implements ArrayAccess {
    *   The value to set.
    */
   public function offsetSet($offset, $value): void {
+    $offset = $this->camelize($offset);
+
     if (!$this->offsetExists($offset)) {
       throw new InvalidArgumentException(sprintf('Unsupported offset %s.', $offset));
     }
@@ -87,6 +91,21 @@ abstract class BaseValidator implements ArrayAccess {
    */
   public function offsetUnset($offset): void {
     throw new BadMethodCallException('Unsupported method.');
+  }
+
+  /**
+   * Transform a given snake_case input into lowerCamelCase form.
+   *
+   * @param string $input
+   *   The input to be transformed.
+   * @param string $separator
+   *   The snake_case separator.
+   *
+   * @return string
+   *   The lowerCamelCase value of given input.
+   */
+  private function camelize($input, $separator = '_'): string {
+    return str_replace($separator, '', lcfirst(ucwords($input, $separator)));
   }
 
 }
