@@ -151,6 +151,14 @@
             },
             "example": "ps4",
             "uniqueItems": true
+          },
+          {
+            "name": "release_year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "description": "The year to filter games by.",
+            "example": "2019"
           }
         ],
         "responses": {
@@ -195,7 +203,7 @@
           }
         }
       }
-    },
+    }
   },
   "securityDefinitions": {
     "csrf_token": {
