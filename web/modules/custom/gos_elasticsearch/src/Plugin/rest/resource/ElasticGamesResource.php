@@ -2,6 +2,7 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\rest\resource;
 
+use Drupal\Component\Utility\Xss;
 use Drupal\Core\Cache\CacheableJsonResponse;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
@@ -121,6 +122,21 @@ class ElasticGamesResource extends ElasticResourceBase {
     // Add the sort property.
     if (!empty($resource_validator->getSort())) {
       $es_query['body']['sort'] = $this->addSort($resource_validator->getSort());
+    }
+
+    $search = $request->query->get('q');
+    $search = Xss::filter($search);
+
+    if ($search) {
+      // Filter the "hits" by given game title.
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addFullTextGameTitleCondition($search);
+
+      // Filter the "aggregations" by given game titles.
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_release_years_histogram']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
     }
 
     $platforms = $resource_validator->getPlatforms();
@@ -331,6 +347,26 @@ class ElasticGamesResource extends ElasticResourceBase {
     }
 
     return $resource_validator;
+  }
+
+  /**
+   * Add a full-text condition to query.
+   *
+   * @param string $search
+   *   The keywords to filter by.
+   *
+   * @return array
+   *   The condition query to filter-out by keyword on content.
+   */
+  private function addFullTextGameTitleCondition(string $search): array {
+    return [
+      'multi_match' => [
+        'query' => $search,
+        'fields' => ['title'],
+        'operator' => 'or',
+        'fuzziness' => 0,
+      ],
+    ];
   }
 
   /**
