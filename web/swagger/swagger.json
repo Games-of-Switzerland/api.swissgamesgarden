@@ -79,6 +79,13 @@
             "default": 0
           },
           {
+            "name": "q",
+            "in": "query",
+            "description": "Keywords to use for the search",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "sort[asc]",
             "in": "query",
             "required": false,

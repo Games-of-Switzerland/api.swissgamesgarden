@@ -55,7 +55,7 @@ class GameNodeIndex extends NodeIndexBase {
               'people_fullname_filter' => [
                 'type' => 'edge_ngram',
                 'min_gram' => 2,
-                'max_gram' => 10,
+                'max_gram' => 50,
                 'token_chars' => [
                   'letter',
                 ],
@@ -63,7 +63,7 @@ class GameNodeIndex extends NodeIndexBase {
               'studio_name_filter' => [
                 'type' => 'edge_ngram',
                 'min_gram' => 3,
-                'max_gram' => 10,
+                'max_gram' => 128,
                 'token_chars' => [
                   'letter',
                   'digit',
@@ -71,11 +71,14 @@ class GameNodeIndex extends NodeIndexBase {
               ],
             ],
             'analyzer' => [
-              'ngram_gametitle_analyzer' => [
-                'tokenizer' => 'ngram_gametitle_tokenizer',
-                'filter' => ['lowercase'],
+              'game_title_analyzer' => [
+                'tokenizer' => 'game_title_tokenizer',
+                'filter' => [
+                  'lowercase',
+                  'asciifolding',
+                ],
               ],
-              'ngram_gametitle_analyzer_search' => [
+              'game_title_analyzer_search' => [
                 'tokenizer' => 'lowercase',
               ],
               'english_language_analyzer' => [
@@ -114,10 +117,10 @@ class GameNodeIndex extends NodeIndexBase {
               ],
             ],
             'tokenizer' => [
-              'ngram_gametitle_tokenizer' => [
+              'game_title_tokenizer' => [
                 'type' => 'edge_ngram',
                 'min_gram' => 2,
-                'max_gram' => 10,
+                'max_gram' => 255,
                 'token_chars' => [
                   'letter',
                   'digit',
@@ -142,8 +145,8 @@ class GameNodeIndex extends NodeIndexBase {
             ],
             'title' => [
               'type' => 'text',
-              'analyzer' => 'ngram_gametitle_analyzer',
-              'search_analyzer' => 'ngram_gametitle_analyzer_search',
+              'analyzer' => 'game_title_analyzer',
+              'search_analyzer' => 'game_title_analyzer_search',
               'fields' => [
                 'keyword' => [
                   'type' => 'keyword',
