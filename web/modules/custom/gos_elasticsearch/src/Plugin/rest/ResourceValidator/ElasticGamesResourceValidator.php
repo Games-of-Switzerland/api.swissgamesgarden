@@ -32,6 +32,13 @@ class ElasticGamesResourceValidator extends BaseValidator {
   ];
 
   /**
+   * The search keywords.
+   *
+   * @var string
+   */
+  protected $q;
+
+  /**
    * All raw element.
    *
    * This field may used in custom validators.
@@ -151,6 +158,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
+   * Get the search keywords.
+   *
+   * @return string|null
+   *   Keywords to filter by.
+   */
+  public function getQ(): ?string {
+    return $this->q;
+  }
+
+  /**
    * Get the raw values.
    *
    * @return array
@@ -228,6 +245,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function setPlatforms(array $platforms): void {
     $this->platforms = $platforms;
+  }
+
+  /**
+   * Set the Keywords to filter by.
+   *
+   * @param string $search
+   *   Keywords to filter by.
+   */
+  public function setQ(string $search): void {
+    $this->q = $search;
   }
 
   /**
