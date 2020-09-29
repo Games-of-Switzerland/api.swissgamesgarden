@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\gos_games\Kernel;
 
+use Drupal\gos_game\ReleasesCompiler;
 use Drupal\gos_test\Traits\NodeTestTrait;
 use Drupal\gos_test\Traits\TaxonomyTestTrait;
 use Drupal\KernelTests\KernelTestBase;
@@ -88,6 +89,43 @@ final class ReleasesCompilerTest extends KernelTestBase {
         ['date_value' => NULL, 'target_id' => 5],
       ],
     ]);
+  }
+
+  /**
+   * @covers ::compilePlatforms
+   */
+  public function testCompilePlatforms(): void {
+    $platforms = ReleasesCompiler::compilePlatforms($this->testGame);
+    self::assertSame(['amiga', 'macos', 'windows', 'linux', 'gameboy'], $platforms);
+  }
+
+  /**
+   * @covers ::compilePlatformsByYears
+   */
+  public function testCompilePlatformsByYears(): void {
+    $platforms_by_years = ReleasesCompiler::compilePlatformsByYears($this->testGame);
+    self::assertSame([
+      1989 => [
+        'year' => '1989',
+        'platforms' => ['amiga' => ['name' => 'amiga']],
+      ],
+      2000 => [
+        'year' => '2000',
+        'platforms' => ['windows' => ['name' => 'windows']],
+      ],
+      2001 => [
+        'year' => '2001',
+        'platforms' => ['macos' => ['name' => 'macos'], 'linux' => ['name' => 'linux']],
+      ],
+      2003 => [
+        'year' => '2003',
+        'platforms' => ['amiga' => ['name' => 'amiga']],
+      ],
+      2009 => [
+        'year' => '2009',
+        'platforms' => [],
+      ],
+    ], $platforms_by_years);
   }
 
   /**
