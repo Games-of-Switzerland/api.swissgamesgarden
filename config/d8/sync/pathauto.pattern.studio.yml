@@ -5,18 +5,18 @@ dependencies:
   module:
     - node
 id: studio
-label: Studio
+label: Studios
 type: 'canonical_entities:node'
-pattern: '/studio/[node:title]'
+pattern: '/studios/[node:title]'
 selection_criteria:
-  a4cea0a4-d034-4c6d-a7cc-e44bdbbad36f:
+  eb718457-37b1-4eee-bc20-44cef62cef13:
     id: node_type
     bundles:
       studio: studio
     negate: false
     context_mapping:
       node: node
-    uuid: a4cea0a4-d034-4c6d-a7cc-e44bdbbad36f
+    uuid: eb718457-37b1-4eee-bc20-44cef62cef13
 selection_logic: and
 weight: -5
 relationships: {  }
