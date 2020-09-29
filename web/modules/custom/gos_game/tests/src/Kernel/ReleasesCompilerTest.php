@@ -1,0 +1,163 @@
+<?php
+
+namespace Drupal\Tests\gos_games\Kernel;
+
+use Drupal\gos_test\Traits\NodeTestTrait;
+use Drupal\gos_test\Traits\TaxonomyTestTrait;
+use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
+
+/**
+ * @coversDefaultClass \Drupal\gos_game\ReleasesCompiler
+ *
+ * @group cardis
+ * @group cardis_import
+ * @group cardis_import_kernel
+ *
+ * @internal
+ */
+final class ReleasesCompilerTest extends KernelTestBase {
+  use EntityReferenceTestTrait;
+  use NodeTestTrait;
+  use TaxonomyTestTrait;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static $modules = [
+    'system',
+    'node',
+    'taxonomy',
+    'field',
+    'filter',
+    'text',
+    'datetime',
+    'user',
+    'gos_site',
+    'gos_game',
+  ];
+
+  /**
+   * The Entity Type Manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManager
+   */
+  protected $entityTypeManager;
+
+  /**
+   * Game for testing.
+   *
+   * @var \Drupal\node\NodeInterface
+   */
+  protected $testGame;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::setUp();
+
+    /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
+    $this->entityTypeManager = $this->container->get('entity_type.manager');
+
+    $this->installConfig(['system']);
+    $this->installEntitySchema('user');
+    $this->installEntitySchema('node');
+    $this->installEntitySchema('taxonomy_term');
+    $this->installSchema('node', 'node_access');
+
+    // Create the taxonomy filter format.
+    $this->setupTaxonomy();
+
+    // Setup Taxonomies and Content-Type.
+    $this->setupPlatform();
+    $this->defaultPlatforms();
+    $this->setupGame();
+
+    $this->testGame = $this->entityTypeManager->getStorage('node')->create([
+      'type' => 'game',
+      'title' => $this->randomString(),
+      'field_releases' => [
+        ['date_value' => '2003-01-01', 'target_id' => 4],
+        ['date_value' => '2001-02-02', 'target_id' => 2],
+        ['date_value' => '1989-01-01', 'target_id' => 4],
+        ['date_value' => '2000-02-02', 'target_id' => 1],
+        ['date_value' => '1989-02-02', 'target_id' => NULL],
+        ['date_value' => '2001-02-02', 'target_id' => 3],
+        ['date_value' => '2009-01-01', 'target_id' => NULL],
+        ['date_value' => NULL, 'target_id' => 5],
+      ],
+    ]);
+  }
+
+  /**
+   * Setup 5 default Game's Platforms for testing.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   *
+   * @return \Drupal\node\NodeInterface[]
+   *   The collection of 5 created Game's platforms.
+   */
+  private function defaultPlatforms(): array {
+    $platform0 = $this->entityTypeManager->getStorage('taxonomy_term')->create([
+      'vid' => 'platforms',
+      'tid' => 1,
+      'name' => 'Windows',
+      'field_slug' => 'windows',
+    ]);
+    $platform0->save();
+
+    $platform1 = $this->entityTypeManager->getStorage('taxonomy_term')->create([
+      'vid' => 'platforms',
+      'tid' => 2,
+      'name' => 'Mac',
+      'field_slug' => 'macos',
+    ]);
+    $platform1->save();
+
+    $platform2 = $this->entityTypeManager->getStorage('taxonomy_term')->create([
+      'vid' => 'platforms',
+      'tid' => 3,
+      'name' => 'Linux',
+      'field_slug' => 'linux',
+    ]);
+    $platform2->save();
+
+    $platform3 = $this->entityTypeManager->getStorage('taxonomy_term')->create([
+      'vid' => 'platforms',
+      'tid' => 4,
+      'name' => 'Amiga',
+      'field_slug' => 'amiga',
+    ]);
+    $platform3->save();
+
+    $platform4 = $this->entityTypeManager->getStorage('taxonomy_term')->create([
+      'vid' => 'platforms',
+      'tid' => 5,
+      'name' => 'Gameboy',
+      'field_slug' => 'gameboy',
+    ]);
+    $platform4->save();
+
+    return [$platform0, $platform1, $platform2, $platform3, $platform4];
+  }
+
+  /**
+   * Setup the Game content type with release field.
+   */
+  private function setupGame(): void {
+    $this->createNodeType('game');
+    $this->createNodeField('field_releases', 'release', 'game');
+  }
+
+  /**
+   * Setup the Game's Platforms vocabulary.
+   */
+  private function setupPlatform(): void {
+    $this->createVocabulary('platforms');
+    $this->createTermField('field_slug', 'text', 'platforms');
+  }
+
+}
