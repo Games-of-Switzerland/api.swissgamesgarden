@@ -107,19 +107,22 @@ final class ReleasesCompilerTest extends KernelTestBase {
     self::assertSame([
       1989 => [
         'year' => '1989',
-        'platforms' => ['amiga' => ['name' => 'amiga']],
+        'platforms' => ['amiga' => ['name' => 'amiga', 'date' => '1989-01-01T00:00:00']],
       ],
       2000 => [
         'year' => '2000',
-        'platforms' => ['windows' => ['name' => 'windows']],
+        'platforms' => ['windows' => ['name' => 'windows', 'date' => '2000-02-02T00:00:00']],
       ],
       2001 => [
         'year' => '2001',
-        'platforms' => ['macos' => ['name' => 'macos'], 'linux' => ['name' => 'linux']],
+        'platforms' => [
+          'macos' => ['name' => 'macos', 'date' => '2001-02-02T00:00:00'],
+          'linux' => ['name' => 'linux', 'date' => '2001-02-02T00:00:00'],
+        ],
       ],
       2003 => [
         'year' => '2003',
-        'platforms' => ['amiga' => ['name' => 'amiga']],
+        'platforms' => ['amiga' => ['name' => 'amiga', 'date' => '2003-01-01T00:00:00']],
       ],
       2009 => [
         'year' => '2009',

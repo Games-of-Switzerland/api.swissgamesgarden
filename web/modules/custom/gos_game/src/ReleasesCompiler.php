@@ -3,6 +3,7 @@
 namespace Drupal\gos_game;
 
 use DateTimeImmutable;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\NodeInterface;
 
 /**
@@ -84,8 +85,12 @@ class ReleasesCompiler {
         continue;
       }
 
+      $date = (new DateTimeImmutable($release->date_value))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
       $platform_slug = $release->entity->get('field_slug')->value;
-      $platforms_by_years[$year]['platforms'][$platform_slug] = ['name' => $platform_slug];
+      $platforms_by_years[$year]['platforms'][$platform_slug] = [
+        'name' => $platform_slug,
+        'date' => $date,
+      ];
     }
 
     // Order by years ASC.
