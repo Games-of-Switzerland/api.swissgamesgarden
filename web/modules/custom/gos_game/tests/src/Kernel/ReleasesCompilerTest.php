@@ -129,6 +129,58 @@ final class ReleasesCompilerTest extends KernelTestBase {
   }
 
   /**
+   * @covers ::compileYears
+   */
+  public function testCompileYears(): void {
+    $years = ReleasesCompiler::compileYears($this->testGame);
+    self::assertSame([
+      1989,
+      2000,
+      2001,
+      2003,
+      2009,
+    ], $years);
+  }
+
+  /**
+   * @covers ::compileYearsByPlatforms
+   */
+  public function testCompileYearsByPlatforms(): void {
+    $years = ReleasesCompiler::compileYearsByPlatforms($this->testGame);
+    self::assertSame([
+      'amiga' => [
+        'platform' => 'amiga',
+        'years' => [
+          1989 => '1989',
+          2003 => '2003',
+        ],
+      ],
+      'macos' => [
+        'platform' => 'macos',
+        'years' => [
+          2001 => '2001',
+        ],
+      ],
+      'windows' => [
+        'platform' => 'windows',
+        'years' => [
+          2000 => '2000',
+        ],
+      ],
+      'linux' => [
+        'platform' => 'linux',
+        'years' => [
+          2001 => '2001',
+        ],
+      ],
+      'gameboy' => [
+        'platform' => 'gameboy',
+        'years' => [],
+      ],
+    ], $years);
+  }
+
+  /**
    * Setup 5 default Game's Platforms for testing.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
