@@ -16,6 +16,8 @@ dependencies:
     - field.field.node.game.field_members
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
+    - field.field.node.game.field_release_platforms
+    - field.field.node.game.field_release_years
     - field.field.node.game.field_releases
     - field.field.node.game.field_social_networks
     - field.field.node.game.field_sources
@@ -40,12 +42,12 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 1
     settings: {  }
     third_party_settings: {  }
     region: content
   field_article_links:
-    weight: 111
+    weight: 11
     label: above
     settings:
       trim_length: 80
@@ -57,38 +59,29 @@ content:
     type: link
     region: content
   field_awards:
-    weight: 114
+    weight: 14
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
     type: string
     region: content
-  field_completeness:
-    weight: 117
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_integer
-    region: content
   field_contextual_links:
-    weight: 120
+    weight: 19
     label: above
     settings: {  }
     third_party_settings: {  }
     type: contextual_link_default
     region: content
   field_credits:
-    weight: 121
+    weight: 20
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_genres:
-    weight: 103
+    weight: 3
     label: above
     settings:
       link: true
@@ -96,7 +89,7 @@ content:
     type: entity_reference_label
     region: content
   field_images:
-    weight: 107
+    weight: 7
     label: above
     settings:
       image_style: ''
@@ -105,7 +98,7 @@ content:
     type: image
     region: content
   field_languages:
-    weight: 110
+    weight: 10
     label: above
     settings:
       link: true
@@ -113,7 +106,7 @@ content:
     type: entity_reference_label
     region: content
   field_locations:
-    weight: 116
+    weight: 16
     label: above
     settings:
       link: true
@@ -121,7 +114,7 @@ content:
     type: entity_reference_label
     region: content
   field_members:
-    weight: 105
+    weight: 5
     label: above
     settings:
       link: true
@@ -129,14 +122,14 @@ content:
     type: team_member_default
     region: content
   field_path:
-    weight: 106
+    weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
     type: fieldable_path_formatter
     region: content
   field_publishers:
-    weight: 108
+    weight: 8
     label: above
     settings:
       link: true
@@ -144,7 +137,7 @@ content:
     type: entity_reference_label
     region: content
   field_releases:
-    weight: 104
+    weight: 4
     label: above
     settings:
       link: true
@@ -152,14 +145,14 @@ content:
     type: release_default
     region: content
   field_social_networks:
-    weight: 118
+    weight: 17
     label: above
     settings: {  }
     third_party_settings: {  }
     type: social_default
     region: content
   field_sources:
-    weight: 113
+    weight: 13
     label: above
     settings:
       trim_length: 80
@@ -171,7 +164,7 @@ content:
     type: link
     region: content
   field_sponsors:
-    weight: 109
+    weight: 9
     label: above
     settings:
       link: true
@@ -179,14 +172,14 @@ content:
     type: entity_reference_label
     region: content
   field_stores:
-    weight: 115
+    weight: 15
     label: above
     settings: {  }
     third_party_settings: {  }
     type: store_default
     region: content
   field_studios:
-    weight: 102
+    weight: 2
     label: above
     settings:
       link: true
@@ -195,7 +188,7 @@ content:
     region: content
   field_video:
     type: entity_reference_entity_view
-    weight: 119
+    weight: 18
     label: above
     settings:
       view_mode: default
@@ -203,7 +196,7 @@ content:
     third_party_settings: {  }
     region: content
   field_website:
-    weight: 112
+    weight: 12
     label: above
     settings:
       trim_length: 80
@@ -215,8 +208,11 @@ content:
     type: link
     region: content
   links:
-    weight: 100
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  field_completeness: true
+  field_release_platforms: true
+  field_release_years: true
