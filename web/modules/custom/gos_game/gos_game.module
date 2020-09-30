@@ -7,6 +7,7 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\gos_game\CompletenessCalculator;
+use Drupal\gos_game\ReleasesCompiler;
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
@@ -19,7 +20,15 @@ function gos_game_node_presave(EntityInterface $entity) {
     // Calculate the completeness score field value.
     $score = CompletenessCalculator::calculation($game);
 
-    // Other field calculations.
+    // Save field calculations.
     $game->set('field_completeness', $score);
+
+    // Get Game compiled release years field value.
+    $years = ReleasesCompiler::compileYears($game);
+    $game->set('field_release_years', $years);
+
+    // Get Game compiled platforms field value.
+    $platforms = ReleasesCompiler::compilePlatforms($game);
+    $game->set('field_release_platforms', array_keys($platforms));
   }
 }

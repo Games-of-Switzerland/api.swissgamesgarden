@@ -35,10 +35,10 @@ class ReleasesCompiler {
       }
 
       $platform_slug = $release->entity->get('field_slug')->value;
-      $platforms[$platform_slug] = ['name' => $platform_slug];
+      $platforms[$release->target_id] = ['tid' => $release->target_id, 'name' => $platform_slug];
     }
 
-    return array_keys($platforms);
+    return $platforms;
   }
 
   /**
@@ -87,8 +87,9 @@ class ReleasesCompiler {
 
       $date = (new DateTimeImmutable($release->date_value))->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
       $platform_slug = $release->entity->get('field_slug')->value;
-      $platforms_by_years[$year]['platforms'][$platform_slug] = [
+      $platforms_by_years[$year]['platforms'][$release->target_id] = [
         'name' => $platform_slug,
+        'tid' => $release->target_id,
         'date' => $date,
       ];
     }
