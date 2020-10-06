@@ -5,7 +5,11 @@
  * Primary module hooks for Game module for Games of Switzerland.
  */
 
+use Drupal\comment\Entity\Comment;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\gos_game\CompletenessCalculator;
 use Drupal\gos_game\ReleasesCompiler;
 
@@ -31,4 +35,37 @@ function gos_game_node_presave(EntityInterface $entity) {
     $platforms = ReleasesCompiler::compilePlatforms($game);
     $game->set('field_release_platforms', array_keys($platforms));
   }
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ *
+ * Add the releases_normalized computed attributes to all Nodes.
+ */
+function gos_game_entity_base_field_info(EntityTypeInterface $entity_type): array {
+  $fields = [];
+
+  $base_table = $entity_type->getBaseTable();
+  $canonical_template_exists = $entity_type->hasLinkTemplate('canonical');
+
+  // Certain classes are just not supported.
+  $original_class = $entity_type->getOriginalClass();
+  $classes_to_skip = [
+    Comment::class,
+  ];
+
+  // If the entity type doesn't have a base table, has no link template then
+  // there's no point in supporting it.
+  if (empty($base_table) || !$canonical_template_exists || \in_array($original_class, $classes_to_skip, TRUE)) {
+    return $fields;
+  }
+
+  $fields['releases_normalized'] = BaseFieldDefinition::create('release_normalized')
+    ->setLabel(t('Release normalized')->__toString())
+    ->setDescription(t('The releases normalized for the entity.')->__toString())
+    ->setComputed(TRUE)
+    ->setCardinality(FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED)
+    ->setTranslatable(TRUE);
+
+  return $fields;
 }

@@ -20,5 +20,6 @@ $config = Drupal8::create()
 
 $rules = $config->getRules();
 $rules['global_namespace_import'] = FALSE;
+$rules['php_unit_set_up_tear_down_visibility'] = FALSE;
 $config->setRules($rules);
 return $config;

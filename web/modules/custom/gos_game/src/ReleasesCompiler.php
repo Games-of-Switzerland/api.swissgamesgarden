@@ -3,6 +3,7 @@
 namespace Drupal\gos_game;
 
 use DateTimeImmutable;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\NodeInterface;
 
@@ -46,7 +47,7 @@ class ReleasesCompiler {
    *
    * Those years will be ordered ASC.
    *
-   * @param \Drupal\node\NodeInterface $game
+   * @param \Drupal\Core\Entity\ContentEntityInterface $game
    *   The game to compile years for.
    *
    * @throws \Exception
@@ -56,7 +57,7 @@ class ReleasesCompiler {
    *   Compiled Years ordered ASC from releases.
    *   An empty array when game has no releases.
    */
-  public static function compilePlatformsByYears(NodeInterface $game): array {
+  public static function compilePlatformsByYears(ContentEntityInterface $game): array {
     // Don't process node without/empty field_releases.
     if (!$game->hasField('field_releases') || $game->get('field_releases')->isEmpty()) {
       return [];
