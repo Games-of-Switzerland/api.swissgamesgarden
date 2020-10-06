@@ -10,7 +10,7 @@ use Drupal\Tests\UnitTestCase;
 /**
  * @coversDefaultClass \Drupal\gos_game\CompletenessCalculator
  *
- * @group gos_game
+ * @group gos
  * @group gos_game
  * @group gos_game_unit
  *

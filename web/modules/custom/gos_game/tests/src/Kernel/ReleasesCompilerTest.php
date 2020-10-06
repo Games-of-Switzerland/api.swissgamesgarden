@@ -11,9 +11,9 @@ use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
 /**
  * @coversDefaultClass \Drupal\gos_game\ReleasesCompiler
  *
- * @group cardis
- * @group cardis_import
- * @group cardis_import_kernel
+ * @group gos
+ * @group gos_game
+ * @group gos_game_kernel
  *
  * @internal
  */
