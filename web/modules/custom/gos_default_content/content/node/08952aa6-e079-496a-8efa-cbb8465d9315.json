@@ -65,7 +65,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_studios": [
             {
-                "href": "http:\/\/default\/studio\/giants-software?_format=hal_json"
+                "href": "http:\/\/default\/studios\/giants-software?_format=hal_json"
             }
         ]
     },
@@ -334,7 +334,7 @@
             {
                 "_links": {
                     "self": {
-                        "href": "http:\/\/default\/studio\/giants-software?_format=hal_json"
+                        "href": "http:\/\/default\/studios\/giants-software?_format=hal_json"
                     },
                     "type": {
                         "href": "http:\/\/drupal.org\/rest\/type\/node\/studio"
