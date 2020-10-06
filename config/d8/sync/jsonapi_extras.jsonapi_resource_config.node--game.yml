@@ -214,6 +214,18 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_release_platforms:
+    fieldName: field_release_platforms
+    publicName: release_platforms
+    enhancer:
+      id: ''
+    disabled: false
+  field_release_years:
+    fieldName: field_release_years
+    publicName: release_years
+    enhancer:
+      id: ''
+    disabled: false
   field_releases:
     fieldName: field_releases
     publicName: releases

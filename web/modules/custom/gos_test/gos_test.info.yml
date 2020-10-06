@@ -1,0 +1,5 @@
+name: Games of Switzerland tests
+description: Utility module for Games of Switzerland testing.
+package: Testing
+type: module
+core: 8.x

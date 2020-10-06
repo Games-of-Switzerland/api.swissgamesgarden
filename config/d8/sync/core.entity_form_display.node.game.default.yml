@@ -16,6 +16,8 @@ dependencies:
     - field.field.node.game.field_members
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
+    - field.field.node.game.field_release_platforms
+    - field.field.node.game.field_release_years
     - field.field.node.game.field_releases
     - field.field.node.game.field_social_networks
     - field.field.node.game.field_sources
@@ -340,5 +342,7 @@ hidden:
   created: true
   field_completeness: true
   field_path: true
+  field_release_platforms: true
+  field_release_years: true
   sticky: true
   uid: true

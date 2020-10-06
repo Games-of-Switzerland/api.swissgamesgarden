@@ -24,6 +24,9 @@ Feature: Game
     And the JSON node "data.attributes.langcode" should be equal to "en"
     And the JSON node "data.attributes.title" should be equal to "Farming Simulator 18"
     And the JSON node "data.attributes.field_path" should be equal to "/games/farming-simulator-18"
+    And the JSON node "data.attributes.release_years" should have 2 elements
+    And the JSON node "data.attributes.release_years[0]" should be equal to "2017"
+    And the JSON node "data.attributes.release_years[1]" should be equal to "2018"
 
   Scenario: Fetching a game using the path filter may return one or more results.
     Given I am on "/G70VW4Y9sP/jsonapi/node/game?filter[field_path]=/games/farming-simulator-18"
@@ -50,6 +53,24 @@ Feature: Game
     And the JSON node "included[0].attributes.title" should be equal to 'Jérémy "Wuthrer" Cuany'
     And the JSON node "included[1].type" should be equal to "node--people"
     And the JSON node "included[1].attributes.title" should be equal to 'Nicolas "Kaihnn" Jadaud'
+
+  Scenario: Fetching a game with compiled Release Platforms should be possible.
+    Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=release_platforms"
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the JSON node "included" should have 6 elements
+    And the JSON node "included[0].type" should be equal to "taxonomy_term--platform"
+    And the JSON node "included[0].attributes.slug" should be equal to 'pc'
+    And the JSON node "included[1].type" should be equal to "taxonomy_term--platform"
+    And the JSON node "included[1].attributes.slug" should be equal to 'mac'
+    And the JSON node "included[2].type" should be equal to "taxonomy_term--platform"
+    And the JSON node "included[2].attributes.slug" should be equal to 'ios'
+    And the JSON node "included[3].type" should be equal to "taxonomy_term--platform"
+    And the JSON node "included[3].attributes.slug" should be equal to 'android'
+    And the JSON node "included[4].type" should be equal to "taxonomy_term--platform"
+    And the JSON node "included[4].attributes.slug" should be equal to 'playstation_vita'
+    And the JSON node "included[5].type" should be equal to "taxonomy_term--platform"
+    And the JSON node "included[5].attributes.slug" should be equal to 'nintendo_3ds'
 
   Scenario: Fetching a game with images return his image styles.
     Given I am on "/G70VW4Y9sP/jsonapi/node/game/a0b7c853-c891-487f-84f9-74dfbce9fa63?include=images"

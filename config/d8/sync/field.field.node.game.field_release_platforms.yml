@@ -1,18 +1,16 @@
-uuid: 7d8a39ff-fae1-4df6-a0d7-fc91ecd2849a
+uuid: b9f451df-3ea1-4c39-b437-687c0848a755
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_releases
+    - field.storage.node.field_release_platforms
     - node.type.game
     - taxonomy.vocabulary.platform
-  module:
-    - gos_site
-id: node.game.field_releases
-field_name: field_releases
+id: node.game.field_release_platforms
+field_name: field_release_platforms
 entity_type: node
 bundle: game
-label: Release(s)
+label: 'Release platforms'
 description: ''
 required: false
 translatable: false
@@ -28,4 +26,4 @@ settings:
       direction: asc
     auto_create: false
     auto_create_bundle: ''
-field_type: release
+field_type: entity_reference

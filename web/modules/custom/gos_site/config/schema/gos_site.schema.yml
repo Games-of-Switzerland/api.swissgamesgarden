@@ -1,0 +1,36 @@
+# Schema for the configuration of the Release field type.
+
+field.storage_settings.release:
+  type: mapping
+  label: 'Entity reference field storage settings'
+  mapping:
+    target_type:
+      type: string
+      label: 'Type of item to reference'
+    date:
+      type: string
+      label: 'Default release date'
+
+field.field_settings.release:
+  type: mapping
+  label: 'Entity reference field settings'
+  mapping:
+    handler:
+      type: string
+      label: 'Reference method'
+    handler_settings:
+      type: entity_reference_selection.[%parent.handler]
+      label: 'Entity reference selection plugin settings'
+
+field.value.release:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    target_id:
+      type: string
+      label: 'Value'
+    target_uuid:
+      type: uuid
+    date:
+      type: string
+      label: 'Release date'
