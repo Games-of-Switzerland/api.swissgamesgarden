@@ -31,8 +31,22 @@ class ReleaseDefaultWidget extends EntityReferenceAutocompleteWidget {
     $widget['date_value'] = [
       '#title' => $this->t('Release date'),
       '#type' => 'date',
-      '#default_value' => isset($items[$delta]->date_value) ? $items[$delta]->date_value : NULL,
+      '#default_value' => $items[$delta]->date_value ?? NULL,
       '#weight' => -1,
+    ];
+
+    $widget['state'] = [
+      '#title' => $this->t('State'),
+      '#type' => 'select',
+      '#options' => [
+        '' => $this->t('- None -'),
+        'pre_release' => $this->t('Pre-release'),
+        'development' => $this->t('In development'),
+        'released' => $this->t('Released'),
+        'canceled' => $this->t('Canceled'),
+      ],
+      '#default_value' => $items[$delta]->state ?? NULL,
+      '#weight' => 10,
     ];
 
     return $widget;

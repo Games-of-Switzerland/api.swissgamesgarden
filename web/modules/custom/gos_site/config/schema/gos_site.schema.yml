@@ -34,3 +34,6 @@ field.value.release:
     date:
       type: string
       label: 'Release date'
+    state:
+      type: string
+      label: 'Release state'
