@@ -132,7 +132,8 @@
                     {
                         "value": "6ea716ae-e50f-4a59-ace5-603c353ae20a"
                     }
-                ]
+                ],
+                "state": "released"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_sponsors": [

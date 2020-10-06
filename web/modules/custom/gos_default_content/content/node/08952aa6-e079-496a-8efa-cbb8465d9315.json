@@ -280,7 +280,8 @@
                         "value": "304a43fe-3c4d-4587-93e6-a84959d39bf7"
                     }
                 ],
-                "date_value": "2018-11-20"
+                "date_value": "2018-11-20",
+                "state": "released"
             },
             {
                 "_links": {
@@ -296,7 +297,8 @@
                         "value": "9e1f8365-4bf3-4189-bf33-c9ac6862dca7"
                     }
                 ],
-                "date_value": "2018-11-20"
+                "date_value": "2018-11-20",
+                "state": "released"
             },
             {
                 "_links": {
@@ -312,7 +314,8 @@
                         "value": "e5b2685e-39a7-4726-ad90-d7e3b44c2850"
                     }
                 ],
-                "date_value": "2018-11-20"
+                "date_value": "2018-11-20",
+                "state": "development"
             },
             {
                 "_links": {
