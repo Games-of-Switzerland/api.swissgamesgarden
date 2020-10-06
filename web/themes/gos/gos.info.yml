@@ -3,6 +3,7 @@ type: theme
 description: Games of Switzerland theme.
 package: Games of Switzerland
 core: 8.x
+base theme: stable
 
 stylesheets-remove:
   - core/assets/vendor/normalize-css/normalize.css
