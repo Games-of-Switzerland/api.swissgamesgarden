@@ -2,7 +2,6 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\Normalizer;
 
-use DateTimeImmutable;
 use Drupal\node\NodeInterface;
 use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 
@@ -61,7 +60,7 @@ class GameNormalizer extends ContentEntityNormalizer {
         }
 
         // Use the year as key to prevent having twice the same value.
-        $year = (new DateTimeImmutable($release->date_value))->format('Y');
+        $year = (new \DateTimeImmutable($release->date_value))->format('Y');
         $years[$year] = $year;
       }
 

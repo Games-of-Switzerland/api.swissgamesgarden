@@ -104,7 +104,10 @@ trait NodeTestTrait {
     }
 
     // Create a node type for testing.
-    $type = NodeType::create(['type' => $type, 'name' => $this->randomString(8)]);
+    $type = NodeType::create([
+      'type' => $type,
+      'name' => $this->randomString(8),
+    ]);
     $type->save();
 
     return $type;

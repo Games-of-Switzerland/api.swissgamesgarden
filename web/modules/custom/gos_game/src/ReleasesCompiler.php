@@ -2,7 +2,6 @@
 
 namespace Drupal\gos_game;
 
-use DateTimeImmutable;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\NodeInterface;
@@ -36,7 +35,10 @@ class ReleasesCompiler {
       }
 
       $platform_slug = $release->entity->get('field_slug')->value;
-      $platforms[$release->target_id] = ['tid' => $release->target_id, 'name' => $platform_slug];
+      $platforms[$release->target_id] = [
+        'tid' => $release->target_id,
+        'name' => $platform_slug,
+      ];
     }
 
     return $platforms;
@@ -67,7 +69,7 @@ class ReleasesCompiler {
         continue;
       }
 
-      $year = (new DateTimeImmutable($release->date_value))->format('Y');
+      $year = (new \DateTimeImmutable($release->date_value))->format('Y');
       $years[$year] = $year;
     }
 
@@ -121,7 +123,7 @@ class ReleasesCompiler {
       }
 
       // Get the Year from date_value release.
-      $year = (new DateTimeImmutable($release->date_value))->format('Y');
+      $year = (new \DateTimeImmutable($release->date_value))->format('Y');
       $years_by_platforms[$platform_slug]['years'][$year] = $year;
 
       // Resort the years by platform to have ordered Years ASC.
@@ -157,11 +159,11 @@ class ReleasesCompiler {
     foreach ($game->get('field_releases') as $release) {
       $year = 'na';
 
-      $date = $release->date_value ? (new DateTimeImmutable($release->date_value)) : NULL;
+      $date = $release->date_value ? (new \DateTimeImmutable($release->date_value)) : NULL;
 
       // Get the Year from date_value release.
-      if ($date instanceof DateTimeImmutable) {
-        $year = (new DateTimeImmutable($release->date_value))->format('Y');
+      if ($date instanceof \DateTimeImmutable) {
+        $year = (new \DateTimeImmutable($release->date_value))->format('Y');
       }
 
       if (!isset($normalized[$year])) {
@@ -183,7 +185,7 @@ class ReleasesCompiler {
         $normalized[$year]['platforms'][$release->target_id] = [
           'name' => $platform_slug,
           'tid' => $release->target_id,
-          'date' => $date instanceof DateTimeImmutable ? $date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT) : NULL,
+          'date' => $date instanceof \DateTimeImmutable ? $date->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT) : NULL,
           'state' => $release->state ?? NULL,
         ];
       }
