@@ -96,12 +96,12 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
       'name' => 'Llama',
       'type' => 'entity_test',
       'field_releases' => [
-        ['date_value' => '2001-02-02', 'target_id' => 2],
-        ['date_value' => '2000-02-02', 'target_id' => 1],
-        ['date_value' => '1989-02-02', 'target_id' => NULL],
-        ['date_value' => '2001-02-02', 'target_id' => 3],
-        ['date_value' => '2009-01-01', 'target_id' => NULL],
-        ['date_value' => NULL, 'target_id' => 3],
+        ['date_value' => '2001-02-02', 'target_id' => 2, 'state' => 'released'],
+        ['date_value' => '2000-02-02', 'target_id' => 1, 'state' => 'released'],
+        ['date_value' => '1989-02-02', 'target_id' => NULL, 'state' => NULL],
+        ['date_value' => '2001-02-02', 'target_id' => 3, 'state' => 'canceled'],
+        ['date_value' => '2009-01-01', 'target_id' => NULL, 'state' => NULL],
+        ['date_value' => NULL, 'target_id' => 3, 'state' => 'development'],
       ],
     ]);
     $entity_test->setOwnerId(0);
@@ -118,6 +118,7 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
       'field_releases' => [
         [
           'date_value' => '2001-02-02T11:00:00+11:00',
+          'state' => 'released',
           'target_id' => 2,
           'target_type' => 'taxonomy_term',
           'target_uuid' => '36f310ed-0649-438b-bb39-42d6ea16e361',
@@ -125,6 +126,7 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
         ],
         [
           'date_value' => '2000-02-02T11:00:00+11:00',
+          'state' => 'released',
           'target_id' => 1,
           'target_type' => 'taxonomy_term',
           'target_uuid' => '9832c69f-77ae-4119-a8c5-cdaf51e477fa',
@@ -132,6 +134,7 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
         ],
         [
           'date_value' => '2001-02-02T11:00:00+11:00',
+          'state' => 'canceled',
           'target_id' => 3,
           'target_type' => 'taxonomy_term',
           'target_uuid' => 'da1a3a96-baa8-4b57-8f0f-35aad71c8d29',
@@ -139,6 +142,7 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
         ],
         [
           'date_value' => NULL,
+          'state' => 'development',
           'target_id' => 3,
           'target_type' => 'taxonomy_term',
           'target_uuid' => 'da1a3a96-baa8-4b57-8f0f-35aad71c8d29',
@@ -148,13 +152,27 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
       'releases_normalized' => [
         [
           'platforms' => [
+            3 => [
+              'date' => NULL,
+              'name' => 'linux',
+              'state' => 'development',
+              'tid' => '3',
+            ],
+          ],
+          'year' => NULL,
+          'states' => ['development' => 'development'],
+        ],
+        [
+          'platforms' => [
             1 => [
               'date' => '2000-02-02T00:00:00',
               'name' => 'windows',
               'tid' => '1',
+              'state' => 'released',
             ],
           ],
           'year' => '2000',
+          'states' => ['released' => 'released'],
         ],
         [
           'platforms' => [
@@ -162,14 +180,17 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
               'date' => '2001-02-02T00:00:00',
               'name' => 'macos',
               'tid' => '2',
+              'state' => 'released',
             ],
             3 => [
               'date' => '2001-02-02T00:00:00',
               'name' => 'linux',
               'tid' => '3',
+              'state' => 'canceled',
             ],
           ],
           'year' => '2001',
+          'states' => ['released' => 'released', 'canceled' => 'canceled'],
         ],
       ],
     ];
