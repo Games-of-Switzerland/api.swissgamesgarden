@@ -26,6 +26,8 @@ class GameNormalizer extends ContentEntityNormalizer {
 
   /**
    * {@inheritdoc}
+   *
+   * @psalm-suppress ParamNameMismatch
    */
   public function normalize($object, $format = NULL, array $context = []) {
     /** @var \Drupal\node\Entity\Node $object */

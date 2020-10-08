@@ -71,6 +71,7 @@ abstract class ElasticResourceBase extends ResourceBase {
    * @psalm-suppress PossiblyNullArgument
    * @psalm-suppress ArgumentTypeCoercion
    * @psalm-suppress PossiblyNullReference
+   * @psalm-suppress UnsafeInstantiation
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(

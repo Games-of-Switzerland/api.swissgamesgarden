@@ -79,6 +79,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    * @psalm-suppress PossiblyNullArgument
    * @psalm-suppress PossiblyNullReference
    * @psalm-suppress MissingParamType
+   * @psalm-suppress UnsafeInstantiation
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
