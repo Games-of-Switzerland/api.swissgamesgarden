@@ -109,6 +109,15 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private $sort = [];
 
   /**
+   * The game States key to filter by.
+   *
+   * @var string[]|null
+   *
+   * @Assert\Choice(choices={"", "pre_release", "released", "development", "canceled"}, multiple=true)
+   */
+  private $states;
+
+  /**
    * The game Stores key to filter by.
    *
    * @var string[]|null
@@ -195,6 +204,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function getSort(): array {
     return $this->sort;
+  }
+
+  /**
+   * Get the game States to filter by.
+   *
+   * @return string[]|null
+   *   States to filter by.
+   */
+  public function getStates(): ?array {
+    return $this->states;
   }
 
   /**
@@ -285,6 +304,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function setSort(array $sort): void {
     $this->sort = $sort;
+  }
+
+  /**
+   * Set the States to filter by.
+   *
+   * @param string[] $states
+   *   States to filter by.
+   */
+  public function setStates(array $states): void {
+    $this->states = $states;
   }
 
   /**
