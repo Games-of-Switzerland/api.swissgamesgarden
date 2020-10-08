@@ -431,20 +431,14 @@ process:
           -
             plugin: gos_twitter_handle
 
-  field_images:
+  field_images/target_id:
     -
       plugin: skip_on_empty
       method: process
       source: screenshot_link
     -
-      plugin: skip_on_file_not_exists
-      method: process
-    -
-      plugin: skip_on_file_not_image
-      method: process
-    -
-      plugin: image_import
-      skip_on_missing_source: true
+      plugin: migration_lookup
+      migration: gos_covers
 
   field_video/target_id:
     -
@@ -490,3 +484,4 @@ migration_dependencies:
     - default:gos_publishers
     - default:gos_sponsors
     - default:gos_trailers
+    - default:gos_covers
