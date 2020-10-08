@@ -1184,32 +1184,32 @@ display:
                   container_type: container
                   title: 'Container 0'
                   description: ''
-                  weight: '-19'
+                  weight: '-21'
                   open: 0
                   id: container-0
                   pid: root
                   depth: '1'
                   type: container
                 status:
-                  weight: '-19'
+                  weight: '-21'
                   id: status
                   pid: container-0
                   depth: '2'
                   type: filter
                 field_completeness_value:
-                  weight: '-18'
+                  weight: '-20'
                   id: field_completeness_value
                   pid: container-0
                   depth: '2'
                   type: filter
                 title:
-                  weight: '-17'
+                  weight: '-19'
                   id: title
                   pid: container-0
                   depth: '2'
                   type: filter
                 langcode:
-                  weight: '-16'
+                  weight: '-18'
                   id: langcode
                   pid: container-0
                   depth: '2'
@@ -1218,53 +1218,59 @@ display:
                   container_type: container
                   title: 'Container 1'
                   description: ''
-                  weight: '-17'
+                  weight: '-20'
                   open: 0
                   id: container-1
                   pid: root
                   depth: '1'
                   type: container
                 uuid:
-                  weight: '-17'
+                  weight: '-21'
                   id: uuid
                   pid: container-1
                   depth: '2'
                   type: filter
                 field_genres_target_id:
-                  weight: '-16'
+                  weight: '-20'
                   id: field_genres_target_id
                   pid: container-1
                   depth: '2'
                   type: filter
-                field_releases_date_value:
-                  weight: '-15'
-                  id: field_releases_date_value
+                field_studios_target_id:
+                  weight: '-19'
+                  id: field_studios_target_id
                   pid: container-1
                   depth: '2'
                   type: filter
-                field_studios_target_id:
-                  weight: '-14'
-                  id: field_studios_target_id
-                  pid: container-1
+                container-2:
+                  container_type: container
+                  title: 'Container 2'
+                  description: ''
+                  weight: '-19'
+                  open: 0
+                  id: container-2
+                  pid: root
+                  depth: '1'
+                  type: container
+                field_releases_state:
+                  weight: '-21'
+                  id: field_releases_state
+                  pid: container-2
+                  depth: '2'
+                  type: filter
+                field_releases_date_value:
+                  weight: '-20'
+                  id: field_releases_date_value
+                  pid: container-2
                   depth: '2'
                   type: filter
                 container-7:
                   container_type: details
                   title: 'Container 7'
                   description: ''
-                  weight: '-16'
+                  weight: '-18'
                   open: 0
                   id: container-7
-                  pid: root
-                  depth: '1'
-                  type: container
-                container-2:
-                  container_type: details
-                  title: 'Container 2'
-                  description: ''
-                  weight: '-15'
-                  open: 0
-                  id: container-2
                   pid: root
                   depth: '1'
                   type: container
@@ -1272,7 +1278,7 @@ display:
                   container_type: details
                   title: 'Container 3'
                   description: ''
-                  weight: '-14'
+                  weight: '-17'
                   open: 0
                   id: container-3
                   pid: root
@@ -1282,7 +1288,7 @@ display:
                   container_type: details
                   title: 'Container 4'
                   description: ''
-                  weight: '-13'
+                  weight: '-16'
                   open: 0
                   id: container-4
                   pid: root
@@ -1292,7 +1298,7 @@ display:
                   container_type: details
                   title: 'Container 5'
                   description: ''
-                  weight: '-12'
+                  weight: '-15'
                   open: 0
                   id: container-5
                   pid: root
@@ -1302,9 +1308,19 @@ display:
                   container_type: details
                   title: 'Container 8'
                   description: ''
-                  weight: '-11'
+                  weight: '-14'
                   open: 0
                   id: container-8
+                  pid: root
+                  depth: '1'
+                  type: container
+                container-9:
+                  container_type: details
+                  title: 'Container 9'
+                  description: ''
+                  weight: '-13'
+                  open: 0
+                  id: container-9
                   pid: root
                   depth: '1'
                   type: container
@@ -1312,7 +1328,7 @@ display:
                   container_type: container
                   title: 'Container 6'
                   description: ''
-                  weight: '-10'
+                  weight: '-12'
                   open: 0
                   id: container-6
                   pid: root
@@ -1870,7 +1886,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% set platform = bamboo_load_entity('taxonomy_term', field_releases__target_id) %}\r\n{{ platform.name.value }} <small>({{ field_releases__date_value }})</small>"
+            text: "{% set platform = bamboo_load_entity('taxonomy_term', field_releases__target_id) %}\r\n{{ platform.name.value }}&nbsp;<small>({{ field_releases__date_value }}&nbsp;-&nbsp;<span class=\"icon-circle {{ field_releases__state }}\"></span>{{ field_releases__state }})</small>"
             make_link: false
             path: ''
             absolute: false
@@ -2472,6 +2488,61 @@ display:
                   min: ''
                   max: ''
           plugin_id: numeric
+        field_releases_state:
+          id: field_releases_state
+          table: node__field_releases
+          field: field_releases_state
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: '='
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_releases_state_op
+            label: 'Release(s) (field_releases:state)'
+            description: null
+            use_operator: false
+            operator: field_releases_state_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_releases_state
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Release State'
+            description: ''
+            identifier: field_releases_state
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Pre-release
+                operator: '='
+                value: pre_release
+              2:
+                title: 'In development'
+                operator: '='
+                value: development
+              3:
+                title: Released
+                operator: '='
+                value: released
+              4:
+                title: Canceled
+                operator: '='
+                value: canceled
+          plugin_id: string
       filter_groups:
         operator: AND
         groups:

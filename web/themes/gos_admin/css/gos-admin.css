@@ -36,18 +36,20 @@
   border-radius: 10px;
 }
 
-.icon-circle.published {
-  background-color: limegreen;
-}
-
 .icon-circle.unpublished {
   background-color: orangered;
 }
 
+.icon-circle.development {
+  background-color: cornflowerblue;
+}
+
+.icon-circle.canceled,
 .icon-circle.danger {
   background-color: darkred;
 }
 
+.icon-circle.pre_release,
 .icon-circle.warning {
   background-color: goldenrod;
 }
@@ -56,6 +58,8 @@
   background-color: darkseagreen;
 }
 
+.icon-circle.published,
+.icon-circle.released,
 .icon-circle.excellent {
   background-color: limegreen;
 }
