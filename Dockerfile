@@ -6,6 +6,10 @@ WORKDIR /var/www
 RUN apt-get update && apt-get -y install \
     cron;
 
+# Install additionnal PHP extensions.
+RUN docker-php-ext-install \
+    exif;
+
 # Copy cron file to the cron.d directory with proper execution rights on the cron job.
 ADD ./docker/cron /etc/cron.d/cron
 
