@@ -51,8 +51,9 @@ class GameNormalizer extends ContentEntityNormalizer {
 
       foreach ($object->field_releases as $release) {
         $releases[] = [
-          'date' => isset($release->date_value) ? $release->date_value : NULL,
+          'date' => $release->date_value ?? NULL,
           'platform_slug' => isset($release->entity) ? $release->entity->get('field_slug')->value : NULL,
+          'state' => $release->state ?? NULL,
         ];
 
         if (!isset($release->date_value)) {

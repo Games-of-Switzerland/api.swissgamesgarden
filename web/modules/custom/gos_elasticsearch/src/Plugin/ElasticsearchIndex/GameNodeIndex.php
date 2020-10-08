@@ -175,6 +175,9 @@ class GameNodeIndex extends NodeIndexBase {
                 'platform_slug' => [
                   'type' => 'keyword',
                 ],
+                'state' => [
+                  'type' => 'keyword',
+                ],
               ],
             ],
             'releases_years' => [
