@@ -166,6 +166,18 @@
             "type": "integer",
             "description": "The year to filter games by.",
             "example": "2019"
+          },
+          {
+            "name": "states[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of states slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "released",
+            "uniqueItems": true
           }
         ],
         "responses": {

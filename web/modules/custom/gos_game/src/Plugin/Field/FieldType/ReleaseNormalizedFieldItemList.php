@@ -21,16 +21,12 @@ class ReleaseNormalizedFieldItemList extends FieldItemList {
   protected function computeValue() {
     $entity = $this->getEntity();
 
-    $platforms_by_years = ReleasesCompiler::compilePlatformsByYears($entity);
+    $normalized_releases = ReleasesCompiler::normalizeReleases($entity);
     $this->list = [];
     $offset = 0;
 
-    foreach ($platforms_by_years as $platforms_by_year) {
-      $item = [
-        'year' => $platforms_by_year['year'],
-        'platforms' => $platforms_by_year['platforms'],
-      ];
-      $this->list[] = $this->createItem($offset, $item);
+    foreach ($normalized_releases as $release) {
+      $this->list[] = $this->createItem($offset, $release);
       ++$offset;
     }
   }

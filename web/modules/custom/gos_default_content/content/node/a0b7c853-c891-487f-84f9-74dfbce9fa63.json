@@ -50,7 +50,7 @@
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_studios": [
             {
-                "href": "http:\/\/default\/studio\/giants-software?_format=hal_json"
+                "href": "http:\/\/default\/studios\/giants-software?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_video": [
@@ -189,7 +189,8 @@
                         "value": "304a43fe-3c4d-4587-93e6-a84959d39bf7"
                     }
                 ],
-                "date_value": "2017-06-06"
+                "date_value": "2017-06-06",
+                "state": "released"
             },
             {
                 "_links": {
@@ -205,7 +206,8 @@
                         "value": "9e1f8365-4bf3-4189-bf33-c9ac6862dca7"
                     }
                 ],
-                "date_value": "2017-06-06"
+                "date_value": "2017-06-06",
+                "state": "released"
             },
             {
                 "_links": {
@@ -221,7 +223,8 @@
                         "value": "6ea716ae-e50f-4a59-ace5-603c353ae20a"
                     }
                 ],
-                "date_value": "2018-02-15"
+                "date_value": "2018-02-15",
+                "state": "pre_release"
             },
             {
                 "_links": {
@@ -237,7 +240,8 @@
                         "value": "8728c551-6d66-4ebd-a264-6af0ceeb96f1"
                     }
                 ],
-                "date_value": "2018-02-15"
+                "date_value": "2018-02-15",
+                "state": "development"
             },
             {
                 "_links": {
@@ -253,7 +257,8 @@
                         "value": "81a726a3-72c0-478c-af74-601c72e88cdc"
                     }
                 ],
-                "date_value": "2017-06-06"
+                "date_value": "2017-06-06",
+                "state": "released"
             },
             {
                 "_links": {
@@ -269,7 +274,8 @@
                         "value": "7705472b-c32e-4939-82e6-7f73ec1ab339"
                     }
                 ],
-                "date_value": "2017-06-06"
+                "date_value": "2017-06-06",
+                "state": "canceled"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_studios": [

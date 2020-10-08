@@ -122,6 +122,23 @@ process:
         - 'Y-m-d'
       on_error: nullable
 
+  processed_release_state:
+    -
+      plugin: static_map
+      source: state
+      map:
+        "Released": "released"
+        "development": "development"
+        "unreleased": "development"
+        "in development": "development"
+        "in Development": "development"
+        "In development": "development"
+        "Canceled": "canceled"
+        "Cancelled": "canceled"
+        "Pre-release": "pre_release"
+        "Demo": "pre_release"
+      default_value: NULL
+
   field_releases:
     -
       plugin: explode
@@ -135,9 +152,14 @@ process:
       key: 'date'
       source_value: '@processed_release_date'
     -
+      plugin: array_build_add
+      key: 'state'
+      source_value: '@processed_release_state'
+    -
       plugin: sub_process
       process:
         date_value: 'date'
+        state: 'state'
         target_id:
           -
             plugin: trim

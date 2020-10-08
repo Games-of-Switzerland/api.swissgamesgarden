@@ -79,14 +79,51 @@ final class ReleasesCompilerTest extends KernelTestBase {
       'type' => 'game',
       'title' => $this->randomString(),
       'field_releases' => [
-        ['date_value' => '2003-01-01', 'target_id' => 4],
-        ['date_value' => '2001-02-02', 'target_id' => 2],
-        ['date_value' => '1989-01-01', 'target_id' => 4],
-        ['date_value' => '2000-02-02', 'target_id' => 1],
-        ['date_value' => '1989-02-02', 'target_id' => NULL],
-        ['date_value' => '2001-02-02', 'target_id' => 3],
-        ['date_value' => '2009-01-01', 'target_id' => NULL],
-        ['date_value' => NULL, 'target_id' => 5],
+        [
+          'date_value' => '2003-01-01',
+          'target_id' => 4,
+          'state' => 'released',
+        ],
+        [
+          'date_value' => '2001-02-02',
+          'target_id' => 2,
+          'state' => 'pre_release',
+        ],
+        [
+          'date_value' => '1989-01-01',
+          'target_id' => 4,
+          'state' => 'pre_release',
+        ],
+        [
+          'date_value' => '2000-02-02',
+          'target_id' => 1,
+          'state' => 'released',
+        ],
+        [
+          'date_value' => '1989-02-02',
+          'target_id' => NULL,
+          'state' => NULL,
+        ],
+        [
+          'date_value' => '2001-02-02',
+          'target_id' => 3,
+          'state' => 'canceled',
+        ],
+        [
+          'date_value' => '2009-01-01',
+          'target_id' => NULL,
+          'state' => 'canceled',
+        ],
+        [
+          'date_value' => NULL,
+          'target_id' => 5,
+          'state' => 'development',
+        ],
+        [
+          'date_value' => NULL,
+          'target_id' => NULL,
+          'state' => NULL,
+        ],
       ],
     ]);
   }
@@ -118,56 +155,6 @@ final class ReleasesCompilerTest extends KernelTestBase {
         'name' => 'gameboy',
       ],
     ], $platforms);
-  }
-
-  /**
-   * @covers ::compilePlatformsByYears
-   */
-  public function testCompilePlatformsByYears(): void {
-    $platforms_by_years = ReleasesCompiler::compilePlatformsByYears($this->testGame);
-    self::assertSame([
-      1989 => [
-        'year' => '1989',
-        'platforms' => [
-          4 => [
-            'name' => 'amiga',
-            'tid' => 4,
-            'date' => '1989-01-01T00:00:00',
-          ],
-        ],
-      ],
-      2000 => [
-        'year' => '2000',
-        'platforms' => [
-          1 => [
-            'name' => 'windows',
-            'tid' => 1,
-            'date' => '2000-02-02T00:00:00',
-          ],
-        ],
-      ],
-      2001 => [
-        'year' => '2001',
-        'platforms' => [
-          2 => ['name' => 'macos', 'tid' => 2, 'date' => '2001-02-02T00:00:00'],
-          3 => ['name' => 'linux', 'tid' => 3, 'date' => '2001-02-02T00:00:00'],
-        ],
-      ],
-      2003 => [
-        'year' => '2003',
-        'platforms' => [
-          4 => [
-            'name' => 'amiga',
-            'tid' => 4,
-            'date' => '2003-01-01T00:00:00',
-          ],
-        ],
-      ],
-      2009 => [
-        'year' => '2009',
-        'platforms' => [],
-      ],
-    ], $platforms_by_years);
   }
 
   /**
@@ -220,6 +207,88 @@ final class ReleasesCompilerTest extends KernelTestBase {
         'years' => [],
       ],
     ], $years);
+  }
+
+  /**
+   * @covers ::normalizeReleases
+   */
+  public function testNormalizeReleases(): void {
+    $platforms_by_years = ReleasesCompiler::normalizeReleases($this->testGame);
+    self::assertSame([
+      'na' => [
+        'year' => NULL,
+        'platforms' => [
+          5 => [
+            'name' => 'gameboy',
+            'tid' => 5,
+            'date' => NULL,
+            'state' => 'development',
+          ],
+        ],
+        'states' => [
+          'development' => 'development',
+        ],
+      ],
+      1989 => [
+        'year' => '1989',
+        'platforms' => [
+          4 => [
+            'name' => 'amiga',
+            'tid' => 4,
+            'date' => '1989-01-01T00:00:00',
+            'state' => 'pre_release',
+          ],
+        ],
+        'states' => ['pre_release' => 'pre_release'],
+      ],
+      2000 => [
+        'year' => '2000',
+        'platforms' => [
+          1 => [
+            'name' => 'windows',
+            'tid' => 1,
+            'date' => '2000-02-02T00:00:00',
+            'state' => 'released',
+          ],
+        ],
+        'states' => ['released' => 'released'],
+      ],
+      2001 => [
+        'year' => '2001',
+        'platforms' => [
+          2 => [
+            'name' => 'macos',
+            'tid' => 2,
+            'date' => '2001-02-02T00:00:00',
+            'state' => 'pre_release',
+          ],
+          3 => [
+            'name' => 'linux',
+            'tid' => 3,
+            'date' => '2001-02-02T00:00:00',
+            'state' => 'canceled',
+          ],
+        ],
+        'states' => ['pre_release' => 'pre_release', 'canceled' => 'canceled'],
+      ],
+      2003 => [
+        'year' => '2003',
+        'platforms' => [
+          4 => [
+            'name' => 'amiga',
+            'tid' => 4,
+            'date' => '2003-01-01T00:00:00',
+            'state' => 'released',
+          ],
+        ],
+        'states' => ['released' => 'released'],
+      ],
+      2009 => [
+        'year' => '2009',
+        'platforms' => [],
+        'states' => ['canceled' => 'canceled'],
+      ],
+    ], $platforms_by_years);
   }
 
   /**

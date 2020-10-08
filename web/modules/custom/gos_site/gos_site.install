@@ -4,3 +4,24 @@
  * @file
  * Install, update and uninstall functions for the gos_site module.
  */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Add State column to ReleaseItem field.
+ */
+function gos_site_update_8100() {
+  $schema = Database::getConnection()->schema();
+
+  $schema->addField('node__field_releases', 'field_releases_state', [
+    'type' => 'text',
+    'size' => 'tiny',
+    'not null' => FALSE,
+  ]);
+
+  $schema->addField('node_revision__field_releases', 'field_releases_state', [
+    'type' => 'text',
+    'size' => 'tiny',
+    'not null' => FALSE,
+  ]);
+}

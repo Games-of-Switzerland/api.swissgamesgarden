@@ -70,6 +70,9 @@ class ReleaseItem extends EntityReferenceItem {
       ->setSetting('date source', 'date_value');
     $properties['date'] = $date_definition;
 
+    $properties['state'] = $date_definition = DataDefinition::create('string')
+      ->setLabel(t('State')->__toString());
+
     return $properties;
   }
 
@@ -82,6 +85,11 @@ class ReleaseItem extends EntityReferenceItem {
     $schema['columns']['date_value'] = [
       'type' => 'varchar',
       'length' => 20,
+    ];
+    $schema['columns']['state'] = [
+      'type' => 'text',
+      'size' => 'tiny',
+      'not null' => FALSE,
     ];
 
     return $schema;

@@ -23,9 +23,11 @@ class ReleaseNormalizedFieldItem extends FieldItemBase {
    * {@inheritdoc}
    */
   public function isEmpty() {
-    $value = $this->get('year')->getValue();
+    $year = $this->get('year')->getValue();
+    $states = $this->get('states')->getValue();
+    $platforms = $this->get('platforms')->getValue();
 
-    return $value === NULL || $value === serialize([]);
+    return ($year === NULL || $year === serialize([])) && ($states === NULL || $states === serialize([])) && ($platforms === NULL || $platforms === serialize([]));
   }
 
   /**
@@ -39,7 +41,11 @@ class ReleaseNormalizedFieldItem extends FieldItemBase {
       ->setRequired(TRUE);
 
     $properties['platforms'] = DataDefinition::create('any')
-      ->setLabel(t('Name')->__toString())
+      ->setLabel(t('Platforms')->__toString())
+      ->setRequired(TRUE);
+
+    $properties['states'] = DataDefinition::create('any')
+      ->setLabel(t('States')->__toString())
       ->setRequired(TRUE);
 
     return $properties;

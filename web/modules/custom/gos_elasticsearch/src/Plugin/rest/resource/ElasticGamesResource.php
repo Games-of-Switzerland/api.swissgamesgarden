@@ -135,6 +135,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_states']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_release_years_histogram']['filter']['bool']['should'][] = $this->addFullTextGameTitleCondition($search);
     }
@@ -148,6 +149,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       // Filter the "aggregations" by given platform(s).
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addPlatformsFilter($platforms);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addPlatformsFilter($platforms);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_states']['filter']['bool']['should'][] = $this->addPlatformsFilter($platforms);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addPlatformsFilter($platforms);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_release_years_histogram']['filter']['bool']['should'][] = $this->addPlatformsFilter($platforms);
     }
@@ -161,6 +163,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       // Filter the "aggregations" by given genre(s).
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addGenresFilter($genres);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addGenresFilter($genres);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_states']['filter']['bool']['should'][] = $this->addGenresFilter($genres);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addGenresFilter($genres);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_release_years_histogram']['filter']['bool']['should'][] = $this->addGenresFilter($genres);
     }
@@ -174,6 +177,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       // Filter the "aggregations" by given store(s).
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addStoresFilter($stores);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addStoresFilter($stores);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_states']['filter']['bool']['should'][] = $this->addStoresFilter($stores);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addStoresFilter($stores);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_release_years_histogram']['filter']['bool']['should'][] = $this->addStoresFilter($stores);
     }
@@ -188,6 +192,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_states']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_release_years_histogram']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
     }
 
@@ -201,7 +206,22 @@ class ElasticGamesResource extends ElasticResourceBase {
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addReleaseYearFilter($release_year);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addReleaseYearFilter($release_year);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addReleaseYearFilter($release_year);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_states']['filter']['bool']['should'][] = $this->addReleaseYearFilter($release_year);
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addReleaseYearFilter($release_year);
+    }
+
+    $states = $resource_validator->getStates();
+
+    if ($states) {
+      // Filter the "hits" by given state(s).
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addStatesFilter($states);
+
+      // Filter the "aggregations" by given states(s).
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addStatesFilter($states);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addStatesFilter($states);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addStatesFilter($states);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addStatesFilter($states);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_release_years_histogram']['filter']['bool']['should'][] = $this->addStatesFilter($states);
     }
 
     try {
@@ -492,6 +512,34 @@ class ElasticGamesResource extends ElasticResourceBase {
   }
 
   /**
+   * Add a condition to filter games by states slug.
+   *
+   * @param array $states
+   *   The collection of states slug to use for filtering.
+   *
+   * @return array
+   *   The Nested OR-Condition query to filter-out games by states name.
+   */
+  private function addStatesFilter(array $states): array {
+    $structure = [
+      'nested' => [
+        'path' => 'releases',
+        'query' => [
+          'bool' => [
+            'should' => [],
+          ],
+        ],
+      ],
+    ];
+
+    foreach ($states as $state) {
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['releases.state' => $state]];
+    }
+
+    return $structure;
+  }
+
+  /**
    * Add a condition to filter games by stores slug.
    *
    * @param array $stores
@@ -529,6 +577,8 @@ class ElasticGamesResource extends ElasticResourceBase {
    *
    * @return array
    *   The Elasticsearch skeleton query.
+   *
+   * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
    */
   private function buildBaseGamesElasticsearchQuery(GameNodeIndex $index, ElasticGamesResourceValidator $resource_validator): array {
     return [
@@ -640,6 +690,7 @@ class ElasticGamesResource extends ElasticResourceBase {
                   ],
                 ],
               ],
+
               // Stores aggregations.
               'all_filtered_stores' => [
                 'filter' => [
@@ -661,6 +712,34 @@ class ElasticGamesResource extends ElasticResourceBase {
                           'field' => 'stores.slug',
                           'min_doc_count' => 0,
                           'size' => 100,
+                        ],
+                      ],
+                    ],
+                  ],
+                ],
+              ],
+
+              // States aggregations.
+              'all_filtered_states' => [
+                'filter' => [
+                  'bool' => [
+                    // Where all the filter w/o a Score impact should be.
+                    'must' => [
+                      $this->addPublishedConditions(),
+                    ],
+                  ],
+                ],
+                'aggregations' => [
+                  'all_nested_states' => [
+                    'nested' => [
+                      'path' => 'releases',
+                    ],
+                    'aggs' => [
+                      'states_name_keyword' => [
+                        'terms' => [
+                          'field' => 'releases.state',
+                          'min_doc_count' => 0,
+                          'size' => 10,
                         ],
                       ],
                     ],

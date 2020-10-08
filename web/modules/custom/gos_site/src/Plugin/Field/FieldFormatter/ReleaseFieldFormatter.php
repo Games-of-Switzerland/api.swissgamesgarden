@@ -25,7 +25,7 @@ class ReleaseFieldFormatter extends EntityReferenceLabelFormatter {
     $elements = [];
 
     foreach ($items as $delta => $item) {
-      $elements[$delta] = ['#markup' => $item->target_id . ' ' . $item->date_value];
+      $elements[$delta] = ['#markup' => $item->target_id . ' ' . $item->date_value . ' ' . $item->state];
     }
 
     return $elements;
