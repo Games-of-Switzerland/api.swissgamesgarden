@@ -1352,6 +1352,7 @@ display:
         row: false
         relationships: false
         exposed_form: false
+        query: false
       fields:
         node_bulk_form:
           id: node_bulk_form
@@ -2666,6 +2667,14 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_comment: ''
+          query_tags: null
     cache_metadata:
       max-age: 0
       contexts:
