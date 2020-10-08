@@ -10,7 +10,6 @@ use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexManager;
 use Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex;
 use Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator\ElasticGamesResourceValidator;
 use Drupal\gos_rest\Plugin\rest\ValidatorFactory;
-use stdClass;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -79,6 +78,7 @@ class ElasticGamesResource extends ElasticResourceBase {
    * @psalm-suppress PossiblyNullArgument
    * @psalm-suppress ArgumentTypeCoercion
    * @psalm-suppress PossiblyNullReference
+   * @psalm-suppress UnsafeInstantiation
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
@@ -607,7 +607,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
         'aggregations' => [
           'aggs_all' => [
-            'global' => new stdClass(),
+            'global' => new \stdClass(),
             'aggs' => [
               // Genres aggregations.
               'all_filtered_genres' => [

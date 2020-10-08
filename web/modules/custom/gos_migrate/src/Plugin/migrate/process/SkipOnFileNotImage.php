@@ -66,6 +66,7 @@ class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPl
    *
    * @psalm-suppress PossiblyNullArgument
    * @psalm-suppress ArgumentTypeCoercion
+   * @psalm-suppress UnsafeInstantiation
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(

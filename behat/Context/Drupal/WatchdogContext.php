@@ -2,9 +2,7 @@
 
 namespace Drupal\Behat\Context\Drupal;
 
-use Drupal;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Exception;
 
 /**
  * Defines Watchdog features from the specific context.
@@ -20,7 +18,7 @@ class WatchdogContext extends RawDrupalContext {
    * @BeforeScenario
    */
   public static function cleanupWatchdog() {
-    $connection = Drupal::service('database');
+    $connection = \Drupal::service('database');
     $connection->truncate('watchdog')->execute();
   }
 
@@ -30,7 +28,7 @@ class WatchdogContext extends RawDrupalContext {
    * @AfterStep
    */
   public function detectWatchdog() {
-    $connection = Drupal::service('database');
+    $connection = \Drupal::service('database');
 
     $logs = $connection->select('watchdog')
       ->fields('watchdog', ['wid', 'message', 'variables'])
@@ -48,7 +46,7 @@ class WatchdogContext extends RawDrupalContext {
       print_r($log);
     }
 
-    throw new Exception('PHP errors logged to watchdog in this step.');
+    throw new \Exception('PHP errors logged to watchdog in this step.');
   }
 
 }

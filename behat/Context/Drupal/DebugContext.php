@@ -6,7 +6,6 @@ use Behat\Behat\Hook\Scope\AfterStepScope;
 use Behat\Mink\Driver\Selenium2Driver;
 use Drupal\Component\Utility\Random;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Exception;
 
 /**
  * Defines Debug features from the specific context.
@@ -128,7 +127,7 @@ class DebugContext extends RawDrupalContext {
    */
   private function logTo($content, $prefix, $extension) {
     if (!is_dir($this->logPath)) {
-      throw new Exception(sprintf('The log directory "%s" does not exists.', $this->logPath));
+      throw new \Exception(sprintf('The log directory "%s" does not exists.', $this->logPath));
     }
 
     $random = new Random();

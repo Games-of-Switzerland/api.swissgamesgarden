@@ -2,14 +2,10 @@
 
 namespace Drupal\gos_rest\Plugin\rest\ResourceValidator;
 
-use ArrayAccess;
-use BadMethodCallException;
-use InvalidArgumentException;
-
 /**
  * Base Serializer for ArrayAccess.
  */
-abstract class BaseValidator implements ArrayAccess {
+abstract class BaseValidator implements \ArrayAccess {
 
   /**
    * Initialize a new BaseValidator object.
@@ -51,7 +47,7 @@ abstract class BaseValidator implements ArrayAccess {
     $offset = $this->camelize($offset);
 
     if (!$this->offsetExists($offset)) {
-      throw new InvalidArgumentException(sprintf('Unsupported offset %s.', $offset));
+      throw new \InvalidArgumentException(sprintf('Unsupported offset %s.', $offset));
     }
 
     $getter = 'get' . ucfirst($offset);
@@ -71,7 +67,7 @@ abstract class BaseValidator implements ArrayAccess {
     $offset = $this->camelize($offset);
 
     if (!$this->offsetExists($offset)) {
-      throw new InvalidArgumentException(sprintf('Unsupported offset %s.', $offset));
+      throw new \InvalidArgumentException(sprintf('Unsupported offset %s.', $offset));
     }
 
     // Prevent saving of null value.
@@ -90,7 +86,7 @@ abstract class BaseValidator implements ArrayAccess {
    *   The offset to unset.
    */
   public function offsetUnset($offset): void {
-    throw new BadMethodCallException('Unsupported method.');
+    throw new \BadMethodCallException('Unsupported method.');
   }
 
   /**

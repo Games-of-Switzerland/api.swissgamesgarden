@@ -4,7 +4,6 @@ namespace Drupal\Behat\Context\Drupal;
 
 use Drupal\Component\Utility\Random;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Exception;
 
 /**
  * Defines Database features from the specific context.
@@ -73,7 +72,7 @@ class DatabaseContext extends RawDrupalContext {
    */
   private function dumpTo($filename) {
     if (!is_dir($this->dumpPath)) {
-      throw new Exception(sprintf('The dump directory "%s" does not exists.', $this->dumpPath));
+      throw new \Exception(sprintf('The dump directory "%s" does not exists.', $this->dumpPath));
     }
 
     $file_and_path = $this->dumpPath . \DIRECTORY_SEPARATOR . $filename . '.sql';
@@ -94,7 +93,7 @@ class DatabaseContext extends RawDrupalContext {
    */
   private function loadFrom($file_and_path) {
     if (!is_file($file_and_path)) {
-      throw new Exception(sprintf('The dump file "%s" does not exists.', $file_and_path));
+      throw new \Exception(sprintf('The dump file "%s" does not exists.', $file_and_path));
     }
 
     exec("../vendor/bin/drush sql-cli < {$file_and_path}");

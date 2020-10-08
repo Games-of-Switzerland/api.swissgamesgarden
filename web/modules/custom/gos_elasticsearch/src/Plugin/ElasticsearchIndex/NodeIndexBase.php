@@ -6,7 +6,6 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexBase;
 use Elasticsearch\Client;
-use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Serializer\Serializer;
@@ -80,6 +79,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    * @psalm-suppress PossiblyNullArgument
    * @psalm-suppress PossiblyNullReference
    * @psalm-suppress MissingParamType
+   * @psalm-suppress UnsafeInstantiation
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
@@ -107,7 +107,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    */
   public function getIndexName($data): string {
     if (!$this->settings::get(self::SETTINGS_INDEX_PREFIX)) {
-      throw new InvalidArgumentException('No index prefix was specified in settings.php.');
+      throw new \InvalidArgumentException('No index prefix was specified in settings.php.');
     }
 
     // Always specify the placeholder `index_prefix`.
@@ -137,7 +137,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    */
   protected function indexNamePattern() {
     if (!$this->settings::get(self::SETTINGS_INDEX_PREFIX)) {
-      throw new InvalidArgumentException('No index prefix was specified in settings.php.');
+      throw new \InvalidArgumentException('No index prefix was specified in settings.php.');
     }
 
     // Always specify the placeholder `index_prefix`.

@@ -7,12 +7,7 @@ use Alex\MailCatcher\Behat\MailCatcherTrait;
 use Alex\MailCatcher\Message;
 use Behat\Behat\Context\Context;
 use Behat\Mink\Exception\ElementNotFoundException;
-use DOMDocument;
-use DOMXPath;
 use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Exception;
-use InvalidArgumentException;
-use RuntimeException;
 
 /**
  * Defines mails application features from the specific context.
@@ -58,10 +53,13 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
    * @Then A mail as been sent to :to with subject :subject
    */
   public function aMailAsBeenSentToWithSubject($to, $subject) {
-    $message = $this->getMailCatcherClient()->searchOne([Message::TO_CRITERIA => $to, Message::SUBJECT_CRITERIA => $subject]);
+    $message = $this->getMailCatcherClient()->searchOne([
+      Message::TO_CRITERIA => $to,
+      Message::SUBJECT_CRITERIA => $subject,
+    ]);
 
     if (empty($message)) {
-      throw new Exception(sprintf("No mail to '%s' with subject '%s' was found on the inbox", $to, $subject));
+      throw new \Exception(sprintf("No mail to '%s' with subject '%s' was found on the inbox", $to, $subject));
     }
   }
 
@@ -97,11 +95,11 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
     $header_bag = $message->getHeaders();
 
     if (!$header_bag->has('x-tests-langcode')) {
-      throw new InvalidArgumentException(sprintf('Expected "x-tests-langcode" header\'s mail to be present, got nothing.'));
+      throw new \InvalidArgumentException(sprintf('Expected "x-tests-langcode" header\'s mail to be present, got nothing.'));
     }
 
     if ($header_bag->get('x-tests-langcode') !== $langcode) {
-      throw new InvalidArgumentException(sprintf('Expected mail\'s langcode to be %s, got %s.', $langcode, $header_bag->get('x-tests-langcode')));
+      throw new \InvalidArgumentException(sprintf('Expected mail\'s langcode to be %s, got %s.', $langcode, $header_bag->get('x-tests-langcode')));
     }
   }
 
@@ -151,9 +149,9 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
   public function seeLinkInMail($href) {
     $message = $this->getCurrentMessage();
 
-    $dom = new DOMDocument();
+    $dom = new \DOMDocument();
     $dom->loadHTML($message->getContent());
-    $xpath = new DOMXPath($dom);
+    $xpath = new \DOMXPath($dom);
 
     $entries = $xpath->query("//a[contains(@href, '{$href}')]");
 
@@ -171,7 +169,7 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
     $message = $this->getMailCatcherClient()->searchOne([Message::FROM_CRITERIA => $value]);
 
     if (!empty($message)) {
-      throw new Exception(sprintf("A mail from '%s' was found on the inbox", $value));
+      throw new \Exception(sprintf("A mail from '%s' was found on the inbox", $value));
     }
   }
 
@@ -188,7 +186,7 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
     $actual = $this->getMailCatcherClient()->getMessageCount();
 
     if ($count !== $actual) {
-      throw new InvalidArgumentException(sprintf('Expected %d mails to be sent, got %d.', $count, $actual));
+      throw new \InvalidArgumentException(sprintf('Expected %d mails to be sent, got %d.', $count, $actual));
     }
   }
 
@@ -197,7 +195,7 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
    */
   private function getCurrentMessage() {
     if ($this->currentMessage === NULL) {
-      throw new RuntimeException('No message selected');
+      throw new \RuntimeException('No message selected');
     }
 
     return $this->currentMessage;

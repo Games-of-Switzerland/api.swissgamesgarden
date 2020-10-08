@@ -2,7 +2,6 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\Normalizer;
 
-use DateTimeImmutable;
 use Drupal\node\NodeInterface;
 use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 
@@ -27,6 +26,8 @@ class GameNormalizer extends ContentEntityNormalizer {
 
   /**
    * {@inheritdoc}
+   *
+   * @psalm-suppress ParamNameMismatch
    */
   public function normalize($object, $format = NULL, array $context = []) {
     /** @var \Drupal\node\Entity\Node $object */
@@ -61,7 +62,7 @@ class GameNormalizer extends ContentEntityNormalizer {
         }
 
         // Use the year as key to prevent having twice the same value.
-        $year = (new DateTimeImmutable($release->date_value))->format('Y');
+        $year = (new \DateTimeImmutable($release->date_value))->format('Y');
         $years[$year] = $year;
       }
 
