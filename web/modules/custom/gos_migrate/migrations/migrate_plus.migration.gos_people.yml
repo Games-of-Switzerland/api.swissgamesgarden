@@ -6,7 +6,7 @@ migration_group: default
 source:
   plugin: 'csv_people'
   # Full path to the file.
-  path: '/source/2020-17-05--all-games.csv'
+  path: '/source/games.csv'
   # Column delimiter. Comma (,) by default.
   delimiter: ','
   # Field enclosure. Double quotation marks (") by default.
