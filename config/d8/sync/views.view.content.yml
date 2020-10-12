@@ -2461,28 +2461,42 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: 'Catastrophic (<3000)'
+                title: 'Weak (<3000)'
                 operator: '<='
                 value:
                   value: '3000'
                   min: ''
                   max: ''
               2:
-                title: 'Bad (<5000)'
-                operator: '<='
+                title: 'Terrible (>3000 & <4200)'
+                operator: between
+                value:
+                  value: ''
+                  min: '3000'
+                  max: '4200'
+              3:
+                title: 'Poor (>4200 & <5000)'
+                operator: between
+                value:
+                  value: ''
+                  min: '4200'
+                  max: '5000'
+              4:
+                title: 'Fair (>5000 & <6300)'
+                operator: between
                 value:
                   value: '5000'
-                  min: ''
-                  max: ''
-              3:
-                title: 'Good (<8000)'
-                operator: '<='
+                  min: '5000'
+                  max: '6300'
+              5:
+                title: 'Good (>6300 & <7800)'
+                operator: between
                 value:
-                  value: '8000'
-                  min: ''
-                  max: ''
-              4:
-                title: 'Excellent( >8000)'
+                  value: ''
+                  min: '5000'
+                  max: '8000'
+              7:
+                title: Excellent(>8000)
                 operator: '>'
                 value:
                   value: '8000'
