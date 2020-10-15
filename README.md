@@ -522,6 +522,12 @@ depends_on:
     - newrelic-apm-daemon
 ```
 
+You also may add the API Key in `settings.php` (on staging / production) to enable data-collection of contrib module `new_relic_rpm
+
+```php
+$config['new_relic_rpm.settings']['api_key'] = 'YOUR_API_KEY';
+```
+
 ## Authors
 
 👨‍💻 **Kevin Wenger**
