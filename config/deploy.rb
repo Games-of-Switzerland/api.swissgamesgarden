@@ -10,7 +10,7 @@ set :docker_app_name, -> {
   [fetch(:application), fetch(:stage)].join('_')
 }
 set :docker_app_service, 'app'
-set :docker_containers, 'app db mailcatcher elasticsearch'
+set :docker_containers, 'app db mailcatcher elasticsearch newrelic-apm-daemon'
 
 server 'gos.museebolo.ch', port: '44144', user: 'deploy', roles: %w{app db web}
 
