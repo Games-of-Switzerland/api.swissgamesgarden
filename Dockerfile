@@ -2,11 +2,21 @@ FROM antistatique/php-dev:7.3-node10
 
 WORKDIR /var/www
 
-# Install additionnal dependencies.
+# Export New Relic as ENV variables
+ARG NEW_RELIC_AGENT_VERSION
+ARG NEW_RELIC_LICENSE_KEY
+ARG NEW_RELIC_APPNAME
+ARG NEW_RELIC_DAEMON_ADDRESS
+
+# Add and Run the newrelic agent installer.
+ADD ./docker/newrelic.sh ./docker/newrelic.sh
+RUN ./docker/newrelic.sh
+
+# Install additional dependencies.
 RUN apt-get update && apt-get -y install \
     cron;
 
-# Install additionnal PHP extensions.
+# Install additional PHP extensions.
 RUN docker-php-ext-install \
     exif;
 
