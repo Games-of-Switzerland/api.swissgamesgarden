@@ -76,6 +76,19 @@ As we are working in a decoupled architecture, we need to set the Website URL.
 $config['frontend']['base_url'] = 'https://gos.museebolo.ch';
 ```
 
+#### Sitemap
+
+The base URL of sitemap links can be overridden using the following settings.
+
+```php
+/**
+ * The base URL of sitemap links can be overridden here.
+ *
+ * @var string
+ */
+$config['simple_sitemap.settings']['base_url'] = 'https://api-gos.museebolo.ch';
+```
+
 #### Elasticsearch prefix
 
 We use only 1 Elasticsearch server for both Production & Staging environments. Doing so, we need to separate our indexes

@@ -8,6 +8,8 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\TermInterface;
 
+require_once 'inc/sitemap.inc';
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
