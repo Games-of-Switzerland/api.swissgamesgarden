@@ -14,6 +14,7 @@ default:
             base_url: http://api.gos.test:8888
         - Drupal\Behat\Context\Drupal\DebugContext:
             log_path: %paths.base%/log/behat
+        - Drupal\Behat\Context\Drupal\SitemapContext:
 
         - Behatch\Context\JsonContext
         - Behatch\Context\RestContext
@@ -22,6 +23,8 @@ default:
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
+
+        - MOrtola\BehatSEOContexts\Context\SitemapContext
   extensions:
     Behat\MinkExtension:
       goutte: ~

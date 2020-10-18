@@ -2,12 +2,12 @@
 
 namespace Drupal\gos_site\Plugin\simple_sitemap\UrlGenerator;
 
-use Drupal\gos_site\UrlBuilderNextJs;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Url;
+use Drupal\gos_site\UrlBuilderNextJs;
 use Drupal\simple_sitemap\EntityHelper;
 use Drupal\simple_sitemap\Logger;
 use Drupal\simple_sitemap\Plugin\simple_sitemap\UrlGenerator\EntityUrlGenerator;
