@@ -1,0 +1,10 @@
+services:
+
+  gos_site.taxonomy_reroute:
+    class: Drupal\gos_site\EventSubscriber\TaxonomyEntityReroute
+    arguments:
+      - '@current_route_match'
+      - '@language_manager'
+    tags:
+      - {name: event_subscriber}
+
