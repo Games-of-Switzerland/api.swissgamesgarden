@@ -59,7 +59,22 @@ db:
 
 ### Project setup
 
-Once the project up and running via Docker, you may need to setup some configurations in the `web/sites/default/setting.php`
+Once the project up and running via Docker, you may need to setup some configurations in the `web/sites/default/setting.php`.
+
+#### Project base URL
+
+As we are working in a decoupled architecture, we need to set the Website URL.
+
+```php
+/**
+ * Base URL of the Next App.
+ *
+ * This value should not contain a leading slash (/).
+ *
+ * @var string
+ */
+$config['frontend']['base_url'] = 'https://gos.museebolo.ch';
+```
 
 #### Elasticsearch prefix
 

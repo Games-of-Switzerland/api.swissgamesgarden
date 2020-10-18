@@ -8,6 +8,8 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Routing\CacheableSecuredRedirectResponse;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Routing\TrustedRedirectResponse;
+use Drupal\gos_site\UrlBuilderNextJs;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -30,16 +32,26 @@ abstract class BaseEntityReroute {
   protected $routeMatch;
 
   /**
+   * The NextJs URL Builder.
+   *
+   * @var \Drupal\gos_site\UrlBuilderNextJs
+   */
+  protected $urlBuilderNextJs;
+
+  /**
    * Constructs a new BaseEntityReroute object.
    *
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match.
    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
    *   The language manager.
+   * @param \Drupal\gos_site\UrlBuilderNextJs $url_builder_nextjs
+   *   The NextJs URL Builder.
    */
-  public function __construct(RouteMatchInterface $route_match, LanguageManagerInterface $language_manager) {
+  public function __construct(RouteMatchInterface $route_match, LanguageManagerInterface $language_manager, UrlBuilderNextJs $url_builder_nextjs) {
     $this->routeMatch = $route_match;
     $this->currentLang = $language_manager->getCurrentLanguage();
+    $this->urlBuilderNextJs = $url_builder_nextjs;
   }
 
   /**
@@ -64,6 +76,34 @@ abstract class BaseEntityReroute {
     $response->setStatusCode(Response::HTTP_MOVED_PERMANENTLY);
 
     return $response;
+  }
+
+  /**
+   * Get Redirect Response to redirect current Node entity to the NextJS App.
+   *
+   * @param string $bundle
+   *   The node bundle.
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   The incoming request.
+   *
+   * @throws \Drupal\Core\Entity\EntityMalformedException
+   *
+   * @return \Drupal\Core\Routing\CacheableSecuredRedirectResponse|null
+   *   The Redirect Response. Null when no redirect rule found.
+   */
+  protected function redirectFromNode(string $bundle, Request $request): ?CacheableSecuredRedirectResponse {
+    /** @var \Drupal\Core\Entity\ContentEntityBase $node */
+    $node = $this->routeMatch->getParameter('node');
+    $route_name = $this->routeMatch->getRouteName();
+
+    if ($route_name === 'entity.node.canonical' && $node->bundle() === $bundle) {
+      $langcode = $this->currentLang->getId();
+      $dest = $this->urlBuilderNextJs->buildUrl($node, $request, $langcode);
+
+      return $this->buildRedirection($dest, $node);
+    }
+
+    return NULL;
   }
 
 }
