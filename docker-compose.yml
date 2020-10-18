@@ -4,7 +4,8 @@ services:
 
   # Drupal app server
   app:
-    build: .
+    build:
+      context: .
     command: ./docker/startup.sh
     depends_on:
       - db
@@ -70,6 +71,9 @@ services:
         aliases:
           # Hosts used in default content for testing
           - api.gos.test
+
+  newrelic-apm-daemon:
+    image: newrelic/php-daemon:9.13.0
 
   # Test browser
   browser:

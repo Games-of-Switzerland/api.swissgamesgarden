@@ -501,6 +501,33 @@ docker-compose exec test docker-as-drupal [behat|phpunit|nightwatch]
 
 ## 📢 RSS
 
+## 📈 Monitoring
+
+### New Relic
+
+New Relic requires two components to work: the PHP agent (inside our `app` container) and a daemon (another container), which aggregates data sent from one or more agents and sends it to New Relic.
+
+By default, we removed the New Relic Docker Container `ARGS` and `depends_on` to avoid building extra containers for developers.
+Therefore, on Staging & Production `docker-compose.override.yml` we have added thoses extra parameters
+
+```yaml
+build:
+  context: .
+  args:
+    - 'NEW_RELIC_AGENT_VERSION=9.13.0.270'
+    - 'NEW_RELIC_LICENSE_KEY=LICENSE'
+    - 'NEW_RELIC_APPNAME=Games of Switzerland'
+    - 'NEW_RELIC_DAEMON_ADDRESS=newrelic-apm-daemon:31339'
+depends_on:
+    - newrelic-apm-daemon
+```
+
+You also may add the API Key in `settings.php` (on staging / production) to enable data-collection of contrib module `new_relic_rpm
+
+```php
+$config['new_relic_rpm.settings']['api_key'] = 'YOUR_API_KEY';
+```
+
 ## Authors
 
 👨‍💻 **Kevin Wenger**

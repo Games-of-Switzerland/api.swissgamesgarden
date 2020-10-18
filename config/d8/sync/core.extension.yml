@@ -1,4 +1,5 @@
 module:
+  new_relic_rpm: -20
   admin_toolbar: 0
   admin_toolbar_search: 0
   admin_toolbar_tools: 0
