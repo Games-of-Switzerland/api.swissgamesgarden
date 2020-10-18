@@ -9,6 +9,7 @@ default:
             dump_path: %paths.base%/dump/behat
         - Drupal\Behat\Context\Drupal\WatchdogContext
         - Drupal\Behat\Context\Drupal\RestContext
+        - Drupal\Behat\Context\Drupal\RedirectContext
         - Drupal\Behat\Context\Drupal\MailContext:
             base_url: http://api.gos.test:8888
         - Drupal\Behat\Context\Drupal\DebugContext:
