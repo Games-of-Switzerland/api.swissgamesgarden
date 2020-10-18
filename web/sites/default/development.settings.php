@@ -20,6 +20,13 @@ $config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = '9200
 $config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = 'elasticsearch';
 
 /**
+ * Base URL of the Next App.
+ *
+ * This value should not contain a leading slash (/).
+ */
+$config['frontend']['base_url'] = 'https://gos.museebolo.ch';
+
+/**
  * Swiftmailer transport using mailcatcher.
  */
 $config['swiftmailer.transport']['transport'] = 'smtp';
