@@ -1,0 +1,17 @@
+uuid: 921c2da2-d5dd-42e4-897e-4782a9978a1f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: placeholder_30x30
+label: placeholder_30x30
+effects:
+  acab7233-2e84-43f0-9975-cb1e66513362:
+    uuid: acab7233-2e84-43f0-9975-cb1e66513362
+    id: focal_point_scale_and_crop
+    weight: null
+    data:
+      width: 30
+      height: 30
+      crop_type: focal_point
