@@ -78,9 +78,13 @@ Feature: Game
     And the response should be in JSON
     And the JSON node "included" should have 1 element
     And the JSON node "included[0].type" should be equal to "file--file"
-    And the JSON node "included[0].links.large.href" should exist
-    And the JSON node "included[0].links.medium.href" should exist
-    And the JSON node "included[0].links.thumbnail.href" should exist
+    And the JSON node "included[0].links.3x2_330x220.href" should exist
+    And the JSON node "included[0].links.3x2_660x440.href" should exist
+    And the JSON node "included[0].links.downscale_1350x1000.href" should exist
+    And the JSON node "included[0].links.downscale_2560x1600.href" should exist
+    And the JSON node "included[0].links.downscale_330x660.href" should exist
+    And the JSON node "included[0].links.downscale_675x500.href" should exist
+    And the JSON node "included[0].links.placeholder_30x30.href" should exist
 
   Scenario: Fetching a game using a specific Consumer ID should return only Image Styled allowed for this consumer.
     Given the "X-Consumer-ID" request header is "1df6bf5b-f58f-4870-b0b1-b0f6561efdcd"
@@ -94,9 +98,13 @@ Feature: Game
           "type": "file--file",
           "links":
           {
-            "medium": "@variableType(object)",
-            "large": "@variableType(object)",
-            "thumbnail": "@variableType(object)"
+            "3x2_660x440": "@variableType(object)",
+            "3x2_330x220": "@variableType(object)",
+            "downscale_1350x1000": "@variableType(object)",
+            "downscale_2560x1600": "@variableType(object)",
+            "downscale_330x660": "@variableType(object)",
+            "downscale_675x500": "@variableType(object)",
+            "placeholder_30x30": "@variableType(object)"
           }
         }
       }

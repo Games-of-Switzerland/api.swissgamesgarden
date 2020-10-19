@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Database\Database;
+use Drupal\image\Entity\ImageStyle;
 
 /**
  * Add State column to ReleaseItem field.
@@ -24,4 +25,100 @@ function gos_site_update_8100() {
     'size' => 'tiny',
     'not null' => FALSE,
   ]);
+}
+
+/**
+ * Add basic image styles.
+ */
+function gos_site_update_8200() {
+  $image_styles = [
+    '3x2_330x220' => [
+      'effect' => 'focal_point_scale_and_crop',
+      'width' => 330,
+      'height' => 220,
+    ],
+    '3x2_660x440' => [
+      'effect' => 'focal_point_scale_and_crop',
+      'width' => 660,
+      'height' => 440,
+    ],
+    'downscale_330x660' => [
+      'effect' => 'image_scale',
+      'width' => 330,
+      'height' => 660,
+    ],
+    'downscale_675x500' => [
+      'effect' => 'image_scale',
+      'width' => 675,
+      'height' => 500,
+    ],
+    'downscale_1350x1000' => [
+      'effect' => 'image_scale',
+      'width' => 1350,
+      'height' => 1000,
+    ],
+    'downscale_2560x1600' => [
+      'effect' => 'image_scale',
+      'width' => 2560,
+      'height' => 1600,
+    ],
+    'placeholder_30x30' => [
+      'effect' => 'focal_point_scale_and_crop',
+      'width' => 30,
+      'height' => 30,
+    ],
+  ];
+
+  foreach ($image_styles as $id => $definition) {
+    $machine_name = $definition['machine_name'] ?? $id;
+    $label = $definition['label'] ?? $id;
+
+    if (ImageStyle::load($machine_name)) {
+      Drupal::logger('gos_site')
+        ->notice(
+          'The image style @label already exists.',
+          ['@label' => $label]
+        );
+
+      continue;
+    }
+
+    // Create image style.
+    /** @var \Drupal\image\ImageStyleInterface $style */
+    $style = ImageStyle::create(['name' => $machine_name, 'label' => $label]);
+
+    // Init effect settings.
+    $data = $definition['settings'] ?? [];
+
+    // Add optional width - for ratio effects.
+    if ($definition['width']) {
+      $data['width'] = $definition['width'];
+    }
+
+    // Add optional height - for ratio effects.
+    if ($definition['height']) {
+      $data['height'] = $definition['height'];
+    }
+
+    // Create the effect.
+    $configuration = [
+      'uuid' => NULL,
+      'id' => $definition['effect'],
+      'data' => $data,
+    ];
+
+    /** @var \Drupal\image\ConfigurableImageEffectInterface $effect */
+    $effect = Drupal::service('plugin.manager.image.effect')->createInstance($configuration['id'], $configuration);
+
+    // Add it to the image style and save.
+    $style->addImageEffect($effect->getConfiguration());
+    $style->save();
+
+    // Lets tell the site admin what we are doing.
+    Drupal::logger('gos_site')
+      ->notice(
+        'The new image style @label has been created.',
+        ['@label' => $label]
+      );
+  }
 }

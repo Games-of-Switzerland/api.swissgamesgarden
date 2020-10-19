@@ -117,6 +117,12 @@ resourceFields:
     publicName: revision_translation_affected
     enhancer:
       id: ''
+  releases_normalized:
+    fieldName: releases_normalized
+    publicName: releases_normalized
+    enhancer:
+      id: ''
+    disabled: false
   path:
     fieldName: path
     publicName: path
@@ -180,9 +186,13 @@ resourceFields:
         styles:
           refine: true
           custom_selection:
-            - large
-            - medium
-            - thumbnail
+            - 3x2_330x220
+            - 3x2_660x440
+            - downscale_1350x1000
+            - downscale_2560x1600
+            - downscale_330x660
+            - downscale_675x500
+            - placeholder_30x30
     disabled: false
   field_languages:
     fieldName: field_languages

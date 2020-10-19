@@ -1,0 +1,15 @@
+uuid: 745b8d9d-71fb-4c18-9a7b-fecbea0d16da
+langcode: en
+status: true
+dependencies: {  }
+name: downscale_330x660
+label: downscale_330x660
+effects:
+  8608324d-999f-4d09-a6e1-faaceda221a7:
+    uuid: 8608324d-999f-4d09-a6e1-faaceda221a7
+    id: image_scale
+    weight: null
+    data:
+      width: 330
+      height: 660
+      upscale: false

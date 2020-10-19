@@ -2,6 +2,8 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\Normalizer;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\gos_elasticsearch\Plugin\Normalizer\Traits\NormalizerImagesDerivativesTrait;
 use Drupal\node\NodeInterface;
 use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 
@@ -9,6 +11,7 @@ use Drupal\serialization\Normalizer\ContentEntityNormalizer;
  * Normalizes / denormalizes Drupal Game nodes into an array structure for ES.
  */
 class GameNormalizer extends ContentEntityNormalizer {
+  use NormalizerImagesDerivativesTrait;
 
   /**
    * Supported formats.
@@ -26,14 +29,30 @@ class GameNormalizer extends ContentEntityNormalizer {
 
   /**
    * {@inheritdoc}
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+    parent::__construct($entity_type_manager);
+    $this->imageStyleStorage = $entity_type_manager->getStorage('image_style');
+  }
+
+  /**
+   * {@inheritdoc}
    *
    * @psalm-suppress ParamNameMismatch
    */
   public function normalize($object, $format = NULL, array $context = []) {
     /** @var \Drupal\node\Entity\Node $object */
 
+    // Will collect a list of image derivatives URLs, name, width & height.
+    $medias = [];
+
+    if ($object->hasField('field_images') && !$object->get('field_images')->isEmpty()) {
+      $medias = array_merge($medias, $this->generateImagesDerivatives($object->get('field_images'), $this->imageStyles));
+    }
+
     $data = [
       'uuid' => $object->get('uuid')->value,
+      'medias' => $medias,
       'is_published' => $object->isPublished(),
       'title' => $object->getTitle(),
       'desc' => !$object->get('body')->isEmpty() ? strip_tags($object->body->value) : NULL,

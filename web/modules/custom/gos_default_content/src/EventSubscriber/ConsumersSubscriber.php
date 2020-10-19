@@ -19,7 +19,7 @@ class ConsumersSubscriber implements EventSubscriberInterface {
   protected $entityTypeManager;
 
   /**
-   * Constructs a new AgentsSubscriber object.
+   * Constructs a new ConsumersSubscriber object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
