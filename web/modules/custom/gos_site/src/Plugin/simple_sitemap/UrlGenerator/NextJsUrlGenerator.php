@@ -105,7 +105,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
   public function generate($data_set) {
     $path_data = $this->processDataSet($data_set);
 
-    if (isset($path_data['meta']['entity']) && $path_data['meta']['entity'] instanceof ContentEntityInterface) {
+    if ($this->isMultilingualSitemap && isset($path_data['meta']['entity']) && $path_data['meta']['entity'] instanceof ContentEntityInterface) {
       $url_object = $path_data['meta']['entity']->toUrl();
       unset($path_data['url']);
 
