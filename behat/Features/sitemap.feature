@@ -7,4 +7,4 @@ Feature: Sitemap
 
   Scenario: The Sitemap contain the proper pages and not everything
     Given the sitemap "/sitemap.xml"
-    Then the sitemap should have 4 children
+    Then the sitemap should have 8 children
