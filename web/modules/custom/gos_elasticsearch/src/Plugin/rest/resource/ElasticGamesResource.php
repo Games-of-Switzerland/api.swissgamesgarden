@@ -42,7 +42,7 @@ class ElasticGamesResource extends ElasticResourceBase {
    *
    * @var string
    */
-  public const PAGER_SIZE = 25;
+  public const PAGER_SIZE = 24;
 
   /**
    * The taxonomy term Storage.
