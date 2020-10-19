@@ -27,6 +27,13 @@ $config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = 'elas
 $config['frontend']['base_url'] = 'https://gos.museebolo.ch';
 
 /**
+ * The base URL of sitemap links can be overridden here.
+ *
+ * @var string
+ */
+$config['simple_sitemap.settings']['base_url'] = 'http://api.gos.test';
+
+/**
  * Swiftmailer transport using mailcatcher.
  */
 $config['swiftmailer.transport']['transport'] = 'smtp';

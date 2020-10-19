@@ -18,6 +18,7 @@ default:
 
         - Behatch\Context\JsonContext
         - Behatch\Context\RestContext
+        - Behatch\Context\XmlContext
 
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
