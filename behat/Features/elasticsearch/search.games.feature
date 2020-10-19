@@ -51,6 +51,18 @@ Feature: Retrieve Games items from Elasticsearch
                 "path": "@variableType(string)",
                 "changed": "@variableType(string)",
                 "id": "@variableType(string)",
+                "medias": [
+                  {
+                    "width": "@variableType(string)",
+                    "height": "@variableType(string)",
+                    "href": "@variableType(string)",
+                    "links": {
+                      "3x2_660x440": "@variableType(object)",
+                      "3x2_330x220": "@variableType(object)",
+                      "placeholder_30x30": "@variableType(object)"
+                    }
+                  }
+                ],
                 "releases_years": [
                   {
                     "year": "@variableType(integer)"
