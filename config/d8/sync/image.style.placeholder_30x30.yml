@@ -4,14 +4,22 @@ status: true
 dependencies:
   module:
     - focal_point
+    - image_effects
 name: placeholder_30x30
 label: placeholder_30x30
 effects:
   acab7233-2e84-43f0-9975-cb1e66513362:
     uuid: acab7233-2e84-43f0-9975-cb1e66513362
     id: focal_point_scale_and_crop
-    weight: null
+    weight: -10
     data:
       width: 30
       height: 30
       crop_type: focal_point
+  d04d4191-ad5d-400d-b4d2-259e04cf1cc1:
+    uuid: d04d4191-ad5d-400d-b4d2-259e04cf1cc1
+    id: image_effects_gaussian_blur
+    weight: 2
+    data:
+      radius: 3
+      sigma: null
