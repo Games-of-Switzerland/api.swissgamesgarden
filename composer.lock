@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c939724a5a69b34bde83cb889df26ffa",
+    "content-hash": "91c09573e1f63410edf3e39b5ad59cc1",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3913,6 +3913,61 @@
             "homepage": "https://drupal.org/project/views_field_formatter",
             "support": {
                 "source": "https://git.drupalcode.org/project/views_ef_fieldset"
+            }
+        },
+        {
+            "name": "drupal/webp",
+            "version": "1.0.0-beta4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/webp.git",
+                "reference": "8.x-1.0-beta4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webp-8.x-1.0-beta4.zip",
+                "reference": "8.x-1.0-beta4",
+                "shasum": "3327ef9e1f72c1aa779404c4977d67d5d910e96d"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "ext-gd": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-beta4",
+                    "datestamp": "1593334784",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Bart Vanhoutte",
+                    "homepage": "https://www.drupal.org/user/1133754",
+                    "email": "bart@croquemonsieur.be",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "alexmoreno",
+                    "homepage": "https://www.drupal.org/user/145609"
+                }
+            ],
+            "description": "Generates WebP copies of image style derivatives.",
+            "homepage": "https://www.drupal.org/project/webp",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/webp",
+                "issues": "https://www.drupal.org/project/issues/webp"
             }
         },
         {
@@ -13957,6 +14012,7 @@
         "drupal/elasticsearch_helper": 20,
         "drupal/fieldable_path": 5,
         "drupal/rabbit_hole": 10,
+        "drupal/webp": 10,
         "drupal/default_content": 15
     },
     "prefer-stable": true,
