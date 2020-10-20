@@ -1,0 +1,11 @@
+uuid: 7f51b8e4-af63-4f0c-b0e4-b927d5d3755f
+langcode: en
+status: true
+dependencies: {  }
+id: node__game
+label: 'Content: Game'
+tags:
+  og_image_width: '[node:field_images:0:open_graph:width]'
+  og_image_url: '[node:field_images:0:open_graph:url]'
+  og_image_height: '[node:field_images:0:open_graph:height]'
+  og_image_alt: '[node:field_images:0:open_graph:alt]'

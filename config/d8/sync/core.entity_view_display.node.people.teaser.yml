@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.people.body
+    - field.field.node.people.field_metatags
+    - field.field.node.people.field_path
     - node.type.people
   module:
     - text
@@ -28,4 +30,5 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  field_metatags: true
   field_path: true

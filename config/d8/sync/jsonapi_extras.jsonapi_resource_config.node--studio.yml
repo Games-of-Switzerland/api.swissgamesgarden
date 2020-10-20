@@ -117,6 +117,24 @@ resourceFields:
     publicName: revision_translation_affected
     enhancer:
       id: ''
+  releases_normalized:
+    disabled: true
+    fieldName: releases_normalized
+    publicName: releases_normalized
+    enhancer:
+      id: ''
+  metatag:
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+    disabled: false
+  metatag_normalized:
+    fieldName: metatag_normalized
+    publicName: metatag_normalized
+    enhancer:
+      id: ''
+    disabled: false
   path:
     fieldName: path
     publicName: path
@@ -138,6 +156,12 @@ resourceFields:
   field_members:
     fieldName: field_members
     publicName: members
+    enhancer:
+      id: ''
+    disabled: false
+  field_metatags:
+    fieldName: field_metatags
+    publicName: field_metatags
     enhancer:
       id: ''
     disabled: false

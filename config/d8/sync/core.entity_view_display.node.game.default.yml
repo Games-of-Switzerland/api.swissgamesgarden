@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.game.field_languages
     - field.field.node.game.field_locations
     - field.field.node.game.field_members
+    - field.field.node.game.field_metatags
     - field.field.node.game.field_path
     - field.field.node.game.field_publishers
     - field.field.node.game.field_release_platforms
@@ -32,6 +33,7 @@ dependencies:
     - gos_site
     - image
     - link
+    - metatag
     - text
     - user
 id: node.game.default
@@ -120,6 +122,13 @@ content:
       link: true
     third_party_settings: {  }
     type: team_member_default
+    region: content
+  field_metatags:
+    weight: 21
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
     region: content
   field_path:
     weight: 6

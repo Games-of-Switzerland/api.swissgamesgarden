@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.people.body
+    - field.field.node.people.field_metatags
     - field.field.node.people.field_path
     - node.type.people
   module:
     - fieldable_path
+    - metatag
     - text
     - user
 id: node.people.default
@@ -21,6 +23,13 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_metatags:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
     region: content
   field_path:
     weight: 102

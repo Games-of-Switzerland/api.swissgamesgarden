@@ -1,0 +1,21 @@
+uuid: 625b5267-0e6a-46b0-94c8-5e47c20445d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.game
+  module:
+    - metatag
+id: node.game.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: game
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag
