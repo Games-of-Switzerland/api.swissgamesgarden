@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.people.body
+    - field.field.node.people.field_metatags
     - field.field.node.people.field_path
     - node.type.people
   module:
+    - metatag
     - path
     - text
 id: node.people.default
@@ -30,6 +32,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    weight: 26
+    settings:
+      sidebar: true
+    third_party_settings: {  }
+    type: metatag_firehose
+    region: content
   path:
     type: path
     weight: 5

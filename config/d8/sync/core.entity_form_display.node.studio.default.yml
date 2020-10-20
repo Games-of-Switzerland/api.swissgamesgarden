@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.node.studio.body
     - field.field.node.studio.field_members
+    - field.field.node.studio.field_metatags
     - field.field.node.studio.field_path
     - node.type.studio
   module:
     - gos_site
+    - metatag
     - path
     - text
 id: node.studio.default
@@ -41,6 +43,13 @@ content:
       match_limit: 10
     third_party_settings: {  }
     type: team_member_default
+    region: content
+  field_metatags:
+    weight: 26
+    settings:
+      sidebar: true
+    third_party_settings: {  }
+    type: metatag_firehose
     region: content
   path:
     type: path

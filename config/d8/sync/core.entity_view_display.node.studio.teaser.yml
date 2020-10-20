@@ -5,6 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.studio.body
+    - field.field.node.studio.field_members
+    - field.field.node.studio.field_metatags
+    - field.field.node.studio.field_path
     - node.type.studio
   module:
     - text
@@ -29,4 +32,5 @@ content:
     region: content
 hidden:
   field_members: true
+  field_metatags: true
   field_path: true

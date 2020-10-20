@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.studio.body
     - field.field.node.studio.field_members
+    - field.field.node.studio.field_metatags
     - field.field.node.studio.field_path
     - node.type.studio
   module:
     - fieldable_path
     - gos_site
+    - metatag
     - text
     - user
 id: node.studio.default
@@ -31,6 +33,13 @@ content:
       link: true
     third_party_settings: {  }
     type: team_member_default
+    region: content
+  field_metatags:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
     region: content
   field_path:
     weight: 103
