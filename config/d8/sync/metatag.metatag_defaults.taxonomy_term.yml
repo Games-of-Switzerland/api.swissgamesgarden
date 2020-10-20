@@ -7,6 +7,4 @@ _core:
 id: taxonomy_term
 label: 'Taxonomy term'
 tags:
-  canonical_url: '[term:url]'
-  description: '[term:description]'
   title: '[term:name] | [site:name]'
