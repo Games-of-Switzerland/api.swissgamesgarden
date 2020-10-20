@@ -123,6 +123,18 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  metatag:
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+    disabled: false
+  metatag_normalized:
+    fieldName: metatag_normalized
+    publicName: metatag_normalized
+    enhancer:
+      id: ''
+    disabled: false
   path:
     fieldName: path
     publicName: path
@@ -209,6 +221,12 @@ resourceFields:
   field_members:
     fieldName: field_members
     publicName: members
+    enhancer:
+      id: ''
+    disabled: false
+  field_metatags:
+    fieldName: field_metatags
+    publicName: field_metatags
     enhancer:
       id: ''
     disabled: false
