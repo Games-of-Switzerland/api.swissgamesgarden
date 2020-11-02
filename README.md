@@ -568,7 +568,7 @@ $config['new_relic_rpm.settings']['api_key'] = 'YOUR_API_KEY';
 * Twitter: [@tonifisler](https://twitter.com/tonifisler)
 * Github: [@tonifisler](https://github.com/tonifisler)
 
-👩‍💻 **Camille Léthang**
+👩‍💻 **Camille Létang**
 
 * Github: [@CamilleLetang](https://github.com/CamilleLetang)
 
