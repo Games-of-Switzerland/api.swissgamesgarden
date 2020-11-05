@@ -7,11 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: cs2pr
+          tools: composer:v1, cs2pr
       - uses: actions/checkout@master
       - run: composer install --prefer-dist
       - run: ./vendor/bin/phpcs --report=checkstyle | cs2pr
@@ -21,10 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+          tools: composer:v1
       - uses: actions/checkout@master
       - run: composer install --prefer-dist
       - run: ./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php
@@ -35,10 +36,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+          tools: composer:v1
       - uses: actions/checkout@master
       - run: composer install --prefer-dist
       - run: ./vendor/bin/phpcpd ./web/modules/custom --names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml --ansi --exclude=tests
@@ -49,11 +51,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: php-cs-fixer, cs2pr
+          tools: composer:v1, php-cs-fixer, cs2pr
       - uses: actions/checkout@master
       - run: composer install --prefer-dist
       - run: ./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle | cs2pr
@@ -63,11 +65,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: phpstan, cs2pr
+          tools: composer:v1, phpstan, cs2pr
       - uses: actions/checkout@master
       - run: composer install --prefer-dist
       - run: ./vendor/bin/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle | cs2pr
@@ -77,10 +79,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '7.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+          tools: composer:v1
       - uses: actions/checkout@master
       - run: composer install --prefer-dist
       - run: ./vendor/bin/psalm --output-format=github
