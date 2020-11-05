@@ -196,6 +196,20 @@ class ElasticGamesResource extends ElasticResourceBase {
       $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_release_years_histogram']['filter']['bool']['should'][] = $this->addLocationsFilter($locations);
     }
 
+    $release_year_range = $resource_validator->getReleaseYearRange();
+
+    if (isset($release_year_range['start']) || isset($release_year_range['end'])) {
+      // Filter the "hits" by given Release Year Range.
+      $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addReleaseYearRangeFilter($release_year_range);
+
+      // Filter the "aggregations" by given Release Year Range.
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_platforms']['filter']['bool']['should'][] = $this->addReleaseYearRangeFilter($release_year_range);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_genres']['filter']['bool']['should'][] = $this->addReleaseYearRangeFilter($release_year_range);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_stores']['filter']['bool']['should'][] = $this->addReleaseYearRangeFilter($release_year_range);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_states']['filter']['bool']['should'][] = $this->addReleaseYearRangeFilter($release_year_range);
+      $es_query['body']['aggregations']['aggs_all']['aggs']['all_filtered_locations']['filter']['bool']['should'][] = $this->addReleaseYearRangeFilter($release_year_range);
+    }
+
     $release_year = $resource_validator->getReleaseYear();
 
     if ($release_year) {
@@ -509,6 +523,43 @@ class ElasticGamesResource extends ElasticResourceBase {
         ],
       ],
     ];
+  }
+
+  /**
+   * Add a condition to filter games by Release Year Range.
+   *
+   * @param array $range
+   *   The year range start|end .
+   *
+   * @return array
+   *   The Nested Condition query to filter-out games by release year
+   *   between start and end.
+   */
+  private function addReleaseYearRangeFilter(array $range): array {
+    $filtered_range = [
+      'nested' => [
+        'path' => 'releases_years',
+        'query' => [
+          'bool' => [
+            'should' => [
+              'range' => [
+                'releases_years.year' => [],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ];
+
+    if (isset($range['start']) && !empty($range['start'])) {
+      $filtered_range['nested']['query']['bool']['should']['range']['releases_years.year']['gte'] = $range['start'];
+    }
+
+    if (isset($range['end']) && !empty($range['end'])) {
+      $filtered_range['nested']['query']['bool']['should']['range']['releases_years.year']['lte'] = $range['end'];
+    }
+
+    return $filtered_range;
   }
 
   /**

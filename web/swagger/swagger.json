@@ -168,6 +168,22 @@
             "example": "2019"
           },
           {
+            "name": "release_year_range[start]",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "The year to filter games by starting date.",
+            "example": "2016"
+          },
+          {
+            "name": "release_year_range[end]",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "The year to filter games by ending date.",
+            "example": "2020"
+          },
+          {
             "name": "states[]",
             "in": "query",
             "required": false,
