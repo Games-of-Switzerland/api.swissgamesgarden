@@ -100,6 +100,15 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private $releaseYear;
 
   /**
+   * The game Release Year Range to filter by.
+   *
+   * This property uses the custom validation ::validateReleaseYearRange.
+   *
+   * @var array
+   */
+  private $releaseYearRange = [];
+
+  /**
    * Sort property with direction as key.
    *
    * This property uses the custom validation ::validateSort.
@@ -194,6 +203,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function getReleaseYear(): ?int {
     return $this->releaseYear;
+  }
+
+  /**
+   * Get the game Release year range to filter by.
+   *
+   * @return array
+   *   Year range.
+   */
+  public function getReleaseYearRange(): array {
+    return $this->releaseYearRange;
   }
 
   /**
@@ -297,6 +316,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
+   * Set the Release year range to filter by.
+   *
+   * @param array $year_range
+   *   Year range.
+   */
+  public function setReleaseYearRange(array $year_range): void {
+    $this->releaseYearRange = $year_range;
+  }
+
+  /**
    * Set the sort information.
    *
    * @param array $sort
@@ -382,6 +411,36 @@ class ElasticGamesResourceValidator extends BaseValidator {
     if (isset($this->raw['platforms']) && !$this->platforms) {
       $context->buildViolation(sprintf('At least one given Platform(s) has not been found.'))
         ->atPath('platforms')
+        ->addViolation();
+    }
+  }
+
+  /**
+   * Validates the release year range parameter.
+   *
+   * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
+   *   The validation execution context.
+   * @param string $payload
+   *   The Payload.
+   *
+   * @Assert\Callback
+   */
+  public function validateReleaseYearRange(ExecutionContextInterface $context, $payload): void {
+    if (!$this->releaseYearRange) {
+      $this->releaseYearRange = [];
+
+      return;
+    }
+
+    if (!\array_key_exists('start', $this->releaseYearRange) && !\array_key_exists('end', $this->releaseYearRange)) {
+      $context->buildViolation('Please provide the start or end release year.')
+        ->atPath('releaseYearRange')
+        ->addViolation();
+    }
+
+    if ((\array_key_exists('start', $this->releaseYearRange) && \array_key_exists('end', $this->releaseYearRange)) && ($this->releaseYearRange['start'] > $this->releaseYearRange['end'])) {
+      $context->buildViolation("The start release year can't be higher than the end release year.")
+        ->atPath('releaseYearRange')
         ->addViolation();
     }
   }
