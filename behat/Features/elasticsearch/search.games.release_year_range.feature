@@ -28,7 +28,7 @@
     Given I send a "GET" request to "http://api.gos.test/search/games?page=0&release_year_range[end]=2018"
     Then the response status code should be 200
     And the response should be in JSON
-    And the JSON node "hits.hits" should have 1 element
+    And the JSON node "hits.hits" should have 2 elements
     And the JSON node "hits.hits[0]._source" should exist
     And the JSON node "hits.hits[1]._source" should exist
     And the JSON nodes should be equal to:
