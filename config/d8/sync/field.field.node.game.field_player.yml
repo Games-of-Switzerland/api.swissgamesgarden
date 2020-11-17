@@ -1,0 +1,21 @@
+uuid: 4844d00e-e293-409c-9624-f07c6ed5c396
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_player
+    - node.type.game
+  module:
+    - gos_site
+id: node.game.field_player
+field_name: field_player
+entity_type: node
+bundle: game
+label: Player
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: player

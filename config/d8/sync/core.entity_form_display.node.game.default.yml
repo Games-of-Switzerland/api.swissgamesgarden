@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.game.field_members
     - field.field.node.game.field_metatags
     - field.field.node.game.field_path
+    - field.field.node.game.field_player
     - field.field.node.game.field_publishers
     - field.field.node.game.field_release_platforms
     - field.field.node.game.field_release_years
@@ -105,6 +106,7 @@ third_party_settings:
       region: content
     group_meta:
       children:
+        - field_player
         - field_stores
         - field_locations
         - field_languages
@@ -188,7 +190,7 @@ content:
     type: text_textarea
     region: content
   field_genres:
-    weight: 20
+    weight: 25
     settings:
       match_operator: CONTAINS
       size: 60
@@ -208,7 +210,7 @@ content:
     type: image_focal_point
     region: content
   field_languages:
-    weight: 19
+    weight: 24
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -218,7 +220,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_locations:
-    weight: 18
+    weight: 23
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -243,6 +245,12 @@ content:
       sidebar: true
     third_party_settings: {  }
     type: metatag_firehose
+    region: content
+  field_player:
+    weight: 21
+    settings: {  }
+    third_party_settings: {  }
+    type: player_default
     region: content
   field_publishers:
     weight: 124
@@ -279,7 +287,7 @@ content:
     type: link_default
     region: content
   field_sponsors:
-    weight: 21
+    weight: 26
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -289,7 +297,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_stores:
-    weight: 17
+    weight: 22
     settings: {  }
     third_party_settings: {  }
     type: store_default

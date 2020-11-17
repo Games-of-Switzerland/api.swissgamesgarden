@@ -236,6 +236,12 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  field_player:
+    fieldName: field_player
+    publicName: player
+    enhancer:
+      id: ''
+    disabled: false
   field_publishers:
     fieldName: field_publishers
     publicName: publishers

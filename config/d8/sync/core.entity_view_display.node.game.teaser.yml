@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.game.field_members
     - field.field.node.game.field_metatags
     - field.field.node.game.field_path
+    - field.field.node.game.field_player
     - field.field.node.game.field_publishers
     - field.field.node.game.field_release_platforms
     - field.field.node.game.field_release_years
@@ -63,6 +64,7 @@ hidden:
   field_members: true
   field_metatags: true
   field_path: true
+  field_player: true
   field_publishers: true
   field_release_platforms: true
   field_release_years: true
