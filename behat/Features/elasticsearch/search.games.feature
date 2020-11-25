@@ -50,6 +50,10 @@ Feature: Retrieve Games items from Elasticsearch
                 "bundle": "@variableType(string)",
                 "path": "@variableType(string)",
                 "changed": "@variableType(string)",
+                "players": {
+                  "min": "@variableType(integer|null)",
+                  "max": "@variableType(integer|null)"
+                },
                 "id": "@variableType(string)",
                 "medias": [
                   {

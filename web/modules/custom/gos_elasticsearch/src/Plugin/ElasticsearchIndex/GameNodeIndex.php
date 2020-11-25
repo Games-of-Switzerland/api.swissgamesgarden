@@ -164,6 +164,18 @@ class GameNodeIndex extends NodeIndexBase {
             'bundle' => [
               'type' => 'keyword',
             ],
+            'players' => [
+              'type' => 'nested',
+              'dynamic' => FALSE,
+              'properties' => [
+                'min' => [
+                  'type' => 'short',
+                ],
+                'max' => [
+                  'type' => 'short',
+                ],
+              ],
+            ],
             'releases' => [
               'type' => 'nested',
               'dynamic' => FALSE,
