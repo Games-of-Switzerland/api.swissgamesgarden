@@ -2,7 +2,6 @@
 
 namespace Drupal\gos_site\Plugin\simple_sitemap\UrlGenerator;
 
-use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
@@ -120,7 +119,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    *
    * @psalm-suppress InvalidArgument
    */
-  protected function getAlternateUrlsForTranslatedLanguages(ContentEntityBase $entity, Url $url_object) {
+  protected function getAlternateUrlsForTranslatedLanguages(ContentEntityInterface $entity, Url $url_object) {
     $alternate_urls = [];
 
     /** @var \Drupal\Core\Language\Language $language */

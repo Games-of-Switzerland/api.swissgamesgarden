@@ -3,7 +3,7 @@
 namespace Drupal\gos_site;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\ContentEntityBase;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -54,7 +54,7 @@ class UrlBuilderNextJs {
   /**
    * Build a NextJS/React compliant Cardis URL.
    *
-   * @param \Drupal\Core\Entity\ContentEntityBase $entity
+   * @param \Drupal\Core\Entity\ContentEntityInterface $entity
    *   The entity to translate into a Next URL.
    * @param \Symfony\Component\HttpFoundation\Request|null $request
    *   The incoming request.
@@ -68,7 +68,7 @@ class UrlBuilderNextJs {
    *
    * @psalm-suppress TypeDoesNotContainType
    */
-  public function buildUrl(ContentEntityBase $entity, ?Request $request = NULL, ?string $langcode = NULL): string {
+  public function buildUrl(ContentEntityInterface $entity, ?Request $request = NULL, ?string $langcode = NULL): string {
     /** @var string $bundle */
     $bundle = $entity->bundle();
 
