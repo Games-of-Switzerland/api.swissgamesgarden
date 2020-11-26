@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.game.field_members
     - field.field.node.game.field_metatags
     - field.field.node.game.field_path
+    - field.field.node.game.field_player
     - field.field.node.game.field_publishers
     - field.field.node.game.field_release_platforms
     - field.field.node.game.field_release_years
@@ -136,6 +137,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: fieldable_path_formatter
+    region: content
+  field_player:
+    weight: 22
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: player_default
     region: content
   field_publishers:
     weight: 8

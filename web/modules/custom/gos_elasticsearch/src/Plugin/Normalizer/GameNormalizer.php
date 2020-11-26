@@ -61,6 +61,14 @@ class GameNormalizer extends ContentEntityNormalizer {
       'changed' => $object->getChangedTime(),
     ];
 
+    // Handle number of players.
+    $data['players'] = ['min' => NULL, 'max' => NULL];
+
+    if (!$object->get('field_player')->isEmpty()) {
+      $data['players']['min'] = (int) $object->get('field_player')->min;
+      $data['players']['max'] = (int) $object->get('field_player')->maxax;
+    }
+
     if (!$object->get('field_releases')->isEmpty()) {
       // Will contain every release by platform (sometimes more than once
       // the same year).

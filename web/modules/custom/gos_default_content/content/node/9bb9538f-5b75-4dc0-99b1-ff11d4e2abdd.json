@@ -306,6 +306,12 @@
             "value": "\/games\/dont-kill-her"
         }
     ],
+    "field_player": [
+        {
+            "min": "1",
+            "max": null
+        }
+    ],
     "field_website": [
         {
             "uri": "http:\/\/www.wuthrer.net\/dontkillher",
