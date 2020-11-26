@@ -125,6 +125,9 @@
             },
             "drupal/metatag": {
                 "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-29/2945817-93.patch"
+            },
+            "doctrine/annotations": {
+                "[Local] - Fix lookahead on PHP 7.4": "./patches/doctrine-annotations--fix-lookahead-php74.patch"
             }
         },
         "autoload-drupal": {
