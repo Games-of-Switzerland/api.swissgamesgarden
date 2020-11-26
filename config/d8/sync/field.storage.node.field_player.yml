@@ -1,0 +1,19 @@
+uuid: 02dc7aa8-7ad6-47fd-81f6-ff791af1caae
+langcode: en
+status: true
+dependencies:
+  module:
+    - gos_site
+    - node
+id: node.field_player
+field_name: field_player
+entity_type: node
+type: player
+settings: {  }
+module: gos_site
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
