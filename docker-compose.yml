@@ -83,7 +83,7 @@ services:
 
   # Database
   db:
-    image: mariadb:10.1
+    image: mariadb:10.4
     environment:
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal
