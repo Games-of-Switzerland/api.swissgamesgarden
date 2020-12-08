@@ -1,17 +1,17 @@
-uuid: c56adee1-3f5e-4d95-b148-3ff5038d3379
+uuid: e592241f-2ec7-4fff-b3d0-71d8fc762fc5
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - gos_admin
+    - claro
 _core:
-  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
-id: gos_admin_messages
-theme: gos_admin
+  default_config_hash: iIy-YIc9d9s1isAtTIKWDBKd6kd2r6LxoYz_-hkLJco
+id: claro_messages
+theme: claro
 region: highlighted
-weight: -3
+weight: 0
 provider: null
 plugin: system_messages_block
 settings:

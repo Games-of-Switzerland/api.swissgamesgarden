@@ -1,15 +1,15 @@
-uuid: c8db3d46-df1d-4e00-9772-dc597b192a9f
+uuid: 6450fbbc-936e-49d7-807d-4d0e9ac766a6
 langcode: en
 status: true
 dependencies:
   theme:
-    - gos_admin
+    - claro
 _core:
-  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
-id: gos_admin_local_actions
-theme: gos_admin
+  default_config_hash: osZQ9lL2jTdH5am4LJiZ29RaivhzOf6vCpoRy6FZwIE
+id: claro_local_actions
+theme: claro
 region: content
-weight: -4
+weight: -10
 provider: null
 plugin: local_actions_block
 settings:

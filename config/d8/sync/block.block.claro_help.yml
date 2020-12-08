@@ -1,13 +1,15 @@
-uuid: dc18ecef-1e6c-4497-8c9c-464d3e9ebf12
+uuid: 5350f494-97cc-4f92-8520-44655ce0d72b
 langcode: en
 status: true
 dependencies:
   module:
     - help
   theme:
-    - gos_admin
-id: help
-theme: gos_admin
+    - claro
+_core:
+  default_config_hash: bMLNWPKf3uHuqgmVszMb5zhM205c4Y-r7j5Tw6NDo-o
+id: claro_help
+theme: claro
 region: help
 weight: 0
 provider: null
@@ -16,5 +18,5 @@ settings:
   id: help_block
   label: Help
   provider: help
-  label_display: visible
+  label_display: '0'
 visibility: {  }
