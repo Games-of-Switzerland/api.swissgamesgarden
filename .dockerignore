@@ -34,3 +34,6 @@ web/sites/*/drushrc.php
 
 # Ignore Drupal's file directory
 web/sites/*/files/
+
+# Keep Drupal's custom Gin theme css file
+!web/sites/*/files/gin-custom.css
