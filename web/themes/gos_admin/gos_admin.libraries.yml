@@ -1,4 +1,0 @@
-global-styling:
-  css:
-    base:
-      css/gos-admin.css: {}

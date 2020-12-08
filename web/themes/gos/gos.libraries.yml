@@ -1,9 +1,0 @@
-# Main theme library.
-global:
-  css:
-    theme:
-      "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css": {type: external}
-    base:
-      assets/css/base.css: {}
-  dependencies:
-    - core/jquery
