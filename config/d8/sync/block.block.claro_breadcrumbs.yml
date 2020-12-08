@@ -1,17 +1,17 @@
-uuid: df9a5f24-1885-45d7-895d-0ca349239058
+uuid: 1307c353-7b86-4edd-84fe-6023ac15a96e
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - gos_admin
+    - claro
 _core:
-  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
-id: gos_admin_breadcrumbs
-theme: gos_admin
+  default_config_hash: b6mUaCq5YPapRUABXRHfNTT6fxWIj5lgf0Mg4HaRJ_I
+id: claro_breadcrumbs
+theme: claro
 region: breadcrumb
-weight: -4
+weight: 0
 provider: null
 plugin: system_breadcrumb_block
 settings:

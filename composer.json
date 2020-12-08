@@ -40,6 +40,8 @@
         "drupal/field_group": "^3.0",
         "drupal/fieldable_path": "^1.0@RC",
         "drupal/focal_point": "^1.2",
+        "drupal/gin": "^3.0",
+        "drupal/gin_login": "^1.0",
         "drupal/image_effects": "^3.0",
         "drupal/jsonapi_extras": "^3.13",
         "drupal/metatag": "^1.14",

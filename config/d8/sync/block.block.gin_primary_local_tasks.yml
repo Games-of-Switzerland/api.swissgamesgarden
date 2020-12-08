@@ -1,15 +1,15 @@
-uuid: 6684ba0e-2612-4188-aad4-7b6eee37efdc
+uuid: 17635e9b-4f0a-4423-a895-711c258f1698
 langcode: en
 status: true
 dependencies:
   theme:
-    - gos_admin
+    - gin
 _core:
-  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
-id: gos_admin_local_tasks
-theme: gos_admin
+  default_config_hash: Hh01DLj9k7UnNdPpOQXHZHW7GHf2OPNDQyCJF7_R9ac
+id: gin_primary_local_tasks
+theme: gin
 region: header
-weight: -2
+weight: 0
 provider: null
 plugin: local_tasks_block
 settings:

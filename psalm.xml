@@ -15,6 +15,7 @@
       <directory name="vendor" />
       <directory name="web/core" />
       <directory name="web/modules/contrib" />
+      <directory name="web/themes/contrib" />
     </ignoreFiles>
   </projectFiles>
 
