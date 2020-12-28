@@ -43,7 +43,7 @@
     And the JSON node "aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets" should have 4 elements
     And the JSON nodes should be equal to:
       | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].key | released |
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].doc_count | 6 |
+      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].doc_count | 3 |
       | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].key | development  |
       | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].doc_count | 2 |
       | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].key | canceled |
@@ -59,9 +59,9 @@
       Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platforms[]=pc"
       And the JSON node "aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets" should have 4 elements
       And the JSON nodes should be equal to:
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].key | released |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].doc_count | 5 |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].key | development  |
+        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].key | development |
+        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].doc_count | 2 |
+        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].key | released  |
         | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].doc_count | 2 |
         | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].key | canceled |
         | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].doc_count | 1 |

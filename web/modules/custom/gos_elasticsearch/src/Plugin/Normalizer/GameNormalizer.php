@@ -77,14 +77,22 @@ class GameNormalizer extends ContentEntityNormalizer {
       // Will contain only the same year once for Histogram aggregations.
       $years = [];
 
+      // Will contain only the same state once for State facets aggregations.
+      $states = [];
+
       foreach ($object->field_releases as $release) {
         $releases[] = [
-          'date' => $release->date_value ?? NULL,
+          'date' => ($release->date_value && !empty($release->date_value)) ? $release->date_value : NULL,
           'platform_slug' => isset($release->entity) ? $release->entity->get('field_slug')->value : NULL,
           'state' => $release->state ?? NULL,
         ];
 
-        if (!isset($release->date_value)) {
+        // Use the state as key to prevent having twice the same value.
+        if (isset($release->state)) {
+          $states[$release->state] = $release->state;
+        }
+
+        if (!isset($release->date_value) || empty($release->date_value)) {
           continue;
         }
 
@@ -97,6 +105,11 @@ class GameNormalizer extends ContentEntityNormalizer {
       $data['releases_years'] = array_map(static function ($year) {
         return ['year' => $year];
       }, array_keys($years));
+
+      // Transform the single states array into a structure for ES storage.
+      $data['releases_states'] = array_map(static function ($state) {
+        return ['state' => $state];
+      }, array_keys($states));
 
       $data['releases'] = $releases;
     }
