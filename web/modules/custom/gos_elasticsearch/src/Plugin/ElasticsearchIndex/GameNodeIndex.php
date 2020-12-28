@@ -192,6 +192,15 @@ class GameNodeIndex extends NodeIndexBase {
                 ],
               ],
             ],
+            'releases_states' => [
+              'type' => 'nested',
+              'dynamic' => FALSE,
+              'properties' => [
+                'state' => [
+                  'type' => 'keyword',
+                ],
+              ],
+            ],
             'releases_years' => [
               'type' => 'nested',
               'dynamic' => FALSE,

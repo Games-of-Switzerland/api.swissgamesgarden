@@ -574,7 +574,7 @@ class ElasticGamesResource extends ElasticResourceBase {
   private function addStatesFilter(array $states): array {
     $structure = [
       'nested' => [
-        'path' => 'releases',
+        'path' => 'releases_states',
         'query' => [
           'bool' => [
             'should' => [],
@@ -584,7 +584,7 @@ class ElasticGamesResource extends ElasticResourceBase {
     ];
 
     foreach ($states as $state) {
-      $structure['nested']['query']['bool']['should'][] = ['term' => ['releases.state' => $state]];
+      $structure['nested']['query']['bool']['should'][] = ['term' => ['releases_states.state' => $state]];
     }
 
     return $structure;
@@ -783,12 +783,12 @@ class ElasticGamesResource extends ElasticResourceBase {
                 'aggregations' => [
                   'all_nested_states' => [
                     'nested' => [
-                      'path' => 'releases',
+                      'path' => 'releases_states',
                     ],
                     'aggs' => [
                       'states_name_keyword' => [
                         'terms' => [
-                          'field' => 'releases.state',
+                          'field' => 'releases_states.state',
                           'min_doc_count' => 0,
                           'size' => 10,
                         ],
