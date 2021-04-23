@@ -106,16 +106,28 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    * @psalm-suppress PossiblyInvalidArgument
    */
   public function generate($data_set) {
-    $path_data = $this->processDataSet($data_set);
+    $path_data_sets = $this->processDataSet($data_set);
+    $url_variant_sets = [];
 
-    if ($this->isMultilingualSitemap && isset($path_data['meta']['entity']) && $path_data['meta']['entity'] instanceof ContentEntityInterface) {
-      $url_object = $path_data['meta']['entity']->toUrl();
-      unset($path_data['url']);
-
-      return $this->getUrlVariants($path_data, $url_object);
+    foreach ($path_data_sets as $path_data) {
+      if (isset($path_data['meta']['entity']) && $path_data['meta']['entity'] instanceof ContentEntityInterface) {
+        $url_object = $path_data['meta']['entity']->toUrl();
+        unset($path_data['url']);
+        $url_variant_sets[] = $this->getUrlVariants($path_data, $url_object);
+      }
     }
 
-    return $path_data !== FALSE ? [$path_data] : [];
+    // Make sure to clear entity memory cache so it does not build up resulting
+    // in a constant increase of memory.
+    // See https://www.drupal.org/project/simple_sitemap/issues/3170261 and
+    // https://www.drupal.org/project/simple_sitemap/issues/3202233
+    $definition = $this->entityTypeManager->getDefinition($data_set['entity_type']);
+
+    if ($definition && $definition->isStaticallyCacheable()) {
+      $this->entityMemoryCache->deleteAll();
+    }
+
+    return array_merge([], ...$url_variant_sets);
   }
 
   /**
@@ -123,7 +135,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    *
    * @psalm-suppress InvalidArgument
    */
-  protected function getAlternateUrlsForTranslatedLanguages(ContentEntityInterface $entity, Url $url_object) {
+  protected function getAlternateUrlsForTranslatedLanguages(ContentEntityInterface $entity, Url $url_object): array {
     $alternate_urls = [];
 
     /** @var \Drupal\Core\Language\Language $language */
@@ -144,58 +156,64 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    * @psalm-suppress MissingParamType
    */
   protected function processDataSet($data_set) {
-    $entity = $this->entityTypeManager->getStorage($data_set['entity_type'])->load($data_set['id']);
+    $entities = $this->entityTypeManager->getStorage($data_set['entity_type'])->loadMultiple((array) $data_set['id']);
 
-    if ($entity === NULL) {
+    if (empty($entities)) {
       return FALSE;
     }
 
-    $entity_id = (string) $entity->id();
-    $entity_type_name = $entity->getEntityTypeId();
-    $entity_bundle = $entity->bundle();
+    $paths = [];
 
-    $entity_settings = $this->generator
-      ->setVariants($this->sitemapVariant)
-      ->getEntityInstanceSettings($entity_type_name, $entity_id);
+    foreach ($entities as $entity) {
+      $entity_id = (string) $entity->id();
+      $entity_type_name = $entity->getEntityTypeId();
+      $entity_bundle = $entity->bundle();
 
-    if (!$entity_settings || empty($entity_settings['index'])) {
-      return FALSE;
-    }
+      $entity_settings = $this->generator
+        ->setVariants($this->sitemapVariant)
+        ->getEntityInstanceSettings($entity_type_name, $entity_id);
 
-    $url_object = $entity->toUrl();
+      if (empty($entity_settings['index'])) {
+        continue;
+      }
 
-    // Do not include external paths.
-    if (!$url_object->isRouted()) {
-      return FALSE;
-    }
+      $url_object = $entity->toUrl();
 
-    $path = $url_object->getInternalPath();
-    $url_object->setOption('absolute', TRUE);
+      // Do not include external paths.
+      if (!$url_object->isRouted()) {
+        continue;
+      }
 
-    $url = $url_object->toString();
+      $path = $url_object->getInternalPath();
+      $url_object->setOption('absolute', TRUE);
 
-    if ($data_set['entity_type'] === 'node' && \array_key_exists($entity_bundle, $this->urlBuilderNextJs::NEXTJS_URLS_PREFIX)) {
-      /** @var \Drupal\Core\Entity\ContentEntityBase $node */
-      $node = $entity;
-      $url = $this->urlBuilderNextJs->buildUrl($node);
-    }
+      $url = $url_object->toString();
 
-    return [
-      'url' => $url,
-      'lastmod' => method_exists($entity, 'getChangedTime') ? date('c', $entity->getChangedTime()) : NULL,
-      'priority' => $entity_settings['priority'] ?? NULL,
-      'changefreq' => $entity_settings['changefreq'] ?? NULL,
+      if ($data_set['entity_type'] === 'node' && \array_key_exists($entity_bundle, $this->urlBuilderNextJs::NEXTJS_URLS_PREFIX)) {
+        /** @var \Drupal\Core\Entity\ContentEntityBase $node */
+        $node = $entity;
+        $url = $this->urlBuilderNextJs->buildUrl($node);
+      }
 
-      // Additional info useful in hooks.
-      'meta' => [
-        'path' => $path,
-        'entity' => $entity,
-        'entity_info' => [
-          'entity_type' => $entity_type_name,
-          'id' => $entity_id,
+      $paths[] = [
+        'url' => $url,
+        'lastmod' => method_exists($entity, 'getChangedTime') ? date('c', $entity->getChangedTime()) : NULL,
+        'priority' => $entity_settings['priority'] ?? NULL,
+        'changefreq' => $entity_settings['changefreq'] ?? NULL,
+
+        // Additional info useful in hooks.
+        'meta' => [
+          'path' => $path,
+          'entity' => $entity,
+          'entity_info' => [
+            'entity_type' => $entity_type_name,
+            'id' => $entity_id,
+          ],
         ],
-      ],
-    ];
+      ];
+    }
+
+    return $paths;
   }
 
 }
