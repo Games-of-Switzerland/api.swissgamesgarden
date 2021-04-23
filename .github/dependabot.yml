@@ -4,18 +4,12 @@
 # https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
-registries:
-  drupal-composer:
-    type: composer-repository
-    url: https://packages.drupal.org/8
 updates:
   - package-ecosystem: composer
     directory: "/"
     versioning-strategy: lockfile-only
     allow:
       - dependency-type: production
-    registries:
-      - drupal-composer
     schedule:
       interval: weekly
   - package-ecosystem: bundler
