@@ -2,6 +2,7 @@
 
 namespace Drupal\gos_site\Plugin\simple_sitemap\UrlGenerator;
 
+use Drupal\Core\Cache\MemoryCache\MemoryCacheInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
@@ -50,6 +51,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     EntityTypeManagerInterface $entity_type_manager,
     EntityHelper $entityHelper,
     UrlGeneratorManager $url_generator_manager,
+    MemoryCacheInterface $memory_cache,
     UrlBuilderNextJS $url_builder_nextjs
   ) {
     parent::__construct(
@@ -61,7 +63,8 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
       $language_manager,
       $entity_type_manager,
       $entityHelper,
-      $url_generator_manager
+      $url_generator_manager,
+      $memory_cache
     );
     $this->urlBuilderNextJs = $url_builder_nextjs;
   }
@@ -92,6 +95,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
       $container->get('entity_type.manager'),
       $container->get('simple_sitemap.entity_helper'),
       $container->get('plugin.manager.simple_sitemap.url_generator'),
+      $container->get('entity.memory_cache'),
       $container->get('gos_site.url_builder.nextjs')
     );
   }
