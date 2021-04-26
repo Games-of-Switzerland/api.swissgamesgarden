@@ -1,6 +1,9 @@
-# Games of Switzerland 🎮👾
+#  🎮👾 Swiss Games Garden
 
-Drupal 8 powered & up and running via Docker.
+Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/) and 🕸 [Json:API](https://jsonapi.org/).
+It uses 🐳 [Docker](http://docker.com/) for running, 🥃 [Gin](https://github.com/EasyCorp/EasyAdminBundle) as Admin UI, 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.
+We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano).
+
 
 | Build Status | Swagger | Issues | Activity |
 |:-------------------:|:----------------:|:----------------:|:----------------:|
