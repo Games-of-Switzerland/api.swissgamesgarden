@@ -7,7 +7,7 @@ We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano).
 
 | Build Status | Swagger | Issues | Activity |
 |:-------------------:|:----------------:|:----------------:|:----------------:|
-| [![Build Status](https://travis-ci.com/Games-of-Switzerland/gos-server.svg?branch=dev)](https://travis-ci.com/Games-of-Switzerland/gos-server) | [![Swagger](https://img.shields.io/badge/documentation-swagger-blue)](https://api-gos.museebolo.ch/swagger) | ![GitHub issues](https://img.shields.io/github/issues/Games-of-Switzerland/gos-server?style=flat-square) | ![GitHub last commit](https://img.shields.io/github/last-commit/Games-of-Switzerland/gos-server?style=flat-square) |
+| [![Build Status](https://travis-ci.com/Games-of-Switzerland/gos-server.svg?branch=dev)](https://travis-ci.com/Games-of-Switzerland/gos-server) | [![Swagger](https://img.shields.io/badge/documentation-swagger-blue)](https://api.swissgames.garden/swagger) | ![GitHub issues](https://img.shields.io/github/issues/Games-of-Switzerland/gos-server?style=flat-square) | ![GitHub last commit](https://img.shields.io/github/last-commit/Games-of-Switzerland/gos-server?style=flat-square) |
 
 ## 🔧 Prerequisites
 
