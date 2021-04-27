@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "344087a68dbab2d9b26b6ef1f4172891",
+    "content-hash": "76c1b1b40d257b17a99db36561591a7b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2184,28 +2184,28 @@
         },
         {
             "name": "drupal/consumer_image_styles",
-            "version": "3.1.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/consumer_image_styles.git",
-                "reference": "8.x-3.1"
+                "reference": "4.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/consumer_image_styles-8.x-3.1.zip",
-                "reference": "8.x-3.1",
-                "shasum": "711843888b9568cb3ee5384c5872b5032d68229d"
+                "url": "https://ftp.drupal.org/files/projects/consumer_image_styles-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "ca307d3383751658bfb714a236588a5cc9fdc2a4"
             },
             "require": {
-                "drupal/consumers": "^1.2",
+                "drupal/consumers": "^1.11",
                 "drupal/core": "^8 || ^9",
-                "drupal/jsonapi_extras": "^3.3"
+                "drupal/jsonapi_extras": "^3.16"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.1",
-                    "datestamp": "1609842827",
+                    "version": "4.0.0",
+                    "datestamp": "1609843209",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

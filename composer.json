@@ -34,7 +34,7 @@
         "drupal/admin_toolbar": "^3.0",
         "drupal/bamboo_twig": "^5.0",
         "drupal/console": "^1.0.2",
-        "drupal/consumer_image_styles": "^3.0",
+        "drupal/consumer_image_styles": "^4.0",
         "drupal/core-recommended": "^8.8",
         "drupal/elasticsearch_helper": "6.x-dev",
         "drupal/field_group": "^3.0",
