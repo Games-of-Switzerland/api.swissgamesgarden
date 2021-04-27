@@ -31,7 +31,7 @@
         "php": ">=7.3.0",
         "ext-exif": "*",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/admin_toolbar": "^2.0",
+        "drupal/admin_toolbar": "^3.0",
         "drupal/bamboo_twig": "^4.1",
         "drupal/console": "^1.0.2",
         "drupal/consumer_image_styles": "^3.0",
