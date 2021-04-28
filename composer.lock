@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8d2f956508e7371b381552cb5ab6953",
+    "content-hash": "76c1b1b40d257b17a99db36561591a7b",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1778,26 +1778,29 @@
         },
         {
             "name": "drupal/admin_toolbar",
-            "version": "2.4.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/admin_toolbar.git",
-                "reference": "8.x-2.4"
+                "reference": "3.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-2.4.zip",
-                "reference": "8.x-2.4",
-                "shasum": "6240047b8d91ac78f98d861ba8282af971fa0b38"
+                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-3.0.0.zip",
+                "reference": "3.0.0",
+                "shasum": "204f7a0e8b62a8a54256142cf38ca139739fb65c"
             },
             "require": {
                 "drupal/core": "^8.8.0 || ^9.0"
             },
+            "require-dev": {
+                "drupal/admin_toolbar_tools": "*"
+            },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.4",
-                    "datestamp": "1601998853",
+                    "version": "3.0.0",
+                    "datestamp": "1611311186",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1859,37 +1862,35 @@
         },
         {
             "name": "drupal/bamboo_twig",
-            "version": "4.1.0",
+            "version": "5.0.0-alpha1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bamboo_twig.git",
-                "reference": "8.x-4.1"
+                "reference": "8.x-5.0-alpha1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bamboo_twig-8.x-4.1.zip",
-                "reference": "8.x-4.1",
-                "shasum": "9e70166a3252509f18d6d5d0de784f497b099642"
+                "url": "https://ftp.drupal.org/files/projects/bamboo_twig-8.x-5.0-alpha1.zip",
+                "reference": "8.x-5.0-alpha1",
+                "shasum": "7924e1f4c31a762e4fa190da773987f2128e8267"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8.8 || ^9"
             },
             "require-dev": {
-                "drupal/coder": "*",
-                "squizlabs/php_codesniffer": "^2.7",
-                "twig/extensions": "^1.4.1"
+                "drupal/coder": "^8.3.1",
+                "squizlabs/php_codesniffer": "^3.0.1",
+                "symfony/mime": "^4.3",
+                "twig/extensions": "^1.5.4"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-4.1",
-                    "datestamp": "1535186880",
+                    "version": "8.x-5.0-alpha1",
+                    "datestamp": "1578674583",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -2183,28 +2184,28 @@
         },
         {
             "name": "drupal/consumer_image_styles",
-            "version": "3.1.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/consumer_image_styles.git",
-                "reference": "8.x-3.1"
+                "reference": "4.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/consumer_image_styles-8.x-3.1.zip",
-                "reference": "8.x-3.1",
-                "shasum": "711843888b9568cb3ee5384c5872b5032d68229d"
+                "url": "https://ftp.drupal.org/files/projects/consumer_image_styles-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "ca307d3383751658bfb714a236588a5cc9fdc2a4"
             },
             "require": {
-                "drupal/consumers": "^1.2",
+                "drupal/consumers": "^1.11",
                 "drupal/core": "^8 || ^9",
-                "drupal/jsonapi_extras": "^3.3"
+                "drupal/jsonapi_extras": "^3.16"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.1",
-                    "datestamp": "1609842827",
+                    "version": "4.0.0",
+                    "datestamp": "1609843209",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3714,26 +3715,26 @@
         },
         {
             "name": "drupal/new_relic_rpm",
-            "version": "1.3.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/new_relic_rpm.git",
-                "reference": "8.x-1.3"
+                "reference": "2.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/new_relic_rpm-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "16ecb5bf55e5536cba19f8aee5d59b74614c13a5"
+                "url": "https://ftp.drupal.org/files/projects/new_relic_rpm-2.1.0.zip",
+                "reference": "2.1.0",
+                "shasum": "10f3a89f17b80103f05cf84038ff1783c69e4e98"
             },
             "require": {
-                "drupal/core": "^8 || ^9"
+                "drupal/core": "^8.8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1585455185",
+                    "version": "2.1.0",
+                    "datestamp": "1615809419",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -9391,6 +9392,7 @@
                 "Context",
                 "Symfony2"
             ],
+            "abandoned": true,
             "time": "2020-02-27T08:40:50+00:00"
         },
         {
