@@ -130,6 +130,9 @@
             },
             "doctrine/annotations": {
                 "[Local] - Fix lookahead on PHP 7.4": "./patches/doctrine-annotations--fix-lookahead-php74.patch"
+            },
+            "drupal/rabbit_hole": {
+                "[Local] - PHPUnit fails if Commerce is not present": "./patches/3218701-05.patch"
             }
         },
         "autoload-drupal": {
