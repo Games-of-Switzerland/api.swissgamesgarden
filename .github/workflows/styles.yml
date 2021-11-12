@@ -87,3 +87,53 @@ jobs:
       - uses: actions/checkout@master
       - run: composer install --prefer-dist
       - run: ./vendor/bin/psalm --output-format=github
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+      - name: Build the docker-compose stack
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test
+      - name: Run unit tests
+        run: docker exec test docker-as-wait --mysql -- docker-as-drupal phpunit --skip-default-stops --group=gos --exclude-group=gos_functional
+
+  functional-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+      - name: Build the docker-compose stack
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test browser elasticsearch
+      - name: Bootstrap
+        run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
+      - name: Run Functional tests
+        run: docker exec test docker-as-wait --mysql test:8888 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          path: ./app/logs
+
+  behat-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+      - name: Build the docker-compose stack
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test browser elasticsearch
+      - name: Bootstrap
+        run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
+      - name: Run Behat tests
+        run: docker-compose exec -T test docker-as-wait --mysql test:8888 browser:4444 -- docker-as-drupal behat --with-elasticsearch --user=www-data
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          path: ./app/logs

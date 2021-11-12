@@ -1,0 +1,9 @@
+version: '3.6'
+
+services:
+  test:
+    container_name: test
+    volumes:
+      - ./app/logs:/var/www/log:delegated
+    environment:
+      PHP_MEMORY_LIMIT: 1024M

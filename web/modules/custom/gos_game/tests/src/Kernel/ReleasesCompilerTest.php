@@ -14,6 +14,7 @@ use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
  * @group gos
  * @group gos_game
  * @group gos_game_kernel
+ * @group gos_kernel
  *
  * @internal
  */

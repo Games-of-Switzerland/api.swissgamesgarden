@@ -19,6 +19,7 @@ use Drupal\Tests\rest\Functional\AnonResourceTestTrait;
  * @group gos
  * @group gos_game
  * @group gos_game_functional
+ * @group gos_functional
  *
  * @internal
  */
