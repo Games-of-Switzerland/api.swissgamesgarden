@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0dd3062c230c2019485ce3d308d5ef8a",
+    "content-hash": "da61913f193e4232d89aeb86a1f1cecb",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3961,75 +3961,6 @@
                 "source": "https://cgit.drupalcode.org/pathauto",
                 "issues": "https://www.drupal.org/project/issues/pathauto",
                 "documentation": "https://www.drupal.org/docs/8/modules/pathauto"
-            }
-        },
-        {
-            "name": "drupal/rabbit_hole",
-            "version": "1.0.0-beta10",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/rabbit_hole.git",
-                "reference": "8.x-1.0-beta10"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/rabbit_hole-8.x-1.0-beta10.zip",
-                "reference": "8.x-1.0-beta10",
-                "shasum": "3eb151b7a905bbf0a50d9fe2ecffbca3eeb73ac9"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9"
-            },
-            "require-dev": {
-                "drupal/commerce_product": "*",
-                "drupal/file_entity": "*",
-                "drupal/group": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.0-beta10",
-                    "datestamp": "1610813035",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Dylan Donkersgoed",
-                    "homepage": "https://www.drupal.org/user/2803351"
-                },
-                {
-                    "name": "Matroskeen",
-                    "homepage": "https://www.drupal.org/user/3426249"
-                },
-                {
-                    "name": "Odd Hill",
-                    "homepage": "https://www.drupal.org/user/789934"
-                },
-                {
-                    "name": "mparker17",
-                    "homepage": "https://www.drupal.org/user/536298"
-                },
-                {
-                    "name": "olofbokedal",
-                    "homepage": "https://www.drupal.org/user/1198438"
-                },
-                {
-                    "name": "shumushin",
-                    "homepage": "https://www.drupal.org/user/22093"
-                }
-            ],
-            "description": "Basic functionality that is shared among the different Rabbit Hole modules.",
-            "homepage": "https://www.drupal.org/project/rabbit_hole",
-            "support": {
-                "source": "https://git.drupalcode.org/project/rabbit_hole"
             }
         },
         {
@@ -16130,7 +16061,6 @@
     "stability-flags": {
         "drupal/elasticsearch_helper": 20,
         "drupal/fieldable_path": 5,
-        "drupal/rabbit_hole": 10,
         "drupal/webp": 10,
         "drupal/default_content": 15,
         "fenetikm/autoload-drupal": 20

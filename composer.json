@@ -50,7 +50,6 @@
         "drupal/migrate_tools": "^5.0",
         "drupal/new_relic_rpm": "^2.1",
         "drupal/pathauto": "^1.6",
-        "drupal/rabbit_hole": "^1.0@beta",
         "drupal/restui": "^1.18",
         "drupal/simple_sitemap": "^3.7",
         "drupal/views_ef_fieldset": "^1.4",
@@ -130,9 +129,6 @@
             },
             "doctrine/annotations": {
                 "[Local] - Fix lookahead on PHP 7.4": "./patches/doctrine-annotations--fix-lookahead-php74.patch"
-            },
-            "drupal/rabbit_hole": {
-                "[Local] - PHPUnit fails if Commerce is not present": "./patches/3218701-05.patch"
             }
         },
         "autoload-drupal": {
