@@ -2,5 +2,6 @@ logo:
   use_default: true
 brand_image:
   use_default: true
+  collection_id: '2348098'
 _core:
   default_config_hash: OhypfKr4_Eo8XwXg3Sios05lN-LjxOhSdSOSkEN9Ndo

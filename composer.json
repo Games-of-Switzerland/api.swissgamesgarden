@@ -129,6 +129,9 @@
             },
             "doctrine/annotations": {
                 "[Local] - Fix lookahead on PHP 7.4": "./patches/doctrine-annotations--fix-lookahead-php74.patch"
+            },
+            "drupal/gin_login": {
+                "[3167968] - Make possible to define a 'Unsplash Collection ID' in config page": "https://www.drupal.org/files/issues/2020-08-28/gin-login-unsplash-collection-id-configurable.patch"
             }
         },
         "autoload-drupal": {
