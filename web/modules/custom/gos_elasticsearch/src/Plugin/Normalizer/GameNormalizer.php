@@ -2,7 +2,9 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\Normalizer;
 
+use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Entity\EntityTypeRepositoryInterface;
 use Drupal\gos_elasticsearch\Plugin\Normalizer\Traits\NormalizerImagesDerivativesTrait;
 use Drupal\node\NodeInterface;
 use Drupal\serialization\Normalizer\ContentEntityNormalizer;
@@ -30,8 +32,8 @@ class GameNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
-    parent::__construct($entity_type_manager);
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, EntityTypeRepositoryInterface $entity_type_repository, EntityFieldManagerInterface $entity_field_manager) {
+    parent::__construct($entity_type_manager, $entity_type_repository, $entity_field_manager);
     $this->imageStyleStorage = $entity_type_manager->getStorage('image_style');
   }
 
