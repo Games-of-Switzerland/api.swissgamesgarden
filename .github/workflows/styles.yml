@@ -112,12 +112,14 @@ jobs:
       - name: Bootstrap
         run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
       - name: Run Functional tests
-        run: docker exec test docker-as-wait --mysql test:8888 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional
+        run: docker exec test docker-as-wait --mysql test:8888 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional --user=www-data
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         if: failure()
         with:
-          path: ./app/logs
+          path: |
+            ./app/logs
+            ./app/simpletest
 
   behat-tests:
     runs-on: ubuntu-latest
