@@ -1,4 +1,4 @@
-Feature: Studio
+Feature: Studios
 
   Scenario: The list of studio return only published ones.
     Given I am on "/G70VW4Y9sP/jsonapi/node/studio"
