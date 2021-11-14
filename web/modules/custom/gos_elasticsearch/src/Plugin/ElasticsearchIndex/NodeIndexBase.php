@@ -3,6 +3,7 @@
 namespace Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex;
 
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexBase;
 use Elasticsearch\Client;
@@ -41,9 +42,8 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    *
    * @psalm-suppress MissingParamType
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $client, Serializer $serializer, LoggerInterface $logger, LanguageManagerInterface $languageManager, Settings $settings) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $client, $serializer, $logger);
-
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $client, Serializer $serializer, LoggerInterface $logger, MessengerInterface $messenger, LanguageManagerInterface $languageManager, Settings $settings) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition, $client, $serializer, $logger, $messenger);
     $this->languageManager = $languageManager;
     $this->settings = $settings;
   }
@@ -89,6 +89,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
       $container->get('elasticsearch_helper.elasticsearch_client'),
       $container->get('serializer'),
       $container->get('logger.factory')->get('elasticsearch_helper'),
+      $container->get('messenger'),
       $container->get('language_manager'),
       $container->get('settings')
     );

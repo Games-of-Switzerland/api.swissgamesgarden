@@ -2,7 +2,6 @@
 <psalm
   autoloader="web/autoload-psalm.php"
   totallyTyped="false"
-  requireVoidReturnType="false"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="https://getpsalm.org/schema/config"
   xsi:schemaLocation="https://getpsalm.org/schema/config file:///app/vendor/vimeo/psalm/config.xsd">
@@ -33,6 +32,15 @@
     <MoreSpecificReturnType errorLevel="info" />
     <LessSpecificReturnStatement errorLevel="info" />
     <MissingConstructor errorLevel="info" />
+
+    <!-- PSALM 4 migration introduced those errors -->
+    <NonInvariantDocblockPropertyType errorLevel="info" />
+    <MissingReturnType errorLevel="info" />
+    <ParamNameMismatch errorLevel="info" />
+    <RedundantCastGivenDocblockType errorLevel="info" />
+    <MissingParamType errorLevel="info"/>
+    <RedundantPropertyInitializationCheck errorLevel="info" />
+    <ParadoxicalCondition errorLevel="info" />
 
     <!-- Suppress some errors -->
     <!-- @see https://github.com/vimeo/psalm/blob/master/docs/dealing_with_code_issues.md -->
