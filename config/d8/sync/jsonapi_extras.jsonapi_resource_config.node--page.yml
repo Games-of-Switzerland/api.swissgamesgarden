@@ -5,7 +5,7 @@ dependencies:
   config:
     - node.type.page
 id: node--page
-disabled: true
+disabled: false
 path: node/page
 resourceType: node--page
 resourceFields:
@@ -22,11 +22,11 @@ resourceFields:
       id: ''
     disabled: false
   vid:
+    disabled: true
     fieldName: vid
     publicName: vid
     enhancer:
       id: ''
-    disabled: false
   langcode:
     fieldName: langcode
     publicName: langcode
@@ -34,29 +34,29 @@ resourceFields:
       id: ''
     disabled: false
   type:
+    disabled: true
     fieldName: type
     publicName: type
     enhancer:
       id: ''
-    disabled: false
   revision_timestamp:
+    disabled: true
     fieldName: revision_timestamp
     publicName: revision_timestamp
     enhancer:
       id: ''
-    disabled: false
   revision_uid:
+    disabled: true
     fieldName: revision_uid
     publicName: revision_uid
     enhancer:
       id: ''
-    disabled: false
   revision_log:
+    disabled: true
     fieldName: revision_log
     publicName: revision_log
     enhancer:
       id: ''
-    disabled: false
   status:
     fieldName: status
     publicName: status
@@ -64,11 +64,11 @@ resourceFields:
       id: ''
     disabled: false
   uid:
+    disabled: true
     fieldName: uid
     publicName: uid
     enhancer:
       id: ''
-    disabled: false
   title:
     fieldName: title
     publicName: title
@@ -76,17 +76,17 @@ resourceFields:
       id: ''
     disabled: false
   created:
+    disabled: true
     fieldName: created
     publicName: created
     enhancer:
       id: ''
-    disabled: false
   changed:
+    disabled: true
     fieldName: changed
     publicName: changed
     enhancer:
       id: ''
-    disabled: false
   promote:
     fieldName: promote
     publicName: promote
@@ -100,20 +100,38 @@ resourceFields:
       id: ''
     disabled: false
   default_langcode:
+    disabled: true
     fieldName: default_langcode
     publicName: default_langcode
     enhancer:
       id: ''
-    disabled: false
   revision_default:
+    disabled: true
     fieldName: revision_default
     publicName: revision_default
     enhancer:
       id: ''
-    disabled: false
   revision_translation_affected:
+    disabled: true
     fieldName: revision_translation_affected
     publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  releases_normalized:
+    disabled: true
+    fieldName: releases_normalized
+    publicName: releases_normalized
+    enhancer:
+      id: ''
+  metatag:
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+    disabled: false
+  metatag_normalized:
+    fieldName: metatag_normalized
+    publicName: metatag_normalized
     enhancer:
       id: ''
     disabled: false
@@ -123,9 +141,21 @@ resourceFields:
     enhancer:
       id: ''
     disabled: false
+  menu_link:
+    fieldName: menu_link
+    publicName: menu_link
+    enhancer:
+      id: ''
+    disabled: false
   body:
     fieldName: body
     publicName: body
+    enhancer:
+      id: ''
+    disabled: false
+  field_path:
+    fieldName: field_path
+    publicName: field_path
     enhancer:
       id: ''
     disabled: false

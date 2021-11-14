@@ -1,4 +1,4 @@
-Feature: Agents
+Feature: Games
 
   Scenario: The list of games return only published ones.
     Given I am on "/G70VW4Y9sP/jsonapi/node/game"

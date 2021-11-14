@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - init repo on 2019-11-27
+- add Basic pages to JSON:API - #140
 
 ### Changed
 - update changelog following 'keep a changelog'
