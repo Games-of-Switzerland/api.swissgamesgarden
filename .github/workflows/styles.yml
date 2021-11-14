@@ -1,38 +1,23 @@
-name: code-styles
-on: [pull_request]
+name: Continuous Integration & Continuous Deployment
+on: [push]
 
 jobs:
-  phpcs:
-    name: phpcs
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
-          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v1, cs2pr
-      - uses: actions/checkout@master
-      - run: composer install --prefer-dist
-      - run: ./vendor/bin/phpcs --report=checkstyle | cs2pr
-
-  phpmd:
-    name: phpmd
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
-          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v1
-      - uses: actions/checkout@master
-      - run: composer install --prefer-dist
-      - run: ./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php
-      - run: ./vendor/bin/phpmd ./behat text ./phpmd.xml --suffixes php
-
-#  phpcpd:
-#    name: phpcpd
+#  phpcs:
+#    name: phpcs
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '7.4'
+#          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+#          tools: composer:v1, cs2pr
+#      - uses: actions/checkout@master
+#      - run: composer install --prefer-dist
+#      - run: ./vendor/bin/phpcs --report=checkstyle | cs2pr
+#
+#  phpmd:
+#    name: phpmd
 #    runs-on: ubuntu-latest
 #    steps:
 #      - name: Setup PHP
@@ -43,99 +28,153 @@ jobs:
 #          tools: composer:v1
 #      - uses: actions/checkout@master
 #      - run: composer install --prefer-dist
-#      - run: ./vendor/bin/phpcpd ./web/modules/custom --names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml --ansi --exclude=tests
-#      - run: ./vendor/bin/phpcpd ./behat --names=*.php --ansi
-
-  php-cs-fixer:
-    name: php-cs-fixer
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
-          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v1, php-cs-fixer, cs2pr
-      - uses: actions/checkout@master
-      - run: composer install --prefer-dist
-      - run: ./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle | cs2pr
-
-  phpstan:
-    name: phpstan
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
-          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v1, phpstan, cs2pr
-      - uses: actions/checkout@master
-      - run: composer install --prefer-dist
-      - run: ./vendor/bin/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle | cs2pr
-
-  psalm:
-    name: psalm
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
-          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v1
-      - uses: actions/checkout@master
-      - run: composer install --prefer-dist
-      - run: ./vendor/bin/psalm --output-format=github
-
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
-      - name: Build the docker-compose stack
-        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test
-      - name: Run unit tests
-        run: docker exec test docker-as-wait --mysql -- docker-as-drupal phpunit --skip-default-stops --group=gos --exclude-group=gos_functional
+#      - run: ./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php
+#      - run: ./vendor/bin/phpmd ./behat text ./phpmd.xml --suffixes php
 #
-#   functional-tests:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
-#       - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
-#       - uses: satackey/action-docker-layer-caching@v0.0.11
-#         continue-on-error: true
-#       - name: Build the docker-compose stack
-#         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test browser elasticsearch
-#       - name: Bootstrap
-#         run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
-#       - name: Run Functional tests
-#         run: docker exec test docker-as-wait --mysql test:8888 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional --user=www-data
-#       - name: Upload Artifact
-#         uses: actions/upload-artifact@v2
-#         if: failure()
-#         with:
-#           path: |
-#             ./app/logs
-#             ./app/simpletest
+##  phpcpd:
+##    name: phpcpd
+##    runs-on: ubuntu-latest
+##    steps:
+##      - name: Setup PHP
+##        uses: shivammathur/setup-php@v2
+##        with:
+##          php-version: '7.4'
+##          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+##          tools: composer:v1
+##      - uses: actions/checkout@master
+##      - run: composer install --prefer-dist
+##      - run: ./vendor/bin/phpcpd ./web/modules/custom --names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml --ansi --exclude=tests
+##      - run: ./vendor/bin/phpcpd ./behat --names=*.php --ansi
+#
+#  php-cs-fixer:
+#    name: php-cs-fixer
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '7.4'
+#          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+#          tools: composer:v1, php-cs-fixer, cs2pr
+#      - uses: actions/checkout@master
+#      - run: composer install --prefer-dist
+#      - run: ./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle | cs2pr
+#
+#  phpstan:
+#    name: phpstan
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '7.4'
+#          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+#          tools: composer:v1, phpstan, cs2pr
+#      - uses: actions/checkout@master
+#      - run: composer install --prefer-dist
+#      - run: ./vendor/bin/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle | cs2pr
+#
+#  psalm:
+#    name: psalm
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '7.4'
+#          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
+#          tools: composer:v1
+#      - uses: actions/checkout@master
+#      - run: composer install --prefer-dist
+#      - run: ./vendor/bin/psalm --output-format=github
+#
+#  unit-tests:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test
+#      - uses: satackey/action-docker-layer-caching@v0.0.11
+#        continue-on-error: true
+#      - name: Build the docker-compose stack
+#        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test
+#      - name: Run unit tests
+#        run: docker exec test docker-as-wait --mysql -- docker-as-drupal phpunit --skip-default-stops --group=gos --exclude-group=gos_functional
+##
+##   functional-tests:
+##     runs-on: ubuntu-latest
+##     steps:
+##       - uses: actions/checkout@v2
+##       - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
+##       - uses: satackey/action-docker-layer-caching@v0.0.11
+##         continue-on-error: true
+##       - name: Build the docker-compose stack
+##         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test browser elasticsearch
+##       - name: Bootstrap
+##         run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
+##       - name: Run Functional tests
+##         run: docker exec test docker-as-wait --mysql test:8888 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional --user=www-data
+##       - name: Upload Artifact
+##         uses: actions/upload-artifact@v2
+##         if: failure()
+##         with:
+##           path: |
+##             ./app/logs
+##             ./app/simpletest
+#
+#  behat-tests:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
+#      - uses: satackey/action-docker-layer-caching@v0.0.11
+#        continue-on-error: true
+#      - name: Build the docker-compose stack
+#        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test browser elasticsearch
+#      - name: Bootstrap
+#        run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
+#      - name: Run Behat tests
+#        run: docker-compose exec -T test docker-as-wait --mysql test:8888 browser:4444 -- docker-as-drupal behat --with-elasticsearch --user=www-data
+#      - name: Upload Artifact
+#        uses: actions/upload-artifact@v2
+#        if: failure()
+#        with:
+#          path: ./app/logs
 
-  behat-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-        continue-on-error: true
-      - name: Build the docker-compose stack
-        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test browser elasticsearch
-      - name: Bootstrap
-        run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
-      - name: Run Behat tests
-        run: docker-compose exec -T test docker-as-wait --mysql test:8888 browser:4444 -- docker-as-drupal behat --with-elasticsearch --user=www-data
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          path: ./app/logs
+ deploy:
+   name: Deploy
+#    needs: [phpcs, phpmd, phpcpd, php-cs-fixer, phpstan, psalm, unit-tests, functional-tests, behat-tests]
+   if:
+     contains('
+     refs/heads/master
+     refs/heads/dev
+     refs/heads/feature/deploy-github-actions
+     ', github.ref)
+   runs-on: ubuntu-latest
+   env:
+     PRIVATE_SSH_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
+   steps:
+     - name: Set deployment environment variables based on Git branches
+       working-directory: ./
+       id: deploy_target
+       run: |
+         if [[ $GITHUB_REF == 'refs/heads/dev' ]]; then
+             echo "::set-output name=DEPLOY_ENV::staging"
+         fi
+         if [[ $GITHUB_REF == 'refs/heads/master' ]]; then
+             echo "::set-output name=DEPLOY_ENV::production"
+         fi
+         if [[ $GITHUB_REF == 'refs/heads/feature/deploy-github-actions' ]]; then
+             echo "::set-output name=DEPLOY_ENV::staging"
+         fi
+     - uses: actions/checkout@v2.3.4
+     - name: Install SSH key
+       uses: webfactory/ssh-agent@v0.5.3
+       with:
+         ssh-private-key: ${{ secrets.PRIVATE_SSH_KEY }}
+     - name: Install Ruby with Bundle to deploy via Capistrano
+       uses: ruby/setup-ruby@v1
+       with:
+         ruby-version: '2.6'
+         bundler-cache: true
+     - name: Execute the deployment
+       run: bundle exec cap ${{ steps.deploy_target.outputs.DEPLOY_ENV }} deploy
