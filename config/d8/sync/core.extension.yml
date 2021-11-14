@@ -56,7 +56,6 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
-  rabbit_hole: 0
   rdf: 0
   rest: 0
   restui: 0

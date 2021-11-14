@@ -1,6 +1,6 @@
 parameters:
   # Ignore tests
-  excludes_analyse:
+  excludePaths:
     - *Test.php
     - *TestBase.php
   # PHPStan Level 1
@@ -8,7 +8,6 @@ parameters:
   ignoreErrors:
     - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
     - '#Unsafe usage of new static#'
-
 includes:
   # Add the phpstan-drupal extension & rules.
   - vendor/mglaman/phpstan-drupal/extension.neon

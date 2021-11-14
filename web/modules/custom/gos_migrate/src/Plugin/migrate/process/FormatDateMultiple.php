@@ -127,6 +127,8 @@ class FormatDateMultiple extends ProcessPluginBase {
     if ($on_error === 'nullable') {
       return '';
     }
+
+    throw new MigrateException(sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
   }
 
 }
