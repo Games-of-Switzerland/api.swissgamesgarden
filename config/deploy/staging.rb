@@ -2,7 +2,7 @@
 set :deploy_to, '/srv/staging-api.gos.ch'
 
 # set a branch for this release
-set :branch, 'dev'
+set :branch, 'feature/deploy-github-actions'
 
 # Map docker and docker-compose commands
 # NOTE: If stage have different deploy_to
