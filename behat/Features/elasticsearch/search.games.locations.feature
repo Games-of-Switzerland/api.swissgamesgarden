@@ -13,7 +13,7 @@
     And the JSON nodes should be equal to:
       | hits.hits[0]._source.uuid | 08952aa6-e079-496a-8efa-cbb8465d9315 |
 
-  Scenario: Games Resource should respond with filtered games when multiple valid locations slugs are given.
+    Scenario: Games Resource should respond with filtered games when multiple valid locations slugs are given.
     Given I send a "GET" request to "http://api.gos.test/search/games?page=0&locations[]=zurich&locations[]=fribourg"
     Then the response status code should be 200
     And the response should be in JSON

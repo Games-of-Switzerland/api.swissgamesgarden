@@ -4,7 +4,7 @@ namespace Drupal\gos_site\EventSubscriber;
 
 use Drupal\Core\Url;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
@@ -29,12 +29,12 @@ class NodeEntityReroute extends BaseEntityReroute implements EventSubscriberInte
   /**
    * Redirect Game canonical to Next/React page.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @throws \Drupal\Core\Entity\EntityMalformedException
    */
-  public function isGame(GetResponseEvent $event): void {
+  public function isGame(RequestEvent $event): void {
     $request = $event->getRequest();
     $response = $this->redirectFromNode('game', $request);
 
@@ -46,10 +46,10 @@ class NodeEntityReroute extends BaseEntityReroute implements EventSubscriberInte
   /**
    * Redirect Page canonical to no-where.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    */
-  public function isPage(GetResponseEvent $event): void {
+  public function isPage(RequestEvent $event): void {
     /** @var \Drupal\Core\Entity\ContentEntityBase $node */
     $node = $this->routeMatch->getParameter('node');
     $route_name = $this->routeMatch->getRouteName();
@@ -65,12 +65,12 @@ class NodeEntityReroute extends BaseEntityReroute implements EventSubscriberInte
   /**
    * Redirect People canonical to Next/React page.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @throws \Drupal\Core\Entity\EntityMalformedException
    */
-  public function isPeople(GetResponseEvent $event): void {
+  public function isPeople(RequestEvent $event): void {
     $request = $event->getRequest();
     $response = $this->redirectFromNode('people', $request);
 
@@ -82,12 +82,12 @@ class NodeEntityReroute extends BaseEntityReroute implements EventSubscriberInte
   /**
    * Redirect Studio canonical to Next/React page.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @throws \Drupal\Core\Entity\EntityMalformedException
    */
-  public function isStudio(GetResponseEvent $event): void {
+  public function isStudio(RequestEvent $event): void {
     $request = $event->getRequest();
     $response = $this->redirectFromNode('studio', $request);
 

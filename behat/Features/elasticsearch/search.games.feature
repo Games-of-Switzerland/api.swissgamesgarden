@@ -32,7 +32,7 @@ Feature: Retrieve Games items from Elasticsearch
     And the JSON node "hits.hits" should have 4 elements
 
   Scenario: The Games Resource facets/aggregations should follow a strict given structure.
-    Given I request "http://api.gos.test/search/games?page=0"
+    When I request "http://api.gos.test/search/games?page=0" using HTTP GET
     Then the response body contains JSON:
       """
       {

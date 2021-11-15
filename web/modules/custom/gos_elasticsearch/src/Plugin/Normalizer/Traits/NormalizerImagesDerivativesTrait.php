@@ -54,7 +54,7 @@ trait NormalizerImagesDerivativesTrait {
       $media = [
         'width' => $file->get('width')->getValue(),
         'height' => $file->get('height')->getValue(),
-        'href' => $file->entity->url(),
+        'href' => $file->entity->createFileUrl(),
         'links' => [],
       ];
 
