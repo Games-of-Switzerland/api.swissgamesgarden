@@ -49,7 +49,7 @@ Feature: Retrieve Games items from Elasticsearch
                 "desc": "@variableType(string)",
                 "bundle": "@variableType(string)",
                 "path": "@variableType(string)",
-                "changed": "@variableType(integer)",
+                "changed": "@variableType(string)",
                 "players": {
                   "min": "@variableType(integer|null)",
                   "max": "@variableType(integer|null)"
@@ -57,8 +57,8 @@ Feature: Retrieve Games items from Elasticsearch
                 "id": "@variableType(string)",
                 "medias": [
                   {
-                    "width": "@variableType(integer)",
-                    "height": "@variableType(integer)",
+                    "width": "@variableType(string)",
+                    "height": "@variableType(string)",
                     "href": "@variableType(string)",
                     "links": {
                       "3x2_660x440": "@variableType(object)",

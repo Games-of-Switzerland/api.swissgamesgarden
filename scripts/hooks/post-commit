@@ -9,9 +9,9 @@ echo "\n🛂  \033[0;32mRunning PHP Copy/Paste Detector ...\033[0m"
 docker-compose exec app ./vendor/bin/phpcpd ./web/modules/custom --names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml --ansi --exclude=tests
 docker-compose exec app ./vendor/bin/phpcpd ./behat --names=*.php --ansi
 
-echo "\n🍫  \033[0;32mRunning PhpCodeFixer ...\033[0m"
-docker-compose exec app ./vendor/bin/phpcf --target 7.4 --file-extensions php,module,inc,install,test,profile,theme,info ./web/modules/custom
-docker-compose exec app ./vendor/bin/phpcf --target 7.4 --file-extensions php ./behat
+# echo "\n🍫  \033[0;32mRunning PhpCodeFixer ...\033[0m"
+# docker-compose exec app ./vendor/bin/phpcf --target 7.4 --file-extensions php,module,inc,install,test,profile,theme,info ./web/modules/custom
+# docker-compose exec app ./vendor/bin/phpcf --target 7.4 --file-extensions php ./behat
 
 echo "\n🕵🏻  \033[0;32mRunning PHP-CS-Fixer ...\033[0m"
 docker-compose exec app bash -c "./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle"
