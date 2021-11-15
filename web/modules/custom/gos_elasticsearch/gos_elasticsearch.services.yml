@@ -19,7 +19,6 @@ services:
 
   gos_elasticsearch.rest.validator_factory:
     class: Drupal\gos_elasticsearch\Plugin\rest\ValidatorFactory
-    arguments: ['@class_loader']
 
   gos_elasticsearch.index.node_game:
     class: Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex
