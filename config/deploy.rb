@@ -4,12 +4,18 @@ lock '3.5.0'
 set :application, 'gos'
 set :repo_url, 'git@github.com:Games-of-Switzerland/gos-server.git'
 
-# server 'ssh.domain.ltd', user: 'gos', roles: %w{app db web}
-
 set :app_path, "web"
 
-# Link file settings.php
-set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/settings.php")
+set :docker_app_name, -> {
+  [fetch(:application), fetch(:stage)].join('_')
+}
+set :docker_app_service, 'app'
+set :docker_containers, 'app db mailcatcher elasticsearch newrelic-apm-daemon'
+
+server 'gos.museebolo.ch', port: '44144', user: 'deploy', roles: %w{app db web}
+
+# Link environments files
+set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/docker.settings.php", "docker-compose.override.yml")
 
 # Link dirs files and private-files
 set :linked_dirs, fetch(:linked_dirs, []).push("#{fetch(:app_path)}/sites/default/files")
@@ -23,94 +29,114 @@ set :scm, :git
 # Default value for :format is :pretty
 # set :format, :pretty
 
-# Default value for :log_level is :debug
-set :log_level, :debug
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
 # Default value for keep_releases is 5
-set :keep_releases, 3
+# set :keep_releases, 3
 
-# Default value for keep_backups is 5
-set :keep_backups, 3
-
+# Set SSH options
 set :ssh_options, {
   forward_agent: true
 }
 
-# Used only if composer.json isn't on root
-# set :composer_working_dir, -> { fetch(:release_path).join(fetch(:app_path)) }
-
-# Remove default composer install task on deploy:updated
-# Rake::Task['deploy:updated'].prerequisites.delete('composer:install')
-# Rake::Task['deploy:updated'];
-
 namespace :deploy do
-  after "deploy:check:directories", "drupal:db:backup:check"
-  before :starting, "drupal:db:backup"
-  before :failed, "drupal:db:rollback"
-
-  after :updated, "drupal:maintenance:on"
-  # Must updatedb before import configurations, E.g. when composer install new
-  # version of Drupal and need updatedb scheme before importing new config.
-  # This is executed without raise on error, because sometimes we need to do drush config-import before updatedb.
-  after :updated, "drupal:updatedb:silence"
-  # Remove the cache after the database update
-  after :updated, "drupal:cache:clear"
-  after :updated, "drupal:config:import"
-  # Sometimes (due to Webform) we have to run the drush cim twice.
-  after :updated, "drupal:config:import"
-  after :updated, "drupal:updatedb"
-  after :updated, "drupal:cache:clear"
-
-  after :updated, "drupal:maintenance:off"
-
-  after :updated, "drupal:permissions:recommended"
-  after :updated, "drupal:permissions:writable_shared"
-
-  before :cleanup, "drupal:db:backup:cleanup"
-
-  before :cleanup, :fix_permission do
+  desc '(re)Start docker containers'
+  task :restart do
     on roles(:app) do
-      releases = capture(:ls, '-xtr', releases_path).split
-      if releases.count >= fetch(:keep_releases)
-        directories = (releases - releases.last(fetch(:keep_releases)))
-        if directories.any?
-          directories_str = directories.map do |release|
+      within current_path do
+        # Build then start service
+        execute :docker_compose, 'up', '-d', '--no-deps', '--build', fetch(:docker_containers)
+      end
+    end
+  end
+
+  desc 'Stop all docker containers'
+  task :stop do
+    on roles(:app) do
+      within current_path do
+        execute :docker_compose, 'down'
+      end
+    end
+  end
+
+  desc 'Cleanup docker storage (container, imaged, ...)'
+  task :cleanup do
+    on roles(:app) do
+      within current_path do
+        execute :docker, 'system', 'prune', '-f', raise_on_non_zero_exit: false
+      end
+    end
+  end
+
+  desc 'Run the Update scripts on container'
+  task :update do
+    on roles(:app) do
+      within current_path do
+        execute :docker_compose, 'exec', '-T', fetch(:docker_app_service), './scripts/drupal/update.sh'
+        execute :docker_compose, 'exec', '-T', fetch(:docker_app_service), './scripts/drupal/elasticsearch.sh'
+      end
+    end
+  end
+
+  namespace :permissions do
+    desc 'Set recommended Drupal permissions'
+    task :recommended do
+      on roles(:app) do
+        within release_path.join(fetch(:app_path)) do
+          execute :chmod, '-R', '555', '.'
+
+          # Remove execution for files, keep execution on folder.
+          execute 'find', './ -type f -executable -exec chmod -x {} \;'
+          execute 'find', './ -type d -exec chmod +x {} \;'
+        end
+      end
+    end
+
+    desc 'Set cleanup permissions to allow deletion of releases'
+    task :cleanup do
+      on roles(:app) do
+        releases = capture(:ls, '-x', releases_path).split
+        valid, invalid = releases.partition { |e| /^\d{14}$/ =~ e }
+
+        if valid.count >= fetch(:keep_releases)
+          directories = (valid - valid.last(fetch(:keep_releases))).map do |release|
             releases_path.join(release)
-          end.join(" ")
-          execute :chmod, '-R' ,'ug+w', directories_str
+          end
+          if test("[ -d #{current_path} ]")
+            current_release = capture(:readlink, current_path).to_s
+            if directories.include?(current_release)
+              directories.delete(current_release)
+            end
+          end
+          if directories.any?
+            directories.each_slice(100) do |directories_batch|
+              execute :chmod, '-R' ,'ug+w', *directories_batch
+            end
+          end
+        end
+      end
+    end
+
+    desc 'Initalize shared path permissions'
+    task :writable_shared do
+      on roles(:app) do
+        within shared_path do
+          # "web/sites/default/files" is a shared dir and should be writable.
+          execute :chmod, '-R', '775', "#{fetch(:app_path)}/sites/default/files"
+
+          # Remove execution for files, keep execution on folder.
+          execute 'find', "#{fetch(:app_path)}/sites/default/files", '-type f -executable -exec chmod -x {} \;'
+          execute 'find', "#{fetch(:app_path)}/sites/default/files", '-type d -exec chmod +sx {} \;'
         end
       end
     end
   end
 
-  task :bootstrap do
-    on roles(:app) do
-      is_symbolic_link = File.symlink?("#{current_path}")
-      if !is_symbolic_link
-        info "Recursively delete the current directory #{current_path} to prevent fail on symlink creation."
-        execute :rm, "-rf", "#{current_path}"
-      end
-    end
+  after :publishing, 'deploy:restart'
+  after 'deploy:restart', 'deploy:update'
 
-    Rake::Task['drupal:db:backup'].clear
-    Rake::Task['drupal:db:rollback'].clear
-    Rake::Task['drupal:maintenance:on'].enhance [Rake::Task['drupal:bootstrap']]
-    invoke 'deploy'
-  end
-end
+  # Ensure permissions are properly set.
+  after 'deploy:update', "deploy:permissions:recommended"
 
-after 'drupal:bootstrap', :fix_drupal_install do
-  on roles(:app) do
-    within release_path.join(fetch(:app_path)) do
-      execute :drush, %(ev '\Drupal::entityManager()->getStorage("shortcut_set")->load("default")->delete();')
-      execute :drush, %(ev '
-        $user = user_load_by_name("#{fetch(:drupal_admin_username)}");
-        $user->set("preferred_admin_langcode", "en");
-        $user->save();
-      ')
-    end
-  end
+  # Fix the release permissions (due to Drupal restrictive permissions)
+  # before deleting old release.
+  before :cleanup, "deploy:permissions:cleanup"
 end

@@ -1,0 +1,30 @@
+uuid: 737f148b-00ba-4f80-9c5a-9620ac1720c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_members
+    - node.type.game
+    - node.type.people
+  module:
+    - gos_site
+id: node.game.field_members
+field_name: field_members
+entity_type: node
+bundle: game
+label: Members
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      people: people
+    sort:
+      field: _none
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: team_member

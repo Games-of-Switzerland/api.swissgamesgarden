@@ -1,0 +1,32 @@
+version: '3.6'
+
+services:
+  # Drupal development server
+  app:
+    hostname: app
+    ports:
+      - "8080:80"
+#    build:
+#      args:
+#        - 'NEW_RELIC_AGENT_VERSION=9.13.0.270'
+#        - 'NEW_RELIC_LICENSE_KEY=LICENSE'
+#        - 'NEW_RELIC_APPNAME=Games of Switzerland - Local'
+#        - 'NEW_RELIC_DAEMON_ADDRESS=newrelic-apm-daemon:31339'
+#    depends_on:
+#      - newrelic-apm-daemon
+
+  # Drupal test server
+  test:
+    hostname: test
+    ports:
+      - "8888:8888"
+
+  # Database
+  db:
+    ports:
+      - "3306:3306"
+
+  # Elasticsearch
+  elasticsearch:
+    ports:
+      - "9200:9200"

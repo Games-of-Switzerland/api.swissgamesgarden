@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Games of Switzerland Site module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\taxonomy\TermInterface;
+
+require_once 'inc/sitemap.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function gos_site_form_user_login_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  $form['#submit'][] = '_gos_site_user_login_form_submit';
+}
+
+/**
+ * Custom submit handler for login form.
+ */
+function _gos_site_user_login_form_submit(array $form, FormStateInterface $form_state) {
+  $form_state->setRedirect('system.admin_content', [], []);
+}
+
+/**
+ * For Taxonomy Terms with Slug field, when empty Slug generate value from Name.
+ *
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function gos_site_taxonomy_term_insert(TermInterface $entity) {
+  // Don't generate for entity without Slug field or non-empty Slug field.
+  if (!$entity->hasField('field_slug') || !$entity->field_slug->isEmpty()) {
+    return;
+  }
+
+  // Replace w/ underscore anything that isn't A-Z, numbers, or dashes.
+  $slug = mb_strtolower(trim(preg_replace('/[^a-zA-Z0-9-]+/', '_', $entity->getName()), '_'));
+
+  $entity->get('field_slug')->setValue($slug);
+  $entity->save();
+}

@@ -1,0 +1,23 @@
+uuid: cb0824c9-c69d-447e-b08a-b3ffe6be344b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_path
+    - taxonomy.vocabulary.language
+  module:
+    - fieldable_path
+id: taxonomy_term.language.field_path
+field_name: field_path
+entity_type: taxonomy_term
+bundle: language
+label: Path
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: fieldable_path

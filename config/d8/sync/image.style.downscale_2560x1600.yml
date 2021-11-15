@@ -1,0 +1,15 @@
+uuid: 4fe80e51-feaa-421e-a018-5a4879b0d6fb
+langcode: en
+status: true
+dependencies: {  }
+name: downscale_2560x1600
+label: downscale_2560x1600
+effects:
+  2d1b07cf-71dd-45ac-bb76-024142cde6fe:
+    uuid: 2d1b07cf-71dd-45ac-bb76-024142cde6fe
+    id: image_scale
+    weight: null
+    data:
+      width: 2560
+      height: 1600
+      upscale: false

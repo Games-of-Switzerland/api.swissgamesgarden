@@ -1,0 +1,13 @@
+uuid: 9443b067-2fb1-4cde-96cd-cfefba75fcbe
+langcode: en
+status: true
+dependencies:
+  module:
+    - fieldable_path
+_core:
+  default_config_hash: GbkseJvF9UEpFykwOtYShmXI-WxeZRsqel_sXK8RSCA
+id: fieldable_path_copy_path_node
+label: 'Copy path to Fieldable Path field'
+type: node
+plugin: fieldable_path_copy_path
+configuration: {  }

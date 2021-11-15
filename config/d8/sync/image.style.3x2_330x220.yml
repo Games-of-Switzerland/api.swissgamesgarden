@@ -1,0 +1,17 @@
+uuid: 17dad9dd-9107-4f72-9861-664b3facc821
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 3x2_330x220
+label: 3x2_330x220
+effects:
+  4f046d0c-e773-40f4-8be0-a77f8d7e504d:
+    uuid: 4f046d0c-e773-40f4-8be0-a77f8d7e504d
+    id: focal_point_scale_and_crop
+    weight: null
+    data:
+      width: 330
+      height: 220
+      crop_type: focal_point

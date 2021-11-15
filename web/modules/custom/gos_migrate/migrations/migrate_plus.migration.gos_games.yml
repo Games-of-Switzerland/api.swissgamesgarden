@@ -1,0 +1,487 @@
+id: gos_games
+label: Games of Switzerland - Games
+description: GOS - Migration of Game from CSV to Drupal 8
+migration_group: default
+
+source:
+  plugin: 'csv'
+  # Full path to the file.
+  path: '/source/games.csv'
+  # Column delimiter. Comma (,) by default.
+  delimiter: ','
+  # Field enclosure. Double quotation marks (") by default.
+  enclosure: '"'
+  # The row to be used as the CSV header (indexed from 0),
+  # or null if there is no header row.
+  header_offset: 0
+  # The column(s) to use as a key. Each column specified will
+  # create an index in the migration table and too many columns
+  # may throw an index size error.
+  ids:
+    - id
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The label value is a user-friendly string for display by the
+  # migration UI.
+  fields:
+    0:
+      name: game_title
+    1:
+      name: id
+    2:
+      name: platforms
+    3:
+      name: website
+    4:
+      name: studios
+    5:
+      name: people
+    6:
+      name: cantons
+    7:
+      name: locations
+    8:
+      name: publishers
+    9:
+      name: sponsors
+    10:
+      name: early_access_date
+    11:
+      name: release_date
+    12:
+      name: languages
+    13:
+      name: media
+    14:
+      name: genres
+    15:
+      name: awards
+    16:
+      name: stores
+    17:
+      name: presskit
+    18:
+      name: articles
+    19:
+      name: twitter
+    20:
+      name: devlog
+    21:
+      name: source
+    22:
+      name: online_link
+    23:
+      name: page_link
+    24:
+      name: download_link
+    25:
+      name: video_link
+    26:
+      name: logo_link
+    27:
+      name: screenshot_link
+    28:
+      name: boxart_link
+    29:
+      name: description
+    30:
+      name: credits
+    31:
+      name: remarks
+    32:
+      name: state
+    33:
+      name: dataquality
+process:
+  title:
+    -
+      plugin: skip_on_empty
+      method: row
+      source: game_title
+
+  body/value: description
+  body/format:
+    plugin: default_value
+    default_value: "basic_html"
+
+  processed_release_date:
+    -
+      plugin: format_date_multiple
+      source: release_date
+      from_formats:
+        - 'Y'
+        - 'Y-m'
+        - 'Y-n'
+        - 'Y-m-d'
+      to_formats:
+        - 'Y-01-01'
+        - 'Y-m-01'
+        - 'Y-m-01'
+        - 'Y-m-d'
+      on_error: nullable
+
+  processed_release_state:
+    -
+      plugin: static_map
+      source: state
+      map:
+        "Released": "released"
+        "development": "development"
+        "unreleased": "development"
+        "in development": "development"
+        "in Development": "development"
+        "In development": "development"
+        "Canceled": "canceled"
+        "Cancelled": "canceled"
+        "Pre-release": "pre_release"
+        "Demo": "pre_release"
+      default_value: NULL
+
+  field_releases:
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+      source: platforms
+    -
+      plugin: deepen
+    -
+      plugin: array_build_add
+      key: 'date'
+      source_value: '@processed_release_date'
+    -
+      plugin: array_build_add
+      key: 'state'
+      source_value: '@processed_release_state'
+    -
+      plugin: sub_process
+      process:
+        date_value: 'date'
+        state: 'state'
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_platforms
+
+  field_members:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: people
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 30
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_people
+
+  field_studios:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: studios
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_studios
+
+  field_genres:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: genres
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_genres
+
+  field_locations:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: locations
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_locations
+
+  field_publishers:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: publishers
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_publishers
+
+  field_sponsors:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: sponsors
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_sponsors
+
+  field_languages:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: languages
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 50
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_languages
+
+  field_website/uri:
+    -
+      plugin: get
+      source:
+        - online_link
+        - page_link
+    -
+      # Filter out empty sources
+      plugin: callback
+      callable: array_filter
+    -
+      # Use the first none empty source
+      plugin: callback
+      callable: 'current'
+
+  field_sources/uri: source
+
+  field_article_links:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: articles
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        uri:
+          -
+            plugin: trim
+            source: 'value'
+
+  field_awards:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: awards
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 50
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        value:
+          -
+            plugin: trim
+            source: 'value'
+
+  field_stores:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: stores
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        store:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: gos_stores_mapper
+            get: 'store'
+        link:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: gos_stores_mapper
+            get: 'link'
+
+  field_social_networks:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: twitter
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 2
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        social_network:
+          -
+            plugin: default_value
+            default_value: 'twitter'
+        link:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: gos_twitter_handle
+
+  field_images/target_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: screenshot_link
+    -
+      plugin: migration_lookup
+      migration: gos_covers
+
+  field_video/target_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: video_link
+    -
+      plugin: migration_lookup
+      migration: gos_trailers
+
+  field_contextual_links:
+    -
+      plugin: gos_contextual_links_mapper
+      sources:
+          presskit: presskit
+          online_play: online_link
+          download_page: page_link
+          direct_download: download_link
+          devlog: devlog
+          box_art: boxart_link
+
+  field_credits/value: credits
+  field_credits/format:
+    plugin: default_value
+    default_value: "basic_html"
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+destination:
+  plugin: entity:node
+  default_bundle: game
+
+migration_dependencies:
+  required:
+    - default:gos_people
+    - default:gos_studios
+    - default:gos_platforms
+    - default:gos_genres
+    - default:gos_locations
+    - default:gos_languages
+    - default:gos_publishers
+    - default:gos_sponsors
+    - default:gos_trailers
+    - default:gos_covers

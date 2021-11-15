@@ -1,0 +1,15 @@
+uuid: f5c5c4cb-ecc7-404e-a677-cc5ab9b3906c
+langcode: en
+status: true
+dependencies: {  }
+name: downscale_1350x1000
+label: downscale_1350x1000
+effects:
+  c1199f18-7484-48d7-ba22-5212ac29d601:
+    uuid: c1199f18-7484-48d7-ba22-5212ac29d601
+    id: image_scale
+    weight: null
+    data:
+      width: 1350
+      height: 1000
+      upscale: false

@@ -1,0 +1,235 @@
+uuid: 026daf9a-2ef6-4b7f-aabf-9d220257c2aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.game.body
+    - field.field.node.game.field_article_links
+    - field.field.node.game.field_awards
+    - field.field.node.game.field_completeness
+    - field.field.node.game.field_contextual_links
+    - field.field.node.game.field_credits
+    - field.field.node.game.field_genres
+    - field.field.node.game.field_images
+    - field.field.node.game.field_languages
+    - field.field.node.game.field_locations
+    - field.field.node.game.field_members
+    - field.field.node.game.field_metatags
+    - field.field.node.game.field_path
+    - field.field.node.game.field_player
+    - field.field.node.game.field_publishers
+    - field.field.node.game.field_release_platforms
+    - field.field.node.game.field_release_years
+    - field.field.node.game.field_releases
+    - field.field.node.game.field_social_networks
+    - field.field.node.game.field_sources
+    - field.field.node.game.field_sponsors
+    - field.field.node.game.field_stores
+    - field.field.node.game.field_studios
+    - field.field.node.game.field_video
+    - field.field.node.game.field_website
+    - node.type.game
+  module:
+    - fieldable_path
+    - gos_site
+    - image
+    - link
+    - metatag
+    - text
+    - user
+id: node.game.default
+targetEntityType: node
+bundle: game
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_article_links:
+    weight: 11
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_awards:
+    weight: 14
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_contextual_links:
+    weight: 19
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: contextual_link_default
+    region: content
+  field_credits:
+    weight: 20
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_genres:
+    weight: 3
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_images:
+    weight: 7
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_languages:
+    weight: 10
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_locations:
+    weight: 16
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_members:
+    weight: 5
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: team_member_default
+    region: content
+  field_metatags:
+    weight: 21
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_path:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fieldable_path_formatter
+    region: content
+  field_player:
+    weight: 22
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: player_default
+    region: content
+  field_publishers:
+    weight: 8
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_releases:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: release_default
+    region: content
+  field_social_networks:
+    weight: 17
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: social_default
+    region: content
+  field_sources:
+    weight: 13
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_sponsors:
+    weight: 9
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_stores:
+    weight: 15
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: store_default
+    region: content
+  field_studios:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_video:
+    type: entity_reference_entity_view
+    weight: 18
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_website:
+    weight: 12
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_completeness: true
+  field_release_platforms: true
+  field_release_years: true

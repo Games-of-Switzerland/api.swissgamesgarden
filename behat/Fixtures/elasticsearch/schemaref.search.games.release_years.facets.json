@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "aggregations": {
+      "type": "object",
+      "properties": {
+        "aggs_all": {
+          "type": "object",
+          "properties": {
+            "doc_count": {
+              "type": "integer"
+            },
+            "all_filtered_release_years_histogram": {
+              "type": "object",
+              "properties": {
+                "doc_count": {
+                  "type": "integer"
+                },
+                "all_nested_release_years": {
+                  "type": "object",
+                  "properties": {
+                    "doc_count": {
+                      "type": "integer"
+                    },
+                    "releases_over_time": {
+                      "type": "object",
+                      "properties": {
+                        "buckets": {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "key_as_string": {
+                                  "type": "string"
+                                },
+                                "key": {
+                                  "type": "integer"
+                                },
+                                "doc_count": {
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "key_as_string",
+                                "key",
+                                "doc_count"
+                              ]
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "key_as_string": {
+                                  "type": "string"
+                                },
+                                "key": {
+                                  "type": "integer"
+                                },
+                                "doc_count": {
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "key_as_string",
+                                "key",
+                                "doc_count"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "buckets"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "doc_count",
+                    "releases_over_time"
+                  ]
+                }
+              },
+              "required": [
+                "doc_count",
+                "all_nested_release_years"
+              ]
+            }
+          },
+          "required": [
+            "doc_count",
+            "all_filtered_release_years_histogram"
+          ]
+        }
+      },
+      "required": [
+        "aggs_all"
+      ]
+    }
+  },
+  "required": [
+    "aggregations"
+  ]
+}

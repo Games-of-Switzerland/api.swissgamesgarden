@@ -1,0 +1,21 @@
+uuid: 7c267c3b-9543-4496-89b5-e0372cf5c8b7
+langcode: en
+status: true
+dependencies:
+  module:
+    - gos_site
+    - node
+id: node.field_members
+field_name: field_members
+entity_type: node
+type: team_member
+settings:
+  target_type: node
+  role: ''
+module: gos_site
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

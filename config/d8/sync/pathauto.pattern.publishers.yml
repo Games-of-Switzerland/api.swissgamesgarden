@@ -1,0 +1,23 @@
+uuid: 5fa28dce-3706-4266-b4fd-ad0db02c7ed5
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: publishers
+label: Publishers
+type: 'canonical_entities:taxonomy_term'
+pattern: '/publishers/[term:name]'
+selection_criteria:
+  955f12c8-58e8-4f37-8300-b07e7e0a192b:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      publisher: publisher
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 955f12c8-58e8-4f37-8300-b07e7e0a192b
+selection_logic: and
+weight: -5
+relationships: {  }

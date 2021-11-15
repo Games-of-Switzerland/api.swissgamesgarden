@@ -1,0 +1,2 @@
+options:
+  uri: '${env.BASE_URL}'

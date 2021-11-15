@@ -1,0 +1,21 @@
+uuid: 83cbd12d-ff6b-4426-a67c-e5295878a310
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_networks
+    - node.type.game
+  module:
+    - gos_site
+id: node.game.field_social_networks
+field_name: field_social_networks
+entity_type: node
+bundle: game
+label: 'Social Networks'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: social

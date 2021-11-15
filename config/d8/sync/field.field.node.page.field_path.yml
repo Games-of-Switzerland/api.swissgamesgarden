@@ -1,0 +1,23 @@
+uuid: c4c08821-49a5-446b-a30d-fb830be72e70
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_path
+    - node.type.page
+  module:
+    - fieldable_path
+id: node.page.field_path
+field_name: field_path
+entity_type: node
+bundle: page
+label: Path
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: fieldable_path

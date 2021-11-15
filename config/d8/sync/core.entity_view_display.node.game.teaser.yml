@@ -1,0 +1,78 @@
+uuid: 34f0b9d9-e407-4dd0-916d-7de4c1d3870f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.game.body
+    - field.field.node.game.field_article_links
+    - field.field.node.game.field_awards
+    - field.field.node.game.field_completeness
+    - field.field.node.game.field_contextual_links
+    - field.field.node.game.field_credits
+    - field.field.node.game.field_genres
+    - field.field.node.game.field_images
+    - field.field.node.game.field_languages
+    - field.field.node.game.field_locations
+    - field.field.node.game.field_members
+    - field.field.node.game.field_metatags
+    - field.field.node.game.field_path
+    - field.field.node.game.field_player
+    - field.field.node.game.field_publishers
+    - field.field.node.game.field_release_platforms
+    - field.field.node.game.field_release_years
+    - field.field.node.game.field_releases
+    - field.field.node.game.field_social_networks
+    - field.field.node.game.field_sources
+    - field.field.node.game.field_sponsors
+    - field.field.node.game.field_stores
+    - field.field.node.game.field_studios
+    - field.field.node.game.field_video
+    - field.field.node.game.field_website
+    - node.type.game
+  module:
+    - text
+    - user
+id: node.game.teaser
+targetEntityType: node
+bundle: game
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_article_links: true
+  field_awards: true
+  field_completeness: true
+  field_contextual_links: true
+  field_credits: true
+  field_genres: true
+  field_images: true
+  field_languages: true
+  field_locations: true
+  field_members: true
+  field_metatags: true
+  field_path: true
+  field_player: true
+  field_publishers: true
+  field_release_platforms: true
+  field_release_years: true
+  field_releases: true
+  field_social_networks: true
+  field_sources: true
+  field_sponsors: true
+  field_stores: true
+  field_studios: true
+  field_video: true
+  field_website: true

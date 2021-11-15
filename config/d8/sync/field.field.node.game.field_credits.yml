@@ -1,0 +1,21 @@
+uuid: 388b3eda-ba18-4750-a3c3-ad080cfa6714
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_credits
+    - node.type.game
+  module:
+    - text
+id: node.game.field_credits
+field_name: field_credits
+entity_type: node
+bundle: game
+label: Credits
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

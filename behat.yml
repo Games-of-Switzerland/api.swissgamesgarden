@@ -1,0 +1,59 @@
+default:
+  autoload:
+    '': %paths.base%/behat
+  suites:
+    default:
+      paths: [%paths.base%/behat/Features]
+      contexts:
+        - Drupal\Behat\Context\Drupal\DatabaseContext:
+            dump_path: %paths.base%/dump/behat
+        - Drupal\Behat\Context\Drupal\WatchdogContext
+        - Drupal\Behat\Context\Drupal\RestContext
+        - Drupal\Behat\Context\Drupal\RedirectContext
+        - Drupal\Behat\Context\Drupal\MailContext:
+            base_url: http://api.gos.test:8888
+        - Drupal\Behat\Context\Drupal\DebugContext:
+            log_path: %paths.base%/log/behat
+        - Drupal\Behat\Context\Drupal\SitemapContext:
+
+        - Behatch\Context\JsonContext
+        - Behatch\Context\RestContext
+        - Behatch\Context\XmlContext
+
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+
+        - MOrtola\BehatSEOContexts\Context\SitemapContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2:
+        wd_host: http://browser:4444/wd/hub
+      base_url: http://api.gos.test:8888
+      files_path: "%paths.base%/behat/Fixtures/"
+    Alex\MailCatcher\Behat\MailCatcherExtension\Extension:
+      url: http://mailcatcher:1080
+    Imbo\BehatApiExtension:
+      apiClient:
+        base_uri: http://api.gos.test:8888
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drupal:
+        drupal_root: 'web'
+      region_map:
+        header: "#header"
+        messages: "#messages"
+        breadcrumb: "#breadcrumb"
+        content_above: "#content_above"
+        content: "#content"
+        content_below: "#content_below"
+        footer: "#footer"
+    Alex\MailCatcher\Behat\MailCatcherExtension\Extension:
+      url: http://127.0.0.1:1080
+      purge_before_scenario: true
+    Behatch\Extension: ~
+  gherkin:
+    cache: ~

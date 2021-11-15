@@ -1,0 +1,9 @@
+id: elasticsearch_autocomplete_resource
+plugin_id: elasticsearch_autocomplete_resource
+granularity: resource
+configuration:
+  GET:
+    supported_formats:
+      - json
+    supported_auth:
+      - cookie

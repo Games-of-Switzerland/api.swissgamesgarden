@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
+    - field.field.node.page.field_path
     - node.type.page
   module:
+    - fieldable_path
     - text
     - user
 _core:
@@ -22,6 +24,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_path:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fieldable_path_formatter
+    region: content
   links:
     weight: 101
     region: content

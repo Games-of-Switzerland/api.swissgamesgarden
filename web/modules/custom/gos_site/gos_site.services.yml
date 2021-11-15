@@ -1,0 +1,23 @@
+services:
+  gos_site.node_reroute:
+    class: Drupal\gos_site\EventSubscriber\NodeEntityReroute
+    arguments:
+      - '@current_route_match'
+      - '@language_manager'
+      - '@gos_site.url_builder.nextjs'
+    tags:
+      - {name: event_subscriber}
+
+  gos_site.taxonomy_reroute:
+    class: Drupal\gos_site\EventSubscriber\TaxonomyEntityReroute
+    arguments:
+      - '@current_route_match'
+      - '@language_manager'
+      - '@gos_site.url_builder.nextjs'
+    tags:
+      - {name: event_subscriber}
+
+  gos_site.url_builder.nextjs:
+    class: Drupal\gos_site\UrlBuilderNextJs
+    arguments:
+      - '@config.factory'

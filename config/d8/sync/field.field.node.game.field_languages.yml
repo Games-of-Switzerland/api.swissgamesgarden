@@ -1,0 +1,29 @@
+uuid: 90578001-ead4-4c83-9402-a99bfb834cfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_languages
+    - node.type.game
+    - taxonomy.vocabulary.language
+id: node.game.field_languages
+field_name: field_languages
+entity_type: node
+bundle: game
+label: Language(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      language: language
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

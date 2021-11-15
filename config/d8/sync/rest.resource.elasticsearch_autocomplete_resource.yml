@@ -1,0 +1,18 @@
+uuid: 9c1bbcad-5a6d-4ce4-a55e-d02afb9b9522
+langcode: en
+status: true
+dependencies:
+  module:
+    - gos_elasticsearch
+    - serialization
+    - user
+id: elasticsearch_autocomplete_resource
+plugin_id: elasticsearch_autocomplete_resource
+granularity: resource
+configuration:
+  methods:
+    - GET
+  formats:
+    - json
+  authentication:
+    - cookie

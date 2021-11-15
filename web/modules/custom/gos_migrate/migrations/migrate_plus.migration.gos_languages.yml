@@ -1,0 +1,71 @@
+id: gos_languages
+label: Games of Switzerland - Languages
+description: GOS - Migration of Languages from CSV to Drupal 8
+migration_group: default
+
+source:
+  plugin: 'csv_languages'
+  # Full path to the file.
+  path: '/source/games.csv'
+  # Column delimiter. Comma (,) by default.
+  delimiter: ','
+  # Field enclosure. Double quotation marks (") by default.
+  enclosure: '"'
+  # The row to be used as the CSV header (indexed from 0),
+  # or null if there is no header row.
+  header_offset: 0
+  # The column(s) to use as a key. Each column specified will
+  # create an index in the migration table and too many columns
+  # may throw an index size error.
+  ids:
+    - language
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The label value is a user-friendly string for display by the
+  # migration UI.
+  fields:
+    0:
+      name: game_title
+    1:
+      name: id
+    2:
+      name: platforms
+    3:
+      name: website
+    4:
+      name: studios
+    5:
+      name: people
+    6:
+      name: cantons
+    7:
+      name: locations
+    8:
+      name: publishers
+    9:
+      name: sponsors
+    10:
+      name: early_access_date
+    11:
+      name: release_date
+    12:
+      name: languages
+
+process:
+  name:
+    -
+      plugin: skip_on_empty
+      method: row
+      source: language
+    -
+      plugin: trim
+
+  uid:
+    plugin: default_value
+    default_value: 1
+
+destination:
+  plugin: entity:taxonomy_term
+  default_bundle: language

@@ -1,0 +1,56 @@
+uuid: a4d84489-718b-4e2a-89d3-c44285f5a40a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.studio.body
+    - field.field.node.studio.field_members
+    - field.field.node.studio.field_metatags
+    - field.field.node.studio.field_path
+    - node.type.studio
+  module:
+    - fieldable_path
+    - gos_site
+    - metatag
+    - text
+    - user
+id: node.studio.default
+targetEntityType: node
+bundle: studio
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_members:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: team_member_default
+    region: content
+  field_metatags:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: metatag_empty_formatter
+    region: content
+  field_path:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fieldable_path_formatter
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

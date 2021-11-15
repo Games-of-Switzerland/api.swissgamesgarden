@@ -1,0 +1,17 @@
+uuid: e5328e36-cf40-4c5e-a4f0-50dbcd9fc71f
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 3x2_660x440
+label: 3x2_660x440
+effects:
+  8795e8f0-38fa-445a-9067-5cd422fd0b85:
+    uuid: 8795e8f0-38fa-445a-9067-5cd422fd0b85
+    id: focal_point_scale_and_crop
+    weight: null
+    data:
+      width: 660
+      height: 440
+      crop_type: focal_point

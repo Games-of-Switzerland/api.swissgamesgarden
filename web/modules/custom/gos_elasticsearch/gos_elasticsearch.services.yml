@@ -1,0 +1,33 @@
+services:
+  gos_elasticsearch.normalizer.game_normalizer:
+    class: Drupal\gos_elasticsearch\Plugin\Normalizer\GameNormalizer
+    tags:
+      - { name: normalizer, priority: 50 }
+    arguments: ['@entity_type.manager']
+
+  gos_elasticsearch.normalizer.studio_normalizer:
+    class: Drupal\gos_elasticsearch\Plugin\Normalizer\StudioNormalizer
+    tags:
+      - { name: normalizer, priority: 50 }
+    arguments: ['@entity_type.manager']
+
+  gos_elasticsearch.normalizer.people_normalizer:
+    class: Drupal\gos_elasticsearch\Plugin\Normalizer\PeopleNormalizer
+    tags:
+      - { name: normalizer, priority: 50 }
+    arguments: ['@entity_type.manager']
+
+  gos_elasticsearch.rest.validator_factory:
+    class: Drupal\gos_elasticsearch\Plugin\rest\ValidatorFactory
+
+  gos_elasticsearch.index.node_game:
+    class: Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory']
+
+  gos_elasticsearch.index.node_people:
+    class: Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\PeopleNodeIndex
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory']
+
+  gos_elasticsearch.index.node_people:
+    class: Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\StudioNodeIndex
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory']

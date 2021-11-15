@@ -1,0 +1,6 @@
+services:
+  gos_game.completeness.calculator:
+    class: Drupal\gos_game\CompletenessCalculator
+
+  gos_game.compiler.releases:
+    class: Drupal\gos_game\ReleasesCompiler

@@ -1,0 +1,22 @@
+uuid: 4bba6dbf-9086-49bb-8548-144b41ae8b22
+langcode: en
+status: true
+dependencies:
+  module:
+    - gos_site
+    - node
+    - taxonomy
+id: node.field_releases
+field_name: field_releases
+entity_type: node
+type: release
+settings:
+  target_type: taxonomy_term
+  date: ''
+module: gos_site
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

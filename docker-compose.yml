@@ -1,0 +1,137 @@
+version: '3.6'
+
+services:
+
+  # Drupal app server
+  app:
+    build:
+      context: .
+    command: ./docker/startup.sh
+    depends_on:
+      - db
+      - mailcatcher
+      - elasticsearch
+    environment:
+      APP_ENV: development
+      BASE_URL: http://localhost:80
+      DATABASE_URL: mysql://drupal:drupal@db/drupal_development
+      DEFAULT_CONTENT: gos_default_content
+      REQUIRED_DIRECTORIES: >-
+        /var/www/web/sites/default/files/private
+    restart: "no"
+    volumes:
+      - backups:/var/backups
+      # Drupal
+      - ./composer.json:/var/www/composer.json:cached
+      - ./composer.lock:/var/www/composer.lock:cached
+      - ./config:/var/www/config:cached
+      - ./web/modules/custom:/var/www/web/modules/custom:cached
+      - ./config/d8/docker.services.yml:/var/www/web/sites/default/services.yml:cached
+      # Files
+      - ./web/sites/default/files:/var/www/web/sites/default/files:delegated
+      # Drush
+      - ./config/d8/docker.drush.yml:/var/www/drush/drush.yml:cached
+
+  # Drupal test server
+  test:
+    build: .
+    command: ./docker/startup.sh
+    depends_on:
+      - browser
+      - db
+      - mailcatcher
+      - elasticsearch
+    environment:
+      APP_ENV: test
+      BASE_URL: http://localhost:8888
+      DATABASE_URL: mysql://drupal:drupal@db/drupal_test
+      DEFAULT_CONTENT: gos_default_content
+      REQUIRED_DIRECTORIES: >-
+        /var/www/web/sites/default/files/private
+        /var/www/log/behat
+        /var/www/dump/behat
+      BEHAT_PROFILE: default
+      TEST_DISABLE_MODULES: big_pipe
+    restart: "no"
+    volumes:
+      - backups:/var/backups
+      # Drupal
+      - ./composer.json:/var/www/composer.json:cached
+      - ./composer.lock:/var/www/composer.lock:cached
+      - ./config:/var/www/config:cached
+      - ./web/modules/custom:/var/www/web/modules/custom:cached
+      - ./config/d8/docker.services.yml:/var/www/web/sites/default/services.yml:cached
+      # Behat
+      - ./behat:/var/www/behat:cached
+      - ./behat.yml:/var/www/behat.yml:cached
+      # Drush
+      - ./config/d8/docker.drush.yml:/var/www/drush/drush.yml:cached
+    networks:
+      default:
+        aliases:
+          # Hosts used in default content for testing
+          - api.gos.test
+
+  newrelic-apm-daemon:
+    image: newrelic/php-daemon:9.13.0
+
+  # Test browser
+  browser:
+    image: selenium/standalone-chrome
+    volumes:
+      - /dev/shm:/dev/shm
+
+  # Database
+  db:
+    image: mariadb:10.4
+    environment:
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_DATABASE: drupal_%
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    volumes:
+      - database:/var/lib/mysql
+
+  # Mailcatcher
+  mailcatcher:
+    image: schickling/mailcatcher
+    restart: always
+
+  # Elasticsearch
+  elasticsearch:
+    build:
+      dockerfile: docker/Dockerfile.elasticsearch
+      context: .
+    restart: always
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=http://localhost:1358,http://127.0.0.1:1358
+      - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization
+      - http.cors.allow-credentials=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+      - ./config/elasticsearch/analysis:/usr/share/elasticsearch/config/analysis
+
+  # Elasticsearch browser
+  dejavu:
+    image: appbaseio/dejavu:latest
+    depends_on:
+      - elasticsearch
+    ports:
+      - '1358:1358'
+    links:
+      - elasticsearch
+
+volumes:
+  database:
+  backups:
+  esdata:
+    driver: local

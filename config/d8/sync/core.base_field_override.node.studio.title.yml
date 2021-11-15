@@ -1,0 +1,18 @@
+uuid: b9c026ac-fa47-474c-b38c-d27e06de00b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.studio
+id: node.studio.title
+field_name: title
+entity_type: node
+bundle: studio
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

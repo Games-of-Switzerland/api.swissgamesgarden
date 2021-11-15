@@ -1,0 +1,5 @@
+name: Games of Switzerland API
+type: module
+description: The main module for Games of Switzerland API
+package: Games of Switzerland
+core_version_requirement: ^8.8 || ^9

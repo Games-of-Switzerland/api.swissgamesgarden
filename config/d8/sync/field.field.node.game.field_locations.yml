@@ -1,0 +1,29 @@
+uuid: d091fbe7-5632-4906-8a17-5b6b689370ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_locations
+    - node.type.game
+    - taxonomy.vocabulary.location
+id: node.game.field_locations
+field_name: field_locations
+entity_type: node
+bundle: game
+label: Location(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

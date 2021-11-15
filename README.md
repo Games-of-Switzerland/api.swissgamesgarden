@@ -1,6 +1,13 @@
-# Games of Switzerland 🎮👾
+#  🎮👾 Swiss Games Garden
 
-Drupal 8 powered.
+Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/), 🕸 [Json:API](https://jsonapi.org/) and 🔍 [Elasticsearch](https://www.elastic.co/) to expose Search Engine capabilities.
+It uses 🐳 [Docker](http://docker.com/) for running, 🥃 [Gin](https://github.com/EasyCorp/EasyAdminBundle) as Admin UI, 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.
+We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano).
+
+
+| Build Status | Swagger | Issues | Activity |
+|:-------------------:|:----------------:|:----------------:|:----------------:|
+| [![Continuous Integration & Continuous Deployment](https://github.com/Games-of-Switzerland/gos-server/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Games-of-Switzerland/gos-server/actions/workflows/ci-cd.yml) | [![Swagger](https://img.shields.io/badge/documentation-swagger-blue)](https://api.swissgames.garden/swagger) | ![GitHub issues](https://img.shields.io/github/issues/Games-of-Switzerland/gos-server?style=flat-square) | ![GitHub last commit](https://img.shields.io/github/last-commit/Games-of-Switzerland/gos-server?style=flat-square) |
 
 ## 🔧 Prerequisites
 
@@ -31,7 +38,7 @@ services:
   dev:
     hostname: dev
     ports:
-      - "8081:80"
+      - "8082:80"
 ```
 
 Another example when you already have a local MySQL server using port 3306:
@@ -47,14 +54,64 @@ db:
 
     docker-compose build --pull
     docker-compose up --build -d
-    docker-compose exec dev docker-as-drupal bootstrap
+    docker-compose exec app docker-as-drupal bootstrap --with-default-content --with-elasticsearch
     (get a coffee, this will take some time...)
+    docker-compose exec app drush eshs
+    docker-compose exec app drush eshr
+    docker-compose exec app drush queue-run elasticsearch_helper_indexing
+
+### Project setup
+
+Once the project up and running via Docker, you may need to setup some configurations in the `web/sites/default/setting.php`.
+
+#### Project base URL
+
+As we are working in a decoupled architecture, we need to set the Website URL.
+
+```php
+/**
+ * Base URL of the Next App.
+ *
+ * This value should not contain a leading slash (/).
+ *
+ * @var string
+ */
+$config['frontend']['base_url'] = 'https://gos.museebolo.ch';
+```
+
+#### Sitemap
+
+The base URL of sitemap links can be overridden using the following settings.
+
+```php
+/**
+ * The base URL of sitemap links can be overridden here.
+ *
+ * @var string
+ */
+$config['simple_sitemap.settings']['base_url'] = 'https://api-gos.museebolo.ch';
+```
+
+#### Elasticsearch prefix
+
+We use only 1 Elasticsearch server for both Production & Staging environments. Doing so, we need to separate our indexes
+by name. We decide to use prefixes to achieve this goal.
+
+```php
+/**
+ * Setting used to add a prefix for ES index based on the environment.
+ */
+$settings['gos_elasticsearch.index_prefix'] = 'local';
+```
 
 ### When it's not the first time
 
     docker-compose build --pull
     docker-compose up --build -d
-    docker-compose exec dev drush cr (or any other drush command you need)
+    docker-compose exec app drush cr (or any other drush command you need)
+    docker-compose exec app docker-as-drupal db-reset --with-default-content
+    docker-compose exec app drush eshr
+    docker-compose exec app drush queue-run elasticsearch_helper_indexing
 
 ### (optional) Get the productions images
 
@@ -62,38 +119,34 @@ db:
 
 ### Docker help
 
-    docker-compose exec dev docker-as-drupal --help
+    docker-compose exec app docker-as-drupal --help
 
 ## 🚔 Check Drupal coding standards & Drupal best practices
 
-You need to run composer before using PHPCS. Then register the Drupal and DrupalPractice Standard with PHPCS: `./vendor/bin/phpcs --config-set installed_paths "`pwd`/vendor/drupal/coder/coder_sniffer"`
+You need to run composer before using PHPCS. The Drupal and DrupalPractice Standard will automatically be applied following the rules on phpcs.xml.dist` file
 
 ### Command Line Usage
 
-Check Drupal coding standards:
+Check Drupal coding standards & Drupal best practices:
 
 ```bash
-./vendor/bin/phpcs --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./web/modules/custom
-```
-
-Check Drupal best practices:
-
-```bash
-./vendor/bin/phpcs --standard=DrupalPractice --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./web/modules/custom
+./vendor/bin/phpcs
 ```
 
 Automatically fix coding standards
 
 ```bash
-./vendor/bin/phpcbf --standard=Drupal --colors --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md ./web/modules/custom
+./vendor/bin/phpcbf
 ```
 
 Checks compatibility with PHP interpreter versions
 
 ```bash
-./vendor/bin/phpcf --target 7.2 \
+./vendor/bin/phpcf --target 7.3 \
 --file-extensions php,module,inc,install,test,profile,theme,info \
 ./web/modules/custom
+
+./vendor/bin/phpcf --target 7.3 --file-extensions php ./behat
 ```
 
 ### Improve global code quality using PHPCPD (Code duplication) &  PHPMD (PHP Mess Detector).
@@ -101,13 +154,40 @@ Checks compatibility with PHP interpreter versions
 Detect overcomplicated expressions & Unused parameters, methods, properties
 
 ```bash
-./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml
+./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml \
+--suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php
+
+./vendor/bin/phpmd ./behat text ./phpmd.xml --suffixes php
 ```
 
 Copy/Paste Detector
 
 ```bash
-./vendor/bin/phpcpd ./web/modules/custom
+./vendor/bin/phpcpd ./web/modules/custom \
+--names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml \
+--ansi --exclude=tests
+
+./vendor/bin/phpcpd ./behat --names=*.php --ansi
+```
+
+### Ensure PHP Community Best Practicies using PHP Coding Standards Fixer
+
+It can modernize your code (like converting the pow function to the ** operator on PHP 5.6) and (micro) optimize it.
+
+```bash
+./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle
+```
+
+### Attempts to dig into your program and find as many type-related bugs as possiblevia Psalm
+
+```bash
+./vendor/bin/psalm
+```
+
+### Catches whole classes of bugs even before you write tests using PHPStan
+
+```bash
+./vendor/bin/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle
 ```
 
 ### Enforce code standards with git hooks
@@ -118,101 +198,16 @@ Maintaining code quality by adding the custom post-commit hook to yours.
 cat ./scripts/hooks/post-commit >> ./.git/hooks/post-commit
 ```
 
-## 🚛 *(optional)* Local Install
-
-You may use Docker only to run your project, otherwise follow those steps to install the project localy
-
-1. Setup your virtualhost (like `http://api.gos.test`) to serve `/web`.
-
-1. Install Drupal and dependencies using composer
-
-    ```bash
-    composer install
-    ```
-
-1. Install and configure PHPCS for coding standards, see the previous section.
-
-1. Update your `web/sites/default/settings.php`:
-
-    ```bash
-    vim web/sites/default/settings.php
-    ```
-
-    Set the custom configuration directory location:
-
-    ```php
-    $config_directories['sync'] = '../config/d8/sync';
-    ```
-
-1. Go to http://api.gos.test and follow install instruction
-   Or run the following command:
-   
-    ```bash
-    ./scripts/bootstrap/drupal.sh --skip-dependencies=1 --skip-interaction=1 --private-files="/privates/gos" --save-clean-database="./database-clean.dump.sql"
-    ```
-   
-   _Note: be sure to have a proper `/privates/gos` writable directory or change it in the command upper._
-
-   Or run the following command:
-
-    ```bash
-    drush si standard --db-url=mysql://root:root@127.0.0.1/gos --site-name="Games of Switzerland" --account-name=admin --account-pass=admin --account-mail=dev@antistatique.net
-    ```
-
-1. Use the same site UUID than your colleagues:
-
-    ```bash
-    drush config-set system.site uuid "e85e1685-b207-4ca4-987d-43b3619f58ab" -y
-    ```
-
-    (This is certainly a bad idea, [follow this drupal issue](https://www.drupal.org/node/1613424)).
-
-1. *(optional)* Update your `drush/drush.yml`:
-
-  ```bash
-  cp drush/default.drush.yml drush/drush.yml
-  vim drush/drush.yml
-  ```
-
-  ```yaml
-  options:
-    uri: 'http://api.gos.test'
-  ```
-
-1. Import the configuration
-
-    ```bash
-    drush cim
-    ```
-
-    or
-
-    ```bash
-    docker-compose exec dev drush cim -y
-    ```
-
-7. Rebuild the cache
-
-    ```bash
-    drush cr
-    ```
-
-    or
-
-    ```bash
-    docker-compose exec dev drush cr
-    ```
-
 ## After a git pull/merge
 
 ```bash
-drush cr
-drush cim
-drush updatedb
-drush cr
+docker-compose down
+docker-compose build --pull
+docker-compose up --build -d
+docker-compose exec app docker-as-drupal db-reset --with-default-content --with-elasticsearch
 ```
 
-Prepend every command with `docker-compose exec dev` to run them on the Docker
+Prepend every command with `docker-compose exec app` to run them on the Docker
 environment.
 
 ## 🚀 Deploy
@@ -233,9 +228,189 @@ bundle exec cap -T
 bundle exec cap staging deploy
 ```
 
+## 🔍 Elasticsearch
+
+All given port may be changed by your own `docker-compose.override.yml`.
+
+The Docker installation ship with a working **Elasticsearch in version 6.8.5**.
+
+You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/dejaVu).
+
+1. Open **DejaVu** in your local browser `http://localhost:1358/`
+
+2. Connect to your Elasticsearch instance using `http://localhost:19200` on index `real_estate`.
+
+    Example working link:
+    [http://localhost:1358/?appname=development_gos_node_game_en&url=http://localhost:19200](http://localhost:1358/?appname=development_gos_node_game_en&url=http://localhost:19200)
+
+    The local machine port is the one defined in your `docker-compose` or `docker-compose.override.yml`.
+    In the following example the local port is `19200`. and the port inside the Docker is `9200`.
+
+    ```yaml
+      elasticsearch:
+        ports:
+          - "19200:9200"
+    ```
+
+### Index
+
+```bash
+docker-compose exec [app|test] drush eshr
+docker-compose exec [app|test] drush queue-run elasticsearch_helper_indexing
+```
+
+### List of Indexes
+
+```bash
+docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
+```
+
+This should print
+
+```bash
+$ yellow open gos lsSuUuMjTyizjL_WLECfyQ 5 1 0 0 1.2kb 1.2kb
+```
+
+### Recreate Index from scratch
+
+This operation is necessary when the Elasticsearch schema has been updated.
+
+```bash
+    docker-compose exec app drush eshd -y
+    docker-compose exec app drush eshs
+```
+
+### Health Check
+
+Check that Elasticsearch is up and running.
+
+```bash
+docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/health
+```
+
+### List all games
+
+```bash
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty"
+```
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+        "match_phrase" : {
+            "releases.platform": {
+                "query": "ps4",
+                "analyzer": "search_synonyms"
+            }
+        }
+    }
+}
+'
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+        "nested": {
+            "path" : "releases",
+            "query": {
+              "query_string": {
+                "default_field": "releases.platform",
+                "query": "ps4"
+              }
+            }
+        }
+    }
+}
+'
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+      "query_string": {
+        "default_field": "title",
+        "query": "kill"
+      }
+    }
+}
+'
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+      "query_string": {
+        "default_field": "desc",
+        "query": "memories"
+      }
+    }
+}
+'
+
+docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_studio/_search?pretty&explain" -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+      "query_string": {
+        "default_field": "name",
+        "query": "softvar"
+      }
+    }
+}
+'
+
 ## 📋 Documentations
 
+We use *Swagger* to document our custom REST endpoints.
+
+Expects the `swagger.json` file it to be stored ìn `./swagger/swagger.json`.
+You may access to the *staging* or *production* REST specification with those links:
+
+- Production: [api.gos.ch/swagger](https://api.gos.ch/swagger)
+- Staging: [staging-api.gos.ch/swagger](https://staging-api.gos.ch/swagger)
+
+Customs modules:
+
+ - [Migration](./web/modules/custom/gos_migrate/README.md)
+
 ## 🚑 Troubleshootings
+
+### Error while running Elasticsearch Setup ?
+
+```
+  No alive nodes found in your cluster
+```
+
+It seems your Elasticsearch cluster is not reachable by the Docker container.
+
+The common mistake is a misconfiguration on `docker-compose.yml` with missing `host`:
+
+```
+DRUPAL_CONFIG_SET: >-
+    elasticsearch_helper.settings elasticsearch_helper.host elasticsearch
+```
+
+Run the diagnostic command to show the value of `elasticsearch_helper.host` on your container:
+
+```
+docker-compose exec app drush cget elasticsearch_helper.settings --include-overridden
+```
+
+It should print:
+
+```
+elasticsearch_helper:
+  scheme: http
+  host: elasticsearch
+  port: 9200
+  authentication: 0
+  user: ''
+  password: ''
+  defer_indexing: 0
+```
+
+If you get something else in `host` (such as `localhost`), then your initial bootstrap was made without the `host` config key and need to be rerun:
+
+```
+docker-compose exec app docker-as-drupal db-reset --update-dump --with-default-content
+```
 
 ### Error while importing config ?
 
@@ -330,7 +505,7 @@ Every tests should be run into the Docker environment.
 docker-compose exec test bash
 ```
 
-1. Once connected via ssh on you Docker test, you may run any `docker-as-drupal` commands
+1. Once connected via ssh on your Docker test, you may run any `docker-as-drupal` commands
 
 ```bash
 docker-as-drupal [behat|phpunit|nightwatch]
@@ -342,49 +517,47 @@ You also may use the direct access - without opening a bash on the Docket test e
 docker-compose exec test docker-as-drupal [behat|phpunit|nightwatch]
 ```
 
-### Kernel tests
-
-```bash
-./vendor/bin/phpunit -x gos_functional
-```
-
-### Browser tests
-
-1. *(optional)* Bootstrap your Drupal if you don't already have a working env.
-
-```bash
-./scripts/bootstrap/drupal.sh --private-files="PATH/TO/PRIVATES" [--skip-dependencies=1] [--skip-default=1] [--database=DATABASE_URL] [--skip-interaction=1]
-```
-
-1. Then you can run functional tests
-
-```bash
-./vendor/bin/phpunit -g gos_functional
-```
-
-### Behat
-
-1. *(optional)* Bootstrap your Drupal if you don't already have a working env.
-
-```bash
-./scripts/bootstrap/drupal.sh [--skip-dependencies=1] [--skip-default=1] [--database=DATABASE_URL] [--skip-interaction=1]
-```
-
-1. Then you can run functional tests
-
-```bash
-./vendor/bin/behat
-```
-
 ## 💻 Drush Commands
 
 ## 🕙 Crons
 
-Setup Drush to run cron every hour.
+```
+# Drupal - Production
+# ----------------
+## Every 5 minutes
+*/5 * * * * root /var/www/docker/cron.sh 2>&1
+```
 
 ### Crontab
 
 ## 📢 RSS
+
+## 📈 Monitoring
+
+### New Relic
+
+New Relic requires two components to work: the PHP agent (inside our `app` container) and a daemon (another container), which aggregates data sent from one or more agents and sends it to New Relic.
+
+By default, we removed the New Relic Docker Container `ARGS` and `depends_on` to avoid building extra containers for developers.
+Therefore, on Staging & Production `docker-compose.override.yml` we have added thoses extra parameters
+
+```yaml
+build:
+  context: .
+  args:
+    - 'NEW_RELIC_AGENT_VERSION=9.13.0.270'
+    - 'NEW_RELIC_LICENSE_KEY=LICENSE'
+    - 'NEW_RELIC_APPNAME=Games of Switzerland'
+    - 'NEW_RELIC_DAEMON_ADDRESS=newrelic-apm-daemon:31339'
+depends_on:
+    - newrelic-apm-daemon
+```
+
+You also may add the API Key in `settings.php` (on staging / production) to enable data-collection of contrib module `new_relic_rpm
+
+```php
+$config['new_relic_rpm.settings']['api_key'] = 'YOUR_API_KEY';
+```
 
 ## Authors
 
@@ -398,7 +571,7 @@ Setup Drush to run cron every hour.
 * Twitter: [@tonifisler](https://twitter.com/tonifisler)
 * Github: [@tonifisler](https://github.com/tonifisler)
 
-👩‍💻 **Camille Léthang**
+👩‍💻 **Camille Létang**
 
 * Github: [@CamilleLetang](https://github.com/CamilleLetang)
 

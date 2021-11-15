@@ -1,0 +1,17 @@
+uuid: 7c013ec7-37eb-4795-b56e-d9decaa0840b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Game
+type: game
+description: ''
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

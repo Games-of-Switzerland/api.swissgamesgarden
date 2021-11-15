@@ -1,0 +1,77 @@
+uuid: 0493fbe0-a229-485a-81a5-fcb2d449cb0c
+langcode: en
+status: true
+dependencies:
+  module:
+    - consumers
+id: consumer--consumer
+disabled: true
+path: consumer/consumer
+resourceType: consumer--consumer
+resourceFields:
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  owner_id:
+    fieldName: owner_id
+    publicName: owner_id
+    enhancer:
+      id: ''
+    disabled: false
+  label:
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+    disabled: false
+  description:
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''
+    disabled: false
+  image:
+    fieldName: image
+    publicName: image
+    enhancer:
+      id: ''
+    disabled: false
+  third_party:
+    fieldName: third_party
+    publicName: third_party
+    enhancer:
+      id: ''
+    disabled: false
+  is_default:
+    fieldName: is_default
+    publicName: is_default
+    enhancer:
+      id: ''
+    disabled: false
+  default_langcode:
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+    disabled: false
+  image_styles:
+    fieldName: image_styles
+    publicName: image_styles
+    enhancer:
+      id: ''
+    disabled: false

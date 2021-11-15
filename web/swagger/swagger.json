@@ -1,0 +1,282 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Games of Switzerland",
+    "contact": {
+      "email": "wenger.kev@gmail.com"
+    }
+  },
+  "host": "api.gos.test",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "search",
+      "description": "Bridge endpoint to Elasticsearch"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/autocomplete": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Proxy to access to Elasticsearch Games/People/Studio Documents as Autocomplete",
+        "description": "Search thought multiple content (games, people, studio, ...). The response will always return a maximum of 5 items per type.",
+        "operationId": "autocompleteWide",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Keywords to use for the search",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/search/games": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Proxy to access to Elasticsearch Games Documents",
+        "description": "Search thought games.",
+        "operationId": "searchGames",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "description": "The page to fetch.",
+            "default": 0
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Keywords to use for the search",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort[asc]",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "_score",
+              "title.keyword",
+              "releases.date",
+              "changed"
+            ],
+            "description": "The property you want the results to be sorted by and ordered ASC."
+          },
+          {
+            "name": "sort[desc]",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "_score",
+              "title.keyword",
+              "releases.date",
+              "changed"
+            ],
+            "description": "The property you want the results to be sorted by and ordered DESC."
+          },
+          {
+            "name": "genres[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of genres slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "simulation",
+            "uniqueItems": true
+          },
+          {
+            "name": "locations[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of locations slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "zurich",
+            "uniqueItems": true
+          },
+          {
+            "name": "stores[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of stores slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "steam",
+            "uniqueItems": true
+          },
+          {
+            "name": "platforms[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of platforms slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "ps4",
+            "uniqueItems": true
+          },
+          {
+            "name": "release_year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "description": "The year to filter games by.",
+            "example": "2019"
+          },
+          {
+            "name": "release_year_range[start]",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "The year to filter games by starting date.",
+            "example": "2016"
+          },
+          {
+            "name": "release_year_range[end]",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "description": "The year to filter games by ending date.",
+            "example": "2020"
+          },
+          {
+            "name": "states[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of states slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "released",
+            "uniqueItems": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid request",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Server error",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/session/token": {
+      "get": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Drupal 8 CSRF attacks protection.",
+        "description": "Drupal 8 protects its REST resources from CSRF attacks by requiring a <code>X-CSRF-Token</code> request header to be sent when using a non-safe method. So, when performing non-read-only requests, that token is required.",
+        "operationId": "sessionToken",
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "500": {
+            "description": "Server error",
+            "schema": {
+              "$ref": "#/definitions/ApiErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "csrf_token": {
+      "type": "apiKey",
+      "name": "X-CSRF-Token",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "ApiForbiddenResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiError"
+          }
+        }
+      }
+    },
+    "ApiError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
