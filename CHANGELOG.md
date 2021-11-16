@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ## Changed
 - bump composer/composer from 2.0.13 to 2.1.12
+- upgrade from Composer v1 to v2
 
 ## [0.0.2] - 2021-11-15
 ### Changed
