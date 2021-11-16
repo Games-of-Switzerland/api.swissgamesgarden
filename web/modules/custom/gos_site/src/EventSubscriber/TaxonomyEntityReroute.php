@@ -5,7 +5,7 @@ namespace Drupal\gos_site\EventSubscriber;
 use Drupal\Core\Routing\CacheableSecuredRedirectResponse;
 use Drupal\Core\Url;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
@@ -32,12 +32,12 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * Redirect Genre canonical to no-where.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @psalm-suppress PossiblyInvalidArgument
    */
-  public function isGenre(GetResponseEvent $event): void {
+  public function isGenre(RequestEvent $event): void {
     /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
     $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
     $route_name = $this->routeMatch->getRouteName();
@@ -51,12 +51,12 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * Redirect Language canonical to no-where.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @psalm-suppress PossiblyInvalidArgument
    */
-  public function isLanguage(GetResponseEvent $event): void {
+  public function isLanguage(RequestEvent $event): void {
     /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
     $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
     $route_name = $this->routeMatch->getRouteName();
@@ -70,12 +70,12 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * Redirect Location canonical to no-where.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @psalm-suppress PossiblyInvalidArgument
    */
-  public function isLocation(GetResponseEvent $event): void {
+  public function isLocation(RequestEvent $event): void {
     /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
     $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
     $route_name = $this->routeMatch->getRouteName();
@@ -89,12 +89,12 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * Redirect Platform canonical to no-where.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @psalm-suppress PossiblyInvalidArgument
    */
-  public function isPlatform(GetResponseEvent $event): void {
+  public function isPlatform(RequestEvent $event): void {
     /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
     $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
     $route_name = $this->routeMatch->getRouteName();
@@ -108,12 +108,12 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * Redirect Publisher canonical to no-where.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @psalm-suppress PossiblyInvalidArgument
    */
-  public function isPublisher(GetResponseEvent $event): void {
+  public function isPublisher(RequestEvent $event): void {
     /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
     $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
     $route_name = $this->routeMatch->getRouteName();
@@ -127,12 +127,12 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * Redirect Sponsor canonical to no-where.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @psalm-suppress PossiblyInvalidArgument
    */
-  public function isSponsor(GetResponseEvent $event): void {
+  public function isSponsor(RequestEvent $event): void {
     /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
     $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
     $route_name = $this->routeMatch->getRouteName();
@@ -146,7 +146,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * Shutdown Taxonomy Canonical Access by redirecting to Frontpage.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   A response for a request.
    *
    * @return \Drupal\Core\Routing\CacheableSecuredRedirectResponse
@@ -154,7 +154,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
    *
    * @psalm-suppress PossiblyInvalidArgument
    */
-  private function shutdownCanonicalTaxonomyTermAccess(GetResponseEvent $event): CacheableSecuredRedirectResponse {
+  private function shutdownCanonicalTaxonomyTermAccess(RequestEvent $event): CacheableSecuredRedirectResponse {
     /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
     $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
     $dest = Url::fromRoute('<front>')->toString();

@@ -1,4 +1,3 @@
 services:
   gos_rest.validator_factory:
     class: Drupal\gos_rest\Plugin\rest\ValidatorFactory
-    arguments: ['@class_loader']
