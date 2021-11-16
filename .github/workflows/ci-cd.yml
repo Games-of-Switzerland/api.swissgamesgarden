@@ -143,10 +143,14 @@ jobs:
   deploy:
     name: Deploy
     needs: [phpcs, phpmd, php-cs-fixer, phpstan, psalm, unit-tests, behat-tests]
+    environment:
+      name: ${{ steps.deploy_target.outputs.DEPLOY_ENV }}
+      url: ${{ steps.deploy_target.outputs.DEPLOY_ENV_URL }}
     if:
       contains('
       refs/heads/master
       refs/heads/dev
+      refs/heads/feature/github-actions--deploy-environments
       ', github.ref)
     runs-on: ubuntu-latest
     env:
@@ -158,9 +162,15 @@ jobs:
         run: |
           if [[ $GITHUB_REF == 'refs/heads/dev' ]]; then
               echo "::set-output name=DEPLOY_ENV::staging"
+              echo "::set-output name=DEPLOY_ENV_URL::https://staging-api.swissgames.garden"
           fi
           if [[ $GITHUB_REF == 'refs/heads/master' ]]; then
               echo "::set-output name=DEPLOY_ENV::production"
+              echo "::set-output name=DEPLOY_ENV_URL::https://api.swissgames.garden"
+          fi
+          if [[ $GITHUB_REF == 'refs/heads/feature/github-actions--deploy-environments' ]]; then
+              echo "::set-output name=DEPLOY_ENV::staging"
+              echo "::set-output name=DEPLOY_ENV_URL::https://staging-api.swissgames.garden"
           fi
       - uses: actions/checkout@v2.3.4
       - name: Install SSH key
