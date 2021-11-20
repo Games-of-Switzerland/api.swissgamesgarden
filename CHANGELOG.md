@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.3] - 2021-11-20
+### Added
+- update deployment process to use Github Actions Composite
+- update deployment process to set Github Environements
+
+### Changed
+- bump composer/composer from 2.0.13 to 2.1.12
+- upgrade from Composer v1 to v2
+
 ## [0.0.2] - 2021-11-15
 ### Changed
 - update to Drupal 9
@@ -20,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.2...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.3...HEAD
+[0.0.3]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.1...0.0.2
 [0.0.1]: https://github.com/Games-of-Switzerland/gos-server/releases/tags/0.0.1
