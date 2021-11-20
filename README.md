@@ -1,8 +1,16 @@
 #  🎮👾 Swiss Games Garden
 
-Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/), 🕸 [Json:API](https://jsonapi.org/) and 🔍 [Elasticsearch](https://www.elastic.co/) to expose Search Engine capabilities.
-It uses 🐳 [Docker](http://docker.com/) for running, 🥃 [Gin](https://github.com/EasyCorp/EasyAdminBundle) as Admin UI, 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.
+Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/), 🕸 [Json:API](https://jsonapi.org/) and 🥃 [Gin](https://github.com/EasyCorp/EasyAdminBundle) as Admin UI.
+
+We built it around 🔍 [Elasticsearch](https://www.elastic.co/) to expose Search Engine capabilities.
+
+It uses 🐳 [Docker](http://docker.com/) for running.
+
+We use 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.
+
 We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano).
+
+We made it with 💗. 
 
 
 | Build Status | Swagger | Issues | Activity |
