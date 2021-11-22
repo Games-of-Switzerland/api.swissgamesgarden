@@ -9,7 +9,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.0'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: composer:v2, cs2pr
       - uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.0'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: composer:v2
       - uses: actions/checkout@v2
@@ -38,7 +38,7 @@ jobs:
 #      - name: Setup PHP
 #        uses: shivammathur/setup-php@v2
 #        with:
-#          php-version: '7.4'
+#          php-version: '8.0'
 #          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
 #          tools: composer:v2
 #      - uses: actions/checkout@v2
@@ -53,7 +53,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.0'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: composer:v2, php-cs-fixer, cs2pr
       - uses: actions/checkout@v2
@@ -67,7 +67,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.0'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: composer:v2, phpstan, cs2pr
       - uses: actions/checkout@v2
@@ -81,7 +81,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '8.0'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: composer:v2
       - uses: actions/checkout@v2
