@@ -10,7 +10,7 @@ We use 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](h
 
 We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano).
 
-We made it with 💗. 
+We made it with 💗.
 
 
 | Build Status | Swagger | Issues | Activity |
@@ -24,6 +24,7 @@ First of all, you need to have the following tools installed globally on your en
 * docker
 * composer
 * drush
+* phive
 
 don't forget to add bins to your path such:
 
@@ -129,9 +130,13 @@ $settings['gos_elasticsearch.index_prefix'] = 'local';
 
     docker-compose exec app docker-as-drupal --help
 
-## 🚔 Check Drupal coding standards & Drupal best practices
+## 🚔 Static Analyzers
 
-You need to run composer before using PHPCS. The Drupal and DrupalPractice Standard will automatically be applied following the rules on phpcs.xml.dist` file
+All Analyzers are installed using PHive. Some extra analyzer dependencies are installed using Composer.
+
+## Drupal coding standards & Drupal best practices
+
+You need to run composer before using PHPCS. The Drupal and DrupalPractice Standard will automatically be applied following the rules on `phpcs.xml.dist` file
 
 ### Command Line Usage
 
@@ -147,40 +152,32 @@ Automatically fix coding standards
 ./vendor/bin/phpcbf
 ```
 
-Checks compatibility with PHP interpreter versions
-
-```bash
-./vendor/bin/phpcf --target 7.3 \
---file-extensions php,module,inc,install,test,profile,theme,info \
-./web/modules/custom
-
-./vendor/bin/phpcf --target 7.3 --file-extensions php ./behat
-```
-
 ### Improve global code quality using PHPCPD (Code duplication) &  PHPMD (PHP Mess Detector).
 
 Detect overcomplicated expressions & Unused parameters, methods, properties
 
 ```bash
-./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml \
+./tools/phpmd ./web/modules/custom text ./phpmd.xml \
 --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php
 
-./vendor/bin/phpmd ./behat text ./phpmd.xml --suffixes php
+./tools/phpmd ./behat text ./phpmd.xml --suffixes php
 ```
 
 Copy/Paste Detector
 
 ```bash
-./vendor/bin/phpcpd ./web/modules/custom \
---names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml \
---ansi --exclude=tests
+./tools/phpcpd ./web/modules/custom --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test \
+--suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude tests
 
-./vendor/bin/phpcpd ./behat --names=*.php --ansi
+./tools/phpcpd ./behat
 ```
 
 ### Ensure PHP Community Best Practicies using PHP Coding Standards Fixer
 
 It can modernize your code (like converting the pow function to the ** operator on PHP 5.6) and (micro) optimize it.
+
+We must add one extra dependencies (via Composer) to work properly with Drupal:
+- `drupol/phpcsfixer-configs-drupal`
 
 ```bash
 ./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle
@@ -188,14 +185,21 @@ It can modernize your code (like converting the pow function to the ** operator 
 
 ### Attempts to dig into your program and find as many type-related bugs as possiblevia Psalm
 
+We must add one extra dependencies (via Composer) to work properly with Drupal:
+- `fenetikm/autoload-drupal`
+
 ```bash
-./vendor/bin/psalm
+./tools/psalm
 ```
 
 ### Catches whole classes of bugs even before you write tests using PHPStan
 
+We must add two extra dependencies (via Composer) to work properly with Drupal:
+- `mglaman/phpstan-drupal`
+- `phpstan/phpstan-deprecation-rules`
+
 ```bash
-./vendor/bin/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle
+./tools/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle
 ```
 
 ### Enforce code standards with git hooks
