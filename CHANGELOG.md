@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - install some static analyzer via Phive instead of Composer
 - update to PHP 8.0
+- update New Relic Agent 9.13.0.270 -> 9.18.1.303 for PHP8 compatibility
 
 ## [0.0.3] - 2021-11-20
 ### Added
