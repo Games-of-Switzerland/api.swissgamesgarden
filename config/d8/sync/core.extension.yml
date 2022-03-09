@@ -10,6 +10,8 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
+  cdn: 0
+  cdn_ui: 0
   ckeditor: 0
   config: 0
   consumer_image_styles: 0

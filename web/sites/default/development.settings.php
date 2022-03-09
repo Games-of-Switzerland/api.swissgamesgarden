@@ -6,6 +6,13 @@
 $settings['gos_elasticsearch.index_prefix'] = 'development';
 
 /**
+ * The CDN static-content status.
+ *
+ * @var boolean
+ */
+$config['cdn.settings']['status'] = false;
+
+/**
  * The elasticsearch host port number.
  *
  * @var string
