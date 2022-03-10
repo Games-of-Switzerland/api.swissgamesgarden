@@ -1,0 +1,17 @@
+langcode: en
+status: true
+mapping:
+  type: simple
+  domain: api.swissgames.garden
+  conditions:
+    not:
+      extensions:
+        - css
+        - js
+scheme: 'https://'
+farfuture:
+  status: true
+stream_wrappers:
+  - public
+_core:
+  default_config_hash: FGYrMvt5Li0Jm92wyoGSiFFNoI_WqcHTeNDMq4jHId0

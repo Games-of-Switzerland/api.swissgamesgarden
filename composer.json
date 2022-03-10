@@ -54,6 +54,7 @@
         "doctrine/cache": "^1.0",
         "drupal/admin_toolbar": "^3.0",
         "drupal/bamboo_twig": "^5.0",
+        "drupal/cdn": "^3.5",
         "drupal/consumer_image_styles": "^4.0",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-project-message": "^9",

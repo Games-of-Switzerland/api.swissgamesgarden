@@ -97,6 +97,32 @@ The base URL of sitemap links can be overridden using the following settings.
 $config['simple_sitemap.settings']['base_url'] = 'https://api-gos.museebolo.ch';
 ```
 
+#### CND
+
+We use an "Origin Pull CDNs" via `https://api.swissgames.garden`. This CDN will be used for every static-content excepted js & css.
+Obviously, you need to override this URL or disable the CDN for you local env.
+
+```php
+/**
+ * The CDN static-content status.
+ *
+ * @var boolean
+ */
+$config['cdn.settings']['status'] = false;
+```
+
+By default, we decide to disable the CDN for development process, as the host port may vary by developers and therefore
+the `mapping.domain` may change.
+
+```php
+/**
+ * The CDN mapping domain to be used for static-content.
+ *
+ * @var string
+ */
+$config['cdn.settings']['mapping']['domain'] = 'api.swissgames.garden';
+```
+
 #### Elasticsearch prefix
 
 We use only 1 Elasticsearch server for both Production & Staging environments. Doing so, we need to separate our indexes
