@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- add the CDN module to serve all images via HTTPs
+
 ### Changed
 - install some static analyzer via Phive instead of Composer
 - update to PHP 8.0
