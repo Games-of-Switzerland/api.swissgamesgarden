@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update Drupal 9.2.8 => 9.3.7 with all dependencies
 
+### Added
+- add a migration update to fillup Website field on Games
+
 ## [0.1.0] - 2022-03-14
 ### Added
 - add the CDN module to serve all images via HTTPs
