@@ -10,68 +10,68 @@ path: consumer/consumer
 resourceType: consumer--consumer
 resourceFields:
   id:
+    disabled: false
     fieldName: id
     publicName: id
     enhancer:
       id: ''
-    disabled: false
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   langcode:
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   owner_id:
+    disabled: false
     fieldName: owner_id
     publicName: owner_id
     enhancer:
       id: ''
-    disabled: false
   label:
+    disabled: false
     fieldName: label
     publicName: label
     enhancer:
       id: ''
-    disabled: false
   description:
+    disabled: false
     fieldName: description
     publicName: description
     enhancer:
       id: ''
-    disabled: false
   image:
+    disabled: false
     fieldName: image
     publicName: image
     enhancer:
       id: ''
-    disabled: false
   third_party:
+    disabled: false
     fieldName: third_party
     publicName: third_party
     enhancer:
       id: ''
-    disabled: false
   is_default:
+    disabled: false
     fieldName: is_default
     publicName: is_default
     enhancer:
       id: ''
-    disabled: false
   default_langcode:
+    disabled: false
     fieldName: default_langcode
     publicName: default_langcode
     enhancer:
       id: ''
-    disabled: false
   image_styles:
+    disabled: false
     fieldName: image_styles
     publicName: image_styles
     enhancer:
       id: ''
-    disabled: false

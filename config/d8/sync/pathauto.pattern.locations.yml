@@ -12,12 +12,12 @@ pattern: '/locations/[term:name]'
 selection_criteria:
   3df2bb35-b0a9-440c-aa7e-fe4c0d372374:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      location: location
     negate: false
+    uuid: 3df2bb35-b0a9-440c-aa7e-fe4c0d372374
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: 3df2bb35-b0a9-440c-aa7e-fe4c0d372374
+    bundles:
+      location: location
 selection_logic: and
 weight: -5
 relationships: {  }

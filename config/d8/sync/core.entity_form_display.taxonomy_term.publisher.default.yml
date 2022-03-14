@@ -23,11 +23,11 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_path:
+    type: fieldable_path_widget
     weight: 101
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: fieldable_path_widget
-    region: content
   name:
     type: string_textfield
     weight: -5
@@ -44,9 +44,9 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: true
     weight: 100
     region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
 hidden: {  }

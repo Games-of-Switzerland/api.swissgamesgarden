@@ -12,12 +12,12 @@ pattern: '/sponsors/[term:name]'
 selection_criteria:
   ce168215-4faa-470f-bbfe-8116922dabd8:
     id: 'entity_bundle:taxonomy_term'
-    bundles:
-      sponsor: sponsor
     negate: false
+    uuid: ce168215-4faa-470f-bbfe-8116922dabd8
     context_mapping:
       taxonomy_term: taxonomy_term
-    uuid: ce168215-4faa-470f-bbfe-8116922dabd8
+    bundles:
+      sponsor: sponsor
 selection_logic: and
 weight: -5
 relationships: {  }

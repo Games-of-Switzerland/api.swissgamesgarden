@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: B3WP6GKGW7WbSBBI6zs7GZlD8cK0jpFQpFIR5p8FUe0
 track_drush: norm
 track_cron: norm
 module_deployment: false
@@ -12,5 +14,3 @@ watchdog_severities: {  }
 views_log_slow: false
 views_log_threshold: 100
 disable_autorum: false
-_core:
-  default_config_hash: B3WP6GKGW7WbSBBI6zs7GZlD8cK0jpFQpFIR5p8FUe0

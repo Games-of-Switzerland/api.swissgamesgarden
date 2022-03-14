@@ -20,37 +20,37 @@ bundle: studio
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 101
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 101
     region: content
   field_members:
-    weight: 102
+    type: team_member_default
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: team_member_default
+    weight: 102
     region: content
   field_metatags:
-    weight: 104
+    type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: metatag_empty_formatter
+    weight: 104
     region: content
   field_path:
-    weight: 103
+    type: fieldable_path_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: fieldable_path_formatter
+    weight: 103
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden: {  }
