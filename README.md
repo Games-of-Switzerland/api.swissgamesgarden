@@ -1,8 +1,12 @@
 #  🎮👾 Swiss Games Garden
 
-Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/), 🕸 [Json:API](https://jsonapi.org/) and 🔍 [Elasticsearch](https://www.elastic.co/) to expose Search Engine capabilities.
-It uses 🐳 [Docker](http://docker.com/) for running, 🥃 [Gin](https://github.com/EasyCorp/EasyAdminBundle) as Admin UI, 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.
-We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano).
+Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/), 🕸 [Json:API](https://jsonapi.org/) and 🥃 [Gin](https://github.com/EasyCorp/EasyAdminBundle) as Admin UI.   
+We built it around 🔍 [Elasticsearch](https://www.elastic.co/) to expose Search Engine capabilities.   
+It uses 🐳 [Docker](http://docker.com/) for running.   
+We use 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.   
+We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano) and mange our dependencies with 🎶 [Composer](https://getcomposer.org/) & 🏜 [Phive](https://phar.io/).
+
+We made it with 💗.
 
 
 | Build Status | Swagger | Issues | Activity |
@@ -16,6 +20,7 @@ First of all, you need to have the following tools installed globally on your en
 * docker
 * composer
 * drush
+* phive
 
 don't forget to add bins to your path such:
 
@@ -92,6 +97,32 @@ The base URL of sitemap links can be overridden using the following settings.
 $config['simple_sitemap.settings']['base_url'] = 'https://api-gos.museebolo.ch';
 ```
 
+#### CND
+
+We use an "Origin Pull CDNs" via `https://api.swissgames.garden`. This CDN will be used for every static-content excepted js & css.
+Obviously, you need to override this URL or disable the CDN for you local env.
+
+```php
+/**
+ * The CDN static-content status.
+ *
+ * @var boolean
+ */
+$config['cdn.settings']['status'] = false;
+```
+
+By default, we decide to disable the CDN for development process, as the host port may vary by developers and therefore
+the `mapping.domain` may change.
+
+```php
+/**
+ * The CDN mapping domain to be used for static-content.
+ *
+ * @var string
+ */
+$config['cdn.settings']['mapping']['domain'] = 'api.swissgames.garden';
+```
+
 #### Elasticsearch prefix
 
 We use only 1 Elasticsearch server for both Production & Staging environments. Doing so, we need to separate our indexes
@@ -121,9 +152,13 @@ $settings['gos_elasticsearch.index_prefix'] = 'local';
 
     docker-compose exec app docker-as-drupal --help
 
-## 🚔 Check Drupal coding standards & Drupal best practices
+## 🚔 Static Analyzers
 
-You need to run composer before using PHPCS. The Drupal and DrupalPractice Standard will automatically be applied following the rules on phpcs.xml.dist` file
+All Analyzers are installed using PHive. Some extra analyzer dependencies are installed using Composer.
+
+## Drupal coding standards & Drupal best practices
+
+You need to run composer before using PHPCS. The Drupal and DrupalPractice Standard will automatically be applied following the rules on `phpcs.xml.dist` file
 
 ### Command Line Usage
 
@@ -139,40 +174,32 @@ Automatically fix coding standards
 ./vendor/bin/phpcbf
 ```
 
-Checks compatibility with PHP interpreter versions
-
-```bash
-./vendor/bin/phpcf --target 7.3 \
---file-extensions php,module,inc,install,test,profile,theme,info \
-./web/modules/custom
-
-./vendor/bin/phpcf --target 7.3 --file-extensions php ./behat
-```
-
 ### Improve global code quality using PHPCPD (Code duplication) &  PHPMD (PHP Mess Detector).
 
 Detect overcomplicated expressions & Unused parameters, methods, properties
 
 ```bash
-./vendor/bin/phpmd ./web/modules/custom text ./phpmd.xml \
+./tools/phpmd ./web/modules/custom text ./phpmd.xml \
 --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php
 
-./vendor/bin/phpmd ./behat text ./phpmd.xml --suffixes php
+./tools/phpmd ./behat text ./phpmd.xml --suffixes php
 ```
 
 Copy/Paste Detector
 
 ```bash
-./vendor/bin/phpcpd ./web/modules/custom \
---names=*.php,*.module,*.inc,*.install,*.test,*.profile,*.theme,*.css,*.info,*.txt --names-exclude=*.md,*.info.yml \
---ansi --exclude=tests
+./tools/phpcpd ./web/modules/custom --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test \
+--suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude tests
 
-./vendor/bin/phpcpd ./behat --names=*.php --ansi
+./tools/phpcpd ./behat
 ```
 
 ### Ensure PHP Community Best Practicies using PHP Coding Standards Fixer
 
 It can modernize your code (like converting the pow function to the ** operator on PHP 5.6) and (micro) optimize it.
+
+We must add one extra dependencies (via Composer) to work properly with Drupal:
+- `drupol/phpcsfixer-configs-drupal`
 
 ```bash
 ./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle
@@ -180,14 +207,21 @@ It can modernize your code (like converting the pow function to the ** operator 
 
 ### Attempts to dig into your program and find as many type-related bugs as possiblevia Psalm
 
+We must add one extra dependencies (via Composer) to work properly with Drupal:
+- `fenetikm/autoload-drupal`
+
 ```bash
-./vendor/bin/psalm
+./tools/psalm
 ```
 
 ### Catches whole classes of bugs even before you write tests using PHPStan
 
+We must add two extra dependencies (via Composer) to work properly with Drupal:
+- `mglaman/phpstan-drupal`
+- `phpstan/phpstan-deprecation-rules`
+
 ```bash
-./vendor/bin/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle
+./tools/phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle
 ```
 
 ### Enforce code standards with git hooks
@@ -545,7 +579,7 @@ Therefore, on Staging & Production `docker-compose.override.yml` we have added t
 build:
   context: .
   args:
-    - 'NEW_RELIC_AGENT_VERSION=9.13.0.270'
+    - 'NEW_RELIC_AGENT_VERSION=9.18.1.303'
     - 'NEW_RELIC_LICENSE_KEY=LICENSE'
     - 'NEW_RELIC_APPNAME=Games of Switzerland'
     - 'NEW_RELIC_DAEMON_ADDRESS=newrelic-apm-daemon:31339'

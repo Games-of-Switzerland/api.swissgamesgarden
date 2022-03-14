@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2022-03-14
+### Added
+- add the CDN module to serve all images via HTTPs
+
+### Changed
+- install some static analyzer via Phive instead of Composer
+- update to PHP 8.0
+- update New Relic Agent 9.13.0.270 -> 9.18.1.303 for PHP8 compatibility
+
 ## [0.0.3] - 2021-11-20
 ### Added
 - update deployment process to use Github Actions Composite
@@ -29,7 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.3...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.1.0...HEAD
+[0.1.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.3...0.1.0
 [0.0.3]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.1...0.0.2
 [0.0.1]: https://github.com/Games-of-Switzerland/gos-server/releases/tags/0.0.1

@@ -21,7 +21,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    *
    * @var string
    */
-  const SETTINGS_INDEX_PREFIX = 'gos_elasticsearch.index_prefix';
+  public const SETTINGS_INDEX_PREFIX = 'gos_elasticsearch.index_prefix';
 
   /**
    * The language manager.

@@ -1,4 +1,4 @@
-FROM antistatique/php-dev:7.4
+FROM antistatique/php-dev:8.0
 
 WORKDIR /var/www
 
@@ -14,7 +14,13 @@ RUN ./docker/newrelic.sh
 
 # Install additional dependencies.
 RUN apt-get update && apt-get -y install \
-    cron;
+    cron \
+    gnupg;
+
+RUN set -eux; \
+  curl -L https://phar.io/releases/phive.phar -o phive.phar; \
+  chmod a+x phive.phar; \
+  mv phive.phar /usr/bin/phive;
 
 # Install additional PHP extensions.
 RUN docker-php-ext-install \
@@ -32,6 +38,10 @@ RUN set -eux; \
   \
   composer install --prefer-dist --no-scripts --no-progress --no-suggest --no-interaction; \
   composer clear-cache
+
+# Add the phiv files to install dependencies before copying (optimization).
+ADD ./.phive/ ./
+RUN phive --no-progress install
 
 # Copy everything excepted things excluded from .dockerignore.
 COPY . ./
