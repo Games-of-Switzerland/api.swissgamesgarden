@@ -31,7 +31,7 @@ class TeamMemberDefaultWidget extends EntityReferenceAutocompleteWidget {
     $widget['role'] = [
       '#title' => $this->t('Role'),
       '#type' => 'textfield',
-      '#default_value' => isset($items[$delta]->role) ? $items[$delta]->role : NULL,
+      '#default_value' => $items[$delta]->role ?? NULL,
       '#weight' => 1,
     ];
 
