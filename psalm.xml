@@ -3,6 +3,7 @@
   autoloader="web/autoload-psalm.php"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="https://getpsalm.org/schema/config"
+  phpVersion="8.0"
   xsi:schemaLocation="https://getpsalm.org/schema/config file:///app/vendor/vimeo/psalm/config.xsd">
 
   <projectFiles>
