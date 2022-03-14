@@ -9,7 +9,7 @@
  * Implements hook_migration_plugins_alter().
  */
 function gos_migrate_migration_plugins_alter(array &$definitions) {
-  $module_path = drupal_get_path('module', 'gos_migrate');
+  $module_path = Drupal::service('extension.path.resolver')->getPath('module', 'gos_migrate');
 
   foreach (array_keys($definitions) as $migration_plugin_id) {
     if (mb_strpos($migration_plugin_id, 'gos_') !== 0) {
