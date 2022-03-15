@@ -682,6 +682,16 @@ class ElasticGamesResource extends ElasticResourceBase {
                           'min_doc_count' => 0,
                           'size' => 100,
                         ],
+                        'aggs' => [
+                          'genres_facet_data' => [
+                            'top_hits' => [
+                              '_source' => [
+                                'genres.name',
+                              ],
+                              'size' => 1,
+                            ],
+                          ],
+                        ],
                       ],
                     ],
                   ],
@@ -709,6 +719,16 @@ class ElasticGamesResource extends ElasticResourceBase {
                           'min_doc_count' => 0,
                           'size' => 50,
                         ],
+                        'aggs' => [
+                          'locations_facet_data' => [
+                            'top_hits' => [
+                              '_source' => [
+                                'locations.name',
+                              ],
+                              'size' => 1,
+                            ],
+                          ],
+                        ],
                       ],
                     ],
                   ],
@@ -735,6 +755,16 @@ class ElasticGamesResource extends ElasticResourceBase {
                           'field' => 'releases.platform_slug',
                           'min_doc_count' => 0,
                           'size' => 100,
+                        ],
+                        'aggs' => [
+                          'platforms_facet_data' => [
+                            'top_hits' => [
+                              '_source' => [
+                                'releases.platform_name',
+                              ],
+                              'size' => 1,
+                            ],
+                          ],
                         ],
                       ],
                     ],
