@@ -10,116 +10,116 @@ path: media/audio
 resourceType: media--audio
 resourceFields:
   mid:
+    disabled: false
     fieldName: mid
     publicName: mid
     enhancer:
       id: ''
-    disabled: false
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   vid:
+    disabled: false
     fieldName: vid
     publicName: vid
     enhancer:
       id: ''
-    disabled: false
   langcode:
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   bundle:
+    disabled: false
     fieldName: bundle
     publicName: bundle
     enhancer:
       id: ''
-    disabled: false
   revision_created:
+    disabled: false
     fieldName: revision_created
     publicName: revision_created
     enhancer:
       id: ''
-    disabled: false
   revision_user:
+    disabled: false
     fieldName: revision_user
     publicName: revision_user
     enhancer:
       id: ''
-    disabled: false
   revision_log_message:
+    disabled: false
     fieldName: revision_log_message
     publicName: revision_log_message
     enhancer:
       id: ''
-    disabled: false
   status:
+    disabled: false
     fieldName: status
     publicName: status
     enhancer:
       id: ''
-    disabled: false
   uid:
+    disabled: false
     fieldName: uid
     publicName: uid
     enhancer:
       id: ''
-    disabled: false
   name:
+    disabled: false
     fieldName: name
     publicName: name
     enhancer:
       id: ''
-    disabled: false
   thumbnail:
+    disabled: false
     fieldName: thumbnail
     publicName: thumbnail
     enhancer:
       id: ''
-    disabled: false
   created:
+    disabled: false
     fieldName: created
     publicName: created
     enhancer:
       id: ''
-    disabled: false
   changed:
+    disabled: false
     fieldName: changed
     publicName: changed
     enhancer:
       id: ''
-    disabled: false
   default_langcode:
+    disabled: false
     fieldName: default_langcode
     publicName: default_langcode
     enhancer:
       id: ''
-    disabled: false
   revision_default:
+    disabled: false
     fieldName: revision_default
     publicName: revision_default
     enhancer:
       id: ''
-    disabled: false
   revision_translation_affected:
+    disabled: false
     fieldName: revision_translation_affected
     publicName: revision_translation_affected
     enhancer:
       id: ''
-    disabled: false
   path:
+    disabled: false
     fieldName: path
     publicName: path
     enhancer:
       id: ''
-    disabled: false
   field_media_audio_file:
+    disabled: false
     fieldName: field_media_audio_file
     publicName: field_media_audio_file
     enhancer:
       id: ''
-    disabled: false

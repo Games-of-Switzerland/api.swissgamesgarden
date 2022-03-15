@@ -162,7 +162,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *   The value.
    */
   public function getPage(): ?int {
-    return (int) $this->page;
+    return $this->page;
   }
 
   /**

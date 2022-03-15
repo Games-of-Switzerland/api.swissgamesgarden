@@ -11,12 +11,12 @@ pattern: '/games/[node:title]'
 selection_criteria:
   e43d375c-6b84-41a6-af3d-a825fdbf2a0f:
     id: node_type
-    bundles:
-      game: game
     negate: false
+    uuid: e43d375c-6b84-41a6-af3d-a825fdbf2a0f
     context_mapping:
       node: node
-    uuid: e43d375c-6b84-41a6-af3d-a825fdbf2a0f
+    bundles:
+      game: game
 selection_logic: and
 weight: -5
 relationships: {  }

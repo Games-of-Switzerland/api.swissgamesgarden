@@ -11,12 +11,12 @@ pattern: '/people/[node:title]'
 selection_criteria:
   0c20f8ba-8fc2-4188-a00b-ba6c549142cb:
     id: node_type
-    bundles:
-      people: people
     negate: false
+    uuid: 0c20f8ba-8fc2-4188-a00b-ba6c549142cb
     context_mapping:
       node: node
-    uuid: 0c20f8ba-8fc2-4188-a00b-ba6c549142cb
+    bundles:
+      people: people
 selection_logic: and
 weight: -5
 relationships: {  }

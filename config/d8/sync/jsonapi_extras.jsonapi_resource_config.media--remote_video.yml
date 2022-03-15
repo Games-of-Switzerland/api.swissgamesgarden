@@ -16,11 +16,11 @@ resourceFields:
     enhancer:
       id: ''
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   vid:
     disabled: true
     fieldName: vid
@@ -34,11 +34,11 @@ resourceFields:
     enhancer:
       id: ''
   bundle:
+    disabled: false
     fieldName: bundle
     publicName: bundle
     enhancer:
       id: ''
-    disabled: false
   revision_created:
     disabled: true
     fieldName: revision_created
@@ -58,11 +58,11 @@ resourceFields:
     enhancer:
       id: ''
   status:
+    disabled: false
     fieldName: status
     publicName: status
     enhancer:
       id: ''
-    disabled: false
   uid:
     disabled: true
     fieldName: uid
@@ -70,17 +70,17 @@ resourceFields:
     enhancer:
       id: ''
   name:
+    disabled: false
     fieldName: name
     publicName: name
     enhancer:
       id: ''
-    disabled: false
   thumbnail:
+    disabled: false
     fieldName: thumbnail
     publicName: thumbnail
     enhancer:
       id: ''
-    disabled: false
   created:
     disabled: true
     fieldName: created
@@ -118,8 +118,8 @@ resourceFields:
     enhancer:
       id: ''
   field_media_oembed_video:
+    disabled: false
     fieldName: field_media_oembed_video
     publicName: field_media_oembed_video
     enhancer:
       id: ''
-    disabled: false

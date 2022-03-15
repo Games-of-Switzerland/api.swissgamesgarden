@@ -10,110 +10,110 @@ path: crop/focal_point
 resourceType: crop--focal_point
 resourceFields:
   cid:
+    disabled: false
     fieldName: cid
     publicName: cid
     enhancer:
       id: ''
-    disabled: false
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   vid:
+    disabled: false
     fieldName: vid
     publicName: vid
     enhancer:
       id: ''
-    disabled: false
   type:
+    disabled: false
     fieldName: type
     publicName: type
     enhancer:
       id: ''
-    disabled: false
   langcode:
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   entity_id:
+    disabled: false
     fieldName: entity_id
     publicName: entity_id
     enhancer:
       id: ''
-    disabled: false
   entity_type:
+    disabled: false
     fieldName: entity_type
     publicName: entity_type
     enhancer:
       id: ''
-    disabled: false
   uri:
+    disabled: false
     fieldName: uri
     publicName: uri
     enhancer:
       id: ''
-    disabled: false
   height:
+    disabled: false
     fieldName: height
     publicName: height
     enhancer:
       id: ''
-    disabled: false
   width:
+    disabled: false
     fieldName: width
     publicName: width
     enhancer:
       id: ''
-    disabled: false
   x:
+    disabled: false
     fieldName: x
     publicName: x
     enhancer:
       id: ''
-    disabled: false
   'y':
+    disabled: false
     fieldName: 'y'
     publicName: 'y'
     enhancer:
       id: ''
-    disabled: false
   revision_timestamp:
+    disabled: false
     fieldName: revision_timestamp
     publicName: revision_timestamp
     enhancer:
       id: ''
-    disabled: false
   revision_uid:
+    disabled: false
     fieldName: revision_uid
     publicName: revision_uid
     enhancer:
       id: ''
-    disabled: false
   revision_log:
+    disabled: false
     fieldName: revision_log
     publicName: revision_log
     enhancer:
       id: ''
-    disabled: false
   default_langcode:
+    disabled: false
     fieldName: default_langcode
     publicName: default_langcode
     enhancer:
       id: ''
-    disabled: false
   revision_default:
+    disabled: false
     fieldName: revision_default
     publicName: revision_default
     enhancer:
       id: ''
-    disabled: false
   revision_translation_affected:
+    disabled: false
     fieldName: revision_translation_affected
     publicName: revision_translation_affected
     enhancer:
       id: ''
-    disabled: false

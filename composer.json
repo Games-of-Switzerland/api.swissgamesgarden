@@ -47,7 +47,7 @@
         }
     ],
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=8.0",
         "ext-exif": "*",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
@@ -93,6 +93,7 @@
         "imbo/behat-api-extension": "^2.2",
         "marcortola/behat-seo-contexts": "^3.1",
         "mglaman/phpstan-drupal": "^0.12.3",
+        "phpspec/prophecy-phpunit": "^2",
         "phpstan/phpstan-deprecation-rules": "^0.12.2"
     },
     "conflict": {
@@ -101,7 +102,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "fenetikm/autoload-drupal": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -129,7 +138,7 @@
                 "[3121816] - Version 8.x-2.1 need Drupal 8.8.0 or greater": "https://www.drupal.org/files/issues/2020-03-30/3121816-07.patch"
             },
             "drupal/core": {
-                "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2021-10-22/2429699-429_0.patch"
+                "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2021-12-02/2429699-453-9.3.x.patch"
             },
             "drupal/metatag": {
                 "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-29/2945817-93.patch"

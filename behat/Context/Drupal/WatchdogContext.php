@@ -10,6 +10,13 @@ use Drupal\DrupalExtension\Context\RawDrupalContext;
 class WatchdogContext extends RawDrupalContext {
 
   /**
+   * Does Watchdog report must be ignored.
+   *
+   * @var bool
+   */
+  protected bool $watchdogIgnore = FALSE;
+
+  /**
    * Cleanup the watchdog table.
    *
    * Clear out anything that might be in the watchdog table from god knows
@@ -17,9 +24,18 @@ class WatchdogContext extends RawDrupalContext {
    *
    * @BeforeScenario
    */
-  public static function cleanupWatchdog() {
+  public function cleanupWatchdog(): void {
     $connection = \Drupal::service('database');
     $connection->truncate('watchdog')->execute();
+  }
+
+  /**
+   * Ignore watchdog report for the current scenario.
+   *
+   * @BeforeScenario @watchdog-ignore
+   */
+  public function ignoreWatchdog(): void {
+    $this->watchdogIgnore = TRUE;
   }
 
   /**
@@ -27,7 +43,11 @@ class WatchdogContext extends RawDrupalContext {
    *
    * @AfterStep
    */
-  public function detectWatchdog() {
+  public function detectWatchdog(): void {
+    if ($this->watchdogIgnore) {
+      return;
+    }
+
     $connection = \Drupal::service('database');
 
     $logs = $connection->select('watchdog')
@@ -42,7 +62,7 @@ class WatchdogContext extends RawDrupalContext {
 
     foreach ($logs as $log) {
       // Make the substitutions easier to read in the log.
-      $log->variables = unserialize($log->variables);
+      $log->variables = unserialize($log->variables, ['allowed_classes' => FALSE]);
       print_r($log);
     }
 

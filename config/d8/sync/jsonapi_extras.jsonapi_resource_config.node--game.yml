@@ -10,17 +10,17 @@ path: node/game
 resourceType: node--game
 resourceFields:
   nid:
+    disabled: false
     fieldName: nid
     publicName: nid
     enhancer:
       id: ''
-    disabled: false
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   vid:
     disabled: true
     fieldName: vid
@@ -28,11 +28,11 @@ resourceFields:
     enhancer:
       id: ''
   langcode:
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   type:
     disabled: true
     fieldName: type
@@ -58,11 +58,11 @@ resourceFields:
     enhancer:
       id: ''
   status:
+    disabled: false
     fieldName: status
     publicName: status
     enhancer:
       id: ''
-    disabled: false
   uid:
     disabled: true
     fieldName: uid
@@ -70,11 +70,11 @@ resourceFields:
     enhancer:
       id: ''
   title:
+    disabled: false
     fieldName: title
     publicName: title
     enhancer:
       id: ''
-    disabled: false
   created:
     disabled: true
     fieldName: created
@@ -88,17 +88,17 @@ resourceFields:
     enhancer:
       id: ''
   promote:
+    disabled: false
     fieldName: promote
     publicName: promote
     enhancer:
       id: ''
-    disabled: false
   sticky:
+    disabled: false
     fieldName: sticky
     publicName: sticky
     enhancer:
       id: ''
-    disabled: false
   default_langcode:
     disabled: true
     fieldName: default_langcode
@@ -118,78 +118,79 @@ resourceFields:
     enhancer:
       id: ''
   releases_normalized:
+    disabled: false
     fieldName: releases_normalized
     publicName: releases_normalized
     enhancer:
       id: ''
-    disabled: false
   metatag:
+    disabled: false
     fieldName: metatag
     publicName: metatag
     enhancer:
       id: ''
-    disabled: false
   metatag_normalized:
+    disabled: false
     fieldName: metatag_normalized
     publicName: metatag_normalized
     enhancer:
       id: ''
-    disabled: false
   path:
+    disabled: false
     fieldName: path
     publicName: path
     enhancer:
       id: ''
-    disabled: false
   menu_link:
+    disabled: false
     fieldName: menu_link
     publicName: menu_link
     enhancer:
       id: ''
-    disabled: false
   body:
+    disabled: false
     fieldName: body
     publicName: body
     enhancer:
       id: ''
-    disabled: false
   field_article_links:
+    disabled: false
     fieldName: field_article_links
     publicName: article_links
     enhancer:
       id: ''
-    disabled: false
   field_awards:
+    disabled: false
     fieldName: field_awards
     publicName: awards
     enhancer:
       id: ''
-    disabled: false
   field_completeness:
+    disabled: false
     fieldName: field_completeness
     publicName: completeness
     enhancer:
       id: ''
-    disabled: false
   field_contextual_links:
+    disabled: false
     fieldName: field_contextual_links
     publicName: contextual_links
     enhancer:
       id: ''
-    disabled: false
   field_credits:
+    disabled: false
     fieldName: field_credits
     publicName: credits
     enhancer:
       id: ''
-    disabled: false
   field_genres:
+    disabled: false
     fieldName: field_genres
     publicName: genres
     enhancer:
       id: ''
-    disabled: false
   field_images:
+    disabled: false
     fieldName: field_images
     publicName: images
     enhancer:
@@ -205,106 +206,105 @@ resourceFields:
             - downscale_330x660
             - downscale_675x500
             - placeholder_30x30
-    disabled: false
   field_languages:
+    disabled: false
     fieldName: field_languages
     publicName: languages
     enhancer:
       id: ''
-    disabled: false
   field_locations:
+    disabled: false
     fieldName: field_locations
     publicName: locations
     enhancer:
       id: ''
-    disabled: false
   field_members:
+    disabled: false
     fieldName: field_members
     publicName: members
     enhancer:
       id: ''
-    disabled: false
   field_metatags:
+    disabled: false
     fieldName: field_metatags
     publicName: field_metatags
     enhancer:
       id: ''
-    disabled: false
   field_path:
+    disabled: false
     fieldName: field_path
     publicName: field_path
     enhancer:
       id: ''
-    disabled: false
   field_player:
+    disabled: false
     fieldName: field_player
     publicName: player
     enhancer:
       id: ''
-    disabled: false
   field_publishers:
+    disabled: false
     fieldName: field_publishers
     publicName: publishers
     enhancer:
       id: ''
-    disabled: false
   field_release_platforms:
+    disabled: false
     fieldName: field_release_platforms
     publicName: release_platforms
     enhancer:
       id: ''
-    disabled: false
   field_release_years:
+    disabled: false
     fieldName: field_release_years
     publicName: release_years
     enhancer:
       id: ''
-    disabled: false
   field_releases:
+    disabled: false
     fieldName: field_releases
     publicName: releases
     enhancer:
       id: ''
-    disabled: false
   field_social_networks:
+    disabled: false
     fieldName: field_social_networks
     publicName: social_networks
     enhancer:
       id: ''
-    disabled: false
   field_sources:
+    disabled: false
     fieldName: field_sources
     publicName: sources
     enhancer:
       id: ''
-    disabled: false
   field_sponsors:
+    disabled: false
     fieldName: field_sponsors
     publicName: sponsors
     enhancer:
       id: ''
-    disabled: false
   field_stores:
+    disabled: false
     fieldName: field_stores
     publicName: stores
     enhancer:
       id: ''
-    disabled: false
   field_studios:
+    disabled: false
     fieldName: field_studios
     publicName: studios
     enhancer:
       id: ''
-    disabled: false
   field_video:
+    disabled: false
     fieldName: field_video
     publicName: video
     enhancer:
       id: ''
-    disabled: false
   field_website:
+    disabled: false
     fieldName: field_website
     publicName: website
     enhancer:
       id: ''
-    disabled: false

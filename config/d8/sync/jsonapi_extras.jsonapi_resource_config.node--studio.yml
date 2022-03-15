@@ -10,17 +10,17 @@ path: node/studio
 resourceType: node--studio
 resourceFields:
   nid:
+    disabled: false
     fieldName: nid
     publicName: nid
     enhancer:
       id: ''
-    disabled: false
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   vid:
     disabled: true
     fieldName: vid
@@ -28,11 +28,11 @@ resourceFields:
     enhancer:
       id: ''
   langcode:
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   type:
     disabled: true
     fieldName: type
@@ -58,11 +58,11 @@ resourceFields:
     enhancer:
       id: ''
   status:
+    disabled: false
     fieldName: status
     publicName: status
     enhancer:
       id: ''
-    disabled: false
   uid:
     disabled: true
     fieldName: uid
@@ -70,11 +70,11 @@ resourceFields:
     enhancer:
       id: ''
   title:
+    disabled: false
     fieldName: title
     publicName: title
     enhancer:
       id: ''
-    disabled: false
   created:
     disabled: true
     fieldName: created
@@ -124,23 +124,23 @@ resourceFields:
     enhancer:
       id: ''
   metatag:
+    disabled: false
     fieldName: metatag
     publicName: metatag
     enhancer:
       id: ''
-    disabled: false
   metatag_normalized:
+    disabled: false
     fieldName: metatag_normalized
     publicName: metatag_normalized
     enhancer:
       id: ''
-    disabled: false
   path:
+    disabled: false
     fieldName: path
     publicName: path
     enhancer:
       id: ''
-    disabled: false
   menu_link:
     disabled: true
     fieldName: menu_link
@@ -148,26 +148,26 @@ resourceFields:
     enhancer:
       id: ''
   body:
+    disabled: false
     fieldName: body
     publicName: body
     enhancer:
       id: ''
-    disabled: false
   field_members:
+    disabled: false
     fieldName: field_members
     publicName: members
     enhancer:
       id: ''
-    disabled: false
   field_metatags:
+    disabled: false
     fieldName: field_metatags
     publicName: field_metatags
     enhancer:
       id: ''
-    disabled: false
   field_path:
+    disabled: false
     fieldName: field_path
     publicName: field_path
     enhancer:
       id: ''
-    disabled: false
