@@ -13,14 +13,14 @@ class PeopleNormalizer extends ContentEntityNormalizer {
   /**
    * Supported formats.
    *
-   * @var array
+   * @var string|string[]
    */
   protected $format = ['elasticsearch_helper'];
 
   /**
    * The interface or class that this Normalizer supports.
    *
-   * @var array
+   * @var string|array
    */
   protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
 
@@ -44,7 +44,7 @@ class PeopleNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function supportsNormalization($data, $format = NULL) {
+  public function supportsNormalization($data, $format = NULL): bool {
     if (!parent::supportsNormalization($data, $format)) {
       return FALSE;
     }
