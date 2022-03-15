@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.game.body
     - field.field.node.game.field_article_links
     - field.field.node.game.field_awards
+    - field.field.node.game.field_cantons
     - field.field.node.game.field_completeness
     - field.field.node.game.field_contextual_links
     - field.field.node.game.field_credits
@@ -68,6 +69,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 14
+    region: content
+  field_cantons:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 23
     region: content
   field_contextual_links:
     type: contextual_link_default
