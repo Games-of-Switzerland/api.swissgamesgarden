@@ -41,3 +41,18 @@ function gos_site_taxonomy_term_insert(TermInterface $entity): void {
   $entity->get('field_slug')->setValue($slug);
   $entity->save();
 }
+
+/**
+ * Implements hook_preprocess_html().
+ *
+ * Force the frontpage to have path-user.
+ *
+ * @see https://www.drupal.org/project/gin_login/issues/3269088
+ */
+function gos_site_preprocess_html(array &$variables): void {
+  $is_front = \Drupal::service('path.matcher')->isFrontPage();
+
+  if ($is_front) {
+    $variables['attributes']['class'][] = 'path-user';
+  }
+}
