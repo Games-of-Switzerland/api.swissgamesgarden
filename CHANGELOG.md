@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - add a migration update to fillup Website field on Games
+- add facets extra data for platform name, location name & genre name - Games-of-Switzerland/swissgamesgarden#50
 
 ## [0.1.0] - 2022-03-14
 ### Added
