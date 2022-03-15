@@ -11,7 +11,7 @@ We made it with 💗.
 
 | Build Status | Swagger | Issues | Activity |
 |:-------------------:|:----------------:|:----------------:|:----------------:|
-| [![Continuous Integration & Continuous Deployment](https://github.com/Games-of-Switzerland/gos-server/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Games-of-Switzerland/gos-server/actions/workflows/ci-cd.yml) | [![Swagger](https://img.shields.io/badge/documentation-swagger-blue)](https://api.swissgames.garden/swagger) | ![GitHub issues](https://img.shields.io/github/issues/Games-of-Switzerland/gos-server?style=flat-square) | ![GitHub last commit](https://img.shields.io/github/last-commit/Games-of-Switzerland/gos-server?style=flat-square) |
+| [![Continuous Integration & Continuous Deployment](https://github.com/Games-of-Switzerland/api.swissgamesgarden/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Games-of-Switzerland/api.swissgamesgarden/actions/workflows/ci-cd.yml) | [![Swagger](https://img.shields.io/badge/documentation-swagger-blue)](https://api.swissgames.garden/swagger) | ![GitHub issues](https://img.shields.io/github/issues/Games-of-Switzerland/swissgamesgarden?style=flat-square) | ![GitHub last commit](https://img.shields.io/github/last-commit/Games-of-Switzerland/swissgamesgarden?style=flat-square) |
 
 ## 🔧 Prerequisites
 
@@ -397,8 +397,8 @@ We use *Swagger* to document our custom REST endpoints.
 Expects the `swagger.json` file it to be stored ìn `./swagger/swagger.json`.
 You may access to the *staging* or *production* REST specification with those links:
 
-- Production: [api.gos.ch/swagger](https://api.gos.ch/swagger)
-- Staging: [staging-api.gos.ch/swagger](https://staging-api.gos.ch/swagger)
+- Production: [api.swissgames.garden/swagger](https://api.swissgames.garden/swagger)
+- Staging: [staging-api.swissgames.garden/swagger](https://staging-api.swissgames.garden/swagger)
 
 Customs modules:
 
@@ -617,4 +617,4 @@ $config['new_relic_rpm.settings']['api_key'] = 'YOUR_API_KEY';
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com/Games-of-Switzerland/gos-server/issues).
+Feel free to check [issues page](https://github.com/Games-of-Switzerland/swissgamesgarden/issues).
