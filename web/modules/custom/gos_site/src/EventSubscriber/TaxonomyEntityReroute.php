@@ -23,10 +23,30 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
         ['isPlatform'],
         ['isLanguage'],
         ['isLocation'],
+        ['isCanton'],
         ['isPublisher'],
         ['isSponsor'],
       ],
     ];
+  }
+
+  /**
+   * Redirect Canton canonical to no-where.
+   *
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
+   *   A response for a request.
+   *
+   * @psalm-suppress PossiblyInvalidArgument
+   */
+  public function isCanton(RequestEvent $event): void {
+    /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
+    $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
+    $route_name = $this->routeMatch->getRouteName();
+
+    if ($route_name === 'entity.taxonomy_term.canonical' && $taxonomy_term->bundle() === 'canton') {
+      $response = $this->shutdownCanonicalTaxonomyTermAccess($event);
+      $event->setResponse($response);
+    }
   }
 
   /**
