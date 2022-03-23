@@ -1,0 +1,141 @@
+id: gos_games_update_canton
+label: Games of Switzerland - Update Games - Canton field
+description: GOS - Migration of Game from CSV to Drupal 8
+migration_group: default
+
+source:
+  plugin: 'csv'
+  # Full path to the file.
+  path: '/source/games.csv'
+  # Column delimiter. Comma (,) by default.
+  delimiter: ','
+  # Field enclosure. Double quotation marks (") by default.
+  enclosure: '"'
+  # The row to be used as the CSV header (indexed from 0),
+  # or null if there is no header row.
+  header_offset: 0
+  # The column(s) to use as a key. Each column specified will
+  # create an index in the migration table and too many columns
+  # may throw an index size error.
+  ids:
+    - id
+  # Here we identify the columns of interest in the source file.
+  # Each numeric key is the 0-based index of the column.
+  # For each column, the key below is the field name assigned to
+  # the data on import, to be used in field mappings below.
+  # The label value is a user-friendly string for display by the
+  # migration UI.
+  fields:
+    0:
+      name: game_title
+    1:
+      name: id
+    2:
+      name: platforms
+    3:
+      name: website
+    4:
+      name: studios
+    5:
+      name: people
+    6:
+      name: cantons
+    7:
+      name: locations
+    8:
+      name: publishers
+    9:
+      name: sponsors
+    10:
+      name: early_access_date
+    11:
+      name: release_date
+    12:
+      name: languages
+    13:
+      name: media
+    14:
+      name: genres
+    15:
+      name: awards
+    16:
+      name: stores
+    17:
+      name: presskit
+    18:
+      name: articles
+    19:
+      name: twitter
+    20:
+      name: devlog
+    21:
+      name: source
+    22:
+      name: online_link
+    23:
+      name: page_link
+    24:
+      name: download_link
+    25:
+      name: video_link
+    26:
+      name: logo_link
+    27:
+      name: screenshot_link
+    28:
+      name: boxart_link
+    29:
+      name: description
+    30:
+      name: credits
+    31:
+      name: remarks
+    32:
+      name: state
+    33:
+      name: dataquality
+process:
+  nid:
+    -
+      plugin: skip_on_empty
+      method: row
+      source: id
+    -
+      plugin: migration_lookup
+      migration: gos_games
+    -
+      plugin: skip_on_empty
+      method: row
+
+  field_cantons:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: cantons
+    -
+      plugin: explode
+      delimiter: ","
+      limit: 10
+    -
+      plugin: deepen
+    -
+      plugin: sub_process
+      process:
+        target_id:
+          -
+            plugin: trim
+            source: 'value'
+          -
+            plugin: migration_lookup
+            migration: gos_genres
+
+destination:
+  plugin: entity:node
+  default_bundle: game
+  overwrite_properties:
+    - field_cantons
+
+migration_dependencies:
+  required:
+    - default:gos_games
+    - default:gos_cantons
