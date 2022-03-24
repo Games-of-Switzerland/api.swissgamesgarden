@@ -127,7 +127,7 @@ process:
             source: 'value'
           -
             plugin: migration_lookup
-            migration: gos_genres
+            migration: gos_cantons
 
 destination:
   plugin: entity:node
