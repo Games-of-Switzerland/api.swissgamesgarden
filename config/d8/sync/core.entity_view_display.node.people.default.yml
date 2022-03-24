@@ -18,29 +18,29 @@ bundle: people
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 101
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 101
     region: content
   field_metatags:
-    weight: 103
+    type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: metatag_empty_formatter
+    weight: 103
     region: content
   field_path:
-    weight: 102
+    type: fieldable_path_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: fieldable_path_formatter
+    weight: 102
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden: {  }

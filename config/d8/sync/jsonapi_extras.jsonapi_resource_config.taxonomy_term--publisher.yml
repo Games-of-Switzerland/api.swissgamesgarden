@@ -10,17 +10,17 @@ path: taxonomy_term/publisher
 resourceType: taxonomy_term--publisher
 resourceFields:
   tid:
+    disabled: false
     fieldName: tid
     publicName: tid
     enhancer:
       id: ''
-    disabled: false
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   revision_id:
     disabled: true
     fieldName: revision_id
@@ -28,17 +28,17 @@ resourceFields:
     enhancer:
       id: ''
   langcode:
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   vid:
+    disabled: false
     fieldName: vid
     publicName: vid
     enhancer:
       id: ''
-    disabled: false
   revision_created:
     disabled: true
     fieldName: revision_created
@@ -64,17 +64,17 @@ resourceFields:
     enhancer:
       id: ''
   name:
+    disabled: false
     fieldName: name
     publicName: name
     enhancer:
       id: ''
-    disabled: false
   description:
+    disabled: false
     fieldName: description
     publicName: description
     enhancer:
       id: ''
-    disabled: false
   weight:
     disabled: true
     fieldName: weight
@@ -118,8 +118,8 @@ resourceFields:
     enhancer:
       id: ''
   field_path:
+    disabled: false
     fieldName: field_path
     publicName: field_path
     enhancer:
       id: ''
-    disabled: false

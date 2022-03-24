@@ -58,6 +58,34 @@ Before starting a migration,
   $ drush eshr && drush queue-run elasticsearch_helper_indexing && drush cr
   ```
 
+## Migrate Updates
+
+### Update Games with Website field
+
+1. Migrate all games that include: platforms (on the-fly-creation) & studios (lookup).
+
+  ```bash
+  $ drush mim gos_games_update_website
+  ```
+
+### Update Games with Canton(s) field
+
+1. Migrate all games' canton and attached them to proper games.
+
+  ```bash
+  $ drush mim gos_cantons
+  $ drush mim gos_games_update_canton
+  ```
+
+### Update Elasticearch after updates
+
+1. Run a full Elasticsearch indexation process
+
+  ```bash
+  $ drush eshr && drush queue-run elasticsearch_helper_indexing && drush cr
+  ```
+
+
 ## Debugging
 
 List the migrations with `drush ms`

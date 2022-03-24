@@ -139,6 +139,7 @@ trait TaxonomyTestTrait {
 
     $format = FilterFormat::create([
       'format' => 'test',
+      'name' => 'Test format',
       'weight' => 1,
       'filters' => [
         'filter_html_escape' => ['status' => TRUE],

@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.game.body
     - field.field.node.game.field_article_links
     - field.field.node.game.field_awards
+    - field.field.node.game.field_cantons
     - field.field.node.game.field_completeness
     - field.field.node.game.field_contextual_links
     - field.field.node.game.field_credits
@@ -43,14 +44,14 @@ bundle: game
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 1
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   field_article_links:
-    weight: 11
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -59,117 +60,125 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 11
     region: content
   field_awards:
-    weight: 14
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 14
+    region: content
+  field_cantons:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 23
     region: content
   field_contextual_links:
-    weight: 19
+    type: contextual_link_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: contextual_link_default
+    weight: 19
     region: content
   field_credits:
-    weight: 20
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 20
     region: content
   field_genres:
-    weight: 3
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 3
     region: content
   field_images:
-    weight: 7
+    type: image
     label: above
     settings:
-      image_style: ''
       image_link: ''
+      image_style: ''
     third_party_settings: {  }
-    type: image
+    weight: 7
     region: content
   field_languages:
-    weight: 10
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 10
     region: content
   field_locations:
-    weight: 16
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 16
     region: content
   field_members:
-    weight: 5
+    type: team_member_default
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: team_member_default
+    weight: 5
     region: content
   field_metatags:
-    weight: 21
+    type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: metatag_empty_formatter
+    weight: 21
     region: content
   field_path:
-    weight: 6
+    type: fieldable_path_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: fieldable_path_formatter
+    weight: 6
     region: content
   field_player:
-    weight: 22
+    type: player_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: player_default
+    weight: 22
     region: content
   field_publishers:
-    weight: 8
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 8
     region: content
   field_releases:
-    weight: 4
+    type: release_default
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: release_default
+    weight: 4
     region: content
   field_social_networks:
-    weight: 17
+    type: social_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: social_default
+    weight: 17
     region: content
   field_sources:
-    weight: 13
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -178,42 +187,42 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 13
     region: content
   field_sponsors:
-    weight: 9
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 9
     region: content
   field_stores:
-    weight: 15
+    type: store_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: store_default
+    weight: 15
     region: content
   field_studios:
-    weight: 2
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 2
     region: content
   field_video:
     type: entity_reference_entity_view
-    weight: 18
     label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 18
     region: content
   field_website:
-    weight: 12
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -222,13 +231,13 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 12
     region: content
   links:
-    weight: 0
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_completeness: true
   field_release_platforms: true

@@ -10,17 +10,17 @@ path: taxonomy_term/location
 resourceType: taxonomy_term--location
 resourceFields:
   tid:
+    disabled: false
     fieldName: tid
     publicName: tid
     enhancer:
       id: ''
-    disabled: false
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   revision_id:
     disabled: true
     fieldName: revision_id
@@ -28,17 +28,17 @@ resourceFields:
     enhancer:
       id: ''
   langcode:
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   vid:
+    disabled: false
     fieldName: vid
     publicName: vid
     enhancer:
       id: ''
-    disabled: false
   revision_created:
     disabled: true
     fieldName: revision_created
@@ -64,11 +64,11 @@ resourceFields:
     enhancer:
       id: ''
   name:
+    disabled: false
     fieldName: name
     publicName: name
     enhancer:
       id: ''
-    disabled: false
   description:
     disabled: true
     fieldName: description
@@ -76,11 +76,11 @@ resourceFields:
     enhancer:
       id: ''
   weight:
+    disabled: false
     fieldName: weight
     publicName: weight
     enhancer:
       id: ''
-    disabled: false
   parent:
     disabled: true
     fieldName: parent
@@ -88,11 +88,11 @@ resourceFields:
     enhancer:
       id: ''
   changed:
+    disabled: false
     fieldName: changed
     publicName: changed
     enhancer:
       id: ''
-    disabled: false
   default_langcode:
     disabled: true
     fieldName: default_langcode
@@ -124,8 +124,8 @@ resourceFields:
     enhancer:
       id: ''
   field_slug:
+    disabled: false
     fieldName: field_slug
     publicName: slug
     enhancer:
       id: ''
-    disabled: false

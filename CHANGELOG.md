@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2022-03-24
+### Security
+- update Drupal 9.2.8 => 9.3.7 with all dependencies
+
+### Added
+- add a migration update to fillup Website field on Games
+- add facets extra data for platform name, location name & genre name - Games-of-Switzerland/swissgamesgarden#50
+- add support of Games canton(s) - Games-of-Switzerland/swissgamesgarden#51
+
 ## [0.1.0] - 2022-03-14
 ### Added
 - add the CDN module to serve all images via HTTPs
@@ -38,7 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.3...0.1.0
 [0.0.3]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.1...0.0.2

@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
   new_relic_rpm: -20
   admin_toolbar: 0
@@ -40,6 +42,7 @@ module:
   gos_game: 0
   gos_rest: 0
   gos_site: 0
+  hal: 0
   help: 0
   history: 0
   image: 0
@@ -83,5 +86,3 @@ theme:
   claro: 0
   gin: 0
 profile: standard
-_core:
-  default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc

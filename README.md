@@ -1,9 +1,9 @@
 #  🎮👾 Swiss Games Garden
 
-Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/), 🕸 [Json:API](https://jsonapi.org/) and 🥃 [Gin](https://github.com/EasyCorp/EasyAdminBundle) as Admin UI.   
-We built it around 🔍 [Elasticsearch](https://www.elastic.co/) to expose Search Engine capabilities.   
-It uses 🐳 [Docker](http://docker.com/) for running.   
-We use 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.   
+Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/), 🕸 [Json:API](https://jsonapi.org/) and 🥃 [Gin](https://github.com/EasyCorp/EasyAdminBundle) as Admin UI.
+We built it around 🔍 [Elasticsearch](https://www.elastic.co/) to expose Search Engine capabilities.
+It uses 🐳 [Docker](http://docker.com/) for running.
+We use 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.
 We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano) and mange our dependencies with 🎶 [Composer](https://getcomposer.org/) & 🏜 [Phive](https://phar.io/).
 
 We made it with 💗.
@@ -11,7 +11,7 @@ We made it with 💗.
 
 | Build Status | Swagger | Issues | Activity |
 |:-------------------:|:----------------:|:----------------:|:----------------:|
-| [![Continuous Integration & Continuous Deployment](https://github.com/Games-of-Switzerland/gos-server/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Games-of-Switzerland/gos-server/actions/workflows/ci-cd.yml) | [![Swagger](https://img.shields.io/badge/documentation-swagger-blue)](https://api.swissgames.garden/swagger) | ![GitHub issues](https://img.shields.io/github/issues/Games-of-Switzerland/gos-server?style=flat-square) | ![GitHub last commit](https://img.shields.io/github/last-commit/Games-of-Switzerland/gos-server?style=flat-square) |
+| [![Continuous Integration & Continuous Deployment](https://github.com/Games-of-Switzerland/api.swissgamesgarden/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Games-of-Switzerland/api.swissgamesgarden/actions/workflows/ci-cd.yml) | [![Swagger](https://img.shields.io/badge/documentation-swagger-blue)](https://api.swissgames.garden/swagger) | ![GitHub issues](https://img.shields.io/github/issues/Games-of-Switzerland/swissgamesgarden?style=flat-square) | ![GitHub last commit](https://img.shields.io/github/last-commit/Games-of-Switzerland/swissgamesgarden?style=flat-square) |
 
 ## 🔧 Prerequisites
 
@@ -322,74 +322,6 @@ Check that Elasticsearch is up and running.
 docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/health
 ```
 
-### List all games
-
-```bash
-docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty"
-```
-
-docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
-{
-    "query" : {
-        "match_phrase" : {
-            "releases.platform": {
-                "query": "ps4",
-                "analyzer": "search_synonyms"
-            }
-        }
-    }
-}
-'
-
-docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
-{
-    "query" : {
-        "nested": {
-            "path" : "releases",
-            "query": {
-              "query_string": {
-                "default_field": "releases.platform",
-                "query": "ps4"
-              }
-            }
-        }
-    }
-}
-'
-
-docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
-{
-    "query" : {
-      "query_string": {
-        "default_field": "title",
-        "query": "kill"
-      }
-    }
-}
-'
-
-docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_game/_search?pretty&explain" -H 'Content-Type: application/json' -d'
-{
-    "query" : {
-      "query_string": {
-        "default_field": "desc",
-        "query": "memories"
-      }
-    }
-}
-'
-
-docker-compose exec elasticsearch curl -X GET "http://127.0.0.1:9200/gos_node_studio/_search?pretty&explain" -H 'Content-Type: application/json' -d'
-{
-    "query" : {
-      "query_string": {
-        "default_field": "name",
-        "query": "softvar"
-      }
-    }
-}
-'
-
 ## 📋 Documentations
 
 We use *Swagger* to document our custom REST endpoints.
@@ -397,8 +329,8 @@ We use *Swagger* to document our custom REST endpoints.
 Expects the `swagger.json` file it to be stored ìn `./swagger/swagger.json`.
 You may access to the *staging* or *production* REST specification with those links:
 
-- Production: [api.gos.ch/swagger](https://api.gos.ch/swagger)
-- Staging: [staging-api.gos.ch/swagger](https://staging-api.gos.ch/swagger)
+- Production: [api.swissgames.garden/swagger](https://api.swissgames.garden/swagger)
+- Staging: [staging-api.swissgames.garden/swagger](https://staging-api.swissgames.garden/swagger)
 
 Customs modules:
 
@@ -444,6 +376,24 @@ If you get something else in `host` (such as `localhost`), then your initial boo
 
 ```
 docker-compose exec app docker-as-drupal db-reset --update-dump --with-default-content
+```
+
+### Elasticsearch indexing failed with error `FORBIDDEN/12/index read-only / allow delete` ?
+
+By default, Elasticsearch installed goes into `read-only mode when you have less than 5% of free disk space.
+
+First, you will need to remove all documents and indices from Elasticsearch (or change the disk size).
+
+```bash
+docker-compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/_all
+```
+
+Then you can fix it by running the following commands:
+
+```bash
+docker-compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
+docker-compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
+docker-compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
 ```
 
 ### Error while importing config ?
@@ -617,4 +567,4 @@ $config['new_relic_rpm.settings']['api_key'] = 'YOUR_API_KEY';
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check [issues page](https://github.com/Games-of-Switzerland/gos-server/issues).
+Feel free to check [issues page](https://github.com/Games-of-Switzerland/swissgamesgarden/issues).

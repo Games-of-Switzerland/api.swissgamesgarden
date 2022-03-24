@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.game.body
     - field.field.node.game.field_article_links
     - field.field.node.game.field_awards
+    - field.field.node.game.field_cantons
     - field.field.node.game.field_completeness
     - field.field.node.game.field_contextual_links
     - field.field.node.game.field_credits
@@ -39,21 +40,22 @@ bundle: game
 mode: teaser
 content:
   body:
-    label: hidden
     type: text_summary_or_trimmed
-    weight: 101
+    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
+    weight: 101
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   field_article_links: true
   field_awards: true
+  field_cantons: true
   field_completeness: true
   field_contextual_links: true
   field_credits: true

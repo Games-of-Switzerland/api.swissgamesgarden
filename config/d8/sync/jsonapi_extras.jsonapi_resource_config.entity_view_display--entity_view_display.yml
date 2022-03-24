@@ -8,74 +8,74 @@ path: entity_view_display/entity_view_display
 resourceType: entity_view_display--entity_view_display
 resourceFields:
   uuid:
+    disabled: false
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-    disabled: false
   langcode:
+    disabled: false
     fieldName: langcode
     publicName: langcode
     enhancer:
       id: ''
-    disabled: false
   status:
+    disabled: false
     fieldName: status
     publicName: status
     enhancer:
       id: ''
-    disabled: false
   dependencies:
+    disabled: false
     fieldName: dependencies
     publicName: dependencies
     enhancer:
       id: ''
-    disabled: false
   third_party_settings:
+    disabled: false
     fieldName: third_party_settings
     publicName: third_party_settings
     enhancer:
       id: ''
-    disabled: false
   _core:
+    disabled: false
     fieldName: _core
     publicName: _core
     enhancer:
       id: ''
-    disabled: false
   id:
+    disabled: false
     fieldName: id
     publicName: id
     enhancer:
       id: ''
-    disabled: false
   targetEntityType:
+    disabled: false
     fieldName: targetEntityType
     publicName: targetEntityType
     enhancer:
       id: ''
-    disabled: false
   bundle:
+    disabled: false
     fieldName: bundle
     publicName: bundle
     enhancer:
       id: ''
-    disabled: false
   mode:
+    disabled: false
     fieldName: mode
     publicName: mode
     enhancer:
       id: ''
-    disabled: false
   content:
+    disabled: false
     fieldName: content
     publicName: content
     enhancer:
       id: ''
-    disabled: false
   hidden:
+    disabled: false
     fieldName: hidden
     publicName: hidden
     enhancer:
       id: ''
-    disabled: false

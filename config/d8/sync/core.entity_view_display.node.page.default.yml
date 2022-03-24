@@ -18,18 +18,18 @@ bundle: page
 mode: default
 content:
   body:
-    label: hidden
     type: text_default
-    weight: 100
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 100
+    region: content
   field_path:
-    weight: 102
+    type: fieldable_path_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: fieldable_path_formatter
+    weight: 102
     region: content
   links:
     weight: 101

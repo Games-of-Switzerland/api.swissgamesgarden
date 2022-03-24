@@ -1,4 +1,5 @@
-path_prefix: G70VW4Y9sP/jsonapi
-include_count: false
 _core:
   default_config_hash: eZ7KZ6nM56SRhfriFWCo1372Z9UiKufhSLRbkdhVmUg
+path_prefix: G70VW4Y9sP/jsonapi
+include_count: false
+default_disabled: false

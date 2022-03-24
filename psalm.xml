@@ -3,13 +3,13 @@
   autoloader="web/autoload-psalm.php"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="https://getpsalm.org/schema/config"
+  phpVersion="8.0"
   xsi:schemaLocation="https://getpsalm.org/schema/config file:///app/vendor/vimeo/psalm/config.xsd">
 
   <projectFiles>
     <directory name="web/modules/custom" />
-    <directory name="web/themes" />
 
-    <ignoreFiles>
+    <ignoreFiles allowMissingFiles="true">
       <directory name="vendor" />
       <directory name="web/core" />
       <directory name="web/modules/contrib" />
@@ -21,6 +21,7 @@
     <extension name="php" />
     <extension name="module" />
     <extension name="inc" />
+    <extension name="theme" />
   </fileExtensions>
 
   <issueHandlers>
@@ -32,19 +33,8 @@
     <LessSpecificReturnStatement errorLevel="info" />
     <MissingConstructor errorLevel="info" />
 
-    <!-- PSALM 4 migration introduced those errors -->
-    <NonInvariantDocblockPropertyType errorLevel="info" />
-    <MissingReturnType errorLevel="info" />
-    <ParamNameMismatch errorLevel="info" />
-    <RedundantCastGivenDocblockType errorLevel="info" />
-    <MissingParamType errorLevel="info"/>
-    <RedundantPropertyInitializationCheck errorLevel="info" />
-    <ParadoxicalCondition errorLevel="info" />
-
-    <!-- Suppress some errors -->
-    <!-- @see https://github.com/vimeo/psalm/blob/master/docs/dealing_with_code_issues.md -->
-
     <!-- Do not take into account errors with Drupal\Tests\UnitTestCase -->
+    <!--  https://github.com/vimeo/psalm/issues/841#issuecomment-401668742  -->
     <UndefinedClass>
       <errorLevel type="suppress">
         <directory name="web/modules/custom/*/tests" />
@@ -57,6 +47,29 @@
         <directory name="web/modules/custom/*/tests" />
       </errorLevel>
     </UndefinedMethod>
+
+    <MissingDependency>
+      <errorLevel type="suppress">
+        <directory name="web/modules/custom/*/tests" />
+      </errorLevel>
+    </MissingDependency>
+
+    <!-- Suppress some errors -->
+    <!-- @see https://github.com/vimeo/psalm/blob/master/docs/dealing_with_code_issues.md -->
+
+    <!-- Do not take into account errors with Drupal\Tests\UnitTestCase -->
+    <!--    <UndefinedClass>-->
+    <!--      <errorLevel type="suppress">-->
+    <!--        <directory name="web/modules/custom/*/tests" />-->
+    <!--      </errorLevel>-->
+    <!--    </UndefinedClass>-->
+
+    <!-- Do not take into account undefined methods in tests (results from the above) -->
+    <!--    <UndefinedMethod>-->
+    <!--      <errorLevel type="suppress">-->
+    <!--        <directory name="web/modules/custom/*/tests" />-->
+    <!--      </errorLevel>-->
+    <!--    </UndefinedMethod>-->
   </issueHandlers>
 
 </psalm>

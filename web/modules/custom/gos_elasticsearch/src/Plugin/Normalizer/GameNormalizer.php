@@ -18,14 +18,14 @@ class GameNormalizer extends ContentEntityNormalizer {
   /**
    * Supported formats.
    *
-   * @var array
+   * @var string|string[]
    */
   protected $format = ['elasticsearch_helper'];
 
   /**
    * The interface or class that this Normalizer supports.
    *
-   * @var array
+   * @var string|array
    */
   protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
 
@@ -85,6 +85,7 @@ class GameNormalizer extends ContentEntityNormalizer {
       foreach ($object->field_releases as $release) {
         $releases[] = [
           'date' => ($release->date_value && !empty($release->date_value)) ? $release->date_value : NULL,
+          'platform_name' => isset($release->entity) ? $release->entity->get('name')->value : NULL,
           'platform_slug' => isset($release->entity) ? $release->entity->get('field_slug')->value : NULL,
           'state' => $release->state ?? NULL,
         ];
@@ -165,6 +166,7 @@ class GameNormalizer extends ContentEntityNormalizer {
 
       foreach ($object->field_genres as $genre) {
         $genres[] = [
+          'name' => $genre->entity->get('name')->value,
           'slug' => $genre->entity->get('field_slug')->value,
         ];
       }
@@ -174,16 +176,16 @@ class GameNormalizer extends ContentEntityNormalizer {
 
     // Handle stores.
     if (!$object->get('field_stores')->isEmpty()) {
-      $genres = [];
+      $stores = [];
 
       foreach ($object->field_stores as $store) {
-        $genres[] = [
+        $stores[] = [
           'slug' => $store->store,
           'link' => $store->link,
         ];
       }
 
-      $data['stores'] = $genres;
+      $data['stores'] = $stores;
     }
 
     // Handle locations.
@@ -192,11 +194,26 @@ class GameNormalizer extends ContentEntityNormalizer {
 
       foreach ($object->field_locations as $location) {
         $locations[] = [
+          'name' => $location->entity->get('name')->value,
           'slug' => $location->entity->get('field_slug')->value,
         ];
       }
 
       $data['locations'] = $locations;
+    }
+
+    // Handle cantons.
+    if (!$object->get('field_cantons')->isEmpty()) {
+      $cantons = [];
+
+      foreach ($object->field_cantons as $canton) {
+        $cantons[] = [
+          'name' => $canton->entity->get('name')->value,
+          'slug' => $canton->entity->get('field_slug')->value,
+        ];
+      }
+
+      $data['cantons'] = $cantons;
     }
 
     return $data;
@@ -205,7 +222,7 @@ class GameNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function supportsNormalization($data, $format = NULL) {
+  public function supportsNormalization($data, $format = NULL): bool {
     if (!parent::supportsNormalization($data, $format)) {
       return FALSE;
     }
