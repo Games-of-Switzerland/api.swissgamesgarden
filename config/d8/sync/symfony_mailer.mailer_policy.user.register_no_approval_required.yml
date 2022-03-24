@@ -1,0 +1,19 @@
+uuid: ededde17-4145-4a2c-aebf-ed64a1b65577
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: uzdbD_0ZHVUTipQqSj3d8h2Soz6ja3fXN9gDLEOwwtE
+id: user.register_no_approval_required
+configuration:
+  email_subject:
+    value: 'Account details for [user:display-name] at [site:name]'
+  email_body:
+    value: |
+      <p>[user:display-name],</p> <p>Thank you for registering at <a href="[site:url]">[site:name]</a>. You may now use this link to <a href="[user:one-time-login-url]">log in</a>. It can be used only once and will lead you to a page where you can set your password.</p>
+      <p>After setting your password, you will be able to <a href="[site:login-url]">log in</a> in the future using:</p> <ul>
+        <li>username: [user:account-name]</li>
+        <li>password: Your password</li>
+      </ul>

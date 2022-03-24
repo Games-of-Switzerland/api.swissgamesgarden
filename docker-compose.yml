@@ -98,6 +98,14 @@ services:
     image: schickling/mailcatcher
     restart: always
 
+  # Sendmail
+  sendmail:
+    image: pigeosolutions/docker-sendmail
+    restart: always
+    environment:
+      HOSTNAME: sendmail
+      SUBNET: 192.168
+
   # Elasticsearch
   elasticsearch:
     build:

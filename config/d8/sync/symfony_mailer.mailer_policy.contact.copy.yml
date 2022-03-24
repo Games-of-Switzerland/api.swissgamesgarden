@@ -1,0 +1,13 @@
+uuid: fc536235-4dad-4f4d-a6bf-5467e4285ebe
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+_core:
+  default_config_hash: rN3t8gucER-ZQ4nuyNJmzqAjiX2H4iKrFuTYvmdq4ts
+id: contact.copy
+configuration:
+  email_body:
+    value: |
+      <p class="contact-email-intro">Here is a copy of the message you sent to {{ recipient_name }} at {{ site_name }}.</p> <hr> {{ body }}

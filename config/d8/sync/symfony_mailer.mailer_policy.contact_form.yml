@@ -1,0 +1,12 @@
+uuid: 51a31fc2-e822-4830-977d-9fad394b8d7b
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+_core:
+  default_config_hash: Hmb6-2KQp-459chRvJx4haH9MprIHzG-rZheK5skgac
+id: contact_form
+configuration:
+  email_subject:
+    value: '[{{ form }}] {{ subject }}'
