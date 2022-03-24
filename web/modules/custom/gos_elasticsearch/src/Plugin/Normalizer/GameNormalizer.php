@@ -202,6 +202,20 @@ class GameNormalizer extends ContentEntityNormalizer {
       $data['locations'] = $locations;
     }
 
+    // Handle cantons.
+    if (!$object->get('field_cantons')->isEmpty()) {
+      $cantons = [];
+
+      foreach ($object->field_cantons as $canton) {
+        $cantons[] = [
+          'name' => $canton->entity->get('name')->value,
+          'slug' => $canton->entity->get('field_slug')->value,
+        ];
+      }
+
+      $data['cantons'] = $cantons;
+    }
+
     return $data;
   }
 

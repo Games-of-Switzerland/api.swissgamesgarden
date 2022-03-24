@@ -17,9 +17,22 @@
                 "lang": "en"
             }
         ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_cantons": [
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/37?_format=hal_json"
+            },
+            {
+                "href": "http:\/\/default\/taxonomy\/term\/38?_format=hal_json"
+            }
+        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_genres": [
             {
                 "href": "http:\/\/default\/taxonomy\/term\/22?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_locations": [
+            {
+                "href": "http:\/\/default\/locations\/lausanne?_format=hal_json"
             }
         ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_releases": [
@@ -101,6 +114,38 @@
                 "lang": "en"
             }
         ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_cantons": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/37?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/canton"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "7eb54de6-4f2c-471e-b84b-ac7a9c8ff729"
+                    }
+                ]
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/taxonomy\/term\/38?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/canton"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "7fd1c607-99c3-415c-92fc-b3033b2a7b90"
+                    }
+                ]
+            }
+        ],
         "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_genres": [
             {
                 "_links": {
@@ -114,6 +159,23 @@
                 "uuid": [
                     {
                         "value": "55d245b5-c9cc-43e5-8400-c44ef4f2d8ad"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/node\/game\/field_locations": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/default\/locations\/lausanne?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/location"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "b3165598-63fe-4717-a30e-11daf4389257"
                     }
                 ]
             }

@@ -136,6 +136,18 @@
             "uniqueItems": true
           },
           {
+            "name": "cantons[]",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "description": "Collection of cantons slug. Items are matched using an Inner OR condition.",
+            "items": {
+              "type": "string"
+            },
+            "example": "vaud",
+            "uniqueItems": true
+          },
+          {
             "name": "stores[]",
             "in": "query",
             "required": false,

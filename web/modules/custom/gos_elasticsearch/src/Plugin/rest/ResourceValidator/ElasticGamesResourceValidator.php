@@ -48,6 +48,15 @@ class ElasticGamesResourceValidator extends BaseValidator {
   protected $raw;
 
   /**
+   * The game Cantons to filter by.
+   *
+   * This field uses the custom validation ::validateCantons.
+   *
+   * @var \Drupal\taxonomy\TermInterface[]|null
+   */
+  private $cantons;
+
+  /**
    * The game Genres to filter by.
    *
    * This field uses the custom validation ::validateGenres.
@@ -134,6 +143,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @Assert\Choice(choices={"", "apple_store", "steam", "amazon", "itchio", "facebook", "epic", "playstation", "xbox", "nintendo", "microsoft_store", "oculus", "google_play_store", "gog", "other"}, multiple=true)
    */
   private $stores;
+
+  /**
+   * Get the game Cantons to filter by.
+   *
+   * @return \Drupal\taxonomy\TermInterface[]|null
+   *   Cantons to filter by.
+   */
+  public function getCantons(): ?array {
+    return $this->cantons;
+  }
 
   /**
    * Get the game Genres to filter by.
@@ -243,6 +262,16 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   public function getStores(): ?array {
     return $this->stores;
+  }
+
+  /**
+   * Set the Cantons to filter by.
+   *
+   * @param \Drupal\taxonomy\TermInterface[] $cantons
+   *   Cantons to filter by.
+   */
+  public function setCantons(array $cantons): void {
+    $this->cantons = $cantons;
   }
 
   /**
@@ -356,6 +385,26 @@ class ElasticGamesResourceValidator extends BaseValidator {
   }
 
   /**
+   * Validates the Cantons parameter.
+   *
+   * Ensure the given taxonomy is a proper Cantons entity.
+   *
+   * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
+   *   The validation execution context.
+   * @param string $payload
+   *   The Payload.
+   *
+   * @Assert\Callback
+   */
+  public function validateCantons(ExecutionContextInterface $context, $payload): void {
+    if (isset($this->raw['cantons']) && !$this->cantons) {
+      $context->buildViolation(sprintf('At least one given Canton(s) has not been found.'))
+        ->atPath('cantons')
+        ->addViolation();
+    }
+  }
+
+  /**
    * Validates the Genres parameter.
    *
    * Ensure the given taxonomy is a proper Genres entity.
@@ -378,7 +427,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
   /**
    * Validates the Locations parameter.
    *
-   * Ensure the given taxonomy is a proper Genres entity.
+   * Ensure the given taxonomy is a proper Locations entity.
    *
    * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
    *   The validation execution context.

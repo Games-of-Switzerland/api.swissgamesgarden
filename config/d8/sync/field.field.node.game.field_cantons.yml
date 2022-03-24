@@ -1,0 +1,29 @@
+uuid: 106e29ae-e772-48f2-9ac3-53eacb53f45c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cantons
+    - node.type.game
+    - taxonomy.vocabulary.canton
+id: node.game.field_cantons
+field_name: field_cantons
+entity_type: node
+bundle: game
+label: Canton(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      canton: canton
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,39 @@
+uuid: 9a248535-baa9-4640-a025-e694983ead63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.canton.field_path
+    - field.field.taxonomy_term.canton.field_slug
+    - taxonomy.vocabulary.canton
+  module:
+    - fieldable_path
+    - text
+id: taxonomy_term.canton.default
+targetEntityType: taxonomy_term
+bundle: canton
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_path:
+    type: fieldable_path_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_slug:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

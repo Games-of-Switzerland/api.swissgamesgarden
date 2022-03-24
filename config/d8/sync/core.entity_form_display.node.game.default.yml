@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.game.body
     - field.field.node.game.field_article_links
     - field.field.node.game.field_awards
+    - field.field.node.game.field_cantons
     - field.field.node.game.field_completeness
     - field.field.node.game.field_contextual_links
     - field.field.node.game.field_credits
@@ -109,6 +110,7 @@ third_party_settings:
         - field_player
         - field_stores
         - field_locations
+        - field_cantons
         - field_languages
         - field_genres
         - field_sponsors
@@ -169,21 +171,31 @@ content:
     third_party_settings: {  }
   field_awards:
     type: string_textfield
-    weight: 130
+    weight: 131
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_cantons:
+    type: entity_reference_autocomplete
+    weight: 24
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_contextual_links:
     type: contextual_link_default
-    weight: 132
+    weight: 133
     region: content
     settings: {  }
     third_party_settings: {  }
   field_credits:
     type: text_textarea
-    weight: 133
+    weight: 134
     region: content
     settings:
       rows: 5
@@ -191,7 +203,7 @@ content:
     third_party_settings: {  }
   field_genres:
     type: entity_reference_autocomplete
-    weight: 25
+    weight: 26
     region: content
     settings:
       match_operator: CONTAINS
@@ -211,7 +223,7 @@ content:
     third_party_settings: {  }
   field_languages:
     type: entity_reference_autocomplete
-    weight: 24
+    weight: 25
     region: content
     settings:
       match_operator: CONTAINS
@@ -245,6 +257,7 @@ content:
     region: content
     settings:
       sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_player:
     type: player_default
@@ -274,7 +287,7 @@ content:
     third_party_settings: {  }
   field_social_networks:
     type: social_default
-    weight: 131
+    weight: 132
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -288,7 +301,7 @@ content:
     third_party_settings: {  }
   field_sponsors:
     type: entity_reference_autocomplete
-    weight: 26
+    weight: 27
     region: content
     settings:
       match_operator: CONTAINS

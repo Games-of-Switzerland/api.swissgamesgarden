@@ -1,0 +1,23 @@
+uuid: 25986128-36ea-41d8-8063-f6cd3235e3ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_path
+    - taxonomy.vocabulary.canton
+  module:
+    - fieldable_path
+id: taxonomy_term.canton.field_path
+field_name: field_path
+entity_type: taxonomy_term
+bundle: canton
+label: Path
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: fieldable_path
