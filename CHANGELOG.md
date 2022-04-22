@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Security
+- update Drupal 9.3.7 => 9.3.12 with all dependencies
+- update module drupal/gin (3.0.0-beta1 => 3.0.0-beta2)
+- update module drupal/gin_login (1.1.0 => 1.2.0)
+- update module drupal/gin_toolbar (1.0.0-beta21 => 1.0.0-beta22)
+- update module drupal/migrate_file (2.1.0 => 2.1.1)
+- update module drupal/consumer_image_styles (4.0.6 => 4.0.7)
 
 ## [0.2.0] - 2022-03-24
 ### Security
