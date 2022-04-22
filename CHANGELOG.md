@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2022-04-22
+### Security
+- update Drupal 9.3.7 => 9.3.12 with all dependencies
+- update module drupal/gin (3.0.0-beta1 => 3.0.0-beta2)
+- update module drupal/gin_login (1.1.0 => 1.2.0)
+- update module drupal/gin_toolbar (1.0.0-beta21 => 1.0.0-beta22)
+- update module drupal/migrate_file (2.1.0 => 2.1.1)
+- update module drupal/consumer_image_styles (4.0.6 => 4.0.7)
+
 ## [0.2.0] - 2022-03-24
 ### Security
 - update Drupal 9.2.8 => 9.3.7 with all dependencies
@@ -47,7 +56,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.3...0.1.0
 [0.0.3]: https://github.com/Games-of-Switzerland/gos-server/compare/0.0.2...0.0.3
