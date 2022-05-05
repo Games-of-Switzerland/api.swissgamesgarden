@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Security
+- update module drupal/pathauto (1.9.0 => 1.10.0)
+- update module drupal/migrate_plus (5.2.0 => 5.3.0)
+- update module drupal/drupal-driver (v2.1.1 => v2.1.2)
+- update module drupal/jsonapi_hypermedia (1.6.0 => 1.7.0)
+- update module drupal/drupal-extension (v4.1.0 => v4.2.1)
 
 ## [0.3.0] - 2022-04-22
 ### Security
