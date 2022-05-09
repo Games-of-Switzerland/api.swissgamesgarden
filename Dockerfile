@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1.3
+
 FROM antistatique/php-dev:8.0
 
 WORKDIR /var/www
