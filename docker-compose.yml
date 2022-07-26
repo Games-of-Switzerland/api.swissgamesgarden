@@ -18,7 +18,7 @@ services:
       DEFAULT_CONTENT: gos_default_content
       REQUIRED_DIRECTORIES: >-
         /var/www/web/sites/default/files/private
-    restart: "no"
+    restart: unless-stopped
     volumes:
       - backups:/var/backups
       # Drupal
@@ -52,7 +52,7 @@ services:
         /var/www/dump/behat
       BEHAT_PROFILE: default
       TEST_DISABLE_MODULES: big_pipe
-    restart: "no"
+    restart: unless-stopped
     volumes:
       - backups:/var/backups
       # Drupal
