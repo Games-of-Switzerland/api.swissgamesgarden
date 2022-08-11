@@ -100,7 +100,7 @@ jobs:
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test
       - name: Run unit tests
-        run: docker exec test docker-as-wait --mysql -- docker-as-drupal phpunit --skip-default-stops --group=gos --exclude-group=gos_functional
+        run: docker exec test docker-as-wait db:3306 -- docker-as-drupal phpunit --skip-default-stops --group=gos --exclude-group=gos_functional
 #
 #   functional-tests:
 #     runs-on: ubuntu-latest
@@ -110,9 +110,9 @@ jobs:
 #       - name: Build the docker-compose stack
 #         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test browser elasticsearch
 #       - name: Bootstrap
-#         run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
+#         run: docker exec test docker-as-wait db:3306 elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
 #       - name: Run Functional tests
-#         run: docker exec test docker-as-wait --mysql test:8888 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional --user=www-data
+#         run: docker exec test docker-as-wait db:3306 test:8888 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional --user=www-data
 #       - name: Upload Artifact
 #         uses: actions/upload-artifact@v3
 #         if: failure()
@@ -129,9 +129,9 @@ jobs:
       - name: Build the docker-compose stack
         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test browser elasticsearch
       - name: Bootstrap
-        run: docker exec test docker-as-wait --mysql elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
+        run: docker exec test docker-as-wait db:3306 elasticsearch:9200 -- docker-as-drupal bootstrap --install-only
       - name: Run Behat tests
-        run: docker-compose exec -T test docker-as-wait --mysql test:8888 browser:4444 -- docker-as-drupal behat --with-elasticsearch --user=www-data
+        run: docker-compose exec -T test docker-as-wait db:3306 test:8888 browser:4444 -- docker-as-drupal behat --with-elasticsearch --user=www-data
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         if: failure()

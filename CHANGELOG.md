@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - use Docker Builtkit on Github Action
+- rework Docker integration using antistatique/php instead of deprecated image antistatique/docker-php
 
 ## [0.3.1] - 2022-05-05
 ### Security

@@ -105,10 +105,12 @@
         "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true,
-            "cweagans/composer-patches": true,
+            "composer/package-versions-deprecated": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "fenetikm/autoload-drupal": true,
+            "cweagans/composer-patches": true,
+            "wikimedia/composer-merge-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
