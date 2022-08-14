@@ -11,7 +11,7 @@ default:
         - Drupal\Behat\Context\Drupal\RestContext
         - Drupal\Behat\Context\Drupal\RedirectContext
         - Drupal\Behat\Context\Drupal\MailContext:
-            base_url: http://api.gos.test:8888
+            base_url: http://api.gos.test
         - Drupal\Behat\Context\Drupal\DebugContext:
             log_path: '%paths.base%/log/behat'
         - Drupal\Behat\Context\Drupal\SitemapContext:
@@ -31,11 +31,11 @@ default:
       goutte: ~
       selenium2:
         wd_host: http://browser:4444/wd/hub
-      base_url: http://api.gos.test:8888
+      base_url: http://api.gos.test
       files_path: "%paths.base%/behat/Fixtures/"
     Imbo\BehatApiExtension:
       apiClient:
-        base_uri: http://api.gos.test:8888
+        base_uri: http://api.gos.test
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'
