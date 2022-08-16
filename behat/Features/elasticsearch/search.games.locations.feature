@@ -19,8 +19,8 @@
     And the response should be in JSON
     And the JSON node "hits.hits" should have 2 elements
     And the JSON nodes should be equal to:
-      | hits.hits[0]._source.uuid | 08952aa6-e079-496a-8efa-cbb8465d9315 |
-      | hits.hits[1]._source.uuid | 9bb9538f-5b75-4dc0-99b1-ff11d4e2abdd |
+      | hits.hits[0]._source.uuid | 9bb9538f-5b75-4dc0-99b1-ff11d4e2abdd |
+      | hits.hits[1]._source.uuid | 08952aa6-e079-496a-8efa-cbb8465d9315 |
 
   Scenario: Games Resource should respond with an error when a non-valid genre slug is given.
     Given I send a "GET" request to "http://api.gos.test/search/games?page=0&locations[]=test"

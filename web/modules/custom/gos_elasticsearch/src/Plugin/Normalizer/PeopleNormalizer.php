@@ -26,6 +26,13 @@ class PeopleNormalizer extends ContentEntityNormalizer {
 
   /**
    * {@inheritdoc}
+   */
+  public function hasCacheableSupportsMethod(): bool {
+    return FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
    *
    * @psalm-suppress ParamNameMismatch
    */
