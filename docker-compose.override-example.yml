@@ -19,7 +19,7 @@ services:
   test:
     hostname: test
     ports:
-      - "8888:8888"
+      - "8888:80"
 
   # Database
   db:

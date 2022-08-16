@@ -1,0 +1,24 @@
+services:
+  cache.backend.null:
+    class: Drupal\Core\Cache\NullBackendFactory
+
+parameters:
+  jsonapi.base_path: /G70VW4Y9sP/jsonapi
+  http.response.debug_cacheability_headers: true
+  twig.config:
+    debug: true
+    auto_reload: true
+    cache: false
+
+  # Configure Cross-Site HTTP requests (CORS).
+  # Read https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+  # for more information about the topic in general.
+  # Note: By default the configuration is disabled.
+  cors.config:
+    enabled: true
+    # Specify allowed headers, like 'x-allowed-header'.
+    allowedHeaders: ['x-consumed-id', 'x-csrf-token', 'authorization', 'content-type', 'accept', 'origin', 'x-requested-with', 'xhrField']
+    # Specify allowed request methods, specify ['*'] to allow all possible ones.
+    allowedMethods: ['GET', 'POST']
+    # Sets the Access-Control-Allow-Credentials header.
+    supportsCredentials: true
