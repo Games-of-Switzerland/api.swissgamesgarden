@@ -1,10 +1,11 @@
-version: '3.6'
+version: '3.8'
 
 services:
 
   # Drupal app server
   app:
     build:
+      dockerfile: docker/Dockerfile
       context: .
     command: ./docker/startup.sh
     depends_on:
@@ -13,28 +14,34 @@ services:
       - elasticsearch
     environment:
       APP_ENV: development
-      BASE_URL: http://localhost:80
+      BASE_URL: http://localhost
       DATABASE_URL: mysql://drupal:drupal@db/drupal_development
       DEFAULT_CONTENT: gos_default_content
-      REQUIRED_DIRECTORIES: >-
-        /var/www/web/sites/default/files/private
-    restart: "no"
+    restart: unless-stopped
     volumes:
       - backups:/var/backups
+      - ./patches:/var/www/patches
       # Drupal
-      - ./composer.json:/var/www/composer.json:cached
-      - ./composer.lock:/var/www/composer.lock:cached
-      - ./config:/var/www/config:cached
-      - ./web/modules/custom:/var/www/web/modules/custom:cached
-      - ./config/d8/docker.services.yml:/var/www/web/sites/default/services.yml:cached
+      - ./composer.json:/var/www/composer.json
+      - ./composer.lock:/var/www/composer.lock
+      - ./config:/var/www/config
+      - ./web/modules/custom:/var/www/web/modules/custom
+      - ./web/sites/default/settings.development.php:/var/www/web/sites/default/settings.development.php
       # Files
       - ./web/sites/default/files:/var/www/web/sites/default/files:delegated
       # Drush
-      - ./config/d8/docker.drush.yml:/var/www/drush/drush.yml:cached
+      - ./web/sites/default/drush.development.yml:/var/www/drush/drush.yml
+      # Gin
+      - ./web/sites/default/files/gin-custom.css:/var/www/web/sites/default/files/gin-custom.css
+      # Behat
+      - ./behat:/var/www/behat
+      - ./behat.yml:/var/www/behat.yml
 
   # Drupal test server
   test:
-    build: .
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
     command: ./docker/startup.sh
     depends_on:
       - browser
@@ -43,29 +50,26 @@ services:
       - elasticsearch
     environment:
       APP_ENV: test
-      BASE_URL: http://localhost:8888
+      BASE_URL: http://localhost
       DATABASE_URL: mysql://drupal:drupal@db/drupal_test
       DEFAULT_CONTENT: gos_default_content
-      REQUIRED_DIRECTORIES: >-
-        /var/www/web/sites/default/files/private
-        /var/www/log/behat
-        /var/www/dump/behat
       BEHAT_PROFILE: default
       TEST_DISABLE_MODULES: big_pipe
-    restart: "no"
+    restart: unless-stopped
     volumes:
       - backups:/var/backups
+      - ./patches:/var/www/patches
       # Drupal
-      - ./composer.json:/var/www/composer.json:cached
-      - ./composer.lock:/var/www/composer.lock:cached
-      - ./config:/var/www/config:cached
-      - ./web/modules/custom:/var/www/web/modules/custom:cached
-      - ./config/d8/docker.services.yml:/var/www/web/sites/default/services.yml:cached
+      - ./composer.json:/var/www/composer.json
+      - ./composer.lock:/var/www/composer.lock
+      - ./config:/var/www/config
+      - ./web/modules/custom:/var/www/web/modules/custom
       # Behat
-      - ./behat:/var/www/behat:cached
-      - ./behat.yml:/var/www/behat.yml:cached
+      - ./behat:/var/www/behat
+      - ./behat.yml:/var/www/behat.yml
+      - ./phpunit.xml.dist:/var/www/phpunit.xml.dist
       # Drush
-      - ./config/d8/docker.drush.yml:/var/www/drush/drush.yml:cached
+      - ./web/sites/default/drush.development.yml:/var/www/drush/drush.yml
     networks:
       default:
         aliases:
@@ -89,21 +93,21 @@ services:
       MYSQL_PASSWORD: drupal
       MYSQL_DATABASE: drupal_%
       MYSQL_ROOT_PASSWORD: root
-    restart: always
+    restart: unless-stopped
     volumes:
       - database:/var/lib/mysql
 
   # Mailcatcher
   mailcatcher:
     image: schickling/mailcatcher
-    restart: always
+    restart: unless-stopped
 
   # Elasticsearch
   elasticsearch:
     build:
       dockerfile: docker/Dockerfile.elasticsearch
       context: .
-    restart: always
+    restart: unless-stopped
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
@@ -119,16 +123,6 @@ services:
     volumes:
       - esdata:/usr/share/elasticsearch/data
       - ./config/elasticsearch/analysis:/usr/share/elasticsearch/config/analysis
-
-  # Elasticsearch browser
-  dejavu:
-    image: appbaseio/dejavu:latest
-    depends_on:
-      - elasticsearch
-    ports:
-      - '1358:1358'
-    links:
-      - elasticsearch
 
 volumes:
   database:

@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.8'
 
 services:
   # Drupal development server
@@ -19,14 +19,29 @@ services:
   test:
     hostname: test
     ports:
-      - "8888:8888"
+      - "8888:80"
 
   # Database
   db:
     ports:
-      - "3306:3306"
+      - "13306:3306"
+
+  # Mail
+  mail:
+    ports:
+      - "1080:1080"
 
   # Elasticsearch
   elasticsearch:
     ports:
       - "9200:9200"
+
+  # Elasticsearch browser
+  # dejavu:
+  #   image: appbaseio/dejavu:latest
+  #   depends_on:
+  #     - elasticsearch
+  #   ports:
+  #     - '1358:1358'
+  #   links:
+  #     - elasticsearch

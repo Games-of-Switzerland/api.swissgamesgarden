@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2022-09-08
+### Changed
+- use Docker Builtkit on Github Action
+- rework Docker integration using antistatique/php instead of deprecated image antistatique/docker-php
+
 ## [0.3.1] - 2022-05-05
 ### Security
 - update module drupal/pathauto (1.9.0 => 1.10.0)
@@ -64,7 +69,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.1...0.4.0
 [0.3.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.1.0...0.2.0
