@@ -1,15 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
-         backupGlobals="false"
-         colors="true"
-         bootstrap="vendor/autoload.php"
-         verbose="true"
-        >
-    <testsuites>
-        <testsuite name="drupal-composer-project tests">
-            <directory>./test/</directory>
-        </testsuite>
-    </testsuites>
+<!-- TODO set checkForUnintentionallyCoveredCode="true" once https://www.drupal.org/node/2626832 is resolved. -->
+<!-- PHPUnit expects functional tests to be run with either a privileged user
+ or your current system user. See core/tests/README.md and
+ https://www.drupal.org/node/2116263 for details.
+-->
+<phpunit
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  bootstrap="web/core/tests/bootstrap.php"
+  colors="true"
+  beStrictAboutTestsThatDoNotTestAnything="true"
+  beStrictAboutOutputDuringTests="true"
+  beStrictAboutChangesToGlobalState="true"
+  failOnWarning="true"
+  executionOrder="random"
+  printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter"
+  cacheResult="false"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <php>
+    <!-- Set error reporting to E_ALL. -->
+    <ini name="error_reporting" value="32767"/>
+    <ini name="memory_limit" value="-1"/>
+    <env name="SIMPLETEST_BASE_URL" value="http://gos.test"/>
+    <env name="SIMPLETEST_DB" value="mysql://drupal:drupal@db/drupal_test"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/var/www/web/sites/simpletest/browser_output"/>
+    <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
+  </php>
+  <!-- Default groups. -->
+  <groups>
+    <include>
+      <group>gos</group>
+    </include>
+    <exclude>
+      <group>gos_functional</group>
+    </exclude>
+  </groups>
+  <!-- Test suites. -->
+  <testsuites>
+    <testsuite name="unit">
+      <file>./web/core/tests/TestSuites/UnitTestSuite.php</file>
+    </testsuite>
+    <testsuite name="kernel">
+      <file>./web/core/tests/TestSuites/KernelTestSuite.php</file>
+    </testsuite>
+    <testsuite name="functional">
+      <file>./web/core/tests/TestSuites/FunctionalTestSuite.php</file>
+    </testsuite>
+    <testsuite name="functional-javascript">
+      <file>./web/core/tests/TestSuites/FunctionalJavascriptTestSuite.php</file>
+    </testsuite>
+    <testsuite name="build">
+      <file>./web/core/tests/TestSuites/BuildTestSuite.php</file>
+    </testsuite>
+  </testsuites>
+  <coverage>
+    <include>
+      <directory>./web/core/includes</directory>
+      <directory>./web/core/lib</directory>
+      <directory>./web/core/modules</directory>
+      <directory>./web/modules</directory>
+      <directory>./web/sites</directory>
+    </include>
+    <exclude>
+      <directory>./web/core/modules/*/src/Tests</directory>
+      <directory>./web/core/modules/*/tests</directory>
+      <directory>./web/modules/*/src/Tests</directory>
+      <directory>./web/modules/*/tests</directory>
+      <directory>./web/modules/*/*/src/Tests</directory>
+      <directory>./web/modules/*/*/tests</directory>
+    </exclude>
+  </coverage>
+  <listeners>
+    <listener class="\Drupal\Tests\Listeners\DrupalListener">
+    </listener>
+  </listeners>
 </phpunit>

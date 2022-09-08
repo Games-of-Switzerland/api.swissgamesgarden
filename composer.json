@@ -87,14 +87,15 @@
         "drupal/default_content": "^1.0@alpha",
         "drupal/drupal-extension": "^4.0",
         "drupal/jsonapi_explorer": "^1.0",
+        "drupal/upgrade_status": "^3.16",
         "drupol/phpcsfixer-configs-drupal": "^2.0",
         "fenetikm/autoload-drupal": "dev-master",
         "friendsofphp/php-cs-fixer": "^3.0",
         "imbo/behat-api-extension": "^2.2",
         "marcortola/behat-seo-contexts": "^3.1",
-        "mglaman/phpstan-drupal": "^0.12.3",
+        "mglaman/phpstan-drupal": "^1.1",
         "phpspec/prophecy-phpunit": "^2",
-        "phpstan/phpstan-deprecation-rules": "^0.12.2"
+        "phpstan/phpstan-deprecation-rules": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -105,10 +106,12 @@
         "sort-packages": true,
         "allow-plugins": {
             "composer/installers": true,
-            "cweagans/composer-patches": true,
+            "composer/package-versions-deprecated": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "fenetikm/autoload-drupal": true,
+            "cweagans/composer-patches": true,
+            "wikimedia/composer-merge-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },

@@ -1,10 +1,10 @@
-version: '3.6'
+version: '3.8'
 
 services:
   test:
     container_name: test
-    volumes:
-      - ./app/logs:/var/www/log:delegated
-      - ./app/simpletest:/var/www/web/sites/simpletest/:delegated
+    #volumes:
+      #- ./app/logs:/var/www/log:delegated
+      #- ./app/simpletest:/var/www/web/sites/simpletest/:delegated
     environment:
       PHP_MEMORY_LIMIT: 1024M
