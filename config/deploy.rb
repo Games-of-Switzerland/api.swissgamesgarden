@@ -16,7 +16,7 @@ server 'gos.museebolo.ch', port: '44144', user: 'deploy', roles: %w{app db web}
 
 # Link environments files
 #set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/docker.settings.php", "docker-compose.override.yml")
-set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/settings.local.php", "docker-compose.override.yml")
+set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/settings.local.php", "#{fetch(:app_path)}/sites/default/services.local.yml", "docker-compose.override.yml")
 
 # Link dirs files and private-files
 set :linked_dirs, fetch(:linked_dirs, []).push("#{fetch(:app_path)}/sites/default/files")
