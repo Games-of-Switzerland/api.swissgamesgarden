@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - ensure master is deployed on production instead of dev
 
+### Added
+- add the role 'Contributor' - Games-of-Switzerland/swissgamesgarden#101
+
 ## [0.4.0] - 2022-09-08
 ### Changed
 - use Docker Builtkit on Github Action

@@ -1,0 +1,101 @@
+uuid: 377ba36c-8ba3-470c-a02c-b7dd4aa7d80f
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - media.type.document
+    - media.type.image
+    - node.type.game
+    - node.type.page
+    - node.type.people
+    - node.type.studio
+    - taxonomy.vocabulary.canton
+    - taxonomy.vocabulary.genre
+    - taxonomy.vocabulary.language
+    - taxonomy.vocabulary.location
+    - taxonomy.vocabulary.platform
+    - taxonomy.vocabulary.publisher
+    - taxonomy.vocabulary.sponsor
+  module:
+    - admin_toolbar_search
+    - contextual
+    - file
+    - filter
+    - media
+    - node
+    - path
+    - system
+    - taxonomy
+    - toolbar
+id: contributor
+label: Contributor
+weight: 3
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access files overview'
+  - 'access media overview'
+  - 'access site in maintenance mode'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'cancel account'
+  - 'create document media'
+  - 'create game content'
+  - 'create image media'
+  - 'create media'
+  - 'create page content'
+  - 'create people content'
+  - 'create studio content'
+  - 'create terms in canton'
+  - 'create terms in genre'
+  - 'create terms in language'
+  - 'create terms in location'
+  - 'create terms in platform'
+  - 'create terms in publisher'
+  - 'create terms in sponsor'
+  - 'create url aliases'
+  - 'delete game revisions'
+  - 'delete media'
+  - 'delete own document media'
+  - 'delete own game content'
+  - 'delete own image media'
+  - 'delete own page content'
+  - 'delete own people content'
+  - 'delete own studio content'
+  - 'delete page revisions'
+  - 'delete people revisions'
+  - 'delete studio revisions'
+  - 'edit any game content'
+  - 'edit any page content'
+  - 'edit any people content'
+  - 'edit any studio content'
+  - 'edit own game content'
+  - 'edit own image media'
+  - 'edit own page content'
+  - 'edit own people content'
+  - 'edit own studio content'
+  - 'edit terms in canton'
+  - 'edit terms in genre'
+  - 'edit terms in language'
+  - 'edit terms in location'
+  - 'edit terms in platform'
+  - 'edit terms in publisher'
+  - 'edit terms in sponsor'
+  - 'link to any page'
+  - 'update media'
+  - 'use admin toolbar search'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
+  - 'view all media revisions'
+  - 'view game revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view page revisions'
+  - 'view people revisions'
+  - 'view studio revisions'
+  - 'view the administration theme'
