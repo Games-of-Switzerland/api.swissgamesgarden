@@ -1,9 +1,27 @@
 <?php
 
+// phpcs:ignoreFile
+
+$databases['default']['default'] = array (
+  'database' => 'drupal_test',
+  'username' => 'drupal',
+  'password' => 'drupal',
+  'prefix' => '',
+  'host' => 'db',
+  'port' => '',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+
+/**
+ * Salt for one-time login links, cancel links, form tokens, etc.
+ */
+$settings['hash_salt'] = 'O8PdFrl8MAcMZcxhCKVU-Gtz5uX0ztAGiuKej3mLEUkjtoOnVrl2T1XIqXVdeegbgt57ZX_TPg';
+
 /**
  * Setting used to add a prefix for ES index based on the environment.
  */
-$settings['gos_elasticsearch.index_prefix'] = 'development';
+$settings['gos_elasticsearch.index_prefix'] = 'test';
 
 /**
  * The CDN static-content status.
@@ -18,12 +36,6 @@ $config['cdn.settings']['status'] = false;
  * @var string
  */
 $config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = '9200';
-
-/**
- * The elasticsearch host name.
- *
- * @var string
- */
 $config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = 'elasticsearch';
 
 /**
@@ -38,7 +50,7 @@ $config['frontend']['base_url'] = 'https://gos.museebolo.ch';
  *
  * @var string
  */
-$config['simple_sitemap.settings']['base_url'] = 'http://api.gos.test';
+$config['simple_sitemap.settings']['base_url'] = 'https://gos.museebolo.ch';
 
 /**
  * The Symfony Mailer transporter.

@@ -10,7 +10,7 @@ type: 'canonical_entities:node'
 pattern: '/studios/[node:title]'
 selection_criteria:
   eb718457-37b1-4eee-bc20-44cef62cef13:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: eb718457-37b1-4eee-bc20-44cef62cef13
     context_mapping:

@@ -10,9 +10,9 @@ Feature: Retrieve Games items from Elasticsearch
     And the response should be in JSON
     And the JSON node "hits.total" should be equal to "4"
     And the JSON node "hits.hits" should have 4 elements
-    And the JSON node "hits.hits[0]._source.title" should be equal to "Farming Simulator 18"
-    And the JSON node "hits.hits[1]._source.title" should be equal to "Farming Simulator 19"
-    And the JSON node "hits.hits[2]._source.title" should be equal to "Don't kill Her"
+    And the JSON node "hits.hits[0]._source.title" should be equal to "Don't kill Her"
+    And the JSON node "hits.hits[1]._source.title" should be equal to "Farming Simulator 18"
+    And the JSON node "hits.hits[2]._source.title" should be equal to "Farming Simulator 19"
     And the JSON node "hits.hits[3]._source.title" should be equal to "Persephone"
 
   Scenario: Games Resource should be sortable by title properties.
