@@ -88,7 +88,7 @@
         "drupal/default_content": "^1.0@alpha",
         "drupal/drupal-extension": "^4.0",
         "drupal/jsonapi_explorer": "^1.0",
-        "drupal/upgrade_status": "^3.16",
+        "drupal/upgrade_status": "^3.17",
         "drupol/phpcsfixer-configs-drupal": "^2.0",
         "fenetikm/autoload-drupal": "dev-master",
         "friendsofphp/php-cs-fixer": "^3.0",
