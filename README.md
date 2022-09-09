@@ -100,8 +100,7 @@ $config['simple_sitemap.settings']['base_url'] = 'https://api-gos.museebolo.ch';
 #### Symfony Mailer, Sendmail & Mailcatcher
 
 We use Symfony Mailer to manager the Mail Transport.
-For this project, a container `Sendmail` provide us a SMTP server that is only usable by docker engine.
-The sendmail server should only be used to properly send mail.
+For this project, `Gandi` provide us a SMTP server.
 
 ```php
 /**
@@ -109,9 +108,9 @@ The sendmail server should only be used to properly send mail.
  *
  * @var string
  */
-$config['symfony_mailer.settings']['default_transport'] = 'smtp';
-$config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'sendmail';
-$config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = '25';
+$config['symfony_mailer.settings']['default_transport'] = 'smtp_gandi';
+$config['symfony_mailer.mailer_transport.gandi_smtp']['configuration']['user'] = 'dev@swissgames.garden';
+$config['symfony_mailer.mailer_transport.gandi_smtp']['configuration']['pass'] = '';
 ```
 
 For local development, we use `mailcatcher` as a fake SMTP server.

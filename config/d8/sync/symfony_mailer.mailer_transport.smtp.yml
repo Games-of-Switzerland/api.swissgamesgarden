@@ -8,5 +8,5 @@ plugin: smtp
 configuration:
   user: ''
   pass: ''
-  host: sendmail
+  host: mailcatcher
   port: 25

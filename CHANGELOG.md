@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- add a docker container to send e-mails - Games-of-Switzerland/swissgamesgarden#91
+- configure Gandi to send e-mails - Games-of-Switzerland/swissgamesgarden#91
 
 ### Fixed
 - ensure master is deployed on production instead of dev
