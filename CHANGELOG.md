@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update Drupal 9.3.7 => 9.4.3 with all dependencies
 - upgrade module drupal/bamboo_twig (5.0.0-alpha1 => 5.0.0)
+- upgrade theme drupal/gin (3.0.0-beta1 => 3.0.0-beta5)
+- update module drupal/gin_toolbar (1.0.0-beta21 => 1.0.0-beta22)
+- update module drupal/gin_login (1.1.0 => 1.3.0)
 
 ## [0.4.0] - 2022-09-08
 ### Changed
