@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/gin_toolbar (1.0.0-beta21 => 1.0.0-beta22)
 - update module drupal/gin_login (1.1.0 => 1.3.0)
 - update module drupal/ctools (3.7.0 => 4.0.1)
+- update module drupal/admin_toolbar (3.1.0 => 3.1.1)
+- update module drupal/pathauto (1.9.0 => 1.11.0)
+- update module drupal/token (1.10.0 => 1.11.0)
 
 ## [0.4.0] - 2022-09-08
 ### Changed
