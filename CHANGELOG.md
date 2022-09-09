@@ -22,6 +22,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/admin_toolbar (3.1.0 => 3.1.1)
 - update module drupal/pathauto (1.9.0 => 1.11.0)
 - update module drupal/token (1.10.0 => 1.11.0)
+- update module drupal/metatag (1.19.0 => 1.21.0)
+- update module drupal/image_effects (3.2.0 => 3.3.0)
+- update module drupal/consumer_image_styles (4.0.6 => 4.0.7)
+- update module drupal/consumers (1.12.0 => 1.13.0)
+- update module drupal/jsonapi_extras (3.20.0 => 3.21.0)
 
 ## [0.4.0] - 2022-09-08
 ### Changed
