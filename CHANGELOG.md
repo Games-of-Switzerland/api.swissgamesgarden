@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.5.0] - 2022-09-09
 ### Added
 - configure Gandi to send e-mails - Games-of-Switzerland/swissgamesgarden#91
 - add the role 'Contributor' - Games-of-Switzerland/swissgamesgarden#101
@@ -97,7 +99,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.4.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.0...HEAD
+[0.5.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.1...0.4.0
 [0.3.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.2.0...0.3.0
