@@ -1,0 +1,12 @@
+uuid: 37e3b787-9393-4346-9a70-5e9f24cb8bc4
+langcode: en
+status: true
+dependencies: {  }
+id: smtp
+label: SMTP
+plugin: smtp
+configuration:
+  user: ''
+  pass: ''
+  host: mailcatcher
+  port: 25

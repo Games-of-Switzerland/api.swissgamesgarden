@@ -75,6 +75,7 @@
         "drupal/pathauto": "^1.6",
         "drupal/restui": "^1.18",
         "drupal/simple_sitemap": "^3.7",
+        "drupal/symfony_mailer": "^1.0@alpha",
         "drupal/views_ef_fieldset": "^1.4",
         "drupal/webp": "^1.0@beta",
         "drush/drush": "^10.0"
@@ -87,7 +88,7 @@
         "drupal/default_content": "^1.0@alpha",
         "drupal/drupal-extension": "^4.0",
         "drupal/jsonapi_explorer": "^1.0",
-        "drupal/upgrade_status": "^3.16",
+        "drupal/upgrade_status": "^3.17",
         "drupol/phpcsfixer-configs-drupal": "^2.0",
         "fenetikm/autoload-drupal": "dev-master",
         "friendsofphp/php-cs-fixer": "^3.0",
@@ -151,6 +152,9 @@
             },
             "drupal/elasticsearch_helper": {
                 "[3113356] - Drupal 9 readiness": "https://www.drupal.org/files/issues/2020-06-05/3113356-17.patch"
+            },
+            "drupal/symfony_mailer": {
+                "[3255835] - Send Test Email": "https://www.drupal.org/files/issues/2022-03-08/3255835-5.patch"
             }
         },
         "autoload-drupal": {

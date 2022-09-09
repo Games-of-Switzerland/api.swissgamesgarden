@@ -56,12 +56,13 @@ $config['frontend']['base_url'] = 'https://gos.museebolo.ch';
 $config['simple_sitemap.settings']['base_url'] = 'http://api.gos.test';
 
 /**
- * Swiftmailer transport using mailcatcher.
+ * The Symfony Mailer transporter.
+ *
+ * @var string
  */
-$config['swiftmailer.transport']['transport'] = 'smtp';
-$config['swiftmailer.transport']['smtp_host'] = 'localhost';
-$config['swiftmailer.transport']['smtp_port'] = '1025';
-$config['swiftmailer.transport']['smtp_encryption'] = '0';
+$config['symfony_mailer.settings']['default_transport'] = 'smtp';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'mailcatcher';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = '1025';
 
 /**
  * Private file path.

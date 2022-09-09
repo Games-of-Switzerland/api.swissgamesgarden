@@ -1,0 +1,12 @@
+uuid: f7bb87b1-20d4-4620-ad8f-80b33f1a0c87
+langcode: en
+status: true
+dependencies: {  }
+id: gandi_smtp
+label: 'Gandi SMTP'
+plugin: smtp
+configuration:
+  user: dev@swissgames.garden
+  pass: ''
+  host: mail.gandi.net
+  port: 465

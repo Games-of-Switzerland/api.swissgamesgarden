@@ -1,0 +1,19 @@
+uuid: 69f1b597-59ad-4167-8668-c06e1c1807ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: VkQQqaYHjG-dmyjwXi_n1Va8ypS3E6M7KBI8mJgtaME
+id: user.status_activated
+configuration:
+  email_subject:
+    value: 'Your account details for [user:display-name] at [site:name] ([site:url])'
+  email_body:
+    value: |
+      <p>[user:display-name],</p> <p>Your account at <a href="[site:url]">[site:name]</a> has been activated. You may now use this link to <a href="[user:one-time-login-url]">log in</a>. It can be used only once and will lead you to a page where you can set your password.</p>
+      <p>After setting your password, you will be able to <a href="[site:login-url]">log in</a> in the future using:</p> <ul>
+        <li>username: [user:account-name]</li>
+        <li>password: Your password</li>
+      </ul>
