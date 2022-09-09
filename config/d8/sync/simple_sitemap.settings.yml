@@ -8,7 +8,7 @@ remove_duplicates: true
 skip_untranslated: true
 disable_language_hreflang: false
 xsl: true
-base_url: ''
+base_url: 'https://swissgames.garden'
 default_variant: default
 custom_links_include_images: false
 excluded_languages: {  }

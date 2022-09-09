@@ -46,14 +46,14 @@ $config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = '9200
  *
  * This value should not contain a leading slash (/).
  */
-$config['frontend']['base_url'] = 'https://gos.museebolo.ch';
+$config['frontend']['base_url'] = 'https://swissgames.garden';
 
 /**
  * The base URL of sitemap links can be overridden here.
  *
  * @var string
  */
-$config['simple_sitemap.settings']['base_url'] = 'http://api.gos.test';
+$config['simple_sitemap.settings']['base_url'] = 'https://swissgames.garden';
 
 /**
  * The Symfony Mailer transporter.

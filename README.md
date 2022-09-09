@@ -81,7 +81,7 @@ As we are working in a decoupled architecture, we need to set the Website URL.
  *
  * @var string
  */
-$config['frontend']['base_url'] = 'https://gos.museebolo.ch';
+$config['frontend']['base_url'] = 'https://swissgames.garden';
 ```
 
 #### Sitemap
@@ -94,7 +94,7 @@ The base URL of sitemap links can be overridden using the following settings.
  *
  * @var string
  */
-$config['simple_sitemap.settings']['base_url'] = 'https://api-gos.museebolo.ch';
+$config['simple_sitemap.settings']['base_url'] = 'https://api.swissgames.garden';
 ```
 
 #### Symfony Mailer, Sendmail & Mailcatcher
