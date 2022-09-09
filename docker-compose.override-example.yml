@@ -35,6 +35,8 @@ services:
   elasticsearch:
     ports:
       - "9200:9200"
+    volumes:
+      - ./config/elasticsearch/analysis:/usr/share/elasticsearch/config/analysis
 
   # Elasticsearch browser
   # dejavu:
