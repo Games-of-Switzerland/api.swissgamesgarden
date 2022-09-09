@@ -1,0 +1,12 @@
+uuid: 879fa991-be7f-4ee3-a5a8-5d4fb2236760
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+_core:
+  default_config_hash: hNnHk1jtvS_lezOW8CXkrFUEg3SlVaH8SEIilXxmC0Y
+id: contact
+configuration:
+  email_subject:
+    value: '[{{ site_name }}] {{ subject }}'

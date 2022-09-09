@@ -75,6 +75,7 @@
         "drupal/pathauto": "^1.6",
         "drupal/restui": "^1.18",
         "drupal/simple_sitemap": "^3.7",
+        "drupal/symfony_mailer": "^1.0@alpha",
         "drupal/views_ef_fieldset": "^1.4",
         "drupal/webp": "^1.0@beta",
         "drush/drush": "^10.0"
@@ -87,7 +88,7 @@
         "drupal/default_content": "^1.0@alpha",
         "drupal/drupal-extension": "^4.0",
         "drupal/jsonapi_explorer": "^1.0",
-        "drupal/upgrade_status": "^3.16",
+        "drupal/upgrade_status": "^3.17",
         "drupol/phpcsfixer-configs-drupal": "^2.0",
         "fenetikm/autoload-drupal": "dev-master",
         "friendsofphp/php-cs-fixer": "^3.0",
@@ -141,7 +142,7 @@
                 "[3121816] - Version 8.x-2.1 need Drupal 8.8.0 or greater": "https://www.drupal.org/files/issues/2020-03-30/3121816-07.patch"
             },
             "drupal/core": {
-                "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2021-12-02/2429699-453-9.3.x.patch"
+                "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2022-04-07/drupal-views-entity-reference-filter-2429699-476.patch"
             },
             "drupal/metatag": {
                 "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-29/2945817-93.patch"

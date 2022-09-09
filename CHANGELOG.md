@@ -6,6 +6,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2022-09-09
+### Added
+- configure Gandi to send e-mails - Games-of-Switzerland/swissgamesgarden#91
+- add the role 'Contributor' - Games-of-Switzerland/swissgamesgarden#101
+
+### Fixed
+- ensure master is deployed on production instead of dev
+
+### Security
+- update Drupal 9.3.7 => 9.4.3 with all dependencies
+- upgrade module drupal/bamboo_twig (5.0.0-alpha1 => 5.0.0)
+- upgrade theme drupal/gin (3.0.0-beta1 => 3.0.0-beta5)
+- update module drupal/gin_toolbar (1.0.0-beta21 => 1.0.0-beta22)
+- update module drupal/gin_login (1.1.0 => 1.3.0)
+- update module drupal/ctools (3.7.0 => 4.0.1)
+- update module drupal/admin_toolbar (3.1.0 => 3.1.1)
+- update module drupal/pathauto (1.9.0 => 1.11.0)
+- update module drupal/token (1.10.0 => 1.11.0)
+- update module drupal/metatag (1.19.0 => 1.21.0)
+- update module drupal/image_effects (3.2.0 => 3.3.0)
+- update module drupal/consumer_image_styles (4.0.6 => 4.0.7)
+- update module drupal/consumers (1.12.0 => 1.13.0)
+- update module drupal/jsonapi_extras (3.20.0 => 3.21.0)
+- update module drupal/restui (1.20.0 => 1.21.0)
+- update module drupal/symfony_mailer (1.0.0-alpha4 => 1.0.0-alpha11)
+- update all other dependencies (16 updates)
+- update linter phar phpmd 2.9.1 => 2.12.0
+- update linter phar psalm 4.13.0 => 4.27.0
+- update linter phar phpstan 1.2.0 => 1.8.5
+
 ## [0.4.0] - 2022-09-08
 ### Changed
 - use Docker Builtkit on Github Action
@@ -69,7 +99,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.4.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.0...HEAD
+[0.5.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.1...0.4.0
 [0.3.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.2.0...0.3.0

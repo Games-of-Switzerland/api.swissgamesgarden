@@ -54,6 +54,14 @@
       </errorLevel>
     </MissingDependency>
 
+    <!-- Ignore Psalm false positive with early UnitEnum support -->
+    <!-- @see https://github.com/symfony/symfony/issues/45609 -->
+    <UndefinedDocblockClass>
+      <errorLevel type="suppress">
+        <referencedClass name="UnitEnum" />
+      </errorLevel>
+    </UndefinedDocblockClass>
+
     <!-- Suppress some errors -->
     <!-- @see https://github.com/vimeo/psalm/blob/master/docs/dealing_with_code_issues.md -->
 

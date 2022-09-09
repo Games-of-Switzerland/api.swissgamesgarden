@@ -57,3 +57,6 @@ database-clean.dump.sql
 
 # Ignore local docker compose config
 docker-compose.override.yml
+
+# Ignore Phive secrets
+/.phive/auth.xml

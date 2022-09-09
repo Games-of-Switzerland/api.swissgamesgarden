@@ -1,0 +1,17 @@
+uuid: 45288ef8-5a2a-4c58-a380-91e562be39d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: 3yUtSQjcpqSnAVeK6Y20OcEB1yK_wreyaIw9L2T8B0E
+id: user.status_blocked
+configuration:
+  email_subject:
+    value: 'Account details for [user:display-name] at [site:name] (blocked)'
+  email_body:
+    content:
+      value: |
+        <p>[user:display-name],</p> <p>Your account on <a href="[site:url]">[site:name]</a> has been blocked.</p>
+      format: email_html

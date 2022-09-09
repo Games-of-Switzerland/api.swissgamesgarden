@@ -97,6 +97,36 @@ The base URL of sitemap links can be overridden using the following settings.
 $config['simple_sitemap.settings']['base_url'] = 'https://api-gos.museebolo.ch';
 ```
 
+#### Symfony Mailer, Sendmail & Mailcatcher
+
+We use Symfony Mailer to manager the Mail Transport.
+For this project, `Gandi` provide us a SMTP server.
+
+```php
+/**
+ * The Symfony Mailer transporter.
+ *
+ * @var string
+ */
+$config['symfony_mailer.settings']['default_transport'] = 'smtp_gandi';
+$config['symfony_mailer.mailer_transport.gandi_smtp']['configuration']['user'] = 'dev@swissgames.garden';
+$config['symfony_mailer.mailer_transport.gandi_smtp']['configuration']['pass'] = '';
+```
+
+For local development, we use `mailcatcher` as a fake SMTP server.
+Mailcatcher will prevent mail to be sent and expose them through a Web UI on [http://localhost:1080](http://localhost:1080).
+
+```php
+/**
+ * The Symfony Mailer transporter.
+ *
+ * @var string
+ */
+$config['symfony_mailer.settings']['default_transport'] = 'smtp';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'mailcatcher';
+$config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = '1025';
+```
+
 #### CND
 
 We use an "Origin Pull CDNs" via `https://api.swissgames.garden`. This CDN will be used for every static-content excepted js & css.

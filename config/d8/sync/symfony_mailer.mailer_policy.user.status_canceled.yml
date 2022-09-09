@@ -1,0 +1,17 @@
+uuid: 42b50c23-7dd9-4db8-993a-4f633392d4a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: j0SPurIa5WqO8FyyFvkZVZXE94IRBHKos-fQN4wkfYw
+id: user.status_canceled
+configuration:
+  email_subject:
+    value: 'Account details for [user:display-name] at [site:name] (canceled)'
+  email_body:
+    content:
+      value: |
+        <p>[user:display-name],</p> <p>Your account on <a href="[site:url]">[site:name]</a> has been canceled.</p>
+      format: email_html

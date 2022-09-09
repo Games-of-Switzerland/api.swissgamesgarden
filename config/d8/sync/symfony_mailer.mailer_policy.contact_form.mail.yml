@@ -1,0 +1,15 @@
+uuid: 491e4441-5641-4c6b-90cf-84fb14043daf
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+_core:
+  default_config_hash: CVJZC-DKAYCDB3bQFfGfZ57HqBitlgJ90h0QK1qqyZk
+id: contact_form.mail
+configuration:
+  email_body:
+    content:
+      value: |
+        <p class="contact-email-intro"><a href="{{ sender_url }}">{{ sender_name }}</a> sent a message using the contact form <a href="{{ form_url }}">{{ form }}</a>.</p> <hr> {{ body }}
+      format: email_html

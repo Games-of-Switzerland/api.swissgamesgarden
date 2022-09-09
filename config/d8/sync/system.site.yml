@@ -3,7 +3,7 @@ _core:
 langcode: en
 uuid: e85e1685-b207-4ca4-987d-43b3619f58ab
 name: 'Games of Switzerland'
-mail: admin@example.com
+mail: dev@swissgames.garden
 slogan: ''
 page:
   403: ''

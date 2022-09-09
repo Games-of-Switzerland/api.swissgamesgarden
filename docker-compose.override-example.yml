@@ -21,6 +21,11 @@ services:
     ports:
       - "8888:80"
 
+  # Mail
+  mailcatcher:
+    ports:
+      - "1080:1080"
+
   # Database
   db:
     ports:
@@ -35,6 +40,8 @@ services:
   elasticsearch:
     ports:
       - "9200:9200"
+    volumes:
+      - ./config/elasticsearch/analysis:/usr/share/elasticsearch/config/analysis
 
   # Elasticsearch browser
   # dejavu:

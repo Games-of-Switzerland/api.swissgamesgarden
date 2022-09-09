@@ -1,0 +1,15 @@
+uuid: 8fa586cf-3a62-4b67-a028-6ec4ddf0f395
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+_core:
+  default_config_hash: aHgkEKFlNHuJNsw_HzSaWFSk33TUpW_5ibo0S1OZirI
+id: contact_form.copy
+configuration:
+  email_body:
+    content:
+      value: |
+        <p class="contact-email-intro">Here is a copy of the message you sent using the contact form <a href="{{ form_url }}">{{ form }}</a>.</p> <hr> {{ body }}
+      format: email_html
