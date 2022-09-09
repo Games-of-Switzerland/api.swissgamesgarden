@@ -74,7 +74,7 @@
         "drupal/new_relic_rpm": "^2.1",
         "drupal/pathauto": "^1.6",
         "drupal/restui": "^1.18",
-        "drupal/simple_sitemap": "^3.7",
+        "drupal/simple_sitemap": "^4.1",
         "drupal/symfony_mailer": "^1.0@alpha",
         "drupal/views_ef_fieldset": "^1.4",
         "drupal/webp": "^1.0@beta",
