@@ -69,6 +69,7 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
    * @psalm-suppress ArgumentTypeCoercion
    * @psalm-suppress PossiblyNullReference
    * @psalm-suppress UnsafeInstantiation
+   * @psalm-suppress PossiblyInvalidArgument
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
