@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/consumers (1.12.0 => 1.13.0)
 - update module drupal/jsonapi_extras (3.20.0 => 3.21.0)
 - update module drupal/restui (1.20.0 => 1.21.0)
+- update module drupal/symfony_mailer (1.0.0-alpha4 => 1.0.0-alpha11)
 
 ## [0.4.0] - 2022-09-08
 ### Changed

@@ -11,5 +11,7 @@ configuration:
   email_subject:
     value: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
   email_body:
-    value: |
-      <p>[user:display-name],</p> <p>Thank you for registering at <a href="[site:url]">[site:name]</a>. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.</p>
+    content:
+      value: |
+        <p>[user:display-name],</p> <p>Thank you for registering at <a href="[site:url]">[site:name]</a>. Your application for an account is currently pending approval. Once it has been approved, you will receive another email containing information about how to log in, set your password, and other details.</p>
+      format: email_html

@@ -11,5 +11,7 @@ configuration:
   email_subject:
     value: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
   email_body:
-    value: |
-      <p>[user:display-name] has applied for an account at <a href="[site:url]">[site:name]</a>. You may now use this link to <a href="[user:edit-url]">approve the request</a>.</p>
+    content:
+      value: |
+        <p>[user:display-name] has applied for an account at <a href="[site:url]">[site:name]</a>. You may now use this link to <a href="[user:edit-url]">approve the request</a>.</p>
+      format: email_html

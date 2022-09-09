@@ -9,5 +9,7 @@ _core:
 id: contact_form.copy
 configuration:
   email_body:
-    value: |
-      <p class="contact-email-intro">Here is a copy of the message you sent using the contact form <a href="{{ form_url }}">{{ form }}</a>.</p> <hr> {{ body }}
+    content:
+      value: |
+        <p class="contact-email-intro">Here is a copy of the message you sent using the contact form <a href="{{ form_url }}">{{ form }}</a>.</p> <hr> {{ body }}
+      format: email_html

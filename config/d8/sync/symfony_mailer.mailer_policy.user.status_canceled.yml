@@ -11,5 +11,7 @@ configuration:
   email_subject:
     value: 'Account details for [user:display-name] at [site:name] (canceled)'
   email_body:
-    value: |
-      <p>[user:display-name],</p> <p>Your account on <a href="[site:url]">[site:name]</a> has been canceled.</p>
+    content:
+      value: |
+        <p>[user:display-name],</p> <p>Your account on <a href="[site:url]">[site:name]</a> has been canceled.</p>
+      format: email_html
