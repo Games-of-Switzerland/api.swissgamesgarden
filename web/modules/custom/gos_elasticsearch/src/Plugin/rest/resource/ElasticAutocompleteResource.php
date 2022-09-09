@@ -69,13 +69,14 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
    * @psalm-suppress ArgumentTypeCoercion
    * @psalm-suppress PossiblyNullReference
    * @psalm-suppress UnsafeInstantiation
+   * @psalm-suppress PossiblyInvalidArgument
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
       $plugin_id,
       $plugin_definition,
-      (array) $container->getParameter('serializer.formats'),
+      $container->getParameter('serializer.formats'),
       $container->get('logger.factory')->get('rest'),
       $container->get('gos_rest.validator_factory'),
       $container->get('plugin.manager.elasticsearch_index.processor'),

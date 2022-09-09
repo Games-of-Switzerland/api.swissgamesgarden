@@ -9,5 +9,7 @@ _core:
 id: contact.mail
 configuration:
   email_body:
-    value: |
-      <p class="contact-email-intro">Hello {{ recipient_name }},<br> <a href="{{ sender_url }}">{{ sender_name }}</a> has sent you a message via your form at {{ site_name }}. If you don't want to receive such emails, you can <a href="{{ recipient_edit_url }}">change your settings</a>.</p> <hr> {{ body }}
+    content:
+      value: |
+        <p class="contact-email-intro">Hello {{ recipient_name }},<br> <a href="{{ sender_url }}">{{ sender_name }}</a> has sent you a message via your form at {{ site_name }}. If you don't want to receive such emails, you can <a href="{{ recipient_edit_url }}">change your settings</a>.</p> <hr> {{ body }}
+      format: email_html

@@ -56,6 +56,7 @@ module:
   metatag: 0
   metatag_open_graph: 0
   metatag_twitter_cards: 0
+  mysql: 0
   node: 0
   options: 0
   page_cache: 0

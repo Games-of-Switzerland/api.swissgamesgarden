@@ -3,6 +3,7 @@ parameters:
   excludePaths:
     - *Test.php
     - *TestBase.php
+    - */themes/contrib/*
   # PHPStan Level 1
   level: 1
   ignoreErrors:

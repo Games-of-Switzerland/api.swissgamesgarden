@@ -11,5 +11,7 @@ configuration:
   email_subject:
     value: 'Account details for [user:display-name] at [site:name] (blocked)'
   email_body:
-    value: |
-      <p>[user:display-name],</p> <p>Your account on <a href="[site:url]">[site:name]</a> has been blocked.</p>
+    content:
+      value: |
+        <p>[user:display-name],</p> <p>Your account on <a href="[site:url]">[site:name]</a> has been blocked.</p>
+      format: email_html
