@@ -78,7 +78,7 @@ abstract class ElasticResourceBase extends ResourceBase {
       $configuration,
       $plugin_id,
       $plugin_definition,
-      (array) $container->getParameter('serializer.formats'),
+      $container->getParameter('serializer.formats'),
       $container->get('logger.factory')->get('rest'),
       $container->get('gos_rest.validator_factory'),
       $container->get('plugin.manager.elasticsearch_index.processor')
