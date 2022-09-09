@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - update Drupal 9.3.7 => 9.4.3 with all dependencies
+- upgrade module drupal/bamboo_twig (5.0.0-alpha1 => 5.0.0)
 
 ## [0.4.0] - 2022-09-08
 ### Changed
