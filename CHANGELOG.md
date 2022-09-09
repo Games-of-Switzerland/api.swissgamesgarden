@@ -30,6 +30,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/restui (1.20.0 => 1.21.0)
 - update module drupal/symfony_mailer (1.0.0-alpha4 => 1.0.0-alpha11)
 - update all other dependencies (16 updates)
+- update linter phar phpmd 2.9.1 => 2.12.0
+- update linter phar psalm 4.13.0 => 4.27.0
+- update linter phar phpstan 1.2.0 => 1.8.5
 
 ## [0.4.0] - 2022-09-08
 ### Changed
