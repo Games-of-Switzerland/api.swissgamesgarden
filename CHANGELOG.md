@@ -7,12 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - configure Gandi to send e-mails - Games-of-Switzerland/swissgamesgarden#91
+- add the role 'Contributor' - Games-of-Switzerland/swissgamesgarden#101
 
 ### Fixed
 - ensure master is deployed on production instead of dev
 
-### Added
-- add the role 'Contributor' - Games-of-Switzerland/swissgamesgarden#101
+### Security
+- update Drupal 9.3.7 => 9.4.3 with all dependencies
 
 ## [0.4.0] - 2022-09-08
 ### Changed
