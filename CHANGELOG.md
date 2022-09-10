@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - allow link to be button - Games-of-Switzerland/swissgamesgarden#9
 
+### Changed
+- rename Game Json:api field_cantons to cantons- Games-of-Switzerland/swissgamesgarden#51
+
 ## [0.5.0] - 2022-09-09
 ### Added
 - configure Gandi to send e-mails - Games-of-Switzerland/swissgamesgarden#91
