@@ -165,6 +165,12 @@ resourceFields:
     publicName: awards
     enhancer:
       id: ''
+  field_cantons:
+    disabled: false
+    fieldName: field_cantons
+    publicName: cantons
+    enhancer:
+      id: ''
   field_completeness:
     disabled: false
     fieldName: field_completeness

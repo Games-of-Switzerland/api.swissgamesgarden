@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.1] - 2022-09-10
+### Added
+- allow link to be button - Games-of-Switzerland/swissgamesgarden#9
+
+### Changed
+- rename Game Json:api field_cantons to cantons- Games-of-Switzerland/swissgamesgarden#51
+
 ## [0.5.0] - 2022-09-09
 ### Added
 - configure Gandi to send e-mails - Games-of-Switzerland/swissgamesgarden#91
@@ -99,7 +106,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.1...HEAD
+[0.5.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.1...0.4.0
 [0.3.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.0...0.3.1
