@@ -20,5 +20,7 @@ parameters:
     allowedHeaders: ['x-consumed-id', 'x-csrf-token', 'authorization', 'content-type', 'accept', 'origin', 'x-requested-with', 'xhrField']
     # Specify allowed request methods, specify ['*'] to allow all possible ones.
     allowedMethods: ['GET', 'POST']
+    # Configure requests allowed from specific origins.
+    allowedOrigins: ['*']
     # Sets the Access-Control-Allow-Credentials header.
     supportsCredentials: true
