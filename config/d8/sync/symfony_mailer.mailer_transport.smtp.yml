@@ -9,4 +9,10 @@ configuration:
   user: ''
   pass: ''
   host: mailcatcher
-  port: 25
+  port: 1025
+  query:
+    verify_peer: true
+    local_domain: ''
+    restart_threshold: null
+    restart_threshold_sleep: null
+    ping_threshold: null

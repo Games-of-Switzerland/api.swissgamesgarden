@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/image_effects (3.3.0 => 3.4.0)
 - update module drupal/metatag (1.21.0 => 1.22.0)
 - update module drupal/simple_sitemap (4.1.2 => 4.1.3)
+- update drupal/core (9.4.5 => 9.4.8)
+- update module drupal/symfony_mailer (1.0.0-alpha11 => 1.1.0-beta2)
 
 ## [0.5.1] - 2022-09-10
 ### Added
