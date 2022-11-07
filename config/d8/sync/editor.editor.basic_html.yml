@@ -38,19 +38,16 @@ settings:
           name: 'Block Formatting'
           items:
             - Format
-            - Styles
         -
           name: Tools
           items:
             - Source
-  plugins:
-    stylescombo:
-      styles: a.btn|Bouton
+  plugins: {  }
 image_upload:
   status: true
   scheme: public
   directory: inline-images
   max_size: ''
   max_dimensions:
-    width: null
-    height: null
+    width: 0
+    height: 0

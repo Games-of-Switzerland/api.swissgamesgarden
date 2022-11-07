@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update module drupal/simple_sitemap (3.11.0 => 4.1.2)
 - update module drupal/admin_toolbar (3.1.1 => 3.2.1)
+- update module drupal/bamboo_twig (5.0.0 => 5.1.0)
+- update module drupal/consumers (1.13.0 => 1.14.0)
+- update module drupal/field_group (3.2.0 => 3.4.0)
+- update module drupal/crop (2.2.0 => 2.3.0)
+- update module drupal/file_mdm (2.4.0 => 2.5.0)
+- update module drupal/image_effects (3.3.0 => 3.4.0)
+- update module drupal/metatag (1.21.0 => 1.22.0)
+- update module drupal/simple_sitemap (4.1.2 => 4.1.3)
 
 ## [0.5.1] - 2022-09-10
 ### Added
