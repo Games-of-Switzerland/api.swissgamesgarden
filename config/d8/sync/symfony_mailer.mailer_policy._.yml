@@ -8,7 +8,9 @@ id: _
 configuration:
   mailer_default_headers: {  }
   mailer_url_to_absolute: {  }
-  mailer_html_to_text: {  }
   mailer_inline_css: {  }
   email_theme:
     theme: _active_fallback
+  mailer_wrap_and_convert:
+    plain: false
+    swiftmailer: false
