@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.5.2] - 2022-11-07
 ### Security
 - update module drupal/simple_sitemap (3.11.0 => 4.1.2)
 - update module drupal/admin_toolbar (3.1.1 => 3.2.1)
@@ -119,7 +121,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.2...HEAD
+[0.5.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.1...0.4.0
