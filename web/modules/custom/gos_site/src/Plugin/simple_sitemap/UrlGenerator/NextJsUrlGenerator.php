@@ -8,11 +8,14 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Url;
 use Drupal\gos_site\UrlBuilderNextJs;
-use Drupal\simple_sitemap\EntityHelper;
+use Drupal\simple_sitemap\Entity\EntityHelper;
+use Drupal\simple_sitemap\Exception\SkipElementException;
 use Drupal\simple_sitemap\Logger;
+use Drupal\simple_sitemap\Manager\EntityManager;
+use Drupal\simple_sitemap\Plugin\simple_sitemap\SimpleSitemapPluginBase;
 use Drupal\simple_sitemap\Plugin\simple_sitemap\UrlGenerator\EntityUrlGenerator;
 use Drupal\simple_sitemap\Plugin\simple_sitemap\UrlGenerator\UrlGeneratorManager;
-use Drupal\simple_sitemap\Simplesitemap;
+use Drupal\simple_sitemap\Settings;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -36,7 +39,6 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
   /**
    * {@inheritdoc}
    *
-   * @psalm-suppress PropertyTypeCoercion
    * @psalm-suppress MissingParamType
    *
    * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -45,11 +47,12 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    Simplesitemap $generator,
     Logger $logger,
+    Settings $settings,
     LanguageManagerInterface $language_manager,
     EntityTypeManagerInterface $entity_type_manager,
     EntityHelper $entityHelper,
+    EntityManager $entities_manager,
     UrlGeneratorManager $url_generator_manager,
     MemoryCacheInterface $memory_cache,
     UrlBuilderNextJS $url_builder_nextjs
@@ -58,11 +61,12 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $generator,
       $logger,
+      $settings,
       $language_manager,
       $entity_type_manager,
       $entityHelper,
+      $entities_manager,
       $url_generator_manager,
       $memory_cache
     );
@@ -74,9 +78,6 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    *
    * @psalm-suppress PossiblyNullArgument
    * @psalm-suppress ArgumentTypeCoercion
-   * @psalm-suppress PossiblyNullReference
-   * @psalm-suppress MissingParamType
-   * @psalm-suppress UnsafeInstantiation
    * @psalm-suppress UnsafeInstantiation
    */
   public static function create(
@@ -84,16 +85,17 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     array $configuration,
     $plugin_id,
     $plugin_definition
-  ) {
+  ): SimpleSitemapPluginBase {
     return new static(
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('simple_sitemap.generator'),
       $container->get('simple_sitemap.logger'),
+      $container->get('simple_sitemap.settings'),
       $container->get('language_manager'),
       $container->get('entity_type.manager'),
       $container->get('simple_sitemap.entity_helper'),
+      $container->get('simple_sitemap.entity_manager'),
       $container->get('plugin.manager.simple_sitemap.url_generator'),
       $container->get('entity.memory_cache'),
       $container->get('gos_site.url_builder.nextjs')
@@ -102,46 +104,14 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
 
   /**
    * {@inheritdoc}
-   *
-   * @psalm-suppress PossiblyInvalidArgument
-   */
-  public function generate($data_set) {
-    $path_data_sets = $this->processDataSet($data_set);
-    $url_variant_sets = [];
-
-    foreach ($path_data_sets as $path_data) {
-      if (isset($path_data['meta']['entity']) && $path_data['meta']['entity'] instanceof ContentEntityInterface) {
-        $url_object = $path_data['meta']['entity']->toUrl();
-        unset($path_data['url']);
-        $url_variant_sets[] = $this->getUrlVariants($path_data, $url_object);
-      }
-    }
-
-    // Make sure to clear entity memory cache so it does not build up resulting
-    // in a constant increase of memory.
-    // See https://www.drupal.org/project/simple_sitemap/issues/3170261 and
-    // https://www.drupal.org/project/simple_sitemap/issues/3202233
-    $definition = $this->entityTypeManager->getDefinition($data_set['entity_type']);
-
-    if ($definition && $definition->isStaticallyCacheable()) {
-      $this->entityMemoryCache->deleteAll();
-    }
-
-    return array_merge([], ...$url_variant_sets);
-  }
-
-  /**
-   * {@inheritdoc}
-   *
-   * @psalm-suppress InvalidArgument
    */
   protected function getAlternateUrlsForTranslatedLanguages(ContentEntityInterface $entity, Url $url_object): array {
     $alternate_urls = [];
 
     /** @var \Drupal\Core\Language\Language $language */
     foreach ($entity->getTranslationLanguages() as $language) {
-      if (!isset($this->settings['excluded_languages'][$language->getId()]) || $language->isDefault()) {
-        if ($entity->hasTranslation($language->getId()) && $entity->getTranslation($language->getId())->access('view', $this->anonUser)) {
+      if (!isset($this->settings->get('excluded_languages')[$language->getId()]) || $language->isDefault()) {
+        if ($entity->getTranslation($language->getId())->access('view', $this->anonUser)) {
           $alternate_urls[$language->getId()] = $this->urlBuilderNextJs->buildUrl($entity, NULL, $language->getId());
         }
       }
@@ -152,68 +122,92 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
 
   /**
    * {@inheritdoc}
-   *
-   * @psalm-suppress MissingParamType
    */
-  protected function processDataSet($data_set) {
-    $entities = $this->entityTypeManager->getStorage($data_set['entity_type'])->loadMultiple((array) $data_set['id']);
+  protected function getUrlVariants(array $path_data, Url $url_object): array {
+    $url_variants = [];
+    $alternate_urls = [];
 
-    if (empty($entities)) {
-      return FALSE;
+    if (!$this->sitemap->isMultilingual() || !isset($path_data['meta']['entity'])) {
+      $alternate_urls = $this->getAlternateUrlsForDefaultLanguage($url_object);
     }
 
-    $paths = [];
+    if ($this->sitemap->isMultilingual() && $path_data['meta']['entity'] instanceof ContentEntityInterface) {
+      $alternate_urls = $this->getAlternateUrlsForTranslatedLanguages($path_data['meta']['entity'], $url_object);
+    }
 
-    foreach ($entities as $entity) {
-      $entity_id = (string) $entity->id();
-      $entity_type_name = $entity->getEntityTypeId();
-      $entity_bundle = $entity->bundle();
-
-      $entity_settings = $this->generator
-        ->setVariants($this->sitemapVariant)
-        ->getEntityInstanceSettings($entity_type_name, $entity_id);
-
-      if (empty($entity_settings['index'])) {
-        continue;
-      }
-
-      $url_object = $entity->toUrl();
-
-      // Do not include external paths.
-      if (!$url_object->isRouted()) {
-        continue;
-      }
-
-      $path = $url_object->getInternalPath();
-      $url_object->setOption('absolute', TRUE);
-
-      $url = $url_object->toString();
-
-      if ($data_set['entity_type'] === 'node' && \array_key_exists($entity_bundle, $this->urlBuilderNextJs::NEXTJS_URLS_PREFIX)) {
-        /** @var \Drupal\Core\Entity\ContentEntityBase $node */
-        $node = $entity;
-        $url = $this->urlBuilderNextJs->buildUrl($node);
-      }
-
-      $paths[] = [
+    foreach ($alternate_urls as $langcode => $url) {
+      $url_variants[] = $path_data + [
+        'langcode' => $langcode,
         'url' => $url,
-        'lastmod' => method_exists($entity, 'getChangedTime') ? date('c', $entity->getChangedTime()) : NULL,
-        'priority' => $entity_settings['priority'] ?? NULL,
-        'changefreq' => $entity_settings['changefreq'] ?? NULL,
-
-        // Additional info useful in hooks.
-        'meta' => [
-          'path' => $path,
-          'entity' => $entity,
-          'entity_info' => [
-            'entity_type' => $entity_type_name,
-            'id' => $entity_id,
-          ],
-        ],
+        'alternate_urls' => $alternate_urls,
       ];
     }
 
-    return $paths;
+    return $url_variants;
+  }
+
+  /**
+   * {@inheritdoc}
+   *
+   * @psalm-suppress InvalidScalarArgument
+   */
+  protected function processEntity(ContentEntityInterface $entity): array {
+    /** @var int $sitemap_id */
+    $sitemap_id = $this->sitemap->id();
+
+    if (empty($sitemap_id)) {
+      throw new SkipElementException();
+    }
+
+    $entity_settings = $this->entitiesManager
+      ->setVariants($sitemap_id)
+      ->getEntityInstanceSettings($entity->getEntityTypeId(), $entity->id());
+
+    if (empty($entity_settings[$sitemap_id]['index'])) {
+      throw new SkipElementException();
+    }
+
+    $entity_settings = $entity_settings[$sitemap_id] ?? NULL;
+
+    if (empty($entity_settings)) {
+      throw new SkipElementException();
+    }
+
+    $url_object = $entity->toUrl()->setAbsolute();
+    $path = $url_object->getInternalPath();
+
+    // Do not include external paths.
+    if (!$url_object->isRouted()) {
+      throw new SkipElementException();
+    }
+
+    if ($entity->getEntityTypeId() === 'node' && \array_key_exists($entity->bundle(), $this->urlBuilderNextJs::NEXTJS_URLS_PREFIX)) {
+      /** @var \Drupal\Core\Entity\ContentEntityBase $node */
+      $node = $entity;
+      $url_object = Url::fromUri($this->urlBuilderNextJs->buildUrl($node));
+    }
+
+    return [
+      'url' => $url_object,
+      'lastmod' => method_exists($entity, 'getChangedTime')
+        ? date('c', $entity->getChangedTime())
+        : NULL,
+      'priority' => $entity_settings['priority'] ?? NULL,
+      'changefreq' => !empty($entity_settings['changefreq']) ? $entity_settings['changefreq'] : NULL,
+      'images' => !empty($entity_settings['include_images'])
+        ? $this->getEntityImageData($entity)
+        : [],
+
+      // Additional info useful in hooks.
+      'meta' => [
+        'path' => $path,
+        'entity' => $entity,
+        'entity_info' => [
+          'entity_type' => $entity->getEntityTypeId(),
+          'id' => $entity->id(),
+        ],
+      ],
+    ];
   }
 
 }

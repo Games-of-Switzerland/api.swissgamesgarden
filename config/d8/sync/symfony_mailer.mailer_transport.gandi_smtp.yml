@@ -7,6 +7,12 @@ label: 'Gandi SMTP'
 plugin: smtp
 configuration:
   user: dev@swissgames.garden
-  pass: ''
+  pass: rWPxzyxtNw@aY8.3@txX
   host: mail.gandi.net
   port: 465
+  query:
+    verify_peer: true
+    local_domain: ''
+    restart_threshold: null
+    restart_threshold_sleep: null
+    ping_threshold: null

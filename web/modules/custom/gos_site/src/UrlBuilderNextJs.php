@@ -72,12 +72,14 @@ class UrlBuilderNextJs {
     /** @var string $bundle */
     $bundle = $entity->bundle();
 
-    if (!isset(self::NEXTJS_URLS_PREFIX[$bundle])) {
-      throw new \InvalidArgumentException(sprintf('Bundle %s is not valid.', $bundle));
-    }
-
     if (!$langcode) {
       $langcode = $entity->language()->getId();
+    }
+
+    // To prevent a missing key error, we prevent the rest.
+    // If the bundle type is not specified.
+    if (!\array_key_exists($bundle, self::NEXTJS_URLS_PREFIX)) {
+      throw new \InvalidArgumentException(sprintf('Bundle type [%s] is not present in the URLS prefixes', $bundle));
     }
 
     // To prevent a missing key error, throw an error if lang is not found.

@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.2] - 2022-11-07
+### Security
+- update module drupal/simple_sitemap (3.11.0 => 4.1.2)
+- update module drupal/admin_toolbar (3.1.1 => 3.2.1)
+- update module drupal/bamboo_twig (5.0.0 => 5.1.0)
+- update module drupal/consumers (1.13.0 => 1.14.0)
+- update module drupal/field_group (3.2.0 => 3.4.0)
+- update module drupal/crop (2.2.0 => 2.3.0)
+- update module drupal/file_mdm (2.4.0 => 2.5.0)
+- update module drupal/image_effects (3.3.0 => 3.4.0)
+- update module drupal/metatag (1.21.0 => 1.22.0)
+- update module drupal/simple_sitemap (4.1.2 => 4.1.3)
+- update drupal/core (9.4.5 => 9.4.8)
+- update module drupal/symfony_mailer (1.0.0-alpha11 => 1.1.0-beta2)
+
 ## [0.5.1] - 2022-09-10
 ### Added
 - allow link to be button - Games-of-Switzerland/swissgamesgarden#9
@@ -106,7 +121,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.2...HEAD
+[0.5.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.3.1...0.4.0

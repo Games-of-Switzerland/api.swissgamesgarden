@@ -1,0 +1,11 @@
+uuid: 32e1fdbe-0b2e-45ab-ad88-bacbc40b644c
+langcode: en
+status: true
+dependencies: {  }
+id: default_hreflang
+label: 'Default hreflang'
+description: 'The default hreflang sitemap type.'
+sitemap_generator: default
+url_generators:
+  nextjs: nextjs
+  custom: custom
