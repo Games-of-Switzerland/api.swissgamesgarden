@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46d927b77e9657d33c2a7428bdfce894",
+    "content-hash": "e4d0848b60003f148e1c06ed7b31827f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1460,20 +1460,20 @@
         },
         {
             "name": "drupal/bamboo_twig",
-            "version": "5.1.0",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bamboo_twig.git",
-                "reference": "8.x-5.1"
+                "reference": "6.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bamboo_twig-8.x-5.1.zip",
-                "reference": "8.x-5.1",
-                "shasum": "3d99757c25eed7fba678609ec442b089d8d532b7"
+                "url": "https://ftp.drupal.org/files/projects/bamboo_twig-6.0.0.zip",
+                "reference": "6.0.0",
+                "shasum": "80a025f503832472abb028f36ae6c59984f1c879"
             },
             "require": {
-                "drupal/core": "^9"
+                "drupal/core": "^9.3 || ^10"
             },
             "require-dev": {
                 "drupal/coder": "^8.3.1"
@@ -1481,8 +1481,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-5.1",
-                    "datestamp": "1666351547",
+                    "version": "6.0.0",
+                    "datestamp": "1668780600",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
