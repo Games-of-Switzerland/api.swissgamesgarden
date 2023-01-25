@@ -87,7 +87,7 @@ jobs:
         with:
           php-version: '8.0'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v2, vimeo/psalm
+          tools: composer:v2, vimeo/psalm:4
       - uses: actions/checkout@v3
       - run: composer install --prefer-dist
       - run: psalm --output-format=github
