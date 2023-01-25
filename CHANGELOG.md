@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - update module drupal/bamboo_twig (5.1.0 => 6.0.0)
+- update module drupal/gin_toolbar (1.0.0-beta22 => 1.0.0-rc1)
+- update theme drupal/gin (3.0.0-beta5 => 3.0.0-rc1)
 
 ## [0.5.2] - 2022-11-07
 ### Security
