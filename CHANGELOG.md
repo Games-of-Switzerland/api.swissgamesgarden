@@ -19,6 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/consumers (1.14.0 => 1.16.0)
 - update module drupal/jsonapi_extras (3.21.0 => 3.23.0)
 - update module drupal/consumer_image_styles (4.0.7 => 4.0.8)
+- update module drupal/gin_login (1.4.0 => 2.0.1)
+
+### Removed
+- remove Gin Login Unsplash library images
 
 ## [0.5.2] - 2022-11-07
 ### Security
