@@ -152,8 +152,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    * @psalm-suppress InvalidScalarArgument
    */
   protected function processEntity(ContentEntityInterface $entity): array {
-    /** @var int $sitemap_id */
-    $sitemap_id = $this->sitemap->id();
+    $sitemap_id = (string) $this->sitemap->id();
 
     if (empty($sitemap_id)) {
       throw new SkipElementException();

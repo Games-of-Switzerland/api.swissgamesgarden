@@ -111,6 +111,7 @@ class StoresMapper extends ProcessPluginBase {
       throw new MigrateException('Formats date plugin is missing from_formats configuration.');
     }
 
+    $value = (string) $value;
     $store_structure = $this->lookupMappedStore($value);
 
     if ($get_keyname && isset($store_structure[$get_keyname])) {

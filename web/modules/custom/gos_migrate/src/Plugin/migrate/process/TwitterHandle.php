@@ -43,6 +43,8 @@ class TwitterHandle extends ProcessPluginBase {
       return $value;
     }
 
+    $value = (string) $value;
+
     if (mb_substr($value, 0, 1) === '@') {
       return 'https://www.twitter.com/' . mb_substr($value, 1, -1);
     }

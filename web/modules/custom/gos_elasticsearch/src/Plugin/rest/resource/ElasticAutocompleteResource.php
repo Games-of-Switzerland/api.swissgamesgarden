@@ -30,7 +30,7 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
   /**
    * The maximum element by bundle returned for a response.
    *
-   * @var string
+   * @var int
    */
   public const PAGER_SIZE = 5;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phive xmlns="https://phar.io/phive">
-  <phar name="phpcpd" version="^6.0.3" installed="6.0.3" location="./tools/phpcpd" copy="false"/>
-  <phar name="phpmd" version="^2.9.1" installed="2.12.0" location="./tools/phpmd" copy="false"/>
-  <phar name="psalm" version="^4.13.0" installed="4.27.0" location="./tools/psalm" copy="false"/>
-  <phar name="phpstan" version="^1.2.0" installed="1.8.5" location="./tools/phpstan" copy="false"/>
+  <phar name="phpcpd" version="^6.0.3" installed="6.0.3" location="./tools/phpcpd" copy="true"/>
+  <phar name="phpmd" version="^2.9.1" installed="2.12.0" location="./tools/phpmd" copy="true"/>
+  <phar name="psalm" version="^4.27.0" installed="4.30.0" location="./tools/psalm" copy="true"/>
+  <phar name="phpstan" version="^1.2.0" installed="1.8.5" location="./tools/phpstan" copy="true"/>
 </phive>
