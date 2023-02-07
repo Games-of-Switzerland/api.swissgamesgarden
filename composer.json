@@ -52,7 +52,7 @@
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
         "doctrine/cache": "^1.0",
-        "drupal/admin_toolbar": "^3.0",
+        "drupal/admin_toolbar": "^3.3",
         "drupal/bamboo_twig": "^6.0",
         "drupal/cdn": "^3.5",
         "drupal/consumer_image_styles": "^4.0",
