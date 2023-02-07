@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/consumer_image_styles (4.0.7 => 4.0.8)
 - update module drupal/gin_login (1.4.0 => 2.0.1)
 - update module drupal/symfony_mailer (1.1.0-beta2 => 1.2.0-beta2)
+- update library composer/installers (v1.12.0 => v2.2.0)
 
 ### Removed
 - remove Gin Login Unsplash library images

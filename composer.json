@@ -49,7 +49,7 @@
     "require": {
         "php": ">=8.0",
         "ext-exif": "*",
-        "composer/installers": "^1.2",
+        "composer/installers": "^2.2",
         "cweagans/composer-patches": "^1.6.5",
         "doctrine/cache": "^1.0",
         "drupal/admin_toolbar": "^3.3",
