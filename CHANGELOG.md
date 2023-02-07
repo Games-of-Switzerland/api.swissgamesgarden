@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/simple_sitemap (4.1.3 => 4.1.4)
 - update module drupal/admin_toolbar (3.2.1 => 3.3.0)
 - update module drupal/cdn (3.5.0 => 3.6.0)
+- update module drupal/ctools (4.0.1 => 4.0.3)
 
 ## [0.5.2] - 2022-11-07
 ### Security
