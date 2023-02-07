@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5931b16d4e90d28ea8adcedf21fb65b4",
+    "content-hash": "bad13210d3768e4f023e0fa660f66f9c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1516,17 +1516,17 @@
         },
         {
             "name": "drupal/cdn",
-            "version": "3.5.0",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/cdn.git",
-                "reference": "8.x-3.5"
+                "reference": "8.x-3.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/cdn-8.x-3.5.zip",
-                "reference": "8.x-3.5",
-                "shasum": "f83c5286edb4ad57929df183cda9befc74ffeca0"
+                "url": "https://ftp.drupal.org/files/projects/cdn-8.x-3.6.zip",
+                "reference": "8.x-3.6",
+                "shasum": "894d31e96b7576b27a134ad5edcd5436df52beb0"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9"
@@ -1534,8 +1534,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.5",
-                    "datestamp": "1585778744",
+                    "version": "8.x-3.6",
+                    "datestamp": "1670831701",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
