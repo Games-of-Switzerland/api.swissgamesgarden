@@ -12,6 +12,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/bamboo_twig (5.1.0 => 6.0.0)
 - update module drupal/gin_toolbar (1.0.0-beta22 => 1.0.0-rc1)
 - update theme drupal/gin (3.0.0-beta5 => 3.0.0-rc1)
+- update module drupal/simple_sitemap (4.1.3 => 4.1.4)
+- update module drupal/admin_toolbar (3.2.1 => 3.3.0)
+- update module drupal/cdn (3.5.0 => 3.6.0)
+- update module drupal/ctools (4.0.1 => 4.0.3)
+- update module drupal/consumers (1.14.0 => 1.16.0)
+- update module drupal/jsonapi_extras (3.21.0 => 3.23.0)
+- update module drupal/consumer_image_styles (4.0.7 => 4.0.8)
+- update module drupal/gin_login (1.4.0 => 2.0.1)
+- update module drupal/symfony_mailer (1.1.0-beta2 => 1.2.0-beta2)
+- update library composer/installers (v1.12.0 => v2.2.0)
+- update drupal/core-dev (9.4.8 => 9.5.3)
+- update all minors dependencies
+
+### Removed
+- remove Gin Login Unsplash library images
 
 ## [0.5.2] - 2022-11-07
 ### Security
