@@ -49,13 +49,14 @@
     "require": {
         "php": ">=8.0",
         "ext-exif": "*",
-        "composer/installers": "^1.2",
+        "composer/installers": "^2.2",
         "cweagans/composer-patches": "^1.6.5",
         "doctrine/cache": "^1.0",
-        "drupal/admin_toolbar": "^3.0",
-        "drupal/bamboo_twig": "^5.0",
+        "drupal/admin_toolbar": "^3.3",
+        "drupal/bamboo_twig": "^6.0",
         "drupal/cdn": "^3.5",
         "drupal/consumer_image_styles": "^4.0",
+        "drupal/consumers": "^1.16",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-project-message": "^9",
         "drupal/core-recommended": "^9",
@@ -64,9 +65,9 @@
         "drupal/fieldable_path": "^1.0@RC",
         "drupal/focal_point": "^1.2",
         "drupal/gin": "^3.0",
-        "drupal/gin_login": "^1.0",
+        "drupal/gin_login": "^2.0",
         "drupal/image_effects": "^3.0",
-        "drupal/jsonapi_extras": "^3.13",
+        "drupal/jsonapi_extras": "^3.23",
         "drupal/metatag": "^1.14",
         "drupal/migrate_file": "^2.0",
         "drupal/migrate_source_csv": "^3.4",
@@ -146,9 +147,6 @@
             },
             "drupal/metatag": {
                 "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-29/2945817-93.patch"
-            },
-            "drupal/gin_login": {
-                "[3167968] - Make possible to define a 'Unsplash Collection ID' in config page": "https://www.drupal.org/files/issues/2020-08-28/gin-login-unsplash-collection-id-configurable.patch"
             },
             "drupal/elasticsearch_helper": {
                 "[3113356] - Drupal 9 readiness": "https://www.drupal.org/files/issues/2020-06-05/3113356-17.patch"

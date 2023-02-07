@@ -40,7 +40,7 @@ class ElasticGamesResource extends ElasticResourceBase {
    *
    * Use to limit the number of properties returned and optimize response size.
    *
-   * @var string
+   * @var int
    */
   public const PAGER_SIZE = 24;
 

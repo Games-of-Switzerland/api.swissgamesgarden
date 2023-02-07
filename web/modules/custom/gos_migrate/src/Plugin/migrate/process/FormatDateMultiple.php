@@ -104,6 +104,9 @@ class FormatDateMultiple extends ProcessPluginBase {
     // DateTimePlus::createFromFormat can throw exceptions, so we need to
     // explicitly check for problems.
     foreach ($from_formats as $index => $from_format) {
+      $from_format = (string) $from_format;
+      $value = (string) $value;
+
       try {
         return DateTimePlus::createFromFormat($from_format, $value, $from_timezone, $settings)->format($to_formats[$index], ['timezone' => $to_timezone]);
       }
