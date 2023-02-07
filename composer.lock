@@ -342,16 +342,16 @@
         },
         {
             "name": "consolidation/annotated-command",
-            "version": "4.6.0",
+            "version": "4.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "ee63c57f929e7131c714783193512ea4f76de74c"
+                "reference": "fd263e3e9341d29758025b1a9b2878e3247525be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/ee63c57f929e7131c714783193512ea4f76de74c",
-                "reference": "ee63c57f929e7131c714783193512ea4f76de74c",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/fd263e3e9341d29758025b1a9b2878e3247525be",
+                "reference": "fd263e3e9341d29758025b1a9b2878e3247525be",
                 "shasum": ""
             },
             "require": {
@@ -392,9 +392,9 @@
             "description": "Initialize Symfony Console commands from annotated command class methods.",
             "support": {
                 "issues": "https://github.com/consolidation/annotated-command/issues",
-                "source": "https://github.com/consolidation/annotated-command/tree/4.6.0"
+                "source": "https://github.com/consolidation/annotated-command/tree/4.7.1"
             },
-            "time": "2022-10-30T22:08:00+00:00"
+            "time": "2022-12-06T22:57:25+00:00"
         },
         {
             "name": "consolidation/config",
@@ -664,16 +664,16 @@
         },
         {
             "name": "consolidation/robo",
-            "version": "3.0.10",
+            "version": "3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/robo.git",
-                "reference": "206bbe23b34081a36bfefc4de2abbc1abcd29ef4"
+                "reference": "820fa0f164f77887e268b7dbfb2283416c7334c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/robo/zipball/206bbe23b34081a36bfefc4de2abbc1abcd29ef4",
-                "reference": "206bbe23b34081a36bfefc4de2abbc1abcd29ef4",
+                "url": "https://api.github.com/repos/consolidation/robo/zipball/820fa0f164f77887e268b7dbfb2283416c7334c1",
+                "reference": "820fa0f164f77887e268b7dbfb2283416c7334c1",
                 "shasum": ""
             },
             "require": {
@@ -757,9 +757,9 @@
             "description": "Modern task runner",
             "support": {
                 "issues": "https://github.com/consolidation/robo/issues",
-                "source": "https://github.com/consolidation/robo/tree/3.0.10"
+                "source": "https://github.com/consolidation/robo/tree/3.0.11"
             },
-            "time": "2022-02-21T17:19:14+00:00"
+            "time": "2022-12-07T15:18:26+00:00"
         },
         {
             "name": "consolidation/self-update",
@@ -936,16 +936,16 @@
         },
         {
             "name": "cweagans/composer-patches",
-            "version": "1.7.2",
+            "version": "1.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cweagans/composer-patches.git",
-                "reference": "e9969cfc0796e6dea9b4e52f77f18e1065212871"
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e9969cfc0796e6dea9b4e52f77f18e1065212871",
-                "reference": "e9969cfc0796e6dea9b4e52f77f18e1065212871",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
+                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
                 "shasum": ""
             },
             "require": {
@@ -978,9 +978,9 @@
             "description": "Provides a way to patch Composer packages.",
             "support": {
                 "issues": "https://github.com/cweagans/composer-patches/issues",
-                "source": "https://github.com/cweagans/composer-patches/tree/1.7.2"
+                "source": "https://github.com/cweagans/composer-patches/tree/1.7.3"
             },
-            "time": "2022-01-25T19:21:20+00:00"
+            "time": "2022-12-20T22:53:13+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -2818,26 +2818,26 @@
         },
         {
             "name": "drupal/migrate_file",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/migrate_file.git",
-                "reference": "2.1.1"
+                "reference": "2.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_file-2.1.1.zip",
-                "reference": "2.1.1",
-                "shasum": "3e573ad33e4ab9bf8821107d8ca0e867e9110452"
+                "url": "https://ftp.drupal.org/files/projects/migrate_file-2.1.2.zip",
+                "reference": "2.1.2",
+                "shasum": "3febc85243c9a67991db102a10c6d81c0bea07c5"
             },
             "require": {
-                "drupal/core": "^9"
+                "drupal/core": "^9 | ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.1",
-                    "datestamp": "1647985110",
+                    "version": "2.1.2",
+                    "datestamp": "1674948365",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2981,17 +2981,17 @@
         },
         {
             "name": "drupal/migrate_tools",
-            "version": "5.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/migrate_tools.git",
-                "reference": "8.x-5.1"
+                "reference": "8.x-5.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_tools-8.x-5.1.zip",
-                "reference": "8.x-5.1",
-                "shasum": "2c1a9d35d318a0e1de30a99fbf64bedd4e65cee1"
+                "url": "https://ftp.drupal.org/files/projects/migrate_tools-8.x-5.2.zip",
+                "reference": "8.x-5.2",
+                "shasum": "e473c32780c567b62b3aa7dd92c2fb5227b9ee12"
             },
             "require": {
                 "drupal/core": "^9.1",
@@ -3008,8 +3008,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-5.1",
-                    "datestamp": "1640378500",
+                    "version": "8.x-5.2",
+                    "datestamp": "1672425094",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7101,20 +7101,20 @@
         },
         {
             "name": "symfony/mailer",
-            "version": "v5.4.15",
+            "version": "v5.4.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "926f4deddb60d40024e6058fd8f94e70e4024930"
+                "reference": "66081dc01cfc04fdea08bbd253f44627ec5591dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/926f4deddb60d40024e6058fd8f94e70e4024930",
-                "reference": "926f4deddb60d40024e6058fd8f94e70e4024930",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/66081dc01cfc04fdea08bbd253f44627ec5591dd",
+                "reference": "66081dc01cfc04fdea08bbd253f44627ec5591dd",
                 "shasum": ""
             },
             "require": {
-                "egulias/email-validator": "^2.1.10|^3",
+                "egulias/email-validator": "^2.1.10|^3|^4",
                 "php": ">=7.2.5",
                 "psr/event-dispatcher": "^1",
                 "psr/log": "^1|^2|^3",
@@ -7157,7 +7157,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/mailer/tree/v5.4.15"
+                "source": "https://github.com/symfony/mailer/tree/v5.4.19"
             },
             "funding": [
                 {
@@ -7173,7 +7173,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-27T07:55:40+00:00"
+            "time": "2023-01-09T05:43:46+00:00"
         },
         {
             "name": "symfony/mime",
@@ -8766,16 +8766,16 @@
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
-            "version": "2.2.5",
+            "version": "2.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
-                "reference": "4348a3a06651827a27d989ad1d13efec6bb49b19"
+                "reference": "c42125b83a4fa63b187fdf29f9c93cb7733da30c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/4348a3a06651827a27d989ad1d13efec6bb49b19",
-                "reference": "4348a3a06651827a27d989ad1d13efec6bb49b19",
+                "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/c42125b83a4fa63b187fdf29f9c93cb7733da30c",
+                "reference": "c42125b83a4fa63b187fdf29f9c93cb7733da30c",
                 "shasum": ""
             },
             "require": {
@@ -8813,9 +8813,9 @@
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "support": {
                 "issues": "https://github.com/tijsverkoyen/CssToInlineStyles/issues",
-                "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.5"
+                "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.6"
             },
-            "time": "2022-09-12T13:28:28+00:00"
+            "time": "2023-01-03T09:29:04+00:00"
         },
         {
             "name": "twig/twig",
@@ -9210,16 +9210,16 @@
         },
         {
             "name": "behat/behat",
-            "version": "v3.11.0",
+            "version": "v3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "a19c72c78eb0cdf7b7c4dabfeec9eb3a282728fc"
+                "reference": "2f059c9172764ba1f1759b3679aca499b665330a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/a19c72c78eb0cdf7b7c4dabfeec9eb3a282728fc",
-                "reference": "a19c72c78eb0cdf7b7c4dabfeec9eb3a282728fc",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/2f059c9172764ba1f1759b3679aca499b665330a",
+                "reference": "2f059c9172764ba1f1759b3679aca499b665330a",
                 "shasum": ""
             },
             "require": {
@@ -9237,6 +9237,7 @@
             },
             "require-dev": {
                 "herrera-io/box": "~1.6.1",
+                "phpspec/prophecy": "^1.15",
                 "phpunit/phpunit": "^8.5 || ^9.0",
                 "symfony/process": "^4.4 || ^5.0 || ^6.0",
                 "vimeo/psalm": "^4.8"
@@ -9290,9 +9291,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Behat/Behat/issues",
-                "source": "https://github.com/Behat/Behat/tree/v3.11.0"
+                "source": "https://github.com/Behat/Behat/tree/v3.12.0"
             },
-            "time": "2022-07-07T09:49:27+00:00"
+            "time": "2022-11-29T15:30:11+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -10498,34 +10499,59 @@
         },
         {
             "name": "drupal/drupal-driver",
-            "version": "v2.2.0",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jhedstrom/DrupalDriver.git",
-                "reference": "000ce86a345bb8decaefdd7f0509825179641221"
+                "reference": "632712db66681b76651518bf5ab1e60fddc70a39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/000ce86a345bb8decaefdd7f0509825179641221",
-                "reference": "000ce86a345bb8decaefdd7f0509825179641221",
+                "url": "https://api.github.com/repos/jhedstrom/DrupalDriver/zipball/632712db66681b76651518bf5ab1e60fddc70a39",
+                "reference": "632712db66681b76651518bf5ab1e60fddc70a39",
                 "shasum": ""
             },
             "require": {
-                "drupal/core-utility": "^8.4 || ^9 || ^10.0.0-alpha1",
+                "drupal/core-utility": "^8.4 || ^9 || ^10@beta",
                 "php": ">=7.4",
                 "symfony/dependency-injection": "~2.6|~3.0|~4.4|^6",
                 "symfony/process": "~2.5|~3.0|~4.4|^6"
             },
+            "conflict": {
+                "drupal/core": ">=8.0 <9.3"
+            },
             "require-dev": {
+                "composer/installers": "^2.1",
                 "dms/phpunit-arraysubset-asserts": "^0.4.0",
                 "drupal/coder": "~8.3.0",
+                "drupal/core-composer-scaffold": "^8.4 || ^9 || ^10@beta",
+                "drupal/core-recommended": "^8.4 || ^9 || ^10@beta",
+                "drupal/mailsystem": "^4.4",
                 "drush-ops/behat-drush-endpoint": "*",
-                "mockery/mockery": "^0.9.4",
+                "mglaman/drupal-check": "^1",
+                "mockery/mockery": "^1.5",
+                "palantirnet/drupal-rector": "^0.13",
                 "php-parallel-lint/php-parallel-lint": "^1.0",
                 "phpspec/phpspec": "~2.0 || ~4.0 || ~6.1 || dev-main",
-                "phpunit/phpunit": "~6.0 || ~7.0 || ^9"
+                "phpunit/phpunit": "~6.0 || ~7.0 || ^9",
+                "symfony/phpunit-bridge": "^6.1"
             },
             "type": "library",
+            "extra": {
+                "installer-paths": {
+                    "drupal/core": [
+                        "type:drupal-core"
+                    ],
+                    "drupal/modules/{$name}": [
+                        "type:drupal-module"
+                    ]
+                },
+                "drupal-scaffold": {
+                    "locations": {
+                        "web-root": "drupal/"
+                    }
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Drupal\\Driver": "src/",
@@ -10551,7 +10577,7 @@
             ],
             "support": {
                 "issues": "https://github.com/jhedstrom/DrupalDriver/issues",
-                "source": "https://github.com/jhedstrom/DrupalDriver/tree/v2.2.0"
+                "source": "https://github.com/jhedstrom/DrupalDriver/tree/v2.2.2"
             },
             "funding": [
                 {
@@ -10559,7 +10585,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-05-16T18:47:08+00:00"
+            "time": "2023-01-06T17:22:24+00:00"
         },
         {
             "name": "drupal/drupal-extension",
@@ -10757,20 +10783,21 @@
         },
         {
             "name": "drupal/jsonapi_hypermedia",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/jsonapi_hypermedia.git",
-                "reference": "8.x-1.8"
+                "reference": "8.x-1.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/jsonapi_hypermedia-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "8fb95322b229c885e38f2b625420dbe16516eac9"
+                "url": "https://ftp.drupal.org/files/projects/jsonapi_hypermedia-8.x-1.9.zip",
+                "reference": "8.x-1.9",
+                "shasum": "a195c8326847b7b2b735f93b0a0fdc6ff8ac2594"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9.0 || ^10"
+                "drupal/core": "^8.8 || ^9.0 || ^10",
+                "php": "^8"
             },
             "require-dev": {
                 "drupal/consumer_image_styles": "^4.0"
@@ -10778,8 +10805,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1659547069",
+                    "version": "8.x-1.9",
+                    "datestamp": "1670532848",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -10889,17 +10916,17 @@
         },
         {
             "name": "drupal/upgrade_status",
-            "version": "3.17.0",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/upgrade_status.git",
-                "reference": "8.x-3.17"
+                "reference": "8.x-3.18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/upgrade_status-8.x-3.17.zip",
-                "reference": "8.x-3.17",
-                "shasum": "b7961c580b48f5ad4e6b711fdf4283cc0063a5b9"
+                "url": "https://ftp.drupal.org/files/projects/upgrade_status-8.x-3.18.zip",
+                "reference": "8.x-3.18",
+                "shasum": "09a9c75603de8e5ce2254ce75603c00981d6f6d4"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -10913,8 +10940,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.17",
-                    "datestamp": "1662479791",
+                    "version": "8.x-3.18",
+                    "datestamp": "1669215749",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -11219,12 +11246,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fenetikm/autoload-drupal.git",
-                "reference": "4503484bf2d78e6d739fe13324ab3e6b96d7c244"
+                "reference": "3c6252e0bb4ec79ada21578693640642906c075c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fenetikm/autoload-drupal/zipball/4503484bf2d78e6d739fe13324ab3e6b96d7c244",
-                "reference": "4503484bf2d78e6d739fe13324ab3e6b96d7c244",
+                "url": "https://api.github.com/repos/fenetikm/autoload-drupal/zipball/3c6252e0bb4ec79ada21578693640642906c075c",
+                "reference": "3c6252e0bb4ec79ada21578693640642906c075c",
                 "shasum": ""
             },
             "require": {
@@ -11256,7 +11283,7 @@
                 "issues": "https://github.com/fenetikm/autoload-drupal/issues",
                 "source": "https://github.com/fenetikm/autoload-drupal/tree/master"
             },
-            "time": "2020-12-15T21:19:25+00:00"
+            "time": "2023-01-23T21:10:52+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -11748,29 +11775,31 @@
         },
         {
             "name": "laminas/laminas-text",
-            "version": "2.9.0",
+            "version": "2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-text.git",
-                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7"
+                "reference": "40f7acdb284d41553d32db811e704d6e15e415b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-text/zipball/8879e75d03e09b0d6787e6680cfa255afd4645a7",
-                "reference": "8879e75d03e09b0d6787e6680cfa255afd4645a7",
+                "url": "https://api.github.com/repos/laminas/laminas-text/zipball/40f7acdb284d41553d32db811e704d6e15e415b4",
+                "reference": "40f7acdb284d41553d32db811e704d6e15e415b4",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-servicemanager": "^3.4",
-                "laminas/laminas-stdlib": "^3.6",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+                "laminas/laminas-servicemanager": "^3.19.0",
+                "laminas/laminas-stdlib": "^3.7.1",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "conflict": {
                 "zendframework/zend-text": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~1.0.0",
-                "phpunit/phpunit": "^9.3"
+                "laminas/laminas-coding-standard": "~2.4.0",
+                "phpunit/phpunit": "^9.5",
+                "psalm/plugin-phpunit": "^0.18.4",
+                "vimeo/psalm": "^5.1"
             },
             "type": "library",
             "autoload": {
@@ -11802,20 +11831,20 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-09-02T16:50:53+00:00"
+            "time": "2022-12-11T15:36:27+00:00"
         },
         {
             "name": "marcortola/behat-seo-contexts",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcortola/behat-seo-contexts.git",
-                "reference": "ee916f8dc3f423db62727e7036947a2557bc5497"
+                "reference": "0eda974b3c0ab345d0967522c1d86a54f02f9534"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcortola/behat-seo-contexts/zipball/ee916f8dc3f423db62727e7036947a2557bc5497",
-                "reference": "ee916f8dc3f423db62727e7036947a2557bc5497",
+                "url": "https://api.github.com/repos/marcortola/behat-seo-contexts/zipball/0eda974b3c0ab345d0967522c1d86a54f02f9534",
+                "reference": "0eda974b3c0ab345d0967522c1d86a54f02f9534",
                 "shasum": ""
             },
             "require": {
@@ -11834,9 +11863,9 @@
                 "phpmd/phpmd": "^2.7",
                 "phpstan/phpstan": "^0.12",
                 "phpstan/phpstan-webmozart-assert": "^0.12.7",
-                "sebastian/phpcpd": "^6.0",
+                "sebastian/phpcpd": "^4.1",
                 "sensiolabs/security-checker": "^6.0",
-                "symplify/easy-coding-standard": "^8.2",
+                "symplify/easy-coding-standard": "^6.1",
                 "thecodingmachine/phpstan-strict-rules": "^0.12",
                 "webmozart/assert": "^1.9"
             },
@@ -11872,9 +11901,9 @@
             ],
             "support": {
                 "issues": "https://github.com/marcortola/behat-seo-contexts/issues",
-                "source": "https://github.com/marcortola/behat-seo-contexts/tree/master"
+                "source": "https://github.com/marcortola/behat-seo-contexts/tree/3.1.1"
             },
-            "time": "2020-09-08T08:44:50+00:00"
+            "time": "2022-11-22T14:47:29+00:00"
         },
         {
             "name": "mathieuviossat/arraytotexttable",
@@ -11977,21 +12006,21 @@
         },
         {
             "name": "mglaman/phpstan-drupal",
-            "version": "1.1.25",
+            "version": "1.1.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mglaman/phpstan-drupal.git",
-                "reference": "480245d5d0bd1858e01c43d738718dab85be0ad2"
+                "reference": "55c3f437e52d0e10e7ac59ffb20e338625b79594"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/480245d5d0bd1858e01c43d738718dab85be0ad2",
-                "reference": "480245d5d0bd1858e01c43d738718dab85be0ad2",
+                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/55c3f437e52d0e10e7ac59ffb20e338625b79594",
+                "reference": "55c3f437e52d0e10e7ac59ffb20e338625b79594",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0",
-                "phpstan/phpstan": "^1.6.0",
+                "phpstan/phpstan": "^1.9.0",
                 "symfony/finder": "~3.4.5 ||^4.2 || ^5.0 || ^6.0",
                 "symfony/yaml": "~3.4.5 || ^4.2|| ^5.0 || ^6.0",
                 "webflo/drupal-finder": "^1.2"
@@ -12061,7 +12090,7 @@
             "description": "Drupal extension and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/mglaman/phpstan-drupal/issues",
-                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.1.25"
+                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.1.28"
             },
             "funding": [
                 {
@@ -12077,7 +12106,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-07-18T17:17:55+00:00"
+            "time": "2023-02-01T21:17:43+00:00"
         },
         {
             "name": "mikey179/vfsstream",
@@ -12685,16 +12714,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.9.1",
+            "version": "1.9.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "a59c8b5bfd4a236f27efc8b5ce72c313c2b54b5f"
+                "reference": "922e2689bb180575d0f57de0443c431a5a698e8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a59c8b5bfd4a236f27efc8b5ce72c313c2b54b5f",
-                "reference": "a59c8b5bfd4a236f27efc8b5ce72c313c2b54b5f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/922e2689bb180575d0f57de0443c431a5a698e8f",
+                "reference": "922e2689bb180575d0f57de0443c431a5a698e8f",
                 "shasum": ""
             },
             "require": {
@@ -12724,7 +12753,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.9.1"
+                "source": "https://github.com/phpstan/phpstan/tree/1.9.16"
             },
             "funding": [
                 {
@@ -12740,36 +12769,34 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-04T13:35:59+00:00"
+            "time": "2023-02-07T10:42:21+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
-            "version": "1.0.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-deprecation-rules.git",
-                "reference": "e5ccafb0dd8d835dd65d8d7a1a0d2b1b75414682"
+                "reference": "2c6792eda026d9c474c14aa018aed312686714db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/e5ccafb0dd8d835dd65d8d7a1a0d2b1b75414682",
-                "reference": "e5ccafb0dd8d835dd65d8d7a1a0d2b1b75414682",
+                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/2c6792eda026d9c474c14aa018aed312686714db",
+                "reference": "2c6792eda026d9c474c14aa018aed312686714db",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0",
-                "phpstan/phpstan": "^1.0"
+                "php": "^7.2 || ^8.0",
+                "phpstan/phpstan": "^1.9.3"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpstan/phpstan-php-parser": "^1.1",
                 "phpstan/phpstan-phpunit": "^1.0",
                 "phpunit/phpunit": "^9.5"
             },
             "type": "phpstan-extension",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
                 "phpstan": {
                     "includes": [
                         "rules.neon"
@@ -12788,9 +12815,9 @@
             "description": "PHPStan rules for detecting usage of deprecated classes, methods, properties, constants and traits.",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-deprecation-rules/issues",
-                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/1.0.0"
+                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/1.1.1"
             },
-            "time": "2021-09-23T11:02:21+00:00"
+            "time": "2022-12-13T14:26:20+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -14818,16 +14845,16 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v6.0.3",
+            "version": "v6.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "51f7006670febe4cbcbae177cbffe93ff833250d"
+                "reference": "6a180d1c45e0d9797470ca9eb46215692de00fa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/51f7006670febe4cbcbae177cbffe93ff833250d",
-                "reference": "51f7006670febe4cbcbae177cbffe93ff833250d",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/6a180d1c45e0d9797470ca9eb46215692de00fa3",
+                "reference": "6a180d1c45e0d9797470ca9eb46215692de00fa3",
                 "shasum": ""
             },
             "require": {
@@ -14865,7 +14892,7 @@
                 "options"
             ],
             "support": {
-                "source": "https://github.com/symfony/options-resolver/tree/v6.0.3"
+                "source": "https://github.com/symfony/options-resolver/tree/v6.0.19"
             },
             "funding": [
                 {
@@ -14881,7 +14908,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:55:41+00:00"
+            "time": "2023-01-01T08:36:10+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
@@ -15300,16 +15327,16 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v6.0.13",
+            "version": "v6.0.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "7554fde6848af5ef1178f8ccbdbdb8ae1092c70a"
+                "reference": "011e781839dd1d2eb8119f65ac516a530f60226d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/7554fde6848af5ef1178f8ccbdbdb8ae1092c70a",
-                "reference": "7554fde6848af5ef1178f8ccbdbdb8ae1092c70a",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/011e781839dd1d2eb8119f65ac516a530f60226d",
+                "reference": "011e781839dd1d2eb8119f65ac516a530f60226d",
                 "shasum": ""
             },
             "require": {
@@ -15342,7 +15369,7 @@
             "description": "Provides a way to profile code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/stopwatch/tree/v6.0.13"
+                "source": "https://github.com/symfony/stopwatch/tree/v6.0.19"
             },
             "funding": [
                 {
@@ -15358,7 +15385,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-28T15:52:47+00:00"
+            "time": "2023-01-01T08:36:10+00:00"
         },
         {
             "name": "symfony/string",
