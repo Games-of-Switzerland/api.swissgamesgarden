@@ -94,7 +94,7 @@
         "fenetikm/autoload-drupal": "dev-master",
         "friendsofphp/php-cs-fixer": "^3.0",
         "imbo/behat-api-extension": "^2.2",
-        "marcortola/behat-seo-contexts": "^3.1",
+        "marcortola/behat-seo-contexts": "^4.0",
         "mglaman/phpstan-drupal": "^1.1",
         "phpspec/prophecy-phpunit": "^2",
         "phpstan/phpstan-deprecation-rules": "^1.0"

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c284b8f90f83122ca359a035e977a215",
+    "content-hash": "a4d33823084230900c1b3d2118457092",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -11835,16 +11835,16 @@
         },
         {
             "name": "marcortola/behat-seo-contexts",
-            "version": "3.1.1",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marcortola/behat-seo-contexts.git",
-                "reference": "0eda974b3c0ab345d0967522c1d86a54f02f9534"
+                "reference": "bb37d23c66c153c7b4a1e159f07216ac9dfe3725"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marcortola/behat-seo-contexts/zipball/0eda974b3c0ab345d0967522c1d86a54f02f9534",
-                "reference": "0eda974b3c0ab345d0967522c1d86a54f02f9534",
+                "url": "https://api.github.com/repos/marcortola/behat-seo-contexts/zipball/bb37d23c66c153c7b4a1e159f07216ac9dfe3725",
+                "reference": "bb37d23c66c153c7b4a1e159f07216ac9dfe3725",
                 "shasum": ""
             },
             "require": {
@@ -11901,9 +11901,9 @@
             ],
             "support": {
                 "issues": "https://github.com/marcortola/behat-seo-contexts/issues",
-                "source": "https://github.com/marcortola/behat-seo-contexts/tree/3.1.1"
+                "source": "https://github.com/marcortola/behat-seo-contexts/tree/4.0.0"
             },
-            "time": "2022-11-22T14:47:29+00:00"
+            "time": "2022-11-28T17:15:59+00:00"
         },
         {
             "name": "mathieuviossat/arraytotexttable",
