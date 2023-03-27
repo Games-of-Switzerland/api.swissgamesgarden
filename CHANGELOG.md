@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update library marcortola/behat-seo-contexts (3.1.1 => 4.0.0)
 - remove abandonned behatch/contexts
+- update module drupal/migrate_tools (5.2.0 => 6.0.1)
 
 ## [0.5.3] - 2023-02-07
 ### Fixed
