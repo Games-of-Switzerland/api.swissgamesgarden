@@ -1,3 +1,4 @@
+@jsonapi
 Feature: Root
 
   Scenario: The root endpoit with an obfuscated url works.

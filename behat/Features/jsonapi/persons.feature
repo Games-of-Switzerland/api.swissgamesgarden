@@ -1,14 +1,28 @@
+@jsonapi
 Feature: Persons
 
   Scenario: The list of people return only published ones.
-    Given I am on "/G70VW4Y9sP/jsonapi/node/people"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON node "data" should have 3 elements
+    Given I request "/G70VW4Y9sP/jsonapi/node/people"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/vnd.api+json"
+    Then the response body contains JSON:
+      """
+      {
+        "data": "@arrayLength(3)"
+      }
+      """
 
   Scenario: Sorting of people listing works.
-    Given I am on "/G70VW4Y9sP/jsonapi/node/people?sort=-title"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON node "data[0].attributes.title" should be equal to 'Nicolas "Kaihnn" Jadaud'
-
+    Given I request "/G70VW4Y9sP/jsonapi/node/people?sort=-title"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/vnd.api+json"
+    Then the response body contains JSON:
+      """
+      {
+        "data[0]": {
+          "attributes": {
+            "title": "Nicolas \"Kaihnn\" Jadaud"
+          }
+        }
+      }
+      """
