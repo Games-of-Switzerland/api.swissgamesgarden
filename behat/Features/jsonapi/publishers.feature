@@ -1,18 +1,62 @@
+@jsonapi
 Feature: Publishers
 
   Scenario: The list of publisher return only published ones.
-    Given I am on "/G70VW4Y9sP/jsonapi/taxonomy_term/publisher"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON node "data" should have 3 elements
-    And the JSON node "data[0].attributes.name" should be equal to "Shy Robot Games"
-    And the JSON node "data[1].attributes.name" should be equal to "Astragon"
-    And the JSON node "data[2].attributes.name" should be equal to "Focus Home Interactive"
+    Given I request "/G70VW4Y9sP/jsonapi/taxonomy_term/publisher"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/vnd.api+json"
+    Then the response body contains JSON:
+      """
+      {
+        "data": "@arrayLength(3)"
+      }
+      """
+    Then the response body contains JSON:
+      """
+      {
+        "data": [
+          {
+            "attributes": {
+              "name": "Shy Robot Games"
+            }
+          },
+          {
+            "attributes": {
+              "name": "Astragon"
+            }
+          },
+          {
+            "attributes": {
+              "name": "Focus Home Interactive"
+            }
+          }
+        ]
+      }
+      """
 
   Scenario: Sorting of publisher listing works.
-    Given I am on "/G70VW4Y9sP/jsonapi/taxonomy_term/publisher?sort=name"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON node "data[0].attributes.name" should be equal to "Astragon"
-    And the JSON node "data[1].attributes.name" should be equal to "Focus Home Interactive"
-    And the JSON node "data[2].attributes.name" should be equal to "Shy Robot Games"
+    Given I request "/G70VW4Y9sP/jsonapi/taxonomy_term/publisher?sort=name"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/vnd.api+json"
+    Then the response body contains JSON:
+      """
+      {
+        "data": [
+          {
+            "attributes": {
+              "name": "Astragon"
+            }
+          },
+          {
+            "attributes": {
+              "name": "Focus Home Interactive"
+            }
+          },
+          {
+            "attributes": {
+              "name": "Shy Robot Games"
+            }
+          }
+        ]
+      }
+      """

@@ -30,51 +30,170 @@
       """
 
   Scenario: The States facets/aggregations should use the same filter as the global query - without itself as filter.
-    Given I send a "GET" request to "http://api.gos.test/search/games?page=0&states[]=canceled"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON nodes should be equal to:
-      | hits.hits[0]._source.uuid | a0b7c853-c891-487f-84f9-74dfbce9fa63 |
+    When I request "http://api.gos.test/search/games?page=0&states[]=canceled"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/json"
+    Then the response body contains JSON:
+      """
+      {
+        "hits": {
+          "hits[0]": {
+            "_source": {"uuid": "a0b7c853-c891-487f-84f9-74dfbce9fa63"}
+          }
+        }
+      }
+      """
 
   Scenario Outline: The States facets/aggregations should use the same filter as the global query - without itself as filter.
-    Given I send a "GET" request to <url>
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON node "aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets" should have 4 elements
-    And the JSON nodes should be equal to:
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].key | released |
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].doc_count | 3 |
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].key | development  |
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].doc_count | 2 |
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].key | canceled |
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].doc_count | 1 |
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[3].key | pre_release |
-      | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[3].doc_count | 1 |
+    When I request <url>
+    Then the response code is 200
+    And the "Content-Type" response header is "application/json"
+    Then the response body contains JSON:
+      """
+      {
+        "aggregations": {
+          "aggs_all": {
+            "all_filtered_states": {
+              "all_nested_states": {
+                "states_name_keyword": {
+                  "buckets": "@arrayLength(4)"
+                }
+              }
+            }
+          }
+        }
+      }
+      """
+    Then the response body contains JSON:
+      """
+      {
+        "aggregations": {
+          "aggs_all": {
+            "all_filtered_states": {
+              "all_nested_states": {
+                "states_name_keyword": {
+                  "buckets[0]": {
+                    "key": "released",
+                    "doc_count": 3
+                  },
+                  "buckets[1]": {
+                    "key": "development",
+                    "doc_count": 2
+                  },
+                  "buckets[2]": {
+                    "key": "canceled",
+                    "doc_count": 1
+                  },
+                  "buckets[3]": {
+                    "key": "pre_release",
+                    "doc_count": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      """
     Examples:
       | url |
       | "http://api.gos.test/search/games?page=0" |
       | "http://api.gos.test/search/games?page=0&states[]=canceled" |
 
     Scenario: The States facets/aggregations should be affected by filtered Platforms and/or Genres.
-      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platforms[]=pc"
-      And the JSON node "aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets" should have 4 elements
-      And the JSON nodes should be equal to:
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].key | development |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].doc_count | 2 |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].key | released  |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].doc_count | 2 |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].key | canceled |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].doc_count | 1 |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[3].key | pre_release |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[3].doc_count | 1 |
-      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&genres[]=puzzle"
-      And the JSON node "aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets" should have 4 elements
-      And the JSON nodes should be equal to:
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].key | released |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[0].doc_count | 1 |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].key | canceled  |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[1].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].key | development |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[2].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[3].key | pre_release |
-        | aggregations.aggs_all.all_filtered_states.all_nested_states.states_name_keyword.buckets[3].doc_count | 0 |
+      When I request "http://api.gos.test/search/games?page=0&platforms[]=pc"
+      Then the response body contains JSON:
+      """
+      {
+        "aggregations": {
+          "aggs_all": {
+            "all_filtered_states": {
+              "all_nested_states": {
+                "states_name_keyword": {
+                  "buckets": "@arrayLength(4)"
+                }
+              }
+            }
+          }
+        }
+      }
+      """
+      Then the response body contains JSON:
+        """
+        {
+          "aggregations": {
+            "aggs_all": {
+              "all_filtered_states": {
+                "all_nested_states": {
+                  "states_name_keyword": {
+                    "buckets[0]": {
+                      "key": "development",
+                      "doc_count": 2
+                    },
+                    "buckets[1]": {
+                      "key": "released",
+                      "doc_count": 2
+                    },
+                    "buckets[2]": {
+                      "key": "canceled",
+                      "doc_count": 1
+                    },
+                    "buckets[3]": {
+                      "key": "pre_release",
+                      "doc_count": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        """
+      When I request "http://api.gos.test/search/games?page=0&genres[]=puzzle"
+      Then the response body contains JSON:
+      """
+      {
+        "aggregations": {
+          "aggs_all": {
+            "all_filtered_states": {
+              "all_nested_states": {
+                "states_name_keyword": {
+                  "buckets": "@arrayLength(4)"
+                }
+              }
+            }
+          }
+        }
+      }
+      """
+      Then the response body contains JSON:
+        """
+        {
+          "aggregations": {
+            "aggs_all": {
+              "all_filtered_states": {
+                "all_nested_states": {
+                  "states_name_keyword": {
+                    "buckets[0]": {
+                      "key": "released",
+                      "doc_count": 1
+                    },
+                    "buckets[1]": {
+                      "key": "canceled",
+                      "doc_count": 0
+                    },
+                    "buckets[2]": {
+                      "key": "development",
+                      "doc_count": 0
+                    },
+                    "buckets[3]": {
+                      "key": "pre_release",
+                      "doc_count": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        """

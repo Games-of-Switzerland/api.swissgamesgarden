@@ -15,10 +15,7 @@ default:
         - Drupal\Behat\Context\Drupal\DebugContext:
             log_path: '%paths.base%/log/behat'
         - Drupal\Behat\Context\Drupal\SitemapContext:
-
-        - Behatch\Context\JsonContext
-        - Behatch\Context\RestContext
-        - Behatch\Context\XmlContext
+        - Drupal\Behat\Context\Drupal\XmlContext:
 
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
@@ -52,6 +49,5 @@ default:
     Alex\MailCatcher\Behat\MailCatcherExtension\Extension:
       url: http://mail:1080
       purge_before_scenario: true
-    Behatch\Extension: ~
   gherkin:
     cache: ~

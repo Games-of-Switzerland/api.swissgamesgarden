@@ -1,20 +1,72 @@
+@jsonapi
 Feature: Languages
 
   Scenario: The list of language return only published ones.
-    Given I am on "/G70VW4Y9sP/jsonapi/taxonomy_term/language"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON node "data" should have 4 elements
-    And the JSON node "data[0].attributes.name" should be equal to "English"
-    And the JSON node "data[1].attributes.name" should be equal to "French"
-    And the JSON node "data[2].attributes.name" should be equal to "German"
-    And the JSON node "data[3].attributes.name" should be equal to "Spanish"
+    Given I request "/G70VW4Y9sP/jsonapi/taxonomy_term/language"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/vnd.api+json"
+    Then the response body contains JSON:
+      """
+      {
+        "data": "@arrayLength(4)"
+      }
+      """
+    Then the response body contains JSON:
+      """
+      {
+        "data": [
+          {
+            "attributes": {
+              "name": "English"
+            }
+          },
+          {
+            "attributes": {
+              "name": "French"
+            }
+          },
+          {
+            "attributes": {
+              "name": "German"
+            }
+          },
+          {
+            "attributes": {
+              "name": "Spanish"
+            }
+          }
+        ]
+      }
+      """
 
   Scenario: Sorting of language listing works.
-    Given I am on "/G70VW4Y9sP/jsonapi/taxonomy_term/language?sort=-name"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON node "data[0].attributes.name" should be equal to "Spanish"
-    And the JSON node "data[1].attributes.name" should be equal to "German"
-    And the JSON node "data[2].attributes.name" should be equal to "French"
-    And the JSON node "data[3].attributes.name" should be equal to "English"
+    Given I request "/G70VW4Y9sP/jsonapi/taxonomy_term/language?sort=-name"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/vnd.api+json"
+    Then the response body contains JSON:
+      """
+      {
+        "data": [
+          {
+            "attributes": {
+              "name": "Spanish"
+            }
+          },
+          {
+            "attributes": {
+              "name": "German"
+            }
+          },
+          {
+            "attributes": {
+              "name": "French"
+            }
+          },
+          {
+            "attributes": {
+              "name": "English"
+            }
+          }
+        ]
+      }
+      """
