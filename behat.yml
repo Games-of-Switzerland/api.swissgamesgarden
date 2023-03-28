@@ -15,6 +15,7 @@ default:
         - Drupal\Behat\Context\Drupal\DebugContext:
             log_path: '%paths.base%/log/behat'
         - Drupal\Behat\Context\Drupal\SitemapContext:
+        - Drupal\Behat\Context\Drupal\XmlContext:
 
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
