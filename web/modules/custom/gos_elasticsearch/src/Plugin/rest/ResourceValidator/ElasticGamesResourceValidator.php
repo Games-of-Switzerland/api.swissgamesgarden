@@ -131,7 +131,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var string[]|null
    *
-   * @Assert\Choice(choices={"", "pre_release", "released", "development", "canceled"}, multiple=true)
+   * @Assert\Choice(choices={"", "prototype", "pre_release", "released", "development", "canceled"}, multiple=true)
    */
   private $states;
 

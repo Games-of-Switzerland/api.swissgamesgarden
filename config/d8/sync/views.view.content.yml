@@ -2313,18 +2313,22 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
+                title: Prototype
+                operator: '='
+                value: prototype
+              2:
                 title: Pre-release
                 operator: '='
                 value: pre_release
-              2:
+              3:
                 title: 'In development'
                 operator: '='
                 value: development
-              3:
+              4:
                 title: Released
                 operator: '='
                 value: released
-              4:
+              5:
                 title: Canceled
                 operator: '='
                 value: canceled

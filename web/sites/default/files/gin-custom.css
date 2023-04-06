@@ -49,6 +49,7 @@
   background-color: darkred;
 }
 
+.icon-circle.prototype,
 .icon-circle.pre_release,
 .icon-circle.warning {
   background-color: goldenrod;
