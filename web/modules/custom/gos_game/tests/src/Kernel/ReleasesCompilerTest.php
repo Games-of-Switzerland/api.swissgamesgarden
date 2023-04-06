@@ -270,7 +270,7 @@ final class ReleasesCompilerTest extends KernelTestBase {
             'state' => 'canceled',
           ],
         ],
-        'states' => ['pre_release' => 'pre_release', 'canceled' => 'canceled'],
+        'states' => ['prototype' => 'prototype', 'pre_release' => 'pre_release', 'canceled' => 'canceled'],
       ],
       2003 => [
         'year' => '2003',
