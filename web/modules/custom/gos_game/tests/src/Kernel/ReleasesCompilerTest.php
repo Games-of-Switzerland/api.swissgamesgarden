@@ -81,6 +81,11 @@ final class ReleasesCompilerTest extends KernelTestBase {
       'title' => $this->randomString(),
       'field_releases' => [
         [
+          'date_value' => '2001-01-01',
+          'target_id' => 6,
+          'state' => 'prototype',
+        ],
+        [
           'date_value' => '2003-01-01',
           'target_id' => 4,
           'state' => 'released',
@@ -270,7 +275,11 @@ final class ReleasesCompilerTest extends KernelTestBase {
             'state' => 'canceled',
           ],
         ],
-        'states' => ['prototype' => 'prototype', 'pre_release' => 'pre_release', 'canceled' => 'canceled'],
+        'states' => [
+          'prototype' => 'prototype',
+          'pre_release' => 'pre_release',
+          'canceled' => 'canceled',
+        ],
       ],
       2003 => [
         'year' => '2003',
