@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.4] - 2023-04-20
+### Security
+- update library marcortola/behat-seo-contexts (3.1.1 => 4.0.0)
+- remove abandonned behatch/contexts
+- update module drupal/migrate_tools (5.2.0 => 6.0.1)
+- update theme drupal/gin (3.0.0-rc1 => 3.0.0-rc2)
+
+### Added
+- add the new Release Type 'Prototype' - Games-of-Switzerland/swissgamesgarden#132
+
 ## [0.5.3] - 2023-02-07
 ### Fixed
 - fix field_cantons json:api public name to be 'cantons'
@@ -145,7 +155,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.3...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.4...HEAD
+[0.5.4]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.3...0.5.4
 [0.5.3]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.2...0.5.3
 [0.5.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.0...0.5.1

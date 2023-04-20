@@ -40,6 +40,7 @@ class ReleaseDefaultWidget extends EntityReferenceAutocompleteWidget {
       '#type' => 'select',
       '#options' => [
         '' => $this->t('- None -'),
+        'prototype' => $this->t('Prototype'),
         'pre_release' => $this->t('Pre-release'),
         'development' => $this->t('In development'),
         'released' => $this->t('Released'),

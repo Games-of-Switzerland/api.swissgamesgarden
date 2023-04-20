@@ -1,86 +1,253 @@
 @elasticsearch
+@debug
   Feature: Retrieve Games Platforms facets from Elasticsearch
   In order to filter the Games Search API
   As a client software developer
   I need to be able to fetch faceted Platforms in a JSON encoded resources from Elasticsearch via a Proxy
 
   Scenario: The Platforms facets/aggregations should follow a strict given structure.
-    Given I send a "GET" request to "http://api.gos.test/search/games?page=0"
-    Then the response status code should be 200
-    And the response should be in JSON
-    Then the JSON should be valid according to the schema "/var/www/behat/Fixtures/elasticsearch/schemaref.search.games.platforms.facets.json"
+    When I request "http://api.gos.test/search/games?page=0"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/json"
+    Then the response body contains JSON:
+      """
+      {
+        "hits": "@variableType(object)",
+        "aggregations": {
+          "aggs_all": {
+            "all_filtered_platforms": {
+              "doc_count": "@variableType(integer)",
+              "all_nested_platforms": {
+                "doc_count": "@variableType(integer)",
+                "platforms_name_keyword": {
+                  "buckets": [{
+                    "key": "@variableType(string)",
+                    "doc_count": "@variableType(integer)"
+                  }]
+                }
+              }
+            }
+          }
+        }
+      }
+      """
 
   Scenario: The Platforms facets/aggregations should use the same filter as the global query - without itself as filter.
-    Given I send a "GET" request to "http://api.gos.test/search/games?page=0&platforms[]=pc"
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON nodes should be equal to:
-      | hits.hits[0]._source.uuid | a0b7c853-c891-487f-84f9-74dfbce9fa63 |
-      | hits.hits[1]._source.uuid | 08952aa6-e079-496a-8efa-cbb8465d9315 |
+    When I request "http://api.gos.test/search/games?page=0&platforms[]=pc"
+    Then the response code is 200
+    And the "Content-Type" response header is "application/json"
+    Then the response body contains JSON:
+      """
+      {
+        "hits": {
+          "hits[0]": {
+            "_source": {"uuid": "a0b7c853-c891-487f-84f9-74dfbce9fa63"}
+          },
+          "hits[1]": {
+            "_source": {"uuid": "08952aa6-e079-496a-8efa-cbb8465d9315"}
+          }
+        }
+      }
+      """
 
   Scenario Outline: The Platforms facets/aggregations should use the same filter as the global query - without itself as filter.
-    Given I send a "GET" request to <url>
-    Then the response status code should be 200
-    And the response should be in JSON
-    And the JSON node "aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets" should have 8 elements
-    And the JSON nodes should be equal to:
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[0].key | ios |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[0].doc_count | 2 |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[1].key | mac |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[1].doc_count | 2 |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[2].key | pc |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[2].doc_count | 2 |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[3].key | android |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[3].doc_count | 1 |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[4].key | nintendo_3ds |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[4].doc_count | 1 |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[5].key | playstation_4 |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[5].doc_count | 1 |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[6].key | playstation_vita |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[6].doc_count | 1 |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[7].key | xbox_one |
-      | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[7].doc_count | 1 |
+    When I request <url>
+    Then the response code is 200
+    And the "Content-Type" response header is "application/json"
+    Then the response body contains JSON:
+      """
+      {
+        "aggregations": {
+          "aggs_all": {
+            "all_filtered_platforms": {
+              "all_nested_platforms": {
+                "platforms_name_keyword": {
+                  "buckets": "@arrayLength(8)"
+                }
+              }
+            }
+          }
+        }
+      }
+      """
+    Then the response body contains JSON:
+      """
+      {
+        "aggregations": {
+          "aggs_all": {
+            "all_filtered_platforms": {
+              "all_nested_platforms": {
+                "platforms_name_keyword": {
+                  "buckets[0]": {
+                    "key": "ios",
+                    "doc_count": 2
+                  },
+                  "buckets[1]": {
+                    "key": "mac",
+                    "doc_count": 2
+                  },
+                  "buckets[2]": {
+                    "key": "pc",
+                    "doc_count": 2
+                  },
+                  "buckets[3]": {
+                    "key": "android",
+                    "doc_count": 1
+                  },
+                  "buckets[4]": {
+                    "key": "nintendo_3ds",
+                    "doc_count": 1
+                  },
+                  "buckets[5]": {
+                    "key": "playstation_4",
+                    "doc_count": 1
+                  },
+                  "buckets[6]": {
+                    "key": "playstation_vita",
+                    "doc_count": 1
+                  },
+                  "buckets[7]": {
+                    "key": "xbox_one",
+                    "doc_count": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      """
     Examples:
       | url |
       | "http://api.gos.test/search/games?page=0" |
       | "http://api.gos.test/search/games?page=0&platforms[]=pc" |
 
     Scenario: The Platforms facets/aggregations should be affected by filtered Stores and/or Genres.
-      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&genres[]=puzzle"
-      And the JSON node "aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets" should have 8 elements
-      And the JSON nodes should be equal to:
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[0].key | ios |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[0].doc_count | 1 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[1].key | android |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[1].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[2].key | mac |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[2].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[3].key | nintendo_3ds |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[3].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[4].key | pc |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[4].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[5].key | playstation_4 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[5].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[6].key | playstation_vita |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[6].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[7].key | xbox_one |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[7].doc_count | 0 |
-      Given I send a "GET" request to "http://api.gos.test/search/games?page=0&stores[]=steam"
-      And the JSON node "aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets" should have 8 elements
-      And the JSON nodes should be equal to:
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[0].key | mac |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[0].doc_count | 1 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[1].key | pc |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[1].doc_count | 1 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[2].key | playstation_4 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[2].doc_count | 1 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[3].key | xbox_one |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[3].doc_count | 1 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[4].key | android |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[4].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[5].key | ios |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[5].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[6].key | nintendo_3ds |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[6].doc_count | 0 |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[7].key | playstation_vita |
-        | aggregations.aggs_all.all_filtered_platforms.all_nested_platforms.platforms_name_keyword.buckets[7].doc_count | 0 |
+      When I request "http://api.gos.test/search/games?page=0&genres[]=puzzle"
+      Then the response body contains JSON:
+        """
+        {
+          "aggregations": {
+            "aggs_all": {
+              "all_filtered_platforms": {
+                "all_nested_platforms": {
+                  "platforms_name_keyword": {
+                    "buckets": "@arrayLength(8)"
+                  }
+                }
+              }
+            }
+          }
+        }
+        """
+      Then the response body contains JSON:
+        """
+        {
+          "aggregations": {
+            "aggs_all": {
+              "all_filtered_platforms": {
+                "all_nested_platforms": {
+                  "platforms_name_keyword": {
+                    "buckets[0]": {
+                      "key": "ios",
+                      "doc_count": 1
+                    },
+                    "buckets[1]": {
+                      "key": "android",
+                      "doc_count": 0
+                    },
+                    "buckets[2]": {
+                      "key": "mac",
+                      "doc_count": 0
+                    },
+                    "buckets[3]": {
+                      "key": "nintendo_3ds",
+                      "doc_count": 0
+                    },
+                    "buckets[4]": {
+                      "key": "pc",
+                      "doc_count": 0
+                    },
+                    "buckets[5]": {
+                      "key": "playstation_4",
+                      "doc_count": 0
+                    },
+                    "buckets[6]": {
+                      "key": "playstation_vita",
+                      "doc_count": 0
+                    },
+                    "buckets[7]": {
+                      "key": "xbox_one",
+                      "doc_count": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        """
+      When I request "http://api.gos.test/search/games?page=0&stores[]=steam"
+      Then the response body contains JSON:
+        """
+        {
+          "aggregations": {
+            "aggs_all": {
+              "all_filtered_platforms": {
+                "all_nested_platforms": {
+                  "platforms_name_keyword": {
+                    "buckets": "@arrayLength(8)"
+                  }
+                }
+              }
+            }
+          }
+        }
+        """
+      Then the response body contains JSON:
+        """
+        {
+          "aggregations": {
+            "aggs_all": {
+              "all_filtered_platforms": {
+                "all_nested_platforms": {
+                  "platforms_name_keyword": {
+                    "buckets[0]": {
+                      "key": "mac",
+                      "doc_count": 1
+                    },
+                    "buckets[1]": {
+                      "key": "pc",
+                      "doc_count": 1
+                    },
+                    "buckets[2]": {
+                      "key": "playstation_4",
+                      "doc_count": 1
+                    },
+                    "buckets[3]": {
+                      "key": "xbox_one",
+                      "doc_count": 1
+                    },
+                    "buckets[4]": {
+                      "key": "android",
+                      "doc_count": 0
+                    },
+                    "buckets[5]": {
+                      "key": "ios",
+                      "doc_count": 0
+                    },
+                    "buckets[6]": {
+                      "key": "nintendo_3ds",
+                      "doc_count": 0
+                    },
+                    "buckets[7]": {
+                      "key": "playstation_vita",
+                      "doc_count": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        """
