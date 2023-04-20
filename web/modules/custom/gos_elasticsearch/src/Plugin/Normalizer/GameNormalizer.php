@@ -129,6 +129,10 @@ class GameNormalizer extends ContentEntityNormalizer {
     // Handle people fullnames in games (freelancers).
     if (!$object->get('field_members')->isEmpty()) {
       foreach ($object->field_members as $member) {
+        if (!$member->entity) {
+          continue;
+        }
+
         $people[] = [
           'path' => $member->entity->toUrl('canonical')->toString(),
           'fullname' => $member->entity->title->value,
