@@ -55,7 +55,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     EntityManager $entities_manager,
     UrlGeneratorManager $url_generator_manager,
     MemoryCacheInterface $memory_cache,
-    UrlBuilderNextJS $url_builder_nextjs
+    UrlBuilderNextJs $url_builder_nextjs
   ) {
     parent::__construct(
       $configuration,

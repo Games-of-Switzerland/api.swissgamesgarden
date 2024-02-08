@@ -13,6 +13,7 @@ use Drupal\serialization\Normalizer\ContentEntityNormalizer;
  * Normalizes / denormalizes Drupal Game nodes into an array structure for ES.
  */
 class GameNormalizer extends ContentEntityNormalizer {
+
   use NormalizerImagesDerivativesTrait;
 
   /**

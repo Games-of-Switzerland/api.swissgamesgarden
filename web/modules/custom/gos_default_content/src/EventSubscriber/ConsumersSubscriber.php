@@ -11,6 +11,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  * Generate, update & alter the default consumers for Games of Switzerland.
  */
 class ConsumersSubscriber implements EventSubscriberInterface {
+
   /**
    * The entity type manager.
    *

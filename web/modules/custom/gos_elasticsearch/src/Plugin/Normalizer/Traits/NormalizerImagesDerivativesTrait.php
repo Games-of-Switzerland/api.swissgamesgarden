@@ -44,7 +44,6 @@ trait NormalizerImagesDerivativesTrait {
     $medias = [];
 
     foreach ($field_image as $file) {
-
       // Skip file entity without real file on filesystem.
       if (!$file->entity) {
         continue;

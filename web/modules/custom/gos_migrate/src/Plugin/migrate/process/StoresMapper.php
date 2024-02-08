@@ -25,6 +25,7 @@ use Drupal\migrate\Row;
  *     plugin: gos_stores_mapper
  *     get: link
  *     source: field_stores
+ *
  * @endcode
  *
  * If the source value was

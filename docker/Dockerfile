@@ -34,11 +34,6 @@ RUN apt-get update && apt-get -y install \
     cron \
     gnupg;
 
-RUN set -eux; \
-  curl -L https://phar.io/releases/phive.phar -o phive.phar; \
-  chmod a+x phive.phar; \
-  mv phive.phar /usr/bin/phive;
-
 # Install additional PHP extensions.
 RUN docker-php-ext-install \
     exif;
@@ -84,10 +79,6 @@ RUN set -eux; \
   \
   composer install --prefer-dist --no-scripts --no-progress --no-interaction; \
   composer clear-cache
-
-# Add the phiv files to install dependencies before copying (optimization).
-ADD --chown=${user}:${group} ./.phive/ ./
-RUN phive --no-progress install
 
 # Ensure patch from Composer will be applied.
 RUN set -eux; \

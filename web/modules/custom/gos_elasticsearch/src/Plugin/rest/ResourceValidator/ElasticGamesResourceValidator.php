@@ -102,6 +102,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @Assert\Type(
    *     type="integer",
    * )
+   *
    * @Assert\GreaterThanOrEqual(
    *     value=1970
    * )

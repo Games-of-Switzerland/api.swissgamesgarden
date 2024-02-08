@@ -55,6 +55,7 @@ use Drupal\migrate\Row;
  *       - 'Y-01-01'
  *       - 'Y-m-d'
  *     source: event_date
+ *
  * @endcode
  *
  * If the source value was '1955/01/05/' or '1955' the transformed value would

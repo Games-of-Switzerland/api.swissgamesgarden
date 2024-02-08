@@ -11,6 +11,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  * Generate, update & alter the default games for Games of Switzerland.
  */
 class GamesSubscriber implements EventSubscriberInterface {
+
   /**
    * The entity type manager.
    *
