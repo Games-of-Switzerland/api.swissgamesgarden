@@ -4,7 +4,7 @@ Swiss Games Garden API project is based on 💦 [Drupal](https://drupal.org/), �
 We built it around 🔍 [Elasticsearch](https://www.elastic.co/) to expose Search Engine capabilities.
 It uses 🐳 [Docker](http://docker.com/) for running.
 We use 📝 [Swagger](https://swagger.io/) for documentation and ✅ [PHPUnit](https://phpunit.de/)/[Behat](https://docs.behat.org) for testing.
-We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano) and mange our dependencies with 🎶 [Composer](https://getcomposer.org/) & 🏜 [Phive](https://phar.io/).
+We deploy with 🚀 [Capistrano](https://github.com/capistrano/capistrano) and mange our dependencies with 🎶 [Composer](https://getcomposer.org/).
 
 We made it with 💗.
 
@@ -20,7 +20,6 @@ First of all, you need to have the following tools installed globally on your en
 * docker
 * composer
 * drush
-* phive
 
 don't forget to add bins to your path such:
 
@@ -183,8 +182,6 @@ $settings['gos_elasticsearch.index_prefix'] = 'local';
     docker-compose exec app docker-as-drupal --help
 
 ## 🚔 Static Analyzers
-
-All Analyzers are installed using PHive. Some extra analyzer dependencies are installed using Composer.
 
 You can read more about it in our [CONTRIBUTING section](./CONTRIBUTING.md).
 

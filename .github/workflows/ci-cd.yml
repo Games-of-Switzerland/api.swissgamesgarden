@@ -13,42 +13,31 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: composer:v2, phpcs, cs2pr
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: composer install --prefer-dist
       - run: ./vendor/bin/phpcs --report=checkstyle | cs2pr
 
-  phpmd:
-    name: phpmd
+  php-deprecation-detector:
+    name: php-deprecation-detector
     runs-on: ubuntu-latest
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v2, phpmd
-      - uses: actions/checkout@v3
-      - run: composer install --prefer-dist
-      - run: phpmd ./web/modules/custom text ./phpmd.xml --suffixes php,module,inc,install,test,profile,theme,css,info,txt --exclude *Test.php
-      - run: phpmd ./behat text ./phpmd.xml --suffixes php
-
-  phpcpd:
-    name: phpcpd
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
-          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v2, phpcpd
-      - uses: actions/checkout@v3
-      - run: composer install --prefer-dist
-      - run: phpcpd ./web/modules/custom --suffix .php --suffix .module --suffix .inc --suffix .install --suffix .test --suffix .profile --suffix .theme --suffix .css --suffix .info --suffix .txt --exclude tests
-      - run: phpcpd ./behat
+          tools: psalm, composer:v2
+      - uses: actions/checkout@v4
+      - run: cd tools/php-deprecation-detector && composer install --prefer-dist
+      # PHP 8.2 is not already supported by this tools:
+      # @see https://github.com/wapmorgan/PhpDeprecationDetector/issues/73
+      - run: ./tools/php-deprecation-detector/vendor/bin/phpdd --target 8.1 \
+              --file-extensions php,module,inc,install,test,profile,theme,info \
+              ./web/modules/custom
+      - run: ./tools/php-deprecation-detector/vendor/bin/phpdd --target 8.1 --file-extensions php ./behat
 
   php-cs-fixer:
     name: php-cs-fixer
@@ -57,12 +46,12 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v2, php-cs-fixer, cs2pr
-      - uses: actions/checkout@v3
-      - run: composer install --prefer-dist
-      - run: ./vendor/bin/php-cs-fixer fix --dry-run --format=checkstyle | cs2pr
+          tools: php-cs-fixer, cs2pr, composer:v2
+      - uses: actions/checkout@v4
+      - run: cd tools/php-cs-fixer && composer install --prefer-dist
+      - run: ./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=no --dry-run --format=checkstyle | cs2pr
 
   phpstan:
     name: phpstan
@@ -71,12 +60,12 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v2, phpstan, cs2pr
-      - uses: actions/checkout@v3
-      - run: composer install --prefer-dist
-      - run: phpstan analyse ./web/modules/custom ./behat ./web/themes --error-format=checkstyle | cs2pr
+          tools: phpstan, cs2pr, composer:v2
+      - uses: actions/checkout@v4
+      - run: composer install
+      - run: ./vendor/bin/phpstan analyse ./web/modules/custom ./behat --error-format=checkstyle | cs2pr
 
   psalm:
     name: psalm
@@ -85,17 +74,18 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0'
+          php-version: '8.1'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: composer:v2, vimeo/psalm:4
-      - uses: actions/checkout@v3
+          tools: psalm, composer:v2
+      - uses: actions/checkout@v4
       - run: composer install --prefer-dist
-      - run: psalm --output-format=github
+      - run: cd tools/psalm && composer install --prefer-dist
+      - run: ./tools/psalm/vendor/bin/psalm --output-format=github --no-cache
 
   upgrade-status:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Prepare dirs
         run: |
           mkdir -p app/logs
@@ -115,7 +105,7 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Prepare dirs
         run: |
           mkdir -p app/logs
@@ -129,7 +119,7 @@ jobs:
 #   functional-tests:
 #     runs-on: ubuntu-latest
 #     steps:
-#       - uses: actions/checkout@v3
+#       - uses: actions/checkout@v4
 #      - name: Prepare dirs
 #        run: |
 #          mkdir -p app/logs
@@ -152,7 +142,7 @@ jobs:
   behat-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Prepare dirs
         run: |
           mkdir -p app/logs
@@ -172,7 +162,7 @@ jobs:
 
   deploy_prod:
    name: Deploy to Production
-   needs: [phpcs, phpmd, php-cs-fixer, phpstan, psalm, unit-tests, behat-tests]
+   needs: [phpcs, php-cs-fixer, phpstan, psalm, unit-tests, behat-tests]
    environment:
      name: Production
      url: https://api.swissgames.garden
@@ -181,7 +171,7 @@ jobs:
    env:
      PRIVATE_SSH_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
    steps:
-     - uses: actions/checkout@v3
+     - uses: actions/checkout@v4
      - uses: ./.github/actions/deploy
        with:
          stage: production
@@ -189,7 +179,7 @@ jobs:
 
   deploy_staging:
    name: Deploy to Staging
-   needs: [phpcs, phpmd, php-cs-fixer, phpstan, psalm, unit-tests, behat-tests]
+   needs: [phpcs, php-cs-fixer, phpstan, psalm, unit-tests, behat-tests]
    environment:
      name: Staging
      url: https://staging-api.swissgames.garden
@@ -198,7 +188,7 @@ jobs:
    env:
      PRIVATE_SSH_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
    steps:
-     - uses: actions/checkout@v3
+     - uses: actions/checkout@v4
      - uses: ./.github/actions/deploy
        with:
          stage: staging
