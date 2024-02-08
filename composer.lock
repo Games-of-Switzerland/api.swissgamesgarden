@@ -2220,20 +2220,20 @@
         },
         {
             "name": "drupal/fieldable_path",
-            "version": "1.0.0-rc6",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/fieldable_path.git",
-                "reference": "8.x-1.0-rc6"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/fieldable_path-8.x-1.0-rc6.zip",
-                "reference": "8.x-1.0-rc6",
-                "shasum": "e9643321a97a36ea63c8317b68c876855caff3e1"
+                "url": "https://ftp.drupal.org/files/projects/fieldable_path-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "f7f5eb9c42c9fff8d5d58636a684414294d2c707"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^9.1 || ^10"
             },
             "require-dev": {
                 "drupal/pathauto": "*"
@@ -2241,11 +2241,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc6",
-                    "datestamp": "1622756991",
+                    "version": "8.x-1.0",
+                    "datestamp": "1680538095",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -2255,12 +2255,12 @@
             ],
             "authors": [
                 {
-                    "name": "Spleshka",
-                    "homepage": "https://www.drupal.org/user/810676"
-                },
-                {
                     "name": "dww",
                     "homepage": "https://www.drupal.org/user/46549"
+                },
+                {
+                    "name": "Spleshka",
+                    "homepage": "https://www.drupal.org/user/810676"
                 }
             ],
             "description": "Provides a fieldable mirror of \"path\" property for entities.",

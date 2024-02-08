@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update module drupal/migrate_source_csv (3.5.0 => 3.6.0)
 - drupal/migrate_tools (6.0.1 => 6.0.4)
+- update module drupal/fieldable_path (1.0.0-rc6 => 1.0.0)
 
 ## [0.5.5] - 2023-04-20
 ### Fixed
