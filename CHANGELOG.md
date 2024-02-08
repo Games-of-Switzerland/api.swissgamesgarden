@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - upgrade drupal/upgrade_status (3.18.0 => 4.0.0)
 - upgrade module drupal/default_content (1.0.0-alpha9 => 2.0.0-alpha2)
 - update module drupal/metatag (1.22.0 => 1.26.0)
+- update module drupal/ctools (4.0.3 => 4.0.4)
 
 ## [0.5.5] - 2023-04-20
 ### Fixed
