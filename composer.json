@@ -109,7 +109,8 @@
             "drupal/core-project-message": true,
             "cweagans/composer-patches": true,
             "wikimedia/composer-merge-plugin": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "fenetikm/autoload-drupal": true
         }
     },
     "autoload-dev": {
