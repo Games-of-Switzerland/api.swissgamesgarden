@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/admin_toolbar (3.3.0 => 3.4.2)
 - update module drupal/gin_toolbar (1.0.0-rc1 => 1.0.0-rc5)
 - update theme drupal/gin (3.0.0-rc2 => 3.0.0-rc9)
+- update tests library phpspec/prophecy-phpunit (v2.0.1 => v2.0.2)
 
 ## [0.5.5] - 2023-04-20
 ### Fixed
