@@ -2444,17 +2444,17 @@
         },
         {
             "name": "drupal/gin",
-            "version": "3.0.0-rc2",
+            "version": "3.0.0-rc9",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/gin.git",
-                "reference": "8.x-3.0-rc2"
+                "reference": "8.x-3.0-rc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/gin-8.x-3.0-rc2.zip",
-                "reference": "8.x-3.0-rc2",
-                "shasum": "0c3c664690680af6c3920c8877af431c29e38e00"
+                "url": "https://ftp.drupal.org/files/projects/gin-8.x-3.0-rc9.zip",
+                "reference": "8.x-3.0-rc9",
+                "shasum": "130dec0ea8152bc796d8bbca1bc97b2ae0c381f4"
             },
             "require": {
                 "drupal/core": "^9 || ^10",
@@ -2463,8 +2463,8 @@
             "type": "drupal-theme",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.0-rc2",
-                    "datestamp": "1678733202",
+                    "version": "8.x-3.0-rc9",
+                    "datestamp": "1706705034",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -2565,26 +2565,26 @@
         },
         {
             "name": "drupal/gin_toolbar",
-            "version": "1.0.0-rc1",
+            "version": "1.0.0-rc5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/gin_toolbar.git",
-                "reference": "8.x-1.0-rc1"
+                "reference": "8.x-1.0-rc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/gin_toolbar-8.x-1.0-rc1.zip",
-                "reference": "8.x-1.0-rc1",
-                "shasum": "90516f6aa22f4f60f1853bdceb757940f411ec7e"
+                "url": "https://ftp.drupal.org/files/projects/gin_toolbar-8.x-1.0-rc5.zip",
+                "reference": "8.x-1.0-rc5",
+                "shasum": "523b565244440a16fa447065a98841770992bd2e"
             },
             "require": {
-                "drupal/core": "^8 || ^9 || ^10"
+                "drupal/core": "^9 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc1",
-                    "datestamp": "1669666957",
+                    "version": "8.x-1.0-rc5",
+                    "datestamp": "1702727588",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
