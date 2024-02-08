@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - drupal/migrate_tools (6.0.1 => 6.0.4)
 - update module drupal/fieldable_path (1.0.0-rc6 => 1.0.0)
 - update phpstan linter extensions mglaman/phpstan-drupal (1.1.28 => 1.1.30)
+- update module drupal/admin_toolbar (3.3.0 => 3.4.2)
 
 ## [0.5.5] - 2023-04-20
 ### Fixed
