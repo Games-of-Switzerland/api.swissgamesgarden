@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: c8b12404-37e1-43d3-b1c4-5a3eace4834d
+  bundle: language
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 30
+  status:
+    -
+      value: true
+  name:
+    -
+      value: French
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'French | Games of Switzerland'
+  path:
+    -
+      alias: /languages/french
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /languages/french

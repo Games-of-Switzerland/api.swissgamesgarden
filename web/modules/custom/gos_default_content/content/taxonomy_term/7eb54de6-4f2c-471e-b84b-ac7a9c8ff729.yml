@@ -1,0 +1,42 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 7eb54de6-4f2c-471e-b84b-ac7a9c8ff729
+  bundle: canton
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 37
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Vaud
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Vaud | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_path:
+    -
+      value: ''
+  field_slug:
+    -
+      value: vaud

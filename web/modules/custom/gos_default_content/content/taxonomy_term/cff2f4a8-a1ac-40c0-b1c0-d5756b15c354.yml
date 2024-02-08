@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: cff2f4a8-a1ac-40c0-b1c0-d5756b15c354
+  bundle: publisher
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 25
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Focus Home Interactive'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Focus Home Interactive | Games of Switzerland'
+  path:
+    -
+      alias: /publishers/focus-home-interactive
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /publishers/focus-home-interactive

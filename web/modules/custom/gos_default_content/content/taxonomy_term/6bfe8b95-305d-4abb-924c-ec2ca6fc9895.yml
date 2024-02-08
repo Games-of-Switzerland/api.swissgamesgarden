@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 6bfe8b95-305d-4abb-924c-ec2ca6fc9895
+  bundle: sponsor
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 27
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Numerik Games Festival'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Numerik Games Festival | Games of Switzerland'
+  path:
+    -
+      alias: /sponsors/numerik-games-festival
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /sponsors/numerik-games-festival

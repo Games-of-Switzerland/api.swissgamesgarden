@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: fbf55761-eb93-4206-af35-c123c365901e
+  bundle: platform
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 6
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'PlayStation 2'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'PlayStation 2 | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: playstation_2

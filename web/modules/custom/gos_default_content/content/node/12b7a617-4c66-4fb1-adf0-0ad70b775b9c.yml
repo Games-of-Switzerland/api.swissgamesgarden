@@ -1,0 +1,95 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 12b7a617-4c66-4fb1-adf0-0ad70b775b9c
+  bundle: game
+  default_langcode: en
+  depends:
+    e56e5642-6a2b-4dc1-96c2-924bd7b6de37: taxonomy_term
+    e022f6e4-85e7-485e-a7dd-b92d0ab0e637: taxonomy_term
+    ba6a9306-faa9-4823-b373-9f4dce01ca9e: taxonomy_term
+    c2c1d560-d9f4-4878-8105-7f63ec09e7ef: node
+default:
+  nid:
+    -
+      value: 10
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: false
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: Ninza
+  created:
+    -
+      value: 1575644008
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Ninza | Games of Switzerland'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:url'
+        content: 'http://localhost/sites/default/files/styles/open_graph/public/games/2024-02/generateImage_D8zlJ7.jpg?h=a2262887&itok=4vnbATU7'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:width'
+        content: '1200'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:height'
+        content: '630'
+  path:
+    -
+      alias: /games/ninza
+      langcode: en
+      pathauto: 1
+  field_completeness:
+    -
+      value: 3762
+  field_contextual_links:
+    -
+      type: download_page
+      url: 'https://www.ninza-game.com/#CTN_BETA_backgroundWrap'
+  field_genres:
+    -
+      entity: e56e5642-6a2b-4dc1-96c2-924bd7b6de37
+  field_locations:
+    -
+      entity: e022f6e4-85e7-485e-a7dd-b92d0ab0e637
+    -
+      entity: ba6a9306-faa9-4823-b373-9f4dce01ca9e
+  field_members:
+    -
+      entity: c2c1d560-d9f4-4878-8105-7f63ec09e7ef
+      role: 'Game Designer'
+  field_path:
+    -
+      value: /games/ninza
+  field_player:
+    -
+      min: '2'
+      max: '4'
+  field_social_networks:
+    -
+      social_network: twitter
+      link: 'https://twiter.com/ninzaGame'

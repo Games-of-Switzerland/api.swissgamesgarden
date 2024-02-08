@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 593ef7d7-5bc7-42a1-97cc-d8a25db08f93
+  bundle: platform
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 9
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Xbox
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Xbox | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: xbox

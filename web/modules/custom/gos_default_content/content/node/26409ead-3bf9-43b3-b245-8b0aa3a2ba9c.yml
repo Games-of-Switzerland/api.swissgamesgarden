@@ -1,0 +1,48 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 26409ead-3bf9-43b3-b245-8b0aa3a2ba9c
+  bundle: people
+  default_langcode: en
+default:
+  nid:
+    -
+      value: 16
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Nicolas "Kaihnn" Jadaud'
+  created:
+    -
+      value: 1575909225
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Nicolas "Kaihnn" Jadaud | Games of Switzerland'
+  path:
+    -
+      alias: /people/nicolas-kaihnn-jadaud
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /people/nicolas-kaihnn-jadaud

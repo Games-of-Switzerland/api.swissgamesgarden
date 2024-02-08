@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: 5d0ce666-3c62-44bd-aa63-8b9c0c694ff4
+  bundle: remote_video
+  default_langcode: en
+default:
+  mid:
+    -
+      value: 2
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: 'DON''T KILL HER | Trailer 2'
+  created:
+    -
+      value: 1599489952
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '| Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_oembed_video:
+    -
+      value: 'https://vimeo.com/67954596'

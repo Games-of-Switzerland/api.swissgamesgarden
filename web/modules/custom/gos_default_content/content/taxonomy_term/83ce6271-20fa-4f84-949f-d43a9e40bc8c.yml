@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 83ce6271-20fa-4f84-949f-d43a9e40bc8c
+  bundle: language
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 32
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Spanish
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Spanish | Games of Switzerland'
+  path:
+    -
+      alias: /languages/spanish
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /languages/spanish
