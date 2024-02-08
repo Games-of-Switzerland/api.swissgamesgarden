@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/webp (1.0.0-beta6 => 1.0.0-rc1)
 - update module drupal/new_relic_rpm (2.1.0 => 2.1.1)
 - update module drupal/pathauto (1.11.0 => 1.12.0)
+- update module drupal/simple_sitemap (4.1.4 => 4.1.8)
 
 ## [0.5.5] - 2023-04-20
 ### Fixed

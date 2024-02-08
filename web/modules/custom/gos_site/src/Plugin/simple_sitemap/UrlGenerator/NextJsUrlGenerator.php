@@ -159,7 +159,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     }
 
     $entity_settings = $this->entitiesManager
-      ->setVariants($sitemap_id)
+      ->setSitemaps($sitemap_id)
       ->getEntityInstanceSettings($entity->getEntityTypeId(), $entity->id());
 
     if (empty($entity_settings[$sitemap_id]['index'])) {
