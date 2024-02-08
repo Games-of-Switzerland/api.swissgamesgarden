@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bdfe58a79a12a9b9c015b45e800b6be3",
+    "content-hash": "a72f65a737668bde2b863b465da9005a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -11040,51 +11040,6 @@
             "time": "2020-11-01T09:30:18+00:00"
         },
         {
-            "name": "fenetikm/autoload-drupal",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fenetikm/autoload-drupal.git",
-                "reference": "3c6252e0bb4ec79ada21578693640642906c075c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fenetikm/autoload-drupal/zipball/3c6252e0bb4ec79ada21578693640642906c075c",
-                "reference": "3c6252e0bb4ec79ada21578693640642906c075c",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.1|^2",
-                "composer/composer": "*"
-            },
-            "default-branch": true,
-            "type": "composer-plugin",
-            "extra": {
-                "class": "fenetikm\\DrupalAutoloadPlugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "fenetikm\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Welford",
-                    "email": "mail@michaelwelford.com"
-                }
-            ],
-            "description": "Autoload Drupal modules into composer autoloader",
-            "support": {
-                "issues": "https://github.com/fenetikm/autoload-drupal/issues",
-                "source": "https://github.com/fenetikm/autoload-drupal/tree/master"
-            },
-            "time": "2023-01-23T21:10:52+00:00"
-        },
-        {
             "name": "firebase/php-jwt",
             "version": "v5.5.1",
             "source": {
@@ -14861,8 +14816,7 @@
         "drupal/fieldable_path": 5,
         "drupal/symfony_mailer": 15,
         "drupal/webp": 10,
-        "drupal/default_content": 15,
-        "fenetikm/autoload-drupal": 20
+        "drupal/default_content": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
