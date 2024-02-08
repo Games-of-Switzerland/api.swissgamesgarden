@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update tests library phpspec/prophecy-phpunit (v2.0.1 => v2.0.2)
 - update drupal/gin_login (2.0.1 => 2.0.3)
 - update module drupal/jsonapi_extras (3.23.0 => 3.24.0)
+- update module drupal/consumers (1.16.0 => 1.17.0)
 
 ## [0.5.5] - 2023-04-20
 ### Fixed

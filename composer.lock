@@ -1601,17 +1601,17 @@
         },
         {
             "name": "drupal/consumers",
-            "version": "1.16.0",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/consumers.git",
-                "reference": "8.x-1.16"
+                "reference": "8.x-1.17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/consumers-8.x-1.16.zip",
-                "reference": "8.x-1.16",
-                "shasum": "9f207f1ac05ae2a21c93a2405c5ea9bf23e779ba"
+                "url": "https://ftp.drupal.org/files/projects/consumers-8.x-1.17.zip",
+                "reference": "8.x-1.17",
+                "shasum": "8e7efc2c8386ead8ca459a1a5e0558fb66cde142"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10"
@@ -1619,8 +1619,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.16",
-                    "datestamp": "1671105682",
+                    "version": "8.x-1.17",
+                    "datestamp": "1679920063",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
