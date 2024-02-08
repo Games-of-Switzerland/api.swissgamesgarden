@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/symfony_mailer (1.2.0-beta2 => 1.4.1)
 - update module drupal/views_ef_fieldset (1.5.0 => 1.7.0)
 - update behat/behat (v3.12.0 => v3.14.0)
+- upgrade drupal/upgrade_status (3.18.0 => 4.0.0)
 
 ## [0.5.5] - 2023-04-20
 ### Fixed
