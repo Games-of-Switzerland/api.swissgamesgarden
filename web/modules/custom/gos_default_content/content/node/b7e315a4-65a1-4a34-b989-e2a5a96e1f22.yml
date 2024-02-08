@@ -1,0 +1,54 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: b7e315a4-65a1-4a34-b989-e2a5a96e1f22
+  bundle: studio
+  default_langcode: en
+  depends:
+    f13a9d5a-6bc0-437c-9d45-6b62d4b9f15b: node
+default:
+  nid:
+    -
+      value: 15
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Giants Software'
+  created:
+    -
+      value: 1575908658
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Giants Software | Games of Switzerland'
+  path:
+    -
+      alias: /studios/giants-software
+      langcode: en
+      pathauto: 1
+  field_members:
+    -
+      entity: f13a9d5a-6bc0-437c-9d45-6b62d4b9f15b
+      role: CEO
+  field_path:
+    -
+      value: /studios/giants-software

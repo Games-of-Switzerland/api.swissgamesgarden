@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - move Linters php-deprecation-detector, php-cs-fixer & psalm into own Tools/ComposerJson
+- upgrade Default Content files from JSON -> YAML
 
 ### Removed
 - remove phpmd

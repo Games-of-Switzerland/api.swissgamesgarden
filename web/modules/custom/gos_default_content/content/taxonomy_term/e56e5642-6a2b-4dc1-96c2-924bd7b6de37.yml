@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: e56e5642-6a2b-4dc1-96c2-924bd7b6de37
+  bundle: genre
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 20
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Platformer
+  weight:
+    -
+      value: 1
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Platformer | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: platformer

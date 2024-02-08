@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 1a4e4867-7570-495a-8200-532aa95a01e0
+  bundle: platform
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 7
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Xbox 360'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Xbox 360 | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: xbox_360

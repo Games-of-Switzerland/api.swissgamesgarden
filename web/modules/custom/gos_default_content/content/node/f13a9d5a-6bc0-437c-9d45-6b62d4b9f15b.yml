@@ -1,0 +1,48 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: f13a9d5a-6bc0-437c-9d45-6b62d4b9f15b
+  bundle: people
+  default_langcode: en
+default:
+  nid:
+    -
+      value: 14
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Christian Ammann'
+  created:
+    -
+      value: 1575908649
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Christian Ammann | Games of Switzerland'
+  path:
+    -
+      alias: /people/christian-ammann
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /people/christian-ammann

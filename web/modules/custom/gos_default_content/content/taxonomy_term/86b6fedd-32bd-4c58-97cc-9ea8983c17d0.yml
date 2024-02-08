@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 86b6fedd-32bd-4c58-97cc-9ea8983c17d0
+  bundle: genre
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 17
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Action
+  weight:
+    -
+      value: 2
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Action | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: action

@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 6ea716ae-e50f-4a59-ace5-603c353ae20a
+  bundle: platform
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 10
+  status:
+    -
+      value: true
+  name:
+    -
+      value: iOS
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'iOS | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: ios

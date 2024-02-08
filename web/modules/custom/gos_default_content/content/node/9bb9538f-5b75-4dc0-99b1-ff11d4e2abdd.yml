@@ -1,0 +1,109 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 9bb9538f-5b75-4dc0-99b1-ff11d4e2abdd
+  bundle: game
+  default_langcode: en
+  depends:
+    7fd1c607-99c3-415c-92fc-b3033b2a7b90: taxonomy_term
+    e56e5642-6a2b-4dc1-96c2-924bd7b6de37: taxonomy_term
+    c80a976b-749c-496d-906c-e6833e46e086: taxonomy_term
+    c748e76c-4a40-4b04-9e69-17ea602cb0b0: taxonomy_term
+    e022f6e4-85e7-485e-a7dd-b92d0ab0e637: taxonomy_term
+    c2c1d560-d9f4-4878-8105-7f63ec09e7ef: node
+    26409ead-3bf9-43b3-b245-8b0aa3a2ba9c: node
+default:
+  nid:
+    -
+      value: 9
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Don''t kill Her'
+  created:
+    -
+      value: 1575643944
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Don''t kill Her | Games of Switzerland'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:url'
+        content: 'http://localhost/sites/default/files/styles/open_graph/public/games/2024-02/generateImage_hIhegv.gif?h=2420adee&itok=kioDp8MC'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:width'
+        content: '1200'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:height'
+        content: '630'
+  path:
+    -
+      alias: /games/dont-kill-her
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: "<h3 id=\"what_intro\">An oddly cute indie game featuring a seemingly dead woman, and you, playing her murderer.</h3>\r\n\r\n<p>Whether it be woods carved in the memories of olden days or great steppes shaped by the darkness above, the areas you are about to explore are the fruit of Her very own creation. A world conceived especially for you,&nbsp;<strong>it’s sole purpose being for you to find the answers to the questions it raises.</strong><br />\r\n<br />\r\nDon't judge a game by its cover.&nbsp;<em>Don’t Kill Her</em>&nbsp;is not your average kind of game. Its deviant aesthetics, storytelling, gameplay and music, all of these peculiar elements fit into a great design… The true challenge lies in unraveling the mystery surrounding the game itself.<br />\r\n<br />\r\nI wish I could tell you more, but She won’t let me.</p>\r\n"
+      format: basic_html
+      summary: ''
+  field_cantons:
+    -
+      entity: 7fd1c607-99c3-415c-92fc-b3033b2a7b90
+  field_completeness:
+    -
+      value: 4771
+  field_genres:
+    -
+      entity: e56e5642-6a2b-4dc1-96c2-924bd7b6de37
+    -
+      entity: c80a976b-749c-496d-906c-e6833e46e086
+  field_languages:
+    -
+      entity: c748e76c-4a40-4b04-9e69-17ea602cb0b0
+  field_locations:
+    -
+      entity: e022f6e4-85e7-485e-a7dd-b92d0ab0e637
+  field_members:
+    -
+      entity: c2c1d560-d9f4-4878-8105-7f63ec09e7ef
+      role: 'Game Designer'
+    -
+      entity: 26409ead-3bf9-43b3-b245-8b0aa3a2ba9c
+      role: 'Technical Magician'
+  field_path:
+    -
+      value: /games/dont-kill-her
+  field_player:
+    -
+      min: '1'
+      max: ''
+  field_website:
+    -
+      uri: 'http://www.wuthrer.net/dontkillher'
+      title: ''
+      options: {  }

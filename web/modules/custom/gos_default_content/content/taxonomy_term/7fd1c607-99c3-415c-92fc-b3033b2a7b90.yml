@@ -1,0 +1,42 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 7fd1c607-99c3-415c-92fc-b3033b2a7b90
+  bundle: canton
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 38
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Geneva
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Geneva | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_path:
+    -
+      value: ''
+  field_slug:
+    -
+      value: geneva

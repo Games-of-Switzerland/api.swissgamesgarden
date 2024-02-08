@@ -1,0 +1,42 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: e022f6e4-85e7-485e-a7dd-b92d0ab0e637
+  bundle: location
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 35
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Fribourg
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Fribourg | Games of Switzerland'
+  path:
+    -
+      alias: /locations/fribourg
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /locations/fribourg
+  field_slug:
+    -
+      value: fribourg

@@ -1,0 +1,195 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: a0b7c853-c891-487f-84f9-74dfbce9fa63
+  bundle: game
+  default_langcode: en
+  depends:
+    50c47182-6dcd-4dea-b9b6-51b0a2e8ec05: file
+    c8b12404-37e1-43d3-b1c4-5a3eace4834d: taxonomy_term
+    c748e76c-4a40-4b04-9e69-17ea602cb0b0: taxonomy_term
+    92e91c65-01c3-4d50-80a6-f1fb386ba740: taxonomy_term
+    304a43fe-3c4d-4587-93e6-a84959d39bf7: taxonomy_term
+    9e1f8365-4bf3-4189-bf33-c9ac6862dca7: taxonomy_term
+    6ea716ae-e50f-4a59-ace5-603c353ae20a: taxonomy_term
+    8728c551-6d66-4ebd-a264-6af0ceeb96f1: taxonomy_term
+    81a726a3-72c0-478c-af74-601c72e88cdc: taxonomy_term
+    7705472b-c32e-4939-82e6-7f73ec1ab339: taxonomy_term
+    b7e315a4-65a1-4a34-b989-e2a5a96e1f22: node
+    ed18619a-25bf-407d-a44b-8fbc6a7ce0ca: media
+default:
+  nid:
+    -
+      value: 11
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Farming Simulator 18'
+  created:
+    -
+      value: 1575644102
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  releases_normalized:
+    -
+      year: '2017'
+      platforms:
+        1:
+          name: pc
+          tid: '1'
+          date: '2017-06-06T00:00:00'
+          state: released
+        2:
+          name: mac
+          tid: '2'
+          date: '2017-06-06T00:00:00'
+          state: released
+        12:
+          name: playstation_vita
+          tid: '12'
+          date: '2017-06-06T00:00:00'
+          state: released
+        13:
+          name: nintendo_3ds
+          tid: '13'
+          date: '2017-06-06T00:00:00'
+          state: canceled
+      states:
+        released: released
+        canceled: canceled
+    -
+      year: '2018'
+      platforms:
+        10:
+          name: ios
+          tid: '10'
+          date: '2018-02-15T00:00:00'
+          state: pre_release
+        11:
+          name: android
+          tid: '11'
+          date: '2018-02-15T00:00:00'
+          state: development
+      states:
+        pre_release: pre_release
+        development: development
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Farming Simulator 18 | Games of Switzerland'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:url'
+        content: 'http://localhost/sites/default/files/styles/open_graph/public/games/2024-02/generateImage_QqgrZ3.jpeg?h=bd6bb74b&itok=sQ3m1Df4'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:width'
+        content: '1200'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:height'
+        content: '630'
+  path:
+    -
+      alias: /games/farming-simulator-18
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: "<p>Farming Simulator is a series of farming simulation games set in an open world environment and played from a third-person perspective and also a first-person perspective.</p>\r\n"
+      format: basic_html
+      summary: ''
+  field_completeness:
+    -
+      value: 6510
+  field_images:
+    -
+      entity: 50c47182-6dcd-4dea-b9b6-51b0a2e8ec05
+      alt: 'Appellatio conventio duis gravis iustum macto melior quibus venio.'
+      title: 'Aliquip amet eligo jumentum nibh nulla te torqueo.'
+      width: 119
+      height: 209
+  field_languages:
+    -
+      entity: c8b12404-37e1-43d3-b1c4-5a3eace4834d
+    -
+      entity: c748e76c-4a40-4b04-9e69-17ea602cb0b0
+    -
+      entity: 92e91c65-01c3-4d50-80a6-f1fb386ba740
+  field_path:
+    -
+      value: /games/farming-simulator-18
+  field_release_platforms:
+    -
+      entity: 304a43fe-3c4d-4587-93e6-a84959d39bf7
+    -
+      entity: 9e1f8365-4bf3-4189-bf33-c9ac6862dca7
+    -
+      entity: 6ea716ae-e50f-4a59-ace5-603c353ae20a
+    -
+      entity: 8728c551-6d66-4ebd-a264-6af0ceeb96f1
+    -
+      entity: 81a726a3-72c0-478c-af74-601c72e88cdc
+    -
+      entity: 7705472b-c32e-4939-82e6-7f73ec1ab339
+  field_release_years:
+    -
+      value: '2017'
+    -
+      value: '2018'
+  field_releases:
+    -
+      entity: 304a43fe-3c4d-4587-93e6-a84959d39bf7
+      date_value: '2017-06-06'
+      state: released
+    -
+      entity: 9e1f8365-4bf3-4189-bf33-c9ac6862dca7
+      date_value: '2017-06-06'
+      state: released
+    -
+      entity: 6ea716ae-e50f-4a59-ace5-603c353ae20a
+      date_value: '2018-02-15'
+      state: pre_release
+    -
+      entity: 8728c551-6d66-4ebd-a264-6af0ceeb96f1
+      date_value: '2018-02-15'
+      state: development
+    -
+      entity: 81a726a3-72c0-478c-af74-601c72e88cdc
+      date_value: '2017-06-06'
+      state: released
+    -
+      entity: 7705472b-c32e-4939-82e6-7f73ec1ab339
+      date_value: '2017-06-06'
+      state: canceled
+  field_studios:
+    -
+      entity: b7e315a4-65a1-4a34-b989-e2a5a96e1f22
+  field_video:
+    -
+      entity: ed18619a-25bf-407d-a44b-8fbc6a7ce0ca
+  field_website:
+    -
+      uri: 'https://www.farming-simulator.com'
+      title: ''
+      options: {  }

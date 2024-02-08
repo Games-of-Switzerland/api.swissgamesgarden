@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 7705472b-c32e-4939-82e6-7f73ec1ab339
+  bundle: platform
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 13
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Nintendo 3DS'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Nintendo 3DS | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: nintendo_3ds

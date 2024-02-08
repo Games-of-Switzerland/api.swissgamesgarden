@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: c16c1119-ae04-460c-9fed-e9e20d5785e7
+  bundle: publisher
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 23
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Shy Robot Games'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Shy Robot Games | Games of Switzerland'
+  path:
+    -
+      alias: /publishers/shy-robot-games
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /publishers/shy-robot-games

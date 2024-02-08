@@ -1,0 +1,42 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: b3165598-63fe-4717-a30e-11daf4389257
+  bundle: location
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 36
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Lausanne
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Lausanne | Games of Switzerland'
+  path:
+    -
+      alias: /locations/lausanne
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /locations/lausanne
+  field_slug:
+    -
+      value: lausanne

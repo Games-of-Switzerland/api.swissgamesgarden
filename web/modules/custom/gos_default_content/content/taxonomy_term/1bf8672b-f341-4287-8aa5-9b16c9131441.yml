@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 1bf8672b-f341-4287-8aa5-9b16c9131441
+  bundle: genre
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 15
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Simulation
+  weight:
+    -
+      value: 5
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Simulation | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: simulation

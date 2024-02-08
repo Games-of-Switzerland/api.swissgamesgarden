@@ -1,0 +1,180 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 08952aa6-e079-496a-8efa-cbb8465d9315
+  bundle: game
+  default_langcode: en
+  depends:
+    1bf8672b-f341-4287-8aa5-9b16c9131441: taxonomy_term
+    c748e76c-4a40-4b04-9e69-17ea602cb0b0: taxonomy_term
+    c8b12404-37e1-43d3-b1c4-5a3eace4834d: taxonomy_term
+    92e91c65-01c3-4d50-80a6-f1fb386ba740: taxonomy_term
+    83ce6271-20fa-4f84-949f-d43a9e40bc8c: taxonomy_term
+    e181208c-fd4d-47bc-9767-4965d670bc2f: taxonomy_term
+    19b2fb28-468a-44ad-a03f-da4372e43539: taxonomy_term
+    cff2f4a8-a1ac-40c0-b1c0-d5756b15c354: taxonomy_term
+    304a43fe-3c4d-4587-93e6-a84959d39bf7: taxonomy_term
+    9e1f8365-4bf3-4189-bf33-c9ac6862dca7: taxonomy_term
+    e5b2685e-39a7-4726-ad90-d7e3b44c2850: taxonomy_term
+    03db2f32-1f7c-4d35-a2c9-42f951ae0bd8: taxonomy_term
+    b7e315a4-65a1-4a34-b989-e2a5a96e1f22: node
+default:
+  nid:
+    -
+      value: 12
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'Farming Simulator 19'
+  created:
+    -
+      value: 1575644128
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  releases_normalized:
+    -
+      year: ''
+      platforms:
+        3:
+          name: xbox_one
+          tid: '3'
+          date: null
+          state: null
+      states: {  }
+    -
+      year: '2018'
+      platforms:
+        1:
+          name: pc
+          tid: '1'
+          date: '2018-11-20T00:00:00'
+          state: released
+        2:
+          name: mac
+          tid: '2'
+          date: '2018-11-20T00:00:00'
+          state: released
+        4:
+          name: playstation_4
+          tid: '4'
+          date: '2018-11-20T00:00:00'
+          state: development
+      states:
+        released: released
+        development: development
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Farming Simulator 19 | Games of Switzerland'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:url'
+        content: 'http://localhost/sites/default/files/styles/open_graph/public/games/2024-02/generateImage_J116o5.gif?h=152c1eb7&itok=bgLpOUZK'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:width'
+        content: '1200'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:height'
+        content: '630'
+  path:
+    -
+      alias: /games/farming-simulator-19
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: "<p>Farming Simulator is a series of farming simulation games set in an open world environment and played from a third-person perspective and also a first-person perspective.</p>\r\n"
+      format: basic_html
+      summary: ''
+  field_completeness:
+    -
+      value: 5631
+  field_genres:
+    -
+      entity: 1bf8672b-f341-4287-8aa5-9b16c9131441
+  field_languages:
+    -
+      entity: c748e76c-4a40-4b04-9e69-17ea602cb0b0
+    -
+      entity: c8b12404-37e1-43d3-b1c4-5a3eace4834d
+    -
+      entity: 92e91c65-01c3-4d50-80a6-f1fb386ba740
+    -
+      entity: 83ce6271-20fa-4f84-949f-d43a9e40bc8c
+  field_locations:
+    -
+      entity: e181208c-fd4d-47bc-9767-4965d670bc2f
+  field_path:
+    -
+      value: /games/farming-simulator-19
+  field_publishers:
+    -
+      entity: 19b2fb28-468a-44ad-a03f-da4372e43539
+    -
+      entity: cff2f4a8-a1ac-40c0-b1c0-d5756b15c354
+  field_release_platforms:
+    -
+      entity: 304a43fe-3c4d-4587-93e6-a84959d39bf7
+    -
+      entity: 9e1f8365-4bf3-4189-bf33-c9ac6862dca7
+    -
+      entity: e5b2685e-39a7-4726-ad90-d7e3b44c2850
+    -
+      entity: 03db2f32-1f7c-4d35-a2c9-42f951ae0bd8
+  field_release_years:
+    -
+      value: '2018'
+  field_releases:
+    -
+      entity: 304a43fe-3c4d-4587-93e6-a84959d39bf7
+      date_value: '2018-11-20'
+      state: released
+    -
+      entity: 9e1f8365-4bf3-4189-bf33-c9ac6862dca7
+      date_value: '2018-11-20'
+      state: released
+    -
+      entity: e5b2685e-39a7-4726-ad90-d7e3b44c2850
+      date_value: '2018-11-20'
+      state: development
+    -
+      entity: 03db2f32-1f7c-4d35-a2c9-42f951ae0bd8
+      date_value: ''
+      state: ''
+  field_stores:
+    -
+      store: custom
+      link: 'https://www.farming-simulator.com/buy-now.php?lang=en&country=us&platform=pc'
+    -
+      store: steam
+      link: 'https://store.steampowered.com/app/787860/Farming_Simulator_19/'
+  field_studios:
+    -
+      entity: b7e315a4-65a1-4a34-b989-e2a5a96e1f22
+  field_website:
+    -
+      uri: 'https://www.farming-simulator.com/'
+      title: ''
+      options: {  }
