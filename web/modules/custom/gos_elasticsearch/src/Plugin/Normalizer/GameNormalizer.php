@@ -99,7 +99,7 @@ class GameNormalizer extends ContentEntityNormalizer {
         ];
 
         // Use the state as key to prevent having twice the same value.
-        if (isset($release->state)) {
+        if (isset($release->state) && !empty($release->state)) {
           $states[$release->state] = $release->state;
         }
 
