@@ -38,6 +38,7 @@ use Drupal\migrate\Row;
  *         plugin: migration_lookup
  *         migration: my_taxonomy_migration
  *         source: value
+ *
  * @endcode
  *
  * @see \Drupal\migrate\Plugin\MigrateProcessInterface

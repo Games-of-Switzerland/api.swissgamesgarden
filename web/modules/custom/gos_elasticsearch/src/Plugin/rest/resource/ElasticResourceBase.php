@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Common base class for Elasticsearch bridge plugins.
  */
 abstract class ElasticResourceBase extends ResourceBase {
+
   use ResourceCacheableResponseTrait;
   use ResourceValidationTrait;
 

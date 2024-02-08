@@ -10,6 +10,7 @@ use Drupal\gos_game\ReleasesCompiler;
  * Represents the computed release values for an release entry.
  */
 class ReleaseNormalizedFieldItemList extends FieldItemList {
+
   use ComputedItemListTrait;
 
   /**

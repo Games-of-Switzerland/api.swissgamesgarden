@@ -29,6 +29,7 @@ use Drupal\migrate\Row;
  *     sources:
  *       - devlog: field_devlog_link
  *       - download_page: field_download_link
+ *
  * @endcode
  *
  * @see Drupal\gos_site\Plugin\Field\FieldType\StoreItem

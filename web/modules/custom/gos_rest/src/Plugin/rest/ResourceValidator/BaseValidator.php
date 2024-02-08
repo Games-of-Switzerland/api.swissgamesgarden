@@ -27,10 +27,8 @@ abstract class BaseValidator implements \ArrayAccess {
    *
    * @return bool
    *   Does this offset exists.
-   *
-   * @psalm-suppress UndefinedConstant
    */
-  public function offsetExists($offset): bool {
+  public function offsetExists(mixed $offset): bool {
     return property_exists(static::class, $offset);
   }
 
@@ -43,7 +41,7 @@ abstract class BaseValidator implements \ArrayAccess {
    * @return mixed
    *   The value to get from given offset.
    */
-  public function offsetGet($offset) {
+  public function offsetGet(mixed $offset): mixed {
     $offset = $this->camelize($offset);
 
     if (!$this->offsetExists($offset)) {
@@ -63,7 +61,7 @@ abstract class BaseValidator implements \ArrayAccess {
    * @param mixed $value
    *   The value to set.
    */
-  public function offsetSet($offset, $value): void {
+  public function offsetSet(mixed $offset, mixed $value): void {
     $offset = $this->camelize($offset);
 
     if (!$this->offsetExists($offset)) {
@@ -85,7 +83,7 @@ abstract class BaseValidator implements \ArrayAccess {
    * @param mixed $offset
    *   The offset to unset.
    */
-  public function offsetUnset($offset): void {
+  public function offsetUnset(mixed $offset): void {
     throw new \BadMethodCallException('Unsupported method.');
   }
 
@@ -100,7 +98,7 @@ abstract class BaseValidator implements \ArrayAccess {
    * @return string
    *   The lowerCamelCase value of given input.
    */
-  private function camelize($input, $separator = '_'): string {
+  private function camelize(string $input, string $separator = '_'): string {
     return str_replace($separator, '', lcfirst(ucwords($input, $separator)));
   }
 
