@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update drupal/core (9.5.3 => 9.5.11)
 
+### Changed
+- remove caches on both Search & Autocomplete endpoints (Elasticsearch)
+
 ## [0.6.0] - 2024-02-09
 ### Changed
 - move Linters php-deprecation-detector, php-cs-fixer & psalm into own Tools/ComposerJson
