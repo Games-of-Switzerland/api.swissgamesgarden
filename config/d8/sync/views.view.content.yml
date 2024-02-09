@@ -1024,93 +1024,93 @@ display:
       display_extenders:
         views_ef_fieldset:
           views_ef_fieldset:
-            enabled: 0
+            enabled: false
             options:
               sort:
                 root:
                   container_type: details
-                  title: Filters
-                  description: ''
-                  open: '1'
-                  weight: '0'
-                  id: root
-                  pid: ''
                   depth: '0'
+                  description: ''
+                  id: root
+                  open: true
+                  pid: ''
+                  title: Filters
                   type: container
+                  weight: '0'
                 container-0:
                   container_type: container
-                  title: 'Container 0'
-                  description: ''
-                  weight: '-13'
-                  open: 0
-                  id: container-0
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-0
+                  open: false
+                  pid: root
+                  title: 'Container 0'
                   type: container
-                status:
                   weight: '-13'
+                status:
+                  depth: '2'
                   id: status
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-13'
                 type:
-                  weight: '-12'
+                  depth: '2'
                   id: type
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-12'
                 title:
-                  weight: '-11'
+                  depth: '2'
                   id: title
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-11'
                 langcode:
-                  weight: '-10'
+                  depth: '2'
                   id: langcode
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-10'
                 container-1:
                   container_type: details
-                  title: 'Container 1'
-                  description: ''
-                  weight: '-11'
-                  open: 0
-                  id: container-1
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-1
+                  open: false
+                  pid: root
+                  title: 'Container 1'
                   type: container
+                  weight: '-11'
                 container-2:
                   container_type: details
-                  title: 'Container 2'
-                  description: ''
-                  weight: '-10'
-                  open: 0
-                  id: container-2
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-2
+                  open: false
+                  pid: root
+                  title: 'Container 2'
                   type: container
+                  weight: '-10'
                 container-3:
                   container_type: details
-                  title: 'Container 3'
-                  description: ''
-                  weight: '-9'
-                  open: 0
-                  id: container-3
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-3
+                  open: false
+                  pid: root
+                  title: 'Container 3'
                   type: container
+                  weight: '-9'
                 container-4:
                   container_type: details
-                  title: 'Container 4'
-                  description: ''
-                  weight: '-8'
-                  open: 0
-                  id: container-4
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-4
+                  open: false
+                  pid: root
+                  title: 'Container 4'
                   type: container
+                  weight: '-8'
       path: admin/content/node
       menu:
         type: 'default tab'
@@ -2490,179 +2490,179 @@ display:
       display_extenders:
         views_ef_fieldset:
           views_ef_fieldset:
-            enabled: 0
+            enabled: false
             options:
               sort:
                 root:
                   container_type: details
-                  title: Filters
-                  description: ''
-                  open: '1'
-                  weight: '0'
-                  id: root
-                  pid: ''
                   depth: '0'
+                  description: ''
+                  id: root
+                  open: true
+                  pid: ''
+                  title: Filters
                   type: container
+                  weight: '0'
                 container-0:
                   container_type: container
-                  title: 'Container 0'
-                  description: ''
-                  weight: '-21'
-                  open: 0
-                  id: container-0
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-0
+                  open: false
+                  pid: root
+                  title: 'Container 0'
                   type: container
-                status:
                   weight: '-21'
+                status:
+                  depth: '2'
                   id: status
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-21'
                 field_completeness_value:
-                  weight: '-20'
+                  depth: '2'
                   id: field_completeness_value
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-20'
                 title:
-                  weight: '-19'
+                  depth: '2'
                   id: title
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-19'
                 langcode:
-                  weight: '-18'
+                  depth: '2'
                   id: langcode
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-18'
                 container-1:
                   container_type: container
-                  title: 'Container 1'
-                  description: ''
-                  weight: '-20'
-                  open: 0
-                  id: container-1
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-1
+                  open: false
+                  pid: root
+                  title: 'Container 1'
                   type: container
+                  weight: '-20'
                 uuid:
-                  weight: '-21'
+                  depth: '2'
                   id: uuid
                   pid: container-1
-                  depth: '2'
                   type: filter
+                  weight: '-21'
                 field_genres_target_id:
-                  weight: '-20'
+                  depth: '2'
                   id: field_genres_target_id
                   pid: container-1
-                  depth: '2'
                   type: filter
+                  weight: '-20'
                 field_studios_target_id:
-                  weight: '-19'
+                  depth: '2'
                   id: field_studios_target_id
                   pid: container-1
-                  depth: '2'
                   type: filter
+                  weight: '-19'
                 container-2:
                   container_type: container
-                  title: 'Container 2'
-                  description: ''
-                  weight: '-19'
-                  open: 0
-                  id: container-2
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-2
+                  open: false
+                  pid: root
+                  title: 'Container 2'
                   type: container
+                  weight: '-19'
                 field_releases_state:
-                  weight: '-21'
+                  depth: '2'
                   id: field_releases_state
                   pid: container-2
-                  depth: '2'
                   type: filter
+                  weight: '-21'
                 field_releases_date_value:
-                  weight: '-20'
+                  depth: '2'
                   id: field_releases_date_value
                   pid: container-2
-                  depth: '2'
                   type: filter
+                  weight: '-20'
                 container-7:
                   container_type: details
-                  title: 'Container 7'
-                  description: ''
-                  weight: '-18'
-                  open: 0
-                  id: container-7
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-7
+                  open: false
+                  pid: root
+                  title: 'Container 7'
                   type: container
+                  weight: '-18'
                 container-3:
                   container_type: details
-                  title: 'Container 3'
-                  description: ''
-                  weight: '-17'
-                  open: 0
-                  id: container-3
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-3
+                  open: false
+                  pid: root
+                  title: 'Container 3'
                   type: container
+                  weight: '-17'
                 container-4:
                   container_type: details
-                  title: 'Container 4'
-                  description: ''
-                  weight: '-16'
-                  open: 0
-                  id: container-4
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-4
+                  open: false
+                  pid: root
+                  title: 'Container 4'
                   type: container
+                  weight: '-16'
                 container-5:
                   container_type: details
-                  title: 'Container 5'
-                  description: ''
-                  weight: '-15'
-                  open: 0
-                  id: container-5
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-5
+                  open: false
+                  pid: root
+                  title: 'Container 5'
                   type: container
+                  weight: '-15'
                 container-8:
                   container_type: details
-                  title: 'Container 8'
-                  description: ''
-                  weight: '-14'
-                  open: 0
-                  id: container-8
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-8
+                  open: false
+                  pid: root
+                  title: 'Container 8'
                   type: container
+                  weight: '-14'
                 container-9:
                   container_type: details
-                  title: 'Container 9'
-                  description: ''
-                  weight: '-13'
-                  open: 0
-                  id: container-9
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-9
+                  open: false
+                  pid: root
+                  title: 'Container 9'
                   type: container
+                  weight: '-13'
                 container-6:
                   container_type: container
-                  title: 'Container 6'
-                  description: ''
-                  weight: '-12'
-                  open: 0
-                  id: container-6
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-6
+                  open: false
+                  pid: root
+                  title: 'Container 6'
                   type: container
+                  weight: '-12'
                 submit:
-                  weight: '-17'
+                  depth: '2'
                   id: submit
                   pid: container-6
-                  depth: '2'
                   type: buttons
+                  weight: '-17'
       path: admin/content/games
       menu:
         type: tab
@@ -3303,99 +3303,99 @@ display:
       display_extenders:
         views_ef_fieldset:
           views_ef_fieldset:
-            enabled: 0
+            enabled: false
             options:
               sort:
                 root:
                   container_type: details
-                  title: Filters
-                  description: ''
-                  open: '1'
-                  weight: '0'
-                  id: root
-                  pid: ''
                   depth: '0'
+                  description: ''
+                  id: root
+                  open: true
+                  pid: ''
+                  title: Filters
                   type: container
+                  weight: '0'
                 container-0:
                   container_type: container
-                  title: 'Container 0'
-                  description: ''
-                  weight: '-11'
-                  open: 0
-                  id: container-0
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-0
+                  open: false
+                  pid: root
+                  title: 'Container 0'
                   type: container
+                  weight: '-11'
                 status:
-                  weight: '-9'
+                  depth: '2'
                   id: status
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-9'
                 title:
-                  weight: '-8'
+                  depth: '2'
                   id: title
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-8'
                 langcode:
-                  weight: '-7'
+                  depth: '2'
                   id: langcode
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-7'
                 container-1:
                   container_type: details
-                  title: 'Container 1'
-                  description: ''
-                  weight: '-10'
-                  open: 0
-                  id: container-1
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-1
+                  open: false
+                  pid: root
+                  title: 'Container 1'
                   type: container
+                  weight: '-10'
                 container-2:
                   container_type: details
-                  title: 'Container 2'
-                  description: ''
-                  weight: '-9'
-                  open: 0
-                  id: container-2
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-2
+                  open: false
+                  pid: root
+                  title: 'Container 2'
                   type: container
+                  weight: '-9'
                 container-3:
                   container_type: container
-                  title: 'Container 3'
-                  description: ''
-                  weight: '-8'
-                  open: 0
-                  id: container-3
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-3
+                  open: false
+                  pid: root
+                  title: 'Container 3'
                   type: container
+                  weight: '-8'
                 submit:
-                  weight: '-11'
+                  depth: '2'
                   id: submit
                   pid: container-3
-                  depth: '2'
                   type: buttons
+                  weight: '-11'
                 reset:
-                  weight: '-10'
+                  depth: '2'
                   id: reset
                   pid: container-3
-                  depth: '2'
                   type: buttons
+                  weight: '-10'
                 container-4:
                   container_type: details
-                  title: 'Container 4'
-                  description: ''
-                  weight: '-6'
-                  open: 0
-                  id: container-4
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-4
+                  open: false
+                  pid: root
+                  title: 'Container 4'
                   type: container
+                  weight: '-6'
       path: admin/content/studios
       menu:
         type: tab
@@ -3969,99 +3969,99 @@ display:
       display_extenders:
         views_ef_fieldset:
           views_ef_fieldset:
-            enabled: 0
+            enabled: false
             options:
               sort:
                 root:
                   container_type: details
-                  title: Filters
-                  description: ''
-                  open: '1'
-                  weight: '0'
-                  id: root
-                  pid: ''
                   depth: '0'
+                  description: ''
+                  id: root
+                  open: true
+                  pid: ''
+                  title: Filters
                   type: container
+                  weight: '0'
                 container-0:
                   container_type: container
-                  title: 'Container 0'
-                  description: ''
-                  weight: '-11'
-                  open: 0
-                  id: container-0
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-0
+                  open: false
+                  pid: root
+                  title: 'Container 0'
                   type: container
+                  weight: '-11'
                 status:
-                  weight: '-9'
+                  depth: '2'
                   id: status
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-9'
                 title:
-                  weight: '-8'
+                  depth: '2'
                   id: title
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-8'
                 langcode:
-                  weight: '-7'
+                  depth: '2'
                   id: langcode
                   pid: container-0
-                  depth: '2'
                   type: filter
+                  weight: '-7'
                 container-1:
                   container_type: details
-                  title: 'Container 1'
-                  description: ''
-                  weight: '-10'
-                  open: 0
-                  id: container-1
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-1
+                  open: false
+                  pid: root
+                  title: 'Container 1'
                   type: container
+                  weight: '-10'
                 container-2:
                   container_type: details
-                  title: 'Container 2'
-                  description: ''
-                  weight: '-9'
-                  open: 0
-                  id: container-2
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-2
+                  open: false
+                  pid: root
+                  title: 'Container 2'
                   type: container
+                  weight: '-9'
                 container-3:
                   container_type: container
-                  title: 'Container 3'
-                  description: ''
-                  weight: '-8'
-                  open: 0
-                  id: container-3
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-3
+                  open: false
+                  pid: root
+                  title: 'Container 3'
                   type: container
+                  weight: '-8'
                 submit:
-                  weight: '-11'
+                  depth: '2'
                   id: submit
                   pid: container-3
-                  depth: '2'
                   type: buttons
+                  weight: '-11'
                 reset:
-                  weight: '-10'
+                  depth: '2'
                   id: reset
                   pid: container-3
-                  depth: '2'
                   type: buttons
+                  weight: '-10'
                 container-4:
                   container_type: details
-                  title: 'Container 4'
-                  description: ''
-                  weight: '-6'
-                  open: 0
-                  id: container-4
-                  pid: root
                   depth: '1'
+                  description: ''
+                  id: container-4
+                  open: false
+                  pid: root
+                  title: 'Container 4'
                   type: container
+                  weight: '-6'
       path: admin/content/people
       menu:
         type: tab

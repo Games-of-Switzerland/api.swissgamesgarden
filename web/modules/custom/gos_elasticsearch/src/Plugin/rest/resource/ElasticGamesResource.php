@@ -270,6 +270,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       return $this->buildElasticsearchErrorResponse($exception);
     }
 
+    $this->responseCache->setCacheMaxAge(0);
     $this->responseCache->addCacheTags([
       'node_list:game',
       'node_list:studio',
