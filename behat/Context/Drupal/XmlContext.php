@@ -2,8 +2,8 @@
 
 namespace Drupal\Behat\Context\Drupal;
 
-use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Mink\Exception\ExpectationException;
+use Behat\MinkExtension\Context\RawMinkContext;
 
 /**
  * Defines XML features from the specific context.
