@@ -55,7 +55,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     EntityManager $entities_manager,
     UrlGeneratorManager $url_generator_manager,
     MemoryCacheInterface $memory_cache,
-    UrlBuilderNextJS $url_builder_nextjs
+    UrlBuilderNextJs $url_builder_nextjs
   ) {
     parent::__construct(
       $configuration,
@@ -159,7 +159,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     }
 
     $entity_settings = $this->entitiesManager
-      ->setVariants($sitemap_id)
+      ->setSitemaps($sitemap_id)
       ->getEntityInstanceSettings($entity->getEntityTypeId(), $entity->id());
 
     if (empty($entity_settings[$sitemap_id]['index'])) {

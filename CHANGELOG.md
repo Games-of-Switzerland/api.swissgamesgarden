@@ -6,6 +6,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2024-02-09
+### Changed
+- move Linters php-deprecation-detector, php-cs-fixer & psalm into own Tools/ComposerJson
+- upgrade Default Content files from JSON -> YAML
+
+### Removed
+- remove phpmd
+- remove phpcpd
+
+### Security
+- update module drupal/migrate_source_csv (3.5.0 => 3.6.0)
+- drupal/migrate_tools (6.0.1 => 6.0.4)
+- update module drupal/fieldable_path (1.0.0-rc6 => 1.0.0)
+- update phpstan linter extensions mglaman/phpstan-drupal (1.1.28 => 1.1.30)
+- update module drupal/admin_toolbar (3.3.0 => 3.4.2)
+- update module drupal/gin_toolbar (1.0.0-rc1 => 1.0.0-rc5)
+- update theme drupal/gin (3.0.0-rc2 => 3.0.0-rc9)
+- update tests library phpspec/prophecy-phpunit (v2.0.1 => v2.0.2)
+- update drupal/gin_login (2.0.1 => 2.0.3)
+- update module drupal/jsonapi_extras (3.23.0 => 3.24.0)
+- update module drupal/consumers (1.16.0 => 1.17.0)
+- update module drupal/webp (1.0.0-beta6 => 1.0.0-rc1)
+- update module drupal/new_relic_rpm (2.1.0 => 2.1.1)
+- update module drupal/pathauto (1.11.0 => 1.12.0)
+- update module drupal/simple_sitemap (4.1.4 => 4.1.8)
+- update module drupal/symfony_mailer (1.2.0-beta2 => 1.4.1)
+- update module drupal/views_ef_fieldset (1.5.0 => 1.7.0)
+- update behat/behat (v3.12.0 => v3.14.0)
+- upgrade drupal/upgrade_status (3.18.0 => 4.0.0)
+- upgrade module drupal/default_content (1.0.0-alpha9 => 2.0.0-alpha2)
+- update module drupal/metatag (1.22.0 => 1.26.0)
+- update module drupal/ctools (4.0.3 => 4.0.4)
+- update module drupal/token (1.11.0 => 1.13.0)
+- update PHP 8.0 -> 8.1
+
 ## [0.5.5] - 2023-04-20
 ### Fixed
 - fix issue when member is deleted leading to un-indexable games
@@ -159,7 +194,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.5...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.0...HEAD
+[0.6.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.5...0.6.0
 [0.5.5]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.4...0.5.5
 [0.5.4]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.3...0.5.4
 [0.5.3]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.2...0.5.3

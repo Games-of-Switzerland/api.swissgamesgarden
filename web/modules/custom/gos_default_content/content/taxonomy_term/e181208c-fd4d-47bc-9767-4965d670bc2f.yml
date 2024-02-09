@@ -1,0 +1,42 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: e181208c-fd4d-47bc-9767-4965d670bc2f
+  bundle: location
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 34
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Zürich
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Zürich | Games of Switzerland'
+  path:
+    -
+      alias: /locations/zurich
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /locations/zurich
+  field_slug:
+    -
+      value: zurich

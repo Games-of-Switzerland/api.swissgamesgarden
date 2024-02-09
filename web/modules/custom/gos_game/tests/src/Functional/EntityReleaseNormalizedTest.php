@@ -24,6 +24,7 @@ use Drupal\Tests\rest\Functional\AnonResourceTestTrait;
  * @internal
  */
 final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
+
   use AnonResourceTestTrait;
   use EntityReferenceTestTrait;
   use TaxonomyTestTrait;
@@ -55,7 +56,7 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
   /**
    * {@inheritdoc}
    */
-  public function setUp(): void {
+  protected function setUp(): void {
     parent::setUp();
 
     // Create the taxonomy filter format.

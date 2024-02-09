@@ -18,6 +18,7 @@ use Drupal\migrate\Row;
  *   field_twitter:
  *     plugin: gos_twitter_handle
  *     source: twitter_link_or_handle
+ *
  * @endcode
  *
  * If the source value was

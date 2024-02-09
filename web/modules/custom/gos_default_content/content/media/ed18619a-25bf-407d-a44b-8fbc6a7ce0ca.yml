@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: media
+  uuid: ed18619a-25bf-407d-a44b-8fbc6a7ce0ca
+  bundle: remote_video
+  default_langcode: en
+default:
+  mid:
+    -
+      value: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  name:
+    -
+      value: 'Farming Simulator 18 Gameplay Trailer'
+  created:
+    -
+      value: 1599489604
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '| Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_media_oembed_video:
+    -
+      value: 'https://www.youtube.com/watch?v=y-Vgumda_mY'

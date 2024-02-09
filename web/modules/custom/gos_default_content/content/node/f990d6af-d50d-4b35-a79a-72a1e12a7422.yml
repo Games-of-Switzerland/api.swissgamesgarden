@@ -1,0 +1,133 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: f990d6af-d50d-4b35-a79a-72a1e12a7422
+  bundle: game
+  default_langcode: en
+  depends:
+    7eb54de6-4f2c-471e-b84b-ac7a9c8ff729: taxonomy_term
+    7fd1c607-99c3-415c-92fc-b3033b2a7b90: taxonomy_term
+    55d245b5-c9cc-43e5-8400-c44ef4f2d8ad: taxonomy_term
+    b3165598-63fe-4717-a30e-11daf4389257: taxonomy_term
+    6ea716ae-e50f-4a59-ace5-603c353ae20a: taxonomy_term
+    6bfe8b95-305d-4abb-924c-ec2ca6fc9895: taxonomy_term
+default:
+  nid:
+    -
+      value: 17
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: Persephone
+  created:
+    -
+      value: 1589470979
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  releases_normalized:
+    -
+      year: ''
+      platforms:
+        10:
+          name: ios
+          tid: '10'
+          date: null
+          state: released
+      states:
+        released: released
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Persephone | Games of Switzerland'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:url'
+        content: 'http://localhost/sites/default/files/styles/open_graph/public/games/2024-02/generateImage_NB4on3.jpeg?h=c36f5d5b&itok=k7pe0VqG'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:width'
+        content: '1200'
+    -
+      tag: meta
+      attributes:
+        property: 'og:image:height'
+        content: '630'
+  path:
+    -
+      alias: /games/persephone
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: "<p>Following Persephone, the underworld goddess from Greek mythology, players of the 2D isometric game «Persephone» have to get to the bottom of hell, reaching her husband Hades. Each of the levels presents a puzzle with a different environment and unique mechanics. The journey through the underworld is enriched by colorful illustrations and atmospheric sounds.</p>\r\n\r\n<p>In contradiction to most games, death is not the end, but a vital component in solving the puzzles. Persephone’s dead body is used by her incarnation to overcome various obstacles. The death of the protagonist is an ingenious way of stirring up the puzzle game genre. Where, how and when will you choose to die in order to progress?</p>\r\n"
+      format: basic_html
+      summary: ''
+  field_cantons:
+    -
+      entity: 7eb54de6-4f2c-471e-b84b-ac7a9c8ff729
+    -
+      entity: 7fd1c607-99c3-415c-92fc-b3033b2a7b90
+  field_completeness:
+    -
+      value: 3231
+  field_contextual_links:
+    -
+      type: presskit
+      url: 'http://press.momo-pi.com/sheet.php?p=persephone'
+    -
+      type: box_art
+      url: 'http://press.momo-pi.com/sheet.php?p=persephone#images'
+  field_credits:
+    -
+      value: "<p>Cédric Reinhardt, Software Developer / Guillaume Schneuwly, Software Developer / Rinaldo Wirz, Creative Director / Renato De Aguiar, Composer / Thomas Olsson, Sound FX</p>\r\n"
+      format: basic_html
+  field_genres:
+    -
+      entity: 55d245b5-c9cc-43e5-8400-c44ef4f2d8ad
+  field_locations:
+    -
+      entity: b3165598-63fe-4717-a30e-11daf4389257
+  field_path:
+    -
+      value: /games/persephone
+  field_player:
+    -
+      min: '1'
+      max: '1'
+  field_release_platforms:
+    -
+      entity: 6ea716ae-e50f-4a59-ace5-603c353ae20a
+  field_releases:
+    -
+      entity: 6ea716ae-e50f-4a59-ace5-603c353ae20a
+      date_value: ''
+      state: released
+  field_sponsors:
+    -
+      entity: 6bfe8b95-305d-4abb-924c-ec2ca6fc9895
+  field_stores:
+    -
+      store: apple_store
+      link: 'https://itunes.apple.com/us/app/persephone/id1425915725'
+    -
+      store: google_play_store
+      link: 'https://play.google.com/store/apps/details?id=com.momopi.persephone.premium'

@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: eb336da3-eb55-4679-bcb2-97dde3b6d18b
+  bundle: platform
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 5
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'PlayStation 3'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'PlayStation 3 | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: playstation_3

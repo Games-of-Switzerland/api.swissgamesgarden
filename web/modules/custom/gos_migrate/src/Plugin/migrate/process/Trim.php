@@ -20,6 +20,7 @@ use Drupal\migrate\Row;
  *   field_string:
  *     plugin: trim
  *     source: my_string_value
+ *
  * @endcode
  *
  * @code
@@ -28,6 +29,7 @@ use Drupal\migrate\Row;
  *     plugin: trim
  *     source: my_string_value
  *     mask: "\x00..\x1F"
+ *
  * @endcode
  * Trim the ASCII control characters at the beginning and end of my_string_value
  * (from 0 to 31 inclusive)

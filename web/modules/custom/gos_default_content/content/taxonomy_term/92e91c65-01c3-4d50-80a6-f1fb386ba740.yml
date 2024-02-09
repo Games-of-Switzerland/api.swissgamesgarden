@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 92e91c65-01c3-4d50-80a6-f1fb386ba740
+  bundle: language
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 31
+  status:
+    -
+      value: true
+  name:
+    -
+      value: German
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'German | Games of Switzerland'
+  path:
+    -
+      alias: /languages/german
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /languages/german

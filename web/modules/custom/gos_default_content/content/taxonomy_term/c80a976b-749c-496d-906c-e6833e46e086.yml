@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: c80a976b-749c-496d-906c-e6833e46e086
+  bundle: genre
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 18
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Adventure
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Adventure | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: adventure

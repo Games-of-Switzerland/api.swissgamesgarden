@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: f5867fff-92a9-422b-bf54-0dda8e75f06c
+  bundle: genre
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 19
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Shooter
+  weight:
+    -
+      value: 4
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Shooter | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: shooter

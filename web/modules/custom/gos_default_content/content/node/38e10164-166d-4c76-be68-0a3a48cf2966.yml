@@ -1,0 +1,53 @@
+_meta:
+  version: '1.0'
+  entity_type: node
+  uuid: 38e10164-166d-4c76-be68-0a3a48cf2966
+  bundle: page
+  default_langcode: en
+default:
+  nid:
+    -
+      value: 18
+  revision_uid:
+    -
+      target_id: 1
+  status:
+    -
+      value: true
+  uid:
+    -
+      target_id: 1
+  title:
+    -
+      value: 'About us'
+  created:
+    -
+      value: 1636889047
+  promote:
+    -
+      value: false
+  sticky:
+    -
+      value: false
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'About us | Games of Switzerland'
+  path:
+    -
+      alias: /pages/about-us
+      langcode: en
+      pathauto: 1
+  body:
+    -
+      value: "<p>Integer magnis <strong>pretium iaculis</strong> lobortis gravida himenaeos, <a href=\"https://www.swissgames.garden/\">condimentum nisl</a> fusce erat luctus at sit, mollis ornare facilisi etiam curabitur. Nulla convallis ornare pellentesque turpis sociosqu vivamus orci, nibh ultricies nisl rutrum porttitor justo placerat commodo, etiam leo sociis phasellus rhoncus erat. Nibh vitae tincidunt pharetra lacus ad consectetur viverra rhoncus, laoreet vel interdum accumsan venenatis nec eros, quis dictum ullamcorper habitasse et posuere imperdiet. Lorem convallis sodales cursus tincidunt semper per placerat, rutrum massa aptent curae feugiat felis magnis viverra, augue curabitur donec ipsum ridiculus varius. Cursus ante consectetur laoreet dolor euismod purus nibh vestibulum justo dictumst, sem facilisi mollis molestie malesuada cras imperdiet platea facilisis, viverra metus amet elementum primis condimentum magnis eu magna. Donec <em>netus</em> nostra nisl iaculis phasellus imperdiet ornare, nascetur lacus justo aliquet arcu amet diam euismod, tellus hendrerit dis potenti placerat turpis. Integer quisque sapien cum phasellus turpis diam dis laoreet mattis nostra nam aptent, odio vitae ac morbi nascetur id erat semper justo parturient ipsum. Placerat himenaeos ullamcorper ut ultricies gravida, faucibus cursus taciti urna, molestie netus erat senectus.</p>\r\n\r\n<p>Ullamcorper id senectus imperdiet elementum nisi, pulvinar habitant per cras, dis in auctor cum. Porttitor nascetur ligula parturient pretium lectus mattis ante quis cras integer malesuada, dis morbi placerat cum netus nisl erat vulputate non quam. Dignissim velit posuere volutpat sodales nisi mattis vehicula varius, curae conubia curabitur aptent senectus blandit quisque, nulla etiam eros accumsan vestibulum sagittis pellentesque. Felis gravida molestie dictum mauris sit adipiscing, primis congue ante nullam vestibulum vitae, dapibus diam lacus morbi imperdiet. Netus mus massa eleifend lobortis nisi libero consectetur commodo, nulla habitant mi per purus conubia dui, pretium feugiat senectus tortor magna lacus aptent. Odio fames consectetur per pretium malesuada scelerisque pellentesque magnis, ornare vestibulum conubia neque pulvinar aenean penatibus suscipit, netus consequat tortor justo dapibus ante placerat. Commodo quisque tempus cum morbi integer sodales, hac interdum massa nulla fermentum, lorem eleifend tellus scelerisque ullamcorper.</p>\r\n"
+      format: basic_html
+      summary: ''
+  field_path:
+    -
+      value: /pages/about-us

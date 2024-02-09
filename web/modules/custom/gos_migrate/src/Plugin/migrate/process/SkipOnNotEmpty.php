@@ -20,6 +20,7 @@ use Drupal\migrate\Row;
  *     method: row
  *     source: field_skip
  *     message: 'Field field_skip is set'
+ *
  * @endcode
  * If 'field_skip' is set, the entire row is skipped and the 'message' is logged
  * in the message table.

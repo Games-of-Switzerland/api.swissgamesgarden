@@ -47,7 +47,7 @@
         }
     ],
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "ext-exif": "*",
         "composer/installers": "^2.2",
         "cweagans/composer-patches": "^1.6.5",
@@ -85,13 +85,10 @@
         "alexandresalome/mailcatcher": "^1.2",
         "behat/behat": "^3.5",
         "drupal/core-dev": "^9",
-        "drupal/default_content": "^1.0@alpha",
+        "drupal/default_content": "^2.0",
         "drupal/drupal-extension": "^4.0",
         "drupal/jsonapi_explorer": "^1.0",
-        "drupal/upgrade_status": "^3.17",
-        "drupol/phpcsfixer-configs-drupal": "^2.0",
-        "fenetikm/autoload-drupal": "dev-master",
-        "friendsofphp/php-cs-fixer": "^3.0",
+        "drupal/upgrade_status": "^4.0",
         "imbo/behat-api-extension": "^2.2",
         "marcortola/behat-seo-contexts": "^4.0",
         "mglaman/phpstan-drupal": "^1.1",
@@ -110,10 +107,10 @@
             "composer/package-versions-deprecated": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "fenetikm/autoload-drupal": true,
             "cweagans/composer-patches": true,
             "wikimedia/composer-merge-plugin": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "fenetikm/autoload-drupal": true
         }
     },
     "autoload-dev": {
@@ -142,7 +139,8 @@
                 "[3121816] - Version 8.x-2.1 need Drupal 8.8.0 or greater": "https://www.drupal.org/files/issues/2020-03-30/3121816-07.patch"
             },
             "drupal/core": {
-                "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2022-04-07/drupal-views-entity-reference-filter-2429699-476.patch"
+                "[2429699] - Add Views EntityReference filter to be available for all entity reference fields": "https://www.drupal.org/files/issues/2022-04-07/drupal-views-entity-reference-filter-2429699-476.patch",
+                "[Local] - ConfigEntityResourceTestBase change setUp() visibility": "./patches/fix-ConfigEntityResourceTestBase-setup-function-visibility.patch"
             },
             "drupal/metatag": {
                 "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2020-02-29/2945817-93.patch"

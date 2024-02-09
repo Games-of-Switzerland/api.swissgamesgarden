@@ -42,6 +42,7 @@ use Drupal\migrate\Row;
  *       [value] => macOS
  *     )
  * ...
+ *
  * @endcode
  *
  * The destination should be an array of all the platforms with a release date:
@@ -60,6 +61,7 @@ use Drupal\migrate\Row;
  *       [date] => 2020-05-22
  *     )
  * ...
+ *
  * @endcode
  *
  * @code
@@ -75,6 +77,7 @@ use Drupal\migrate\Row;
  *     source: my_flat_array
  *     key: 'date'
  *     source_value: my_date
+ *
  * @endcode
  *
  * @see \Drupal\migrate\Plugin\MigrateProcessInterface
@@ -111,7 +114,6 @@ class ArrayBuildAdd extends ProcessPluginBase {
     }
 
     foreach ((array) $value as $key => $current_value) {
-
       // Checks that $current_value is an array.
       if (!\is_array($current_value)) {
         throw new MigrateException('The input should be an array of arrays.');

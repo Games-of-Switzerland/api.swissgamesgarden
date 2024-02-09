@@ -7,7 +7,6 @@ parameters:
   # PHPStan Level 1
   level: 1
   ignoreErrors:
-    # - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
     - '#Unsafe usage of new static#'
 includes:
   # Add the phpstan-drupal extension & rules.

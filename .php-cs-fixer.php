@@ -11,14 +11,22 @@ $finder = PhpCsFixer\Finder::create()
   ->name('*.profile')
   ->name('*.theme')
   ->notPath('*.md')
-  ->notPath('*.info.yml');
+  ->notPath('*.info.yml')
+;
 
 $config = new Drupal8();
 $config->setFinder($finder);
 
 $rules = $config->getRules();
 $rules['global_namespace_import'] = FALSE;
-$rules['php_unit_set_up_tear_down_visibility'] = FALSE;
-$rules['error_suppression'] = FALSE;
+$rules['no_superfluous_phpdoc_tags'] = FALSE;
+$rules['ordered_class_elements']['sort_algorithm'] = 'none';
+
+$rules['fully_qualified_strict_types'] = [
+  'import_symbols' => true,
+  'leading_backslash_in_global_namespace' => false,
+  'phpdoc_tags' => [],
+];
+
 $config->setRules($rules);
 return $config;

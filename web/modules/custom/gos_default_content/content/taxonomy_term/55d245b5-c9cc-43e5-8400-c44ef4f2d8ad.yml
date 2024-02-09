@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 55d245b5-c9cc-43e5-8400-c44ef4f2d8ad
+  bundle: genre
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 22
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Puzzle
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Puzzle | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: puzzle

@@ -1,3 +1,8 @@
 _core:
   default_config_hash: EyOEXkLJD4vYGpK5wicdBSwBorOJgslf_tyscMgeN0Q
 default_transport: gandi_smtp
+override:
+  contact: 2
+  contact_form: 2
+  update: 2
+  user: 2

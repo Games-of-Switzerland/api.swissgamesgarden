@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: b6d39e90-cace-401b-8e44-e759885938e1
+  bundle: platform
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 14
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'Nintendo Switch'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Nintendo Switch | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: nintendo_switch

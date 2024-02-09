@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 19b2fb28-468a-44ad-a03f-da4372e43539
+  bundle: publisher
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 24
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Astragon
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Astragon | Games of Switzerland'
+  path:
+    -
+      alias: /publishers/astragon
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /publishers/astragon

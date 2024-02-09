@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: c38f3ec1-3640-4f29-a764-5fc91b1991b7
+  bundle: platform
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 8
+  status:
+    -
+      value: true
+  name:
+    -
+      value: 'PlayStation 1'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'PlayStation 1 | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: playstation_1

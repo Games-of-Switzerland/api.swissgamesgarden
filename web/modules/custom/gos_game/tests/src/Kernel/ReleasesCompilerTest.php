@@ -19,6 +19,7 @@ use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
  * @internal
  */
 final class ReleasesCompilerTest extends KernelTestBase {
+
   use EntityReferenceTestTrait;
   use NodeTestTrait;
   use TaxonomyTestTrait;

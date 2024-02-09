@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 9a6f2f4e-a6e8-4d6a-b42f-bf5538d5e5a1
+  bundle: genre
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 16
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Action-adventure
+  weight:
+    -
+      value: 3
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Action-adventure | Games of Switzerland'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 0
+  field_slug:
+    -
+      value: action-adventure

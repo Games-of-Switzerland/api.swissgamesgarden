@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.3
 
-FROM antistatique/php:8.0-drupal
+FROM antistatique/php:8.1-drupal
 
 ARG user=www-data
 ARG group=${user}
@@ -33,11 +33,6 @@ RUN ./docker/newrelic.sh
 RUN apt-get update && apt-get -y install \
     cron \
     gnupg;
-
-RUN set -eux; \
-  curl -L https://phar.io/releases/phive.phar -o phive.phar; \
-  chmod a+x phive.phar; \
-  mv phive.phar /usr/bin/phive;
 
 # Install additional PHP extensions.
 RUN docker-php-ext-install \
@@ -84,10 +79,6 @@ RUN set -eux; \
   \
   composer install --prefer-dist --no-scripts --no-progress --no-interaction; \
   composer clear-cache
-
-# Add the phiv files to install dependencies before copying (optimization).
-ADD --chown=${user}:${group} ./.phive/ ./
-RUN phive --no-progress install
 
 # Ensure patch from Composer will be applied.
 RUN set -eux; \

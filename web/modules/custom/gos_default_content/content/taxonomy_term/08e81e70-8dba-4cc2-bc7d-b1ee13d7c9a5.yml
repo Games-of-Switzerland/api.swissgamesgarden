@@ -1,0 +1,39 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 08e81e70-8dba-4cc2-bc7d-b1ee13d7c9a5
+  bundle: sponsor
+  default_langcode: en
+default:
+  tid:
+    -
+      value: 28
+  status:
+    -
+      value: true
+  name:
+    -
+      value: Alimentarium
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag_normalized:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: 'Alimentarium | Games of Switzerland'
+  path:
+    -
+      alias: /sponsors/alimentarium
+      langcode: en
+      pathauto: 1
+  field_path:
+    -
+      value: /sponsors/alimentarium

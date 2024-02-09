@@ -33,6 +33,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *     method: row
  *     source: fileurl
  *     message: 'File field_name does not exist'
+ *
  * @endcode
  * The above example will skip processing any row
  * if file 'fileurl' does not exist
