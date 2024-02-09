@@ -2,7 +2,7 @@ name: Games of Switzerland default content
 description: Utility module for Games of Switzerland testing via Behat.
 package: Testing
 type: module
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^9 || ^10
 
 dependencies:
   - drupal:default_content

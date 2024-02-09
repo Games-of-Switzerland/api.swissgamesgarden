@@ -2,7 +2,7 @@ name: Games of Switzerland Elasticsearch Migration
 type: module
 description: Module used to handle migrations from an exported CSV of Google Spreadsheet
 package: Games of Switzerland
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - drupal:gos_site
   - drupal:migrate

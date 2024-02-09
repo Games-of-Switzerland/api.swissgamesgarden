@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update drupal/core (9.5.3 => 9.5.11)
 - update phpspec/prophecy-phpunit (v2.0.2 => v2.1.0)
+- upgrade module drupal/cdn (3.6.0 => 4.0.2)
+- upgrade module drupal/focal_point (1.5.0 => 2.0.2)
 
 ### Changed
 - remove caches on both Search & Autocomplete endpoints (Elasticsearch)
