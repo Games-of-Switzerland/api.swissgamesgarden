@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.3
 
-FROM antistatique/php:8.0-drupal
+FROM antistatique/php:8.1-drupal
 
 ARG user=www-data
 ARG group=${user}

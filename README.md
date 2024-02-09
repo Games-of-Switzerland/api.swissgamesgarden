@@ -482,7 +482,7 @@ Therefore, on Staging & Production `docker-compose.override.yml` we have added t
 build:
   context: .
   args:
-    - 'NEW_RELIC_AGENT_VERSION=9.18.1.303'
+    - 'NEW_RELIC_AGENT_VERSION=10.16.0.5'
     - 'NEW_RELIC_LICENSE_KEY=LICENSE'
     - 'NEW_RELIC_APPNAME=Games of Switzerland'
     - 'NEW_RELIC_DAEMON_ADDRESS=newrelic-apm-daemon:31339'
