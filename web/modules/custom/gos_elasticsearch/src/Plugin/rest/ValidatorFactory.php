@@ -18,7 +18,7 @@ class ValidatorFactory {
    */
   public function getValidator(): ValidatorInterface {
     return Validation::createValidatorBuilder()
-      ->enableAnnotationMapping()
+      ->enableAttributeMapping()
       ->getValidator();
   }
 
