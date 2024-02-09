@@ -2,7 +2,7 @@ name: Games of Switzerland Elasticsearch Helper Example
 type: module
 description: Plugin implementation for the Games of Switzerland Elasticsearch.
 package: Search
-core_version_requirement: ^8.8 || ^9
+core_version_requirement: ^9 || ^10
 hidden: true
 
 dependencies:
