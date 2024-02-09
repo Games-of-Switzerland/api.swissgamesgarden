@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - remove module RDF as deprecated on Drupal 10
 - remove theme seven as deprecated on Drupal 10
 
+### Security
+- upgrade drupal/core (9.5.11 => 10.2.3)
+
 ## [0.6.1] - 2024-02-09
 ### Security
 - update drupal/core (9.5.3 => 9.5.11)
