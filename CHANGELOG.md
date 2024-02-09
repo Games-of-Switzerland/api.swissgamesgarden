@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - add module drupal/ckeditor for Drupal 10 update compliancy
 
+### Removed
+- remove module RDF as deprecated on Drupal 10
+- remove theme seven as deprecated on Drupal 10
+
 ## [0.6.0] - 2024-02-09
 ### Changed
 - move Linters php-deprecation-detector, php-cs-fixer & psalm into own Tools/ComposerJson
