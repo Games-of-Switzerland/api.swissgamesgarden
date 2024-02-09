@@ -111,7 +111,7 @@
             "cweagans/composer-patches": true,
             "wikimedia/composer-merge-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "fenetikm/autoload-drupal": true
+            "phpstan/extension-installer": true
         }
     },
     "autoload-dev": {
