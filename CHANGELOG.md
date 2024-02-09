@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- add module drupal/ckeditor for Drupal 10 update compliancy
+
+### Removed
+- remove module RDF as deprecated on Drupal 10
+- remove theme seven as deprecated on Drupal 10
+
+## [0.6.1] - 2024-02-09
 ### Security
 - update drupal/core (9.5.3 => 9.5.11)
 - update phpspec/prophecy-phpunit (v2.0.2 => v2.1.0)
@@ -13,13 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - remove caches on both Search & Autocomplete endpoints (Elasticsearch)
-
-### Added
-- add module drupal/ckeditor for Drupal 10 update compliancy
-
-### Removed
-- remove module RDF as deprecated on Drupal 10
-- remove theme seven as deprecated on Drupal 10
 
 ## [0.6.0] - 2024-02-09
 ### Changed
@@ -209,7 +210,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.1...HEAD
+[0.6.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.5...0.6.0
 [0.5.5]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.4...0.5.5
 [0.5.4]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.3...0.5.4
