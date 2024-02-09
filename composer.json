@@ -63,7 +63,7 @@
         "drupal/elasticsearch_helper": "dev-6.x",
         "drupal/field_group": "^3.0",
         "drupal/fieldable_path": "^1.0@RC",
-        "drupal/focal_point": "^1.2",
+        "drupal/focal_point": "^2.0",
         "drupal/gin": "^3.0",
         "drupal/gin_login": "^2.0",
         "drupal/image_effects": "^3.0",
