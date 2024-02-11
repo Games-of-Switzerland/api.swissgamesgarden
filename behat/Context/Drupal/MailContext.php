@@ -64,6 +64,77 @@ class MailContext extends RawDrupalContext implements Context, MailCatcherAwareI
   }
 
   /**
+   * Verify if mail has been sent with parameters to, subject and attachments.
+   *
+   * @param string $to
+   *   The mail receiver.
+   * @param string $subject
+   *   The mail subject.
+   *
+   * @throws \Exception
+   *
+   * @Then A mail as been sent to :to with subject :subject with attachments
+   */
+  public function aMailAsBeenSentToWithSubjectAndAttachments($to, $subject) {
+    $message = $this->getMailCatcherClient()->searchOne([
+      Message::TO_CRITERIA => $to,
+      Message::SUBJECT_CRITERIA => $subject,
+      Message::ATTACHMENTS_CRITERIA => TRUE,
+    ]);
+
+    if (empty($message)) {
+      throw new \Exception(sprintf("No mail to '%s' with subject '%s' and attachments was found on the inbox", $to, $subject));
+    }
+  }
+
+  /**
+   * Confirms if a mail was sent to a recipient with a specific subject.
+   *
+   * This method checks if an email was sent to the provided address ($to),
+   * with the specified subject ($subject), and without any attachments.
+   *
+   * @param string $to
+   *   The mail receiver.
+   * @param string $subject
+   *   The mail subject.
+   *
+   * @throws \Exception
+   *
+   * @Then A mail as been sent to :to with subject :subject with no attachments
+   */
+  public function aMailAsBeenSentToWithSubjectAndNoAttachments($to, $subject) {
+    $message = $this->getMailCatcherClient()->searchOne([
+      Message::TO_CRITERIA => $to,
+      Message::SUBJECT_CRITERIA => $subject,
+      Message::ATTACHMENTS_CRITERIA => FALSE,
+    ]);
+
+    if (empty($message)) {
+      throw new \Exception(sprintf("No mail to '%s' with subject '%s' and NO attachments was found on the inbox", $to, $subject));
+    }
+  }
+
+  /**
+   * Test if the mail catcher has any mail with the corresponding subject.
+   *
+   * @param string $subject
+   *   The mail subject.
+   *
+   * @throws \Exception
+   *
+   * @Then I should not see mail with subject :subject
+   */
+  public function shouldNotSeeaMailWithSubject($subject) {
+    $message = $this->getMailCatcherClient()->searchOne([
+      Message::SUBJECT_CRITERIA => $subject,
+    ]);
+
+    if ($message !== NULL) {
+      throw new \Exception(sprintf('A mail with subject \'%s\' was fon don the inbox', $subject));
+    }
+  }
+
+  /**
    * Verify if mail has been sent with parameter subject.
    *
    * @param string $subject

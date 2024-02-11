@@ -38,9 +38,9 @@ class RedirectContext extends RawDrupalContext {
    */
   public function iAmRedirectedTo(string $destination): void {
     $headers = $this->getSession()->getResponseHeaders();
-    PHPUnit_Framework_Assert::assertTrue(isset($headers['Location'][0]));
+    PHPUnit_Framework_Assert::assertTrue(isset($headers['location'][0]));
 
-    $redirectComponents = $headers['Location'][0];
+    $redirectComponents = $headers['location'][0];
     PHPUnit_Framework_Assert::assertEquals($destination, $redirectComponents);
   }
 
