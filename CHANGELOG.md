@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- add module drupal/ckeditor for Drupal 10 update compliancy
+
+### Removed
+- remove module RDF as deprecated on Drupal 10
+- remove theme seven as deprecated on Drupal 10
 
 ## [0.6.1] - 2024-02-09
 ### Security

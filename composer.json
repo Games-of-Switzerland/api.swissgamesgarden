@@ -55,6 +55,7 @@
         "drupal/admin_toolbar": "^3.3",
         "drupal/bamboo_twig": "^6.0",
         "drupal/cdn": "^4.0",
+        "drupal/ckeditor": "^1.0",
         "drupal/consumer_image_styles": "^4.0",
         "drupal/consumers": "^1.16",
         "drupal/core-composer-scaffold": "^9",
@@ -110,7 +111,7 @@
             "cweagans/composer-patches": true,
             "wikimedia/composer-merge-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "fenetikm/autoload-drupal": true
+            "phpstan/extension-installer": true
         }
     },
     "autoload-dev": {

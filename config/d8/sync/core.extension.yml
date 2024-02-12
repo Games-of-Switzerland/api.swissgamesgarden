@@ -62,7 +62,6 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
-  rdf: 0
   rest: 0
   restui: 0
   serialization: 0
@@ -84,7 +83,6 @@ module:
   views: 10
   standard: 1000
 theme:
-  seven: 0
   claro: 0
   gin: 0
 profile: standard
