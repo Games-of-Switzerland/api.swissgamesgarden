@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.2] - 2024-02-12
+### Added
+- add module drupal/ckeditor for Drupal 10 update compliancy
+
+### Removed
+- remove module RDF as deprecated on Drupal 10
+- remove theme seven as deprecated on Drupal 10
+
 ## [0.6.1] - 2024-02-09
 ### Security
 - update drupal/core (9.5.3 => 9.5.11)
@@ -204,7 +212,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.2...HEAD
+[0.6.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.1...0.6.2
 [0.6.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.5...0.6.0
 [0.5.5]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.4...0.5.5
