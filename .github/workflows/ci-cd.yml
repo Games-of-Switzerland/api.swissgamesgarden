@@ -132,7 +132,7 @@ jobs:
 #       - name: Run Functional tests
 #         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T test docker-as-wait db:3306 test:80 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional --user=www-data
 #       - name: Upload Artifact
-#         uses: actions/upload-artifact@v3
+#         uses: actions/upload-artifact@v4
 #         if: failure()
 #         with:
 #           path: |
@@ -155,7 +155,7 @@ jobs:
       - name: Run Behat tests
         run: docker-compose exec -T test docker-as-wait db:3306 test:80 browser:4444 -- docker-as-drupal behat --with-elasticsearch --user=www-data
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           path: ./app/logs
