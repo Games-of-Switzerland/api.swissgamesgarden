@@ -29,24 +29,24 @@ Feature: Retrieve Games items from Elasticsearch
 
   Scenario: Games Resource mandatory page parameter should be zero or positive.
     When I request "http://api.gos.test/search/games?page=-1"
-    Then the response code is 500
+    Then the response code is 400
     And the "Content-Type" response header is "application/json"
     Then the response body contains JSON:
       """
       {
-        "message": "Something went wrong with Elasticsearch."
+        "message": "Something went wrong."
       }
       """
     Then the response body contains JSON:
       """
       {
-        "errors": "@arrayLength(1)"
+        "errors": {"page": "@arrayLength(1)"}
       }
       """
     Then the response body contains JSON:
       """
       {
-        "errors[0]": "{\"error\":{\"root_cause\":[{\"type\":\"illegal_argument_exception\",\"reason\":\"[from] parameter cannot be negative\"}],\"type\":\"illegal_argument_exception\",\"reason\":\"[from] parameter cannot be negative\"},\"status\":400}"
+        "errors": {"page[0]": "This value should be greater than or equal to 0."}
       }
       """
 
