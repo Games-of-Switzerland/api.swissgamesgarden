@@ -3,13 +3,11 @@ parameters:
   excludePaths:
     - *Test.php
     - *TestBase.php
-    - */themes/contrib/*
+    - web/themes/contrib/*
   # PHPStan Level 1
   level: 1
+
   ignoreErrors:
+    # Ignore Drupal Hack using static method ::create for Dependency Injection.
+    - '#\Drupal calls should be avoided in classes, use dependency injection instead#'
     - '#Unsafe usage of new static#'
-includes:
-  # Add the phpstan-drupal extension & rules.
-  - vendor/mglaman/phpstan-drupal/extension.neon
-  # Add the phpstan deprecation rules.
-  - vendor/phpstan/phpstan-deprecation-rules/rules.neon

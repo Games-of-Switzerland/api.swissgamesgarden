@@ -50,7 +50,7 @@ class GameNormalizer extends ContentEntityNormalizer {
    *
    * @psalm-suppress ParamNameMismatch
    */
-  public function normalize($object, $format = NULL, array $context = []) {
+  public function normalize($object, $format = NULL, array $context = []): null|array|\ArrayObject|bool|float|int|string {
     /** @var \Drupal\node\Entity\Node $object */
 
     // Will collect a list of image derivatives URLs, name, width & height.
@@ -234,8 +234,8 @@ class GameNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
-  public function supportsNormalization($data, $format = NULL): bool {
-    if (!parent::supportsNormalization($data, $format)) {
+  public function supportsNormalization($data, $format = NULL, array $context = []): bool {
+    if (!parent::supportsNormalization($data, $format, $context)) {
       return FALSE;
     }
 

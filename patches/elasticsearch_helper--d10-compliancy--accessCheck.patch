@@ -1,0 +1,13 @@
+ .diff --git a/src/Plugin/ElasticsearchIndexManager.php b/src/Plugin/ElasticsearchIndexManager.php
+index b922c31..7a9bec4 100644
+--- a/src/Plugin/ElasticsearchIndexManager.php
++++ b/src/Plugin/ElasticsearchIndexManager.php
+@@ -119,7 +119,7 @@ class ElasticsearchIndexManager extends DefaultPluginManager {
+       if (empty($indices) || in_array($plugin['id'], $indices)) {
+
+         if ($plugin['entityType']) {
+-          $query = $this->entityTypeManager->getStorage($plugin['entityType'])->getQuery();
++          $query = $this->entityTypeManager->getStorage($plugin['entityType'])->getQuery()->accessCheck(FALSE);
+
+           $entity_type = $this->entityTypeManager->getDefinition($plugin['entityType']);
+

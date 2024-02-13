@@ -2,15 +2,11 @@
 
 namespace Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator;
 
-// phpcs:disable
-// PHPCS does not detect \Assert as use in this file and will remove it. Which
-// leads to not working Annotation below.
-
 use Drupal\gos_rest\Plugin\rest\ResourceValidator\BaseValidator;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
-
-// phpcs:enable
 
 /**
  * Serializer class for REST GET parameters of ElasticGamesResource.
@@ -33,19 +29,15 @@ class ElasticGamesResourceValidator extends BaseValidator {
 
   /**
    * The search keywords.
-   *
-   * @var string
    */
-  protected $q;
+  protected null|string $q = NULL;
 
   /**
    * All raw element.
    *
    * This field may used in custom validators.
-   *
-   * @var array
    */
-  protected $raw;
+  protected array $raw = [];
 
   /**
    * The game Cantons to filter by.
@@ -54,7 +46,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  private $cantons;
+  private null|array $cantons = NULL;
 
   /**
    * The game Genres to filter by.
@@ -63,7 +55,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  private $genres;
+  private null|array $genres = NULL;
 
   /**
    * The game Locations to filter by.
@@ -72,18 +64,17 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  private $locations;
+  private null|array $locations = NULL;
 
+  #[NotNull]
+  #[Assert\Type(type: 'integer')]
+  #[Assert\GreaterThanOrEqual(0)]
   /**
    * The page to fetch.
    *
    * The page parameter is mandatory to avoid search overload.
-   *
-   * @var int
-   *
-   * @Assert\NotNull
    */
-  private $page;
+  private null|int $page = NULL;
 
   /**
    * The game Platforms to filter by.
@@ -92,58 +83,43 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  private $platforms;
+  private null|array $platforms = NULL;
 
+  #[Assert\Type(type: 'integer')]
+  #[Assert\GreaterThanOrEqual(1970)]
   /**
    * The game Release Year to filter by.
-   *
-   * @var int|null
-   *
-   * @Assert\Type(
-   *     type="integer",
-   * )
-   *
-   * @Assert\GreaterThanOrEqual(
-   *     value=1970
-   * )
    */
-  private $releaseYear;
+  private null|int $releaseYear = NULL;
 
   /**
    * The game Release Year Range to filter by.
    *
    * This property uses the custom validation ::validateReleaseYearRange.
-   *
-   * @var array
    */
-  private $releaseYearRange = [];
+  private array $releaseYearRange = [];
 
   /**
    * Sort property with direction as key.
    *
    * This property uses the custom validation ::validateSort.
-   *
-   * @var array
    */
-  private $sort = [];
+  private array $sort = [];
 
+  #[Assert\Choice(['', 'prototype', 'pre_release', 'released', 'development', 'canceled'], multiple: TRUE)]
   /**
    * The game States key to filter by.
-   *
-   * @var string[]|null
-   *
-   * @Assert\Choice(choices={"", "prototype", "pre_release", "released", "development", "canceled"}, multiple=true)
    */
-  private $states;
+  private null|array $states = NULL;
 
+  #[Assert\Choice(['', 'apple_store', 'steam', 'amazon', 'itchio',
+    'facebook', 'epic', 'playstation', 'xbox', 'nintendo', 'microsoft_store',
+    'oculus', 'google_play_store', 'gog', 'other',
+  ], multiple: TRUE)]
   /**
    * The game Stores key to filter by.
-   *
-   * @var string[]|null
-   *
-   * @Assert\Choice(choices={"", "apple_store", "steam", "amazon", "itchio", "facebook", "epic", "playstation", "xbox", "nintendo", "microsoft_store", "oculus", "google_play_store", "gog", "other"}, multiple=true)
    */
-  private $stores;
+  private null|array $stores = NULL;
 
   /**
    * Get the game Cantons to filter by.
@@ -385,6 +361,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
     $this->stores = $stores;
   }
 
+  #[Callback]
+
   /**
    * Validates the Cantons parameter.
    *
@@ -392,18 +370,18 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
    *   The validation execution context.
-   * @param string $payload
+   * @param null|string $payload
    *   The Payload.
-   *
-   * @Assert\Callback
    */
-  public function validateCantons(ExecutionContextInterface $context, $payload): void {
+  public function validateCantons(ExecutionContextInterface $context, null|string $payload): void {
     if (isset($this->raw['cantons']) && !$this->cantons) {
       $context->buildViolation(sprintf('At least one given Canton(s) has not been found.'))
         ->atPath('cantons')
         ->addViolation();
     }
   }
+
+  #[Callback]
 
   /**
    * Validates the Genres parameter.
@@ -412,18 +390,18 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
    *   The validation execution context.
-   * @param string $payload
+   * @param null|string $payload
    *   The Payload.
-   *
-   * @Assert\Callback
    */
-  public function validateGenres(ExecutionContextInterface $context, $payload): void {
+  public function validateGenres(ExecutionContextInterface $context, null|string $payload): void {
     if (isset($this->raw['genres']) && !$this->genres) {
       $context->buildViolation(sprintf('At least one given Genre(s) has not been found.'))
         ->atPath('genres')
         ->addViolation();
     }
   }
+
+  #[Callback]
 
   /**
    * Validates the Locations parameter.
@@ -432,18 +410,18 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
    *   The validation execution context.
-   * @param string $payload
+   * @param null|string $payload
    *   The Payload.
-   *
-   * @Assert\Callback
    */
-  public function validateLocations(ExecutionContextInterface $context, $payload): void {
+  public function validateLocations(ExecutionContextInterface $context, null|string $payload): void {
     if (isset($this->raw['locations']) && !$this->locations) {
       $context->buildViolation(sprintf('At least one given Location(s) has not been found.'))
         ->atPath('locations')
         ->addViolation();
     }
   }
+
+  #[Callback]
 
   /**
    * Validates the Platforms parameter.
@@ -452,12 +430,10 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
    *   The validation execution context.
-   * @param string $payload
+   * @param null|string $payload
    *   The Payload.
-   *
-   * @Assert\Callback
    */
-  public function validatePlatforms(ExecutionContextInterface $context, $payload): void {
+  public function validatePlatforms(ExecutionContextInterface $context, null|string $payload): void {
     if (isset($this->raw['platforms']) && !$this->platforms) {
       $context->buildViolation(sprintf('At least one given Platform(s) has not been found.'))
         ->atPath('platforms')
@@ -465,17 +441,17 @@ class ElasticGamesResourceValidator extends BaseValidator {
     }
   }
 
+  #[Callback]
+
   /**
    * Validates the release year range parameter.
    *
    * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
    *   The validation execution context.
-   * @param string $payload
+   * @param null|string $payload
    *   The Payload.
-   *
-   * @Assert\Callback
    */
-  public function validateReleaseYearRange(ExecutionContextInterface $context, $payload): void {
+  public function validateReleaseYearRange(ExecutionContextInterface $context, null|string $payload): void {
     if (!$this->releaseYearRange) {
       $this->releaseYearRange = [];
 
@@ -495,6 +471,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
     }
   }
 
+  #[Callback]
+
   /**
    * Validates the sort parameter.
    *
@@ -502,12 +480,10 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @param \Symfony\Component\Validator\Context\ExecutionContextInterface $context
    *   The validation execution context.
-   * @param string $payload
+   * @param null|string $payload
    *   The Payload.
-   *
-   * @Assert\Callback
    */
-  public function validateSort(ExecutionContextInterface $context, $payload): void {
+  public function validateSort(ExecutionContextInterface $context, null|string $payload): void {
     if (!$this->sort) {
       $this->sort = [];
 
