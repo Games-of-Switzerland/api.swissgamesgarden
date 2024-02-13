@@ -6,6 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2024-02-13
+### Security
+- upgrade Drupal Core to Drupal 10
+
+### Changed
+- use browserkit over goutte for Behat testing
+- apply new Normalizer usage since Drupal 10 update
+- replace Doctrine Annotation by PHP Attribute
+
+### Fixed
+- fix possible iteration over scalar values
+- add missing return type on ::setUp() methods
+- fix psalm drupal 10 autoloader
+- fix phpstan configuration file
+- use vendor/bin/drush instead of drush on update.sh
+
 ## [0.6.2] - 2024-02-12
 ### Added
 - add module drupal/ckeditor for Drupal 10 update compliancy
@@ -13,6 +29,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - remove module RDF as deprecated on Drupal 10
 - remove theme seven as deprecated on Drupal 10
+
+### Security
+- upgrade drupal/core (9.5.11 => 10.2.3)
 
 ## [0.6.1] - 2024-02-09
 ### Security
@@ -212,7 +231,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.2...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/gos-server/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.2...1.0.0
 [0.6.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.1...0.6.2
 [0.6.1]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.5.5...0.6.0

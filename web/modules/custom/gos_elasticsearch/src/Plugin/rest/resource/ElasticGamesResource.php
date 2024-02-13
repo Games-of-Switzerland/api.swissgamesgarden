@@ -125,7 +125,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       $es_query['body']['sort'] = $this->addSort($resource_validator->getSort());
     }
 
-    $search = (string) $request->query->get('q');
+    $search = (string) $request->query->get('q', '');
     $search = Xss::filter($search);
 
     if ($search) {
@@ -341,7 +341,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       /** @var \Drupal\taxonomy\TermInterface[] $platforms */
       $platforms = [];
 
-      foreach ($request->query->get('platforms') as $slug) {
+      foreach ($request->query->all('platforms') as $slug) {
         $platform = $this->termStorage->loadByProperties([
           'vid' => 'platform',
           'field_slug' => $slug,
@@ -364,7 +364,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       /** @var \Drupal\taxonomy\TermInterface[] $genres */
       $genres = [];
 
-      foreach ($request->query->get('genres') as $slug) {
+      foreach ($request->query->all('genres') as $slug) {
         $genre = $this->termStorage->loadByProperties([
           'vid' => 'genre',
           'field_slug' => $slug,
@@ -387,7 +387,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       /** @var \Drupal\taxonomy\TermInterface[] $locations */
       $locations = [];
 
-      foreach ($request->query->get('locations') as $slug) {
+      foreach ($request->query->all('locations') as $slug) {
         $location = $this->termStorage->loadByProperties([
           'vid' => 'location',
           'field_slug' => $slug,
@@ -410,7 +410,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       /** @var \Drupal\taxonomy\TermInterface[] $cantons */
       $cantons = [];
 
-      foreach ($request->query->get('cantons') as $slug) {
+      foreach ($request->query->all('cantons') as $slug) {
         $canton = $this->termStorage->loadByProperties([
           'vid' => 'canton',
           'field_slug' => $slug,

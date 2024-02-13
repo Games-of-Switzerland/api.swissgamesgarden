@@ -20,4 +20,28 @@ class RestContext extends ApiContext {
     $this->request = $this->request->withHeader('x-csrf-token', $token);
   }
 
+  /**
+   * Request a path as binary file upload.
+   *
+   * @param string $path
+   *   The path to request.
+   *
+   * @When I POST binary file on :path
+   */
+  public function requestPathBinaryFile($path) {
+    $this->setRequestPath($path);
+    $this->setRequestMethod('POST');
+
+    if (!$this->requestOptions['multipart'] && $this->requestOptions['multipart'][0]['name'] === 'file') {
+      throw new \RuntimeException('The request does not have an attached file.');
+    }
+
+    // Read the Imbo multipart file and set it as the request body.
+    $file = $this->requestOptions['multipart'][0];
+    unset($this->requestOptions['multipart']);
+    $this->setRequestBody($file['contents']);
+
+    return $this->sendRequest();
+  }
+
 }

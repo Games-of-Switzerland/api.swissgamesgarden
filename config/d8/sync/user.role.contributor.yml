@@ -23,6 +23,7 @@ dependencies:
     - contextual
     - file
     - filter
+    - help
     - media
     - node
     - path
@@ -38,6 +39,7 @@ permissions:
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
+  - 'access help pages'
   - 'access media overview'
   - 'access site in maintenance mode'
   - 'access taxonomy overview'
@@ -62,6 +64,7 @@ permissions:
   - 'delete game revisions'
   - 'delete media'
   - 'delete own document media'
+  - 'delete own files'
   - 'delete own game content'
   - 'delete own image media'
   - 'delete own page content'

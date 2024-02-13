@@ -37,6 +37,17 @@ class XmlContext extends RawMinkContext {
   }
 
   /**
+   * Checks that the specified XML element does not exist.
+   *
+   * @Then the XML element :element should not exist(s)
+   */
+  public function theXmlElementShouldNotExist($element) {
+    $this->not(function () use ($element) {
+      $this->theXmlElementShouldExist($element);
+    }, "The element '$element' exists.");
+  }
+
+  /**
    * Checks that the given XML element contains the given value.
    *
    * @Then the XML element :element should contain :text
@@ -101,6 +112,22 @@ class XmlContext extends RawMinkContext {
     if ($test === FALSE) {
       throw new ExpectationException($message, $this->getSession()->getDriver());
     }
+  }
+
+  /**
+   * Assert a given callable throw an exception and silent it.
+   *
+   * @throws \Behat\Mink\Exception\ExpectationException
+   */
+  protected function not(callable $callbable, string $errorMessage): void {
+    try {
+      $callbable();
+    }
+    catch (\Exception $e) {
+      return;
+    }
+
+    throw new ExpectationException($errorMessage, $this->getSession()->getDriver());
   }
 
   /**

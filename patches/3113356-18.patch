@@ -1,0 +1,389 @@
+diff --git a/elasticsearch_helper.info.yml b/elasticsearch_helper.info.yml
+index a7978c1..7ef2c83 100644
+--- a/elasticsearch_helper.info.yml
++++ b/elasticsearch_helper.info.yml
+@@ -1,7 +1,7 @@
+ name: ElasticSearch Helper
+ type: module
+ description: Provide tools to integrate elasticsearch with Drupal.
+-core: 8.x
++core_version_requirement: ^8.8 || ^9 || ^10
+ package: ElasticSearch Helper
+ configure: elasticsearch_helper.elasticsearch_helper_settings_form
+ dependencies:
+diff --git a/examples/elasticsearch_helper_example/elasticsearch_helper_example.info.yml b/examples/elasticsearch_helper_example/elasticsearch_helper_example.info.yml
+index 74e6110..ebe39a2 100644
+--- a/examples/elasticsearch_helper_example/elasticsearch_helper_example.info.yml
++++ b/examples/elasticsearch_helper_example/elasticsearch_helper_example.info.yml
+@@ -1,7 +1,7 @@
+ name: Elasticsearch Helper Example
+ type: module
+ description: Example plugin implementation for the Elasticsearch Helper module.
+-core: 8.x
++core_version_requirement: ^8.8 || ^9 || ^10
+ hidden: true
+ dependencies:
+ - elasticsearch_helper
+diff --git a/examples/elasticsearch_helper_example/elasticsearch_helper_example.services.yml b/examples/elasticsearch_helper_example/elasticsearch_helper_example.services.yml
+index 48de1f5..f10a94e 100644
+--- a/examples/elasticsearch_helper_example/elasticsearch_helper_example.services.yml
++++ b/examples/elasticsearch_helper_example/elasticsearch_helper_example.services.yml
+@@ -3,4 +3,4 @@ services:
+     class: Drupal\elasticsearch_helper_example\Plugin\Normalizer\NodeNormalizer
+     tags:
+       - { name: normalizer, priority: 50 }
+-    arguments: ['@entity.manager']
++    arguments: ['@entity_type.manager']
+diff --git a/examples/elasticsearch_helper_example/src/Plugin/ElasticsearchIndex/MultilingualContentIndex.php b/examples/elasticsearch_helper_example/src/Plugin/ElasticsearchIndex/MultilingualContentIndex.php
+index ca1e26f..4ab7922 100644
+--- a/examples/elasticsearch_helper_example/src/Plugin/ElasticsearchIndex/MultilingualContentIndex.php
++++ b/examples/elasticsearch_helper_example/src/Plugin/ElasticsearchIndex/MultilingualContentIndex.php
+@@ -3,6 +3,7 @@
+ namespace Drupal\elasticsearch_helper_example\Plugin\ElasticsearchIndex;
+
+ use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\Messenger\MessengerInterface;
+ use Drupal\elasticsearch_helper\ElasticsearchLanguageAnalyzer;
+ use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexBase;
+ use Elasticsearch\Client;
+@@ -34,10 +35,11 @@ class MultilingualContentIndex extends ElasticsearchIndexBase {
+    * @param \Elasticsearch\Client $client
+    * @param \Symfony\Component\Serializer\Serializer $serializer
+    * @param \Psr\Log\LoggerInterface $logger
++   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+    * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
+    */
+-  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $client, Serializer $serializer, LoggerInterface $logger, LanguageManagerInterface $languageManager) {
+-    parent::__construct($configuration, $plugin_id, $plugin_definition, $client, $serializer, $logger);
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $client, Serializer $serializer, LoggerInterface $logger, MessengerInterface $messenger, LanguageManagerInterface $languageManager) {
++    parent::__construct($configuration, $plugin_id, $plugin_definition, $client, $serializer, $logger, $messenger);
+
+     $this->language_manager = $languageManager;
+   }
+@@ -57,6 +59,7 @@ class MultilingualContentIndex extends ElasticsearchIndexBase {
+       $container->get('elasticsearch_helper.elasticsearch_client'),
+       $container->get('serializer'),
+       $container->get('logger.factory')->get('elasticsearch_helper'),
++      $container->get('messenger'),
+       $container->get('language_manager')
+     );
+   }
+diff --git a/modules/elasticsearch_helper_aws/elasticsearch_helper_aws.info.yml b/modules/elasticsearch_helper_aws/elasticsearch_helper_aws.info.yml
+index cd98a1a..e540542 100644
+--- a/modules/elasticsearch_helper_aws/elasticsearch_helper_aws.info.yml
++++ b/modules/elasticsearch_helper_aws/elasticsearch_helper_aws.info.yml
+@@ -1,7 +1,7 @@
+ name: AWS Elasticsearch Service for Elasticsearch Helper
+ description: Connect to the AWS hosted Elasticsearch service with Elasticsearch Helper
+ type: module
+-core: 8.x
++core_version_requirement: ^8.8 || ^9 || ^10
+ package: ElasticSearch Helper
+ configure: elasticsearch_helper_aws.settings_form
+ dependencies:
+diff --git a/modules/elasticsearch_helper_content/elasticsearch_helper_content.info.yml b/modules/elasticsearch_helper_content/elasticsearch_helper_content.info.yml
+index 70f47cb..fa9085a 100644
+--- a/modules/elasticsearch_helper_content/elasticsearch_helper_content.info.yml
++++ b/modules/elasticsearch_helper_content/elasticsearch_helper_content.info.yml
+@@ -1,7 +1,7 @@
+ name: Elasticsearch Helper Content
+ type: module
+ description: Versatile generic elasticsearch indexing for typical content entities.
+-core: 8.x
++core_version_requirement: ^8.8 || ^9 || ^10
+ package: ElasticSearch Helper
+ dependencies:
+   - elasticsearch_helper
+diff --git a/modules/elasticsearch_helper_content/src/Plugin/ElasticsearchIndex/MultilingualContentIndex.php b/modules/elasticsearch_helper_content/src/Plugin/ElasticsearchIndex/MultilingualContentIndex.php
+index 2137364..f2efe2f 100644
+--- a/modules/elasticsearch_helper_content/src/Plugin/ElasticsearchIndex/MultilingualContentIndex.php
++++ b/modules/elasticsearch_helper_content/src/Plugin/ElasticsearchIndex/MultilingualContentIndex.php
+@@ -3,6 +3,7 @@
+ namespace Drupal\elasticsearch_helper_content\Plugin\ElasticsearchIndex;
+
+ use Drupal\Core\Language\LanguageManagerInterface;
++use Drupal\Core\Messenger\MessengerInterface;
+ use Drupal\elasticsearch_helper\ElasticsearchLanguageAnalyzer;
+ use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexBase;
+ use Elasticsearch\Client;
+@@ -29,10 +30,11 @@ abstract class MultilingualContentIndex extends ElasticsearchIndexBase {
+    * @param \Elasticsearch\Client $client
+    * @param \Symfony\Component\Serializer\Serializer $serializer
+    * @param \Psr\Log\LoggerInterface $logger
++   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+    * @param \Drupal\Core\Language\LanguageManagerInterface $languageManager
+    */
+-  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $client, Serializer $serializer, LoggerInterface $logger, LanguageManagerInterface $languageManager) {
+-    parent::__construct($configuration, $plugin_id, $plugin_definition, $client, $serializer, $logger);
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $client, Serializer $serializer, LoggerInterface $logger, MessengerInterface $messenger, LanguageManagerInterface $languageManager) {
++    parent::__construct($configuration, $plugin_id, $plugin_definition, $client, $serializer, $logger, $messenger);
+
+     $this->languageManager = $languageManager;
+   }
+@@ -52,6 +54,7 @@ abstract class MultilingualContentIndex extends ElasticsearchIndexBase {
+       $container->get('elasticsearch_helper.elasticsearch_client'),
+       $container->get('serializer'),
+       $container->get('logger.factory')->get('elasticsearch_helper'),
++      $container->get('messenger'),
+       $container->get('language_manager')
+     );
+   }
+diff --git a/modules/elasticsearch_helper_content/src/Plugin/Normalizer/ElasticsearchContentNormalizer.php b/modules/elasticsearch_helper_content/src/Plugin/Normalizer/ElasticsearchContentNormalizer.php
+index 3a4b353..a15fc5b 100644
+--- a/modules/elasticsearch_helper_content/src/Plugin/Normalizer/ElasticsearchContentNormalizer.php
++++ b/modules/elasticsearch_helper_content/src/Plugin/Normalizer/ElasticsearchContentNormalizer.php
+@@ -280,7 +280,7 @@ class ElasticsearchContentNormalizer extends ContentEntityNormalizer {
+     // @Todo Check what happens if $view_mode has no explicit settings.
+     //       (I.e. when "default" should be used => is this working automatically?)
+     /** @var \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display */
+-    $display = entity_get_display($entity->getEntityTypeId(), $entity->bundle(), $view_mode);
++    $display = \Drupal::service('entity_display.repository')->getViewDisplay($entity->getEntityTypeId(), $entity->bundle(), $view_mode);
+     $display_components = $display->getComponents();
+     uasort($display_components, function($a, $b) { return $a['weight'] - $b['weight']; });
+     $build = [];
+diff --git a/modules/elasticsearch_helper_instant/elasticsearch_helper_instant.info.yml b/modules/elasticsearch_helper_instant/elasticsearch_helper_instant.info.yml
+index e3ce72f..43f6fbe 100644
+--- a/modules/elasticsearch_helper_instant/elasticsearch_helper_instant.info.yml
++++ b/modules/elasticsearch_helper_instant/elasticsearch_helper_instant.info.yml
+@@ -1,7 +1,7 @@
+ name: Elasticsearch Helper Instant
+ type: module
+ description: Instant search functionality based on elasticssearch_helper_content.module.
+-core: 8.x
++core_version_requirement: ^8.8 || ^9 || ^10
+ package: ElasticSearch Helper
+ dependencies:
+   - elasticsearch_helper
+diff --git a/modules/elasticsearch_helper_views/elasticsearch_helper_views.info.yml b/modules/elasticsearch_helper_views/elasticsearch_helper_views.info.yml
+index a11ea5a..3d2501e 100644
+--- a/modules/elasticsearch_helper_views/elasticsearch_helper_views.info.yml
++++ b/modules/elasticsearch_helper_views/elasticsearch_helper_views.info.yml
+@@ -1,7 +1,7 @@
+ name: ElasticSearch Helper Views
+ type: module
+ description: Provides tools to integrate elasticsearch with Drupal Views.
+-core: 8.x
++core_version_requirement: ^8.8 || ^9 || ^10
+ package: ElasticSearch Helper
+ dependencies:
+   - elasticsearch_helper
+diff --git a/modules/elasticsearch_helper_views/src/Plugin/views/field/RenderedEntity.php b/modules/elasticsearch_helper_views/src/Plugin/views/field/RenderedEntity.php
+index 0cff55b..b6905e8 100644
+--- a/modules/elasticsearch_helper_views/src/Plugin/views/field/RenderedEntity.php
++++ b/modules/elasticsearch_helper_views/src/Plugin/views/field/RenderedEntity.php
+@@ -5,11 +5,12 @@ namespace Drupal\elasticsearch_helper_views\Plugin\views\field;
+ use Drupal\Component\Serialization\Yaml;
+ use Drupal\Core\Cache\CacheableDependencyInterface;
+ use Drupal\Core\Cache\CacheableMetadata;
++use Drupal\Core\DependencyInjection\DeprecatedServicePropertyTrait;
+ use Drupal\Core\Entity\ContentEntityInterface;
+ use Drupal\Core\Entity\ContentEntityTypeInterface;
+ use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
+ use Drupal\Core\Entity\EntityInterface;
+-use Drupal\Core\Entity\EntityManagerInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
+ use Drupal\Core\Form\FormStateInterface;
+ use Drupal\Core\Language\LanguageManagerInterface;
+ use Drupal\views\Entity\Render\EntityTranslationRenderTrait;
+@@ -28,9 +29,10 @@ use Drupal\Core\Cache\Cache;
+ class RenderedEntity extends FieldPluginBase implements CacheableDependencyInterface {
+
+   use EntityTranslationRenderTrait;
++  use DeprecatedServicePropertyTrait;
+
+-  /** @var \Drupal\Core\Entity\EntityManagerInterface $entityManager */
+-  protected $entityManager;
++  /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager */
++  protected $entityTypeManager;
+
+   /** @var \Drupal\Core\Language\LanguageManagerInterface $languageManager */
+   protected $languageManager;
+@@ -47,14 +49,14 @@ class RenderedEntity extends FieldPluginBase implements CacheableDependencyInter
+    * @param array $configuration
+    * @param string $plugin_id
+    * @param array $plugin_definition
+-   * @param \Drupal\Core\Entity\EntityManagerInterface $entity_manager
++   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
+    * @param \Drupal\Core\Entity\EntityDisplayRepositoryInterface $entity_display_repository
+    */
+-  public function __construct(array $configuration, $plugin_id, array $plugin_definition, EntityManagerInterface $entity_manager, LanguageManagerInterface $language_manager, EntityDisplayRepositoryInterface $entity_display_repository) {
++  public function __construct(array $configuration, $plugin_id, array $plugin_definition, EntityTypeManagerInterface $entity_type_manager, LanguageManagerInterface $language_manager, EntityDisplayRepositoryInterface $entity_display_repository) {
+     parent::__construct($configuration, $plugin_id, $plugin_definition);
+
+-    $this->entityManager = $entity_manager;
++    $this->entityTypeManager = $entity_type_manager;
+     $this->languageManager = $language_manager;
+     $this->entityDisplayRepository = $entity_display_repository;
+   }
+@@ -67,7 +69,7 @@ class RenderedEntity extends FieldPluginBase implements CacheableDependencyInter
+       $configuration,
+       $plugin_id,
+       $plugin_definition,
+-      $container->get('entity.manager'),
++      $container->get('entity_type.manager'),
+       $container->get('language_manager'),
+       $container->get('entity_display.repository')
+     );
+@@ -80,7 +82,7 @@ class RenderedEntity extends FieldPluginBase implements CacheableDependencyInter
+    */
+   protected function getContentEntityTypes() {
+     $entity_types = [];
+-    foreach ($this->entityManager->getDefinitions() as $entity_type) {
++    foreach ($this->entityTypeManager->getDefinitions() as $entity_type) {
+       // Filter out content entity types.
+       if ($entity_type instanceof ContentEntityTypeInterface) {
+         $entity_types[$entity_type->id()] = $entity_type->getLabel();
+@@ -188,7 +190,7 @@ class RenderedEntity extends FieldPluginBase implements CacheableDependencyInter
+         }
+
+         // Build entity view.
+-        $view_builder = $this->entityManager->getViewBuilder($entity_type);
++        $view_builder = $this->entityTypeManager->getViewBuilder($entity_type);
+         $build += $view_builder->view($entity, $view_mode);
+
+         // Add cache contexts to the build.
+@@ -254,7 +256,7 @@ class RenderedEntity extends FieldPluginBase implements CacheableDependencyInter
+    * {@inheritdoc}
+    */
+   public function getCacheTags() {
+-    $view_display_storage = $this->entityManager->getStorage('entity_view_display');
++    $view_display_storage = $this->entityTypeManager->getStorage('entity_view_display');
+     $view_displays = $view_display_storage->loadMultiple($view_display_storage
+       ->getQuery()
+       ->condition('targetEntityType', $this->getEntityTypeId())
+@@ -301,8 +303,8 @@ class RenderedEntity extends FieldPluginBase implements CacheableDependencyInter
+   /**
+    * {@inheritdoc}
+    */
+-  protected function getEntityManager() {
+-    return $this->entityManager;
++  protected function getEntityTypeManager() {
++    return $this->entityTypeManager;
+   }
+
+   /**
+diff --git a/src/Form/ElasticsearchHelperSettingsForm.php b/src/Form/ElasticsearchHelperSettingsForm.php
+index b004642..9be539d 100644
+--- a/src/Form/ElasticsearchHelperSettingsForm.php
++++ b/src/Form/ElasticsearchHelperSettingsForm.php
+@@ -72,7 +72,7 @@ class ElasticsearchHelperSettingsForm extends ConfigFormBase {
+     try {
+       $health = $this->client->cluster()->health();
+
+-      drupal_set_message($this->t('Connected to Elasticsearch'));
++      $this->messenger()->addMessage($this->t('Connected to Elasticsearch'));
+
+       $color_states = [
+         'green' => 'status',
+@@ -80,15 +80,15 @@ class ElasticsearchHelperSettingsForm extends ConfigFormBase {
+         'red' => 'error',
+       ];
+
+-      drupal_set_message($this->t('Elasticsearch cluster status is @status', [
++      $this->messenger()->addMessage($this->t('Elasticsearch cluster status is @status', [
+         '@status' => $health['status'],
+       ]), $color_states[$health['status']]);
+     }
+     catch (NoNodesAvailableException $e) {
+-      drupal_set_message($this->t('Could not connect to Elasticsearch'), 'error');
++      $this->messenger()->addError($this->t('Could not connect to Elasticsearch'));
+     }
+     catch (\Exception $e) {
+-      drupal_set_message($e->getMessage(), 'error');
++      $this->messenger()->addError($e->getMessage());
+     }
+
+     $form['scheme'] = [
+diff --git a/src/Plugin/ElasticsearchIndexBase.php b/src/Plugin/ElasticsearchIndexBase.php
+index cf7d46c..87a0646 100644
+--- a/src/Plugin/ElasticsearchIndexBase.php
++++ b/src/Plugin/ElasticsearchIndexBase.php
+@@ -4,6 +4,7 @@ namespace Drupal\elasticsearch_helper\Plugin;
+
+ use Drupal\Component\Plugin\PluginBase;
+ use Drupal\Core\Entity\EntityInterface;
++use Drupal\Core\Messenger\MessengerInterface;
+ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+ use Drupal\Core\StringTranslation\StringTranslationTrait;
+ use Elasticsearch\Client;
+@@ -41,6 +42,13 @@ abstract class ElasticsearchIndexBase extends PluginBase implements Elasticsearc
+    */
+   protected $placeholder_regex = '/{[_\-\w\d]*}/';
+
++  /**
++   * The Messenger service.
++   *
++   * @var \Drupal\Core\Messenger\MessengerInterface
++   */
++  protected $messenger;
++
+   /**
+    * ElasticsearchIndexBase constructor.
+    * @param array $configuration
+@@ -49,13 +57,15 @@ abstract class ElasticsearchIndexBase extends PluginBase implements Elasticsearc
+    * @param \Elasticsearch\Client $client
+    * @param \Symfony\Component\Serializer\Serializer $serializer
+    * @param \Psr\Log\LoggerInterface $logger
++   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+    */
+-  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $client, Serializer $serializer, LoggerInterface $logger) {
++  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $client, Serializer $serializer, LoggerInterface $logger, MessengerInterface $messenger) {
+     parent::__construct($configuration, $plugin_id, $plugin_definition);
+
+     $this->client = $client;
+     $this->serializer = $serializer;
+     $this->logger = $logger;
++    $this->messenger = $messenger;
+   }
+
+   /**
+@@ -72,7 +82,8 @@ abstract class ElasticsearchIndexBase extends PluginBase implements Elasticsearc
+       $plugin_definition,
+       $container->get('elasticsearch_helper.elasticsearch_client'),
+       $container->get('serializer'),
+-      $container->get('logger.factory')->get('elasticsearch_helper')
++      $container->get('logger.factory')->get('elasticsearch_helper'),
++      $container->get('messenger')
+     );
+   }
+
+@@ -119,7 +130,7 @@ abstract class ElasticsearchIndexBase extends PluginBase implements Elasticsearc
+       if ($indices = $this->client->indices()->get($params)) {
+         // Notify user that indices have been deleted.
+         foreach ($indices as $indexName => $index) {
+-          drupal_set_message($this->t('Index @indexName has been deleted.', ['@indexName' => $indexName]));
++          $this->messenger->addStatus($this->t('Index @indexName has been deleted.', ['@indexName' => $indexName]));
+         }
+
+         // Delete matching indices.
+@@ -127,7 +138,7 @@ abstract class ElasticsearchIndexBase extends PluginBase implements Elasticsearc
+       }
+     }
+     catch (Missing404Exception $e) {
+-      drupal_set_message($this->t('No Elasticsearch index matching @pattern could be dropped.', [
++      $this->messenger->addStatus($this->t('No Elasticsearch index matching @pattern could be dropped.', [
+         '@pattern' => $this->indexNamePattern(),
+       ]));
+     }
+diff --git a/tests/src/FunctionalJavascript/EntityOpsTest.php b/tests/src/FunctionalJavascript/EntityOpsTest.php
+index 03a9d3f..0cb16ad 100644
+--- a/tests/src/FunctionalJavascript/EntityOpsTest.php
++++ b/tests/src/FunctionalJavascript/EntityOpsTest.php
+@@ -3,14 +3,14 @@
+ namespace Drupal\Tests\elasticsearch_helper\FunctionalJavascript;
+
+ use Drupal\Core\Entity\ContentEntityInterface;
+-use Drupal\FunctionalJavascriptTests\JavascriptTestBase;
++use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
+
+ /**
+  * Test basic functionality.
+  *
+  * @group elasticsearch_helper
+  */
+-class EntityOpsTest extends JavascriptTestBase {
++class EntityOpsTest extends WebDriverTestBase {
+
+   /**
+    * {@inheritdoc}

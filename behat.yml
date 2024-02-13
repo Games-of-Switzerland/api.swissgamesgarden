@@ -25,7 +25,7 @@ default:
         - MarcOrtola\BehatSEOContexts\Context\SitemapContext
   extensions:
     Behat\MinkExtension:
-      goutte: ~
+      browserkit_http: ~
       selenium2:
         wd_host: http://browser:4444/wd/hub
       base_url: http://api.gos.test
