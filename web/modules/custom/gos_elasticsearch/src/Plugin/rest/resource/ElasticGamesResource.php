@@ -961,7 +961,7 @@ class ElasticGamesResource extends ElasticResourceBase {
                       'releases_over_time' => [
                         'date_histogram' => [
                           'field' => 'releases_years.year',
-                          'interval' => 'year',
+                          'calendar_interval' => 'year',
                           'format' => 'yyyy',
                         ],
                       ],
