@@ -11,7 +11,11 @@ Feature: Retrieve Autocomplete Wide (People, Studio & Games) items from Elastics
     Then the response body contains JSON:
       """
       {
-        "hits": {"total": 3}
+        "hits": {
+          "total": {
+            "value": 3
+          }
+        }
       }
       """
     Then the response body contains JSON:
@@ -53,7 +57,11 @@ Feature: Retrieve Autocomplete Wide (People, Studio & Games) items from Elastics
     Then the response body contains JSON:
       """
       {
-        "hits": {"total": 2}
+        "hits": {
+          "total": {
+            "value": 2
+          }
+        }
       }
       """
     Then the response body contains JSON:
