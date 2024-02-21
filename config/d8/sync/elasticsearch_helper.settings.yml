@@ -1,10 +1,12 @@
-_core:
-  default_config_hash: XaePNPgUhAo-rWyurXNMUEs_Wt69bIpaNRwTymvZwPQ
-elasticsearch_helper:
-  scheme: http
-  host: localhost
-  port: 9200
-  authentication: 0
-  user: ''
-  password: ''
-  defer_indexing: false
+scheme: http
+hosts:
+  -
+    host: localhost
+    port: '9200'
+authentication:
+  method: ''
+  configuration: {  }
+ssl:
+  certificate: ''
+  skip_verification: false
+defer_indexing: false

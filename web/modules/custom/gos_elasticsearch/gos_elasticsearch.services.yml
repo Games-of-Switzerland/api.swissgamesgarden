@@ -31,12 +31,12 @@ services:
 
   gos_elasticsearch.index.node_game:
     class: Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\GameNodeIndex
-    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory', '@messenger']
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory']
 
   gos_elasticsearch.index.node_people:
     class: Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\PeopleNodeIndex
-    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory', '@messenger']
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory']
 
   gos_elasticsearch.index.node_studios:
     class: Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\StudioNodeIndex
-    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory', '@messenger']
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@entity_type.manager', '@queue', '@logger.factory']

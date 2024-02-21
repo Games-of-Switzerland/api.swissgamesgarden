@@ -704,8 +704,6 @@ class ElasticGamesResource extends ElasticResourceBase {
    *
    * @return array
    *   The Elasticsearch skeleton query.
-   *
-   * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
    */
   private function buildBaseGamesElasticsearchQuery(GameNodeIndex $index, ElasticGamesResourceValidator $resource_validator): array {
     return [
