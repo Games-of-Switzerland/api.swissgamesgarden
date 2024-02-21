@@ -292,7 +292,7 @@ class GameNodeIndex extends NodeIndexBase {
       ->addProperty('releases_years', $releases_years)
       ->addProperty('studios', $studios)
       ->addProperty('genres', $genres)
-      ->addProperty('genres', $locations)
+      ->addProperty('locations', $locations)
       ->addProperty('cantons', $cantons)
       ->addProperty('stores', $stores)
       ->addProperty('people', $people)
