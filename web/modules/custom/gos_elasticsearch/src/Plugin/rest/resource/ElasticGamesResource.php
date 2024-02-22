@@ -302,7 +302,7 @@ class ElasticGamesResource extends ElasticResourceBase {
           $property => [
             [
               'order' => key($sort),
-              'nested_path' => 'releases',
+              'nested' => ['path' => 'releases'],
               'missing' => '_last',
             ],
           ],
