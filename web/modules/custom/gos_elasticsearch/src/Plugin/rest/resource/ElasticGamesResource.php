@@ -593,7 +593,11 @@ class ElasticGamesResource extends ElasticResourceBase {
         'query' => [
           'bool' => [
             'should' => [
-              ['term' => ['releases_years.year' => $year]],
+              [
+                'term' => [
+                  'releases_years.year' => ['value' => (string) $year],
+                ],
+              ],
             ],
           ],
         ],
