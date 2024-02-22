@@ -967,6 +967,7 @@ class ElasticGamesResource extends ElasticResourceBase {
                           'field' => 'releases_years.year',
                           'calendar_interval' => 'year',
                           'format' => 'yyyy',
+                          'missing' => '1900',
                         ],
                       ],
                     ],
