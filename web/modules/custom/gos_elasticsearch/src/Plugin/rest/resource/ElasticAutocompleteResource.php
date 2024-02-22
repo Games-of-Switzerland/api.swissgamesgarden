@@ -191,8 +191,9 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     }
 
     try {
+      /** @var \Elastic\Elasticsearch\Response\Elasticsearch $results */
       $results = $this->client->search($es_query);
-      $this->response->setData($results);
+      $this->response->setData($results->asArray());
     }
     catch (\Exception $exception) {
       return $this->buildElasticsearchErrorResponse($exception);
