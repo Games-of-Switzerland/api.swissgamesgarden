@@ -38,8 +38,8 @@ $config['cdn.settings']['status'] = false;
  *
  * @var string
  */
-$config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = 'elasticsearch';
-$config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = '9200';
+$config['elasticsearch_helper.settings']['hosts'][0]['host'] = 'elasticsearch';
+$config['elasticsearch_helper.settings']['hosts'][0]['port'] = '9200';
 
 /**
  * Base URL of the Next App.

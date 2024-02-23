@@ -109,8 +109,11 @@ services:
       context: .
     restart: unless-stopped
     environment:
+      - node.name=gos-es01
+      - cluster.initial_master_nodes=gos-es01
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
       - http.cors.enabled=true
       - http.cors.allow-origin=http://localhost:1358,http://127.0.0.1:1358
       - http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization

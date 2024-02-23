@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- upgrade drupal/elasticsearch_helper (dev-6.x 1443af5 => 8.1.0) - Games-of-Switzerland/swissgamesgarden#143
+
+### Added
+- add alias in Docker app container to run drush using ./vendor/bin/drush
 
 ## [1.0.0] - 2024-02-13
 ### Security
