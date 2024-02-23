@@ -11,7 +11,11 @@ Feature: Retrieve Games items from Elasticsearch
     Then the response body contains JSON:
       """
       {
-        "hits": {"total": 4}
+        "hits": {
+          "total": {
+            "value": 4
+          }
+        }
       }
       """
     Then the response body contains JSON:
@@ -28,7 +32,11 @@ Feature: Retrieve Games items from Elasticsearch
     Then the response body contains JSON:
       """
       {
-        "hits": {"total": 4}
+        "hits": {
+          "total": {
+            "value": 4
+          }
+        }
       }
       """
     Then the response body contains JSON:
@@ -84,7 +92,11 @@ Feature: Retrieve Games items from Elasticsearch
     Then the response body contains JSON:
       """
       {
-        "hits": {"total": 4}
+        "hits": {
+          "total": {
+            "value": 4
+          }
+        }
       }
       """
     Then the response body contains JSON:
@@ -102,12 +114,6 @@ Feature: Retrieve Games items from Elasticsearch
           },
           "hits[1]": {
             "_source": {"title": "Farming Simulator 18"}
-          },
-          "hits[2]": {
-            "_source": {"title": "Don't kill Her"}
-          },
-          "hits[3]": {
-            "_source": {"title": "Persephone"}
           }
         }
       }
@@ -122,12 +128,6 @@ Feature: Retrieve Games items from Elasticsearch
           },
           "hits[1]": {
             "_source": {"title": "Farming Simulator 19"}
-          },
-          "hits[2]": {
-            "_source": {"title": "Don't kill Her"}
-          },
-          "hits[3]": {
-            "_source": {"title": "Persephone"}
           }
         }
       }

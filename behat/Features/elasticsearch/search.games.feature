@@ -58,7 +58,11 @@ Feature: Retrieve Games items from Elasticsearch
     Then the response body contains JSON:
       """
       {
-        "hits": {"total": 4}
+        "hits": {
+          "total": {
+            "value": 4
+          }
+        }
       }
       """
     Then the response body contains JSON:
@@ -74,7 +78,10 @@ Feature: Retrieve Games items from Elasticsearch
       """
       {
         "hits": {
-          "total": "@variableType(integer)",
+          "total": {
+            "value": "@variableType(integer)",
+            "relation": "eq"
+          },
           "max_score": "@variableType(integer)",
           "hits": [
             {

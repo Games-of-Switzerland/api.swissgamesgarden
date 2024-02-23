@@ -15,6 +15,10 @@ ARG NEW_RELIC_DAEMON_ADDRESS
 ADD --chown=${user}:${group} ./docker/newrelic.sh ./docker/newrelic.sh
 RUN ./docker/newrelic.sh
 
+# Create an alias of Drush to run it from root directory.
+RUN echo "alias drush='./vendor/bin/drush'" >> ~/.bash_aliases \
+    source ~/.bash_aliases;
+
 # Feel free to disable those lines to use Xdebug on your side.
 #RUN mkdir -p /usr/src/php/ext/xdebug && \
 #    pecl install xdebug && \

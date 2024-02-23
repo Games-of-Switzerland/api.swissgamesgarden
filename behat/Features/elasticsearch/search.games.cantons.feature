@@ -26,7 +26,7 @@
       """
 
     Scenario: Games Resource should respond with filtered games when multiple valid cantons slugs are given.
-      When I request "http://api.gos.test/search/games?page=0&cantons[]=geneva&cantons[]=vaud"
+      When I request "http://api.gos.test/search/games?page=0&cantons[]=geneva&cantons[]=vaud&sort[asc]=title.keyword"
       Then the response code is 200
       And the "Content-Type" response header is "application/json"
       Then the response body contains JSON:

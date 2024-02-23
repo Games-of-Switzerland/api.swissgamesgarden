@@ -7,7 +7,7 @@ use Drupal\Core\Cache\CacheableJsonResponse;
 use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\elasticsearch_helper\Plugin\ElasticsearchIndexManager;
 use Drupal\gos_rest\Plugin\rest\ValidatorFactory;
-use Elasticsearch\Client;
+use Elastic\Elasticsearch\Client;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -37,7 +37,7 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
   /**
    * The Elasticsearch client.
    *
-   * @var \Elasticsearch\Client
+   * @var \Elastic\Elasticsearch\Client
    */
   protected $client;
 
@@ -191,8 +191,9 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     }
 
     try {
+      /** @var \Elastic\Elasticsearch\Response\Elasticsearch $results */
       $results = $this->client->search($es_query);
-      $this->response->setData($results);
+      $this->response->setData($results->asArray());
     }
     catch (\Exception $exception) {
       return $this->buildElasticsearchErrorResponse($exception);

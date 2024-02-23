@@ -31,12 +31,12 @@ $settings['gos_elasticsearch.index_prefix'] = 'test';
 $config['cdn.settings']['status'] = false;
 
 /**
- * The elasticsearch host port number.
+ * The elasticsearch host.
  *
  * @var string
  */
-$config['elasticsearch_helper.settings']['elasticsearch_helper']['port'] = '9200';
-$config['elasticsearch_helper.settings']['elasticsearch_helper']['host'] = 'elasticsearch';
+$config['elasticsearch_helper.settings']['hosts'][0]['host'] = 'elasticsearch';
+$config['elasticsearch_helper.settings']['hosts'][0]['port'] = '9200';
 
 /**
  * Base URL of the Next App.
