@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - enable CKeditor 5 to replace CKeditor 4
 - fix obsolete docker-compose command
 
+### Security
+- upgrade from PHP 8.1 -> 8.2
+
 ## [1.1.0] - 2024-02-23
 ### Changed
 - upgrade drupal/elasticsearch_helper (dev-6.x 1443af5 => 8.1.0) - Games-of-Switzerland/swissgamesgarden#143
