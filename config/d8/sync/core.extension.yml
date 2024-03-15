@@ -15,6 +15,7 @@ module:
   cdn: 0
   cdn_ui: 0
   ckeditor: 0
+  ckeditor5: 0
   config: 0
   consumer_image_styles: 0
   consumers: 0
