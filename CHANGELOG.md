@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/upgrade_status (4.1.0 => 4.3.5)
 - update drupal/default_content (2.0.0-alpha2 => 2.0.0-alpha3)
 - update drupal/hal (2.0.2 => 2.0.3)
+- update drupal/aggregator (2.2.0 => 2.2.2)
 
 ## [1.1.0] - 2024-02-23
 ### Changed
