@@ -1332,26 +1332,27 @@
         },
         {
             "name": "drupal/cdn",
-            "version": "4.0.2",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/cdn.git",
-                "reference": "4.0.2"
+                "reference": "4.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/cdn-4.0.2.zip",
-                "reference": "4.0.2",
-                "shasum": "1ce03cafb90d9505785e56fb050c0862a162c0ce"
+                "url": "https://ftp.drupal.org/files/projects/cdn-4.1.0.zip",
+                "reference": "4.1.0",
+                "shasum": "8954639a23531a2a24bcd27c6567035d63b40c96"
             },
             "require": {
-                "drupal/core": "^9.4 || ^10"
+                "drupal/core": "^9.4 || ^10",
+                "php": ">=8.1"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.0.2",
-                    "datestamp": "1704289294",
+                    "version": "4.1.0",
+                    "datestamp": "1714643594",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1360,18 +1361,19 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
                     "name": "Wim Leers",
-                    "homepage": "https://www.drupal.org/user/99777"
+                    "homepage": "https://wimleers.com"
                 }
             ],
             "description": "Serves files (CSS, JS, images …) from a CDN.",
             "homepage": "https://www.drupal.org/project/cdn",
             "support": {
-                "source": "https://git.drupalcode.org/project/cdn"
+                "source": "https://git.drupalcode.org/project/cdn",
+                "issues": "https://www.drupal.org/project/issues/cdn"
             }
         },
         {
@@ -1518,26 +1520,26 @@
         },
         {
             "name": "drupal/consumers",
-            "version": "1.17.0",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/consumers.git",
-                "reference": "8.x-1.17"
+                "reference": "8.x-1.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/consumers-8.x-1.17.zip",
-                "reference": "8.x-1.17",
-                "shasum": "8e7efc2c8386ead8ca459a1a5e0558fb66cde142"
+                "url": "https://ftp.drupal.org/files/projects/consumers-8.x-1.19.zip",
+                "reference": "8.x-1.19",
+                "shasum": "3af0f9866524c40e78924343c319720e1d17c2ef"
             },
             "require": {
-                "drupal/core": "^8 || ^9 || ^10"
+                "drupal/core": "^9.5 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.17",
-                    "datestamp": "1679920063",
+                    "version": "8.x-1.19",
+                    "datestamp": "1721753030",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1546,7 +1548,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
@@ -1558,7 +1560,7 @@
                     "homepage": "https://www.drupal.org/user/79230"
                 }
             ],
-            "description": "Declare all the consumers of your API",
+            "description": "Declare all the consumers of your API.",
             "homepage": "https://www.drupal.org/project/consumers",
             "support": {
                 "source": "https://git.drupalcode.org/project/consumers"
@@ -2719,17 +2721,17 @@
         },
         {
             "name": "drupal/jsonapi_extras",
-            "version": "3.24.0",
+            "version": "3.25.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/jsonapi_extras.git",
-                "reference": "8.x-3.24"
+                "reference": "8.x-3.25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/jsonapi_extras-8.x-3.24.zip",
-                "reference": "8.x-3.24",
-                "shasum": "5031650d17b62f5da5586d3a2c551ac071dbd294"
+                "url": "https://ftp.drupal.org/files/projects/jsonapi_extras-8.x-3.25.zip",
+                "reference": "8.x-3.25",
+                "shasum": "ba557127ca560dbf3fae68f76c7720137857f167"
             },
             "require": {
                 "drupal/core": "^9.2 || ^10",
@@ -2738,8 +2740,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.24",
-                    "datestamp": "1694442796",
+                    "version": "8.x-3.25",
+                    "datestamp": "1717340217",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3160,26 +3162,26 @@
         },
         {
             "name": "drupal/restui",
-            "version": "1.21.0",
+            "version": "1.22.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/restui.git",
-                "reference": "8.x-1.21"
+                "reference": "8.x-1.22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/restui-8.x-1.21.zip",
-                "reference": "8.x-1.21",
-                "shasum": "2a67dc2c1953dced0bddaff25e5c60784ee0178c"
+                "url": "https://ftp.drupal.org/files/projects/restui-8.x-1.22.zip",
+                "reference": "8.x-1.22",
+                "shasum": "7c9fb14c574f8a4090b77b1bcbc5be141409a383"
             },
             "require": {
-                "drupal/core": "^8.7.7 || ^9 || ^10"
+                "drupal/core": "^9.5 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.21",
-                    "datestamp": "1659086914",
+                    "version": "8.x-1.22",
+                    "datestamp": "1721134189",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3204,8 +3206,12 @@
                     "homepage": "https://www.drupal.org/user/682736"
                 },
                 {
-                    "name": "klausi",
-                    "homepage": "https://www.drupal.org/user/262198"
+                    "name": "kamkejj",
+                    "homepage": "https://www.drupal.org/user/81043"
+                },
+                {
+                    "name": "vipin.mittal18",
+                    "homepage": "https://www.drupal.org/user/319716"
                 }
             ],
             "description": "Provides a user interface to manage REST resources.",

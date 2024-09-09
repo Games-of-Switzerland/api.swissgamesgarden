@@ -28,6 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/aggregator (2.2.0 => 2.2.2)
 - update drupal/pathauto (1.12.0 => 1.13.0)
 - update drupal/focal_point (2.0.2 => 2.1.1)
+- update drupal/cdn (4.0.2 => 4.1.0)
+- update drupal/consumers (1.17.0 => 1.19.0)
+- update drupal/jsonapi_extras (3.24.0 => 3.25.0)
+- update drupal/restui (1.21.0 => 1.22.0)
 
 ### Removed
 - remove dependency on drupal/aggregator

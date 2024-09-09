@@ -130,9 +130,6 @@
             "drupal/metatag": {
                 "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2023-11-30/metatag-n2945817-186.patch",
                 "[3363582] - Resolve problems with field serialization changes": "https://www.drupal.org/files/issues/2023-05-30/metatag-n3363582-2.patch"
-            },
-            "drupal/restui": {
-                "[3310517] - PHP Fatal error: Declaration of RestUITest::setUp() must be compatible with BrowserTestBase::setUp(): void": "https://git.drupalcode.org/project/restui/-/merge_requests/2.patch"
             }
         },
         "autoload-drupal": {
