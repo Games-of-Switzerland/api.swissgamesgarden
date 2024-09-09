@@ -12,5 +12,5 @@ Feature: Login
     When I fill in "edit-name" with "Batman"
     Then I fill in "edit-pass" with "RobinMyLove"
     And I press "edit-submit"
-    And I should see "Unrecognized username or password. Forgot your password?" in the "div[role=alert]" element
+    And I should see "Unrecognized username or password. Forgot your password?" in the "div[role=contentinfo]" element
     And the response status code should be 200
