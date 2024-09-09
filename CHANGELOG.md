@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/field_group (3.4.0 => 3.6.0)
 - update drupal/gin (3.0.0-rc9 => 3.0.0-rc13)
 - update drupal/gin_login (2.0.3 => 2.1.3)
+- update drupal/upgrade_status (4.1.0 => 4.3.5)
 
 ## [1.1.0] - 2024-02-23
 ### Changed
