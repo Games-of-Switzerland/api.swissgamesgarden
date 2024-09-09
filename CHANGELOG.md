@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/consumers (1.17.0 => 1.19.0)
 - update drupal/jsonapi_extras (3.24.0 => 3.25.0)
 - update drupal/restui (1.21.0 => 1.22.0)
+- update drupal/simple_sitemap (4.1.8 => 4.2.1)
 
 ### Removed
 - remove dependency on drupal/aggregator
