@@ -9051,23 +9051,23 @@
     "packages-dev": [
         {
             "name": "alexandresalome/mailcatcher",
-            "version": "v1.4.0",
+            "version": "v1.4.1",
             "target-dir": "Alex/MailCatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alexandresalome/mailcatcher.git",
-                "reference": "0f35c25df319600ec7d97d1b0c27fce13b3f81d8"
+                "reference": "90ee943e91021a065f8ff9ed8e3f7b7d8ae7256d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alexandresalome/mailcatcher/zipball/0f35c25df319600ec7d97d1b0c27fce13b3f81d8",
-                "reference": "0f35c25df319600ec7d97d1b0c27fce13b3f81d8",
+                "url": "https://api.github.com/repos/alexandresalome/mailcatcher/zipball/90ee943e91021a065f8ff9ed8e3f7b7d8ae7256d",
+                "reference": "90ee943e91021a065f8ff9ed8e3f7b7d8ae7256d",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=5.3.3",
-                "symfony/dom-crawler": "~2.3 || ~3.0 || ~4.0 || ~5.0 || ~6.0"
+                "symfony/dom-crawler": "~2.3 || ~3.0 || ~4.0 || ~5.0 || ~6.0 || ~7.0"
             },
             "require-dev": {
                 "behat/behat": "~3.0",
@@ -9087,9 +9087,9 @@
             "description": "A library to access MailCatcher",
             "support": {
                 "issues": "https://github.com/alexandresalome/mailcatcher/issues",
-                "source": "https://github.com/alexandresalome/mailcatcher/tree/v1.4.0"
+                "source": "https://github.com/alexandresalome/mailcatcher/tree/v1.4.1"
             },
-            "time": "2022-04-13T06:48:46+00:00"
+            "time": "2024-03-29T15:42:38+00:00"
         },
         {
             "name": "beberlei/assert",
