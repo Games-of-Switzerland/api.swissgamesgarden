@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
 
   # Drupal app server
@@ -79,9 +77,8 @@ services:
   newrelic-apm-daemon:
     image: newrelic/php-daemon:9.13.0
 
-  # Test browser
   browser:
-    image: selenium/standalone-chrome
+    image: seleniarm/standalone-chromium
     volumes:
       - /dev/shm:/dev/shm
 
