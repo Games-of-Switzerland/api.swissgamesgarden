@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/hal (2.0.2 => 2.0.3)
 - update drupal/aggregator (2.2.0 => 2.2.2)
 - update drupal/pathauto (1.12.0 => 1.13.0)
+- update drupal/focal_point (2.0.2 => 2.1.1)
 
 ## [1.1.0] - 2024-02-23
 ### Changed
