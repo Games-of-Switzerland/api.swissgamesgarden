@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update composer/installers (v2.2.0 => v2.3.0)
 - update phpspec/prophecy-phpunit (v2.1.0 => v2.2.0)
 - update mglaman/phpstan-drupal (1.2.6 => 1.2.12)
+- update drush/drush (12.4.3 => 12.5.3)
 
 ## [1.1.0] - 2024-02-23
 ### Changed
