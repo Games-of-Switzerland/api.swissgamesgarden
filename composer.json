@@ -67,10 +67,11 @@
     "require-dev": {
         "alexandresalome/mailcatcher": "^1.2",
         "behat/behat": "^3.5",
-        "drupal/aggregator": "^2.2",
+        "drupal/aggregator": "2.0.0",
         "drupal/core-dev": "^10.0",
         "drupal/default_content": "^2.0",
         "drupal/drupal-extension": "^5.0",
+        "drupal/feeds": "^3.0@RC",
         "drupal/rdf": "^2.1",
         "drupal/upgrade_status": "^4.0",
         "imbo/behat-api-extension": "^2.2",
@@ -129,9 +130,6 @@
             "drupal/metatag": {
                 "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2023-11-30/metatag-n2945817-186.patch",
                 "[3363582] - Resolve problems with field serialization changes": "https://www.drupal.org/files/issues/2023-05-30/metatag-n3363582-2.patch"
-            },
-            "drupal/restui": {
-                "[3310517] - PHP Fatal error: Declaration of RestUITest::setUp() must be compatible with BrowserTestBase::setUp(): void": "https://git.drupalcode.org/project/restui/-/merge_requests/2.patch"
             }
         },
         "autoload-drupal": {

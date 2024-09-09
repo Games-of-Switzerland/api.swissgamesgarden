@@ -3,3 +3,4 @@ _core:
 path_prefix: G70VW4Y9sP/jsonapi
 include_count: false
 default_disabled: false
+validate_configuration_integrity: false
