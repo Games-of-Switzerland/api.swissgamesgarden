@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - enable CKeditor 5 to replace CKeditor 4
+- fix obsolete docker-compose command
 
 ## [1.1.0] - 2024-02-23
 ### Changed
