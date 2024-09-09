@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - upgrade from PHP 8.1 -> 8.2
 - upgrade module drupal/upgrade_status (4.0.0 => 4.1.0)
+- update composer/installers (v2.2.0 => v2.3.0)
+- update phpspec/prophecy-phpunit (v2.1.0 => v2.2.0)
+- update mglaman/phpstan-drupal (1.2.6 => 1.2.12)
 
 ## [1.1.0] - 2024-02-23
 ### Changed
