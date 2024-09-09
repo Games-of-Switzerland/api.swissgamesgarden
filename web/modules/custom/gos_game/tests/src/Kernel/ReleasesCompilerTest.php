@@ -222,20 +222,6 @@ final class ReleasesCompilerTest extends KernelTestBase {
   public function testNormalizeReleases(): void {
     $platforms_by_years = ReleasesCompiler::normalizeReleases($this->testGame);
     self::assertSame([
-      'na' => [
-        'year' => NULL,
-        'platforms' => [
-          5 => [
-            'name' => 'gameboy',
-            'tid' => 5,
-            'date' => NULL,
-            'state' => 'development',
-          ],
-        ],
-        'states' => [
-          'development' => 'development',
-        ],
-      ],
       1989 => [
         'year' => '1989',
         'platforms' => [
@@ -298,6 +284,20 @@ final class ReleasesCompilerTest extends KernelTestBase {
         'year' => '2009',
         'platforms' => [],
         'states' => ['canceled' => 'canceled'],
+      ],
+      'na' => [
+        'year' => NULL,
+        'platforms' => [
+          5 => [
+            'name' => 'gameboy',
+            'tid' => 5,
+            'date' => NULL,
+            'state' => 'development',
+          ],
+        ],
+        'states' => [
+          'development' => 'development',
+        ],
       ],
     ], $platforms_by_years);
   }
