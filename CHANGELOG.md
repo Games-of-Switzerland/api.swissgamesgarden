@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update mglaman/phpstan-drupal (1.2.6 => 1.2.12)
 - update drush/drush (12.4.3 => 12.5.3)
 - update alexandresalome/mailcatcher (v1.4.0 => v1.4.1)
+- update drupal/webp (1.0.0-rc1 => 1.0.0-rc2)
 
 ## [1.1.0] - 2024-02-23
 ### Changed
