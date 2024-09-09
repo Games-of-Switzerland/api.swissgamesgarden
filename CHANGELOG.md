@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/gin (3.0.0-rc9 => 3.0.0-rc13)
 - update drupal/gin_login (2.0.3 => 2.1.3)
 - update drupal/upgrade_status (4.1.0 => 4.3.5)
+- update drupal/default_content (2.0.0-alpha2 => 2.0.0-alpha3)
+- update drupal/hal (2.0.2 => 2.0.3)
 
 ## [1.1.0] - 2024-02-23
 ### Changed
