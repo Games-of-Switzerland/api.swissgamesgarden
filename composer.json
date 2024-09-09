@@ -67,10 +67,11 @@
     "require-dev": {
         "alexandresalome/mailcatcher": "^1.2",
         "behat/behat": "^3.5",
-        "drupal/aggregator": "^2.2",
+        "drupal/aggregator": "2.0.0",
         "drupal/core-dev": "^10.0",
         "drupal/default_content": "^2.0",
         "drupal/drupal-extension": "^5.0",
+        "drupal/feeds": "^3.0@RC",
         "drupal/rdf": "^2.1",
         "drupal/upgrade_status": "^4.0",
         "imbo/behat-api-extension": "^2.2",
