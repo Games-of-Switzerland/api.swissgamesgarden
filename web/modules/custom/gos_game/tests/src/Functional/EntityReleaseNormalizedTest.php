@@ -32,7 +32,7 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['taxonomy', 'filter', 'gos_site', 'gos_game'];
+  protected static $modules = ['taxonomy', 'filter', 'gos_site', 'gos_game'];
 
   /**
    * Whether the Release field has been added to the Test Entity.

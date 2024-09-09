@@ -27,7 +27,7 @@ final class ReleasesCompilerTest extends KernelTestBase {
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'system',
     'node',
     'taxonomy',
