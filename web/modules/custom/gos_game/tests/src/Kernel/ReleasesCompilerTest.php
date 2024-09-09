@@ -6,7 +6,7 @@ use Drupal\gos_game\ReleasesCompiler;
 use Drupal\gos_test\Traits\NodeTestTrait;
 use Drupal\gos_test\Traits\TaxonomyTestTrait;
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
+use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
 
 /**
  * @coversDefaultClass \Drupal\gos_game\ReleasesCompiler
@@ -20,7 +20,7 @@ use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
  */
 final class ReleasesCompilerTest extends KernelTestBase {
 
-  use EntityReferenceTestTrait;
+  use EntityReferenceFieldCreationTrait;
   use NodeTestTrait;
   use TaxonomyTestTrait;
 
