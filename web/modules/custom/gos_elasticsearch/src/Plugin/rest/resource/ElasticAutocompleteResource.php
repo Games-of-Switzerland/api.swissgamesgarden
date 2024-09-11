@@ -191,7 +191,11 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     }
 
     try {
-      /** @var \Elastic\Elasticsearch\Response\Elasticsearch $results */
+      /**
+       * @var \Elastic\Elasticsearch\Response\Elasticsearch $results
+       *
+       * @psalm-suppress InvalidArgument
+       */
       $results = $this->client->search($es_query);
       $this->response->setData($results->asArray());
     }

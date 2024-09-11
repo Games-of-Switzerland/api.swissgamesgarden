@@ -20,6 +20,8 @@ class GameNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @psalm-suppress UnusedForeachValue
    */
   public function setup(): void {
     // Create one index per language, so that we can have different analyzers.
@@ -27,7 +29,11 @@ class GameNodeIndex extends NodeIndexBase {
       // Get index name.
       $index_name = $this->getIndexName(['langcode' => $langcode]);
 
-      /** @var \Elastic\Elasticsearch\Response\Elasticsearch $exists_response */
+      /**
+       * @var \Elastic\Elasticsearch\Response\Elasticsearch $exists_response
+       *
+       * @psalm-suppress InvalidArgument
+       */
       $exists_response = $this->client->indices()->exists(['index' => $index_name]);
 
       // Check if index exists.
@@ -35,7 +41,7 @@ class GameNodeIndex extends NodeIndexBase {
         // Get index definition.
         $index_definition = $this->getIndexDefinition(['langcode' => $langcode]);
 
-        if (!$index_definition) {
+        if ($index_definition === NULL) {
           return;
         }
 
@@ -79,7 +85,7 @@ class GameNodeIndex extends NodeIndexBase {
     // Get index definition.
     $index_definition = parent::getIndexDefinition($context);
 
-    if (!$index_definition) {
+    if ($index_definition === NULL) {
       return NULL;
     }
 

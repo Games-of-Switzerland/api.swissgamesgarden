@@ -107,6 +107,10 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @psalm-suppress InvalidReturnType
+   * @psalm-suppress InvalidReturnStatement
+   * @psalm-suppress ArgumentTypeCoercion
    */
   public function indexNamePattern() {
     if (!$this->settings::get(self::SETTINGS_INDEX_PREFIX)) {

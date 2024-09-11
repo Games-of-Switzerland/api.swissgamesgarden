@@ -44,7 +44,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
     $route_name = $this->routeMatch->getRouteName();
 
     if ($route_name === 'entity.taxonomy_term.canonical' && $taxonomy_term->bundle() === 'canton') {
-      $response = $this->shutdownCanonicalTaxonomyTermAccess($event);
+      $response = $this->shutdownCanonicalTaxonomyTermAccess();
       $event->setResponse($response);
     }
   }
@@ -63,7 +63,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
     $route_name = $this->routeMatch->getRouteName();
 
     if ($route_name === 'entity.taxonomy_term.canonical' && $taxonomy_term->bundle() === 'genre') {
-      $response = $this->shutdownCanonicalTaxonomyTermAccess($event);
+      $response = $this->shutdownCanonicalTaxonomyTermAccess();
       $event->setResponse($response);
     }
   }
@@ -82,7 +82,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
     $route_name = $this->routeMatch->getRouteName();
 
     if ($route_name === 'entity.taxonomy_term.canonical' && $taxonomy_term->bundle() === 'language') {
-      $response = $this->shutdownCanonicalTaxonomyTermAccess($event);
+      $response = $this->shutdownCanonicalTaxonomyTermAccess();
       $event->setResponse($response);
     }
   }
@@ -101,7 +101,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
     $route_name = $this->routeMatch->getRouteName();
 
     if ($route_name === 'entity.taxonomy_term.canonical' && $taxonomy_term->bundle() === 'location') {
-      $response = $this->shutdownCanonicalTaxonomyTermAccess($event);
+      $response = $this->shutdownCanonicalTaxonomyTermAccess();
       $event->setResponse($response);
     }
   }
@@ -120,7 +120,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
     $route_name = $this->routeMatch->getRouteName();
 
     if ($route_name === 'entity.taxonomy_term.canonical' && $taxonomy_term->bundle() === 'platform') {
-      $response = $this->shutdownCanonicalTaxonomyTermAccess($event);
+      $response = $this->shutdownCanonicalTaxonomyTermAccess();
       $event->setResponse($response);
     }
   }
@@ -139,7 +139,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
     $route_name = $this->routeMatch->getRouteName();
 
     if ($route_name === 'entity.taxonomy_term.canonical' && $taxonomy_term->bundle() === 'publisher') {
-      $response = $this->shutdownCanonicalTaxonomyTermAccess($event);
+      $response = $this->shutdownCanonicalTaxonomyTermAccess();
       $event->setResponse($response);
     }
   }
@@ -158,7 +158,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
     $route_name = $this->routeMatch->getRouteName();
 
     if ($route_name === 'entity.taxonomy_term.canonical' && $taxonomy_term->bundle() === 'sponsor') {
-      $response = $this->shutdownCanonicalTaxonomyTermAccess($event);
+      $response = $this->shutdownCanonicalTaxonomyTermAccess();
       $event->setResponse($response);
     }
   }
@@ -166,17 +166,15 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * Shutdown Taxonomy Canonical Access by redirecting to Frontpage.
    *
-   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
-   *   A response for a request.
-   *
    * @return \Drupal\Core\Routing\CacheableSecuredRedirectResponse
    *   The response with cacheability destination.
    *
    * @psalm-suppress PossiblyInvalidArgument
    */
-  private function shutdownCanonicalTaxonomyTermAccess(RequestEvent $event): CacheableSecuredRedirectResponse {
+  private function shutdownCanonicalTaxonomyTermAccess(): CacheableSecuredRedirectResponse {
     /** @var \Drupal\Core\Entity\ContentEntityBase $taxonomy_term */
     $taxonomy_term = $this->routeMatch->getParameter('taxonomy_term');
+    /** @var string $dest */
     $dest = Url::fromRoute('<front>')->toString();
 
     return $this->buildRedirection($dest, $taxonomy_term);

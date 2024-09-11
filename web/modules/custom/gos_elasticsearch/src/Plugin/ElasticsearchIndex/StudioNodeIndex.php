@@ -20,6 +20,8 @@ class StudioNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @psalm-suppress UnusedForeachValue
    */
   public function setup(): void {
     // Create one index per language, so that we can have different analyzers.
@@ -27,7 +29,11 @@ class StudioNodeIndex extends NodeIndexBase {
       // Get index name.
       $index_name = $this->getIndexName(['langcode' => $langcode]);
 
-      /** @var \Elastic\Elasticsearch\Response\Elasticsearch $exists_response */
+      /**
+       * @var \Elastic\Elasticsearch\Response\Elasticsearch $exists_response
+       *
+       * @psalm-suppress InvalidArgument
+       */
       $exists_response = $this->client->indices()->exists(['index' => $index_name]);
 
       // Check if index exists.
@@ -35,13 +41,9 @@ class StudioNodeIndex extends NodeIndexBase {
         // Get index definition.
         $index_definition = $this->getIndexDefinition(['langcode' => $langcode]);
 
-        if (!$index_definition) {
+        if ($index_definition === NULL) {
           return;
         }
-
-        // Add specific properties per index's language using specific analyzer
-        // per-language.
-        $index_definition->getMappingDefinition();
 
         $this->createIndex($index_name, $index_definition);
 
@@ -68,7 +70,7 @@ class StudioNodeIndex extends NodeIndexBase {
     // Get index definition.
     $index_definition = parent::getIndexDefinition($context);
 
-    if (!$index_definition) {
+    if ($index_definition === NULL) {
       return NULL;
     }
 

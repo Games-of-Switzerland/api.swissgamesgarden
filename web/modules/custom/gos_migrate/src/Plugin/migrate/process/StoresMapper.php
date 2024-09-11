@@ -120,7 +120,7 @@ class StoresMapper extends ProcessPluginBase {
     $value = (string) $value;
     $store_structure = $this->lookupMappedStore($value);
 
-    if ($get_keyname && isset($store_structure[$get_keyname])) {
+    if ($get_keyname !== NULL && isset($store_structure[$get_keyname])) {
       return $store_structure[$get_keyname];
     }
 

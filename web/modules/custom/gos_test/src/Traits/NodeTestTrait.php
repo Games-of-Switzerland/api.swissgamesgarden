@@ -99,7 +99,7 @@ trait NodeTestTrait {
    *   The newly created node type.
    */
   public function createNodeType($type = NULL) {
-    if (!$type) {
+    if ($type === NULL) {
       $type = mb_strtolower($this->randomMachineName());
     }
 

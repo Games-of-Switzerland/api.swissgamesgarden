@@ -62,7 +62,7 @@ class ContextualLinksMapper extends ProcessPluginBase {
 
       $value = $row->getSourceProperty($field);
 
-      if (empty($value)) {
+      if ($value === NULL || $value === '') {
         continue;
       }
 

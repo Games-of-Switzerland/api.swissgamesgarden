@@ -166,7 +166,7 @@ class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPl
       }
     }
     // Check if local file exists and use exif on local path.
-    elseif (file_exists($path) || !exif_imagetype($path)) {
+    elseif (file_exists($path) || exif_imagetype($path) === FALSE) {
       return FALSE;
     }
 
