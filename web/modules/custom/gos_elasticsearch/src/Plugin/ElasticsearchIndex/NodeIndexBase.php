@@ -115,7 +115,8 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
 
     // Always specify the placeholder `index_prefix`.
     $index_prefix = $this->settings::get(self::SETTINGS_INDEX_PREFIX);
-    $index_name = str_replace('{index_prefix}', $index_prefix, $this->pluginDefinition['indexName']);
+    $infos = (array) $this->pluginDefinition;
+    $index_name = str_replace('{index_prefix}', $index_prefix, $infos['indexName']);
 
     return preg_replace($this->placeholder_regex, '*', $index_name);
   }
