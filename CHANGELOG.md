@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.2.0] - 2024-09-11
 ### Added
 - add SIMPLETEST_IGNORE_DIRECTORIES to phpunit.xml.dist
 
@@ -289,7 +291,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.2...1.0.0
