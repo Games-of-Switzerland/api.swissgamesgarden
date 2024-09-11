@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - fix psalm UndefinedInterfaceMethod pluginDefinition
+- fix Admin UI Content Views Actions Buttons list
 
 ## [1.1.1] - 2024-09-11
 ### Removed

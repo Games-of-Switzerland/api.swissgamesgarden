@@ -265,13 +265,13 @@ display:
       pager:
         type: full
         options:
+          pagination_heading_level: h4
           items_per_page: 50
           tags:
             next: 'Next ›'
             previous: '‹ Previous'
             first: '« First'
             last: 'Last »'
-          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -1038,7 +1038,7 @@ display:
           admin_label: Actions
           plugin_id: text_custom
           empty: false
-          content: "<ul class=\"views-tabs\">\r\n  <li><a href=\"/node/add/game\" class=\"button button-action button--primary button--small\">Add game</a></li>\r\n  <li><a href=\"/node/add/studio\" class=\"button button-action button--primary button--small\">Add studio</a></li>\r\n  <li><a href=\"/node/add/people\" class=\"button button-action button--primary button--small\">Add people</a></li>\r\n</ul>"
+          content: "<ul class=\"local-actions\">\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/game\" class=\"button button-action button--primary button--small\">Add game</a></li>\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/studio\" class=\"button button-action button--primary button--small\">Add studio</a></li>\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/people\" class=\"button button-action button--primary button--small\">Add people</a></li>\r\n</ul>"
           tokenize: false
       display_extenders:
         views_ef_fieldset:
@@ -2161,8 +2161,8 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          handler: 'default:node'
           widget: autocomplete
+          handler: 'default:node'
           handler_settings:
             target_bundles:
               studio: studio
@@ -2513,7 +2513,7 @@ display:
           admin_label: Actions
           plugin_id: text_custom
           empty: false
-          content: "<ul class=\"views-tabs\">\r\n  <li><a href=\"/node/add/game\" class=\"button button-action button--primary button--small\">Add game</a></li>\r\n  <li><a href=\"/node/add/studio\" class=\"button button-action button--primary button--small\">Add studio</a></li>\r\n  <li><a href=\"/node/add/people\" class=\"button button-action button--primary button--small\">Add people</a></li>\r\n  <li><a href=\"/admin/structure/taxonomy/manage/genre/add\" class=\"button button-action button--primary button--small\">Add genre</a></li>\r\n  <li><a href=\"/admin/structure/taxonomy/manage/platform/add\" class=\"button button-action button--primary button--small\">Add platform</a></li>\r\n</ul>"
+          content: "<ul class=\"local-actions\">\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/game\" class=\"button button-action button--primary button--small\">Add game</a></li>\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/studio\" class=\"button button-action button--primary button--small\">Add studio</a></li>\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/people\" class=\"button button-action button--primary button--small\">Add people</a></li>\r\n  <li class=\"local-actions__item\"><a href=\"/admin/structure/taxonomy/manage/genre/add\" class=\"button button-action button--primary button--small\">Add genre</a></li>\r\n  <li class=\"local-actions__item\"><a href=\"/admin/structure/taxonomy/manage/platform/add\" class=\"button button-action button--primary button--small\">Add platform</a></li>\r\n</ul>"
           tokenize: false
       display_extenders:
         views_ef_fieldset:
@@ -3335,7 +3335,7 @@ display:
           admin_label: Actions
           plugin_id: text_custom
           empty: false
-          content: "<ul class=\"views-tabs\">\r\n  <li><a href=\"/node/add/studio\" class=\"button button-action button--primary button--small\">Add studio</a></li>\r\n  <li><a href=\"/node/add/people\" class=\"button button-action button--primary button--small\">Add people</a></li>\r\n</ul>"
+          content: "<ul class=\"local-actions\">\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/studio\" class=\"button button-action button--primary button--small\">Add studio</a></li>\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/people\" class=\"button button-action button--primary button--small\">Add people</a></li>\r\n</ul>"
           tokenize: false
       display_extenders:
         views_ef_fieldset:
@@ -4010,7 +4010,7 @@ display:
           admin_label: Actions
           plugin_id: text_custom
           empty: false
-          content: "<ul class=\"views-tabs\">\r\n  <li><a href=\"/node/add/studio\" class=\"button button-action button--primary button--small\">Add studio</a></li>\r\n  <li><a href=\"/node/add/people\" class=\"button button-action button--primary button--small\">Add people</a></li>\r\n</ul>"
+          content: "<ul class=\"local-actions\">\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/studio\" class=\"button button-action button--primary button--small\">Add studio</a></li>\r\n  <li class=\"local-actions__item\"><a href=\"/node/add/people\" class=\"button button-action button--primary button--small\">Add people</a></li>\r\n</ul>"
           tokenize: false
       display_extenders:
         views_ef_fieldset:
