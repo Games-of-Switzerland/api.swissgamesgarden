@@ -5,6 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- add SIMPLETEST_IGNORE_DIRECTORIES to phpunit.xml.dist
+
+### Removed
+- remove dependency on HAL & RDF modules
+
+### Security
+- update drupal/core-dev (10.2.3 => 10.3.3)
+
+### Changed
+- replace all deprecated usage of MigrateSkipProcessException by stopPipeline & ->saveMessage
+
+### Fixed
+- fix psalm UndefinedInterfaceMethod pluginDefinition
 
 ## [1.1.1] - 2024-09-11
 ### Removed
@@ -38,10 +52,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/jsonapi_extras (3.24.0 => 3.25.0)
 - update drupal/restui (1.21.0 => 1.22.0)
 - update drupal/simple_sitemap (4.1.8 => 4.2.1)
-- update drupal/core-dev (10.2.3 => 10.3.3)
-
-### Removed
-- remove dependency on HAL & RDF modules
 
 ## [1.1.0] - 2024-02-23
 ### Changed

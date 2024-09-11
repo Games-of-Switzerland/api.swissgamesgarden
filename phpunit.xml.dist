@@ -22,6 +22,8 @@
     <ini name="memory_limit" value="-1"/>
     <env name="SIMPLETEST_BASE_URL" value="http://gos.test"/>
     <env name="SIMPLETEST_DB" value="mysql://drupal:drupal@db/drupal_test"/>
+    <!-- Example SIMPLETEST_IGNORE_DIRECTORIES value: build,dev_module -->
+    <env name="SIMPLETEST_IGNORE_DIRECTORIES" value=""/>
     <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/var/www/web/sites/simpletest/browser_output"/>
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
   </php>
