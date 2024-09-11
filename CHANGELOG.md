@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - update drupal/core-dev (10.2.3 => 10.3.3)
+- update all minors (25) dependencies
 
 ### Changed
 - replace all deprecated usage of MigrateSkipProcessException by stopPipeline & ->saveMessage
