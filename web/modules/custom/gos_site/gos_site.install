@@ -11,7 +11,7 @@ use Drupal\image\Entity\ImageStyle;
 /**
  * Add State column to ReleaseItem field.
  */
-function gos_site_update_8100() {
+function gos_site_update_8100(): void {
   $schema = Database::getConnection()->schema();
 
   $schema->addField('node__field_releases', 'field_releases_state', [
@@ -30,7 +30,7 @@ function gos_site_update_8100() {
 /**
  * Add basic image styles.
  */
-function gos_site_update_8200() {
+function gos_site_update_8200(): void {
   $image_styles = [
     '3x2_330x220' => [
       'effect' => 'focal_point_scale_and_crop',
@@ -70,8 +70,8 @@ function gos_site_update_8200() {
   ];
 
   foreach ($image_styles as $id => $definition) {
-    $machine_name = $definition['machine_name'] ?? $id;
-    $label = $definition['label'] ?? $id;
+    $machine_name = $id;
+    $label = $id;
 
     if (ImageStyle::load($machine_name)) {
       Drupal::logger('gos_site')
@@ -88,17 +88,13 @@ function gos_site_update_8200() {
     $style = ImageStyle::create(['name' => $machine_name, 'label' => $label]);
 
     // Init effect settings.
-    $data = $definition['settings'] ?? [];
+    $data = [];
 
     // Add optional width - for ratio effects.
-    if ($definition['width']) {
-      $data['width'] = $definition['width'];
-    }
+    $data['width'] = $definition['width'];
 
     // Add optional height - for ratio effects.
-    if ($definition['height']) {
-      $data['height'] = $definition['height'];
-    }
+    $data['height'] = $definition['height'];
 
     // Create the effect.
     $configuration = [

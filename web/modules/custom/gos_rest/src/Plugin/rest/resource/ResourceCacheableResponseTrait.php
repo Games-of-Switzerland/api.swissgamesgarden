@@ -42,11 +42,11 @@ trait ResourceCacheableResponseTrait {
       'success' => TRUE,
     ];
 
-    if ($message) {
+    if ($message !== NULL) {
       $body['message'] = $message;
     }
 
-    if ($data) {
+    if (!empty($data)) {
       $body['data'] = $data;
     }
 

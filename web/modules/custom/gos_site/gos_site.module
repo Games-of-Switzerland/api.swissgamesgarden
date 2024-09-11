@@ -12,6 +12,8 @@ require_once 'inc/sitemap.inc';
 
 /**
  * Implements hook_form_FORM_ID_alter().
+ *
+ * @psalm-suppress UnusedParam
  */
 function gos_site_form_user_login_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
   $form['#submit'][] = '_gos_site_user_login_form_submit';
@@ -19,6 +21,8 @@ function gos_site_form_user_login_form_alter(array &$form, FormStateInterface $f
 
 /**
  * Custom submit handler for login form.
+ *
+ * @psalm-suppress UnusedParam
  */
 function _gos_site_user_login_form_submit(array $form, FormStateInterface $form_state): void {
   $form_state->setRedirect('system.admin_content', [], []);

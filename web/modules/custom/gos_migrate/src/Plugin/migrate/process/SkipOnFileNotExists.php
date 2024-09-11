@@ -5,7 +5,6 @@ namespace Drupal\gos_migrate\Plugin\migrate\process;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\migrate\MigrateExecutableInterface;
-use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\MigrateSkipRowException;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
@@ -91,16 +90,14 @@ class SkipOnFileNotExists extends ProcessPluginBase implements ContainerFactoryP
    *   The destination property currently worked on. This is only used together
    *   with the $row above.
    *
-   * @throws \Drupal\migrate\MigrateSkipProcessException
-   *   Thrown if the source property is not set and rest of the process should
-   *   be skipped.
-   *
    * @return mixed
    *   The input value, $value, if it is not empty.
    */
   public function process($value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
     if (!$this->checkFile($value)) {
-      throw new MigrateSkipProcessException();
+      $this->stopPipeline();
+
+      return NULL;
     }
 
     return $value;

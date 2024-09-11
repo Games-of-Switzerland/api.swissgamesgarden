@@ -56,7 +56,7 @@ function gos_game_entity_base_field_info(EntityTypeInterface $entity_type): arra
 
   // If the entity type doesn't have a base table, has no link template then
   // there's no point in supporting it.
-  if (empty($base_table) || !$canonical_template_exists || in_array($original_class, $classes_to_skip, TRUE)) {
+  if ($base_table === NULL || !$canonical_template_exists || in_array($original_class, $classes_to_skip, TRUE)) {
     return $fields;
   }
 

@@ -5,7 +5,6 @@ namespace Drupal\gos_migrate\Plugin\migrate\process;
 use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\MigrateExecutableInterface;
-use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\MigrateSkipRowException;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
@@ -117,7 +116,10 @@ class FormatDateMultiple extends ProcessPluginBase {
     }
 
     if ($on_error === 'row') {
-      throw new MigrateSkipProcessException(sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
+      $migrate_executable->saveMessage(sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
+      $this->stopPipeline();
+
+      return NULL;
     }
 
     if ($on_error === 'process') {

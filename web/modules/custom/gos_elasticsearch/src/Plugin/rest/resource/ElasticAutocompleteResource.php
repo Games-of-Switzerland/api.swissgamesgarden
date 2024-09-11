@@ -56,7 +56,7 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     LoggerChannelInterface $logger,
     ValidatorFactory $validator_factory,
     ElasticsearchIndexManager $elasticsearch_plugin_manager,
-    Client $client
+    Client $client,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger, $validator_factory, $elasticsearch_plugin_manager);
     $this->client = $client;
@@ -191,7 +191,11 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     }
 
     try {
-      /** @var \Elastic\Elasticsearch\Response\Elasticsearch $results */
+      /**
+       * @var \Elastic\Elasticsearch\Response\Elasticsearch $results
+       *
+       * @psalm-suppress InvalidArgument
+       */
       $results = $this->client->search($es_query);
       $this->response->setData($results->asArray());
     }

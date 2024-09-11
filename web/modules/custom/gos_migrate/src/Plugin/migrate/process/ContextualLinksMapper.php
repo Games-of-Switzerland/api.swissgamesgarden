@@ -3,7 +3,6 @@
 namespace Drupal\gos_migrate\Plugin\migrate\process;
 
 use Drupal\migrate\MigrateExecutableInterface;
-use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
 
@@ -42,24 +41,28 @@ class ContextualLinksMapper extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
-   *
-   * @throws \Drupal\migrate\MigrateSkipProcessException
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (!isset($this->configuration['sources']) || empty($this->configuration['sources'])) {
-      throw new MigrateSkipProcessException('The sources mapping values should not be empty.');
+      $migrate_executable->saveMessage('The sources mapping values should not be empty');
+      $this->stopPipeline();
+
+      return NULL;
     }
 
     $links_structure = [];
 
     foreach ($this->configuration['sources'] as $key => $field) {
       if (!$row->hasSourceProperty($field)) {
-        throw new MigrateSkipProcessException(sprintf('The "%s" source property not found.', $field));
+        $migrate_executable->saveMessage(sprintf('The "%s" source property not found.', $field));
+        $this->stopPipeline();
+
+        return NULL;
       }
 
       $value = $row->getSourceProperty($field);
 
-      if (empty($value)) {
+      if ($value === NULL || $value === '') {
         continue;
       }
 

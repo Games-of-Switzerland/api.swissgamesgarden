@@ -109,7 +109,7 @@ class ArrayBuildAdd extends ProcessPluginBase {
       $source_value = $row->getDestinationProperty(ltrim($this->configuration['source_value'], '@'));
     }
 
-    if (!$source_value) {
+    if ($source_value === NULL || empty($source_value)) {
       return $new_value;
     }
 

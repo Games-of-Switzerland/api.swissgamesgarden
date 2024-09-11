@@ -1,6 +1,5 @@
 _core:
   default_config_hash: FGYrMvt5Li0Jm92wyoGSiFFNoI_WqcHTeNDMq4jHId0
-langcode: en
 status: true
 mapping:
   type: simple

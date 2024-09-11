@@ -69,10 +69,9 @@ class UrlBuilderNextJs {
    * @psalm-suppress TypeDoesNotContainType
    */
   public function buildUrl(ContentEntityInterface $entity, ?Request $request = NULL, ?string $langcode = NULL): string {
-    /** @var string $bundle */
     $bundle = $entity->bundle();
 
-    if (!$langcode) {
+    if ($langcode === NULL) {
       $langcode = $entity->language()->getId();
     }
 

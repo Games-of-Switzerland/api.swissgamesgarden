@@ -4,7 +4,6 @@ namespace Drupal\gos_migrate\Plugin\migrate\process;
 
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\MigrateExecutableInterface;
-use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
 
@@ -37,7 +36,10 @@ class TwitterHandle extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (empty($value) && $value !== '0' && $value !== 0) {
-      throw new MigrateSkipProcessException('The store link name should not be empty.');
+      $migrate_executable->saveMessage('The store link name should not be empty.');
+      $this->stopPipeline();
+
+      return NULL;
     }
 
     if (filter_var($value, \FILTER_VALIDATE_URL)) {

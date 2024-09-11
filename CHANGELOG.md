@@ -5,6 +5,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- add SIMPLETEST_IGNORE_DIRECTORIES to phpunit.xml.dist
+
+### Removed
+- remove dependency on HAL & RDF modules
+
+### Security
+- update drupal/core-dev (10.2.3 => 10.3.3)
+- update all minors (25) dependencies
+- update drush/drush (12.5.3 => 13.1.1)
+- update vimeo/psalm (4.30.0 => 5.26.1)
+
+### Changed
+- replace all deprecated usage of MigrateSkipProcessException by stopPipeline & ->saveMessage
+
+### Fixed
+- fix psalm UndefinedInterfaceMethod pluginDefinition
+- fix Admin UI Content Views Actions Buttons list
 
 ## [1.1.1] - 2024-09-11
 ### Removed

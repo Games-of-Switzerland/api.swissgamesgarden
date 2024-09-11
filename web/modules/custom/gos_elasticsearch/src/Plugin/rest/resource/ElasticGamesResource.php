@@ -66,7 +66,7 @@ class ElasticGamesResource extends ElasticResourceBase {
     LoggerChannelInterface $logger,
     ValidatorFactory $validator_factory,
     ElasticsearchIndexManager $elasticsearch_plugin_manager,
-    EntityTypeManagerInterface $entity_type_manager
+    EntityTypeManagerInterface $entity_type_manager,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger, $validator_factory, $elasticsearch_plugin_manager);
     $this->termStorage = $entity_type_manager->getStorage('taxonomy_term');
@@ -144,7 +144,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     $platforms = $resource_validator->getPlatforms();
 
-    if ($platforms) {
+    if ($platforms !== NULL && !empty($platforms)) {
       // Filter the "hits" by given platform(s).
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addPlatformsFilter($platforms);
 
@@ -159,7 +159,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     $genres = $resource_validator->getGenres();
 
-    if ($genres) {
+    if ($genres !== NULL && !empty($genres)) {
       // Filter the "hits" by given genre(s).
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addGenresFilter($genres);
 
@@ -174,7 +174,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     $stores = $resource_validator->getStores();
 
-    if ($stores) {
+    if ($stores !== NULL && !empty($stores)) {
       // Filter the "hits" by given store(s).
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addStoresFilter($stores);
 
@@ -189,7 +189,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     $locations = $resource_validator->getLocations();
 
-    if ($locations) {
+    if ($locations !== NULL && !empty($locations)) {
       // Filter the "hits" by given location(s).
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addLocationsFilter($locations);
 
@@ -204,7 +204,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     $cantons = $resource_validator->getCantons();
 
-    if ($cantons) {
+    if ($cantons !== NULL && !empty($cantons)) {
       // Filter the "hits" by given canton(s).
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addCantonsFilter($cantons);
 
@@ -234,7 +234,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     $release_year = $resource_validator->getReleaseYear();
 
-    if ($release_year) {
+    if ($release_year !== NULL) {
       // Filter the "hits" by given Release Year.
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addReleaseYearFilter($release_year);
 
@@ -249,7 +249,7 @@ class ElasticGamesResource extends ElasticResourceBase {
 
     $states = $resource_validator->getStates();
 
-    if ($states) {
+    if ($states !== NULL && !empty($states)) {
       // Filter the "hits" by given state(s).
       $es_query['body']['query']['bool']['filter']['bool']['must'][] = $this->addStatesFilter($states);
 
@@ -293,8 +293,6 @@ class ElasticGamesResource extends ElasticResourceBase {
   protected function addSort(array $sort): array {
     $direction = key($sort);
     $property = $sort[$direction];
-
-    $order = [];
 
     switch ($property) {
       case 'releases.date':
@@ -347,7 +345,7 @@ class ElasticGamesResource extends ElasticResourceBase {
           'field_slug' => $slug,
         ]);
 
-        if (!$platform) {
+        if (empty($platform)) {
           continue;
         }
 
@@ -370,7 +368,7 @@ class ElasticGamesResource extends ElasticResourceBase {
           'field_slug' => $slug,
         ]);
 
-        if (!$genre) {
+        if (empty($genre)) {
           continue;
         }
 
@@ -393,7 +391,7 @@ class ElasticGamesResource extends ElasticResourceBase {
           'field_slug' => $slug,
         ]);
 
-        if (!$location) {
+        if (empty($location)) {
           continue;
         }
 
@@ -416,7 +414,7 @@ class ElasticGamesResource extends ElasticResourceBase {
           'field_slug' => $slug,
         ]);
 
-        if (!$canton) {
+        if (empty($canton)) {
           continue;
         }
 

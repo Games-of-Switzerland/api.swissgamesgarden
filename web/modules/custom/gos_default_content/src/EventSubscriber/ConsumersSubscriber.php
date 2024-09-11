@@ -55,7 +55,7 @@ class ConsumersSubscriber implements EventSubscriberInterface {
     /** @var \Drupal\consumers\Entity\Consumer|null $consumer */
     $consumer = $this->entityTypeManager->getStorage('consumer')->load(1);
 
-    if (!$consumer) {
+    if ($consumer === NULL) {
       return;
     }
 
