@@ -6,6 +6,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2024-09-11
+### Removed
+- uninstall module HAL
+
+### Changed
+- enable CKeditor 5 to replace CKeditor 4
+- fix obsolete docker-compose command
+
+### Security
+- upgrade from PHP 8.1 -> 8.2
+- upgrade module drupal/upgrade_status (4.0.0 => 4.1.0)
+- update composer/installers (v2.2.0 => v2.3.0)
+- update phpspec/prophecy-phpunit (v2.1.0 => v2.2.0)
+- update mglaman/phpstan-drupal (1.2.6 => 1.2.12)
+- update drush/drush (12.4.3 => 12.5.3)
+- update alexandresalome/mailcatcher (v1.4.0 => v1.4.1)
+- update drupal/webp (1.0.0-rc1 => 1.0.0-rc2)
+- update drupal/admin_toolbar (3.4.2 => 3.5.0)
+- update drupal/field_group (3.4.0 => 3.6.0)
+- update drupal/gin (3.0.0-rc9 => 3.0.0-rc13)
+- update drupal/gin_login (2.0.3 => 2.1.3)
+- update drupal/upgrade_status (4.1.0 => 4.3.5)
+- update drupal/default_content (2.0.0-alpha2 => 2.0.0-alpha3)
+- update drupal/hal (2.0.2 => 2.0.3)
+- update drupal/aggregator (2.2.0 => 2.2.2)
+- update drupal/pathauto (1.12.0 => 1.13.0)
+- update drupal/focal_point (2.0.2 => 2.1.1)
+- update drupal/cdn (4.0.2 => 4.1.0)
+- update drupal/consumers (1.17.0 => 1.19.0)
+- update drupal/jsonapi_extras (3.24.0 => 3.25.0)
+- update drupal/restui (1.21.0 => 1.22.0)
+- update drupal/simple_sitemap (4.1.8 => 4.2.1)
+
 ## [1.1.0] - 2024-02-23
 ### Changed
 - upgrade drupal/elasticsearch_helper (dev-6.x 1443af5 => 8.1.0) - Games-of-Switzerland/swissgamesgarden#143
@@ -238,7 +271,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.1...HEAD
+[1.1.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.2...1.0.0
 [0.6.2]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.1...0.6.2

@@ -56,13 +56,13 @@ db:
 
 ### Project bootstrap
 
-    docker-compose build --pull
-    docker-compose up --build -d
-    docker-compose exec app docker-as-drupal bootstrap --with-default-content --with-elasticsearch
+    docker compose build --pull
+    docker compose up --build -d
+    docker compose exec app docker-as-drupal bootstrap --with-default-content --with-elasticsearch
     (get a coffee, this will take some time...)
-    docker-compose exec app drush eshs
-    docker-compose exec app drush eshr
-    docker-compose exec app drush queue-run elasticsearch_helper_indexing
+    docker compose exec app drush eshs
+    docker compose exec app drush eshr
+    docker compose exec app drush queue-run elasticsearch_helper_indexing
 
 ### Project setup
 
@@ -166,12 +166,12 @@ $settings['gos_elasticsearch.index_prefix'] = 'local';
 
 ### When it's not the first time
 
-    docker-compose build --pull
-    docker-compose up --build -d
-    docker-compose exec app drush cr (or any other drush command you need)
-    docker-compose exec app docker-as-drupal db-reset --with-default-content
-    docker-compose exec app drush eshr
-    docker-compose exec app drush queue-run elasticsearch_helper_indexing
+    docker compose build --pull
+    docker compose up --build -d
+    docker compose exec app drush cr (or any other drush command you need)
+    docker compose exec app docker-as-drupal db-reset --with-default-content
+    docker compose exec app drush eshr
+    docker compose exec app drush queue-run elasticsearch_helper_indexing
 
 ### (optional) Get the productions images
 
@@ -179,7 +179,7 @@ $settings['gos_elasticsearch.index_prefix'] = 'local';
 
 ### Docker help
 
-    docker-compose exec app docker-as-drupal --help
+    docker compose exec app docker-as-drupal --help
 
 ## 🚔 Static Analyzers
 
@@ -188,10 +188,10 @@ You can read more about it in our [CONTRIBUTING section](./CONTRIBUTING.md).
 ## After a git pull/merge
 
 ```bash
-docker-compose down
-docker-compose build --pull
-docker-compose up --build -d
-docker-compose exec app docker-as-drupal db-reset --with-default-content --with-elasticsearch
+docker compose down
+docker compose build --pull
+docker compose up --build -d
+docker compose exec app docker-as-drupal db-reset --with-default-content --with-elasticsearch
 ```
 
 Prepend every command with `docker-compose exec app` to run them on the Docker

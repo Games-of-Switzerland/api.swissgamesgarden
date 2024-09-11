@@ -7,7 +7,7 @@ use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\gos_test\Traits\TaxonomyTestTrait;
 use Drupal\Tests\entity_test\Functional\Rest\EntityTestResourceTestBase;
-use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
+use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
 use Drupal\Tests\rest\Functional\AnonResourceTestTrait;
 
 /**
@@ -26,13 +26,13 @@ use Drupal\Tests\rest\Functional\AnonResourceTestTrait;
 final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
 
   use AnonResourceTestTrait;
-  use EntityReferenceTestTrait;
+  use EntityReferenceFieldCreationTrait;
   use TaxonomyTestTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = ['taxonomy', 'filter', 'gos_site', 'gos_game'];
+  protected static $modules = ['taxonomy', 'filter', 'gos_site', 'gos_game'];
 
   /**
    * Whether the Release field has been added to the Test Entity.

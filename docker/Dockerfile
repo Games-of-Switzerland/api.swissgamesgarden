@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.3
 
-FROM antistatique/php:8.1-drupal
+FROM antistatique/php:8.2-drupal
 
 ARG user=www-data
 ARG group=${user}
@@ -16,8 +16,7 @@ ADD --chown=${user}:${group} ./docker/newrelic.sh ./docker/newrelic.sh
 RUN ./docker/newrelic.sh
 
 # Create an alias of Drush to run it from root directory.
-RUN echo "alias drush='./vendor/bin/drush'" >> ~/.bash_aliases \
-    source ~/.bash_aliases;
+RUN ln -snf "/var/www/vendor/bin/drush" /usr/local/bin/drush
 
 # Feel free to disable those lines to use Xdebug on your side.
 #RUN mkdir -p /usr/src/php/ext/xdebug && \

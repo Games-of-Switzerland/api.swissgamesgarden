@@ -6,7 +6,7 @@ use Drupal\gos_game\ReleasesCompiler;
 use Drupal\gos_test\Traits\NodeTestTrait;
 use Drupal\gos_test\Traits\TaxonomyTestTrait;
 use Drupal\KernelTests\KernelTestBase;
-use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
+use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
 
 /**
  * @coversDefaultClass \Drupal\gos_game\ReleasesCompiler
@@ -20,14 +20,14 @@ use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
  */
 final class ReleasesCompilerTest extends KernelTestBase {
 
-  use EntityReferenceTestTrait;
+  use EntityReferenceFieldCreationTrait;
   use NodeTestTrait;
   use TaxonomyTestTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static $modules = [
+  protected static $modules = [
     'system',
     'node',
     'taxonomy',
@@ -222,20 +222,6 @@ final class ReleasesCompilerTest extends KernelTestBase {
   public function testNormalizeReleases(): void {
     $platforms_by_years = ReleasesCompiler::normalizeReleases($this->testGame);
     self::assertSame([
-      'na' => [
-        'year' => NULL,
-        'platforms' => [
-          5 => [
-            'name' => 'gameboy',
-            'tid' => 5,
-            'date' => NULL,
-            'state' => 'development',
-          ],
-        ],
-        'states' => [
-          'development' => 'development',
-        ],
-      ],
       1989 => [
         'year' => '1989',
         'platforms' => [
@@ -298,6 +284,20 @@ final class ReleasesCompilerTest extends KernelTestBase {
         'year' => '2009',
         'platforms' => [],
         'states' => ['canceled' => 'canceled'],
+      ],
+      'na' => [
+        'year' => NULL,
+        'platforms' => [
+          5 => [
+            'name' => 'gameboy',
+            'tid' => 5,
+            'date' => NULL,
+            'state' => 'development',
+          ],
+        ],
+        'states' => [
+          'development' => 'development',
+        ],
       ],
     ], $platforms_by_years);
   }
