@@ -55,7 +55,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     EntityManager $entities_manager,
     UrlGeneratorManager $url_generator_manager,
     MemoryCacheInterface $memory_cache,
-    UrlBuilderNextJs $url_builder_nextjs
+    UrlBuilderNextJs $url_builder_nextjs,
   ) {
     parent::__construct(
       $configuration,
@@ -84,7 +84,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     ContainerInterface $container,
     array $configuration,
     $plugin_id,
-    $plugin_definition
+    $plugin_definition,
   ): SimpleSitemapPluginBase {
     return new static(
       $configuration,

@@ -56,7 +56,7 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     LoggerChannelInterface $logger,
     ValidatorFactory $validator_factory,
     ElasticsearchIndexManager $elasticsearch_plugin_manager,
-    Client $client
+    Client $client,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger, $validator_factory, $elasticsearch_plugin_manager);
     $this->client = $client;

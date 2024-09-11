@@ -59,7 +59,7 @@ abstract class ElasticResourceBase extends ResourceBase {
     array $serializer_formats,
     LoggerChannelInterface $logger,
     ValidatorFactory $validator_factory,
-    ElasticsearchIndexManager $elasticsearch_plugin_manager
+    ElasticsearchIndexManager $elasticsearch_plugin_manager,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger);
     $this->validator = $validator_factory->getValidator();
