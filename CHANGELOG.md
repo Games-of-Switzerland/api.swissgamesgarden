@@ -40,6 +40,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/simple_sitemap (4.1.8 => 4.2.1)
 - update drupal/core-dev (10.2.3 => 10.3.3)
 
+### Removed
+- remove dependency on HAL & RDF modules
+
 ## [1.1.0] - 2024-02-23
 ### Changed
 - upgrade drupal/elasticsearch_helper (dev-6.x 1443af5 => 8.1.0) - Games-of-Switzerland/swissgamesgarden#143
