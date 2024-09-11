@@ -4,7 +4,6 @@ namespace Drupal\gos_migrate\Plugin\migrate\process;
 
 use Drupal\migrate\MigrateException;
 use Drupal\migrate\MigrateExecutableInterface;
-use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
 
@@ -100,11 +99,17 @@ class StoresMapper extends ProcessPluginBase {
     $get_keyname = (isset($this->configuration['get']) && \is_string($this->configuration['get']) && $this->configuration['get'] !== '') ? $this->configuration['get'] : NULL;
 
     if (empty($value) && $value !== '0' && $value !== 0) {
-      throw new MigrateSkipProcessException('The store link name should not be empty.');
+      $migrate_executable->saveMessage('The store link name should not be empty.');
+      $this->stopPipeline();
+
+      return NULL;
     }
 
     if (!filter_var($value, \FILTER_VALIDATE_URL)) {
-      throw new MigrateSkipProcessException(sprintf('The store link %s is not a valid URL.', $value));
+      $migrate_executable->saveMessage(sprintf('The store link %s is not a valid URL.', $value));
+      $this->stopPipeline();
+
+      return NULL;
     }
 
     // Validate the configuration.
