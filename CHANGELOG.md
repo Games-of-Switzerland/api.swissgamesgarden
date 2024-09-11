@@ -6,6 +6,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2024-09-11
+### Added
+- add SIMPLETEST_IGNORE_DIRECTORIES to phpunit.xml.dist
+
+### Removed
+- remove dependency on HAL & RDF modules
+
+### Security
+- update drupal/core-dev (10.2.3 => 10.3.3)
+- update all minors (25) dependencies
+- update drush/drush (12.5.3 => 13.1.1)
+- update vimeo/psalm (4.30.0 => 5.26.1)
+
+### Changed
+- replace all deprecated usage of MigrateSkipProcessException by stopPipeline & ->saveMessage
+
+### Fixed
+- fix psalm UndefinedInterfaceMethod pluginDefinition
+- fix Admin UI Content Views Actions Buttons list
+
 ## [1.1.1] - 2024-09-11
 ### Removed
 - uninstall module HAL
@@ -271,7 +291,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/Games-of-Switzerland/gos-server/compare/0.6.2...1.0.0

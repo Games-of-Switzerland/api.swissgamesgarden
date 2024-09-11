@@ -4,6 +4,8 @@ namespace Drupal\gos_rest\Plugin\rest\ResourceValidator;
 
 /**
  * Base Serializer for ArrayAccess.
+ *
+ * @template-implements \ArrayAccess<string, mixed>
  */
 abstract class BaseValidator implements \ArrayAccess {
 

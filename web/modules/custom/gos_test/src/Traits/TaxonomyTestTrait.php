@@ -109,7 +109,7 @@ trait TaxonomyTestTrait {
    *   The newly created vocabulary.
    */
   public function createVocabulary($vid = NULL) {
-    if (!$vid) {
+    if ($vid === NULL) {
       $vid = mb_strtolower($this->randomMachineName());
     }
 

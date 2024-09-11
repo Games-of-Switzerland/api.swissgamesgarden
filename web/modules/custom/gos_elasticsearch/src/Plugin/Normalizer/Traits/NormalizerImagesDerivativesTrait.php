@@ -63,7 +63,7 @@ trait NormalizerImagesDerivativesTrait {
         /** @var \Drupal\image\ImageStyleInterface|null $style */
         $style = $this->imageStyleStorage->load($style_id);
 
-        if (!$style) {
+        if ($style === NULL) {
           continue;
         }
 

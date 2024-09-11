@@ -374,8 +374,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *   The Payload.
    */
   public function validateCantons(ExecutionContextInterface $context, null|string $payload): void {
-    if (isset($this->raw['cantons']) && !$this->cantons) {
-      $context->buildViolation(sprintf('At least one given Canton(s) has not been found.'))
+    if (isset($this->raw['cantons']) && $this->cantons === []) {
+      $context->buildViolation('At least one given Canton(s) has not been found.')
         ->atPath('cantons')
         ->addViolation();
     }
@@ -394,8 +394,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *   The Payload.
    */
   public function validateGenres(ExecutionContextInterface $context, null|string $payload): void {
-    if (isset($this->raw['genres']) && !$this->genres) {
-      $context->buildViolation(sprintf('At least one given Genre(s) has not been found.'))
+    if (isset($this->raw['genres']) && $this->genres === []) {
+      $context->buildViolation('At least one given Genre(s) has not been found.')
         ->atPath('genres')
         ->addViolation();
     }
@@ -414,8 +414,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *   The Payload.
    */
   public function validateLocations(ExecutionContextInterface $context, null|string $payload): void {
-    if (isset($this->raw['locations']) && !$this->locations) {
-      $context->buildViolation(sprintf('At least one given Location(s) has not been found.'))
+    if (isset($this->raw['locations']) && $this->locations === []) {
+      $context->buildViolation('At least one given Location(s) has not been found.')
         ->atPath('locations')
         ->addViolation();
     }
@@ -434,8 +434,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *   The Payload.
    */
   public function validatePlatforms(ExecutionContextInterface $context, null|string $payload): void {
-    if (isset($this->raw['platforms']) && !$this->platforms) {
-      $context->buildViolation(sprintf('At least one given Platform(s) has not been found.'))
+    if (isset($this->raw['platforms']) && $this->platforms === []) {
+      $context->buildViolation('At least one given Platform(s) has not been found.')
         ->atPath('platforms')
         ->addViolation();
     }
@@ -484,9 +484,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *   The Payload.
    */
   public function validateSort(ExecutionContextInterface $context, null|string $payload): void {
-    if (!$this->sort) {
-      $this->sort = [];
-
+    if ($this->sort === []) {
       return;
     }
 

@@ -70,7 +70,7 @@ class ReleaseItem extends EntityReferenceItem {
       ->setSetting('date source', 'date_value');
     $properties['date'] = $date_definition;
 
-    $properties['state'] = $date_definition = DataDefinition::create('string')
+    $properties['state'] = DataDefinition::create('string')
       ->setLabel(t('State')->__toString());
 
     return $properties;

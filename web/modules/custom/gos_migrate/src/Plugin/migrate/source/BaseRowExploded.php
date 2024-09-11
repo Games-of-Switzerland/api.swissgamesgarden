@@ -45,7 +45,7 @@ abstract class BaseRowExploded extends CSV {
       /** @var array|false $items */
       $items = explode(',', $record[$this::SOURCE_KEY]);
 
-      if ($items) {
+      if ($items !== FALSE) {
         // Remove empty items.
         $items = array_filter(array_map('trim', $items));
 

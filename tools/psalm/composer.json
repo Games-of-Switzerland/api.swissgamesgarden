@@ -1,20 +1,20 @@
 {
-    "require": {
-        "vimeo/psalm": "^4.27",
-        "fenetikm/autoload-drupal": "^1.0"
-    },
-    "extra": {
-        "autoload-drupal": {
-            "modules": [
-                "../../web/modules/contrib",
-                "../../web/core/modules",
-                "../../web/modules/custom"
-            ]
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "fenetikm/autoload-drupal": true
+        "require": {
+            "vimeo/psalm": "^5.26",
+            "fenetikm/autoload-drupal": "^1.0"
+        },
+        "extra": {
+            "autoload-drupal": {
+                "modules": [
+                    "../../web/modules/contrib",
+                    "../../web/core/modules",
+                    "../../web/modules/custom"
+                ]
+            }
+        },
+        "config": {
+            "allow-plugins": {
+                "fenetikm/autoload-drupal": true
+            }
         }
     }
-}

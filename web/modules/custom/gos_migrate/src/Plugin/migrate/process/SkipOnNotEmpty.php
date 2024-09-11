@@ -3,7 +3,6 @@
 namespace Drupal\gos_migrate\Plugin\migrate\process;
 
 use Drupal\migrate\MigrateExecutableInterface;
-use Drupal\migrate\MigrateSkipProcessException;
 use Drupal\migrate\MigrateSkipRowException;
 use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
@@ -46,18 +45,16 @@ class SkipOnNotEmpty extends ProcessPluginBase {
    *   The destination property currently worked on. This is only used together
    *   with the $row above.
    *
-   * @throws \Drupal\migrate\MigrateSkipProcessException
-   *   Thrown if the source property is not set and rest of the process should
-   *   be skipped.
-   *
    * @return mixed
    *   The input value, $value, if it is not empty.
    */
   public function process($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if ($value) {
       $message = \array_key_exists('message', $this->configuration) ? $this->configuration['message'] : '';
+      $migrate_executable->saveMessage($message);
+      $this->stopPipeline();
 
-      throw new MigrateSkipProcessException($message);
+      return NULL;
     }
 
     return $value;
