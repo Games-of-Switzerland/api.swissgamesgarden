@@ -47,7 +47,7 @@ abstract class BaseValidator implements \ArrayAccess {
     $offset = $this->camelize($offset);
 
     if (!$this->offsetExists($offset)) {
-      throw new \InvalidArgumentException(sprintf('Unsupported offset %s.', $offset));
+      throw new \InvalidArgumentException(\sprintf('Unsupported offset %s.', $offset));
     }
 
     $getter = 'get' . ucfirst($offset);
@@ -67,7 +67,7 @@ abstract class BaseValidator implements \ArrayAccess {
     $offset = $this->camelize($offset);
 
     if (!$this->offsetExists($offset)) {
-      throw new \InvalidArgumentException(sprintf('Unsupported offset %s.', $offset));
+      throw new \InvalidArgumentException(\sprintf('Unsupported offset %s.', $offset));
     }
 
     // Prevent saving of null value.

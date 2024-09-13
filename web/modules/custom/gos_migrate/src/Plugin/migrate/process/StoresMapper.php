@@ -106,7 +106,7 @@ class StoresMapper extends ProcessPluginBase {
     }
 
     if (!filter_var($value, \FILTER_VALIDATE_URL)) {
-      $migrate_executable->saveMessage(sprintf('The store link %s is not a valid URL.', $value));
+      $migrate_executable->saveMessage(\sprintf('The store link %s is not a valid URL.', $value));
       $this->stopPipeline();
 
       return NULL;
