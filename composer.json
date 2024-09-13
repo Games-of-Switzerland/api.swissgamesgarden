@@ -72,11 +72,11 @@
         "drupal/drupal-extension": "^5.0",
         "drupal/feeds": "^3.0@RC",
         "drupal/upgrade_status": "^4.0",
-        "imbo/behat-api-extension": "^2.3",
+        "imbo/behat-api-extension": "^5.0.0",
         "marcortola/behat-seo-contexts": "^4.0",
         "mglaman/phpstan-drupal": "^1.1",
         "phpspec/prophecy-phpunit": "^2",
-        "phpstan/phpstan-deprecation-rules": "^1.0"
+        "phpstan/phpstan-deprecation-rules": "^1.2"
     },
     "conflict": {
         "drupal/drupal": "*"
