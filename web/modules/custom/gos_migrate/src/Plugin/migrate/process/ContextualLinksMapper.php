@@ -54,7 +54,7 @@ class ContextualLinksMapper extends ProcessPluginBase {
 
     foreach ($this->configuration['sources'] as $key => $field) {
       if (!$row->hasSourceProperty($field)) {
-        $migrate_executable->saveMessage(sprintf('The "%s" source property not found.', $field));
+        $migrate_executable->saveMessage(\sprintf('The "%s" source property not found.', $field));
         $this->stopPipeline();
 
         return NULL;

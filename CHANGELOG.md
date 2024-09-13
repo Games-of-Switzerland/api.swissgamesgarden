@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Security
+- update linter friendsofphp/php-cs-fixer (v3.49.0 => v3.64.0)
 - update imbo/behat-api-extension (v2.3.3 => v5.0.0)
 
 ## [1.2.0] - 2024-09-11

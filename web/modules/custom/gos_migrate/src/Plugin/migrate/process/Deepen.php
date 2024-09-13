@@ -73,7 +73,7 @@ class Deepen extends ProcessPluginBase {
       return $result;
     }
 
-    throw new MigrateException(sprintf('%s is not traversable', var_export($value, TRUE)));
+    throw new MigrateException(\sprintf('%s is not traversable', var_export($value, TRUE)));
   }
 
 }
