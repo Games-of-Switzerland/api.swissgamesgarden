@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update imbo/behat-api-extension (v2.3.3 => v5.0.0)
 - update phpspec/prophecy-phpunit (v2.2.0 => v2.3.0)
 - update drush/drush (13.1.1 => 13.3.3)
+- update drupal/migrate_file (2.1.2 => 2.1.3)
+- update drupal/migrate_source_csv (3.6.0 => 3.7.0)
+- update drupal/migrate_tools (6.0.4 => 6.0.5)
 
 ## [1.2.0] - 2024-09-11
 ### Added
