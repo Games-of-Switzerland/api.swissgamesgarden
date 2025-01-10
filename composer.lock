@@ -11002,17 +11002,17 @@
         },
         {
             "name": "drupal/feeds",
-            "version": "3.0.0-rc1",
+            "version": "3.0.0-rc3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/feeds.git",
-                "reference": "8.x-3.0-rc1"
+                "reference": "8.x-3.0-rc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/feeds-8.x-3.0-rc1.zip",
-                "reference": "8.x-3.0-rc1",
-                "shasum": "17ea663fe195f49e013b0a993c0b0313a396b797"
+                "url": "https://ftp.drupal.org/files/projects/feeds-8.x-3.0-rc3.zip",
+                "reference": "8.x-3.0-rc3",
+                "shasum": "21d1f481da86e812288e8dc5b6e240263e9b8a82"
             },
             "require": {
                 "drupal/core": "^10.1 || ^11",
@@ -11025,8 +11025,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.0-rc1",
-                    "datestamp": "1725791879",
+                    "version": "8.x-3.0-rc3",
+                    "datestamp": "1733412633",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
