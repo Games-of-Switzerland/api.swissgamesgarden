@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/migrate_file (2.1.2 => 2.1.3)
 - update drupal/migrate_source_csv (3.6.0 => 3.7.0)
 - update drupal/migrate_tools (6.0.4 => 6.0.5)
+- update module drupal/admin_toolbar (3.5.0 => 3.5.1)
 
 ## [1.2.0] - 2024-09-11
 ### Added
