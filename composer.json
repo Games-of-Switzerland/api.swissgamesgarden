@@ -47,6 +47,7 @@
         "drupal/focal_point": "^2.0",
         "drupal/gin": "^4.0",
         "drupal/gin_login": "^2.0",
+        "drupal/gin_toolbar": "^2.0",
         "drupal/image_effects": "^4.0",
         "drupal/jsonapi_extras": "^3.23",
         "drupal/metatag": "^1.14",
