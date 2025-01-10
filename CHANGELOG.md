@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/simple_sitemap (4.2.1 => 4.2.2)
 - update module drupal/focal_point (2.1.1 => 2.1.2)
 - update module drupal/consumer_image_styles (4.0.8 => 4.0.10)
+- update module drupal/jsonapi_extras (3.25.0 => 3.26.0)
 
 ## [1.2.0] - 2024-09-11
 ### Added
