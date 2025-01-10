@@ -3,9 +3,11 @@
 namespace Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator;
 
 use Drupal\gos_rest\Plugin\rest\ResourceValidator\BaseValidator;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
@@ -67,8 +69,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
   private ?array $locations = NULL;
 
   #[NotNull]
-  #[Assert\Type(type: 'integer')]
-  #[Assert\GreaterThanOrEqual(0)]
+  #[Type(type: 'integer')]
+  #[GreaterThanOrEqual(0)]
   /**
    * The page to fetch.
    *
@@ -85,8 +87,8 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   private ?array $platforms = NULL;
 
-  #[Assert\Type(type: 'integer')]
-  #[Assert\GreaterThanOrEqual(1970)]
+  #[Type(type: 'integer')]
+  #[GreaterThanOrEqual(1970)]
   /**
    * The game Release Year to filter by.
    */
@@ -106,13 +108,13 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   private array $sort = [];
 
-  #[Assert\Choice(['', 'prototype', 'pre_release', 'released', 'development', 'canceled'], multiple: TRUE)]
+  #[Choice(['', 'prototype', 'pre_release', 'released', 'development', 'canceled'], multiple: TRUE)]
   /**
    * The game States key to filter by.
    */
   private ?array $states = NULL;
 
-  #[Assert\Choice(['', 'apple_store', 'steam', 'amazon', 'itchio',
+  #[Choice(['', 'apple_store', 'steam', 'amazon', 'itchio',
     'facebook', 'epic', 'playstation', 'xbox', 'nintendo', 'microsoft_store',
     'oculus', 'google_play_store', 'gog', 'other',
   ], multiple: TRUE)]
