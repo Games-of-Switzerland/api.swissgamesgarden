@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/upgrade_status (4.3.5 => 4.3.6)
 - update drupal/drupal-extension (v5.0.0 => v5.1.0)
 - update drupal/gin (3.0.0-rc13 => 3.0.0)
+- update drupal/core (10.3.3 => 10.4.1)
 
 ## [1.2.0] - 2024-09-11
 ### Added

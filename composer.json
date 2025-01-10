@@ -94,7 +94,8 @@
             "wikimedia/composer-merge-plugin": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "tbachert/spi": true
         }
     },
     "autoload-dev": {
@@ -122,8 +123,8 @@
             "drupal/admin_toolbar": {
                 "[3121816] - Version 8.x-2.1 need Drupal 8.8.0 or greater": "https://www.drupal.org/files/issues/2020-03-30/3121816-07.patch"
             },
-            "drupal/core": {
-                "[3347343] - Add Views EntityReference filter to be available for all entity reference fields": "https://git.drupalcode.org/project/drupal/-/merge_requests/9226.patch"
+            "drupal/aggregator": {
+                "[3471498 ] - Fix fails in FeedAdminDisplayTest": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch"
             },
             "drupal/metatag": {
                 "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2023-11-30/metatag-n2945817-186.patch",

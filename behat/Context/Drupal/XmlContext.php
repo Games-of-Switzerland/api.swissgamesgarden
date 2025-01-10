@@ -133,7 +133,7 @@ class XmlContext extends RawMinkContext {
   /**
    * Assert a string is contained into another one.
    */
-  protected function assertContains(string $expected, string $actual, string $message = NULL): void {
+  protected function assertContains(string $expected, string $actual, ?string $message = NULL): void {
     $regex = '/' . preg_quote($expected, '/') . '/ui';
 
     $this->assert(
