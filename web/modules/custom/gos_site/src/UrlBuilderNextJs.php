@@ -78,16 +78,16 @@ class UrlBuilderNextJs {
     // To prevent a missing key error, we prevent the rest.
     // If the bundle type is not specified.
     if (!\array_key_exists($bundle, self::NEXTJS_URLS_PREFIX)) {
-      throw new \InvalidArgumentException(sprintf('Bundle type [%s] is not present in the URLS prefixes', $bundle));
+      throw new \InvalidArgumentException(\sprintf('Bundle type [%s] is not present in the URLS prefixes', $bundle));
     }
 
     // To prevent a missing key error, throw an error if lang is not found.
     if (!\array_key_exists($langcode, self::NEXTJS_URLS_PREFIX[$bundle])) {
-      throw new \InvalidArgumentException(sprintf('Langcode %s is not valid for %s.', $langcode, $bundle));
+      throw new \InvalidArgumentException(\sprintf('Langcode %s is not valid for %s.', $langcode, $bundle));
     }
 
     if (!$entity->hasTranslation($langcode)) {
-      throw new \InvalidArgumentException(sprintf('Node is not translated in %s.', $langcode));
+      throw new \InvalidArgumentException(\sprintf('Node is not translated in %s.', $langcode));
     }
 
     $translation = $entity->getTranslation($langcode);

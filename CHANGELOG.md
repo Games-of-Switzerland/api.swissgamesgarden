@@ -6,6 +6,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-01-10
+### Security
+- update linter friendsofphp/php-cs-fixer (v3.49.0 => v3.64.0)
+- update imbo/behat-api-extension (v2.3.3 => v5.0.0)
+- update phpspec/prophecy-phpunit (v2.2.0 => v2.3.0)
+- update drush/drush (13.1.1 => 13.3.3)
+- update drupal/migrate_file (2.1.2 => 2.1.3)
+- update drupal/migrate_source_csv (3.6.0 => 3.7.0)
+- update drupal/migrate_tools (6.0.4 => 6.0.5)
+- update module drupal/admin_toolbar (3.5.0 => 3.5.1)
+- update module drupal/views_ef_fieldset (1.7.0 => 1.10.0)
+- update mglaman/phpstan-drupal (1.2.12 => 1.3.2)
+- update module drupal/simple_sitemap (4.2.1 => 4.2.2)
+- update module drupal/focal_point (2.1.1 => 2.1.2)
+- update module drupal/consumer_image_styles (4.0.8 => 4.0.10)
+- update module drupal/jsonapi_extras (3.25.0 => 3.26.0)
+- update module drupal/feeds (3.0.0-rc1 => 3.0.0-rc3)
+- update drupal/upgrade_status (4.3.5 => 4.3.6)
+- update drupal/drupal-extension (v5.0.0 => v5.1.0)
+- update drupal/gin (3.0.0-rc13 => 3.0.0)
+- update drupal/core (10.3.3 => 10.4.1)
+- upgrade theme drupal/gin (3.0.0 => 4.0.0)
+- upgrade module drupal/image_effects (3.6.0 => 4.0.0)
+- add module drupal/gin_toolbar (1.0.0 => 2.0.0)
+
 ## [1.2.0] - 2024-09-11
 ### Added
 - add SIMPLETEST_IGNORE_DIRECTORIES to phpunit.xml.dist
@@ -291,7 +316,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.2.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.3.0...HEAD
+[1.3.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.0.0...1.1.0

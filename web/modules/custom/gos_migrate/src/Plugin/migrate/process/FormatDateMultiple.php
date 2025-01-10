@@ -116,25 +116,25 @@ class FormatDateMultiple extends ProcessPluginBase {
     }
 
     if ($on_error === 'row') {
-      $migrate_executable->saveMessage(sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
+      $migrate_executable->saveMessage(\sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
       $this->stopPipeline();
 
       return NULL;
     }
 
     if ($on_error === 'process') {
-      throw new MigrateSkipRowException(sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
+      throw new MigrateSkipRowException(\sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
     }
 
     if ($on_error === 'exception') {
-      throw new MigrateException(sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
+      throw new MigrateException(\sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
     }
 
     if ($on_error === 'nullable') {
       return '';
     }
 
-    throw new MigrateException(sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
+    throw new MigrateException(\sprintf("Format date plugin could not transform '%s' using any formats '%s' for destination '%s'.", $value, implode(',', $from_formats), $destination_property));
   }
 
 }

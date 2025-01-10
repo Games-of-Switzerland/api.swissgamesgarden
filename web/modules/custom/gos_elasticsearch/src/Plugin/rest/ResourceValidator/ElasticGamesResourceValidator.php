@@ -3,9 +3,11 @@
 namespace Drupal\gos_elasticsearch\Plugin\rest\ResourceValidator;
 
 use Drupal\gos_rest\Plugin\rest\ResourceValidator\BaseValidator;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
 use Symfony\Component\Validator\Constraints\NotNull;
+use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
@@ -30,7 +32,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
   /**
    * The search keywords.
    */
-  protected null|string $q = NULL;
+  protected ?string $q = NULL;
 
   /**
    * All raw element.
@@ -46,7 +48,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  private null|array $cantons = NULL;
+  private ?array $cantons = NULL;
 
   /**
    * The game Genres to filter by.
@@ -55,7 +57,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  private null|array $genres = NULL;
+  private ?array $genres = NULL;
 
   /**
    * The game Locations to filter by.
@@ -64,17 +66,17 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  private null|array $locations = NULL;
+  private ?array $locations = NULL;
 
   #[NotNull]
-  #[Assert\Type(type: 'integer')]
-  #[Assert\GreaterThanOrEqual(0)]
+  #[Type(type: 'integer')]
+  #[GreaterThanOrEqual(0)]
   /**
    * The page to fetch.
    *
    * The page parameter is mandatory to avoid search overload.
    */
-  private null|int $page = NULL;
+  private ?int $page = NULL;
 
   /**
    * The game Platforms to filter by.
@@ -83,14 +85,14 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var \Drupal\taxonomy\TermInterface[]|null
    */
-  private null|array $platforms = NULL;
+  private ?array $platforms = NULL;
 
-  #[Assert\Type(type: 'integer')]
-  #[Assert\GreaterThanOrEqual(1970)]
+  #[Type(type: 'integer')]
+  #[GreaterThanOrEqual(1970)]
   /**
    * The game Release Year to filter by.
    */
-  private null|int $releaseYear = NULL;
+  private ?int $releaseYear = NULL;
 
   /**
    * The game Release Year Range to filter by.
@@ -106,20 +108,20 @@ class ElasticGamesResourceValidator extends BaseValidator {
    */
   private array $sort = [];
 
-  #[Assert\Choice(['', 'prototype', 'pre_release', 'released', 'development', 'canceled'], multiple: TRUE)]
+  #[Choice(['', 'prototype', 'pre_release', 'released', 'development', 'canceled'], multiple: TRUE)]
   /**
    * The game States key to filter by.
    */
-  private null|array $states = NULL;
+  private ?array $states = NULL;
 
-  #[Assert\Choice(['', 'apple_store', 'steam', 'amazon', 'itchio',
+  #[Choice(['', 'apple_store', 'steam', 'amazon', 'itchio',
     'facebook', 'epic', 'playstation', 'xbox', 'nintendo', 'microsoft_store',
     'oculus', 'google_play_store', 'gog', 'other',
   ], multiple: TRUE)]
   /**
    * The game Stores key to filter by.
    */
-  private null|array $stores = NULL;
+  private ?array $stores = NULL;
 
   /**
    * Get the game Cantons to filter by.
@@ -373,7 +375,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @param null|string $payload
    *   The Payload.
    */
-  public function validateCantons(ExecutionContextInterface $context, null|string $payload): void {
+  public function validateCantons(ExecutionContextInterface $context, ?string $payload): void {
     if (isset($this->raw['cantons']) && $this->cantons === []) {
       $context->buildViolation('At least one given Canton(s) has not been found.')
         ->atPath('cantons')
@@ -393,7 +395,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @param null|string $payload
    *   The Payload.
    */
-  public function validateGenres(ExecutionContextInterface $context, null|string $payload): void {
+  public function validateGenres(ExecutionContextInterface $context, ?string $payload): void {
     if (isset($this->raw['genres']) && $this->genres === []) {
       $context->buildViolation('At least one given Genre(s) has not been found.')
         ->atPath('genres')
@@ -413,7 +415,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @param null|string $payload
    *   The Payload.
    */
-  public function validateLocations(ExecutionContextInterface $context, null|string $payload): void {
+  public function validateLocations(ExecutionContextInterface $context, ?string $payload): void {
     if (isset($this->raw['locations']) && $this->locations === []) {
       $context->buildViolation('At least one given Location(s) has not been found.')
         ->atPath('locations')
@@ -433,7 +435,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @param null|string $payload
    *   The Payload.
    */
-  public function validatePlatforms(ExecutionContextInterface $context, null|string $payload): void {
+  public function validatePlatforms(ExecutionContextInterface $context, ?string $payload): void {
     if (isset($this->raw['platforms']) && $this->platforms === []) {
       $context->buildViolation('At least one given Platform(s) has not been found.')
         ->atPath('platforms')
@@ -451,7 +453,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @param null|string $payload
    *   The Payload.
    */
-  public function validateReleaseYearRange(ExecutionContextInterface $context, null|string $payload): void {
+  public function validateReleaseYearRange(ExecutionContextInterface $context, ?string $payload): void {
     if (!$this->releaseYearRange) {
       $this->releaseYearRange = [];
 
@@ -483,19 +485,19 @@ class ElasticGamesResourceValidator extends BaseValidator {
    * @param null|string $payload
    *   The Payload.
    */
-  public function validateSort(ExecutionContextInterface $context, null|string $payload): void {
+  public function validateSort(ExecutionContextInterface $context, ?string $payload): void {
     if ($this->sort === []) {
       return;
     }
 
     if (!\array_key_exists('asc', $this->sort) && !\array_key_exists('desc', $this->sort)) {
-      $context->buildViolation(sprintf('Provided direction "%s" is not supported. Please use "asc" or "desc".', key($this->sort)))
+      $context->buildViolation(\sprintf('Provided direction "%s" is not supported. Please use "asc" or "desc".', key($this->sort)))
         ->atPath('sort')
         ->addViolation();
     }
 
     if (!\in_array($this->sort[key($this->sort)], $this::SORTABLE, TRUE)) {
-      $context->buildViolation(sprintf('Provided property "%s" is not sortable.', $this->sort[key($this->sort)]))
+      $context->buildViolation(\sprintf('Provided property "%s" is not sortable.', $this->sort[key($this->sort)]))
         ->atPath('sort')
         ->addViolation();
     }

@@ -52,7 +52,7 @@ class TwitterHandle extends ProcessPluginBase {
       return 'https://www.twitter.com/' . mb_substr($value, 1, -1);
     }
 
-    throw new MigrateException(sprintf('Twitter formatting was not possible on "%s".', $value));
+    throw new MigrateException(\sprintf('Twitter formatting was not possible on "%s".', $value));
   }
 
 }

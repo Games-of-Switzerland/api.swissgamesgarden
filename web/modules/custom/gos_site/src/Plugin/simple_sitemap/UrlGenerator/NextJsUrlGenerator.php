@@ -105,7 +105,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
   /**
    * {@inheritdoc}
    */
-  protected function getAlternateUrlsForTranslatedLanguages(ContentEntityInterface $entity, Url $url_object): array {
+  protected function getAlternateUrlsForTranslatedLanguages(ContentEntityInterface $entity, Url $url): array {
     $alternate_urls = [];
 
     /** @var \Drupal\Core\Language\Language $language */
@@ -123,22 +123,22 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
   /**
    * {@inheritdoc}
    */
-  protected function getUrlVariants(array $path_data, Url $url_object): array {
+  protected function getUrlVariants(array $path_data, Url $url): array {
     $url_variants = [];
     $alternate_urls = [];
 
     if (!$this->sitemap->isMultilingual() || !isset($path_data['meta']['entity'])) {
-      $alternate_urls = $this->getAlternateUrlsForDefaultLanguage($url_object);
+      $alternate_urls = $this->getAlternateUrlsForDefaultLanguage($url);
     }
 
     if ($this->sitemap->isMultilingual() && $path_data['meta']['entity'] instanceof ContentEntityInterface) {
-      $alternate_urls = $this->getAlternateUrlsForTranslatedLanguages($path_data['meta']['entity'], $url_object);
+      $alternate_urls = $this->getAlternateUrlsForTranslatedLanguages($path_data['meta']['entity'], $url);
     }
 
-    foreach ($alternate_urls as $langcode => $url) {
+    foreach ($alternate_urls as $langcode => $base_url) {
       $url_variants[] = $path_data + [
         'langcode' => $langcode,
-        'url' => $url,
+        'url' => $base_url,
         'alternate_urls' => $alternate_urls,
       ];
     }

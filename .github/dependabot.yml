@@ -12,8 +12,6 @@ updates:
     versioning-strategy: lockfile-only
     allow:
       - dependency-type: production
-    registries:
-      - composer
     schedule:
       interval: monthly
   - package-ecosystem: composer
@@ -21,8 +19,6 @@ updates:
     versioning-strategy: lockfile-only
     allow:
       - dependency-type: production
-    registries:
-      - composer
     schedule:
       interval: monthly
   - package-ecosystem: composer
@@ -30,8 +26,6 @@ updates:
     versioning-strategy: lockfile-only
     allow:
       - dependency-type: production
-    registries:
-      - composer
     schedule:
       interval: monthly
 
