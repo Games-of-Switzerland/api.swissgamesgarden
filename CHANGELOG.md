@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/gin (3.0.0-rc13 => 3.0.0)
 - update drupal/core (10.3.3 => 10.4.1)
 - upgrade theme drupal/gin (3.0.0 => 4.0.0)
+- upgrade module drupal/image_effects (3.6.0 => 4.0.0)
 
 ## [1.2.0] - 2024-09-11
 ### Added
