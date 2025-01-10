@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/admin_toolbar (3.5.0 => 3.5.1)
 - update module drupal/views_ef_fieldset (1.7.0 => 1.10.0)
 - update mglaman/phpstan-drupal (1.2.12 => 1.3.2)
+- update module drupal/simple_sitemap (4.2.1 => 4.2.2)
 
 ## [1.2.0] - 2024-09-11
 ### Added
