@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update module drupal/jsonapi_extras (3.25.0 => 3.26.0)
 - update module drupal/feeds (3.0.0-rc1 => 3.0.0-rc3)
 - update drupal/upgrade_status (4.3.5 => 4.3.6)
+- update drupal/drupal-extension (v5.0.0 => v5.1.0)
 
 ## [1.2.0] - 2024-09-11
 ### Added
