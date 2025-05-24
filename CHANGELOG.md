@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Security
 - update drupal/core-dev (10.4.1 => 10.4.7)
+- upgrade drupal/field_group (3.6.0 => 4.0.0)
 
 ## [1.3.0] - 2025-01-10
 ### Security

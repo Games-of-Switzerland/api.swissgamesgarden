@@ -42,7 +42,7 @@
         "drupal/core-project-message": "^10.0",
         "drupal/core-recommended": "^10.0",
         "drupal/elasticsearch_helper": "^8.1",
-        "drupal/field_group": "^3.0",
+        "drupal/field_group": "^4.0",
         "drupal/fieldable_path": "^1.0@RC",
         "drupal/focal_point": "^2.0",
         "drupal/gin": "^4.0",
