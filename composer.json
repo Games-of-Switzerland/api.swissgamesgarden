@@ -73,7 +73,7 @@
         "drupal/default_content": "^2.0",
         "drupal/drupal-extension": "^5.0",
         "drupal/feeds": "^3.0@RC",
-        "drupal/rdf": "^2.1",
+        "drupal/rdf": "^3.0@beta",
         "drupal/upgrade_status": "^4.0",
         "imbo/behat-api-extension": "^5.0.0",
         "marcortola/behat-seo-contexts": "^4.0",
