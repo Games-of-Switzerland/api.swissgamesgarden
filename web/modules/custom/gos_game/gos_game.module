@@ -5,11 +5,11 @@
  * Primary module hooks for Game module for Games of Switzerland.
  */
 
-use Drupal\comment\Entity\Comment;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\comment\Entity\Comment;
 use Drupal\gos_game\CompletenessCalculator;
 use Drupal\gos_game\ReleasesCompiler;
 

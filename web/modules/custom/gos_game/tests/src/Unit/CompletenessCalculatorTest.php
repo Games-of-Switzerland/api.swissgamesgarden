@@ -4,9 +4,9 @@ namespace Drupal\Tests\gos_game\Unit;
 
 use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
+use Drupal\Tests\UnitTestCase;
 use Drupal\gos_game\CompletenessCalculator;
 use Drupal\node\NodeInterface;
-use Drupal\Tests\UnitTestCase;
 
 /**
  * @coversDefaultClass \Drupal\gos_game\CompletenessCalculator
@@ -77,28 +77,6 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * Data provider for ::testCalculationWithContextualLinks.
-   *
-   * @return iterable
-   *   Data provided.
-   */
-  public function providerContextualLinks(): iterable {
-    yield ['foo', 9643];
-
-    yield ['presskit', 9653];
-
-    yield ['devlog', 9644];
-
-    yield ['online_play', 10643];
-
-    yield ['download_page', 10643];
-
-    yield ['direct_download', 10643];
-
-    yield ['box_art', 9743];
-  }
-
-  /**
    * @covers ::calculation
    */
   public function testCalculation() {
@@ -127,6 +105,28 @@ final class CompletenessCalculatorTest extends UnitTestCase {
 
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
     self::assertEquals($expected_score, $score);
+  }
+
+  /**
+   * Data provider for ::testCalculationWithContextualLinks.
+   *
+   * @return iterable
+   *   Data provided.
+   */
+  public function providerContextualLinks(): iterable {
+    yield ['foo', 9643];
+
+    yield ['presskit', 9653];
+
+    yield ['devlog', 9644];
+
+    yield ['online_play', 10643];
+
+    yield ['download_page', 10643];
+
+    yield ['direct_download', 10643];
+
+    yield ['box_art', 9743];
   }
 
   /**
