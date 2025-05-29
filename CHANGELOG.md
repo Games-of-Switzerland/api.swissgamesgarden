@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - update drupal/core-dev (10.4.1 => 10.4.7)
 - upgrade drupal/field_group (3.6.0 => 4.0.0)
+- upgrade drupal/metatag (1.26.0 => 2.1.0)
+- update psalm dependecies
 - update friendsofphp/php-cs-fixer (v3.64.0 => v3.75.0)
 
 ### Changed
