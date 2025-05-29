@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - fix PHPCS using deprecated CSS/JS Scanning
 
+### Fixed
+- fix indexation of Player field 'max'
+
 ## [1.3.0] - 2025-01-10
 ### Security
 - update linter friendsofphp/php-cs-fixer (v3.49.0 => v3.64.0)
