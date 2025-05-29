@@ -74,12 +74,12 @@ class GameNormalizer extends ContentEntityNormalizer {
     // Handle number of players.
     $data['players'] = ['min' => NULL, 'max' => NULL];
 
-    if (!$object->get('field_player')->isEmpty()) {
+    if ($object->hasField('field_player') && !$object->get('field_player')->isEmpty()) {
       $data['players']['min'] = (int) $object->get('field_player')->min;
-      $data['players']['max'] = (int) $object->get('field_player')->maxax;
+      $data['players']['max'] = (int) $object->get('field_player')->max;
     }
 
-    if (!$object->get('field_releases')->isEmpty()) {
+    if ($object->hasField('field_releases') && !$object->get('field_releases')->isEmpty()) {
       // Will contain every release by platform (sometimes more than once
       // the same year).
       $releases = [];
@@ -128,39 +128,39 @@ class GameNormalizer extends ContentEntityNormalizer {
     $people = [];
 
     // Handle people fullnames in games (freelancers).
-    if (!$object->get('field_members')->isEmpty()) {
+    if ($object->hasField('field_members') && !$object->get('field_members')->isEmpty()) {
       foreach ($object->field_members as $member) {
         if (!$member->entity) {
           continue;
         }
 
         $people[] = [
-          'path' => $member->entity->toUrl('canonical')->toString(),
-          'fullname' => $member->entity->title->value,
-          'uuid' => $member->entity->get('uuid')->value,
+          'path' => $member->entity?->toUrl('canonical')->toString(),
+          'fullname' => $member->entity?->title->value,
+          'uuid' => $member->entity?->get('uuid')->value,
         ];
       }
     }
 
     // Handle studios names.
-    if (!$object->get('field_studios')->isEmpty()) {
+    if ($object->hasField('field_studios') && !$object->get('field_studios')->isEmpty()) {
       $studios = [];
 
       foreach ($object->field_studios as $studio) {
         $studios[] = [
-          'path' => $studio->entity->toUrl('canonical')->toString(),
-          'name' => $studio->entity->title->value,
-          'uuid' => $studio->entity->get('uuid')->value,
+          'path' => $studio->entity?->toUrl('canonical')->toString(),
+          'name' => $studio->entity?->title->value,
+          'uuid' => $studio->entity?->get('uuid')->value,
         ];
 
         // Handle people on studio fullnames.
-        if (!$studio->entity->get('field_members')
+        if (!$studio->entity?->get('field_members')
           ->isEmpty()) {
           foreach ($object->field_members as $member) {
             $people[] = [
-              'path' => $member->entity->toUrl('canonical')->toString(),
-              'fullname' => $member->entity->title->value,
-              'uuid' => $member->entity->get('uuid')->value,
+              'path' => $member->entity?->toUrl('canonical')->toString(),
+              'fullname' => $member->entity?->title->value,
+              'uuid' => $member->entity?->get('uuid')->value,
             ];
           }
         }
@@ -173,13 +173,13 @@ class GameNormalizer extends ContentEntityNormalizer {
     $data['people'] = $people;
 
     // Handle genres.
-    if (!$object->get('field_genres')->isEmpty()) {
+    if ($object->hasField('field_genres') && !$object->get('field_genres')->isEmpty()) {
       $genres = [];
 
       foreach ($object->field_genres as $genre) {
         $genres[] = [
-          'name' => $genre->entity->get('name')->value,
-          'slug' => $genre->entity->get('field_slug')->value,
+          'name' => $genre->entity?->get('name')->value,
+          'slug' => $genre->entity?->get('field_slug')->value,
         ];
       }
 
@@ -187,7 +187,7 @@ class GameNormalizer extends ContentEntityNormalizer {
     }
 
     // Handle stores.
-    if (!$object->get('field_stores')->isEmpty()) {
+    if ($object->hasField('field_stores') && !$object->get('field_stores')->isEmpty()) {
       $stores = [];
 
       foreach ($object->field_stores as $store) {
@@ -201,13 +201,13 @@ class GameNormalizer extends ContentEntityNormalizer {
     }
 
     // Handle locations.
-    if (!$object->get('field_locations')->isEmpty()) {
+    if ($object->hasField('field_locations') && !$object->get('field_locations')->isEmpty()) {
       $locations = [];
 
       foreach ($object->field_locations as $location) {
         $locations[] = [
-          'name' => $location->entity->get('name')->value,
-          'slug' => $location->entity->get('field_slug')->value,
+          'name' => $location->entity?->get('name')->value,
+          'slug' => $location->entity?->get('field_slug')->value,
         ];
       }
 
@@ -215,13 +215,13 @@ class GameNormalizer extends ContentEntityNormalizer {
     }
 
     // Handle cantons.
-    if (!$object->get('field_cantons')->isEmpty()) {
+    if ($object->hasField('field_cantons') && !$object->get('field_cantons')->isEmpty()) {
       $cantons = [];
 
       foreach ($object->field_cantons as $canton) {
         $cantons[] = [
-          'name' => $canton->entity->get('name')->value,
-          'slug' => $canton->entity->get('field_slug')->value,
+          'name' => $canton->entity?->get('name')->value,
+          'slug' => $canton->entity?->get('field_slug')->value,
         ];
       }
 

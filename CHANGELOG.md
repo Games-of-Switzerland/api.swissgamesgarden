@@ -6,6 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2025-05-29
+### Security
+- update drupal/core-dev (10.4.1 => 10.4.7)
+- upgrade drupal/field_group (3.6.0 => 4.0.0)
+- upgrade drupal/metatag (1.26.0 => 2.1.0)
+- update psalm dependecies
+- update friendsofphp/php-cs-fixer (v3.64.0 => v3.75.0)
+- update capistrano dependencies
+
+### Changed
+- fix PHPCS using deprecated CSS/JS Scanning
+- improve Games Normalization for Elasticsearch by supporting nullable entities
+- change index-creation log strategy
+
+### Fixed
+- fix indexation of Player field 'max'
+
 ## [1.3.0] - 2025-01-10
 ### Security
 - update linter friendsofphp/php-cs-fixer (v3.49.0 => v3.64.0)
@@ -316,7 +333,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.3.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.0...HEAD
+[1.4.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.1...1.2.0
 [1.1.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.0...1.1.1

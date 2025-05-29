@@ -42,15 +42,16 @@
         "drupal/core-project-message": "^10.0",
         "drupal/core-recommended": "^10.0",
         "drupal/elasticsearch_helper": "^8.1",
-        "drupal/field_group": "^3.0",
+        "drupal/field_group": "^4.0",
         "drupal/fieldable_path": "^1.0@RC",
         "drupal/focal_point": "^2.0",
         "drupal/gin": "^4.0",
         "drupal/gin_login": "^2.0",
         "drupal/gin_toolbar": "^2.0",
+        "drupal/hal": "^2.0",
         "drupal/image_effects": "^4.0",
         "drupal/jsonapi_extras": "^3.23",
-        "drupal/metatag": "^1.14",
+        "drupal/metatag": "^2.0",
         "drupal/migrate_file": "^2.0",
         "drupal/migrate_source_csv": "^3.4",
         "drupal/migrate_tools": "^6.0",
@@ -72,6 +73,7 @@
         "drupal/default_content": "^2.0",
         "drupal/drupal-extension": "^5.0",
         "drupal/feeds": "^3.0@RC",
+        "drupal/rdf": "^3.0@beta",
         "drupal/upgrade_status": "^4.0",
         "imbo/behat-api-extension": "^5.0.0",
         "marcortola/behat-seo-contexts": "^4.0",
@@ -126,10 +128,6 @@
             },
             "drupal/aggregator": {
                 "[3471498 ] - Fix fails in FeedAdminDisplayTest": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch"
-            },
-            "drupal/metatag": {
-                "[2945817] - Support JSON API, REST, GraphQL and custom normalizations": "https://www.drupal.org/files/issues/2023-11-30/metatag-n2945817-186.patch",
-                "[3363582] - Resolve problems with field serialization changes": "https://www.drupal.org/files/issues/2023-05-30/metatag-n3363582-2.patch"
             }
         },
         "autoload-drupal": {

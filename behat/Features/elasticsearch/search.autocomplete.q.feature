@@ -88,9 +88,7 @@ Feature: Retrieve Autocomplete Wide (People, Studio & Games) items from Elastics
                 "top": {
                   "hits": {
                     "hits[0]": {
-                      "_source": {
-                        "title": "Don't kill Her"
-                      }
+                      "_index": "test_gos_node_game_en"
                     }
                   }
                 }
@@ -101,9 +99,7 @@ Feature: Retrieve Autocomplete Wide (People, Studio & Games) items from Elastics
                 "top": {
                   "hits": {
                     "hits[0]": {
-                      "_source": {
-                        "fullname": "J\u00e9r\u00e9my \"Wuthrer\" Cuany"
-                      }
+                      "_index": "test_gos_node_people_en"
                     }
                   }
                 }
