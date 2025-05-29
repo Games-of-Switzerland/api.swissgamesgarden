@@ -3,12 +3,12 @@
 namespace Drupal\Tests\gos_game\Functional;
 
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
-use Drupal\field\Entity\FieldConfig;
-use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\gos_test\Traits\TaxonomyTestTrait;
 use Drupal\Tests\entity_test\Functional\Rest\EntityTestResourceTestBase;
 use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
 use Drupal\Tests\rest\Functional\AnonResourceTestTrait;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\gos_test\Traits\TaxonomyTestTrait;
 
 /**
  * Verify that the JSON output from JsonApi works as intended.

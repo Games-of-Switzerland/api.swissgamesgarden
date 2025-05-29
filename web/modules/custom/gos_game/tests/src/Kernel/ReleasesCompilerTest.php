@@ -2,11 +2,11 @@
 
 namespace Drupal\Tests\gos_games\Kernel;
 
+use Drupal\KernelTests\KernelTestBase;
+use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
 use Drupal\gos_game\ReleasesCompiler;
 use Drupal\gos_test\Traits\NodeTestTrait;
 use Drupal\gos_test\Traits\TaxonomyTestTrait;
-use Drupal\KernelTests\KernelTestBase;
-use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
 
 /**
  * @coversDefaultClass \Drupal\gos_game\ReleasesCompiler
