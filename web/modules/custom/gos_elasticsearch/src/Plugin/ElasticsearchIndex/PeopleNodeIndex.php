@@ -50,11 +50,8 @@ class PeopleNodeIndex extends NodeIndexBase {
         $this->logger->notice('Message: Index @index has been created.', [
           '@index' => $index_name,
         ]);
-      }
-      else {
-        $this->logger->notice('Message: Index @index already exists.', [
-          '@index' => $index_name,
-        ]);
+
+        continue;
       }
 
       $this->logger->notice('Message: Something went wrong when contacting @index.', [
