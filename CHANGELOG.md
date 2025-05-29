@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - fix PHPCS using deprecated CSS/JS Scanning
+- improve Games Normalization for Elasticsearch by supporting nullable entities
 
 ### Fixed
 - fix indexation of Player field 'max'
