@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - upgrade drupal/metatag (1.26.0 => 2.1.0)
 - update psalm dependecies
 - update friendsofphp/php-cs-fixer (v3.64.0 => v3.75.0)
+- update capistrano dependencies
 
 ### Changed
 - fix PHPCS using deprecated CSS/JS Scanning
