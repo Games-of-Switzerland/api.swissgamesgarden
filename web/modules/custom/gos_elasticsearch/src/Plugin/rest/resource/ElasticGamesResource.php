@@ -33,7 +33,7 @@ class ElasticGamesResource extends ElasticResourceBase {
    *
    * @see \Drupal\gos_elasticsearch\Plugin\ElasticsearchIndex\MultilingualSiteWideIndex::id
    */
-  public const ELASTICSEARCH_PLUGIN_ID = 'gos_index_node_game';
+  public const string ELASTICSEARCH_PLUGIN_ID = 'gos_index_node_game';
 
   /**
    * The page size.
@@ -42,7 +42,7 @@ class ElasticGamesResource extends ElasticResourceBase {
    *
    * @var int
    */
-  public const PAGER_SIZE = 24;
+  public const int PAGER_SIZE = 24;
 
   /**
    * The taxonomy term Storage.

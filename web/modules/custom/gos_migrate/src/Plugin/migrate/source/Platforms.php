@@ -18,16 +18,16 @@ class Platforms extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'platform';
+  protected const string ROW_EXPLODED_KEY = 'platform';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'platform';
+  protected const string ROW_ID_KEY = 'platform';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'platforms';
+  protected const string SOURCE_KEY = 'platforms';
 
 }

@@ -18,16 +18,16 @@ class Publishers extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'publisher';
+  protected const string ROW_EXPLODED_KEY = 'publisher';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'publisher';
+  protected const string ROW_ID_KEY = 'publisher';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'publishers';
+  protected const string SOURCE_KEY = 'publishers';
 
 }

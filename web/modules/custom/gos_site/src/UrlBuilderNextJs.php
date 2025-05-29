@@ -16,7 +16,7 @@ class UrlBuilderNextJs {
    *
    * @var array
    */
-  public const NEXTJS_URLS_PREFIX = [
+  public const array NEXTJS_URLS_PREFIX = [
     'game' => [
       'fr' => '',
       'en' => '',

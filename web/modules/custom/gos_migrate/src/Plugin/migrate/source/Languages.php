@@ -18,16 +18,16 @@ class Languages extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'language';
+  protected const string ROW_EXPLODED_KEY = 'language';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'language';
+  protected const string ROW_ID_KEY = 'language';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'languages';
+  protected const string SOURCE_KEY = 'languages';
 
 }

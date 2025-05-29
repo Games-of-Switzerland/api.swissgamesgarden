@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - upgrade from PHP 8.2 -> 8.3 - Games-of-Switzerland/swissgamesgarden#164
 
+### Changed
+- apply type-hinting to const
+
 ## [1.4.0] - 2025-05-29
 ### Security
 - update drupal/core-dev (10.4.1 => 10.4.7)
