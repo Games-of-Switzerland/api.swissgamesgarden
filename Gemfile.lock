@@ -13,7 +13,7 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-harrow (0.5.3)
     concurrent-ruby (1.3.5)
-    ed25519 (1.4.0)
+    ed25519 (1.3.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     logger (1.7.0)
@@ -33,7 +33,9 @@ GEM
       ostruct
 
 PLATFORMS
-  ruby
+  arm64-darwin-23
+  universal-darwin-24
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt_pbkdf (~> 1.1)
