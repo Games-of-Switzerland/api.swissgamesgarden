@@ -64,6 +64,7 @@ module:
   phpass: 0
   rest: 0
   restui: 0
+  save_edit: 0
   serialization: 0
   simple_sitemap: 0
   symfony_mailer: 0
