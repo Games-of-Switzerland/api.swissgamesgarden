@@ -18,16 +18,16 @@ class Locations extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'location';
+  protected const string ROW_EXPLODED_KEY = 'location';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'location';
+  protected const string ROW_ID_KEY = 'location';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'locations';
+  protected const string SOURCE_KEY = 'locations';
 
 }

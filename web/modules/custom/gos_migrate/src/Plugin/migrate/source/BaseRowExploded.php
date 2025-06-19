@@ -17,21 +17,21 @@ abstract class BaseRowExploded extends CSV {
    *
    * @var string
    */
-  protected const ROW_EXPLODED_KEY = '';
+  protected const string ROW_EXPLODED_KEY = '';
 
   /**
    * The new prepared key that will be uniq by exploded row.
    *
    * @var string
    */
-  protected const ROW_ID_KEY = '';
+  protected const string ROW_ID_KEY = '';
 
   /**
    * The Source key that may contains multiple values separated by comma.
    *
    * @var string
    */
-  protected const SOURCE_KEY = '';
+  protected const string SOURCE_KEY = '';
 
   /**
    * {@inheritdoc}

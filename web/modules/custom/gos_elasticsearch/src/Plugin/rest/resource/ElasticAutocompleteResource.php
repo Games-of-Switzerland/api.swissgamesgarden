@@ -32,7 +32,7 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
    *
    * @var int
    */
-  public const PAGER_SIZE = 5;
+  public const int PAGER_SIZE = 5;
 
   /**
    * The Elasticsearch client.

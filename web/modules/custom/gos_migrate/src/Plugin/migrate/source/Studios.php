@@ -18,16 +18,16 @@ class Studios extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'studio';
+  protected const string ROW_EXPLODED_KEY = 'studio';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'studio';
+  protected const string ROW_ID_KEY = 'studio';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'studios';
+  protected const string SOURCE_KEY = 'studios';
 
 }

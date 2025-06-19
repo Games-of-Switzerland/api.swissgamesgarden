@@ -18,16 +18,16 @@ class Genres extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'genre';
+  protected const string ROW_EXPLODED_KEY = 'genre';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'genre';
+  protected const string ROW_ID_KEY = 'genre';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'genres';
+  protected const string SOURCE_KEY = 'genres';
 
 }

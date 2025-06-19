@@ -18,16 +18,16 @@ class People extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'person';
+  protected const string ROW_EXPLODED_KEY = 'person';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'person';
+  protected const string ROW_ID_KEY = 'person';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'persons';
+  protected const string SOURCE_KEY = 'persons';
 
 }

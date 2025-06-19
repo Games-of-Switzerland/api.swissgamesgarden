@@ -22,7 +22,7 @@ class ElasticGamesResourceValidator extends BaseValidator {
    *
    * @var array
    */
-  private const SORTABLE = [
+  private const array SORTABLE = [
     '_score',
     'title.keyword',
     'releases.date',
