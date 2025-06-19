@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Security
 - upgrade from PHP 8.2 -> 8.3 - Games-of-Switzerland/swissgamesgarden#164
+- downgrade capistrano ed25519 (1.4.0 -> 1.3.0)
 
 ### Changed
 - apply type-hinting to const
