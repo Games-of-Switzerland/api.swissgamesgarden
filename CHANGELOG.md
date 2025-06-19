@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - add & setup module Save & Edit
 
+### Fixed
+- fix NextJS redirection failed when entity start with langcode. Eg /enlight of /frenchy ... that match /en or /fr
+
 ## [1.4.0] - 2025-05-29
 ### Security
 - update drupal/core-dev (10.4.1 => 10.4.7)
