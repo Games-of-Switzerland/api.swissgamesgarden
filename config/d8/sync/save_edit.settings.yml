@@ -1,0 +1,17 @@
+_core:
+  default_config_hash: BbDroIEr8r2Tl5vtErNAIWGeDf5UKZwN9Lt82Fl9iiE
+button_value: 'Save & Edit'
+button_weight: '-1'
+gin_primary: true
+unpublish: false
+unpublish_new_only: false
+hide_default_save: false
+hide_default_publish: false
+hide_default_preview: true
+hide_default_delete: false
+enable_node_types_automatically: false
+node_types:
+  game: game
+  page: page
+  people: people
+  studio: studio

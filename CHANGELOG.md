@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - apply type-hinting to const
 - uninstall deprecated & unused module CKEditor 4
 
+### Added
+- add & setup module Save & Edit
+
 ### Fixed
 - fix NextJS redirection failed when entity start with langcode. Eg /enlight of /frenchy ... that match /en or /fr
 
