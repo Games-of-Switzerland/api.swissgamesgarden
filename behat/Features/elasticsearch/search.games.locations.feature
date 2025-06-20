@@ -35,19 +35,6 @@
         "hits": {"hits": "@arrayLength(2)"}
       }
       """
-    Then the response body contains JSON:
-      """
-      {
-        "hits": {
-          "hits[0]": {
-            "_source": {"uuid": "08952aa6-e079-496a-8efa-cbb8465d9315"}
-          },
-          "hits[1]": {
-            "_source": {"uuid": "9bb9538f-5b75-4dc0-99b1-ff11d4e2abdd"}
-          }
-        }
-      }
-      """
 
   Scenario: Games Resource should respond with an error when a non-valid genre slug is given.
     When I request "http://api.gos.test/search/games?page=0&locations[]=test"

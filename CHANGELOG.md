@@ -6,6 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] - 2025-06-20
+### Security
+- upgrade from PHP 8.2 -> 8.3 - Games-of-Switzerland/swissgamesgarden#164
+- update capistrano base64, rake & ostruct
+- downgrade capistrano ed25519 (1.4.0 -> 1.3.0)
+
+### Changed
+- apply type-hinting to const
+- uninstall deprecated & unused module CKEditor 4
+
+### Added
+- add & setup module Save & Edit
+
+### Fixed
+- fix NextJS redirection failed when entity start with langcode. Eg /enlight of /frenchy ... that match /en or /fr
+
 ## [1.4.0] - 2025-05-29
 ### Security
 - update drupal/core-dev (10.4.1 => 10.4.7)
@@ -333,7 +349,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.1...HEAD
+[1.4.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.0...1.4.1
 [1.4.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.1.1...1.2.0

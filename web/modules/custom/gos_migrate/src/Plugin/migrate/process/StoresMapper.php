@@ -45,7 +45,7 @@ class StoresMapper extends ProcessPluginBase {
    *
    * @string[]
    */
-  private const STORES = [
+  private const array STORES = [
     'apple_store' => [
       '^(http|https)://itunes.apple.com/.*',
       '^(http|https)://apps.apple.com/.*',

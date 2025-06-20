@@ -18,16 +18,16 @@ class Cantons extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'canton';
+  protected const string ROW_EXPLODED_KEY = 'canton';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'canton';
+  protected const string ROW_ID_KEY = 'canton';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'cantons';
+  protected const string SOURCE_KEY = 'cantons';
 
 }

@@ -16,7 +16,7 @@ class UrlBuilderNextJs {
    *
    * @var array
    */
-  public const NEXTJS_URLS_PREFIX = [
+  public const array NEXTJS_URLS_PREFIX = [
     'game' => [
       'fr' => '',
       'en' => '',
@@ -95,7 +95,7 @@ class UrlBuilderNextJs {
     /** @var string $slug */
     $slug = $translation->toUrl('canonical')->toString();
     // Remove the langcode part as will be added manually later in the process.
-    $slug = str_replace("/{$langcode}", '', $slug);
+    $slug = str_replace("/{$langcode}/", '/', $slug);
 
     // Build the complete destination path starting with the base URL.
     $base_url = $this->configFactory->get('frontend')->get('base_url');

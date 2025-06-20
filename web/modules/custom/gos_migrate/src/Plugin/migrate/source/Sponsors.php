@@ -18,16 +18,16 @@ class Sponsors extends BaseRowExploded {
   /**
    * {@inheritdoc}
    */
-  protected const ROW_EXPLODED_KEY = 'sponsor';
+  protected const string ROW_EXPLODED_KEY = 'sponsor';
 
   /**
    * {@inheritdoc}
    */
-  protected const ROW_ID_KEY = 'sponsor';
+  protected const string ROW_ID_KEY = 'sponsor';
 
   /**
    * {@inheritdoc}
    */
-  protected const SOURCE_KEY = 'sponsors';
+  protected const string SOURCE_KEY = 'sponsors';
 
 }

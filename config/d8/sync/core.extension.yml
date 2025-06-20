@@ -14,7 +14,6 @@ module:
   breakpoint: 0
   cdn: 0
   cdn_ui: 0
-  ckeditor: 0
   ckeditor5: 0
   config: 0
   consumer_image_styles: 0
@@ -65,6 +64,7 @@ module:
   phpass: 0
   rest: 0
   restui: 0
+  save_edit: 0
   serialization: 0
   simple_sitemap: 0
   symfony_mailer: 0

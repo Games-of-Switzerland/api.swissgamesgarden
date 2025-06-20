@@ -28,7 +28,7 @@
         }
     ],
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.3",
         "ext-exif": "*",
         "composer/installers": "^2.2",
         "cweagans/composer-patches": "^1.6.5",
@@ -58,6 +58,7 @@
         "drupal/new_relic_rpm": "^2.1",
         "drupal/pathauto": "^1.6",
         "drupal/restui": "^1.18",
+        "drupal/save_edit": "^1.8",
         "drupal/simple_sitemap": "^4.1",
         "drupal/symfony_mailer": "^1.0@alpha",
         "drupal/views_ef_fieldset": "^1.4",
