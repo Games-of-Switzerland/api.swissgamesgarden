@@ -12,11 +12,12 @@ set :docker_app_name, -> {
 set :docker_app_service, 'app'
 set :docker_containers, 'app db mailcatcher elasticsearch newrelic-apm-daemon'
 
-server 'gos.museebolo.ch', port: '44144', user: 'deploy', roles: %w{app db web}
-
 # Link environments files
-#set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/docker.settings.php", "docker-compose.override.yml")
-set :linked_files, fetch(:linked_files, []).push("#{fetch(:app_path)}/sites/default/settings.local.php", "#{fetch(:app_path)}/sites/default/services.local.yml", "docker-compose.override.yml")
+set :linked_files, fetch(:linked_files, []).push("docker-compose.override.yml")
+
+# Copy files. Some files can't be symlink because they are use with relative path (for example ../../.env)
+# which results to broken file path on symlinks.
+set :copied_files, fetch(:copied_files, []).push("#{fetch(:app_path)}/sites/default/settings.local.php","#{fetch(:app_path)}/sites/default/services.local.yml")
 
 # Link dirs files and private-files
 set :linked_dirs, fetch(:linked_dirs, []).push("#{fetch(:app_path)}/sites/default/files")
@@ -39,6 +40,21 @@ set :ssh_options, {
 }
 
 namespace :deploy do
+  desc 'Copy files from shared to release path'
+  task :copy_files do
+    on roles(:app) do
+      within current_path do
+        fetch(:copied_files).each do |file|
+          target = release_path.join(file)
+          source = shared_path.join(file)
+          next if test "[ -L #{target} ]"
+          execute :rm, target if test "[ -f #{target} ]"
+          execute :cp, source, target
+        end
+      end
+    end
+  end
+
   desc '(re)Start docker containers'
   task :restart do
     on roles(:app) do
@@ -130,6 +146,8 @@ namespace :deploy do
       end
     end
   end
+
+  before 'deploy:symlink:shared', 'deploy:copy_files'
 
   after :publishing, 'deploy:restart'
   after 'deploy:restart', 'deploy:update'

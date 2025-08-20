@@ -194,7 +194,7 @@ docker compose up --build -d
 docker compose exec app docker-as-drupal db-reset --with-default-content --with-elasticsearch
 ```
 
-Prepend every command with `docker-compose exec app` to run them on the Docker
+Prepend every command with `docker compose exec app` to run them on the Docker
 environment.
 
 ## 🚀 Deploy
@@ -242,14 +242,14 @@ You may browse your ES server by using [DejaVu UI](https://github.com/appbaseio/
 ### Index
 
 ```bash
-docker-compose exec [app|test] drush eshr
-docker-compose exec [app|test] drush queue-run elasticsearch_helper_indexing
+docker compose exec [app|test] drush eshr
+docker compose exec [app|test] drush queue-run elasticsearch_helper_indexing
 ```
 
 ### List of Indexes
 
 ```bash
-docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
+docker compose exec elasticsearch curl http://127.0.0.1:9200/_cat/indices
 ```
 
 This should print
@@ -263,8 +263,8 @@ $ yellow open gos lsSuUuMjTyizjL_WLECfyQ 5 1 0 0 1.2kb 1.2kb
 This operation is necessary when the Elasticsearch schema has been updated.
 
 ```bash
-    docker-compose exec app drush eshd -y
-    docker-compose exec app drush eshs
+    docker compose exec app drush eshd -y
+    docker compose exec app drush eshs
 ```
 
 ### Health Check
@@ -272,7 +272,7 @@ This operation is necessary when the Elasticsearch schema has been updated.
 Check that Elasticsearch is up and running.
 
 ```bash
-docker-compose exec elasticsearch curl http://127.0.0.1:9200/_cat/health
+docker compose exec elasticsearch curl http://127.0.0.1:9200/_cat/health
 ```
 
 ## 📋 Documentations
@@ -309,7 +309,7 @@ DRUPAL_CONFIG_SET: >-
 Run the diagnostic command to show the value of `elasticsearch_helper.host` on your container:
 
 ```
-docker-compose exec app drush cget elasticsearch_helper.settings --include-overridden
+docker compose exec app drush cget elasticsearch_helper.settings --include-overridden
 ```
 
 It should print:
@@ -328,7 +328,7 @@ elasticsearch_helper:
 If you get something else in `host` (such as `localhost`), then your initial bootstrap was made without the `host` config key and need to be rerun:
 
 ```
-docker-compose exec app docker-as-drupal db-reset --update-dump --with-default-content
+docker compose exec app docker-as-drupal db-reset --update-dump --with-default-content
 ```
 
 ### Elasticsearch indexing failed with error `FORBIDDEN/12/index read-only / allow delete` ?
@@ -338,15 +338,15 @@ By default, Elasticsearch installed goes into `read-only mode when you have less
 First, you will need to remove all documents and indices from Elasticsearch (or change the disk size).
 
 ```bash
-docker-compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/_all
+docker compose exec elasticsearch curl -X DELETE http://127.0.0.1:9200/_all
 ```
 
 Then you can fix it by running the following commands:
 
 ```bash
-docker-compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
-docker-compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
-docker-compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
+docker compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
+docker compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
+docker compose exec elasticsearch curl -XPUT -H "Content-Type: application/json" http://127.0.0.1:9200/_cluster/settings -d '{ "transient": { "cluster.routing.allocation.disk.threshold_enabled": false } }'
 ```
 
 ### Error while importing config ?
@@ -439,7 +439,7 @@ Every tests should be run into the Docker environment.
 1. Run a shell on your Docker test env.
 
 ```bash
-docker-compose exec test bash
+docker compose exec test bash
 ```
 
 1. Once connected via ssh on your Docker test, you may run any `docker-as-drupal` commands
@@ -451,7 +451,7 @@ docker-as-drupal [behat|phpunit|nightwatch]
 You also may use the direct access - without opening a bash on the Docket test env. using:
 
 ```bash
-docker-compose exec test docker-as-drupal [behat|phpunit|nightwatch]
+docker compose exec test docker-as-drupal [behat|phpunit|nightwatch]
 ```
 
 ## 💻 Drush Commands
