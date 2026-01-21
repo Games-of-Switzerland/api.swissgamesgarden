@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.2] - 2026-01-21
+### Security
+- update to Ruby v3 and latest Capistrano
+
+### Changed
+- deploy to unil instead of bolo
+
 ## [1.4.1] - 2025-06-20
 ### Security
 - upgrade from PHP 8.2 -> 8.3 - Games-of-Switzerland/swissgamesgarden#164
@@ -349,7 +356,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.2...HEAD
+[1.4.2]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.0...1.4.1
 [1.4.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.3.0...1.4.0
 [1.3.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.2.0...1.3.0

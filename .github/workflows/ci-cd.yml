@@ -16,7 +16,7 @@ jobs:
           php-version: '8.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: composer:v2, phpcs, cs2pr
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: composer install --prefer-dist
       - run: ./vendor/bin/phpcs --report=checkstyle | cs2pr
 
@@ -30,7 +30,7 @@ jobs:
           php-version: '8.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: psalm, composer:v2
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: cd tools/php-deprecation-detector && composer install --prefer-dist
       # PHP 8.2 is not already supported by this tools:
       # @see https://github.com/wapmorgan/PhpDeprecationDetector/issues/73
@@ -49,7 +49,7 @@ jobs:
           php-version: '8.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: php-cs-fixer, cs2pr, composer:v2
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: cd tools/php-cs-fixer && composer install --prefer-dist
       - run: ./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --using-cache=no --dry-run --format=checkstyle | cs2pr
 
@@ -63,7 +63,7 @@ jobs:
           php-version: '8.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: phpstan, cs2pr, composer:v2
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: composer install
       - run: ./vendor/bin/phpstan analyse ./web/modules/custom ./behat --error-format=checkstyle | cs2pr
 
@@ -77,7 +77,7 @@ jobs:
           php-version: '8.3'
           extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
           tools: psalm, composer:v2
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: composer install --prefer-dist
       - run: cd tools/psalm && composer install --prefer-dist
       - run: ./tools/psalm/vendor/bin/psalm --output-format=github --no-cache
@@ -85,7 +85,7 @@ jobs:
   upgrade-status:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: docker compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
       - name: Build the docker compose stack
         run: |
@@ -103,7 +103,7 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: docker compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test
       - name: Build the docker compose stack
         run: docker compose -f docker-compose.yml -f docker-compose.ci.yml up --build -d test
@@ -113,7 +113,7 @@ jobs:
 #   functional-tests:
 #     runs-on: ubuntu-latest
 #     steps:
-#       - uses: actions/checkout@v4
+#       - uses: actions/checkout@v6
 #       - run: docker compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
 #       - name: Build the docker compose stack
 #         run: |
@@ -124,7 +124,7 @@ jobs:
 #       - name: Run Functional tests
 #         run: docker compose -f docker-compose.yml -f docker-compose.ci.yml exec -T test docker-as-wait db:3306 test:80 browser:4444 elasticsearch:9200 -- docker-as-drupal phpunit --skip-default-stops --group=gos_functional --user=www-data
 #       - name: Upload Artifact
-#         uses: actions/upload-artifact@v4
+#         uses: actions/upload-artifact@v6
 #         if: failure()
 #         with:
 #           path: ./log
@@ -132,7 +132,7 @@ jobs:
   behat-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: docker compose -f docker-compose.yml -f docker-compose.ci.yml pull --include-deps test browser elasticsearch
       - name: Build the docker compose stack
         run: |
@@ -151,7 +151,7 @@ jobs:
       - name: Run Behat tests
         run: docker compose exec -T test docker-as-wait db:3306 test:80 browser:4444 -- docker-as-drupal behat --skip-db-reset --skip-default-content
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: failure()
         with:
           path: ./log
@@ -167,7 +167,7 @@ jobs:
    env:
      PRIVATE_SSH_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
    steps:
-     - uses: actions/checkout@v4
+     - uses: actions/checkout@v6
      - uses: ./.github/actions/deploy
        with:
          stage: production
@@ -184,7 +184,7 @@ jobs:
    env:
      PRIVATE_SSH_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
    steps:
-     - uses: actions/checkout@v4
+     - uses: actions/checkout@v6
      - uses: ./.github/actions/deploy
        with:
          stage: staging
