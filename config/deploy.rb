@@ -1,6 +1,3 @@
-# config valid only for current version of Capistrano
-lock '3.5.0'
-
 set :application, 'gos'
 set :repo_url, 'git@github.com:Games-of-Switzerland/gos-server.git'
 
@@ -22,14 +19,8 @@ set :copied_files, fetch(:copied_files, []).push("#{fetch(:app_path)}/sites/defa
 # Link dirs files and private-files
 set :linked_dirs, fetch(:linked_dirs, []).push("#{fetch(:app_path)}/sites/default/files")
 
-# Default value for :scm is :git
-set :scm, :git
-
-# Default value for :pty is false
-# set :pty, true
-
-# Default value for :format is :pretty
-# set :format, :pretty
+# Default value for :log_level is :debug
+set :log_level, :debug
 
 # Default value for keep_releases is 5
 # set :keep_releases, 3

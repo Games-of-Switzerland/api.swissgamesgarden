@@ -189,37 +189,3 @@ jobs:
        with:
          stage: staging
          ssh_private_key: ${{ secrets.PRIVATE_SSH_KEY }}
-
-  deploy_prod_unil:
-   name: Deploy to Production (Unil)
-   needs: [phpcs, php-cs-fixer, phpstan, psalm, unit-tests, behat-tests]
-   environment:
-     name: Production
-     url: https://api.swissgames.garden
-   if: github.ref == 'refs/heads/feature/deploy-to-unil'
-   runs-on: ubuntu-latest
-   env:
-     PRIVATE_SSH_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
-   steps:
-     - uses: actions/checkout@v4
-     - uses: ./.github/actions/deploy
-       with:
-         stage: production
-         ssh_private_key: ${{ secrets.PRIVATE_SSH_KEY }}
-
-  deploy_staging_unil:
-   name: Deploy to Staging (Unil)
-   needs: [phpcs, php-cs-fixer, phpstan, psalm, unit-tests, behat-tests]
-   environment:
-     name: Staging
-     url: https://staging-api.swissgames.garden
-   if: github.ref == 'refs/heads/feature/deploy-to-unil'
-   runs-on: ubuntu-latest
-   env:
-     PRIVATE_SSH_KEY: ${{ secrets.PRIVATE_SSH_KEY }}
-   steps:
-     - uses: actions/checkout@v4
-     - uses: ./.github/actions/deploy
-       with:
-         stage: staging
-         ssh_private_key: ${{ secrets.PRIVATE_SSH_KEY }}
