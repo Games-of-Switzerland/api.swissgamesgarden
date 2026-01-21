@@ -16,7 +16,7 @@ runs:
     - name: Install Ruby with Bundle to deploy via Capistrano
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.6'
+        ruby-version: '3.4'
         bundler-cache: true
     - name: Execute the deployment
       run: bundle exec cap ${{ inputs.stage }} deploy
