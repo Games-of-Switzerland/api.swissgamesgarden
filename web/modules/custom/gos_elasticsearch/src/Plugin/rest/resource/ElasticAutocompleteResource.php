@@ -227,8 +227,9 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     return [
       'multi_match' => [
         'query' => $search,
-        'fields' => ['title', 'fullname', 'name'],
+        'fields' => ['title^5', 'fullname', 'name'],
         'operator' => 'or',
+        'type' => 'most_fields',
         'fuzziness' => 0,
       ],
     ];
