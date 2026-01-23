@@ -76,7 +76,7 @@
         "drupal/feeds": "^3.0@RC",
         "drupal/rdf": "^3.0@beta",
         "drupal/upgrade_status": "^4.0",
-        "imbo/behat-api-extension": "^5.0.0",
+        "imbo/behat-api-extension": "^6.0",
         "marcortola/behat-seo-contexts": "^4.0",
         "mglaman/phpstan-drupal": "^1.1",
         "phpspec/prophecy-phpunit": "^2",

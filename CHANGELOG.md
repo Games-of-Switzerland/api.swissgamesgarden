@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Security
 - update drupal/core-dev (10.4.7 => 10.6.2)
+- upgrade imbo/behat-api-extension (v5.0.0 => v6.0.1)
 
 ## [1.4.3] - 2026-01-23
 ### Changed
