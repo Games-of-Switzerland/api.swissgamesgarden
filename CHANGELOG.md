@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update drupal/core-dev (10.4.7 => 10.6.2)
 - upgrade imbo/behat-api-extension (v5.0.0 => v6.0.1)
 - upgrade drupal/save_edit (1.10.0 => 2.1.0)
+- upgrade cweagans/composer-patches (1.7.3 => 2.0.0)
 
 ## [1.4.3] - 2026-01-23
 ### Changed
