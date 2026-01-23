@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.3] - 2026-01-23
+### Changed
+- use most_fields instead of best_fields for autocomplete search
+
 ## [1.4.2] - 2026-01-21
 ### Security
 - update to Ruby v3 and latest Capistrano
@@ -356,7 +360,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.2...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.3...HEAD
+[1.4.3]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.2...1.4.3
 [1.4.2]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.0...1.4.1
 [1.4.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.3.0...1.4.0
