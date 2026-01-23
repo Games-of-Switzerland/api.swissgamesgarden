@@ -1,0 +1,17 @@
+{
+    "_hash": "b15922892bb45e771340f71067e513d3c4ebed42d9f8ffc8c197c55184fbf4a9",
+    "patches": {
+        "drupal/aggregator": [
+            {
+                "package": "drupal/aggregator",
+                "description": "[3471498 ] - Fix fails in FeedAdminDisplayTest",
+                "url": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch",
+                "sha256": "24a573177e683bd11e5a5ab7f4e21d457a0f75055fdb5e8ab489dd9f6a57be9c",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

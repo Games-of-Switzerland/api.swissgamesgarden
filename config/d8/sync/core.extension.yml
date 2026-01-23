@@ -49,6 +49,7 @@ module:
   jsonapi: 0
   jsonapi_extras: 0
   link: 0
+  mailer_transport: 0
   media: 0
   media_library: 0
   menu_ui: 0
