@@ -11,35 +11,36 @@ updates:
     directory: "/tools/php-cs-fixer"
     versioning-strategy: lockfile-only
     allow:
-      - dependency-type: production
+      - dependency-type: direct
     schedule:
-      interval: monthly
-  - package-ecosystem: composer
-    directory: "/tools/php-deprecation-detector"
-    versioning-strategy: lockfile-only
-    allow:
-      - dependency-type: production
-    schedule:
-      interval: monthly
+      interval: weekly
+    reviewers:
+      - "wengerk"
   - package-ecosystem: composer
     directory: "/tools/psalm"
     versioning-strategy: lockfile-only
     allow:
-      - dependency-type: production
+      - dependency-type: direct
     schedule:
-      interval: monthly
+      interval: weekly
+    reviewers:
+      - "wengerk"
 
-  # Capistrano
+ # Capistrano
   - package-ecosystem: bundler
     directory: "/"
     versioning-strategy: lockfile-only
     allow:
       - dependency-type: production
     schedule:
-      interval: weekly
+      interval: monthly
+    reviewers:
+      - "wengerk"
 
   # Github Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: weekly
+    reviewers:
+      - "wengerk"
