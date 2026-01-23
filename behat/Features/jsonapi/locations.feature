@@ -43,6 +43,7 @@ Feature: Locations
     Given I request "/G70VW4Y9sP/jsonapi/taxonomy_term/location?sort=name"
     Then the response code is 200
     And the "Content-Type" response header is "application/vnd.api+json"
+    Then the response body contains JSON:
       """
       {
         "data": [

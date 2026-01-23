@@ -31,7 +31,7 @@
         "php": ">=8.3",
         "ext-exif": "*",
         "composer/installers": "^2.2",
-        "cweagans/composer-patches": "^1.6.5",
+        "cweagans/composer-patches": "^2.0",
         "drupal/admin_toolbar": "^3.3",
         "drupal/bamboo_twig": "^6.0",
         "drupal/cdn": "^4.0",
@@ -58,7 +58,7 @@
         "drupal/new_relic_rpm": "^2.1",
         "drupal/pathauto": "^1.6",
         "drupal/restui": "^1.18",
-        "drupal/save_edit": "^1.8",
+        "drupal/save_edit": "^2.1",
         "drupal/simple_sitemap": "^4.1",
         "drupal/symfony_mailer": "^1.0@alpha",
         "drupal/views_ef_fieldset": "^1.4",
@@ -76,7 +76,7 @@
         "drupal/feeds": "^3.0@RC",
         "drupal/rdf": "^3.0@beta",
         "drupal/upgrade_status": "^4.0",
-        "imbo/behat-api-extension": "^5.0.0",
+        "imbo/behat-api-extension": "^6.0",
         "marcortola/behat-seo-contexts": "^4.0",
         "mglaman/phpstan-drupal": "^1.1",
         "phpspec/prophecy-phpunit": "^2",
@@ -124,9 +124,6 @@
             }
         },
         "patches": {
-            "drupal/admin_toolbar": {
-                "[3121816] - Version 8.x-2.1 need Drupal 8.8.0 or greater": "https://www.drupal.org/files/issues/2020-03-30/3121816-07.patch"
-            },
             "drupal/aggregator": {
                 "[3471498 ] - Fix fails in FeedAdminDisplayTest": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch"
             }

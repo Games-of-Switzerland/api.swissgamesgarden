@@ -36,7 +36,7 @@ class StudioNormalizer extends ContentEntityNormalizer {
    *
    * @psalm-suppress ParamNameMismatch
    */
-  public function normalize($object, $format = NULL, array $context = []): null|array|\ArrayObject|bool|float|int|string {
+  public function normalize($object, $format = NULL, array $context = []): array|\ArrayObject|bool|float|int|string|null {
     /** @var \Drupal\node\Entity\Node $object */
 
     $data = [
