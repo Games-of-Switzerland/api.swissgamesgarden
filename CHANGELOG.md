@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.5.0] - 2026-01-23
 ### Security
 - update drupal/core-dev (10.4.7 => 10.6.2)
 - upgrade imbo/behat-api-extension (v5.0.0 => v6.0.1)
@@ -368,7 +370,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.3...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.0...HEAD
+[1.5.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.3...1.5.0
 [1.4.3]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.2...1.4.3
 [1.4.2]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.1...1.4.2
 [1.4.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.0...1.4.1
