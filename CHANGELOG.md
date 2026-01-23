@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - upgrade drupal/save_edit (1.10.0 => 2.1.0)
 - upgrade cweagans/composer-patches (1.7.3 => 2.0.0)
 - upgrade friendsofphp/php-cs-fixer (v3.75.0 => v3.92.5)
+- update dependencies of phpdd
 
 ## [1.4.3] - 2026-01-23
 ### Changed
