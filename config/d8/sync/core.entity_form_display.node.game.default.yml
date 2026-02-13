@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.game.field_credits
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
+    - field.field.node.game.field_is_sensitive
     - field.field.node.game.field_languages
     - field.field.node.game.field_locations
     - field.field.node.game.field_members
@@ -114,6 +115,7 @@ third_party_settings:
         - field_languages
         - field_genres
         - field_sponsors
+        - field_is_sensitive
         - field_completeness
       label: Meta
       region: content
@@ -220,6 +222,13 @@ content:
       preview_image_style: thumbnail
       preview_link: true
       offsets: '50,50'
+    third_party_settings: {  }
+  field_is_sensitive:
+    type: boolean_checkbox
+    weight: 28
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_languages:
     type: entity_reference_autocomplete
@@ -352,6 +361,11 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox

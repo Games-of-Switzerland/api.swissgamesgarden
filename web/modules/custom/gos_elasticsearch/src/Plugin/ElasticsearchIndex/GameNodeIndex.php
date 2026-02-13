@@ -290,6 +290,7 @@ class GameNodeIndex extends NodeIndexBase {
       ]))
       ->addProperty('bundle', FieldDefinition::create('keyword'))
       ->addProperty('players', $players)
+      ->addProperty('is_sensitive', FieldDefinition::create('boolean'))
       ->addProperty('releases', $releases)
       ->addProperty('releases_states', $releases_states)
       ->addProperty('releases_years', $releases_years)
