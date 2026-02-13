@@ -1,0 +1,21 @@
+uuid: 43952a08-1f28-4b44-ad02-f834f24435d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_sensitive
+    - node.type.game
+id: node.game.field_is_sensitive
+field_name: field_is_sensitive
+entity_type: node
+bundle: game
+label: 'Sensitive Content'
+description: 'Mark this game as sensitive content if it contains mature themes, violence, or other age-inappropriate material. Sensitive games will have preview images and certain details blurred by default for younger users, who can choose to reveal them.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean

@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.game.field_credits
     - field.field.node.game.field_genres
     - field.field.node.game.field_images
+    - field.field.node.game.field_is_sensitive
     - field.field.node.game.field_languages
     - field.field.node.game.field_locations
     - field.field.node.game.field_members
@@ -110,6 +111,16 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 7
+    region: content
+  field_is_sensitive:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 24
     region: content
   field_languages:
     type: entity_reference_label
