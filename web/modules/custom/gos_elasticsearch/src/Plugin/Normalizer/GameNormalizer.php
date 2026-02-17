@@ -69,6 +69,7 @@ class GameNormalizer extends ContentEntityNormalizer {
       'bundle' => $object->bundle(),
       'path' => $object->toUrl('canonical')->toString(),
       'changed' => $object->getChangedTime(),
+      'is_sensitive' => $object->hasField('field_is_sensitive') && (bool) $object->get('field_is_sensitive')->value,
     ];
 
     // Handle number of players.
