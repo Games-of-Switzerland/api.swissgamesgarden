@@ -4,3 +4,5 @@ logo:
   use_default: true
 brand_image:
   use_default: true
+  use_custom_wallpaper_folder: 1
+  custom_wallpaper_folder_path: sites/default/gin-wallpapers

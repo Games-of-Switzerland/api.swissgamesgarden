@@ -126,6 +126,9 @@
         "patches": {
             "drupal/aggregator": {
                 "[3471498 ] - Fix fails in FeedAdminDisplayTest": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch"
+            },
+            "drupal/gin_login": {
+                "[3161447] - Random local images": "./patches/gin_login/3161447-37.patch"
             }
         },
         "autoload-drupal": {
