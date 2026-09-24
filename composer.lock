@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58ad1e23d7b79adcd73461ced18d2840",
+    "content-hash": "aa6aa2e2f1f88116517f361856e8cd5f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2797,16 +2797,16 @@
         },
         {
             "name": "drupal/mailer_transport",
-            "version": "1.6.2",
+            "version": "2.0.2",
             "require": {
                 "drupal/core": "^10.3 || ^11",
-                "drupal/symfony_mailer": "^1"
+                "drupal/symfony_mailer": "^2"
             },
             "type": "metapackage",
             "extra": {
                 "drupal": {
-                    "version": "1.6.2",
-                    "datestamp": "1751013031",
+                    "version": "2.0.2",
+                    "datestamp": "1784974467",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2823,7 +2823,7 @@
                     "homepage": "https://www.drupal.org/user/2650563"
                 }
             ],
-            "description": "Placeholder to support upgrade to v2.x",
+            "description": "Configuration UI for Symfony Mailer Transports",
             "homepage": "https://www.drupal.org/project/symfony_mailer",
             "support": {
                 "source": "https://git.drupalcode.org/project/symfony_mailer"
@@ -3394,17 +3394,17 @@
         },
         {
             "name": "drupal/symfony_mailer",
-            "version": "1.6.2",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/symfony_mailer.git",
-                "reference": "1.6.2"
+                "reference": "2.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/symfony_mailer-1.6.2.zip",
-                "reference": "1.6.2",
-                "shasum": "78e829eb05e35c868b0e74b1d8f89cf8e4acbd50"
+                "url": "https://ftp.drupal.org/files/projects/symfony_mailer-2.0.2.zip",
+                "reference": "2.0.2",
+                "shasum": "abf2c701aac43d73157b9d935155b25d0dc878e5"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11",
@@ -3413,11 +3413,16 @@
                 "symfony/mailer": "^6.0 || ^7.0",
                 "tijsverkoyen/css-to-inline-styles": "^2.2"
             },
+            "require-dev": {
+                "drupal/commerce": "^3",
+                "drupal/mailer_policy": "*",
+                "drupal/simplenews": "^4.1"
+            },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.6.2",
-                    "datestamp": "1751013031",
+                    "version": "2.0.2",
+                    "datestamp": "1784974467",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3439,7 +3444,7 @@
                     "homepage": "https://www.drupal.org/user/2650563"
                 }
             ],
-            "description": "Symfony Mailer",
+            "description": "Mailer Plus",
             "homepage": "https://www.drupal.org/project/symfony_mailer",
             "support": {
                 "source": "https://git.drupalcode.org/project/symfony_mailer"
@@ -16710,7 +16715,6 @@
         "drupal/feeds": 5,
         "drupal/fieldable_path": 5,
         "drupal/rdf": 10,
-        "drupal/symfony_mailer": 15,
         "drupal/webp": 10
     },
     "prefer-stable": true,

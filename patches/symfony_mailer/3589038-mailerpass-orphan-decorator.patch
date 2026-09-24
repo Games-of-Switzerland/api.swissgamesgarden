@@ -1,0 +1,38 @@
+Guard MailerPass against autoload fatals from orphan decorators
+
+MailerPass::process() runs at TYPE_BEFORE_OPTIMIZATION, before Symfony's
+DecoratorServicePass removes service decorators whose inner service is
+absent (`decoration_on_invalid: ignore`). When such a decorator's class
+file references symbols from a disabled module, the autoload triggered
+by class_exists() fatals and crashes container compile.
+
+Reproduction on this site: `history` is enabled without `comment`;
+history.services.yml registers `history.comment_link_builder` decorating
+`comment.link_builder`, and HistoryCommentLinkBuilder implements
+`Drupal\comment\CommentLinkBuilderInterface`.
+
+See https://www.drupal.org/project/symfony_mailer/issues/3589038 and
+merge request !220 (upstream, not yet released as of symfony_mailer 2.0.2).
+
+diff --git a/src/MailerPass.php b/src/MailerPass.php
+index ee14a6e90053c8ff8372660f327231c2ae6a09fd..ceb4806f3b49b7afccbdc755ad9f4b36e9b90821 100644
+--- a/src/MailerPass.php
++++ b/src/MailerPass.php
+@@ -19,7 +19,16 @@ class MailerPass implements CompilerPassInterface {
+     $mailer_services = [];
+     foreach ($container->getDefinitions() as $service_id => $service_definition) {
+       $class = $service_definition->getClass();
+-      if ($class && class_exists($class) && isset(class_implements($class)[ComponentMailerInterface::class])) {
++      try {
++        $is_component_mailer = $class && class_exists($class) && isset(class_implements($class)[ComponentMailerInterface::class]);
++      }
++      catch (\Error) {
++        // The service class may reference symbols from a module that isn't
++        // enabled (e.g. an orphan decorator under decoration_on_invalid:
++        // ignore). Symfony removes the definition later in the pipeline.
++        $is_component_mailer = FALSE;
++      }
++      if ($is_component_mailer) {
+         $reflection_class = $container->getReflectionClass($class);
+
+         if ($attributes = $reflection_class->getAttributes(MailerInfo::class)) {

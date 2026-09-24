@@ -1,5 +1,5 @@
 {
-    "_hash": "b15922892bb45e771340f71067e513d3c4ebed42d9f8ffc8c197c55184fbf4a9",
+    "_hash": "9e1ca3ecef9a505179a5268ad6c2602163ddd5d337dd6fb6d63ec61fb3656c84",
     "patches": {
         "drupal/aggregator": [
             {
@@ -7,6 +7,18 @@
                 "description": "[3471498 ] - Fix fails in FeedAdminDisplayTest",
                 "url": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch",
                 "sha256": "24a573177e683bd11e5a5ab7f4e21d457a0f75055fdb5e8ab489dd9f6a57be9c",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/symfony_mailer": [
+            {
+                "package": "drupal/symfony_mailer",
+                "description": "[3589038] Guard MailerPass against autoload fatals from orphan decorators",
+                "url": "./patches/symfony_mailer/3589038-mailerpass-orphan-decorator.patch",
+                "sha256": "ad12d6406e8016c8fb722a268c6aef0b8c3bad1db0b33e0a1c121726cf10fffc",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

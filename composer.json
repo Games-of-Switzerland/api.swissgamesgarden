@@ -60,7 +60,7 @@
         "drupal/restui": "^1.18",
         "drupal/save_edit": "^2.1",
         "drupal/simple_sitemap": "^4.1",
-        "drupal/symfony_mailer": "^1.0@alpha",
+        "drupal/symfony_mailer": "^2.0",
         "drupal/views_ef_fieldset": "^1.4",
         "drupal/webp": "^1.0@beta",
         "drush/drush": "^13.1",
@@ -127,6 +127,9 @@
         "patches": {
             "drupal/aggregator": {
                 "[3471498 ] - Fix fails in FeedAdminDisplayTest": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch"
+            },
+            "drupal/symfony_mailer": {
+                "[3589038] Guard MailerPass against autoload fatals from orphan decorators": "./patches/symfony_mailer/3589038-mailerpass-orphan-decorator.patch"
             }
         },
         "autoload-drupal": {
