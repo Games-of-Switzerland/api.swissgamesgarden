@@ -57,9 +57,9 @@ $config['simple_sitemap.settings']['base_url'] = 'https://swissgames.garden';
  *
  * @var string
  */
-$config['symfony_mailer.settings']['default_transport'] = 'smtp';
-$config['symfony_mailer.mailer_transport.smtp']['configuration']['host'] = 'mailcatcher';
-$config['symfony_mailer.mailer_transport.smtp']['configuration']['port'] = '1025';
+$config['mailer_transport.settings']['default_transport'] = 'smtp';
+$config['mailer_transport.mailer_transport.smtp']['configuration']['host'] = 'mailcatcher';
+$config['mailer_transport.mailer_transport.smtp']['configuration']['port'] = '1025';
 
 /**
  * Private file path.

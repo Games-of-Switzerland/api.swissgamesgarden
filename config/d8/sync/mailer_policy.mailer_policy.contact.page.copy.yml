@@ -1,0 +1,13 @@
+uuid: acdf259a-0122-45a9-b226-1a6e9ddde26a
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+id: contact.page.copy
+configuration:
+  email_body:
+    content:
+      value: |
+        <p class="contact-email-intro">Here is a copy of the message you sent using the contact form <a href="{{ form_url }}">{{ form }}</a>.</p> <hr> {{ contact_message }}
+      format: email_html

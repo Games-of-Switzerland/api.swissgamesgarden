@@ -1,0 +1,13 @@
+uuid: 80e1593e-10ae-4a2f-8ded-036b578ae942
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+id: contact.user.mail
+configuration:
+  email_body:
+    content:
+      value: |
+        <p class="contact-email-intro">Hello {{ recipient_name }},<br> <a href="{{ sender_url }}">{{ sender_name }}</a> has sent you a message via your form at {{ site_name }}. If you don't want to receive such emails, you can <a href="{{ recipient_edit_url }}">change your settings</a>.</p> <hr> {{ contact_message }}
+      format: email_html

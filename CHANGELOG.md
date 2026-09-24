@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - ci: add rector
 
+### Changed
+- chore(deps): drupal/symfony_mailer (v1.6.2 => v2.0.2), migrate mailer transport and policy config to the new mailer_transport/mailer_policy sub-modules
+
 ### Removed
 - chore: remove php-deprecation-detector
 
