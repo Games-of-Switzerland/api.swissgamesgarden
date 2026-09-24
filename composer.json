@@ -72,7 +72,7 @@
         "drupal/aggregator": "^2.2",
         "drupal/core-dev": "^10.0",
         "drupal/default_content": "^2.0",
-        "drupal/drupal-extension": "^5.0",
+        "drupal/drupal-extension": "^6.1",
         "drupal/feeds": "^3.0@RC",
         "drupal/rdf": "^3.0@beta",
         "drupal/upgrade_status": "^4.0",
