@@ -2,26 +2,26 @@
 
 namespace Drupal\gos_site\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Field\Attribute\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Plugin implementation of the 'player_default' widget.
- *
- * @FieldWidget(
- *     id="player_default",
- *     label=@Translation("Default"),
- *     field_types={
- *         "player"
- *     }
- * )
  */
+#[FieldWidget(
+  id: 'player_default',
+  label: new TranslatableMarkup('Default'),
+  field_types: ['player'],
+)]
 class PlayerDefaultWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element['min'] = [
       '#title' => $this->t('Minimum'),

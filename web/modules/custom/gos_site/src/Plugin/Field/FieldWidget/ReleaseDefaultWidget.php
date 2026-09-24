@@ -2,26 +2,26 @@
 
 namespace Drupal\gos_site\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Field\Attribute\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\EntityReferenceAutocompleteWidget;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Plugin implementation of the 'release_default' widget.
- *
- * @FieldWidget(
- *     id="release_default",
- *     label=@Translation("Release widget"),
- *     field_types={
- *         "release"
- *     }
- * )
  */
+#[FieldWidget(
+  id: 'release_default',
+  label: new TranslatableMarkup('Release widget'),
+  field_types: ['release'],
+)]
 class ReleaseDefaultWidget extends EntityReferenceAutocompleteWidget {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $widget = parent::formElement($items, $delta, $element, $form, $form_state);
 

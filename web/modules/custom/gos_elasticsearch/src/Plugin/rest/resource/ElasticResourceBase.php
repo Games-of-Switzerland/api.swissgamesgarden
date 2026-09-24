@@ -55,7 +55,7 @@ abstract class ElasticResourceBase extends ResourceBase {
   public function __construct(
     array $configuration,
     $plugin_id,
-    $plugin_definition,
+    mixed $plugin_definition,
     array $serializer_formats,
     LoggerChannelInterface $logger,
     ValidatorFactory $validator_factory,

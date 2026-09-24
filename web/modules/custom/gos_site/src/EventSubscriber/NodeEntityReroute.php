@@ -15,6 +15,7 @@ class NodeEntityReroute extends BaseEntityReroute implements EventSubscriberInte
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public static function getSubscribedEvents() {
     return [
       KernelEvents::REQUEST => [

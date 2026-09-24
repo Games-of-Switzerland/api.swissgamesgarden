@@ -56,11 +56,11 @@ class Deepen extends ProcessPluginBase {
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): array {
     $keyname = (isset($this->configuration['keyname']) && \is_string($this->configuration['keyname']) && $this->configuration['keyname'] !== '') ? $this->configuration['keyname'] : 'value';
 
-    if (\is_array($value) || $value instanceof \Traversable) {
+    if (is_iterable($value)) {
       $result = [];
 
       foreach ($value as $sub_value) {
-        if (\is_array($sub_value) || $sub_value instanceof \Traversable) {
+        if (is_iterable($sub_value)) {
           foreach ($sub_value as $val) {
             $result[] = [$keyname => $val];
           }

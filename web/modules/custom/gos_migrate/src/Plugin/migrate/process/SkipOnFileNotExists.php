@@ -68,6 +68,7 @@ class SkipOnFileNotExists extends ProcessPluginBase implements ContainerFactoryP
    * @psalm-suppress ArgumentTypeCoercion
    * @psalm-suppress UnsafeInstantiation
    */
+  #[\Override]
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
@@ -93,7 +94,7 @@ class SkipOnFileNotExists extends ProcessPluginBase implements ContainerFactoryP
    * @return mixed
    *   The input value, $value, if it is not empty.
    */
-  public function process($value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
+  public function process(mixed $value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
     if (!$this->checkFile($value)) {
       $this->stopPipeline();
 
@@ -123,7 +124,7 @@ class SkipOnFileNotExists extends ProcessPluginBase implements ContainerFactoryP
    * @return mixed
    *   The input value, $value, if it is not empty.
    */
-  public function row($value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
+  public function row(mixed $value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
     $message = !empty($this->configuration['message']) ? $this->configuration['message'] : '';
 
     if (!$this->checkFile($value)) {
@@ -142,13 +143,13 @@ class SkipOnFileNotExists extends ProcessPluginBase implements ContainerFactoryP
    * @return bool
    *   True if the compare successfully, FALSE otherwise.
    */
-  protected function checkFile($value) {
+  protected function checkFile(mixed $value) {
     if (UrlHelper::isExternal($value)) {
       try {
         // Check if remote file exists.
         $this->httpClient->head($value);
       }
-      catch (RequestException $e) {
+      catch (RequestException) {
         return FALSE;
       }
     }

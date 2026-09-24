@@ -32,6 +32,7 @@ class ConsumersSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public static function getSubscribedEvents(): array {
     return [
       DefaultContentEvents::IMPORT => [

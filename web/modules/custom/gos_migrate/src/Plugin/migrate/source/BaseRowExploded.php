@@ -40,10 +40,10 @@ abstract class BaseRowExploded extends CSV {
    */
   protected function getGenerator(\Iterator $records): ?\Generator {
     foreach ($records as $record) {
-      $record[$this::ROW_ID_KEY] = trim($record[$this::SOURCE_KEY]);
+      $record[$this::ROW_ID_KEY] = trim((string) $record[$this::SOURCE_KEY]);
 
       /** @var array|false $items */
-      $items = explode(',', $record[$this::SOURCE_KEY]);
+      $items = explode(',', (string) $record[$this::SOURCE_KEY]);
 
       if ($items !== FALSE) {
         // Remove empty items.
