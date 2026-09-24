@@ -2,26 +2,28 @@
 
 namespace Drupal\gos_game\Plugin\Field\FieldType;
 
+use Drupal\Core\Field\Attribute\FieldType;
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\TypedData\DataDefinition;
 
 /**
  * Plugin implementation of the 'release_normalized' field type.
- *
- * @FieldType(
- *     id="release_normalized",
- *     label=@Translation("Release normalized"),
- *     description=@Translation("Computed normalized releases"),
- *     no_ui=TRUE,
- *     list_class="\Drupal\gos_game\Plugin\Field\FieldType\ReleaseNormalizedFieldItemList",
- * )
  */
+#[FieldType(
+  id: 'release_normalized',
+  label: new TranslatableMarkup('Release normalized'),
+  description: new TranslatableMarkup('Computed normalized releases'),
+  no_ui: TRUE,
+  list_class: ReleaseNormalizedFieldItemList::class,
+)]
 class ReleaseNormalizedFieldItem extends FieldItemBase {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function isEmpty() {
     $year = $this->get('year')->getValue();
     $states = $this->get('states')->getValue();
@@ -33,6 +35,7 @@ class ReleaseNormalizedFieldItem extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public static function propertyDefinitions(FieldStorageDefinitionInterface $field_definition) {
     $properties = [];
 
@@ -54,6 +57,7 @@ class ReleaseNormalizedFieldItem extends FieldItemBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
     return [];
   }

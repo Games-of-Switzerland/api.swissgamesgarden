@@ -82,6 +82,20 @@ jobs:
       - run: cd tools/psalm && composer install --prefer-dist
       - run: ./tools/psalm/vendor/bin/psalm --output-format=github --no-cache
 
+  rector:
+    name: rector
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+          coverage: none
+      - uses: actions/checkout@v7
+      - run: composer install --prefer-dist --no-scripts
+      - run: vendor/bin/rector process --dry-run
+
   upgrade-status:
     runs-on: ubuntu-latest
     steps:

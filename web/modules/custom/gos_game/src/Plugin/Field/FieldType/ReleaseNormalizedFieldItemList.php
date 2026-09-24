@@ -19,6 +19,7 @@ class ReleaseNormalizedFieldItemList extends FieldItemList {
    * @psalm-suppress PropertyTypeCoercion
    * @psalm-suppress ArgumentTypeCoercion
    */
+  #[\Override]
   protected function computeValue(): void {
     $entity = $this->getEntity();
 

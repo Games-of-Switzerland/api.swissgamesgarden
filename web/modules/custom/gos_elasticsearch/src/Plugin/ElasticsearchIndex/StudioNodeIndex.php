@@ -128,6 +128,7 @@ class StudioNodeIndex extends NodeIndexBase {
    *
    * @psalm-suppress InvalidArgument
    */
+  #[\Override]
   public function index($source): void {
     /** @var \Drupal\node\NodeInterface $entity */
     $entity = $source;

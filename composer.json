@@ -79,6 +79,7 @@
         "imbo/behat-api-extension": "^6.0",
         "marcortola/behat-seo-contexts": "^4.0",
         "mglaman/phpstan-drupal": "^1.1",
+        "palantirnet/drupal-rector": "^0.21.2",
         "phpspec/prophecy-phpunit": "^2",
         "phpstan/phpstan-deprecation-rules": "^1.2"
     },

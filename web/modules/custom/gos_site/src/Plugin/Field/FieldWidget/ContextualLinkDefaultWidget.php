@@ -2,26 +2,26 @@
 
 namespace Drupal\gos_site\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Field\Attribute\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Plugin implementation of the 'contextual_link_default' widget.
- *
- * @FieldWidget(
- *     id="contextual_link_default",
- *     label=@Translation("Default"),
- *     field_types={
- *         "contextual_link"
- *     }
- * )
  */
+#[FieldWidget(
+  id: 'contextual_link_default',
+  label: new TranslatableMarkup('Default'),
+  field_types: ['contextual_link'],
+)]
 class ContextualLinkDefaultWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element['type'] = [
       '#title' => $this->t('Type'),

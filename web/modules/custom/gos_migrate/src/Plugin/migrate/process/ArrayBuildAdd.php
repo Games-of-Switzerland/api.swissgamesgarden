@@ -106,7 +106,7 @@ class ArrayBuildAdd extends ProcessPluginBase {
     $source_value = $row->getSourceProperty($this->configuration['source_value']);
 
     if ($this->configuration['source_value'][0] === '@') {
-      $source_value = $row->getDestinationProperty(ltrim($this->configuration['source_value'], '@'));
+      $source_value = $row->getDestinationProperty(ltrim((string) $this->configuration['source_value'], '@'));
     }
 
     if ($source_value === NULL || empty($source_value)) {
