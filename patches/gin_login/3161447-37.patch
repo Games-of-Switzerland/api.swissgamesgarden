@@ -1,0 +1,733 @@
+From b5af32675034876a641722494b5526b2b98ebfbe Mon Sep 17 00:00:00 2001
+From: Jim Birch <git@jimbir.ch>
+Date: Fri, 28 Feb 2025 08:43:56 -0500
+Subject: [PATCH 1/8] Applies patch from comment #30
+
+Had to manually patch src/Form/GinLoginConfigurationForm.php
+---
+ config/install/gin_login.settings.yml  |  2 ++
+ config/schema/gin_login.schema.yml     |  6 ++++
+ dist/js/wallpaper.js                   |  4 +--
+ gin_login.module                       | 19 ++++++++++
+ src/Form/GinLoginConfigurationForm.php | 48 ++++++++++++++++++++++++--
+ src/js/wallpaper.js                    | 12 ++-----
+ 6 files changed, 77 insertions(+), 14 deletions(-)
+
+diff --git a/config/install/gin_login.settings.yml b/config/install/gin_login.settings.yml
+index 158d0b5..a08bcee 100644
+--- a/config/install/gin_login.settings.yml
++++ b/config/install/gin_login.settings.yml
+@@ -2,3 +2,5 @@ logo:
+   use_default: true
+ brand_image:
+   use_default: true
++  use_custom_wallpaper_folder: false
++  custom_wallpaper_folder_path: ''
+diff --git a/config/schema/gin_login.schema.yml b/config/schema/gin_login.schema.yml
+index 64b53f7..e2e8414 100644
+--- a/config/schema/gin_login.schema.yml
++++ b/config/schema/gin_login.schema.yml
+@@ -22,3 +22,9 @@ gin_login.settings:
+         path:
+           type: string
+           label: 'Path to custom brand image'
++        use_custom_wallpaper_folder:
++          type: boolean
++          label: 'Use custom wallpaper folder'
++        custom_wallpaper_folder_path:
++          type: string
++          label: 'Custom wallpaper folder path'
+diff --git a/dist/js/wallpaper.js b/dist/js/wallpaper.js
+index 1310e7d..31984c6 100644
+--- a/dist/js/wallpaper.js
++++ b/dist/js/wallpaper.js
+@@ -7,9 +7,9 @@
+     }
+   }, Drupal.ginLoginWallpaper = {
+     randomWallpaper: () => {
+-      const path = drupalSettings.gin_login.path + "/images/wallpapers/", wallpapers = [ "eberhard-grossgasteiger-uE1fGoWWHsY-unsplash.jpg", "eberhard-grossgasteiger-v5qZ8VnPamg-unsplash.jpg", "eberhard-grossgasteiger-ULC4CL2MGK8-unsplash.jpg", "eberhard-grossgasteiger-mt1sZs4QBcw-unsplash.jpg", "claudio-schwarz-mYY3NNP47pU-unsplash.jpg", "claudio-schwarz-XmXQ5Ek60pk-unsplash.jpg", "micha-sager-lsDJyu_uJhw-unsplash.jpg" ], wallpaper = wallpapers[Math.floor(Math.random() * wallpapers.length)];
++      const path = drupalSettings.gin_login.path + "/", wallpapers = drupalSettings.gin_login.wallpapers, wallpaper = wallpapers[Math.floor(Math.random() * wallpapers.length)];
+       let image = new Image;
+       image.src = path + wallpaper, image.alt = "", document.querySelector(".gin-login .user-form-page__wallpaper").appendChild(image);
+     }
+   };
+-})(Drupal, drupalSettings, once);
+\ No newline at end of file
++})(Drupal, drupalSettings, once);
+diff --git a/gin_login.module b/gin_login.module
+index 79391b1..35c21fa 100644
+--- a/gin_login.module
++++ b/gin_login.module
+@@ -61,6 +61,25 @@ function gin_login_page_attachments_alter(&$page) {
+     // Add wallpaper library if no custom wallpaper is set.
+     if ($configData['brand_image']['use_default'] != "0") {
+       $page['#attached']['library'][] = 'gin_login/wallpaper';
++      $path .= '/images/wallpapers';
++      $directory = DRUPAL_ROOT . '/' . $path;
++
++      // Add wallpaper library if no custom wallpaper is set.
++      if ($config->get('brand_image.use_custom_wallpaper_folder')) {
++        $directory = DRUPAL_ROOT . '/' . $config->get('brand_image.custom_wallpaper_folder_path');
++        $path = $config->get('brand_image.custom_wallpaper_folder_path');
++      }
++
++      $files = scandir($directory);
++      $wallpapers = [];
++      foreach ($files as $file) {
++        if (preg_match("/^([a-zA-Z0-9\s_\\.\-\(\):])+\.(png|jpg|gif|bmp|jpeg|PNG|JPG|GIF|BMP|JPEG)$/", $file)) {
++          $wallpapers[] = $file;
++        }
++      }
++
++      $page['#attached']['drupalSettings']['gin_login']['path'] = $origin_url . '/' . $path;
++      $page['#attached']['drupalSettings']['gin_login']['wallpapers'] = $wallpapers;
+     }
+   }
+ }
+diff --git a/src/Form/GinLoginConfigurationForm.php b/src/Form/GinLoginConfigurationForm.php
+index 0b0fd73..8bf0654 100644
+--- a/src/Form/GinLoginConfigurationForm.php
++++ b/src/Form/GinLoginConfigurationForm.php
+@@ -159,6 +159,29 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+         ],
+       ],
+     ];
++    $form['brand_image']['custom_wallpaper_folder_path'] = [
++      '#type' => 'textfield',
++      '#title' => $this->t('Path to custom wallpaper folder'),
++      '#description' => [
++        [
++          '#markup' => $this->t('Do not include a leading slash or trailing slash.')
++        ],
++        [
++          '#theme' => 'item_list',
++          '#items' => [
++            $this->t('Has to be relative to the drupal root directory.'),
++            $this->t('Must have group read access.'),
++          ],
++        ]
++      ],
++      '#default_value' => $config->get('brand_image.custom_wallpaper_folder_path') ? str_replace($default_scheme . '://', "", $config->get('brand_image.custom_wallpaper_folder_path')) : '',
++      '#states' => [
++        'visible' => [
++          'input[name="default_brand_image"]' => ['checked' => TRUE],
++          'input[name="use_custom_wallpaper_folder"]' => ['checked' => TRUE],
++        ],
++      ],
++    ];
+     return parent::buildForm($form, $form_state);
+   }
+ 
+@@ -212,6 +235,23 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+           $form_state->setErrorByName('brand_image_path', $this->t('The custom brand image path is invalid.'));
+         }
+       }
++      // If the user provided a path for custom wallpapers make sure a folder
++      // exists at that path.
++      if ($form_state->getValue('custom_wallpaper_folder_path')) {
++        $folder = $form_state->getValue('custom_wallpaper_folder_path');
++        $is_path = $this->validatePath($folder);
++        if (!$is_path) {
++          $form_state->setErrorByName('custom_wallpaper_folder_path', $this->t('The custom wallpaper folder path is invalid.'));
++        }
++      }
++
++      if (preg_match("/^\//", $form_state->getValue('custom_wallpaper_folder_path'))) {
++        $form_state->setErrorByName('custom_wallpaper_folder_path', $this->t('The custom brand image path should not onclude a leading slash.'));
++      }
++
++      if (preg_match("/\/$/", $form_state->getValue('custom_wallpaper_folder_path'))) {
++        $form_state->setErrorByName('custom_wallpaper_folder_path', $this->t('The custom brand image path should not onclude a trailing slash.'));
++      }
+     }
+   }
+ 
+@@ -275,6 +315,9 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+       }
+     }
+ 
++    $config->set('brand_image.use_custom_wallpaper_folder', $values['use_custom_wallpaper_folder'] ?? FALSE);
++    $config->set('brand_image.custom_wallpaper_folder_path', $values['custom_wallpaper_folder_path'] ?? '');
++
+     $config->save();
+     // Rebuild the router.
+     $this->routeBuilder->rebuild();
+@@ -301,8 +344,8 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+     if ($file_system->realpath($path) == $path) {
+       return FALSE;
+     }
+-    // A path relative to the Drupal root or a fully qualified URI is valid.
+-    if (is_file($path)) {
++    // A path relative to the Drupal root, a fully qualified URI or a path to dir is valid.
++    if (is_file($path) || is_dir($path)) {
+       return $path;
+     }
+     // Prepend 'public://' for relative file paths within public filesystem.
+@@ -312,6 +355,7 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+     if (is_file($path)) {
+       return $path;
+     }
++
+     return FALSE;
+   }
+ 
+diff --git a/src/js/wallpaper.js b/src/js/wallpaper.js
+index 26ee793..2461248 100644
+--- a/src/js/wallpaper.js
++++ b/src/js/wallpaper.js
+@@ -10,16 +10,8 @@
+ 
+   Drupal.ginLoginWallpaper = {
+     randomWallpaper: () => {
+-      const path = drupalSettings.gin_login.path + '/images/wallpapers/';
+-      const wallpapers = [
+-        'eberhard-grossgasteiger-uE1fGoWWHsY-unsplash.jpg',
+-        'eberhard-grossgasteiger-v5qZ8VnPamg-unsplash.jpg',
+-        'eberhard-grossgasteiger-ULC4CL2MGK8-unsplash.jpg',
+-        'eberhard-grossgasteiger-mt1sZs4QBcw-unsplash.jpg',
+-        'claudio-schwarz-mYY3NNP47pU-unsplash.jpg',
+-        'claudio-schwarz-XmXQ5Ek60pk-unsplash.jpg',
+-        'micha-sager-lsDJyu_uJhw-unsplash.jpg',
+-      ];
++      const path = drupalSettings.gin_login.path + '/';
++      const wallpapers = drupalSettings.gin_login.wallpapers;
+ 
+       const wallpaper = wallpapers[Math.floor(Math.random() * wallpapers.length)];
+       let image = new Image();
+-- 
+GitLab
+
+
+From 07c457e4874b8094939be837e34f1b86f4965262 Mon Sep 17 00:00:00 2001
+From: Jim Birch <git@jimbir.ch>
+Date: Fri, 28 Feb 2025 09:10:58 -0500
+Subject: [PATCH 2/8] Coding standards
+
+---
+ dist/css/login.css                     | 17 ++++++++++-------
+ dist/js/wallpaper.js                   |  2 +-
+ src/Form/GinLoginConfigurationForm.php |  7 ++++---
+ src/js/wallpaper.js                    |  2 +-
+ webpack.config.build.js                | 14 +++++++-------
+ webpack.config.js                      | 12 ++++++------
+ 6 files changed, 29 insertions(+), 25 deletions(-)
+
+diff --git a/dist/css/login.css b/dist/css/login.css
+index d6cd42d..0716487 100644
+--- a/dist/css/login.css
++++ b/dist/css/login.css
+@@ -70,13 +70,13 @@ body.gin-login .toolbar-icon-default::before {
+   height: 32px;
+   background-color: var(--gin-color-text, #000);
+   -webkit-mask-image: url(../../images/gin.svg);
+-          mask-image: url(../../images/gin.svg);
++  mask-image: url(../../images/gin.svg);
+   -webkit-mask-repeat: no-repeat;
+-          mask-repeat: no-repeat;
++  mask-repeat: no-repeat;
+   -webkit-mask-position: center center;
+-          mask-position: center center;
++  mask-position: center center;
+   -webkit-mask-size: 100% 100%;
+-          mask-size: 100% 100%;
++  mask-size: 100% 100%;
+ }
+ @media (min-width: 800px) {
+   body.gin-login .toolbar-icon-default::before {
+@@ -100,14 +100,17 @@ body.gin-login .user-form-page {
+     flex-wrap: nowrap;
+   }
+ }
+-body.gin-login .user-form-page, body.gin-login .user-form-page * {
++body.gin-login .user-form-page,
++body.gin-login .user-form-page * {
+   box-sizing: border-box;
+ }
+-body.gin-login .user-form-page__user-form, body.gin-login .user-form-page__wallpaper {
++body.gin-login .user-form-page__user-form,
++body.gin-login .user-form-page__wallpaper {
+   width: 100%;
+ }
+ @media (min-width: 800px) {
+-  body.gin-login .user-form-page__user-form, body.gin-login .user-form-page__wallpaper {
++  body.gin-login .user-form-page__user-form,
++  body.gin-login .user-form-page__wallpaper {
+     flex-basis: 50%;
+   }
+ }
+diff --git a/dist/js/wallpaper.js b/dist/js/wallpaper.js
+index 31984c6..db61b56 100644
+--- a/dist/js/wallpaper.js
++++ b/dist/js/wallpaper.js
+@@ -1,6 +1,6 @@
+ ((Drupal, drupalSettings, once) => {
+   Drupal.behaviors.ginLoginWallpaper = {
+-    attach: function(context) {
++    attach: function (context) {
+       once("ginLogin", ".user-form-page__wallpaper", context).forEach((() => {
+         Drupal.ginLoginWallpaper.randomWallpaper();
+       }));
+diff --git a/src/Form/GinLoginConfigurationForm.php b/src/Form/GinLoginConfigurationForm.php
+index 8bf0654..f07d3b6 100644
+--- a/src/Form/GinLoginConfigurationForm.php
++++ b/src/Form/GinLoginConfigurationForm.php
+@@ -164,7 +164,7 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+       '#title' => $this->t('Path to custom wallpaper folder'),
+       '#description' => [
+         [
+-          '#markup' => $this->t('Do not include a leading slash or trailing slash.')
++          '#markup' => $this->t('Do not include a leading slash or trailing slash.'),
+         ],
+         [
+           '#theme' => 'item_list',
+@@ -172,7 +172,7 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+             $this->t('Has to be relative to the drupal root directory.'),
+             $this->t('Must have group read access.'),
+           ],
+-        ]
++        ],
+       ],
+       '#default_value' => $config->get('brand_image.custom_wallpaper_folder_path') ? str_replace($default_scheme . '://', "", $config->get('brand_image.custom_wallpaper_folder_path')) : '',
+       '#states' => [
+@@ -344,7 +344,8 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+     if ($file_system->realpath($path) == $path) {
+       return FALSE;
+     }
+-    // A path relative to the Drupal root, a fully qualified URI or a path to dir is valid.
++    // A path relative to the Drupal root.
++    // A fully qualified URI or a path to dir is valid.
+     if (is_file($path) || is_dir($path)) {
+       return $path;
+     }
+diff --git a/src/js/wallpaper.js b/src/js/wallpaper.js
+index 2461248..8f8d045 100644
+--- a/src/js/wallpaper.js
++++ b/src/js/wallpaper.js
+@@ -15,7 +15,7 @@
+ 
+       const wallpaper = wallpapers[Math.floor(Math.random() * wallpapers.length)];
+       let image = new Image();
+-      image.src = path+wallpaper;
++      image.src = path + wallpaper;
+       image.alt = '';
+       document.querySelector('.gin-login .user-form-page__wallpaper').appendChild(image);
+     },
+diff --git a/webpack.config.build.js b/webpack.config.build.js
+index 8e28cca..1469e3f 100644
+--- a/webpack.config.build.js
++++ b/webpack.config.build.js
+@@ -4,22 +4,22 @@ const TerserPlugin = require('terser-webpack-plugin');
+ 
+ module.exports = merge(webpackConfig, {
+   mode: 'development',
+-  devtool: false,
++  devtool: FALSE,
+   optimization: {
+-    minimize: true,
++    minimize: TRUE,
+     minimizer: [
+       new TerserPlugin({
+         terserOptions: {
+           compress: {},
+-          mangle: false,
+-          module: true,
++          mangle: FALSE,
++          module: TRUE,
+           format: {
+-            beautify: true,
+-            comments: false,
++            beautify: TRUE,
++            comments: FALSE,
+             indent_level: 2,
+           },
+         },
+-        extractComments: false,
++        extractComments: FALSE,
+       })
+     ],
+   }
+diff --git a/webpack.config.js b/webpack.config.js
+index 5382959..afd46e0 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -13,7 +13,7 @@ module.exports = {
+     filename: 'js/[name].js',
+     chunkFilename: 'js/async/[name].chunk.js',
+     path: path.resolve(__dirname, 'dist'),
+-    pathinfo: true,
++    pathinfo: TRUE,
+   },
+   module: {
+     rules: [
+@@ -26,7 +26,7 @@ module.exports = {
+               name: '[path][name].[ext]',
+               publicPath: (url, resourcePath, context) => {
+                 const relativePath = path.relative(context, resourcePath);
+-                return `../../${relativePath}`;
++                return `.. / .. / ${relativePath}`;
+               },
+             },
+           },
+@@ -51,7 +51,7 @@ module.exports = {
+           {
+             loader: 'css-loader',
+             options: {
+-              sourceMap: false,
++              sourceMap: FALSE,
+               importLoaders: 2,
+             },
+           },
+@@ -59,13 +59,13 @@ module.exports = {
+             loader: 'postcss-loader',
+             options: {
+               plugins: () => [autoprefixer()],
+-              sourceMap: false,
++              sourceMap: FALSE,
+             },
+           },
+           {
+             loader: 'sass-loader',
+             options: {
+-              sourceMap: false,
++              sourceMap: FALSE,
+               // Global SCSS imports:
+               additionalData: `
+                 @use "sass:color";
+@@ -86,7 +86,7 @@ module.exports = {
+   plugins: [
+     new RemoveEmptyScriptsPlugin(),
+     new CleanWebpackPlugin({
+-      cleanStaleWebpackAssets: false
++      cleanStaleWebpackAssets: FALSE
+     }),
+     new MiniCssExtractPlugin({
+       filename: "css/[name].css",
+-- 
+GitLab
+
+
+From 952cea2ecdd1008de89f06fd55666a5f286e0aa9 Mon Sep 17 00:00:00 2001
+From: Jim Birch <git@jimbir.ch>
+Date: Fri, 28 Feb 2025 09:17:21 -0500
+Subject: [PATCH 3/8] Undo PHPcs changes on webpack files
+
+---
+ webpack.config.build.js | 14 +++++++-------
+ webpack.config.js       | 10 +++++-----
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/webpack.config.build.js b/webpack.config.build.js
+index 1469e3f..8e28cca 100644
+--- a/webpack.config.build.js
++++ b/webpack.config.build.js
+@@ -4,22 +4,22 @@ const TerserPlugin = require('terser-webpack-plugin');
+ 
+ module.exports = merge(webpackConfig, {
+   mode: 'development',
+-  devtool: FALSE,
++  devtool: false,
+   optimization: {
+-    minimize: TRUE,
++    minimize: true,
+     minimizer: [
+       new TerserPlugin({
+         terserOptions: {
+           compress: {},
+-          mangle: FALSE,
+-          module: TRUE,
++          mangle: false,
++          module: true,
+           format: {
+-            beautify: TRUE,
+-            comments: FALSE,
++            beautify: true,
++            comments: false,
+             indent_level: 2,
+           },
+         },
+-        extractComments: FALSE,
++        extractComments: false,
+       })
+     ],
+   }
+diff --git a/webpack.config.js b/webpack.config.js
+index afd46e0..521fe59 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -13,7 +13,7 @@ module.exports = {
+     filename: 'js/[name].js',
+     chunkFilename: 'js/async/[name].chunk.js',
+     path: path.resolve(__dirname, 'dist'),
+-    pathinfo: TRUE,
++    pathinfo: true,
+   },
+   module: {
+     rules: [
+@@ -51,7 +51,7 @@ module.exports = {
+           {
+             loader: 'css-loader',
+             options: {
+-              sourceMap: FALSE,
++              sourceMap: false,
+               importLoaders: 2,
+             },
+           },
+@@ -59,13 +59,13 @@ module.exports = {
+             loader: 'postcss-loader',
+             options: {
+               plugins: () => [autoprefixer()],
+-              sourceMap: FALSE,
++              sourceMap: false,
+             },
+           },
+           {
+             loader: 'sass-loader',
+             options: {
+-              sourceMap: FALSE,
++              sourceMap: false,
+               // Global SCSS imports:
+               additionalData: `
+                 @use "sass:color";
+@@ -86,7 +86,7 @@ module.exports = {
+   plugins: [
+     new RemoveEmptyScriptsPlugin(),
+     new CleanWebpackPlugin({
+-      cleanStaleWebpackAssets: FALSE
++      cleanStaleWebpackAssets: false
+     }),
+     new MiniCssExtractPlugin({
+       filename: "css/[name].css",
+-- 
+GitLab
+
+
+From ef77288606da19888f817ed517575452823edc37 Mon Sep 17 00:00:00 2001
+From: Jim Birch <git@jimbir.ch>
+Date: Fri, 28 Feb 2025 09:24:56 -0500
+Subject: [PATCH 4/8] Looks like I need to compile assets
+
+---
+ dist/css/login.css   | 19 ++++++++-----------
+ dist/js/wallpaper.js |  4 ++--
+ 2 files changed, 10 insertions(+), 13 deletions(-)
+
+diff --git a/dist/css/login.css b/dist/css/login.css
+index 0716487..e8f2441 100644
+--- a/dist/css/login.css
++++ b/dist/css/login.css
+@@ -69,14 +69,14 @@ body.gin-login .toolbar-icon-default::before {
+   width: 32px;
+   height: 32px;
+   background-color: var(--gin-color-text, #000);
+-  -webkit-mask-image: url(../../images/gin.svg);
+-  mask-image: url(../../images/gin.svg);
++  -webkit-mask-image: url(".. / .. / images/gin.svg");
++          mask-image: url(".. / .. / images/gin.svg");
+   -webkit-mask-repeat: no-repeat;
+-  mask-repeat: no-repeat;
++          mask-repeat: no-repeat;
+   -webkit-mask-position: center center;
+-  mask-position: center center;
++          mask-position: center center;
+   -webkit-mask-size: 100% 100%;
+-  mask-size: 100% 100%;
++          mask-size: 100% 100%;
+ }
+ @media (min-width: 800px) {
+   body.gin-login .toolbar-icon-default::before {
+@@ -100,17 +100,14 @@ body.gin-login .user-form-page {
+     flex-wrap: nowrap;
+   }
+ }
+-body.gin-login .user-form-page,
+-body.gin-login .user-form-page * {
++body.gin-login .user-form-page, body.gin-login .user-form-page * {
+   box-sizing: border-box;
+ }
+-body.gin-login .user-form-page__user-form,
+-body.gin-login .user-form-page__wallpaper {
++body.gin-login .user-form-page__user-form, body.gin-login .user-form-page__wallpaper {
+   width: 100%;
+ }
+ @media (min-width: 800px) {
+-  body.gin-login .user-form-page__user-form,
+-  body.gin-login .user-form-page__wallpaper {
++  body.gin-login .user-form-page__user-form, body.gin-login .user-form-page__wallpaper {
+     flex-basis: 50%;
+   }
+ }
+diff --git a/dist/js/wallpaper.js b/dist/js/wallpaper.js
+index db61b56..be3cf51 100644
+--- a/dist/js/wallpaper.js
++++ b/dist/js/wallpaper.js
+@@ -1,6 +1,6 @@
+ ((Drupal, drupalSettings, once) => {
+   Drupal.behaviors.ginLoginWallpaper = {
+-    attach: function (context) {
++    attach: function(context) {
+       once("ginLogin", ".user-form-page__wallpaper", context).forEach((() => {
+         Drupal.ginLoginWallpaper.randomWallpaper();
+       }));
+@@ -12,4 +12,4 @@
+       image.src = path + wallpaper, image.alt = "", document.querySelector(".gin-login .user-form-page__wallpaper").appendChild(image);
+     }
+   };
+-})(Drupal, drupalSettings, once);
++})(Drupal, drupalSettings, once);
+\ No newline at end of file
+-- 
+GitLab
+
+
+From b6fce3343bd0a58b06a9cc3d2c0c76fecd9513a9 Mon Sep 17 00:00:00 2001
+From: Jim Birch <git@jimbir.ch>
+Date: Fri, 28 Feb 2025 10:21:01 -0500
+Subject: [PATCH 5/8] Undoes some more errant coding standard changes
+
+---
+ dist/css/login.css  | 4 ++--
+ src/js/wallpaper.js | 2 +-
+ webpack.config.js   | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/dist/css/login.css b/dist/css/login.css
+index e8f2441..d6cd42d 100644
+--- a/dist/css/login.css
++++ b/dist/css/login.css
+@@ -69,8 +69,8 @@ body.gin-login .toolbar-icon-default::before {
+   width: 32px;
+   height: 32px;
+   background-color: var(--gin-color-text, #000);
+-  -webkit-mask-image: url(".. / .. / images/gin.svg");
+-          mask-image: url(".. / .. / images/gin.svg");
++  -webkit-mask-image: url(../../images/gin.svg);
++          mask-image: url(../../images/gin.svg);
+   -webkit-mask-repeat: no-repeat;
+           mask-repeat: no-repeat;
+   -webkit-mask-position: center center;
+diff --git a/src/js/wallpaper.js b/src/js/wallpaper.js
+index 8f8d045..2461248 100644
+--- a/src/js/wallpaper.js
++++ b/src/js/wallpaper.js
+@@ -15,7 +15,7 @@
+ 
+       const wallpaper = wallpapers[Math.floor(Math.random() * wallpapers.length)];
+       let image = new Image();
+-      image.src = path + wallpaper;
++      image.src = path+wallpaper;
+       image.alt = '';
+       document.querySelector('.gin-login .user-form-page__wallpaper').appendChild(image);
+     },
+diff --git a/webpack.config.js b/webpack.config.js
+index 521fe59..5382959 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -26,7 +26,7 @@ module.exports = {
+               name: '[path][name].[ext]',
+               publicPath: (url, resourcePath, context) => {
+                 const relativePath = path.relative(context, resourcePath);
+-                return `.. / .. / ${relativePath}`;
++                return `../../${relativePath}`;
+               },
+             },
+           },
+-- 
+GitLab
+
+
+From 76e984da69a7b88641430a6377b6a55f1d209baf Mon Sep 17 00:00:00 2001
+From: Anna Demianik <58922-AnnaDemianik@users.noreply.drupalcode.org>
+Date: Sun, 17 Aug 2025 07:46:46 +0000
+Subject: [PATCH 6/8] 3161447: 2.1.x Allowed webp, avif formats, simplified
+ preg match pattern.
+
+---
+ gin_login.module | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gin_login.module b/gin_login.module
+index 35c21fa..55fcd7a 100644
+--- a/gin_login.module
++++ b/gin_login.module
+@@ -73,7 +73,7 @@ function gin_login_page_attachments_alter(&$page) {
+       $files = scandir($directory);
+       $wallpapers = [];
+       foreach ($files as $file) {
+-        if (preg_match("/^([a-zA-Z0-9\s_\\.\-\(\):])+\.(png|jpg|gif|bmp|jpeg|PNG|JPG|GIF|BMP|JPEG)$/", $file)) {
++        if (preg_match("/^[a-zA-Z0-9\s_\.\-\(\):]+\.(png|jpe?g|gif|bmp|webp|avif)$/i", $file)) {
+           $wallpapers[] = $file;
+         }
+       }
+-- 
+GitLab
+
+
+From 07019c2b7c61d9c3f7ffebeb154fe81ac40bb90b Mon Sep 17 00:00:00 2001
+From: James Wilson <jrwilson3@gmail.com>
+Date: Wed, 17 Sep 2025 22:10:14 -0500
+Subject: [PATCH 7/8] Improve form field description readability and grammar
+
+---
+ src/Form/GinLoginConfigurationForm.php | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/src/Form/GinLoginConfigurationForm.php b/src/Form/GinLoginConfigurationForm.php
+index f07d3b6..6879dd6 100644
+--- a/src/Form/GinLoginConfigurationForm.php
++++ b/src/Form/GinLoginConfigurationForm.php
+@@ -163,14 +163,12 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+       '#type' => 'textfield',
+       '#title' => $this->t('Path to custom wallpaper folder'),
+       '#description' => [
+-        [
+-          '#markup' => $this->t('Do not include a leading slash or trailing slash.'),
+-        ],
+         [
+           '#theme' => 'item_list',
+           '#items' => [
+-            $this->t('Has to be relative to the drupal root directory.'),
+-            $this->t('Must have group read access.'),
++            $this->t('Do not include a leading slash or trailing slash.'),
++            $this->t('The path must be relative to the Drupal root directory.'),
++            $this->t('The path must have group read access.'),
+           ],
+         ],
+       ],
+-- 
+GitLab
+
+
+From cacc445c1074719af0052e7a0f77f53994ee44b4 Mon Sep 17 00:00:00 2001
+From: James Wilson <jrwilson3@gmail.com>
+Date: Wed, 17 Sep 2025 22:52:49 -0500
+Subject: [PATCH 8/8] Restore removed use_custom_wallpaper_folder form field
+ (fixes comment #47)
+
+---
+ src/Form/GinLoginConfigurationForm.php | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/Form/GinLoginConfigurationForm.php b/src/Form/GinLoginConfigurationForm.php
+index 6879dd6..dc35f3b 100644
+--- a/src/Form/GinLoginConfigurationForm.php
++++ b/src/Form/GinLoginConfigurationForm.php
+@@ -159,6 +159,16 @@ class GinLoginConfigurationForm extends ConfigFormBase {
+         ],
+       ],
+     ];
++    $form['brand_image']['use_custom_wallpaper_folder'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Use custom wallpaper folder'),
++      '#default_value' => $config->get('brand_image.use_custom_wallpaper_folder'),
++      '#states' => [
++        'visible' => [
++          'input[name="default_brand_image"]' => ['checked' => TRUE],
++        ],
++      ],
++    ];
+     $form['brand_image']['custom_wallpaper_folder_path'] = [
+       '#type' => 'textfield',
+       '#title' => $this->t('Path to custom wallpaper folder'),
+-- 
+GitLab
+
