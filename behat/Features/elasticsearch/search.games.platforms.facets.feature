@@ -33,7 +33,7 @@
       """
 
   Scenario: The Platforms facets/aggregations should use the same filter as the global query - without itself as filter.
-    When I request "http://api.gos.test/search/games?page=0&platforms[]=pc"
+    When I request "http://api.gos.test/search/games?page=0&platforms[]=pc&sort[asc]=title.keyword"
     Then the response code is 200
     And the "Content-Type" response header is "application/json"
     Then the response body contains JSON:

@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - ci: add rector
 
+### Security
+- chore(deps): drupal/drupal-extension (v5.4.0 => v6.1.0)
+
+### Fixed
+- fix(behat): boot Drupal driver in WatchdogContext before container access
+
 ## [1.5.1] - 2026-02-17
 ### Added
 - add node game sensitive content flag
