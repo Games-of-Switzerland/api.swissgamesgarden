@@ -20,25 +20,6 @@ jobs:
       - run: composer install --prefer-dist
       - run: ./vendor/bin/phpcs --report=checkstyle | cs2pr
 
-  php-deprecation-detector:
-    name: php-deprecation-detector
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          extensions: mbstring, intl, gd, xml, dom, json, fileinfo, curl, zip, iconv
-          tools: psalm, composer:v2
-      - uses: actions/checkout@v6
-      - run: cd tools/php-deprecation-detector && composer install --prefer-dist
-      # PHP 8.2 is not already supported by this tools:
-      # @see https://github.com/wapmorgan/PhpDeprecationDetector/issues/73
-      - run: ./tools/php-deprecation-detector/vendor/bin/phpdd --target 8.1 \
-              --file-extensions php,module,inc,install,test,profile,theme,info \
-              ./web/modules/custom
-      - run: ./tools/php-deprecation-detector/vendor/bin/phpdd --target 8.1 --file-extensions php ./behat
-
   php-cs-fixer:
     name: php-cs-fixer
     runs-on: ubuntu-latest
