@@ -5,7 +5,7 @@
   I need to be able to filter by platforms a JSON encoded resources from Elasticsearch via a Proxy
 
   Scenario: Games Resource should respond with filtered games when a valid platform slug is given.
-    When I request "http://api.gos.test/search/games?page=0&platforms[]=pc"
+    When I request "http://api.gos.test/search/games?page=0&platforms[]=pc&sort[asc]=title.keyword"
     Then the response code is 200
     And the "Content-Type" response header is "application/json"
     Then the response body contains JSON:
