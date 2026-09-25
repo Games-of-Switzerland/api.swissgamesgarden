@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - chore(deps): drupal/drupal-extension (v5.4.0 => v6.1.0)
 - chore(deps): friendsofphp/php-cs-fixer (v3.92.5 => v3.95.27)
+- chore(deps): behat/behat (v3.29.0 => v3.33.0)
+- chore(deps): imbo/behat-api-extension (v6.0.1 => v6.1.0)
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access
