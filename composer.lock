@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f166e1f2ec8352fab97cae4ea2ae130d",
+    "content-hash": "0f23ca8e2f5c500b916ffb30393efc94",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3289,17 +3289,17 @@
         },
         {
             "name": "drupal/save_edit",
-            "version": "2.1.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/save_edit.git",
-                "reference": "2.1.0"
+                "reference": "2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/save_edit-2.1.0.zip",
-                "reference": "2.1.0",
-                "shasum": "f9f2564b98d9459face86478c1a4e9e37334ef89"
+                "url": "https://ftp.drupal.org/files/projects/save_edit-2.2.1.zip",
+                "reference": "2.2.1",
+                "shasum": "8112a44f0e147cbbf9466e80a374862614172f0b"
             },
             "require": {
                 "drupal/core": "^10 || ^11"
@@ -3307,8 +3307,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.0",
-                    "datestamp": "1752701893",
+                    "version": "2.2.1",
+                    "datestamp": "1787768829",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
