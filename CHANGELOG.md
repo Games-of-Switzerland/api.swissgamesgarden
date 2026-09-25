@@ -28,6 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): drupal/bamboo_twig (6.0.5 => 6.0.9)
 - chore(deps): drupal/consumers (1.23.0 => 1.24.0)
 - chore(deps): drupal/focal_point (2.1.2 => 2.1.3)
+- chore(deps): drupal/upgrade_status (4.3.8 => 4.3.10)
+- chore(deps): phpspec/prophecy-phpunit (v2.4.0 => v2.5.0)
+- chore(deps): drupal/pathauto (1.14.0 => 1.15.0)
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access

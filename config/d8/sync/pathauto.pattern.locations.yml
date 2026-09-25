@@ -2,8 +2,9 @@ uuid: 37534ed5-3219-4fd8-b62a-234e6a42bb37
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.location
   module:
-    - ctools
     - taxonomy
 id: locations
 label: Locations
@@ -13,7 +14,6 @@ selection_criteria:
   3df2bb35-b0a9-440c-aa7e-fe4c0d372374:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 3df2bb35-b0a9-440c-aa7e-fe4c0d372374
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:
