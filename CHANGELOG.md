@@ -25,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): drupal/migrate_tools (6.1.3 => 6.1.4)
 - chore(deps): drupal/new_relic_rpm (2.2.0 => 2.3.0)
 - chore(deps): drush/drush (13.7.0 => 13.8.0)
+- chore(deps): drupal/bamboo_twig (6.0.5 => 6.0.9)
+- chore(deps): drupal/consumers (1.23.0 => 1.24.0)
+- chore(deps): drupal/focal_point (2.1.2 => 2.1.3)
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access
