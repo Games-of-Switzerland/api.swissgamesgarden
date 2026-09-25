@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): drupal/pathauto (1.14.0 => 1.15.0)
 - chore(deps): drupal/save_edit (2.1.0 => 2.2.1)
 - chore(deps): drupal/core (10.6.2 => 10.6.17)
+- chore(deps): drupal/cdn (4.1.0 => 5.0.0-alpha1)
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access
