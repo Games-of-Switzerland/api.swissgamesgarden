@@ -1,12 +1,12 @@
 {
-    "_hash": "9e1ca3ecef9a505179a5268ad6c2602163ddd5d337dd6fb6d63ec61fb3656c84",
+    "_hash": "4eadb6940dac7edbafeec39638958d17e861c4b698f0f232e3f5a62d91f4165d",
     "patches": {
-        "drupal/aggregator": [
+        "drupal/rdf": [
             {
-                "package": "drupal/aggregator",
-                "description": "[3471498 ] - Fix fails in FeedAdminDisplayTest",
-                "url": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch",
-                "sha256": "24a573177e683bd11e5a5ab7f4e21d457a0f75055fdb5e8ab489dd9f6a57be9c",
+                "package": "drupal/rdf",
+                "description": "Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase",
+                "url": "./patches/rdf/kernel-test-assertSession-fatal.patch",
+                "sha256": "b2a0126cecf26642965819eb07468c28043f94f303b0bdc672ee3582283fb9b1",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

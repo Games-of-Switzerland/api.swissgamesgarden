@@ -45,9 +45,9 @@
         "drupal/field_group": "^4.0",
         "drupal/fieldable_path": "^1.0@RC",
         "drupal/focal_point": "^2.0",
-        "drupal/gin": "^4.0",
+        "drupal/gin": "^4.1",
         "drupal/gin_login": "^2.0",
-        "drupal/gin_toolbar": "^2.0",
+        "drupal/gin_toolbar": "^2.1",
         "drupal/hal": "^2.0",
         "drupal/image_effects": "^4.0",
         "drupal/jsonapi_extras": "^3.23",
@@ -58,7 +58,7 @@
         "drupal/new_relic_rpm": "^2.1",
         "drupal/pathauto": "^1.6",
         "drupal/restui": "^1.18",
-        "drupal/save_edit": "^2.1",
+        "drupal/save_edit": "^2.2",
         "drupal/simple_sitemap": "^4.1",
         "drupal/symfony_mailer": "^2.0",
         "drupal/views_ef_fieldset": "^1.4",
@@ -125,8 +125,8 @@
             }
         },
         "patches": {
-            "drupal/aggregator": {
-                "[3471498 ] - Fix fails in FeedAdminDisplayTest": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch"
+            "drupal/rdf": {
+                "Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase": "./patches/rdf/kernel-test-assertSession-fatal.patch"
             },
             "drupal/symfony_mailer": {
                 "[3589038] Guard MailerPass against autoload fatals from orphan decorators": "./patches/symfony_mailer/3589038-mailerpass-orphan-decorator.patch"
