@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): friendsofphp/php-cs-fixer (v3.92.5 => v3.95.27)
 - chore(deps): behat/behat (v3.29.0 => v3.33.0)
 - chore(deps): imbo/behat-api-extension (v6.0.1 => v6.1.0)
+- chore(deps): drupal/aggregator (2.2.2 => 2.2.6)
+- chore(deps): drupal/hal (2.0.4 => 2.0.5)
+- chore(deps): drupal/migrate_source_csv (3.7.0 => 3.8.0)
+- chore(deps): drupal/migrate_tools (6.1.3 => 6.1.4)
+- chore(deps): drupal/new_relic_rpm (2.2.0 => 2.3.0)
+- chore(deps): drush/drush (13.7.0 => 13.8.0)
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa6aa2e2f1f88116517f361856e8cd5f",
+    "content-hash": "f166e1f2ec8352fab97cae4ea2ae130d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2613,32 +2613,33 @@
         },
         {
             "name": "drupal/hal",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/hal.git",
-                "reference": "2.0.4"
+                "reference": "2.0.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/hal-2.0.4.zip",
-                "reference": "2.0.4",
-                "shasum": "5d98f2ebbc7952d183278351d24d3e51ea18c8ee"
+                "url": "https://ftp.drupal.org/files/projects/hal-2.0.5.zip",
+                "reference": "2.0.5",
+                "shasum": "a95b5af38061e580b51985cdfd20975e8f2f41ae"
             },
             "require": {
-                "drupal/core": "^10 || ^11"
+                "drupal/core": "^10 || ^11 || ^12"
             },
             "require-dev": {
                 "drupal/aggregator": "2.x-dev",
+                "drupal/contact": "^1",
                 "drupal/entity_reference_revisions": "1.x-dev",
-                "drupal/rdf": "^2.1 || 3.0.x-dev",
+                "drupal/rdf": "3.0.x-dev",
                 "drupal/tour": "^1"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.4",
-                    "datestamp": "1738532063",
+                    "version": "2.0.5",
+                    "datestamp": "1782694027",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2950,17 +2951,17 @@
         },
         {
             "name": "drupal/migrate_source_csv",
-            "version": "3.7.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/migrate_source_csv.git",
-                "reference": "8.x-3.7"
+                "reference": "8.x-3.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_source_csv-8.x-3.7.zip",
-                "reference": "8.x-3.7",
-                "shasum": "d952a58003a4616176050ce4d486f9df9c6c59c9"
+                "url": "https://ftp.drupal.org/files/projects/migrate_source_csv-8.x-3.8.zip",
+                "reference": "8.x-3.8",
+                "shasum": "2e9ba702d7d2186994abd52393b391f976091ccb"
             },
             "require": {
                 "drupal/core": ">=9.1",
@@ -2973,8 +2974,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.7",
-                    "datestamp": "1735314551",
+                    "version": "8.x-3.8",
+                    "datestamp": "1771859237",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3001,17 +3002,17 @@
         },
         {
             "name": "drupal/migrate_tools",
-            "version": "6.1.3",
+            "version": "6.1.4",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/migrate_tools.git",
-                "reference": "6.1.3"
+                "reference": "6.1.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/migrate_tools-6.1.3.zip",
-                "reference": "6.1.3",
-                "shasum": "1bb5b07575dfdd35d01362f30081853458c56cd7"
+                "url": "https://ftp.drupal.org/files/projects/migrate_tools-6.1.4.zip",
+                "reference": "6.1.4",
+                "shasum": "e530f045756bbae635b3e8f30b80a1760b95d486"
             },
             "require": {
                 "drupal/core": "^9.1 || ^10 || ^11",
@@ -3029,8 +3030,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.1.3",
-                    "datestamp": "1767203937",
+                    "version": "6.1.4",
+                    "datestamp": "1778689495",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3072,17 +3073,17 @@
         },
         {
             "name": "drupal/new_relic_rpm",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/new_relic_rpm.git",
-                "reference": "2.2.0"
+                "reference": "2.3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/new_relic_rpm-2.2.0.zip",
-                "reference": "2.2.0",
-                "shasum": "1c8918dc18aba4fac5ca78ea00334727b19a1717"
+                "url": "https://ftp.drupal.org/files/projects/new_relic_rpm-2.3.0.zip",
+                "reference": "2.3.0",
+                "shasum": "ab30953b614003a46a89fbb2b0ca6816e75acd0d"
             },
             "require": {
                 "drupal/core": "^10.1 || ^11",
@@ -3091,8 +3092,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.2.0",
-                    "datestamp": "1754884034",
+                    "version": "2.3.0",
+                    "datestamp": "1787068364",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3122,7 +3123,7 @@
                     "homepage": "https://www.drupal.org/user/1203298"
                 },
                 {
-                    "name": "Jonathan Webb",
+                    "name": "jonathan webb",
                     "homepage": "https://www.drupal.org/user/61512"
                 },
                 {
@@ -3136,6 +3137,10 @@
                 {
                     "name": "soyarma",
                     "homepage": "https://www.drupal.org/user/286273"
+                },
+                {
+                    "name": "steven jones",
+                    "homepage": "https://www.drupal.org/user/99644"
                 }
             ],
             "description": "Provides additional newrelic integration with Drupal.",
@@ -3635,16 +3640,16 @@
         },
         {
             "name": "drush/drush",
-            "version": "13.7.0",
+            "version": "13.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "70de523716de1125233de17e172a38c4ecdde397"
+                "reference": "a5529118232c722c052ad6ae3be587df43c7d6fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/70de523716de1125233de17e172a38c4ecdde397",
-                "reference": "70de523716de1125233de17e172a38c4ecdde397",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/a5529118232c722c052ad6ae3be587df43c7d6fa",
+                "reference": "a5529118232c722c052ad6ae3be587df43c7d6fa",
                 "shasum": ""
             },
             "require": {
@@ -3657,7 +3662,7 @@
                 "consolidation/output-formatters": "^4.6.1",
                 "consolidation/robo": "^4.0.6 || ^5.1.0",
                 "consolidation/site-alias": "^4.1.1",
-                "consolidation/site-process": "^5.4.2",
+                "consolidation/site-process": "^5.4.2 || ^6.1",
                 "dflydev/dot-access-data": "^3.0.2",
                 "ext-dom": "*",
                 "grasmash/yaml-cli": "^3.2",
@@ -3673,7 +3678,7 @@
                 "symfony/yaml": "^6.0 || ^7"
             },
             "conflict": {
-                "drupal/core": "< 10.4",
+                "drupal/core": "<10.4 <12.0",
                 "drupal/migrate_run": "*",
                 "drupal/migrate_tools": "<= 5"
             },
@@ -3772,7 +3777,7 @@
                 "issues": "https://github.com/drush-ops/drush/issues",
                 "security": "https://github.com/drush-ops/drush/security/advisories",
                 "slack": "https://drupal.slack.com/messages/C62H9CWQM",
-                "source": "https://github.com/drush-ops/drush/tree/13.7.0"
+                "source": "https://github.com/drush-ops/drush/tree/13.8.0"
             },
             "funding": [
                 {
@@ -3780,7 +3785,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-11-25T18:23:02+00:00"
+            "time": "2026-09-08T18:24:55+00:00"
         },
         {
             "name": "e0ipso/shaper",
@@ -10575,27 +10580,27 @@
         },
         {
             "name": "drupal/aggregator",
-            "version": "2.2.2",
+            "version": "2.2.6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/aggregator.git",
-                "reference": "2.2.2"
+                "reference": "2.2.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/aggregator-2.2.2.zip",
-                "reference": "2.2.2",
-                "shasum": "f0b4ebe398f84cd05ec9ea0a101289cc565056f1"
+                "url": "https://ftp.drupal.org/files/projects/aggregator-2.2.6.zip",
+                "reference": "2.2.6",
+                "shasum": "e81dea12041d746118a76611e1bbc95e8327fa69"
             },
             "require": {
-                "drupal/core": "^10.2 || ^11",
+                "drupal/core": "^10.2 || ^11 || ^12",
                 "laminas/laminas-feed": "^2.17"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.2.2",
-                    "datestamp": "1722919252",
+                    "version": "2.2.6",
+                    "datestamp": "1790000025",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"

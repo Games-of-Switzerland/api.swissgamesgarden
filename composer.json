@@ -125,9 +125,6 @@
             }
         },
         "patches": {
-            "drupal/aggregator": {
-                "[3471498 ] - Fix fails in FeedAdminDisplayTest": "https://git.drupalcode.org/project/aggregator/-/merge_requests/21.patch"
-            },
             "drupal/symfony_mailer": {
                 "[3589038] Guard MailerPass against autoload fatals from orphan decorators": "./patches/symfony_mailer/3589038-mailerpass-orphan-decorator.patch"
             }
