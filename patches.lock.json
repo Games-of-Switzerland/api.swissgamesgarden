@@ -1,6 +1,18 @@
 {
-    "_hash": "cfa0ba17dc1adf01f5980e4e199afe66ff4878bd0b8afbb7f9c35e5a706abb02",
+    "_hash": "4eadb6940dac7edbafeec39638958d17e861c4b698f0f232e3f5a62d91f4165d",
     "patches": {
+        "drupal/rdf": [
+            {
+                "package": "drupal/rdf",
+                "description": "Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase",
+                "url": "./patches/rdf/kernel-test-assertSession-fatal.patch",
+                "sha256": "b2a0126cecf26642965819eb07468c28043f94f303b0bdc672ee3582283fb9b1",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
         "drupal/symfony_mailer": [
             {
                 "package": "drupal/symfony_mailer",

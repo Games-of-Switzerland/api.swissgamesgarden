@@ -36,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access
+- fix(tests): patch drupal/rdf to fix a fatal error in RdfParsingTrait::assertSession() vs KernelTestBase, surfaced by the drupal/core 10.6.17 update
 
 ## [1.5.1] - 2026-02-17
 ### Added

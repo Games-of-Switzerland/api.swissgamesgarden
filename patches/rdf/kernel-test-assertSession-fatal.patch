@@ -1,0 +1,54 @@
+Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase
+
+Drupal core added Drupal\Tests\HttpKernelUiHelperTrait to KernelTestBase
+(https://www.drupal.org/project/drupal/issues/3390193 and
+https://www.drupal.org/node/3502609, "Kernel tests can make HTTP requests
+with drupalGet()"), which declares a typed
+assertSession($name = NULL): Drupal\Tests\WebAssert.
+
+RdfParsingTrait (used by both functional tests, extending BrowserTestBase,
+and the "rdf" module's own FieldRdfaTestBase kernel test base, extending
+KernelTestBase) hard-codes `use Drupal\Tests\UiHelperTrait;`, whose
+assertSession($name = NULL) has no return type. When composed into a
+KernelTestBase descendant, PHP fatals:
+
+  Fatal error: Declaration of Drupal\Tests\rdf\Traits\RdfParsingTrait::
+  assertSession($name = null) must be compatible with
+  Drupal\KernelTests\KernelTestBase::assertSession($name = null):
+  Drupal\Tests\WebAssert
+
+This fatal is thrown during PHPUnit's Drupal test-suite discovery (which
+parses every test class across all modules to read @group annotations
+before any --group filtering happens), so it breaks the entire test run,
+not just RDF-specific tests.
+
+RdfParsingTrait's own methods only rely on $this->drupalGet(), which every
+current consumer already inherits from its own parent test base class:
+BrowserTestBase provides UiHelperTrait (functional tests), and
+KernelTestBase now provides the compatible HttpKernelUiHelperTrait (kernel
+tests). Removing the trait's redundant `use UiHelperTrait;` resolves the
+conflict without any loss of functionality.
+
+No newer 3.x release of drupal/rdf exists (3.0.0-beta2 is the latest, and
+this file is unchanged on the 3.0.x branch HEAD as of this writing); 4.0.0
+requires drupal/core ^11.3 and is not usable while on Drupal 10.
+
+--- a/tests/src/Traits/RdfParsingTrait.php
++++ b/tests/src/Traits/RdfParsingTrait.php
+@@ -3,7 +3,6 @@
+ namespace Drupal\Tests\rdf\Traits;
+
+ use Drupal\Core\Url;
+-use Drupal\Tests\UiHelperTrait;
+ use EasyRdf\Graph;
+ use EasyRdf\Parser\Rdfa;
+
+@@ -12,8 +11,6 @@
+  */
+ trait RdfParsingTrait {
+
+-  use UiHelperTrait;
+-
+   /**
+    * Checks if a html document contains a resource with a given property value.
+    *
