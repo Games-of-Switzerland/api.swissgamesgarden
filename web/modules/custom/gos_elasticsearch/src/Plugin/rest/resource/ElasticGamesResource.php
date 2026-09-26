@@ -127,7 +127,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       $es_query['body']['sort'] = $this->addSort($resource_validator->getSort());
     }
 
-    $search = (string) $request->query->get('q', '');
+    $search = $request->query->getString('q', '');
     $search = Xss::filter($search);
 
     if ($search) {

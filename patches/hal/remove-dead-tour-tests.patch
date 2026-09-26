@@ -1,0 +1,162 @@
+Remove dead HAL tests for the "tour" module, removed in Drupal 11 core
+
+The "tour" module was deprecated in Drupal 10.3 and removed entirely
+from Drupal 11.0 core (https://www.drupal.org/node/3421972). The "hal"
+module's bundled test suite still ships three functional tests that
+extend Drupal\Tests\tour\Functional\Rest\TourResourceTestBase, a class
+that no longer exists anywhere in the codebase. This is a fatal
+"Class ... not found" thrown during PHPUnit's test-suite discovery
+(parsing every test class to read its @group annotations before any
+--group filtering happens), which breaks the entire test run.
+
+These tests can never pass again since the module under test is gone;
+removing them is the correct fix, not a workaround.
+
+diff --git a/tests/src/Functional/tour/TourHalJsonAnonTest.php b/tests/src/Functional/tour/TourHalJsonAnonTest.php
+deleted file mode 100644
+index 0000000..0000000
+--- a/tests/src/Functional/tour/TourHalJsonAnonTest.php
++++ /dev/null
+@@ -1,40 +0,0 @@
+-<?php
+-
+-namespace Drupal\Tests\hal\Functional\tour;
+-
+-use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+-use PHPUnit\Framework\Attributes\Group;
+-
+-use Drupal\Tests\rest\Functional\AnonResourceTestTrait;
+-use Drupal\Tests\tour\Functional\Rest\TourResourceTestBase;
+-
+-/**
+- * @group hal
+- */
+-#[Group('hal')]
+-#[RunTestsInSeparateProcesses]
+-class TourHalJsonAnonTest extends TourResourceTestBase {
+-
+-  use AnonResourceTestTrait;
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $modules = ['hal'];
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected $defaultTheme = 'stark';
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $format = 'hal_json';
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $mimeType = 'application/hal+json';
+-
+-}
+diff --git a/tests/src/Functional/tour/TourHalJsonBasicAuthTest.php b/tests/src/Functional/tour/TourHalJsonBasicAuthTest.php
+deleted file mode 100644
+index 0000000..0000000
+--- a/tests/src/Functional/tour/TourHalJsonBasicAuthTest.php
++++ /dev/null
+@@ -1,45 +0,0 @@
+-<?php
+-
+-namespace Drupal\Tests\hal\Functional\tour;
+-
+-use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+-use PHPUnit\Framework\Attributes\Group;
+-
+-use Drupal\Tests\rest\Functional\BasicAuthResourceTestTrait;
+-use Drupal\Tests\tour\Functional\Rest\TourResourceTestBase;
+-
+-/**
+- * @group hal
+- */
+-#[Group('hal')]
+-#[RunTestsInSeparateProcesses]
+-class TourHalJsonBasicAuthTest extends TourResourceTestBase {
+-
+-  use BasicAuthResourceTestTrait;
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $modules = ['hal', 'basic_auth'];
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected $defaultTheme = 'stark';
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $format = 'hal_json';
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $mimeType = 'application/hal+json';
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $auth = 'basic_auth';
+-
+-}
+diff --git a/tests/src/Functional/tour/TourHalJsonCookieTest.php b/tests/src/Functional/tour/TourHalJsonCookieTest.php
+deleted file mode 100644
+index 0000000..0000000
+--- a/tests/src/Functional/tour/TourHalJsonCookieTest.php
++++ /dev/null
+@@ -1,45 +0,0 @@
+-<?php
+-
+-namespace Drupal\Tests\hal\Functional\tour;
+-
+-use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+-use PHPUnit\Framework\Attributes\Group;
+-
+-use Drupal\Tests\rest\Functional\CookieResourceTestTrait;
+-use Drupal\Tests\tour\Functional\Rest\TourResourceTestBase;
+-
+-/**
+- * @group hal
+- */
+-#[Group('hal')]
+-#[RunTestsInSeparateProcesses]
+-class TourHalJsonCookieTest extends TourResourceTestBase {
+-
+-  use CookieResourceTestTrait;
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $modules = ['hal'];
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected $defaultTheme = 'stark';
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $format = 'hal_json';
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $mimeType = 'application/hal+json';
+-
+-  /**
+-   * {@inheritdoc}
+-   */
+-  protected static $auth = 'cookie';
+-
+-}

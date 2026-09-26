@@ -1,12 +1,70 @@
 {
-    "_hash": "4eadb6940dac7edbafeec39638958d17e861c4b698f0f232e3f5a62d91f4165d",
+    "_hash": "d5f8a027a1502647b8bcdf6a67f42fac8886cd4229a79fc45a203f0bbbf1cfe3",
     "patches": {
+        "drupal/core": [
+            {
+                "package": "drupal/core",
+                "description": "[3489668] Fix TypeError in Twig EscaperRuntime::escape() caused by TwigExtension::escapeFilter() passing $arg instead of $return",
+                "url": "./patches/core/3489668-twig-escaperruntime-arg-fix.patch",
+                "sha256": "96aa6e3341c38e7d6afe48de712a1630992fd4e08c7709d56e32a220ea49b936",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/fieldable_path": [
+            {
+                "package": "drupal/fieldable_path",
+                "description": "Automated Drupal 11 compatibility fixes (https://www.drupal.org/i/3430541)",
+                "url": "./patches/fieldable_path/3430541-core11-compat.patch",
+                "sha256": "7b8d3e482fe4b44a16045f5e5ea1fd9b28a3bf385423cca1ebef3b9f11480828",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/hal": [
+            {
+                "package": "drupal/hal",
+                "description": "Remove dead HAL tests for the tour module, removed in Drupal 11 core",
+                "url": "./patches/hal/remove-dead-tour-tests.patch",
+                "sha256": "a532ddd0e41ed58521d901283baf9d657eafdd7b2cc104ee0de271b43f7ef4e0",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/metatag": [
+            {
+                "package": "drupal/metatag",
+                "description": "Fix fatal error: PermissionsTest::createContentType() incompatible with core ContentTypeCreationTrait",
+                "url": "./patches/metatag/dead-test-createcontenttype-signature.patch",
+                "sha256": "847c1ab76430d396242de11adb56f63f98104cb4494d20aff550153c88f8f51f",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
         "drupal/rdf": [
             {
                 "package": "drupal/rdf",
                 "description": "Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase",
                 "url": "./patches/rdf/kernel-test-assertSession-fatal.patch",
                 "sha256": "b2a0126cecf26642965819eb07468c28043f94f303b0bdc672ee3582283fb9b1",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            },
+            {
+                "package": "drupal/rdf",
+                "description": "Fix fatal error: RdfMappingTest::providerSource() must be static",
+                "url": "./patches/rdf/kernel-test-providersource-static.patch",
+                "sha256": "7a06a745077e54adc11fee5acc4d2ac57f7b0ebdbe1fddf39fbf54080ceb8f22",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"
