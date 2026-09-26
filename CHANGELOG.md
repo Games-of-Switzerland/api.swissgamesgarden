@@ -35,10 +35,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): drupal/save_edit (2.1.0 => 2.2.1)
 - chore(deps): drupal/core (10.6.2 => 10.6.17)
 - chore(deps): drupal/cdn (4.1.0 => 5.0.0-alpha1)
+- chore(deps): drupal/core (10.6.17 => 11.4.7), Drupal 11 major upgrade
+- chore(deps): drupal/gin (4.1.3 => 5.0.15)
+- chore(deps): drupal/gin_toolbar (2.1.0 => 3.0.3)
+- chore(deps): drupal/migrate_file (2.1.3 => 3.0.0-alpha1)
+- chore(deps): drupal/fieldable_path (1.0.0-rc6 => 1.0.0), sourced via inline package repo + patch, no D11 release yet
+- chore(deps): drupal/metatag (2.1.x => 2.2.0)
+- chore(deps): pin twig/twig to 3.29.0, 3.30.0 fatals on a new upstream regression
+- chore(infra): bump docker-compose db image mariadb:10.4 => mariadb:12.3 (Drupal 11 requires >=10.6)
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access
 - fix(tests): patch drupal/rdf to fix a fatal error in RdfParsingTrait::assertSession() vs KernelTestBase, surfaced by the drupal/core 10.6.17 update
+- fix(tests): patch drupal/rdf's RdfMappingTest::providerSource() to be static (PHPUnit 10+ requirement)
+- fix(tests): patch drupal/hal to remove its bundled tour/tests, tour was removed from Drupal 11 core
+- fix(tests): patch drupal/metatag's PermissionsTest::createContentType() signature for Drupal 11's ContentTypeCreationTrait
+- fix(custom): narrow GameNormalizer/PeopleNormalizer/StudioNormalizer::normalize() return types for Drupal 11
+- fix(tests): make gos_game's CompletenessCalculatorTest::providerContextualLinks() static (PHPUnit 10+ requirement)
+- fix(core): patch drupal/core TwigExtension::escapeFilter() arg bug (unreleased upstream fix, drupal.org/i/3489668)
 
 ## [1.5.1] - 2026-02-17
 ### Added

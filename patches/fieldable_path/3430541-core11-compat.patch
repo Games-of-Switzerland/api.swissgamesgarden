@@ -1,0 +1,32 @@
+Automated Drupal 11 compatibility fixes for fieldable_path
+
+See https://www.drupal.org/i/3430541 and
+https://git.drupalcode.org/project/fieldable_path/-/merge_requests/4
+(merge request open, not yet released; drupal/fieldable_path is at
+1.0.0 with no newer stable release, and has no code actually
+incompatible with Drupal 11 per drupal/upgrade_status - only the
+core_version_requirement string and one hook_module_implements_alter()
+call needed updating).
+
+--- a/fieldable_path.info.yml
++++ b/fieldable_path.info.yml
+@@ -2,7 +2,7 @@ name: Fieldable Path
+ description: Provides a fieldable mirror of "path" property for entities.
+
+ type: module
+-core_version_requirement: ^9.1 || ^10
++core_version_requirement: ^9.1 || ^10 || ^11
+
+ dependencies:
+   - drupal:path
+--- a/fieldable_path.module
++++ b/fieldable_path.module
+@@ -43,7 +43,7 @@ function fieldable_path_module_implements_alter(&$implementations, $hook) {
+   // to control path alias creation. In some cases, when this module calls
+   // entity save on path change outside of entity form, we do not want
+   // to let pathauto to create a new path alias and override the correct value.
+-  if (\Drupal::service('module_handler')->moduleExists('pathauto')) {
++  if (isset($implementations['pathauto'])) {
+     unset($implementations['pathauto']);
+   }
+ }

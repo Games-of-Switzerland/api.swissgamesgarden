@@ -11,11 +11,15 @@
   beStrictAboutTestsThatDoNotTestAnything="true"
   beStrictAboutOutputDuringTests="true"
   beStrictAboutChangesToGlobalState="true"
+  failOnRisky="true"
   failOnWarning="true"
-  executionOrder="random"
-  printerClass="\Drupal\Tests\Listeners\HtmlOutputPrinter"
+  failOnPhpunitWarning="true"
+  displayDetailsOnTestsThatTriggerErrors="true"
+  displayDetailsOnTestsThatTriggerWarnings="true"
+  displayDetailsOnTestsThatTriggerDeprecations="true"
   cacheResult="false"
-  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd"
+  cacheDirectory=".phpunit.cache">
   <php>
     <!-- Set error reporting to E_ALL. -->
     <ini name="error_reporting" value="32767"/>
@@ -36,25 +40,63 @@
       <group>gos_functional</group>
     </exclude>
   </groups>
+  <extensions>
+    <!-- Functional tests HTML output logging. -->
+    <bootstrap class="Drupal\TestTools\Extension\HtmlLogging\HtmlOutputLogger">
+      <parameter name="outputDirectory" value="web/sites/simpletest/browser_output"/>
+      <parameter name="verbose" value="true"/>
+    </bootstrap>
+    <!-- Debug dump() printer. -->
+    <bootstrap class="Drupal\TestTools\Extension\Dump\DebugDump">
+      <parameter name="colors" value="true"/>
+      <parameter name="printCaller" value="true"/>
+    </bootstrap>
+  </extensions>
   <!-- Test suites. -->
   <testsuites>
+    <testsuite name="unit-component">
+      <directory>web/core/tests/Drupal/Tests/Component</directory>
+    </testsuite>
     <testsuite name="unit">
-      <file>./web/core/tests/TestSuites/UnitTestSuite.php</file>
+      <directory>web/core/tests/Drupal/Tests</directory>
+      <exclude>web/core/tests/Drupal/Tests/Component</exclude>
+      <directory>web/core/modules/**/tests/src/Unit</directory>
+      <directory>web/modules/**/tests/src/Unit</directory>
+      <directory>web/modules/*/**/tests/src/Unit</directory>
+      <directory>web/themes/**/tests/src/Unit</directory>
+      <directory>web/themes/*/**/tests/src/Unit</directory>
     </testsuite>
     <testsuite name="kernel">
-      <file>./web/core/tests/TestSuites/KernelTestSuite.php</file>
+      <directory>web/core/tests/Drupal/KernelTests</directory>
+      <directory>web/core/modules/**/tests/src/Kernel</directory>
+      <directory>web/modules/**/tests/src/Kernel</directory>
+      <directory>web/modules/*/**/tests/src/Kernel</directory>
+      <directory>web/themes/**/tests/src/Kernel</directory>
+      <directory>web/themes/*/**/tests/src/Kernel</directory>
     </testsuite>
     <testsuite name="functional">
-      <file>./web/core/tests/TestSuites/FunctionalTestSuite.php</file>
+      <directory>web/core/tests/Drupal/FunctionalTests</directory>
+      <directory>web/core/modules/**/tests/src/Functional</directory>
+      <directory>web/modules/**/tests/src/Functional</directory>
+      <directory>web/modules/*/**/tests/src/Functional</directory>
+      <directory>web/themes/**/tests/src/Functional</directory>
+      <directory>web/themes/*/**/tests/src/Functional</directory>
     </testsuite>
     <testsuite name="functional-javascript">
-      <file>./web/core/tests/TestSuites/FunctionalJavascriptTestSuite.php</file>
+      <directory>web/core/tests/Drupal/FunctionalJavascriptTests</directory>
+      <directory>web/core/modules/**/tests/src/FunctionalJavascript</directory>
+      <directory>web/modules/**/tests/src/FunctionalJavascript</directory>
+      <directory>web/modules/*/**/tests/src/FunctionalJavascript</directory>
+      <directory>web/themes/**/tests/src/FunctionalJavascript</directory>
+      <directory>web/themes/*/**/tests/src/FunctionalJavascript</directory>
     </testsuite>
     <testsuite name="build">
-      <file>./web/core/tests/TestSuites/BuildTestSuite.php</file>
+      <directory>web/core/tests/Drupal/BuildTests</directory>
+      <directory>web/core/modules/**/tests/src/Build</directory>
+      <directory>web/modules/*/**/tests/src/Build</directory>
     </testsuite>
   </testsuites>
-  <coverage>
+  <source ignoreSuppressionOfDeprecations="true">
     <include>
       <directory>./web/core/includes</directory>
       <directory>./web/core/lib</directory>
@@ -70,9 +112,5 @@
       <directory>./web/modules/*/*/src/Tests</directory>
       <directory>./web/modules/*/*/tests</directory>
     </exclude>
-  </coverage>
-  <listeners>
-    <listener class="\Drupal\Tests\Listeners\DrupalListener">
-    </listener>
-  </listeners>
+  </source>
 </phpunit>

@@ -24,7 +24,62 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "url": "https://packages.drupal.org/8",
+            "exclude": ["drupal/fieldable_path"]
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "drupal/fieldable_path",
+                "version": "1.0.0",
+                "source": {
+                    "type": "git",
+                    "url": "https://git.drupalcode.org/project/fieldable_path.git",
+                    "reference": "8.x-1.0"
+                },
+                "dist": {
+                    "type": "zip",
+                    "url": "https://ftp.drupal.org/files/projects/fieldable_path-8.x-1.0.zip",
+                    "reference": "8.x-1.0",
+                    "shasum": "f7f5eb9c42c9fff8d5d58636a684414294d2c707"
+                },
+                "require": {
+                    "drupal/core": "^9.1 || ^10 || ^11"
+                },
+                "require-dev": {
+                    "drupal/pathauto": "*"
+                },
+                "type": "drupal-module",
+                "extra": {
+                    "drupal": {
+                        "version": "8.x-1.0",
+                        "datestamp": "1680538095",
+                        "security-coverage": {
+                            "status": "covered",
+                            "message": "Covered by Drupal's security advisory policy"
+                        }
+                    }
+                },
+                "notification-url": "https://packages.drupal.org/8/downloads",
+                "license": [
+                    "GPL-2.0-or-later"
+                ],
+                "authors": [
+                    {
+                        "name": "dww",
+                        "homepage": "https://www.drupal.org/user/46549"
+                    },
+                    {
+                        "name": "Spleshka",
+                        "homepage": "https://www.drupal.org/user/810676"
+                    }
+                ],
+                "description": "Provides a fieldable mirror of \"path\" property for entities.",
+                "homepage": "https://www.drupal.org/project/fieldable_path",
+                "support": {
+                    "source": "https://git.drupalcode.org/project/fieldable_path"
+                }
+            }
         }
     ],
     "require": {
@@ -37,21 +92,22 @@
         "drupal/cdn": "^5.0",
         "drupal/consumer_image_styles": "^4.0",
         "drupal/consumers": "^1.16",
-        "drupal/core-composer-scaffold": "^10.0",
-        "drupal/core-project-message": "^10.0",
-        "drupal/core-recommended": "^10.0",
+        "drupal/core": "^11.4",
+        "drupal/core-composer-scaffold": "^11.4",
+        "drupal/core-project-message": "^11.4",
+        "drupal/core-recommended": "^11.4",
         "drupal/elasticsearch_helper": "^8.1",
         "drupal/field_group": "^4.0",
-        "drupal/fieldable_path": "^1.0@RC",
+        "drupal/fieldable_path": "1.0.0",
         "drupal/focal_point": "^2.0",
-        "drupal/gin": "^4.1",
+        "drupal/gin": "^5.0",
         "drupal/gin_login": "^2.0",
-        "drupal/gin_toolbar": "^2.1",
+        "drupal/gin_toolbar": "^3.0",
         "drupal/hal": "^2.0",
         "drupal/image_effects": "^4.0",
         "drupal/jsonapi_extras": "^3.23",
         "drupal/metatag": "^2.0",
-        "drupal/migrate_file": "^2.0",
+        "drupal/migrate_file": "^3.0@alpha",
         "drupal/migrate_source_csv": "^3.4",
         "drupal/migrate_tools": "^6.0",
         "drupal/new_relic_rpm": "^2.1",
@@ -63,13 +119,14 @@
         "drupal/views_ef_fieldset": "^1.4",
         "drupal/webp": "^1.0@beta",
         "drush/drush": "^13.1",
-        "elasticsearch/elasticsearch": "8.7.*"
+        "elasticsearch/elasticsearch": "8.7.*",
+        "twig/twig": "3.29.0"
     },
     "require-dev": {
         "alexandresalome/mailcatcher": "^1.2",
         "behat/behat": "^3.5",
         "drupal/aggregator": "^2.2",
-        "drupal/core-dev": "^10.0",
+        "drupal/core-dev": "^11.4",
         "drupal/default_content": "^2.0",
         "drupal/drupal-extension": "^6.1",
         "drupal/feeds": "^3.0@RC",
@@ -99,7 +156,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "php-http/discovery": true,
-            "tbachert/spi": true
+            "tbachert/spi": true,
+            "symfony/runtime": true
         }
     },
     "autoload-dev": {
@@ -124,8 +182,25 @@
             }
         },
         "patches": {
+            "drupal/core": [
+                {
+                    "description": "[3489668] Fix TypeError in Twig EscaperRuntime::escape() caused by TwigExtension::escapeFilter() passing $arg instead of $return",
+                    "url": "./patches/core/3489668-twig-escaperruntime-arg-fix.patch",
+                    "depth": 1
+                }
+            ],
+            "drupal/fieldable_path": {
+                "Automated Drupal 11 compatibility fixes (https://www.drupal.org/i/3430541)": "./patches/fieldable_path/3430541-core11-compat.patch"
+            },
+            "drupal/hal": {
+                "Remove dead HAL tests for the tour module, removed in Drupal 11 core": "./patches/hal/remove-dead-tour-tests.patch"
+            },
+            "drupal/metatag": {
+                "Fix fatal error: PermissionsTest::createContentType() incompatible with core ContentTypeCreationTrait": "./patches/metatag/dead-test-createcontenttype-signature.patch"
+            },
             "drupal/rdf": {
-                "Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase": "./patches/rdf/kernel-test-assertSession-fatal.patch"
+                "Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase": "./patches/rdf/kernel-test-assertSession-fatal.patch",
+                "Fix fatal error: RdfMappingTest::providerSource() must be static": "./patches/rdf/kernel-test-providersource-static.patch"
             },
             "drupal/symfony_mailer": {
                 "[3589038] Guard MailerPass against autoload fatals from orphan decorators": "./patches/symfony_mailer/3589038-mailerpass-orphan-decorator.patch"
