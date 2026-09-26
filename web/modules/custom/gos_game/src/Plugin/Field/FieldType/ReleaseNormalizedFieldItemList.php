@@ -8,6 +8,8 @@ use Drupal\gos_game\ReleasesCompiler;
 
 /**
  * Represents the computed release values for an release entry.
+ *
+ * @extends FieldItemList<ReleaseNormalizedFieldItem>
  */
 class ReleaseNormalizedFieldItemList extends FieldItemList {
 

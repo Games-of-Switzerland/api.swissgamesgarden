@@ -1,0 +1,31 @@
+Fix fatal error: RdfMappingTest::providerSource() must be static
+
+Drupal core's Drupal\Tests\migrate\Kernel\MigrateSourceTestBase now
+declares:
+
+  abstract public static function providerSource(): array;
+
+(a PHPUnit 10+ requirement: methods referenced via #[DataProvider] must be
+static). The "rdf" module's own bundled kernel test RdfMappingTest still
+overrides this as a non-static method, which is a fatal "Cannot make
+static method ... non static" error thrown during PHPUnit's test-suite
+discovery (parsing every test class to read its @group annotations),
+breaking the entire test run regardless of --group filtering.
+
+The method body doesn't reference $this anywhere, so marking it static
+is a pure signature fix with no behavior change.
+
+No newer 3.x release of drupal/rdf exists (3.0.0-beta2 is the latest);
+4.0.0 requires drupal/core ^11.3 and is not what's installed here.
+
+--- a/tests/src/Kernel/Plugin/migrate/source/d7/RdfMappingTest.php
++++ b/tests/src/Kernel/Plugin/migrate/source/d7/RdfMappingTest.php
+@@ -30,7 +30,7 @@ class RdfMappingTest extends MigrateSqlSourceTestBase {
+   /**
+    * {@inheritdoc}
+    */
+-  public function providerSource() {
++  public static function providerSource() {
+     $tests = [];
+
+     // The source data.

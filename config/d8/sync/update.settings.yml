@@ -8,5 +8,5 @@ fetch:
   max_attempts: 2
   timeout: 30
 notification:
-  emails: ''
+  emails: {  }
   threshold: security
