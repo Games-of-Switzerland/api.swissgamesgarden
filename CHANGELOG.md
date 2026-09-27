@@ -6,7 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Changed
-- chore(infra): bump PHP 8.3 => 8.4 (docker/Dockerfile base image, CI workflows)
+- chore(infra): bump PHP 8.3 => 8.4
+- chore(deps): mglaman/phpstan-drupal (1.3.9 => 2.2.2)
+- chore(deps): palantirnet/drupal-rector (0.21.2 => 1.1.3)
+- chore(deps): phpstan/phpstan-deprecation-rules (1.2.1 => 2.0.5)
 
 ## [1.7.0] - 2026-09-27
 ### Added
