@@ -1,0 +1,12 @@
+uuid: c420622e-a2be-4f3a-8c8a-a8d8b4e63bdd
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+    - trash
+id: menu_link_content_purge_action
+label: 'Permanently delete custom menu link'
+type: menu_link_content
+plugin: 'entity:purge_action:menu_link_content'
+configuration: {  }
