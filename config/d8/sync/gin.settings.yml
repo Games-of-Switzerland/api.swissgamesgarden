@@ -7,16 +7,20 @@ features:
   comment_user_verification: true
   favicon: true
   node_user_picture: true
+logo:
+  use_default: true
 third_party_settings:
   shortcut:
     module_link: true
-preset_accent_color: blue
+preset_accent_color: custom
 preset_focus_color: gin
-enable_darkmode: ''
+enable_darkmode: '0'
 classic_toolbar: horizontal
 high_contrast_mode: false
-accent_color: ''
+accent_color: '#f64444'
 focus_color: ''
+layout_density: ''
+show_description_toggle: false
 show_user_theme_settings: true
 icon_default: true
 icon_path: ''

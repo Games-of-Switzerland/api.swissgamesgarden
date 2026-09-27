@@ -168,7 +168,7 @@ class ReleasesCompiler {
 
       if (!isset($normalized[$year])) {
         $normalized[$year] = [
-          'year' => $release->date_value ? $year : NULL,
+          'year' => ($release->date_value !== NULL && $release->date_value !== '') ? $year : NULL,
           'platforms' => [],
           'states' => [],
         ];

@@ -1,0 +1,12 @@
+uuid: 6da72ec9-321b-4d30-aca3-dc06b0f43435
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_link_content
+    - trash
+id: menu_link_content_restore_action
+label: 'Restore custom menu link from trash'
+type: menu_link_content
+plugin: 'entity:restore_action:menu_link_content'
+configuration: {  }

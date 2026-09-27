@@ -49,14 +49,14 @@ function gos_game_entity_base_field_info(EntityTypeInterface $entity_type): arra
   $canonical_template_exists = $entity_type->hasLinkTemplate('canonical');
 
   // Certain classes are just not supported.
-  $original_class = $entity_type->getOriginalClass();
+  $entity_type_classes = [$entity_type->getClass(), ...$entity_type->getDecoratedClasses()];
   $classes_to_skip = [
     Comment::class,
   ];
 
   // If the entity type doesn't have a base table, has no link template then
   // there's no point in supporting it.
-  if ($base_table === NULL || !$canonical_template_exists || in_array($original_class, $classes_to_skip, TRUE)) {
+  if ($base_table === NULL || !$canonical_template_exists || array_intersect($entity_type_classes, $classes_to_skip)) {
     return $fields;
   }
 
