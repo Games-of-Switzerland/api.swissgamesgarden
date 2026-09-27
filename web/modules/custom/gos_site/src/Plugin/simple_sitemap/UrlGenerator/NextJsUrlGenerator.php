@@ -27,7 +27,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *     description=@Translation("Generates URLs for NextJS."),
  * )
  */
-class NextJsUrlGenerator extends EntityUrlGenerator {
+final class NextJsUrlGenerator extends EntityUrlGenerator {
 
   /**
    * The NextJs URL Builder.
@@ -80,6 +80,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    * @psalm-suppress ArgumentTypeCoercion
    * @psalm-suppress UnsafeInstantiation
    */
+  #[\Override]
   public static function create(
     ContainerInterface $container,
     array $configuration,
@@ -105,6 +106,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   protected function getAlternateUrlsForTranslatedLanguages(ContentEntityInterface $entity, Url $url): array {
     $alternate_urls = [];
 
@@ -123,6 +125,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   protected function getUrlVariants(array $path_data, Url $url): array {
     $url_variants = [];
     $alternate_urls = [];
@@ -151,6 +154,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    *
    * @psalm-suppress InvalidScalarArgument
    */
+  #[\Override]
   protected function processEntity(ContentEntityInterface $entity): array {
     $sitemap_id = (string) $this->sitemap->id();
 

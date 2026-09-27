@@ -2,6 +2,8 @@
 
 namespace Drupal\Tests\gos_game\Functional;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Group;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Tests\entity_test\Functional\Rest\EntityTestResourceTestBase;
 use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
@@ -13,16 +15,16 @@ use Drupal\gos_test\Traits\TaxonomyTestTrait;
 /**
  * Verify that the JSON output from JsonApi works as intended.
  *
- * @covers \Drupal\gos_game\Plugin\Field\FieldType\ReleaseNormalizedFieldItem
- * @covers \Drupal\gos_game\Plugin\Field\FieldType\ReleaseNormalizedFieldItemList
  *
- * @group gos
- * @group gos_game
- * @group gos_game_functional
- * @group gos_functional
  *
  * @internal
  */
+#[CoversClass(\Drupal\gos_game\Plugin\Field\FieldType\ReleaseNormalizedFieldItem::class)]
+#[CoversClass(\Drupal\gos_game\Plugin\Field\FieldType\ReleaseNormalizedFieldItemList::class)]
+#[Group('gos')]
+#[Group('gos_game')]
+#[Group('gos_game_functional')]
+#[Group('gos_functional')]
 final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
 
   use AnonResourceTestTrait;
@@ -70,6 +72,7 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   protected function createEntity() {
     /** @var \Drupal\Core\Entity\EntityTypeManager $entityTypeManager */
     $this->entityTypeManager = $this->container->get('entity_type.manager');
@@ -115,6 +118,7 @@ final class EntityReleaseNormalizedTest extends EntityTestResourceTestBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   protected function getExpectedNormalizedEntity() {
     return parent::getExpectedNormalizedEntity() + [
       'field_releases' => [

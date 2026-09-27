@@ -12,7 +12,7 @@ use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 /**
  * Normalizes / denormalizes Drupal Game nodes into an array structure for ES.
  */
-class GameNormalizer extends ContentEntityNormalizer {
+final class GameNormalizer extends ContentEntityNormalizer {
 
   use NormalizerImagesDerivativesTrait;
 
@@ -28,7 +28,7 @@ class GameNormalizer extends ContentEntityNormalizer {
    *
    * @var string|array
    */
-  protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
+  protected $supportedInterfaceOrClass = [NodeInterface::class];
 
   /**
    * {@inheritdoc}
@@ -50,6 +50,7 @@ class GameNormalizer extends ContentEntityNormalizer {
    *
    * @psalm-suppress ParamNameMismatch
    */
+  #[\Override]
   public function normalize($object, $format = NULL, array $context = []): array {
     /** @var \Drupal\node\Entity\Node $object */
 
@@ -109,7 +110,7 @@ class GameNormalizer extends ContentEntityNormalizer {
         }
 
         // Use the year as key to prevent having twice the same value.
-        $year = (new \DateTimeImmutable($release->date_value))->format('Y');
+        $year = new \DateTimeImmutable($release->date_value)->format('Y');
         $years[$year] = $year;
       }
 
@@ -231,6 +232,7 @@ class GameNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function supportsNormalization($data, $format = NULL, array $context = []): bool {
     if (!parent::supportsNormalization($data, $format, $context)) {
       return FALSE;

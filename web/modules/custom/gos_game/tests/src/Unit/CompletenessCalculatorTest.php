@@ -2,6 +2,10 @@
 
 namespace Drupal\Tests\gos_game\Unit;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\Tests\UnitTestCase;
@@ -9,14 +13,15 @@ use Drupal\gos_game\CompletenessCalculator;
 use Drupal\node\NodeInterface;
 
 /**
- * @coversDefaultClass \Drupal\gos_game\CompletenessCalculator
  *
- * @group gos
- * @group gos_game
- * @group gos_game_unit
  *
  * @internal
  */
+#[CoversClass(\Drupal\gos_game\CompletenessCalculator::class)]
+#[CoversMethod(\Drupal\gos_game\CompletenessCalculator::class, 'calculation')]
+#[Group('gos')]
+#[Group('gos_game')]
+#[Group('gos_game_unit')]
 final class CompletenessCalculatorTest extends UnitTestCase {
 
   /**
@@ -76,19 +81,12 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     $this->testGame->get('field_credits')->willReturn($field_item_empty->reveal())->shouldBeCalled();
   }
 
-  /**
-   * @covers ::calculation
-   */
   public function testCalculation() {
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
     self::assertEquals(9643, $score);
   }
 
-  /**
-   * @covers ::calculation
-   *
-   * @dataProvider providerContextualLinks
-   */
+  #[DataProvider('providerContextualLinks')]
   public function testCalculationWithContextualLinks(string $type, int $expected_score) {
     $field_item_data = $this->prophesize(TypedDataInterface::class);
     $field_item_data->getValue()->willReturn(['type' => $type])->shouldBeCalled();
@@ -129,9 +127,6 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     yield ['box_art', 9743];
   }
 
-  /**
-   * @covers ::calculation
-   */
   public function testCalculationWithCredit() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(FALSE)->shouldBeCalled();
@@ -141,9 +136,6 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(9653, $score);
   }
 
-  /**
-   * @covers ::calculation
-   */
   public function testCalculationWithoutImages() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();
@@ -153,9 +145,6 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(6643, $score);
   }
 
-  /**
-   * @covers ::calculation
-   */
   public function testCalculationWithoutMembers() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();
@@ -165,9 +154,6 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(8643, $score);
   }
 
-  /**
-   * @covers ::calculation
-   */
   public function testCalculationWithoutMembersNeitherStudios() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();
@@ -178,9 +164,6 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(6143, $score);
   }
 
-  /**
-   * @covers ::calculation
-   */
   public function testCalculationWithoutReleases() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();
@@ -190,9 +173,6 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(7893, $score);
   }
 
-  /**
-   * @covers ::calculation
-   */
   public function testCalculationWithoutStudios() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();

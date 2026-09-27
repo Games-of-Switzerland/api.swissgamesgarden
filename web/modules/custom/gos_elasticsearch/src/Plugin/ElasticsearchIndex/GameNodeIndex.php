@@ -16,13 +16,14 @@ use Drupal\elasticsearch_helper\Elasticsearch\Index\MappingDefinition;
  *     entityType="node"
  * )
  */
-class GameNodeIndex extends NodeIndexBase {
+final class GameNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
    *
    * @psalm-suppress UnusedForeachValue
    */
+  #[\Override]
   public function setup(): void {
     // Create one index per language, so that we can have different analyzers.
     foreach ($this->languageManager->getLanguages() as $langcode => $language) {
@@ -78,6 +79,7 @@ class GameNodeIndex extends NodeIndexBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function getIndexDefinition(array $context = []) {
     // Get index definition.
     $index_definition = parent::getIndexDefinition($context);
@@ -189,6 +191,7 @@ class GameNodeIndex extends NodeIndexBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function getMappingDefinition(array $context = []) {
     // Define nested players field.
     $players = FieldDefinition::create('nested', [

@@ -2,6 +2,9 @@
 
 namespace Drupal\Tests\gos_games\Kernel;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
 use Drupal\gos_game\ReleasesCompiler;
@@ -9,15 +12,19 @@ use Drupal\gos_test\Traits\NodeTestTrait;
 use Drupal\gos_test\Traits\TaxonomyTestTrait;
 
 /**
- * @coversDefaultClass \Drupal\gos_game\ReleasesCompiler
  *
- * @group gos
- * @group gos_game
- * @group gos_game_kernel
- * @group gos_kernel
  *
  * @internal
  */
+#[CoversClass(\Drupal\gos_game\ReleasesCompiler::class)]
+#[CoversMethod(\Drupal\gos_game\ReleasesCompiler::class, 'compilePlatforms')]
+#[CoversMethod(\Drupal\gos_game\ReleasesCompiler::class, 'compileYears')]
+#[CoversMethod(\Drupal\gos_game\ReleasesCompiler::class, 'compileYearsByPlatforms')]
+#[CoversMethod(\Drupal\gos_game\ReleasesCompiler::class, 'normalizeReleases')]
+#[Group('gos')]
+#[Group('gos_game')]
+#[Group('gos_game_kernel')]
+#[Group('gos_kernel')]
 final class ReleasesCompilerTest extends KernelTestBase {
 
   use EntityReferenceFieldCreationTrait;
@@ -135,9 +142,6 @@ final class ReleasesCompilerTest extends KernelTestBase {
     ]);
   }
 
-  /**
-   * @covers ::compilePlatforms
-   */
   public function testCompilePlatforms(): void {
     $platforms = ReleasesCompiler::compilePlatforms($this->testGame);
     self::assertSame([
@@ -164,9 +168,6 @@ final class ReleasesCompilerTest extends KernelTestBase {
     ], $platforms);
   }
 
-  /**
-   * @covers ::compileYears
-   */
   public function testCompileYears(): void {
     $years = ReleasesCompiler::compileYears($this->testGame);
     self::assertSame([
@@ -178,9 +179,6 @@ final class ReleasesCompilerTest extends KernelTestBase {
     ], $years);
   }
 
-  /**
-   * @covers ::compileYearsByPlatforms
-   */
   public function testCompileYearsByPlatforms(): void {
     $years = ReleasesCompiler::compileYearsByPlatforms($this->testGame);
     self::assertSame([
@@ -216,9 +214,6 @@ final class ReleasesCompilerTest extends KernelTestBase {
     ], $years);
   }
 
-  /**
-   * @covers ::normalizeReleases
-   */
   public function testNormalizeReleases(): void {
     $platforms_by_years = ReleasesCompiler::normalizeReleases($this->testGame);
     self::assertSame([

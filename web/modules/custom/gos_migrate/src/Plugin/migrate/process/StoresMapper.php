@@ -38,7 +38,7 @@ use Drupal\migrate\Row;
  *     id="gos_stores_mapper"
  * )
  */
-class StoresMapper extends ProcessPluginBase {
+final class StoresMapper extends ProcessPluginBase {
 
   /**
    * Collection of Stores Key (compatible with StoreItem) and matchable URLs.
@@ -95,6 +95,7 @@ class StoresMapper extends ProcessPluginBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     $get_keyname = (isset($this->configuration['get']) && \is_string($this->configuration['get']) && $this->configuration['get'] !== '') ? $this->configuration['get'] : NULL;
 

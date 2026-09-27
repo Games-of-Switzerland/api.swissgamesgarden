@@ -21,7 +21,7 @@ return static function (RectorConfig $rectorConfig): void {
     Drupal10SetList::DRUPAL_103,
 
     // PHP.
-    LevelSetList::UP_TO_PHP_83,
+    LevelSetList::UP_TO_PHP_84,
 
     // PHPUnit migration sets - upgrade to PHPUnit 11.
     PHPUnitSetList::PHPUNIT_100,
