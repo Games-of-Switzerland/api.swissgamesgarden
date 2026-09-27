@@ -103,7 +103,6 @@
         "drupal/gin": "^5.0",
         "drupal/gin_login": "^2.0",
         "drupal/gin_toolbar": "^3.0",
-        "drupal/hal": "^2.0",
         "drupal/image_effects": "^4.0",
         "drupal/jsonapi_extras": "^3.23",
         "drupal/metatag": "^2.0",
@@ -125,12 +124,9 @@
     "require-dev": {
         "alexandresalome/mailcatcher": "^1.2",
         "behat/behat": "^3.5",
-        "drupal/aggregator": "^2.2",
         "drupal/core-dev": "^11.4",
         "drupal/default_content": "^2.0",
         "drupal/drupal-extension": "^6.1",
-        "drupal/feeds": "^3.0@RC",
-        "drupal/rdf": "^3.0@beta",
         "drupal/upgrade_status": "^4.0",
         "imbo/behat-api-extension": "^6.0",
         "marcortola/behat-seo-contexts": "^4.0",
@@ -192,15 +188,8 @@
             "drupal/fieldable_path": {
                 "Automated Drupal 11 compatibility fixes (https://www.drupal.org/i/3430541)": "./patches/fieldable_path/3430541-core11-compat.patch"
             },
-            "drupal/hal": {
-                "Remove dead HAL tests for the tour module, removed in Drupal 11 core": "./patches/hal/remove-dead-tour-tests.patch"
-            },
             "drupal/metatag": {
                 "Fix fatal error: PermissionsTest::createContentType() incompatible with core ContentTypeCreationTrait": "./patches/metatag/dead-test-createcontenttype-signature.patch"
-            },
-            "drupal/rdf": {
-                "Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase": "./patches/rdf/kernel-test-assertSession-fatal.patch",
-                "Fix fatal error: RdfMappingTest::providerSource() must be static": "./patches/rdf/kernel-test-providersource-static.patch"
             },
             "drupal/symfony_mailer": {
                 "[3589038] Guard MailerPass against autoload fatals from orphan decorators": "./patches/symfony_mailer/3589038-mailerpass-orphan-decorator.patch"

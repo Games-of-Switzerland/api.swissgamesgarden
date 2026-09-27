@@ -1,5 +1,5 @@
 {
-    "_hash": "d5f8a027a1502647b8bcdf6a67f42fac8886cd4229a79fc45a203f0bbbf1cfe3",
+    "_hash": "72a0cff03d94ffe4fbe0f392329601dcc6a6c73b436e20206ce8dd4d10104d16",
     "patches": {
         "drupal/core": [
             {
@@ -25,46 +25,12 @@
                 }
             }
         ],
-        "drupal/hal": [
-            {
-                "package": "drupal/hal",
-                "description": "Remove dead HAL tests for the tour module, removed in Drupal 11 core",
-                "url": "./patches/hal/remove-dead-tour-tests.patch",
-                "sha256": "a532ddd0e41ed58521d901283baf9d657eafdd7b2cc104ee0de271b43f7ef4e0",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            }
-        ],
         "drupal/metatag": [
             {
                 "package": "drupal/metatag",
                 "description": "Fix fatal error: PermissionsTest::createContentType() incompatible with core ContentTypeCreationTrait",
                 "url": "./patches/metatag/dead-test-createcontenttype-signature.patch",
                 "sha256": "847c1ab76430d396242de11adb56f63f98104cb4494d20aff550153c88f8f51f",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            }
-        ],
-        "drupal/rdf": [
-            {
-                "package": "drupal/rdf",
-                "description": "Fix fatal error: RdfParsingTrait::assertSession() incompatible with KernelTestBase",
-                "url": "./patches/rdf/kernel-test-assertSession-fatal.patch",
-                "sha256": "b2a0126cecf26642965819eb07468c28043f94f303b0bdc672ee3582283fb9b1",
-                "depth": 1,
-                "extra": {
-                    "provenance": "root"
-                }
-            },
-            {
-                "package": "drupal/rdf",
-                "description": "Fix fatal error: RdfMappingTest::providerSource() must be static",
-                "url": "./patches/rdf/kernel-test-providersource-static.patch",
-                "sha256": "7a06a745077e54adc11fee5acc4d2ac57f7b0ebdbe1fddf39fbf54080ceb8f22",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

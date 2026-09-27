@@ -14,14 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - chore: remove php-deprecation-detector
 - chore(deps): remove drupal/ckeditor (unused legacy CKEditor 4 bridge)
+- chore(deps): remove drupal/hal, drupal/rdf, drupal/aggregator, drupal/feeds (unused, not enabled)
 
 ### Security
 - chore(deps): drupal/drupal-extension (v5.4.0 => v6.1.0)
 - chore(deps): friendsofphp/php-cs-fixer (v3.92.5 => v3.95.27)
 - chore(deps): behat/behat (v3.29.0 => v3.33.0)
 - chore(deps): imbo/behat-api-extension (v6.0.1 => v6.1.0)
-- chore(deps): drupal/aggregator (2.2.2 => 2.2.6)
-- chore(deps): drupal/hal (2.0.4 => 2.0.5)
 - chore(deps): drupal/migrate_source_csv (3.7.0 => 3.8.0)
 - chore(deps): drupal/migrate_tools (6.1.3 => 6.1.4)
 - chore(deps): drupal/new_relic_rpm (2.2.0 => 2.3.0)
@@ -42,17 +41,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): drupal/fieldable_path (1.0.0-rc6 => 1.0.0), sourced via inline package repo + patch, no D11 release yet
 - chore(deps): drupal/metatag (2.1.x => 2.2.0)
 - chore(deps): pin twig/twig to 3.29.0, 3.30.0 fatals on a new upstream regression
-- chore(infra): bump docker-compose db image mariadb:10.4 => mariadb:12.3 (Drupal 11 requires >=10.6)
+- chore(infra): bump docker-compose db image mariadb:10.4 => mariadb:12.3
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access
-- fix(tests): patch drupal/rdf to fix a fatal error in RdfParsingTrait::assertSession() vs KernelTestBase, surfaced by the drupal/core 10.6.17 update
-- fix(tests): patch drupal/rdf's RdfMappingTest::providerSource() to be static (PHPUnit 10+ requirement)
-- fix(tests): patch drupal/hal to remove its bundled tour/tests, tour was removed from Drupal 11 core
-- fix(tests): patch drupal/metatag's PermissionsTest::createContentType() signature for Drupal 11's ContentTypeCreationTrait
+- fix(tests): patch drupal/metatag's PermissionsTest::createContentType()
 - fix(custom): narrow GameNormalizer/PeopleNormalizer/StudioNormalizer::normalize() return types for Drupal 11
-- fix(tests): make gos_game's CompletenessCalculatorTest::providerContextualLinks() static (PHPUnit 10+ requirement)
-- fix(core): patch drupal/core TwigExtension::escapeFilter() arg bug (unreleased upstream fix, drupal.org/i/3489668)
+- fix(tests): make gos_game's CompletenessCalculatorTest::providerContextualLinks() static
+- fix(core): patch drupal/core TwigExtension::escapeFilter() arg bug
+- ci: ignore claro theme in upgrade_status:analyze
 
 ## [1.5.1] - 2026-02-17
 ### Added
