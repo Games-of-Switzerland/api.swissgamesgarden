@@ -29,11 +29,12 @@ use Drupal\migrate\Row;
  *     id="gos_twitter_handle"
  * )
  */
-class TwitterHandle extends ProcessPluginBase {
+final class TwitterHandle extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (empty($value) && $value !== '0' && $value !== 0) {
       $migrate_executable->saveMessage('The store link name should not be empty.');

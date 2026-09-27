@@ -16,17 +16,19 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Completeness'),
   field_types: ['completeness'],
 )]
-class CompletenessWidget extends WidgetBase {
+final class CompletenessWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}
    */
   #[\Override]
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
+    $item_value = $items[$delta]?->value;
+
     $element['value'] = $element + [
       '#type' => 'textfield',
       '#description' => $this->t('This is an auto-filled field. The score value will be calculated on each save/update of the Game entity.'),
-      '#value' => !empty($items[$delta]->value) ? $items[$delta]->value : '',
+      '#value' => ($item_value !== NULL && $item_value !== '') ? $item_value : '',
       // Never let anyone change the field value manually.
       '#disabled' => TRUE,
     ];

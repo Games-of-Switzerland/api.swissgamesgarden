@@ -8,6 +8,7 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\TypedData\DataDefinition;
+use Drupal\datetime\DateTimeComputed;
 
 /**
  * Defines the 'Release' entity field type.
@@ -24,7 +25,7 @@ use Drupal\Core\TypedData\DataDefinition;
   default_widget: 'entity_reference_label',
   list_class: EntityReferenceFieldItemList::class,
 )]
-class ReleaseItem extends EntityReferenceItem {
+final class ReleaseItem extends EntityReferenceItem {
 
   /**
    * {@inheritdoc}
@@ -72,7 +73,7 @@ class ReleaseItem extends EntityReferenceItem {
     $date_definition = DataDefinition::create('any')
       ->setLabel(t('The computed DateTime object')->__toString())
       ->setComputed(TRUE)
-      ->setClass('\Drupal\datetime\DateTimeComputed')
+      ->setClass(DateTimeComputed::class)
       ->setSetting('date source', 'date_value');
     $properties['date'] = $date_definition;
 

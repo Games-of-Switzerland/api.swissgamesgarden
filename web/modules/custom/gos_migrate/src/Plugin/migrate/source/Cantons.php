@@ -13,7 +13,7 @@ namespace Drupal\gos_migrate\Plugin\migrate\source;
  *     source_module="gos_migrate"
  * )
  */
-class Cantons extends BaseRowExploded {
+final class Cantons extends BaseRowExploded {
 
   /**
    * {@inheritdoc}

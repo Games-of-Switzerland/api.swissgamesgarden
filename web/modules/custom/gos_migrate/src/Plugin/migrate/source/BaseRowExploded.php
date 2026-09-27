@@ -38,6 +38,7 @@ abstract class BaseRowExploded extends CSV {
    *
    * Split single row with values separated by a comma into multiple rows.
    */
+  #[\Override]
   protected function getGenerator(\Iterator $records): ?\Generator {
     foreach ($records as $record) {
       $record[$this::ROW_ID_KEY] = trim((string) $record[$this::SOURCE_KEY]);
@@ -47,7 +48,7 @@ abstract class BaseRowExploded extends CSV {
 
       if ($items !== FALSE) {
         // Remove empty items.
-        $items = array_filter(array_map('trim', $items));
+        $items = array_filter(array_map(trim(...), $items));
 
         foreach ($items as $item) {
           $record[$this::ROW_ID_KEY] = trim($item);

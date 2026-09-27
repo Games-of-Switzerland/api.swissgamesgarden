@@ -38,11 +38,12 @@ use Drupal\migrate\Row;
  *     id="trim"
  * )
  */
-class Trim extends ProcessPluginBase {
+final class Trim extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (!empty($this->configuration['mask'])) {
       return trim((string) $value, $this->configuration['mask']);

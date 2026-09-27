@@ -20,7 +20,7 @@ use Drupal\Core\TypedData\DataDefinition;
   default_formatter: 'social_default',
   default_widget: 'social_default',
 )]
-class SocialItem extends FieldItemBase implements FieldItemInterface {
+final class SocialItem extends FieldItemBase implements FieldItemInterface {
 
   /**
    * {@inheritdoc}

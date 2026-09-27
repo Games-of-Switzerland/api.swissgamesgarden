@@ -8,7 +8,7 @@ use Drupal\serialization\Normalizer\ContentEntityNormalizer;
 /**
  * Normalizes / denormalizes Drupal Studio nodes into an array structure for ES.
  */
-class StudioNormalizer extends ContentEntityNormalizer {
+final class StudioNormalizer extends ContentEntityNormalizer {
 
   /**
    * Supported formats.
@@ -22,7 +22,7 @@ class StudioNormalizer extends ContentEntityNormalizer {
    *
    * @var string|array
    */
-  protected $supportedInterfaceOrClass = ['Drupal\node\NodeInterface'];
+  protected $supportedInterfaceOrClass = [NodeInterface::class];
 
   /**
    * {@inheritdoc}
@@ -36,6 +36,7 @@ class StudioNormalizer extends ContentEntityNormalizer {
    *
    * @psalm-suppress ParamNameMismatch
    */
+  #[\Override]
   public function normalize($object, $format = NULL, array $context = []): array {
     /** @var \Drupal\node\Entity\Node $object */
 
@@ -66,6 +67,7 @@ class StudioNormalizer extends ContentEntityNormalizer {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function supportsNormalization($data, $format = NULL, array $context = []): bool {
     if (!parent::supportsNormalization($data, $format, $context)) {
       return FALSE;

@@ -13,7 +13,7 @@ namespace Drupal\gos_migrate\Plugin\migrate\source;
  *     source_module="gos_migrate"
  * )
  */
-class Sponsors extends BaseRowExploded {
+final class Sponsors extends BaseRowExploded {
 
   /**
    * {@inheritdoc}

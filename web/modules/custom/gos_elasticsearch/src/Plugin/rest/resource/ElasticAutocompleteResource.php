@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
  *     }
  * )
  */
-class ElasticAutocompleteResource extends ElasticResourceBase {
+final class ElasticAutocompleteResource extends ElasticResourceBase {
 
   /**
    * The maximum element by bundle returned for a response.
@@ -33,13 +33,6 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
    * @var int
    */
   public const int PAGER_SIZE = 5;
-
-  /**
-   * The Elasticsearch client.
-   *
-   * @var \Elastic\Elasticsearch\Client
-   */
-  protected $client;
 
   /**
    * {@inheritdoc}
@@ -56,10 +49,12 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
     LoggerChannelInterface $logger,
     ValidatorFactory $validator_factory,
     ElasticsearchIndexManager $elasticsearch_plugin_manager,
-    Client $client,
+    /**
+     * The Elasticsearch client.
+     */
+    protected Client $client,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger, $validator_factory, $elasticsearch_plugin_manager);
-    $this->client = $client;
   }
 
   /**
@@ -73,7 +68,7 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
    */
   #[\Override]
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,

@@ -27,14 +27,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *     description=@Translation("Generates URLs for NextJS."),
  * )
  */
-class NextJsUrlGenerator extends EntityUrlGenerator {
-
-  /**
-   * The NextJs URL Builder.
-   *
-   * @var \Drupal\gos_site\UrlBuilderNextJs
-   */
-  protected $urlBuilderNextJs;
+final class NextJsUrlGenerator extends EntityUrlGenerator {
 
   /**
    * {@inheritdoc}
@@ -55,7 +48,10 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
     EntityManager $entities_manager,
     UrlGeneratorManager $url_generator_manager,
     MemoryCacheInterface $memory_cache,
-    UrlBuilderNextJs $url_builder_nextjs,
+    /**
+     * The NextJs URL Builder.
+     */
+    protected UrlBuilderNextJs $urlBuilderNextJs,
   ) {
     parent::__construct(
       $configuration,
@@ -70,7 +66,6 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
       $url_generator_manager,
       $memory_cache
     );
-    $this->urlBuilderNextJs = $url_builder_nextjs;
   }
 
   /**
@@ -80,13 +75,14 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    * @psalm-suppress ArgumentTypeCoercion
    * @psalm-suppress UnsafeInstantiation
    */
+  #[\Override]
   public static function create(
     ContainerInterface $container,
     array $configuration,
     $plugin_id,
     $plugin_definition,
   ): SimpleSitemapPluginBase {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,
@@ -105,6 +101,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   protected function getAlternateUrlsForTranslatedLanguages(ContentEntityInterface $entity, Url $url): array {
     $alternate_urls = [];
 
@@ -123,6 +120,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   protected function getUrlVariants(array $path_data, Url $url): array {
     $url_variants = [];
     $alternate_urls = [];
@@ -151,6 +149,7 @@ class NextJsUrlGenerator extends EntityUrlGenerator {
    *
    * @psalm-suppress InvalidScalarArgument
    */
+  #[\Override]
   protected function processEntity(ContentEntityInterface $entity): array {
     $sitemap_id = (string) $this->sitemap->id();
 

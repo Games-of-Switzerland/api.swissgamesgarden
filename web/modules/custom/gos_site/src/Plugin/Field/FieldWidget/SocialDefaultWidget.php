@@ -16,7 +16,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['social'],
 )]
-class SocialDefaultWidget extends WidgetBase {
+final class SocialDefaultWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}

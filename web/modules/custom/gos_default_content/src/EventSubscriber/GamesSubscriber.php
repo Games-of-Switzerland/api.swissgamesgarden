@@ -10,24 +10,20 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Generate, update & alter the default games for Games of Switzerland.
  */
-class GamesSubscriber implements EventSubscriberInterface {
-
-  /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityTypeManager;
+final readonly class GamesSubscriber implements EventSubscriberInterface {
 
   /**
    * Constructs a new AgentsSubscriber object.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
-    $this->entityTypeManager = $entity_type_manager;
-  }
+  public function __construct(
+    /**
+     * The entity type manager.
+     */
+    private EntityTypeManagerInterface $entityTypeManager,
+  ) {}
 
   /**
    * Alter agents with Avatar generated images.

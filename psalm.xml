@@ -46,24 +46,32 @@
       </errorLevel>
     </UndefinedClass>
 
-    <!-- Do not take into account undefined methods in tests (results from the above) -->
-    <UndefinedMethod>
-      <errorLevel type="suppress">
-        <directory name="web/modules/custom/*/tests" />
-      </errorLevel>
-    </UndefinedMethod>
-
-    <MissingDependency>
-      <errorLevel type="suppress">
-        <directory name="web/modules/custom/*/tests" />
-      </errorLevel>
-    </MissingDependency>
-
     <!-- Suppress magic property access on Drupal field interfaces -->
     <UndefinedMagicPropertyFetch>
       <errorLevel type="suppress">
         <referencedProperty name="Drupal\Core\Field\FieldItemListInterface::$min" />
         <referencedProperty name="Drupal\Core\Field\FieldItemListInterface::$max" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$date_value" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$entity" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$link" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$max" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$min" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$role" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$social_network" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$state" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$store" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$target_id" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$type" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$url" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemInterface::$value" />
+        <referencedProperty name="Drupal\node\Entity\Node::$body" />
+        <referencedProperty name="Drupal\node\Entity\Node::$field_cantons" />
+        <referencedProperty name="Drupal\node\Entity\Node::$field_genres" />
+        <referencedProperty name="Drupal\node\Entity\Node::$field_locations" />
+        <referencedProperty name="Drupal\node\Entity\Node::$field_members" />
+        <referencedProperty name="Drupal\node\Entity\Node::$field_releases" />
+        <referencedProperty name="Drupal\node\Entity\Node::$field_stores" />
+        <referencedProperty name="Drupal\node\Entity\Node::$field_studios" />
       </errorLevel>
     </UndefinedMagicPropertyFetch>
 

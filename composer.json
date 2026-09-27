@@ -83,7 +83,7 @@
         }
     ],
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-exif": "*",
         "composer/installers": "^2.2",
         "cweagans/composer-patches": "^2.0",
@@ -126,7 +126,7 @@
         "drupal/views_ef_fieldset": "^1.4",
         "drupal/webp": "^1.0@beta",
         "drush/drush": "^13.1",
-        "elasticsearch/elasticsearch": "8.7.*",
+        "elasticsearch/elasticsearch": "^8.19",
         "twig/twig": "3.29.0"
     },
     "require-dev": {
@@ -138,10 +138,10 @@
         "drupal/upgrade_status": "^4.0",
         "imbo/behat-api-extension": "^6.0",
         "marcortola/behat-seo-contexts": "^4.0",
-        "mglaman/phpstan-drupal": "^1.1",
-        "palantirnet/drupal-rector": "^0.21.2",
+        "mglaman/phpstan-drupal": "^2.2",
+        "palantirnet/drupal-rector": "^1.1",
         "phpspec/prophecy-phpunit": "^2",
-        "phpstan/phpstan-deprecation-rules": "^1.2"
+        "phpstan/phpstan-deprecation-rules": "^2.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -193,6 +193,9 @@
                     "depth": 1
                 }
             ],
+            "drupal/elasticsearch_helper": {
+                "Fix PHP 8.4 implicit-nullable-parameter deprecation in ElasticsearchIndexBase::dispatchOperationErrorEvent()": "./patches/elasticsearch_helper/php84-implicit-nullable-deprecation.patch"
+            },
             "drupal/fieldable_path": {
                 "Automated Drupal 11 compatibility fixes (https://www.drupal.org/i/3430541)": "./patches/fieldable_path/3430541-core11-compat.patch"
             },

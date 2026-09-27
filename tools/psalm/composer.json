@@ -1,6 +1,6 @@
 {
         "require": {
-            "vimeo/psalm": "^5.26",
+            "vimeo/psalm": "^6.18",
             "fenetikm/autoload-drupal": "^1.0"
         },
         "extra": {

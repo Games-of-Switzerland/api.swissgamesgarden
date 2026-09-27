@@ -69,7 +69,7 @@ use Drupal\migrate\Row;
  *     id="format_date_multiple"
  * )
  */
-class FormatDateMultiple extends ProcessPluginBase {
+final class FormatDateMultiple extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
@@ -77,6 +77,7 @@ class FormatDateMultiple extends ProcessPluginBase {
    * @psalm-suppress InvalidNullableReturnType
    * @psalm-suppress NullableReturnStatement
    */
+  #[\Override]
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (empty($value) && $value !== '0' && $value !== 0) {
       return '';

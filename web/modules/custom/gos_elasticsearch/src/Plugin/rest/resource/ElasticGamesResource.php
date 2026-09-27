@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
  *     }
  * )
  */
-class ElasticGamesResource extends ElasticResourceBase {
+final class ElasticGamesResource extends ElasticResourceBase {
 
   /**
    * The Elasticsearch Plugin ID to be used.
@@ -45,13 +45,6 @@ class ElasticGamesResource extends ElasticResourceBase {
   public const int PAGER_SIZE = 24;
 
   /**
-   * The taxonomy term Storage.
-   *
-   * @var \Drupal\taxonomy\TermStorageInterface
-   */
-  protected $termStorage;
-
-  /**
    * {@inheritdoc}
    *
    * @psalm-suppress MissingParamType
@@ -66,10 +59,12 @@ class ElasticGamesResource extends ElasticResourceBase {
     LoggerChannelInterface $logger,
     ValidatorFactory $validator_factory,
     ElasticsearchIndexManager $elasticsearch_plugin_manager,
-    EntityTypeManagerInterface $entity_type_manager,
+    /**
+     * The entity type manager.
+     */
+    protected EntityTypeManagerInterface $entityTypeManager,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition, $serializer_formats, $logger, $validator_factory, $elasticsearch_plugin_manager);
-    $this->termStorage = $entity_type_manager->getStorage('taxonomy_term');
   }
 
   /**
@@ -83,7 +78,7 @@ class ElasticGamesResource extends ElasticResourceBase {
    */
   #[\Override]
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,
@@ -294,6 +289,9 @@ class ElasticGamesResource extends ElasticResourceBase {
    */
   protected function addSort(array $sort): array {
     $direction = key($sort);
+    // $sort is validated non-empty by ElasticGamesResourceValidator before
+    // this is called.
+    /** @psalm-suppress PossiblyNullArrayOffset */
     $property = $sort[$direction];
 
     return match ($property) {
@@ -327,13 +325,15 @@ class ElasticGamesResource extends ElasticResourceBase {
     $resource_validator = new ElasticGamesResourceValidator($request->query->all());
     $resource_validator->setRaw($request->query->all());
 
+    $term_storage = $this->entityTypeManager->getStorage('taxonomy_term');
+
     // The platform(s) optional parameter.
     if ($request->query->has('platforms')) {
       /** @var \Drupal\taxonomy\TermInterface[] $platforms */
       $platforms = [];
 
       foreach ($request->query->all('platforms') as $slug) {
-        $platform = $this->termStorage->loadByProperties([
+        $platform = $term_storage->loadByProperties([
           'vid' => 'platform',
           'field_slug' => $slug,
         ]);
@@ -356,7 +356,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       $genres = [];
 
       foreach ($request->query->all('genres') as $slug) {
-        $genre = $this->termStorage->loadByProperties([
+        $genre = $term_storage->loadByProperties([
           'vid' => 'genre',
           'field_slug' => $slug,
         ]);
@@ -379,7 +379,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       $locations = [];
 
       foreach ($request->query->all('locations') as $slug) {
-        $location = $this->termStorage->loadByProperties([
+        $location = $term_storage->loadByProperties([
           'vid' => 'location',
           'field_slug' => $slug,
         ]);
@@ -402,7 +402,7 @@ class ElasticGamesResource extends ElasticResourceBase {
       $cantons = [];
 
       foreach ($request->query->all('cantons') as $slug) {
-        $canton = $this->termStorage->loadByProperties([
+        $canton = $term_storage->loadByProperties([
           'vid' => 'canton',
           'field_slug' => $slug,
         ]);

@@ -24,7 +24,7 @@ use Drupal\Core\TypedData\DataDefinition;
   default_widget: 'entity_reference_label',
   list_class: EntityReferenceFieldItemList::class,
 )]
-class TeamMemberItem extends EntityReferenceItem {
+final class TeamMemberItem extends EntityReferenceItem {
 
   /**
    * {@inheritdoc}

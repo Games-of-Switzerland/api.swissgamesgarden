@@ -7,17 +7,24 @@ use Drupal\Tests\field\Traits\EntityReferenceFieldCreationTrait;
 use Drupal\gos_game\ReleasesCompiler;
 use Drupal\gos_test\Traits\NodeTestTrait;
 use Drupal\gos_test\Traits\TaxonomyTestTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
- * @coversDefaultClass \Drupal\gos_game\ReleasesCompiler
- *
- * @group gos
- * @group gos_game
- * @group gos_game_kernel
- * @group gos_kernel
+ * Tests the ReleasesCompiler.
  *
  * @internal
  */
+#[CoversClass(ReleasesCompiler::class)]
+#[CoversMethod(ReleasesCompiler::class, 'compilePlatforms')]
+#[CoversMethod(ReleasesCompiler::class, 'compileYears')]
+#[CoversMethod(ReleasesCompiler::class, 'compileYearsByPlatforms')]
+#[CoversMethod(ReleasesCompiler::class, 'normalizeReleases')]
+#[Group('gos')]
+#[Group('gos_game')]
+#[Group('gos_game_kernel')]
+#[Group('gos_kernel')]
 final class ReleasesCompilerTest extends KernelTestBase {
 
   use EntityReferenceFieldCreationTrait;
@@ -136,7 +143,7 @@ final class ReleasesCompilerTest extends KernelTestBase {
   }
 
   /**
-   * @covers ::compilePlatforms
+   * Tests compiling the list of platforms a Game was released on.
    */
   public function testCompilePlatforms(): void {
     $platforms = ReleasesCompiler::compilePlatforms($this->testGame);
@@ -165,7 +172,7 @@ final class ReleasesCompilerTest extends KernelTestBase {
   }
 
   /**
-   * @covers ::compileYears
+   * Tests compiling the list of years a Game was released in.
    */
   public function testCompileYears(): void {
     $years = ReleasesCompiler::compileYears($this->testGame);
@@ -179,7 +186,7 @@ final class ReleasesCompilerTest extends KernelTestBase {
   }
 
   /**
-   * @covers ::compileYearsByPlatforms
+   * Tests compiling the list of release years grouped by platform.
    */
   public function testCompileYearsByPlatforms(): void {
     $years = ReleasesCompiler::compileYearsByPlatforms($this->testGame);
@@ -217,7 +224,7 @@ final class ReleasesCompilerTest extends KernelTestBase {
   }
 
   /**
-   * @covers ::normalizeReleases
+   * Tests normalizing releases grouped by year and platform.
    */
   public function testNormalizeReleases(): void {
     $platforms_by_years = ReleasesCompiler::normalizeReleases($this->testGame);

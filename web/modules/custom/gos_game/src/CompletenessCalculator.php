@@ -7,14 +7,14 @@ use Drupal\node\NodeInterface;
 /**
  * Class to calculate game score.
  */
-class CompletenessCalculator {
+final class CompletenessCalculator {
 
   /**
    * List of fields and given absolute score given when non-empty.
    *
    * @var array
    */
-  protected const array FIELDS_SCORE = [
+  private const array FIELDS_SCORE = [
     'field_webiste' => 1000,
     'field_studios' => 1000,
     'field_members' => 1000,
