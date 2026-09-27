@@ -38,6 +38,7 @@ dependencies:
     - gos_site
     - link
     - media_library
+    - media_library_edit
     - metatag
     - path
     - text
@@ -340,7 +341,10 @@ content:
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: true
+        edit_form_mode: default
   field_website:
     type: link_default
     weight: 127

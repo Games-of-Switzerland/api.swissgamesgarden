@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- chore(deps): add drupal/media_library_edit, drupal/coffee, drupal/dashboard, drupal/navigation_extra_tools, drupal/sam, drupal/tagify, drupal/trash, drupal/ckeditor5_paste_filter
+
+### Changed
+- chore(deps): drupal/save_edit (2.2.1 => 3.0.0)
+
 ### Removed
 - chore(deps): remove drupal/hal, drupal/rdf, drupal/aggregator, drupal/feeds (unused, not enabled)
 

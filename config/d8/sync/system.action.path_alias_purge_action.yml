@@ -1,0 +1,12 @@
+uuid: c737567f-ffb1-4c39-86ef-7e3b49c4ca88
+langcode: en
+status: true
+dependencies:
+  module:
+    - path_alias
+    - trash
+id: path_alias_purge_action
+label: 'Permanently delete URL alias'
+type: path_alias
+plugin: 'entity:purge_action:path_alias'
+configuration: {  }

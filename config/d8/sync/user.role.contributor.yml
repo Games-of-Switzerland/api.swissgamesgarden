@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - dashboard.dashboard.main
     - filter.format.full_html
     - filter.format.restricted_html
     - media.type.document
@@ -20,30 +21,41 @@ dependencies:
     - taxonomy.vocabulary.sponsor
   module:
     - admin_toolbar_search
+    - coffee
     - contextual
+    - dashboard
     - file
     - filter
     - help
     - media
+    - navigation
+    - navigation_extra_tools
     - node
     - path
+    - save_edit
     - system
     - taxonomy
     - toolbar
+    - trash
 id: contributor
 label: Contributor
 weight: 3
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access coffee'
   - 'access content overview'
   - 'access contextual links'
   - 'access files overview'
   - 'access help pages'
   - 'access media overview'
+  - 'access navigation'
+  - 'access navigation extra tools cache flushing'
+  - 'access navigation extra tools cron'
   - 'access site in maintenance mode'
   - 'access taxonomy overview'
   - 'access toolbar'
+  - 'access trash'
   - 'access user profiles'
   - 'cancel account'
   - 'create document media'
@@ -61,6 +73,7 @@ permissions:
   - 'create terms in publisher'
   - 'create terms in sponsor'
   - 'create url aliases'
+  - 'delete any file'
   - 'delete game revisions'
   - 'delete media'
   - 'delete own document media'
@@ -90,12 +103,25 @@ permissions:
   - 'edit terms in publisher'
   - 'edit terms in sponsor'
   - 'link to any page'
+  - 'purge menu_link_content entities'
+  - 'purge menu_link_content translations'
+  - 'purge node entities'
+  - 'purge node translations'
+  - 'purge path_alias entities'
+  - 'restore menu_link_content entities'
+  - 'restore menu_link_content translations'
+  - 'restore node entities'
+  - 'restore node translations'
+  - 'restore path_alias entities'
   - 'update media'
   - 'use admin toolbar search'
+  - 'use save and edit'
   - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view all media revisions'
+  - 'view deleted entities'
   - 'view game revisions'
+  - 'view main dashboard'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view page revisions'
