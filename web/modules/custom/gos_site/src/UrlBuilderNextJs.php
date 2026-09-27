@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Build URL from Drupal entity to Now.sh.
  */
-class UrlBuilderNextJs {
+final readonly class UrlBuilderNextJs {
 
   /**
    * NextJS URL patterns prefix to be used before the Drupal slug.
@@ -35,21 +35,17 @@ class UrlBuilderNextJs {
   ];
 
   /**
-   * The mocked configuration factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected $configFactory;
-
-  /**
    * UrlBuilderNextJs constructor.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The config factory.
    */
-  public function __construct(ConfigFactoryInterface $config_factory) {
-    $this->configFactory = $config_factory;
-  }
+  public function __construct(
+    /**
+     * The mocked configuration factory.
+     */
+    private ConfigFactoryInterface $configFactory,
+  ) {}
 
   /**
    * Build a NextJS/React compliant Cardis URL.

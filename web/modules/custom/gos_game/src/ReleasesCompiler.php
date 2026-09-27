@@ -9,7 +9,7 @@ use Drupal\node\NodeInterface;
 /**
  * Class to compile Release's Platforms and Years.
  */
-class ReleasesCompiler {
+final class ReleasesCompiler {
 
   /**
    * From a Game node with multiple releases, compile Platforms.
@@ -69,7 +69,7 @@ class ReleasesCompiler {
         continue;
       }
 
-      $year = (new \DateTimeImmutable($release->date_value))->format('Y');
+      $year = new \DateTimeImmutable($release->date_value)->format('Y');
       $years[$year] = $year;
     }
 
@@ -123,7 +123,7 @@ class ReleasesCompiler {
       }
 
       // Get the Year from date_value release.
-      $year = (new \DateTimeImmutable($release->date_value))->format('Y');
+      $year = new \DateTimeImmutable($release->date_value)->format('Y');
       $years_by_platforms[$platform_slug]['years'][$year] = $year;
 
       // Resort the years by platform to have ordered Years ASC.
@@ -163,7 +163,7 @@ class ReleasesCompiler {
 
       // Get the Year from date_value release.
       if ($date instanceof \DateTimeImmutable) {
-        $year = (new \DateTimeImmutable($release->date_value))->format('Y');
+        $year = new \DateTimeImmutable($release->date_value)->format('Y');
       }
 
       if (!isset($normalized[$year])) {

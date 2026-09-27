@@ -1,5 +1,5 @@
 {
-    "_hash": "ac32e1ec26f629bb5f5fe1ae7f631d85f95009ee64af792b19771bf591ec55b2",
+    "_hash": "37f134f2816e49205fed17548df77071347b24e73aaaee59238780619cdab1fb",
     "patches": {
         "drupal/core": [
             {
@@ -7,6 +7,18 @@
                 "description": "[3489668] Fix TypeError in Twig EscaperRuntime::escape() caused by TwigExtension::escapeFilter() passing $arg instead of $return",
                 "url": "./patches/core/3489668-twig-escaperruntime-arg-fix.patch",
                 "sha256": "96aa6e3341c38e7d6afe48de712a1630992fd4e08c7709d56e32a220ea49b936",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/elasticsearch_helper": [
+            {
+                "package": "drupal/elasticsearch_helper",
+                "description": "Fix PHP 8.4 implicit-nullable-parameter deprecation in ElasticsearchIndexBase::dispatchOperationErrorEvent()",
+                "url": "./patches/elasticsearch_helper/php84-implicit-nullable-deprecation.patch",
+                "sha256": "1cb5558756490a31de388f584ea077ce4bbae9e720176c644c2f617612bac307",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"

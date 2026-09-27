@@ -15,7 +15,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['release'],
 )]
-class ReleaseFieldFormatter extends EntityReferenceLabelFormatter {
+final class ReleaseFieldFormatter extends EntityReferenceLabelFormatter {
 
   /**
    * {@inheritdoc}

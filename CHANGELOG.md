@@ -6,6 +6,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.1] - 2026-09-27
+### Changed
+- chore(infra): bump PHP 8.3 => 8.4
+- chore(deps): mglaman/phpstan-drupal (1.3.9 => 2.2.2)
+- chore(deps): palantirnet/drupal-rector (0.21.2 => 1.1.3)
+- chore(deps): phpstan/phpstan-deprecation-rules (1.2.1 => 2.0.5)
+- chore(deps): vimeo/psalm (5.26.1 => 6.18.1)
+- chore: bump rector.php PHP level set to 8.4
+
+### Fixed
+- fix: modernize codebase following psalm 6 & latests rector
+
+### Removed
+- chore: remove php-deprecation-detector
+
+### Security
+- chore(deps): elasticsearch/elasticsearch (8.7.1 => 8.19.0)
+
 ## [1.7.0] - 2026-09-27
 ### Added
 - chore(deps): add drupal/media_library_edit, drupal/coffee, drupal/dashboard, drupal/navigation_extra_tools, drupal/sam, drupal/tagify, drupal/trash, drupal/ckeditor5\_paste_filter
@@ -443,7 +461,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.7.0...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.7.1...HEAD
+[1.7.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.2...1.6.0
 [1.5.2]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.1...1.5.2

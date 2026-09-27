@@ -16,7 +16,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['player'],
 )]
-class PlayerDefaultWidget extends WidgetBase {
+final class PlayerDefaultWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}

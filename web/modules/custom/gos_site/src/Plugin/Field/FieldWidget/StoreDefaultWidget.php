@@ -16,7 +16,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['store'],
 )]
-class StoreDefaultWidget extends WidgetBase {
+final class StoreDefaultWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}

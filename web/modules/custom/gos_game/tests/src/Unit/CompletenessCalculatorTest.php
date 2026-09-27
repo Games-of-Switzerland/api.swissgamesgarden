@@ -7,16 +7,21 @@ use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\Tests\UnitTestCase;
 use Drupal\gos_game\CompletenessCalculator;
 use Drupal\node\NodeInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
- * @coversDefaultClass \Drupal\gos_game\CompletenessCalculator
- *
- * @group gos
- * @group gos_game
- * @group gos_game_unit
+ * Tests the CompletenessCalculator.
  *
  * @internal
  */
+#[CoversClass(CompletenessCalculator::class)]
+#[CoversMethod(CompletenessCalculator::class, 'calculation')]
+#[Group('gos')]
+#[Group('gos_game')]
+#[Group('gos_game_unit')]
 final class CompletenessCalculatorTest extends UnitTestCase {
 
   /**
@@ -77,7 +82,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * @covers ::calculation
+   * Tests the completeness calculation with every field set.
    */
   public function testCalculation() {
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
@@ -85,10 +90,14 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * @covers ::calculation
+   * Tests the completeness calculation for each contextual link type.
    *
-   * @dataProvider providerContextualLinks
+   * @param string $type
+   *   The contextual link type.
+   * @param int $expected_score
+   *   The expected completeness score.
    */
+  #[DataProvider('providerContextualLinks')]
   public function testCalculationWithContextualLinks(string $type, int $expected_score) {
     $field_item_data = $this->prophesize(TypedDataInterface::class);
     $field_item_data->getValue()->willReturn(['type' => $type])->shouldBeCalled();
@@ -130,7 +139,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * @covers ::calculation
+   * Tests the completeness calculation with a non-empty credit field.
    */
   public function testCalculationWithCredit() {
     $field_item = $this->prophesize(FieldItemInterface::class);
@@ -142,7 +151,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * @covers ::calculation
+   * Tests the completeness calculation with an empty images field.
    */
   public function testCalculationWithoutImages() {
     $field_item = $this->prophesize(FieldItemInterface::class);
@@ -154,7 +163,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * @covers ::calculation
+   * Tests the completeness calculation with an empty members field.
    */
   public function testCalculationWithoutMembers() {
     $field_item = $this->prophesize(FieldItemInterface::class);
@@ -166,7 +175,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * @covers ::calculation
+   * Tests the completeness calculation with empty members and studios fields.
    */
   public function testCalculationWithoutMembersNeitherStudios() {
     $field_item = $this->prophesize(FieldItemInterface::class);
@@ -179,7 +188,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * @covers ::calculation
+   * Tests the completeness calculation with an empty releases field.
    */
   public function testCalculationWithoutReleases() {
     $field_item = $this->prophesize(FieldItemInterface::class);
@@ -191,7 +200,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
   }
 
   /**
-   * @covers ::calculation
+   * Tests the completeness calculation with an empty studios field.
    */
   public function testCalculationWithoutStudios() {
     $field_item = $this->prophesize(FieldItemInterface::class);

@@ -15,7 +15,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['store'],
 )]
-class StoreFieldFormatter extends FormatterBase {
+final class StoreFieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}

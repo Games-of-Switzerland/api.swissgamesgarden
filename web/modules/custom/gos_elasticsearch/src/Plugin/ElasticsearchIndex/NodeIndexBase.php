@@ -56,6 +56,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    * @psalm-suppress MissingParamType
    * @psalm-suppress UnsafeInstantiation
    */
+  #[\Override]
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
@@ -78,6 +79,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    * @return string
    *   The index name.
    */
+  #[\Override]
   public function getIndexName(array $data = []): string {
     if (!$this->settings::get(self::SETTINGS_INDEX_PREFIX)) {
       throw new \InvalidArgumentException('No index prefix was specified in settings.php.');
@@ -98,6 +100,7 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    *
    * @psalm-suppress InvalidArgument
    */
+  #[\Override]
   public function index($source): void {
     /** @var \Drupal\node\NodeInterface $entity */
     $entity = $source;
@@ -111,7 +114,10 @@ abstract class NodeIndexBase extends ElasticsearchIndexBase {
    * @psalm-suppress InvalidReturnType
    * @psalm-suppress InvalidReturnStatement
    * @psalm-suppress ArgumentTypeCoercion
+   * @psalm-suppress InvalidNullableReturnType
+   * @psalm-suppress NullableReturnStatement
    */
+  #[\Override]
   public function indexNamePattern() {
     if (!$this->settings::get(self::SETTINGS_INDEX_PREFIX)) {
       throw new \InvalidArgumentException('No index prefix was specified in settings.php.');

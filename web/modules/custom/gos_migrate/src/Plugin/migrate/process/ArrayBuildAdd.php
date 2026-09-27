@@ -87,11 +87,12 @@ use Drupal\migrate\Row;
  *     handle_multiples=TRUE
  * )
  */
-class ArrayBuildAdd extends ProcessPluginBase {
+final class ArrayBuildAdd extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): array {
     $new_value = $value;
 

@@ -16,7 +16,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['contextual_link'],
 )]
-class ContextualLinkDefaultWidget extends WidgetBase {
+final class ContextualLinkDefaultWidget extends WidgetBase {
 
   /**
    * {@inheritdoc}

@@ -20,7 +20,7 @@ use Drupal\Core\TypedData\DataDefinition;
   default_formatter: 'contextual_link_default',
   default_widget: 'contextual_link_default',
 )]
-class ContextualLinkItem extends FieldItemBase implements FieldItemInterface {
+final class ContextualLinkItem extends FieldItemBase implements FieldItemInterface {
 
   /**
    * {@inheritdoc}

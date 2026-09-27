@@ -16,13 +16,14 @@ use Drupal\elasticsearch_helper\Elasticsearch\Index\MappingDefinition;
  *     entityType="node"
  * )
  */
-class StudioNodeIndex extends NodeIndexBase {
+final class StudioNodeIndex extends NodeIndexBase {
 
   /**
    * {@inheritdoc}
    *
    * @psalm-suppress UnusedForeachValue
    */
+  #[\Override]
   public function setup(): void {
     // Create one index per language, so that we can have different analyzers.
     foreach ($this->languageManager->getLanguages() as $langcode => $language) {
@@ -63,6 +64,7 @@ class StudioNodeIndex extends NodeIndexBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function getIndexDefinition(array $context = []) {
     // Get index definition.
     $index_definition = parent::getIndexDefinition($context);
@@ -109,6 +111,7 @@ class StudioNodeIndex extends NodeIndexBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function getMappingDefinition(array $context = []) {
     // Create here only properties that are not affected by language analyzer.
     return MappingDefinition::create()

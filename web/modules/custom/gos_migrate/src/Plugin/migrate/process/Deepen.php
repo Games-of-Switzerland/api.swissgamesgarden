@@ -48,11 +48,12 @@ use Drupal\migrate\Row;
  *     handle_multiples=TRUE
  * )
  */
-class Deepen extends ProcessPluginBase {
+final class Deepen extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property): array {
     $keyname = (isset($this->configuration['keyname']) && \is_string($this->configuration['keyname']) && $this->configuration['keyname'] !== '') ? $this->configuration['keyname'] : 'value';
 

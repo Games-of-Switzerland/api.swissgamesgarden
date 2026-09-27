@@ -1,0 +1,20 @@
+Fix PHP 8.4 implicit-nullable-parameter deprecation
+
+ElasticsearchIndexBase::dispatchOperationErrorEvent() declares
+$request_wrapper as implicitly nullable (typed param with a NULL
+default and no explicit ?-prefix), which PHP 8.4 deprecates. Since
+Drupal's development environment prints deprecation notices directly
+into the response body, this corrupts every REST endpoint that calls
+this method on error, breaking the JSON content type contract (e.g.
+/autocomplete, /search/games).
+
+--- a/src/Plugin/ElasticsearchIndexBase.php
++++ b/src/Plugin/ElasticsearchIndexBase.php
+@@ -192,6 +192,6 @@
+    *
+    * @return \Drupal\elasticsearch_helper\Event\ElasticsearchOperationErrorEvent
+    */
+-  protected function dispatchOperationErrorEvent(\Throwable $error, $operation, ElasticsearchRequestWrapperInterface $request_wrapper = NULL, $object = NULL, $metadata = []) {
++  protected function dispatchOperationErrorEvent(\Throwable $error, $operation, ?ElasticsearchRequestWrapperInterface $request_wrapper = NULL, $object = NULL, $metadata = []) {
+     $event = new ElasticsearchOperationErrorEvent($error, $operation, $this, $request_wrapper, $object, $metadata);
+     $this->getEventDispatcher()->dispatch($event, ElasticsearchEvents::OPERATION_ERROR);

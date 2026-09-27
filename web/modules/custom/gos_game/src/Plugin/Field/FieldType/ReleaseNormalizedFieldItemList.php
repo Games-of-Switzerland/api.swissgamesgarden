@@ -11,7 +11,7 @@ use Drupal\gos_game\ReleasesCompiler;
  *
  * @extends FieldItemList<ReleaseNormalizedFieldItem>
  */
-class ReleaseNormalizedFieldItemList extends FieldItemList {
+final class ReleaseNormalizedFieldItemList extends FieldItemList {
 
   use ComputedItemListTrait;
 

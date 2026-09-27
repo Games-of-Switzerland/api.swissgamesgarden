@@ -37,11 +37,12 @@ use Drupal\migrate\Row;
  *     id="gos_contextual_links_mapper"
  * )
  */
-class ContextualLinksMapper extends ProcessPluginBase {
+final class ContextualLinksMapper extends ProcessPluginBase {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (!isset($this->configuration['sources']) || empty($this->configuration['sources'])) {
       $migrate_executable->saveMessage('The sources mapping values should not be empty');

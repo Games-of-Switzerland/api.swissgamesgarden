@@ -15,7 +15,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['social'],
 )]
-class SocialFieldFormatter extends FormatterBase {
+final class SocialFieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}

@@ -16,7 +16,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Team Member widget'),
   field_types: ['team_member'],
 )]
-class TeamMemberDefaultWidget extends EntityReferenceAutocompleteWidget {
+final class TeamMemberDefaultWidget extends EntityReferenceAutocompleteWidget {
 
   /**
    * {@inheritdoc}

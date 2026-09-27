@@ -18,7 +18,7 @@ use Drupal\Core\TypedData\DataDefinition;
   no_ui: TRUE,
   list_class: ReleaseNormalizedFieldItemList::class,
 )]
-class ReleaseNormalizedFieldItem extends FieldItemBase {
+final class ReleaseNormalizedFieldItem extends FieldItemBase {
 
   /**
    * {@inheritdoc}

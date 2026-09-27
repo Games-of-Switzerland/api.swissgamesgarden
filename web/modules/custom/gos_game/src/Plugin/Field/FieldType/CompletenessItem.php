@@ -21,7 +21,7 @@ use Drupal\Core\TypedData\DataDefinition;
   default_widget: 'completeness_widget',
   default_formatter: 'number_integer',
 )]
-class CompletenessItem extends IntegerItem {
+final class CompletenessItem extends IntegerItem {
 
   /**
    * {@inheritdoc}

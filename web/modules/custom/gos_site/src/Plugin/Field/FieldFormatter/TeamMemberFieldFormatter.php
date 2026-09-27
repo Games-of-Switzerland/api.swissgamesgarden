@@ -15,7 +15,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['team_member'],
 )]
-class TeamMemberFieldFormatter extends EntityReferenceLabelFormatter {
+final class TeamMemberFieldFormatter extends EntityReferenceLabelFormatter {
 
   /**
    * {@inheritdoc}

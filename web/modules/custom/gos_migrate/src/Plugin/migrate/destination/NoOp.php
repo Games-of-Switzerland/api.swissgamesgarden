@@ -24,7 +24,7 @@ use Drupal\migrate\Row;
  *     id="noop"
  * )
  */
-class NoOp extends DestinationBase {
+final class NoOp extends DestinationBase {
 
   /**
    * {@inheritdoc}
@@ -39,6 +39,7 @@ class NoOp extends DestinationBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function fields(?MigrationInterface $migration = NULL): array {
     return [];
   }
@@ -46,6 +47,7 @@ class NoOp extends DestinationBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function getIds(): array {
     return [];
   }
@@ -53,6 +55,7 @@ class NoOp extends DestinationBase {
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function import(Row $row, array $old_destination_id_values = []): bool {
     // The no-op always succeeds. Returning TRUE here prevents a 'failed'
     // being thrown. However, it also gives no indication of progress.
