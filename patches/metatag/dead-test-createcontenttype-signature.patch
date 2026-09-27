@@ -1,0 +1,28 @@
+Fix fatal error: PermissionsTest::createContentType() incompatible with core
+
+Drupal\Tests\node\Traits\ContentTypeCreationTrait::createContentType()
+gained a second parameter, bool $create_body = TRUE. The
+metatag_extended_perms submodule's bundled functional test overrides
+this method without the new parameter, which is a fatal
+"Declaration ... must be compatible with ..." error thrown during
+PHPUnit's test-suite discovery (parsing every test class to read its
+@group annotations before any --group filtering happens), breaking
+the entire test run.
+
+Adding the missing parameter and passing it through to the parent call
+is a pure signature fix with no behavior change (this override already
+ignores the incoming $values and hardcodes ['type' => 'page']).
+
+--- a/metatag_extended_perms/tests/src/Functional/PermissionsTest.php
++++ b/metatag_extended_perms/tests/src/Functional/PermissionsTest.php
+@@ -193,8 +193,8 @@ class PermissionsTest extends BrowserTestBase {
+   /**
+    * {@inheritdoc}
+    */
+-  protected function createContentType(array $values = []): NodeType {
+-    $type = parent::createContentType(['type' => 'page']);
++  protected function createContentType(array $values = [], bool $create_body = TRUE): NodeType {
++    $type = parent::createContentType(['type' => 'page'], $create_body);
+
+     // Load a node form.
+     $this->drupalGet('node/add/page');

@@ -1,0 +1,8 @@
+uuid: d93fa5e5-c020-4836-9591-fdd06a94f2ff
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard
+label: Dashboard
+description: 'Things users can do when they start using Drupal.'
+locked: false

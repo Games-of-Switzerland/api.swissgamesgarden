@@ -5,6 +5,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- chore(deps): add drupal/media_library_edit, drupal/coffee, drupal/dashboard, drupal/navigation_extra_tools, drupal/sam, drupal/tagify, drupal/trash, drupal/ckeditor5_paste_filter
+- feat: add Gin-Login video-game related wallpapers
+
+### Changed
+- chore(deps): drupal/save_edit (2.2.1 => 3.0.0)
+
+### Removed
+- chore(deps): remove drupal/hal, drupal/rdf, drupal/aggregator, drupal/feeds (unused, not enabled)
+
+### Security
+- chore(deps): drupal/core (10.6.17 => 11.4.7), Drupal 11 major upgrade
+- chore(deps): drupal/gin (4.1.3 => 5.0.15)
+- chore(deps): drupal/gin_toolbar (2.1.0 => 3.0.3)
+- chore(deps): drupal/migrate_file (2.1.3 => 3.0.0-alpha1)
+- chore(deps): drupal/fieldable_path (1.0.0-rc6 => 1.0.0), sourced via inline package repo + patch, no D11 release yet
+- chore(deps): drupal/metatag (2.1.x => 2.2.0)
+- chore(deps): pin twig/twig to 3.29.0, 3.30.0 fatals on a new upstream regression
+
+### Fixed
+- fix(tests): patch drupal/metatag's PermissionsTest::createContentType()
+- fix(custom): narrow GameNormalizer/PeopleNormalizer/StudioNormalizer::normalize() return types for Drupal 11
+- fix(tests): make gos_game's CompletenessCalculatorTest::providerContextualLinks() static
+- fix(core): patch drupal/core TwigExtension::escapeFilter() arg bug
+- ci: ignore claro theme in upgrade_status:analyze
 
 ## [1.6.0] - 2026-09-27
 ### Changed
@@ -26,8 +51,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): friendsofphp/php-cs-fixer (v3.92.5 => v3.95.27)
 - chore(deps): behat/behat (v3.29.0 => v3.33.0)
 - chore(deps): imbo/behat-api-extension (v6.0.1 => v6.1.0)
-- chore(deps): drupal/aggregator (2.2.2 => 2.2.6)
-- chore(deps): drupal/hal (2.0.4 => 2.0.5)
 - chore(deps): drupal/migrate_source_csv (3.7.0 => 3.8.0)
 - chore(deps): drupal/migrate_tools (6.1.3 => 6.1.4)
 - chore(deps): drupal/new_relic_rpm (2.2.0 => 2.3.0)
@@ -44,7 +67,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access
-- fix(tests): patch drupal/rdf to fix a fatal error in RdfParsingTrait::assertSession() vs KernelTestBase, surfaced by the drupal/core 10.6.17 update
+- fix(tests): patch drupal/metatag's PermissionsTest::createContentType()
+- fix(custom): narrow GameNormalizer/PeopleNormalizer/StudioNormalizer::normalize() return types for Drupal 11
+- fix(tests): make gos_game's CompletenessCalculatorTest::providerContextualLinks() static
+- fix(core): patch drupal/core TwigExtension::escapeFilter() arg bug
+- ci: ignore claro theme in upgrade_status:analyze
 
 ## [1.5.1] - 2026-02-17
 ### Added

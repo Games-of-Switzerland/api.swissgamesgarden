@@ -59,6 +59,14 @@
       </errorLevel>
     </MissingDependency>
 
+    <!-- Suppress magic property access on Drupal field interfaces -->
+    <UndefinedMagicPropertyFetch>
+      <errorLevel type="suppress">
+        <referencedProperty name="Drupal\Core\Field\FieldItemListInterface::$min" />
+        <referencedProperty name="Drupal\Core\Field\FieldItemListInterface::$max" />
+      </errorLevel>
+    </UndefinedMagicPropertyFetch>
+
     <!-- Suppress some errors -->
     <!-- @see https://github.com/vimeo/psalm/blob/master/docs/dealing_with_code_issues.md -->
 

@@ -113,7 +113,7 @@ final class CompletenessCalculatorTest extends UnitTestCase {
    * @return iterable
    *   Data provided.
    */
-  public function providerContextualLinks(): iterable {
+  public static function providerContextualLinks(): iterable {
     yield ['foo', 9643];
 
     yield ['presskit', 9653];

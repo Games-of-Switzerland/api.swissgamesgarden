@@ -1,0 +1,34 @@
+Fix: replace variable sent to Twig EscaperRuntime escape method
+
+TwigExtension::escapeFilter() computes $return as the properly
+stringified/escaped-safe representation of $arg (handling scalars,
+MarkupInterface, RenderableInterface, __toString()/toString() objects),
+but then passes the raw, unconverted $arg to
+EscaperRuntime::escape() for non-'html' strategies instead of $return.
+
+This causes fatal TypeErrors (e.g. "Argument #4 ($autoescape) must be
+of type bool, null given") and incorrect escaping of stringable
+objects (e.g. Drupal\Core\Url) depending on what Twig's compiled
+template code passes through.
+
+Upstream: https://www.drupal.org/project/drupal/issues/3489668
+Merge request !10329 (not yet committed as of this writing; status
+"Needs work" pending additional test coverage, but the fix itself -
+using the already-computed $return instead of $arg - is correct and
+matches the file's own established pattern one line above).
+
+Original patch by Julien JOYE, closes #3489668. Rebased here with a
+depth-1 path (package root is web/core/, not the Drupal monorepo root
+the original patch was generated from).
+
+--- a/lib/Drupal/Core/Template/TwigExtension.php
++++ b/lib/Drupal/Core/Template/TwigExtension.php
+@@ -487,7 +487,7 @@ public function escapeFilter(Environment $env, $arg, $strategy = 'html', $char
+       if ($strategy == 'html') {
+         return Html::escape($return);
+       }
+-      return $env->getRuntime(EscaperRuntime::class)->escape($arg, $strategy, $charset, $autoescape);
++      return $env->getRuntime(EscaperRuntime::class)->escape($return, $strategy, $charset, $autoescape);
+     }
+
+     // This is a normal render array, which is safe by definition, with

@@ -182,7 +182,7 @@ class ElasticAutocompleteResource extends ElasticResourceBase {
       ],
     ];
 
-    $search = (string) $request->query->get('q', '');
+    $search = $request->query->getString('q', '');
     $search = Xss::filter($search);
 
     if ($search) {
