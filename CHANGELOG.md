@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - chore: remove php-deprecation-detector
+- chore(deps): remove drupal/ckeditor (unused legacy CKEditor 4 bridge)
 
 ### Security
 - chore(deps): drupal/drupal-extension (v5.4.0 => v6.1.0)
