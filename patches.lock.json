@@ -1,5 +1,5 @@
 {
-    "_hash": "72a0cff03d94ffe4fbe0f392329601dcc6a6c73b436e20206ce8dd4d10104d16",
+    "_hash": "ac32e1ec26f629bb5f5fe1ae7f631d85f95009ee64af792b19771bf591ec55b2",
     "patches": {
         "drupal/core": [
             {
@@ -43,6 +43,18 @@
                 "description": "[3589038] Guard MailerPass against autoload fatals from orphan decorators",
                 "url": "./patches/symfony_mailer/3589038-mailerpass-orphan-decorator.patch",
                 "sha256": "ad12d6406e8016c8fb722a268c6aef0b8c3bad1db0b33e0a1c121726cf10fffc",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "drupal/gin_login": [
+            {
+                "package": "drupal/gin_login",
+                "description": "[3161447] - Random local images",
+                "url": "./patches/gin_login/3161447-37.patch",
+                "sha256": "75d1b9136930c87c35559a6f15b4188fb2e2e914560bfb3ea8feff6b3a76c932",
                 "depth": 1,
                 "extra": {
                     "provenance": "root"
