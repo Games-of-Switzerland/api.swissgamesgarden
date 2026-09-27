@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.7.2] - 2026-09-27
 ### Security
 - chore(deps): drupal/image_effects (4.0.0 => 5.0.0)
 - chore(deps): drupal/core (11.4.7 => 11.4.8)
@@ -464,7 +466,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.7.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.7.2...HEAD
+[1.7.2]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.7.1...1.7.2
 [1.7.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.2...1.6.0
