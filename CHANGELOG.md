@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - chore(deps): add drupal/media_library_edit, drupal/coffee, drupal/dashboard, drupal/navigation_extra_tools, drupal/sam, drupal/tagify, drupal/trash, drupal/ckeditor5_paste_filter
+- feat: add Gin-Login video-game related wallpapers
 
 ### Changed
 - chore(deps): drupal/save_edit (2.2.1 => 3.0.0)
