@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-09-27
+### Changed
+- chore(infra): bump docker-compose db image mariadb:10.4 => mariadb:12.3
+
 ## [1.5.2] - 2026-09-27
 ### Added
 - ci: add rector
@@ -410,7 +414,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.2...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.6.0...HEAD
+[1.6.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.2...1.6.0
 [1.5.2]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.1...1.5.2
 [1.5.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.0...1.5.1
 [1.5.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.3...1.5.0
