@@ -2,6 +2,8 @@ uuid: 8eee5c10-ed84-400a-ba6b-08413d51593f
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.game
   module:
     - node
 id: games
@@ -12,7 +14,6 @@ selection_criteria:
   e43d375c-6b84-41a6-af3d-a825fdbf2a0f:
     id: 'entity_bundle:node'
     negate: false
-    uuid: e43d375c-6b84-41a6-af3d-a825fdbf2a0f
     context_mapping:
       node: node
     bundles:

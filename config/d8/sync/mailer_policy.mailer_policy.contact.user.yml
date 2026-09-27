@@ -1,0 +1,10 @@
+uuid: 9b8a190c-0e10-45a5-b9c6-479b0b1516cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - contact
+id: contact.user
+configuration:
+  email_subject:
+    value: '[{{ site_name }}] {{ subject }}'

@@ -48,7 +48,7 @@ class SkipOnNotEmpty extends ProcessPluginBase {
    * @return mixed
    *   The input value, $value, if it is not empty.
    */
-  public function process($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
+  public function process(mixed $value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if ($value) {
       $message = \array_key_exists('message', $this->configuration) ? $this->configuration['message'] : '';
       $migrate_executable->saveMessage($message);
@@ -80,7 +80,7 @@ class SkipOnNotEmpty extends ProcessPluginBase {
    * @return mixed
    *   The input value, $value, if it is not empty.
    */
-  public function row($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
+  public function row(mixed $value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if ($value) {
       $message = \array_key_exists('message', $this->configuration) ? $this->configuration['message'] : '';
 

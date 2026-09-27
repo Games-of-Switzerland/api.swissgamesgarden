@@ -16,6 +16,7 @@ class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriber
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public static function getSubscribedEvents(): array {
     return [
       KernelEvents::REQUEST => [

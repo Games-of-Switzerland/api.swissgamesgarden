@@ -110,7 +110,7 @@ class FormatDateMultiple extends ProcessPluginBase {
       try {
         return DateTimePlus::createFromFormat($from_format, $value, $from_timezone, $settings)->format($to_formats[$index], ['timezone' => $to_timezone]);
       }
-      catch (\Exception $e) {
+      catch (\Exception) {
         continue;
       }
     }

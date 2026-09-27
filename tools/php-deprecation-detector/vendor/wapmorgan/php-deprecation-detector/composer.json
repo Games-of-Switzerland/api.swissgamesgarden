@@ -1,0 +1,41 @@
+{
+    "name": "wapmorgan/php-deprecation-detector",
+    "description": "Analyzer of PHP code to search issues with deprecated functionality in newer interpreter versions.",
+    "type": "package",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.4",
+        "ext-tokenizer":"*",
+        "ext-json": "*",
+        "symfony/console": "^3.4|^4.0|^5.0|^6.0"
+    },
+    "suggest": {
+        "ext-json": "Adds ability to store report in JSON format"
+    },
+    "replace": {
+        "wapmorgan/php-code-fixer": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "wapmorgan\\PhpCodeFixer\\": "src/"
+        },
+        "files": ["src/functions.php"]
+    },
+    "bin": ["bin/phpdd"],
+    "extra": {
+        "phar-builder": {
+            "compression": "BZip2",
+            "name": "phpdd-dev.phar",
+            "output-dir": "./",
+            "entry-point": "bin/phpdd",
+            "include": ["bin", "data"],
+            "events": {
+                "command.package.start" : "git describe --tags > bin/version.txt",
+                "command.package.end": "cp phpdd-dev.phar phpdd-`cat bin/version.txt`.phar && chmod +x phpdd-`cat bin/version.txt`.phar && rm bin/version.txt"
+            }
+        }
+    },
+    "scripts": {
+        "build": "phar-builder package composer.json"
+    }
+}

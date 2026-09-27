@@ -56,7 +56,7 @@
       """
 
   Scenario: Games Resource should respond with filtered games with very accurate precision more keywords we add.
-    When I request "http://api.gos.test/search/games?page=0&q=farming"
+    When I request "http://api.gos.test/search/games?page=0&q=farming&sort[asc]=title.keyword"
     Then the response code is 200
     And the "Content-Type" response header is "application/json"
     Then the response body contains JSON:

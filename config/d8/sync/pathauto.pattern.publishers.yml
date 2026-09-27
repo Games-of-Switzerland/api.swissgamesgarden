@@ -2,8 +2,9 @@ uuid: 5fa28dce-3706-4266-b4fd-ad0db02c7ed5
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.publisher
   module:
-    - ctools
     - taxonomy
 id: publishers
 label: Publishers
@@ -13,7 +14,6 @@ selection_criteria:
   955f12c8-58e8-4f37-8300-b07e7e0a192b:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 955f12c8-58e8-4f37-8300-b07e7e0a192b
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:

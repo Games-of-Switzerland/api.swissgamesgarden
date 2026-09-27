@@ -2,6 +2,8 @@ uuid: 47458898-ac1e-4631-aaee-90c0b6472b3f
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.people
   module:
     - node
 id: people
@@ -12,7 +14,6 @@ selection_criteria:
   0c20f8ba-8fc2-4188-a00b-ba6c549142cb:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 0c20f8ba-8fc2-4188-a00b-ba6c549142cb
     context_mapping:
       node: node
     bundles:

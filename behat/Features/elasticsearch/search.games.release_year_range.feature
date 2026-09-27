@@ -26,7 +26,7 @@
       """
 
   Scenario: Games Resource should respond with filtered games when only a valid starting year date (YYYY) is given.
-    When I request "http://api.gos.test/search/games?page=0&release_year_range[start]=2017"
+    When I request "http://api.gos.test/search/games?page=0&release_year_range[start]=2017&sort[asc]=title.keyword"
     Then the response code is 200
     And the "Content-Type" response header is "application/json"
     Then the response body contains JSON:
@@ -50,7 +50,7 @@
       """
 
   Scenario: Games Resource should respond with filtered games when only a valid ending year date (YYYY) is given.
-    When I request "http://api.gos.test/search/games?page=0&release_year_range[end]=2018"
+    When I request "http://api.gos.test/search/games?page=0&release_year_range[end]=2018&sort[asc]=title.keyword"
     Then the response code is 200
     And the "Content-Type" response header is "application/json"
     Then the response body contains JSON:

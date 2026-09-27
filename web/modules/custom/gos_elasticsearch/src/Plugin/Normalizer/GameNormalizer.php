@@ -114,14 +114,10 @@ class GameNormalizer extends ContentEntityNormalizer {
       }
 
       // Transform the single years array into a structure for ES storage.
-      $data['releases_years'] = array_map(static function ($year) {
-        return ['year' => $year];
-      }, array_keys($years));
+      $data['releases_years'] = array_map(static fn ($year) => ['year' => $year], array_keys($years));
 
       // Transform the single states array into a structure for ES storage.
-      $data['releases_states'] = array_map(static function ($state) {
-        return ['state' => $state];
-      }, array_keys($states));
+      $data['releases_states'] = array_map(static fn ($state) => ['state' => $state], array_keys($states));
 
       $data['releases'] = $releases;
     }

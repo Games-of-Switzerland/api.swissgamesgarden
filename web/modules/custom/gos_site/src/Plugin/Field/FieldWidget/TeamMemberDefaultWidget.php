@@ -2,26 +2,26 @@
 
 namespace Drupal\gos_site\Plugin\Field\FieldWidget;
 
+use Drupal\Core\Field\Attribute\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\EntityReferenceAutocompleteWidget;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Plugin implementation of the 'team_member_default' widget.
- *
- * @FieldWidget(
- *     id="team_member_default",
- *     label=@Translation("Team Member widget"),
- *     field_types={
- *         "team_member"
- *     }
- * )
  */
+#[FieldWidget(
+  id: 'team_member_default',
+  label: new TranslatableMarkup('Team Member widget'),
+  field_types: ['team_member'],
+)]
 class TeamMemberDefaultWidget extends EntityReferenceAutocompleteWidget {
 
   /**
    * {@inheritdoc}
    */
+  #[\Override]
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $widget = parent::formElement($items, $delta, $element, $form, $form_state);
 

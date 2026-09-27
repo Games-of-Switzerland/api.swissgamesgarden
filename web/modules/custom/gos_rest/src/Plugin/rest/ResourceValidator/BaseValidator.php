@@ -30,6 +30,7 @@ abstract class BaseValidator implements \ArrayAccess {
    * @return bool
    *   Does this offset exists.
    */
+  #[\Override]
   public function offsetExists(mixed $offset): bool {
     return property_exists(static::class, $offset);
   }
@@ -43,6 +44,7 @@ abstract class BaseValidator implements \ArrayAccess {
    * @return mixed
    *   The value to get from given offset.
    */
+  #[\Override]
   public function offsetGet(mixed $offset): mixed {
     $offset = $this->camelize($offset);
 
@@ -63,6 +65,7 @@ abstract class BaseValidator implements \ArrayAccess {
    * @param mixed $value
    *   The value to set.
    */
+  #[\Override]
   public function offsetSet(mixed $offset, mixed $value): void {
     $offset = $this->camelize($offset);
 
@@ -85,6 +88,7 @@ abstract class BaseValidator implements \ArrayAccess {
    * @param mixed $offset
    *   The offset to unset.
    */
+  #[\Override]
   public function offsetUnset(mixed $offset): void {
     throw new \BadMethodCallException('Unsupported method.');
   }

@@ -17,18 +17,6 @@ Automatically fix coding standards
 ./vendor/bin/phpcbf
 ```
 
-## Analyzer of PHP code to search usages of deprecated functionality using PhpDeprecationDetector.
-
-Analyzer of PHP code to search usages of deprecated functionality in newer interpreter versions
-
-```bash
-./tools/php-deprecation-detector/vendor/bin/phpdd --target 8.1 \
---file-extensions php,module,inc,install,test,profile,theme,info \
-./web/modules/custom
-
-./tools/php-deprecation-detector/vendor/bin/phpdd --target 8.1 --file-extensions php ./behat
-```
-
 ## Ensure PHP Community Best Practices using PHP Coding Standards Fixer
 
 It can modernize your code (like converting the pow function to the ** operator on PHP 5.6) and (micro) optimize it.

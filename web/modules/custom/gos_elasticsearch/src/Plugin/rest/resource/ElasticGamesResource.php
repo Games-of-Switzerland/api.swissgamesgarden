@@ -81,6 +81,7 @@ class ElasticGamesResource extends ElasticResourceBase {
    * @psalm-suppress UnsafeInstantiation
    * @psalm-suppress PossiblyInvalidArgument
    */
+  #[\Override]
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
@@ -105,6 +106,7 @@ class ElasticGamesResource extends ElasticResourceBase {
    * @return \Drupal\Core\Cache\CacheableJsonResponse
    *   The Json response.
    */
+  #[\Override]
   public function get(Request $request): CacheableJsonResponse {
     // Setup the base response & cacheable-metadata.
     parent::get($request);
@@ -294,31 +296,22 @@ class ElasticGamesResource extends ElasticResourceBase {
     $direction = key($sort);
     $property = $sort[$direction];
 
-    switch ($property) {
-      case 'releases.date':
-        $order = [
-          $property => [
-            [
-              'order' => key($sort),
-              'nested' => ['path' => 'releases'],
-              'missing' => '_last',
-            ],
+    return match ($property) {
+      'releases.date' => [
+        $property => [
+          [
+            'order' => key($sort),
+            'nested' => ['path' => 'releases'],
+            'missing' => '_last',
           ],
-        ];
-
-        break;
-
-      default:
-        $order = [
-          $property => [
-            ['order' => key($sort)],
-          ],
-        ];
-
-        break;
-    }
-
-    return $order;
+        ],
+      ],
+      default => [
+        $property => [
+          ['order' => key($sort)],
+        ],
+      ],
+    };
   }
 
   /**

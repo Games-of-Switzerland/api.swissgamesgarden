@@ -45,10 +45,10 @@ class Trim extends ProcessPluginBase {
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (!empty($this->configuration['mask'])) {
-      return trim($value, $this->configuration['mask']);
+      return trim((string) $value, $this->configuration['mask']);
     }
 
-    return trim($value);
+    return trim((string) $value);
   }
 
 }

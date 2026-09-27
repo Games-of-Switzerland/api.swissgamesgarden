@@ -68,6 +68,7 @@ class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPl
    * @psalm-suppress ArgumentTypeCoercion
    * @psalm-suppress UnsafeInstantiation
    */
+  #[\Override]
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
@@ -93,7 +94,7 @@ class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPl
    * @return mixed
    *   The input value, $value, if it is not empty.
    */
-  public function process($value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
+  public function process(mixed $value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
     if (!$this->checkFile($value)) {
       $migrate_executable->saveMessage("Source file {$value} is not an image. Skipping.");
       $this->stopPipeline();
@@ -124,7 +125,7 @@ class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPl
    * @return mixed
    *   The input value, $value, if it is not empty.
    */
-  public function row($value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
+  public function row(mixed $value, MigrateExecutableInterface $migrate_executable, Row $row, string $destination_property) {
     $message = !empty($this->configuration['message']) ? $this->configuration['message'] : '';
 
     if (!$this->checkFile($value)) {
@@ -143,7 +144,7 @@ class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPl
    * @return bool
    *   True if the compare successfully, FALSE otherwise.
    */
-  protected function checkFile($path) {
+  protected function checkFile(mixed $path) {
     // Ensure the file is accessible remotely or localy.
     if (UrlHelper::isExternal($path)) {
       try {
@@ -161,7 +162,7 @@ class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPl
           return FALSE;
         }
       }
-      catch (RequestException $e) {
+      catch (RequestException) {
         return FALSE;
       }
     }

@@ -25,6 +25,9 @@ class WatchdogContext extends RawDrupalContext {
    * @BeforeScenario
    */
   public function cleanupWatchdog(): void {
+    // Boot the Drupal container.
+    $this->getDriver('drupal');
+
     $connection = \Drupal::service('database');
     $connection->truncate('watchdog')->execute();
   }
@@ -47,6 +50,9 @@ class WatchdogContext extends RawDrupalContext {
     if ($this->watchdogIgnore) {
       return;
     }
+
+    // Boot the Drupal container.
+    $this->getDriver('drupal');
 
     $connection = \Drupal::service('database');
 

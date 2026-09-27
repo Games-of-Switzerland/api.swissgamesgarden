@@ -6,7 +6,6 @@ gin_primary: true
 unpublish: false
 unpublish_new_only: false
 hide_default_save: false
-hide_default_publish: false
 hide_default_preview: true
 hide_default_delete: false
 enable_node_types_automatically: false

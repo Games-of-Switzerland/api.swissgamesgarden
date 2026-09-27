@@ -2,6 +2,8 @@ uuid: ac9aa520-20d3-4741-87fc-465b7dbe35a8
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.studio
   module:
     - node
 id: studio
@@ -12,7 +14,6 @@ selection_criteria:
   eb718457-37b1-4eee-bc20-44cef62cef13:
     id: 'entity_bundle:node'
     negate: false
-    uuid: eb718457-37b1-4eee-bc20-44cef62cef13
     context_mapping:
       node: node
     bundles:
