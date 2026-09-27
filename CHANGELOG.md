@@ -5,6 +5,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Removed
+- chore(deps): remove drupal/hal, drupal/rdf, drupal/aggregator, drupal/feeds (unused, not enabled)
+
+### Security
+- chore(deps): drupal/core (10.6.17 => 11.4.7), Drupal 11 major upgrade
+- chore(deps): drupal/gin (4.1.3 => 5.0.15)
+- chore(deps): drupal/gin_toolbar (2.1.0 => 3.0.3)
+- chore(deps): drupal/migrate_file (2.1.3 => 3.0.0-alpha1)
+- chore(deps): drupal/fieldable_path (1.0.0-rc6 => 1.0.0), sourced via inline package repo + patch, no D11 release yet
+- chore(deps): drupal/metatag (2.1.x => 2.2.0)
+- chore(deps): pin twig/twig to 3.29.0, 3.30.0 fatals on a new upstream regression
+
+### Fixed
+- fix(tests): patch drupal/metatag's PermissionsTest::createContentType()
+- fix(custom): narrow GameNormalizer/PeopleNormalizer/StudioNormalizer::normalize() return types for Drupal 11
+- fix(tests): make gos_game's CompletenessCalculatorTest::providerContextualLinks() static
+- fix(core): patch drupal/core TwigExtension::escapeFilter() arg bug
+- ci: ignore claro theme in upgrade_status:analyze
+
+## [1.6.0] - 2026-09-27
+### Changed
+- chore(infra): bump docker-compose db image mariadb:10.4 => mariadb:12.3
+
+## [1.5.2] - 2026-09-27
 ### Added
 - ci: add rector
 
@@ -14,7 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - chore: remove php-deprecation-detector
 - chore(deps): remove drupal/ckeditor (unused legacy CKEditor 4 bridge)
-- chore(deps): remove drupal/hal, drupal/rdf, drupal/aggregator, drupal/feeds (unused, not enabled)
 
 ### Security
 - chore(deps): drupal/drupal-extension (v5.4.0 => v6.1.0)
@@ -34,14 +57,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): drupal/save_edit (2.1.0 => 2.2.1)
 - chore(deps): drupal/core (10.6.2 => 10.6.17)
 - chore(deps): drupal/cdn (4.1.0 => 5.0.0-alpha1)
-- chore(deps): drupal/core (10.6.17 => 11.4.7), Drupal 11 major upgrade
-- chore(deps): drupal/gin (4.1.3 => 5.0.15)
-- chore(deps): drupal/gin_toolbar (2.1.0 => 3.0.3)
-- chore(deps): drupal/migrate_file (2.1.3 => 3.0.0-alpha1)
-- chore(deps): drupal/fieldable_path (1.0.0-rc6 => 1.0.0), sourced via inline package repo + patch, no D11 release yet
-- chore(deps): drupal/metatag (2.1.x => 2.2.0)
-- chore(deps): pin twig/twig to 3.29.0, 3.30.0 fatals on a new upstream regression
-- chore(infra): bump docker-compose db image mariadb:10.4 => mariadb:12.3
 
 ### Fixed
 - fix(behat): boot Drupal driver in WatchdogContext before container access
@@ -419,7 +434,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add Video Games collection to Gin Login
 - prepare for Drupal 9 update
 
-[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.1...HEAD
+[Unreleased]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.6.0...HEAD
+[1.6.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.2...1.6.0
+[1.5.2]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.1...1.5.2
 [1.5.1]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.5.0...1.5.1
 [1.5.0]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.3...1.5.0
 [1.4.3]: https://github.com/Games-of-Switzerland/api.swissgamesgarden/compare/1.4.2...1.4.3
