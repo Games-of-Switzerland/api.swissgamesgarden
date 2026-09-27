@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Build URL from Drupal entity to Now.sh.
  */
-class UrlBuilderNextJs {
+final class UrlBuilderNextJs {
 
   /**
    * NextJS URL patterns prefix to be used before the Drupal slug.

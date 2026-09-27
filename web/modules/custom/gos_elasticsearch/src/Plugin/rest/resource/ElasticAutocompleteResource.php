@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
  *     }
  * )
  */
-class ElasticAutocompleteResource extends ElasticResourceBase {
+final class ElasticAutocompleteResource extends ElasticResourceBase {
 
   /**
    * The maximum element by bundle returned for a response.

@@ -15,7 +15,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['contextual_link'],
 )]
-class ContextualLinkFieldFormatter extends FormatterBase {
+final class ContextualLinkFieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}

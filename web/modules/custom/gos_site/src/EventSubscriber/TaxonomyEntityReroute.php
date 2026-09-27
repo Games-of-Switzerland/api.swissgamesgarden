@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Redirect Drupal Taxonomy canonical to pages in Next app.
  */
-class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriberInterface {
+final class TaxonomyEntityReroute extends BaseEntityReroute implements EventSubscriberInterface {
 
   /**
    * {@inheritdoc}

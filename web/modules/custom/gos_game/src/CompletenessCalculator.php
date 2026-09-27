@@ -7,7 +7,7 @@ use Drupal\node\NodeInterface;
 /**
  * Class to calculate game score.
  */
-class CompletenessCalculator {
+final class CompletenessCalculator {
 
   /**
    * List of fields and given absolute score given when non-empty.

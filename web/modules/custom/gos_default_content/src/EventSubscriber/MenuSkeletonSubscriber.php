@@ -10,7 +10,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Generate the default menu(s) for Games of Switzerland to works properly.
  */
-class MenuSkeletonSubscriber implements EventSubscriberInterface {
+final class MenuSkeletonSubscriber implements EventSubscriberInterface {
 
   /**
    * {@inheritdoc}

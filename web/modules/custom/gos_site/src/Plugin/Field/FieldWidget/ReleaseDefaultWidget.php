@@ -16,7 +16,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Release widget'),
   field_types: ['release'],
 )]
-class ReleaseDefaultWidget extends EntityReferenceAutocompleteWidget {
+final class ReleaseDefaultWidget extends EntityReferenceAutocompleteWidget {
 
   /**
    * {@inheritdoc}

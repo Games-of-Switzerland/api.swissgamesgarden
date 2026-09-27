@@ -13,7 +13,7 @@ namespace Drupal\gos_migrate\Plugin\migrate\source;
  *     source_module="gos_migrate"
  * )
  */
-class Studios extends BaseRowExploded {
+final class Studios extends BaseRowExploded {
 
   /**
    * {@inheritdoc}

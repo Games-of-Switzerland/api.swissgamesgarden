@@ -20,7 +20,7 @@ use Drupal\Core\TypedData\DataDefinition;
   default_formatter: 'store_default',
   default_widget: 'store_default',
 )]
-class StoreItem extends FieldItemBase implements FieldItemInterface {
+final class StoreItem extends FieldItemBase implements FieldItemInterface {
 
   /**
    * {@inheritdoc}

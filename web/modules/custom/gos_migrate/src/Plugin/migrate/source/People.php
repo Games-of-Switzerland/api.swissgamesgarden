@@ -13,7 +13,7 @@ namespace Drupal\gos_migrate\Plugin\migrate\source;
  *     source_module="gos_migrate"
  * )
  */
-class People extends BaseRowExploded {
+final class People extends BaseRowExploded {
 
   /**
    * {@inheritdoc}

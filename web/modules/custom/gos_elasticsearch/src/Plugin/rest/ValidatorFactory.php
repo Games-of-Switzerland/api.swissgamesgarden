@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 /**
  * Validator factory to initialize annotation ready Symfony validator.
  */
-class ValidatorFactory {
+final class ValidatorFactory {
 
   /**
    * Gets the validator for validating data.

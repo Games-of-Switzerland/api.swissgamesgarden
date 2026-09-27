@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
  *     }
  * )
  */
-class ElasticGamesResource extends ElasticResourceBase {
+final class ElasticGamesResource extends ElasticResourceBase {
 
   /**
    * The Elasticsearch Plugin ID to be used.
@@ -294,6 +294,9 @@ class ElasticGamesResource extends ElasticResourceBase {
    */
   protected function addSort(array $sort): array {
     $direction = key($sort);
+    // $sort is validated non-empty by ElasticGamesResourceValidator before
+    // this is called.
+    /** @psalm-suppress PossiblyNullArrayOffset */
     $property = $sort[$direction];
 
     return match ($property) {

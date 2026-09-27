@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - chore(deps): mglaman/phpstan-drupal (1.3.9 => 2.2.2)
 - chore(deps): palantirnet/drupal-rector (0.21.2 => 1.1.3)
 - chore(deps): phpstan/phpstan-deprecation-rules (1.2.1 => 2.0.5)
+- chore(deps): vimeo/psalm (5.26.1 => 6.18.1), fixes a fatal crash on PHP 8.4's RoundingMode enum
+- chore: bump rector.php PHP level set to 8.4, apply Rector's AddOverrideAttributeToOverriddenMethodsRector
+
+### Fixed
+- fix(psalm): resolve 149 Psalm 6 findings surfaced by the tool upgrade (ClassMustBeFinal, MissingOverrideAttribute, magic property suppressions, nullable-type fixes)
 
 ## [1.7.0] - 2026-09-27
 ### Added

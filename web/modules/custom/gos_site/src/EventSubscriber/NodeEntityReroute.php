@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Redirect Drupal canonical to pages in Next app.
  */
-class NodeEntityReroute extends BaseEntityReroute implements EventSubscriberInterface {
+final class NodeEntityReroute extends BaseEntityReroute implements EventSubscriberInterface {
 
   /**
    * {@inheritdoc}

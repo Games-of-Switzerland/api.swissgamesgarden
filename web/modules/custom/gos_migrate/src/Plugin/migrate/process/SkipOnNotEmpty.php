@@ -30,7 +30,7 @@ use Drupal\migrate\Row;
  *     id="skip_on_not_empty"
  * )
  */
-class SkipOnNotEmpty extends ProcessPluginBase {
+final class SkipOnNotEmpty extends ProcessPluginBase {
 
   /**
    * Stops processing the current property when value is set.

@@ -20,7 +20,7 @@ use Drupal\Core\TypedData\DataDefinition;
   default_formatter: 'player_default',
   default_widget: 'player_default',
 )]
-class PlayerItem extends FieldItemBase implements FieldItemInterface {
+final class PlayerItem extends FieldItemBase implements FieldItemInterface {
 
   /**
    * {@inheritdoc}

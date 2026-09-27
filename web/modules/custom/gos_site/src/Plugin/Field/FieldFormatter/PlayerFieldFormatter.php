@@ -15,7 +15,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
   label: new TranslatableMarkup('Default'),
   field_types: ['player'],
 )]
-class PlayerFieldFormatter extends FormatterBase {
+final class PlayerFieldFormatter extends FormatterBase {
 
   /**
    * {@inheritdoc}

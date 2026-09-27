@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  *
  * @see \Drupal\gos_elasticsearch\Plugin\rest\resource\ElasticRealEstateListResource
  */
-class ElasticGamesResourceValidator extends BaseValidator {
+final class ElasticGamesResourceValidator extends BaseValidator {
 
   /**
    * List of sortable properties.

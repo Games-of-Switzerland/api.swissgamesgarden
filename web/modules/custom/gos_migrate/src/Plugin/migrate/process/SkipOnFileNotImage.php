@@ -42,7 +42,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *     id="skip_on_file_not_image"
  * )
  */
-class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPluginInterface {
+final class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The Guzzle HTTP Client service.
