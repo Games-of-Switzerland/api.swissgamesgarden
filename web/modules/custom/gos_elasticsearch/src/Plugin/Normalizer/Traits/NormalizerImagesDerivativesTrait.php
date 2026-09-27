@@ -10,13 +10,6 @@ use Drupal\Core\Field\FieldItemListInterface;
 trait NormalizerImagesDerivativesTrait {
 
   /**
-   * The image style entity storage.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
-   */
-  protected $imageStyleStorage;
-
-  /**
    * List of image styles IDs to generate.
    *
    * @var string[]
@@ -42,6 +35,7 @@ trait NormalizerImagesDerivativesTrait {
    */
   private function generateImagesDerivatives(FieldItemListInterface $field_image, array $styles): array {
     $medias = [];
+    $image_style_storage = $this->entityTypeManager->getStorage('image_style');
 
     foreach ($field_image as $file) {
       // Skip file entity without real file on filesystem.
@@ -61,7 +55,7 @@ trait NormalizerImagesDerivativesTrait {
         $uri = $file->entity->uri->value;
 
         /** @var \Drupal\image\ImageStyleInterface|null $style */
-        $style = $this->imageStyleStorage->load($style_id);
+        $style = $image_style_storage->load($style_id);
 
         if ($style === NULL) {
           continue;

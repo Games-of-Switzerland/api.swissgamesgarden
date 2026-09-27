@@ -2,23 +2,23 @@
 
 namespace Drupal\Tests\gos_game\Unit;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversMethod;
-use PHPUnit\Framework\Attributes\Group;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\Tests\UnitTestCase;
 use Drupal\gos_game\CompletenessCalculator;
 use Drupal\node\NodeInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
- *
+ * Tests the CompletenessCalculator.
  *
  * @internal
  */
-#[CoversClass(\Drupal\gos_game\CompletenessCalculator::class)]
-#[CoversMethod(\Drupal\gos_game\CompletenessCalculator::class, 'calculation')]
+#[CoversClass(CompletenessCalculator::class)]
+#[CoversMethod(CompletenessCalculator::class, 'calculation')]
 #[Group('gos')]
 #[Group('gos_game')]
 #[Group('gos_game_unit')]
@@ -81,11 +81,22 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     $this->testGame->get('field_credits')->willReturn($field_item_empty->reveal())->shouldBeCalled();
   }
 
+  /**
+   * Tests the completeness calculation with every field set.
+   */
   public function testCalculation() {
     $score = CompletenessCalculator::calculation($this->testGame->reveal());
     self::assertEquals(9643, $score);
   }
 
+  /**
+   * Tests the completeness calculation for each contextual link type.
+   *
+   * @param string $type
+   *   The contextual link type.
+   * @param int $expected_score
+   *   The expected completeness score.
+   */
   #[DataProvider('providerContextualLinks')]
   public function testCalculationWithContextualLinks(string $type, int $expected_score) {
     $field_item_data = $this->prophesize(TypedDataInterface::class);
@@ -127,6 +138,9 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     yield ['box_art', 9743];
   }
 
+  /**
+   * Tests the completeness calculation with a non-empty credit field.
+   */
   public function testCalculationWithCredit() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(FALSE)->shouldBeCalled();
@@ -136,6 +150,9 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(9653, $score);
   }
 
+  /**
+   * Tests the completeness calculation with an empty images field.
+   */
   public function testCalculationWithoutImages() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();
@@ -145,6 +162,9 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(6643, $score);
   }
 
+  /**
+   * Tests the completeness calculation with an empty members field.
+   */
   public function testCalculationWithoutMembers() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();
@@ -154,6 +174,9 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(8643, $score);
   }
 
+  /**
+   * Tests the completeness calculation with empty members and studios fields.
+   */
   public function testCalculationWithoutMembersNeitherStudios() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();
@@ -164,6 +187,9 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(6143, $score);
   }
 
+  /**
+   * Tests the completeness calculation with an empty releases field.
+   */
   public function testCalculationWithoutReleases() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();
@@ -173,6 +199,9 @@ final class CompletenessCalculatorTest extends UnitTestCase {
     self::assertEquals(7893, $score);
   }
 
+  /**
+   * Tests the completeness calculation with an empty studios field.
+   */
   public function testCalculationWithoutStudios() {
     $field_item = $this->prophesize(FieldItemInterface::class);
     $field_item->isEmpty()->willReturn(TRUE)->shouldBeCalled();

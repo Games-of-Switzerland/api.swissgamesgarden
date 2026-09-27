@@ -30,13 +30,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 final class NextJsUrlGenerator extends EntityUrlGenerator {
 
   /**
-   * The NextJs URL Builder.
-   *
-   * @var \Drupal\gos_site\UrlBuilderNextJs
-   */
-  protected $urlBuilderNextJs;
-
-  /**
    * {@inheritdoc}
    *
    * @psalm-suppress MissingParamType
@@ -55,7 +48,10 @@ final class NextJsUrlGenerator extends EntityUrlGenerator {
     EntityManager $entities_manager,
     UrlGeneratorManager $url_generator_manager,
     MemoryCacheInterface $memory_cache,
-    UrlBuilderNextJs $url_builder_nextjs,
+    /**
+     * The NextJs URL Builder.
+     */
+    protected UrlBuilderNextJs $urlBuilderNextJs,
   ) {
     parent::__construct(
       $configuration,
@@ -70,7 +66,6 @@ final class NextJsUrlGenerator extends EntityUrlGenerator {
       $url_generator_manager,
       $memory_cache
     );
-    $this->urlBuilderNextJs = $url_builder_nextjs;
   }
 
   /**
@@ -87,7 +82,7 @@ final class NextJsUrlGenerator extends EntityUrlGenerator {
     $plugin_id,
     $plugin_definition,
   ): SimpleSitemapPluginBase {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,

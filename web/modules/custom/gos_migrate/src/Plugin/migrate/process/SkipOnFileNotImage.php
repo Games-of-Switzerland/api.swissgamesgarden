@@ -45,20 +45,20 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 final class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFactoryPluginInterface {
 
   /**
-   * The Guzzle HTTP Client service.
-   *
-   * @var \GuzzleHttp\Client
-   */
-  protected $httpClient;
-
-  /**
    * {@inheritdoc}
    *
    * @psalm-suppress MissingParamType
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, Client $http_client) {
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    /**
+     * The Guzzle HTTP Client service.
+     */
+    protected Client $httpClient,
+  ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->httpClient = $http_client;
   }
 
   /**
@@ -70,7 +70,7 @@ final class SkipOnFileNotImage extends ProcessPluginBase implements ContainerFac
    */
   #[\Override]
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
+    return new self(
       $configuration,
       $plugin_id,
       $plugin_definition,

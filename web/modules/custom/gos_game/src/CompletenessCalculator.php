@@ -14,7 +14,7 @@ final class CompletenessCalculator {
    *
    * @var array
    */
-  protected const array FIELDS_SCORE = [
+  private const array FIELDS_SCORE = [
     'field_webiste' => 1000,
     'field_studios' => 1000,
     'field_members' => 1000,

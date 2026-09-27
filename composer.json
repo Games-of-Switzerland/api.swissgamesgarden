@@ -83,7 +83,7 @@
         }
     ],
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-exif": "*",
         "composer/installers": "^2.2",
         "cweagans/composer-patches": "^2.0",
