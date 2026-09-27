@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Security
 - chore(deps): drupal/image_effects (4.0.0 => 5.0.0)
+- chore(deps): drupal/core (11.4.7 => 11.4.8)
 
 ## [1.7.1] - 2026-09-27
 ### Changed

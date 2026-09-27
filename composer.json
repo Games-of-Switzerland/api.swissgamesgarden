@@ -127,7 +127,7 @@
         "drupal/webp": "^1.0@beta",
         "drush/drush": "^13.1",
         "elasticsearch/elasticsearch": "^8.19",
-        "twig/twig": "3.29.0"
+        "twig/twig": "^3.30"
     },
     "require-dev": {
         "alexandresalome/mailcatcher": "^1.2",
