@@ -106,7 +106,7 @@
         "drupal/gin": "^5.0",
         "drupal/gin_login": "^2.0",
         "drupal/gin_toolbar": "^3.0",
-        "drupal/image_effects": "^4.0",
+        "drupal/image_effects": "^5.0",
         "drupal/jsonapi_extras": "^3.23",
         "drupal/media_library_edit": "^3.0",
         "drupal/metatag": "^2.0",
@@ -127,7 +127,7 @@
         "drupal/webp": "^1.0@beta",
         "drush/drush": "^13.1",
         "elasticsearch/elasticsearch": "^8.19",
-        "twig/twig": "3.29.0"
+        "twig/twig": "^3.30"
     },
     "require-dev": {
         "alexandresalome/mailcatcher": "^1.2",
