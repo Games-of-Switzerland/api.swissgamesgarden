@@ -126,7 +126,7 @@
         "drupal/views_ef_fieldset": "^1.4",
         "drupal/webp": "^1.0@beta",
         "drush/drush": "^13.1",
-        "elasticsearch/elasticsearch": "8.7.*",
+        "elasticsearch/elasticsearch": "^8.19",
         "twig/twig": "3.29.0"
     },
     "require-dev": {
@@ -193,6 +193,9 @@
                     "depth": 1
                 }
             ],
+            "drupal/elasticsearch_helper": {
+                "Fix PHP 8.4 implicit-nullable-parameter deprecation in ElasticsearchIndexBase::dispatchOperationErrorEvent()": "./patches/elasticsearch_helper/php84-implicit-nullable-deprecation.patch"
+            },
             "drupal/fieldable_path": {
                 "Automated Drupal 11 compatibility fixes (https://www.drupal.org/i/3430541)": "./patches/fieldable_path/3430541-core11-compat.patch"
             },

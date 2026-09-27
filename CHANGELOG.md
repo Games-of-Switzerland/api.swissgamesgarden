@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - chore: remove php-deprecation-detector
 
+### Security
+- chore(deps): elasticsearch/elasticsearch (8.7.1 => 8.19.0)
+
 ## [1.7.0] - 2026-09-27
 ### Added
 - chore(deps): add drupal/media_library_edit, drupal/coffee, drupal/dashboard, drupal/navigation_extra_tools, drupal/sam, drupal/tagify, drupal/trash, drupal/ckeditor5\_paste_filter
